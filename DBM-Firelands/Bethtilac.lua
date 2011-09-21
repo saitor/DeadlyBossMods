@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(192, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6376 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6490 $"):sub(12, -3))
 mod:SetCreatureID(52498)
 mod:SetModelID(38227)
 mod:SetZone()
@@ -9,7 +9,7 @@ mod:SetUsedIcons()
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_CAST_START",
 	"SPELL_DAMAGE",

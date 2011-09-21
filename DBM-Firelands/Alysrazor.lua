@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(194, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6486 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6490 $"):sub(12, -3))
 mod:SetCreatureID(52530)
 mod:SetModelID(38446)
 mod:SetZone()
@@ -12,7 +12,7 @@ mod:SetModelSound("Sound\\Creature\\ALYSRAZOR\\VO_FL_ALYSRAZOR_AGGRO.wav", "Soun
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_AURA_REFRESH",
