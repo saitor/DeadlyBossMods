@@ -42,7 +42,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = ("$Revision: 6488 $"):sub(12, -3),
+	Revision = ("$Revision: 6489 $"):sub(12, -3),
 	Version = "4.98",
 	DisplayVersion = "4.10.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 6444 -- the revision of the latest stable version that is available (for /dbm ver2)
@@ -358,7 +358,7 @@ do
 	
 	function DBM:UnregisterAllEvents()
 		for i, v in pairs(registeredEvents) do
-			for i = #v, 1 do
+			for i = #v, 1, -1 do
 				if v[i] == self then
 					tremove(v, i)
 				end
@@ -2293,6 +2293,10 @@ function DBM:StartCombat(mod, delay, synced)
 		end
 		table.insert(inCombat, mod)
 		self:AddMsg(DBM_CORE_COMBAT_STARTED:format(mod.combatInfo.name))
+		if mod.inCombatOnlyEvents and not mod.inCombatOnlyEventsRegistered then
+			mod.inCombatOnlyEventsRegistered = 1
+			mod:RegisterEvents(unpack(mod.inCombatOnlyEvents))
+		end
 		if mod:IsDifficulty("normal5", "normal10") then
 			mod.stats.normalPulls = mod.stats.normalPulls + 1
 		elseif mod:IsDifficulty("heroic5", "heroic10") then
@@ -2353,6 +2357,9 @@ function DBM:EndCombat(mod, wipe)
 	if removeEntry(inCombat, mod) then
 		if not wipe then
 			mod.lastKillTime = GetTime()
+		end
+		if not wipe then
+			mod:UnregisterAllEvents()
 		end
 		mod:Stop()
 		mod.inCombat = false
@@ -2945,6 +2952,17 @@ function bossModPrototype:SetZone(...)
 		self.zones = {...}
 	else -- disable zone detection
 		self.zones = nil
+	end
+end
+
+
+function bossModPrototype:RegisterEventsInCombat(...)
+	if not self.inCombatOnlyEvents then
+		self.inCombatOnlyEvents = {}
+	end
+	for i = 1, select("#", ...) do
+		local ev = select(i, ...)
+		tinsert(self.inCombatOnlyEvents, ev)
 	end
 end
 
