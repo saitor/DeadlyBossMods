@@ -1,0 +1,13 @@
+package-as: DBM
+move-folders:
+    DBM/DBM-BaradinHold: DBM-BaradinHold
+    DBM/DBM-BastionTwilight: DBM-BastionTwilight
+    DBM/DBM-BlackwingDescent: DBM-BlackwingDescent
+    DBM/DBM-Core: DBM-Core
+    DBM/DBM-DragonSoul: DBM-DragonSoul
+    DBM/DBM-Firelands: DBM-Firelands
+    DBM/DBM-GUI: DBM-GUI
+    DBM/DBM-Party-Cataclysm: DBM-Party-Cataclysm
+    DBM/DBM-PvP: DBM-PvP
+    DBM/DBM-ThroneFourWinds: DBM-ThroneFourWinds
+    DBM/DBM-WorldEvents: DBM-WorldEvents

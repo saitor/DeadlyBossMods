@@ -42,7 +42,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = ("$Revision: 6494 $"):sub(12, -3),
+	Revision = ("$Revision: 6495 $"):sub(12, -3),
 	Version = "4.98",
 	DisplayVersion = "4.10.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 6444 -- the revision of the latest stable version that is available (for /dbm ver2)
@@ -53,6 +53,7 @@ DBM = {
 -- Legacy crap; that stupid "Version" field was never a good idea.
 -- Some functions that should be using ReleaseRevision still use this one, so we will just keep it and set to ReleaseRevision
 -- DBM.Version = tostring(DBM.ReleaseRevision)
+
 
 DBM_SavedOptions = {}
 
