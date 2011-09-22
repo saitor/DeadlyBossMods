@@ -1,14 +1,14 @@
 local mod	= DBM:NewMod("Corborus", "DBM-Party-Cataclysm", 7)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6343 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6499 $"):sub(12, -3))
 mod:SetCreatureID(43438)
 mod:SetModelID(33477)
 mod:SetZone()
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_CAST_SUCCESS"
 )

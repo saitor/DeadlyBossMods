@@ -1,14 +1,14 @@
 local mod	= DBM:NewMod("Kilnara", "DBM-Party-Cataclysm", 11)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 5749 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6499 $"):sub(12, -3))
 mod:SetCreatureID(52059)
 mod:SetModelID(37805)
 mod:SetZone()
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
 	"SPELL_INTERRUPT",

@@ -1,12 +1,12 @@
 local mod	= DBM:NewMod("CommanderUlthok", "DBM-Party-Cataclysm", 9)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 5750 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6499 $"):sub(12, -3))
 mod:SetCreatureID(40765)
 mod:SetModelID(33792)
 mod:SetZone()
 
-mod:RegisterCombat("combat")
+mod:RegisterEventsInCombat("combat")
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",

@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Jindo", "DBM-Party-Cataclysm", 11)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 5749 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6499 $"):sub(12, -3))
 mod:SetCreatureID(52148)
 mod:SetModelID(37789)
 mod:SetZone()
@@ -10,7 +10,7 @@ mod:SetUsedIcons(8)
 mod:RegisterCombat("combat")
 mod:RegisterKill("yell", L.Kill)
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_START",

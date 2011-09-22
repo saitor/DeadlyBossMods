@@ -1,14 +1,14 @@
 ﻿local mod	= DBM:NewMod("Halazzi5", "DBM-Party-Cataclysm", 10)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6446 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6499 $"):sub(12, -3))
 mod:SetCreatureID(23577)
 mod:SetModelID(21632)
 mod:SetZone()
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_START",

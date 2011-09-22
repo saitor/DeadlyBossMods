@@ -1,7 +1,7 @@
 ﻿local mod	= DBM:NewMod("Akilzon5", "DBM-Party-Cataclysm", 10)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 5749 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6499 $"):sub(12, -3))
 mod:SetCreatureID(23574)
 mod:SetModelID(21630)
 mod:SetZone()
@@ -9,7 +9,7 @@ mod:SetUsedIcons(1, 8)
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_CAST_SUCCESS"
 )

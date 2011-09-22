@@ -1,13 +1,13 @@
 local mod	= DBM:NewMod("Daakara", "DBM-Party-Cataclysm", 10)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6464 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6499 $"):sub(12, -3))
 mod:SetCreatureID(23863)
 mod:SetModelID(38118)
 mod:SetZone()
 
 mod:RegisterCombat("combat")
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_START",

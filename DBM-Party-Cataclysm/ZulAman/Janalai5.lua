@@ -2,7 +2,7 @@
 local mod	= DBM:NewMod("Janalai5", "DBM-Party-Cataclysm", 10)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6452 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6499 $"):sub(12, -3))
 mod:SetCreatureID(23578)
 mod:SetModelID(21633)
 mod:SetZone()
@@ -10,7 +10,7 @@ mod:SetUsedIcons(8)
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_CAST_START",
 	"CHAT_MSG_MONSTER_YELL"

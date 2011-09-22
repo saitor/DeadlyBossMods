@@ -1,14 +1,14 @@
 ﻿local mod	= DBM:NewMod("Nalorakk5", "DBM-Party-Cataclysm", 10)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6185 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6499 $"):sub(12, -3))
 mod:SetCreatureID(23576)
 mod:SetModelID(21631)
 mod:SetZone()
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"CHAT_MSG_MONSTER_YELL"
 )

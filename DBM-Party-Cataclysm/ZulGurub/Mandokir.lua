@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Mandokir", "DBM-Party-Cataclysm", 11)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6464 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6499 $"):sub(12, -3))
 mod:SetCreatureID(52151)
 mod:SetModelID(37816)
 mod:SetZone()
@@ -14,7 +14,7 @@ mod:SetBossHealthInfo(
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",

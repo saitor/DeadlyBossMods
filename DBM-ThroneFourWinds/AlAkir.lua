@@ -2,7 +2,7 @@
 local mod	= DBM:NewMod("AlAkir", "DBM-ThroneFourWinds")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6200 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6499 $"):sub(12, -3))
 mod:SetCreatureID(46753)
 mod:SetModelID(35248)
 mod:SetZone()
@@ -10,7 +10,7 @@ mod:SetUsedIcons(8)
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_AURA_REMOVED",

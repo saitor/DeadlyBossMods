@@ -2,7 +2,7 @@
 local mod	= DBM:NewMod("Conclave", "DBM-ThroneFourWinds")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6200 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6499 $"):sub(12, -3))
 mod:SetCreatureID(45870, 45871, 45872)
 mod:SetModelID(35232)
 mod:SetZone()
@@ -15,7 +15,7 @@ mod:SetBossHealthInfo(
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_AURA_REMOVED",

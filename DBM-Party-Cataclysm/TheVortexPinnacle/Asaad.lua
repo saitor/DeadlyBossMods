@@ -1,14 +1,14 @@
 local mod	= DBM:NewMod("Asaad", "DBM-Party-Cataclysm", 8)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6285 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6499 $"):sub(12, -3))
 mod:SetCreatureID(43875)
 mod:SetModelID(35388)
 mod:SetZone()
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_CAST_START"
 )
