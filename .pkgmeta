@@ -11,3 +11,5 @@ move-folders:
     DBM/DBM-PvP: DBM-PvP
     DBM/DBM-ThroneFourWinds: DBM-ThroneFourWinds
     DBM/DBM-WorldEvents: DBM-WorldEvents
+ignore:
+    - DBM

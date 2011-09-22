@@ -2,7 +2,7 @@
 local mod	= DBM:NewMod("ValionaTheralion", "DBM-BastionTwilight")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6496 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6497 $"):sub(12, -3))
 mod:SetCreatureID(45992, 45993)
 mod:SetModelID(34812)
 mod:SetZone()
@@ -24,8 +24,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_HEAL",
 	"SPELL_PERIODIC_HEAL",
 	"RAID_BOSS_EMOTE",
-	"UNIT_AURA",
-	"UNIT_SPELLCAST_SUCCEEDED"
+	"UNIT_AURA"
 )
 
 --Valiona Ground Phase
@@ -360,10 +359,3 @@ function mod:UNIT_AURA(uId)
 	end
 end
 
---Guesswork on event, another fight i'll need to re-transcribe with new working version.
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, spellName)
-	if spellName == GetSpellInfo(86497) then
-		print("Fabulous Flames cast detected")
-		DBM.Bars:CreateBar(15, "Fab Flames Test Bar")
-	end
-end
