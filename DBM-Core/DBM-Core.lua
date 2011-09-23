@@ -43,7 +43,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = ("$Revision: 6502 $"):sub(12, -3),
+	Revision = ("$Revision: 6503 $"):sub(12, -3),
 	Version = "4.98",
 	DisplayVersion = "4.10.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 6444 -- the revision of the latest stable version that is available (for /dbm ver2)
@@ -2940,7 +2940,7 @@ do
 	end
 
 	function DBM:GetModByName(name)
-		return modsById[name]
+		return modsById[tostring(name)]
 	end
 end
 
@@ -4524,6 +4524,7 @@ do
 	end
 
 	function DBM:CreateModLocalization(name)
+		name = tostring(name)
 		local obj = {
 			general = setmetatable({}, returnKey),
 			warnings = setmetatable({}, defaultAnnounceLocalization),
@@ -4539,6 +4540,7 @@ do
 	end
 
 	function DBM:GetModLocalization(name)
+		name = tostring(name)
 		return modLocalizations[name] or self:CreateModLocalization(name)
 	end
 end
