@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(198, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6511 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6512 $"):sub(12, -3))
 mod:SetCreatureID(52409)
 mod:SetModelID(37875)
 mod:SetZone()
@@ -424,7 +424,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerLivingMeteorCD:Cancel()--Cancel timer
 		warnLivingMeteor:Schedule(1, meteorSpawned)--Schedule with delay for the sets of 2, so we only warn once.
 		timerLivingMeteorCD:Start(45, meteorSpawned+1)--Start new one with new count.
-		if self.Options.MeteorFrame and not DBM.InfoFrame:IsShown() then--Show meteor frame and clear any health or aggro frame because nothing is more important then meteors.
+		if self.Options.MeteorFrame and meteorSpawned == 1 then--Show meteor frame and clear any health or aggro frame because nothing is more important then meteors.
 			DBM.InfoFrame:SetHeader(L.MeteorTargets)
 			DBM.InfoFrame:Show(6, "playerbaddebuff", 99849)--If you get more then 6 chances are you're screwed unless it's normal mode and he's at like 11%. Really anything more then 4 is chaos and wipe waiting to happen.
 		end
