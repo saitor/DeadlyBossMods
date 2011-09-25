@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("JulakDoom", "DBM-Party-Cataclysm", 15)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6514 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6515 $"):sub(12, -3))
 mod:SetCreatureID(50089)
 mod:SetModelID(24301)
 mod:SetUsedIcons(8, 7)
@@ -63,7 +63,11 @@ function mod:SPELL_AURA_APPLIED(args)
 			mcIcon = mcIcon - 1
 		end
 		self:Unschedule(showMC)
-		self:Schedule(0.5, showMC)
+		if #warnMCTargets >= 2 then
+			showMC()
+		else
+			self:Schedule(0.9, showMC)
+		end
 	end
 end
 
