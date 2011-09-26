@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(198, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6517 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6518 $"):sub(12, -3))
 mod:SetCreatureID(52409)
 mod:SetModelID(37875)
 mod:SetZone()
@@ -394,7 +394,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		self:MagmaTrapTarget()
 		if self.Options.InfoHealthFrame and not DBM.InfoFrame:IsShown() then
 			DBM.InfoFrame:SetHeader(L.HealthInfo)
-			DBM.InfoFrame:Show(5, "health", 110000)
+			DBM.InfoFrame:Show(5, "health", 100000)
 		end
 	elseif args:IsSpellID(98263, 100113, 100114, 100115) and GetTime() - wrathRagSpam >= 4 then
 		wrathRagSpam = GetTime()
