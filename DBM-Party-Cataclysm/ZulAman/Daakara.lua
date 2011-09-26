@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Daakara", "DBM-Party-Cataclysm", 10)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6499 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6521 $"):sub(12, -3))
 mod:SetCreatureID(23863)
 mod:SetModelID(38118)
 mod:SetZone()
@@ -99,7 +99,7 @@ function mod:SPELL_CAST_START(args)
 		timerSurgeCD:Start()
 		if self.Options.InfoFrame then
 			DBM.InfoFrame:SetHeader(L.PlayerDebuffs)
-			DBM.InfoFrame:Show(5, "playergooddebuff", 42402)
+			DBM.InfoFrame:Show(5, "playerbaddebuff", 42402)
 		end
 	elseif args:IsSpellID(42606) then
 		timerThrow:Cancel()
