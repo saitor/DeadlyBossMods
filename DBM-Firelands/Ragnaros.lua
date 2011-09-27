@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(198, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6518 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6524 $"):sub(12, -3))
 mod:SetCreatureID(52409)
 mod:SetModelID(37875)
 mod:SetZone()
@@ -555,7 +555,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, spellName)
 		if self.Options.AggroFrame then--Show aggro frame regardless if health frame is still up, it should be more important than health frame at this point. Shouldn't be blowing up traps while elementals are up.
 			DBM.InfoFrame:SetHeader(L.NoAggro)
 			if self:IsDifficulty("normal25", "heroic25") then
-				DBM.InfoFrame:Show(10, "playeraggro", 0)--20 man has at least 5 targets without aggro, often more do to immunities. because of it's size i may just remove this feature from 25 mans. it's now off by default.
+				DBM.InfoFrame:Show(10, "playeraggro", 0)--20 man has at least 5 targets without aggro, often more do to immunities. because of it's size, it's now off by default.
 			else
 				DBM.InfoFrame:Show(5, "playeraggro", 0)
 			end
