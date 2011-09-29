@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(198, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6539 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6540 $"):sub(12, -3))
 mod:SetCreatureID(52409)
 mod:SetModelID(37875)
 mod:SetZone()
@@ -374,14 +374,14 @@ function mod:SPELL_CAST_START(args)
 			warnEngulfingFlame:Show(args.spellName, L.Middle)
 		elseif args:IsSpellID(99236, 100181) then--South
 			warnEngulfingFlame:Show(args.spellName, L.South)
-		--Heroic Engulfing Flames below, spammy do to the mechanic difference between heroic and normal thus optional under a different option.
-		elseif args:IsSpellID(100177) and self.Options.WarnEngulfingFlameHeroic then
-			warnEngulfingFlame:Show(args.spellName, L.North)
-		elseif args:IsSpellID(100180) and self.Options.WarnEngulfingFlameHeroic then
-			warnEngulfingFlame:Show(args.spellName, L.Middle)
-		elseif args:IsSpellID(100183) and self.Options.WarnEngulfingFlameHeroic then
-			warnEngulfingFlame:Show(args.spellName, L.South)
 		end
+	--Heroic Engulfing Flames below, spammy do to the mechanic difference between heroic and normal thus optional under a different option.
+	elseif args:IsSpellID(100177) and self.Options.WarnEngulfingFlameHeroic then
+		warnEngulfingFlame:Show(args.spellName, L.North)
+	elseif args:IsSpellID(100180) and self.Options.WarnEngulfingFlameHeroic then
+		warnEngulfingFlame:Show(args.spellName, L.Middle)
+	elseif args:IsSpellID(100183) and self.Options.WarnEngulfingFlameHeroic then
+			warnEngulfingFlame:Show(args.spellName, L.South)
 	elseif args:IsSpellID(100646) then
 		warnEntrappingRoots:Show()
 		timerEntrapingRootsCD:Start()
