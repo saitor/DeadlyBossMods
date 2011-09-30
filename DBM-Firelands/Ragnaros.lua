@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(198, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6541 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6542 $"):sub(12, -3))
 mod:SetCreatureID(52409)
 mod:SetModelID(37875)
 mod:SetZone()
@@ -88,6 +88,7 @@ local berserkTimer			= mod:NewBerserkTimer(1080)
 
 local soundBlazingHeat		= mod:NewSound(100460)
 local soundMeteor			= mod:NewSound(99849)
+local soundEmpoweredSulf	= mod:NewSound(100997)
 
 mod:AddBoolOption("RangeFrame", true)
 mod:AddBoolOption("BlazingHeatIcons", true)
@@ -283,6 +284,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(100997) then
 		warnEmpoweredSulf:Show()
 		specWarnEmpoweredSulf:Show()
+		soundEmpoweredSulf:Play()
 		timerEmpoweredSulfCD:Start()
 	end
 end		
