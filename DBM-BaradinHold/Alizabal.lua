@@ -3,7 +3,7 @@ if tonumber((select(2, GetBuildInfo()))) <= 14545 then return end
 local mod	= DBM:NewMod(339, "DBM-BaradinHold", nil, 74)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6554 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6556 $"):sub(12, -3))
 mod:SetCreatureID(55869)
 mod:SetModelID(21252)
 mod:SetZone()
@@ -42,8 +42,9 @@ function mod:OnCombatStart(delay)
 	firstspecial = false
 	firstskewer = true
 	firstseething = true
-	timerSeethingHateCD:Start(6-delay)
-	timerSkewerCD:Start(15-delay)
+	timerFirstSpecial:Start(6-delay)
+--	timerSeethingHateCD:Start(6-delay)
+--	timerSkewerCD:Start(15-delay)
 	timerBladeDanceCD:Start(35-delay)
 --	berserkTimer:Start(-delay)
 end
