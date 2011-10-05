@@ -3,7 +3,7 @@ if tonumber((select(2, GetBuildInfo()))) <= 14545 then return end
 local mod	= DBM:NewMod(339, "DBM-BaradinHold", nil, 74)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6553 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6554 $"):sub(12, -3))
 mod:SetCreatureID(55869)
 mod:SetModelID(21252)
 mod:SetZone()
@@ -52,10 +52,12 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(105738) then--10m confirmed, 25 probalby uses same scripted spellid though.
 		warnBladeDance:Show()
 		specWarnBladeDance:Show()
-		soundBladeDance:Play("Sound\\Creature\\LordMarrowgar\\IC_Marrowgar_WW01.wav")--I amuse myself on this
 		timerBladeDance:Start()
 		if self:IsInCombat() then--Only start this on actual boss, not trash
 			timerBladeDanceCD:Start()
+			soundBladeDance:Play("Sound\\Creature\\LordMarrowgar\\IC_Marrowgar_WW01.wav")--I amuse myself on this
+		else
+			soundBladeDance:Play()--Play normal sound for the trash mobs tho
 		end
 	elseif args:IsSpellID(104936) then
 		if not firstspecial then--First special ability used after a blade dance, so the OTHER special is going to be cast in 8 seconds.
