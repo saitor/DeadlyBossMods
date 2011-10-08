@@ -10,7 +10,7 @@
 -- The localizations are written by:
 --    * enGB/enUS: Tandanu				http://www.deadlybossmods.com
 --    * deDE: Tandanu					http://www.deadlybossmods.com
---    * zhCN: Diablohu					http://wow.gamespot.com.cn
+--    * zhCN: Diablohu					http://www.dreamgen.cn | diablohudream@gmail.com
 --    * ruRU: BootWin					bootwin@gmail.com
 --    * ruRU: Vampik					admin@vampik.ru
 --    * zhTW: Hman						herman_c1@hotmail.com
@@ -43,7 +43,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = ("$Revision: 6566 $"):sub(12, -3),
+	Revision = ("$Revision: 6567 $"):sub(12, -3),
 	Version = "4.98",
 	DisplayVersion = "4.10.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 6444 -- the revision of the latest stable version that is available (for /dbm ver2)
