@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Xariona", "DBM-Party-Cataclysm", 15)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6513 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6572 $"):sub(12, -3))
 mod:SetCreatureID(50061)
 mod:SetModelID(32229)
 mod:SetZone(640)--Deepholm
@@ -42,7 +42,7 @@ function mod:OnCombatStart(delay)
 	timerTwilightBuffetCD:Start(10-delay)
 	timerTwilightZoneCD:Start(-delay)--Not a large sample size but seems like it'd be right.
 	timerTwilightFissureCD:Start(-delay)--May not be right, not a large sample size
-	timerUnleashedMagicCD:Start(60-delay)--May not get cast entire fight but if it is cast this is about right.
+--	timerUnleashedMagicCD:Start(60-delay)--May not get cast entire fight but if it is cast this is about right.
 end
 
 function mod:SPELL_CAST_START(args)
