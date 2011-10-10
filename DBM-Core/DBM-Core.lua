@@ -37,13 +37,11 @@
 --    * Share Alike. If you alter, transform, or build upon this work, you may distribute the resulting work only under the same or similar license to this one.
 --
 
-
-
 -------------------------------
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = ("$Revision: 6577 $"):sub(12, -3),
+	Revision = ("$Revision: 6578 $"):sub(12, -3),
 	Version = "4.98",
 	DisplayVersion = "4.10.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 6444 -- the revision of the latest stable version that is available (for /dbm ver2)
