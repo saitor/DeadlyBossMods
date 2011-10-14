@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(198, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6591 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6592 $"):sub(12, -3))
 mod:SetCreatureID(52409)
 mod:SetModelID(37875)
 mod:SetZone()
@@ -65,7 +65,7 @@ local yellBlazingHeat		= mod:NewYell(100460)
 local specWarnBlazingHeatMV	= mod:NewSpecialWarningMove(100305)--Standing in it
 local specWarnMoltenSeed	= mod:NewSpecialWarningSpell(98520, nil, nil, nil, true)
 local specWarnEngulfing		= mod:NewSpecialWarningMove(99171)
-local specWarnMeteor		= mod:NewSpecialWarningYou(99268)--Spawning on you
+local specWarnMeteor		= mod:NewSpecialWarningMove(99268)--Spawning on you
 local specWarnMeteorNear	= mod:NewSpecialWarningClose(99268)--Spawning on you
 local yellMeteor			= mod:NewYell(99268)
 local specWarnFixate		= mod:NewSpecialWarningYou(99849)--Chasing you after it spawned
