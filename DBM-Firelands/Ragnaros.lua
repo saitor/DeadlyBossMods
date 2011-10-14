@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(198, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6588 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6589 $"):sub(12, -3))
 mod:SetCreatureID(52409)
 mod:SetModelID(37875)
 mod:SetZone()
@@ -287,11 +287,10 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnBurningWound:Show(args.amount)
 		end
 		timerBurningWound:Start(args.destName)
-	elseif args:IsSpellID(100915) then
-		if (args.amount or 0) >= 12 and args.amount % 4 == 0 and args:IsPlayer() then
+	elseif args:IsSpellID(100915) and args:IsPlayer() then
+		if (args.amount or 0) >= 12 and args.amount % 4 == 0 then
 			specWarnSuperheated:Show(args.amount)
 		end
-		timerBurningWound:Start(args.destName)
 	elseif args:IsSpellID(100171, 100190) then--World of Flames, heroic trigger for engulfing flames. CD timing seems same as normal.
 		specWarnWorldofFlames:Show()
 		if phase == 3 then
