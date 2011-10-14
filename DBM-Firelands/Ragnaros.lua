@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(198, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6586 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6588 $"):sub(12, -3))
 mod:SetCreatureID(52409)
 mod:SetModelID(37875)
 mod:SetZone()
@@ -199,6 +199,7 @@ local function TransitionEnded()
 		timerSulfurasSmash:Start(15.5)--Also a variation.
 		timerFlamesCD:Start(30)
 		warnLivingMeteorSoon:Schedule(35)
+		MeteorCountdown:Start(45)
 		timerLivingMeteorCD:Start(45, 1)
 	elseif phase == 4 then
 		timerLivingMeteorCD:Cancel()
