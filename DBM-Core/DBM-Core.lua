@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = ("$Revision: 6606 $"):sub(12, -3),
+	Revision = ("$Revision: 6607 $"):sub(12, -3),
 	DisplayVersion = "4.10.0-alpha", -- the string that is shown as version
 	ReleaseRevision = 6582 -- the revision of the latest stable version that is available
 }
@@ -2374,7 +2374,10 @@ function DBM:EndCombat(mod, wipe)
 	if removeEntry(inCombat, mod) then
 		if not wipe then
 			mod.lastKillTime = GetTime()
-			mod:UnregisterAllEvents()
+			if mod.inCombatOnlyEvents then
+				mod:UnregisterAllEvents()
+				mod.inCombatOnlyEventsRegistered = 0
+			end
 		end
 		mod:Stop()
 		mod.inCombat = false
