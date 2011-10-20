@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(198, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6594 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6609 $"):sub(12, -3))
 mod:SetCreatureID(52409)
 mod:SetModelID(37875)
 mod:SetZone()
@@ -649,7 +649,7 @@ end
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, spellName)
 	if spellName == GetSpellInfo(100386) and not seedsActive then -- The true molten seeds cast.
 		seedsActive = true
-		timerMoltenInferno:Start(12.15)--1.8-2.5 variation, we use average here +10 seconds
+		timerMoltenInferno:Start(11.8)--1.8-2.5 variation, we use lowest +10 seconds
 		if self.Options.warnSeedsLand then--Warn after they are on ground, typical strat for normal mode. Time not 100% consistent.
 			self:Schedule(2.5, warnSeeds)--But use upper here
 		else
