@@ -2,7 +2,7 @@
 local mod	= DBM:NewMod("AlAkir", "DBM-ThroneFourWinds")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6623 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6634 $"):sub(12, -3))
 mod:SetCreatureID(46753)
 mod:SetModelID(35248)
 mod:SetZone()
@@ -50,7 +50,7 @@ local timerLightningRodCD	= mod:NewNextTimer(15, 89668)
 local timerLightningCloudCD	= mod:NewNextTimer(15, 89588)
 local timerLightningStrikeCD= mod:NewCDTimer(10, 93257)
 local timerIceStormCD		= mod:NewCDTimer(25, 88239)
-local timerSquallLineCD		= mod:NewCDTimer(20, 88239)
+local timerSquallLineCD		= mod:NewCDTimer(20, 91129)
 
 local berserkTimer			= mod:NewBerserkTimer(600)
 
