@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = ("$Revision: 6638 $"):sub(12, -3),
+	Revision = ("$Revision: 6639 $"):sub(12, -3),
 	DisplayVersion = "4.10.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 6615 -- the revision of the latest stable version that is available
 }
@@ -858,7 +858,7 @@ SlashCmdList["DBMRANGE"] = function(msg)
 		DBM.RangeCheck:Hide()
 	else
 		local r = tonumber(msg)
-		if r and (r == 10 or r == 11 or r == 15 or r == 28 or r == 5 or r == 6 or r == 8 or r == 12 or r == 20) then
+		if r and (r == 10 or r == 11 or r == 15 or r == 28 or r == 3 or r == 5 or r == 6 or r == 8 or r == 12 or r == 20) then
 			DBM.RangeCheck:Show(r)
 		else
 			DBM.RangeCheck:Show(10)
