@@ -3,7 +3,7 @@ if tonumber((select(2, GetBuildInfo()))) <= 14545 then return end
 local mod	= DBM:NewMod(311, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6626 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6643 $"):sub(12, -3))
 mod:SetCreatureID(55265)
 mod:SetModelID(39094)
 mod:SetZone()
@@ -25,7 +25,7 @@ local warnStomp			= mod:NewSpellAnnounce(108571, 3)
 local warnVortex		= mod:NewSpellAnnounce(110047, 4)
 local warnFurious		= mod:NewSpellAnnounce(103846, 3)
 
-local specwarnCrushArmor	= mod:NewSpecialWarningStack(103687, 3, mod:IsTank())
+local specwarnCrushArmor	= mod:NewSpecialWarningStack(103687, mod:IsTank(), 3)
 local specwarnVortexAfter	= mod:NewSpecialWarning("SpecwarnVortexAfter")	-- show a specwarning when Vortex ends
 local specwarnBlood			= mod:NewSpecialWarningMove(108570)
 
