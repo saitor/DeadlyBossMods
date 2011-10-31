@@ -3,7 +3,7 @@ if tonumber((select(2, GetBuildInfo()))) <= 14545 then return end
 local mod	= DBM:NewMod(325, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6640 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6644 $"):sub(12, -3))
 mod:SetCreatureID(55312)
 mod:SetModelID(39101)
 mod:SetZone()
@@ -84,7 +84,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end		
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, spellName, _, _, spellID)
-	if not uId == "boss1" then return end--Anti spam to ignore all other args (like target/focus/mouseover)
+	if uId ~= "boss1" then return end--Anti spam to ignore all other args (like target/focus/mouseover)
 	if oozeColors[spellID] then
 		warnOozes:Show(oozeColors[spellID][1], oozeColors[spellID][2], oozeColors[spellID][3])
 --		timerVoidBoltCD:Start(40)
