@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(198, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6632 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6656 $"):sub(12, -3))
 mod:SetCreatureID(52409)
 mod:SetModelID(37875)
 mod:SetZone()
@@ -695,7 +695,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, spellName)
 			warnSeeds()
 		end
 		self:Schedule(17.5, clearSeedsActive)--Clear active/warned seeds after they have all blown up.
-		self:Schedule(12.5, showAggroWarning)--Not sure fastest timing for this, gotta wait for them all to spawn. or if they fixate immediately on spawn in time stamps above or we need an additional second or two.
+		self:Schedule(13.5, showAggroWarning)--Not sure fastest timing for this, gotta wait for them all to spawn. or if they fixate immediately on spawn in time stamps above or we need an additional second or two.
 		if self.Options.AggroFrame then--Show aggro frame regardless if health frame is still up, it should be more important than health frame at this point. Shouldn't be blowing up traps while elementals are up.
 			DBM.InfoFrame:SetHeader(L.NoAggro)
 			if self:IsDifficulty("normal25", "heroic25") then
