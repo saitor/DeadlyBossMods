@@ -3,7 +3,7 @@ if tonumber((select(2, GetBuildInfo()))) <= 14545 then return end
 local mod	= DBM:NewMod(311, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6652 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6655 $"):sub(12, -3))
 mod:SetCreatureID(55265)
 mod:SetModelID(39094)
 mod:SetZone()
@@ -80,7 +80,7 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpellID(103851) then
 		warnBlood:Show()
 		timerBlood:Start()
-		specwarnAfterVortex:Show()
+		specwarnVortexAfter:Show()
 	end
 end
 
@@ -103,7 +103,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_DAMAGE(args)
-	if args:IsSpellID(103785, 108570, 110287, 110288) and GetTime - spamBlood > 3 then--103785 10 man confirmed.
+	if args:IsSpellID(103785, 108570, 110287, 110288) and GetTime() - spamBlood > 3 then--103785 10 man confirmed.
 		specwarnBlood:Show()
 		spamBlood = GetTime()
 	end
