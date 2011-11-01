@@ -1,9 +1,9 @@
-if tonumber((select(4, GetBuildInfo()))) <= 40300 then return end
+if tonumber((select(4, GetBuildInfo()))) < 40300 then return end
 
 local mod	= DBM:NewMod("AsiraDawnslayer", "DBM-Party-Cataclysm", 14)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6654 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6658 $"):sub(12, -3))
 mod:SetCreatureID(54968)
 mod:SetModelID(38995)
 mod:SetZone()
