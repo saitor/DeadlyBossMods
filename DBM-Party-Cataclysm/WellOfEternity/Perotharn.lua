@@ -1,7 +1,9 @@
+if tonumber((select(4, GetBuildInfo()))) <= 40300 then return end
+
 local mod	= DBM:NewMod("Perotharn", "DBM-Party-Cataclysm", 13)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6599 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6654 $"):sub(12, -3))
 mod:SetCreatureID(55085)
 mod:SetModelID(39182)
 mod:SetZone()

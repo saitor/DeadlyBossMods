@@ -1,7 +1,9 @@
+if tonumber((select(4, GetBuildInfo()))) <= 40300 then return end
+
 local mod	= DBM:NewMod("Arcurion", "DBM-Party-Cataclysm", 14)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6563 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6654 $"):sub(12, -3))
 mod:SetCreatureID(54590)
 mod:SetModelID(35978)
 mod:SetZone()
