@@ -3,7 +3,7 @@ if tonumber((select(2, GetBuildInfo()))) <= 14545 then return end
 local mod	= DBM:NewMod(331, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6662 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6663 $"):sub(12, -3))
 mod:SetCreatureID(55294)
 mod:SetModelID(39099)
 mod:SetZone()
@@ -32,7 +32,7 @@ local timerCombatStart				= mod:NewTimer(35, "TimerCombatStart", 2457)
 local timerHourofTwilightCD			= mod:NewNextTimer(45, 109416)
 local timerTwilightEruptionCD		= mod:NewNextTimer(360, 106388)--Berserk timer more or less.
 local timerTwilightEruption			= mod:NewCastTimer(5, 106388)
-local timerFadingLightCD			= mod:NewNextTimer(10, 109416)
+local timerFadingLightCD			= mod:NewNextTimer(10, 110080)
 
 local fadingLightCount = 0
 local fadingLightTargets = {}
