@@ -3,7 +3,7 @@ if tonumber((select(2, GetBuildInfo()))) <= 14545 then return end
 local mod	= DBM:NewMod(325, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6660 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6669 $"):sub(12, -3))
 mod:SetCreatureID(55312)
 mod:SetModelID(39101)
 mod:SetZone()
@@ -25,7 +25,7 @@ local warnManaVoid		= mod:NewSpellAnnounce(105530, 3)
 
 local specWarnOozes		= mod:NewSpecialWarning("specWarnOozes", mod:IsDps())
 local specWarnVoidBolt	= mod:NewSpecialWarningStack(108383, mod:IsTank(), 3)--with 20 second debuffs and 11 second CDs, can probably trade at 2, but it may still be 30 on 25 man not sure yet so i'll leave 3 for now.
-local specWarnManaVoid	= mod:NewSpecialWarning("specWarnManaVoid", mod:IsDps())
+local specWarnManaVoid	= mod:NewSpecialWarningSpell(105530, mod:IsDps() or mod:IsManaUser())
 
 local timerOozesCD		= mod:NewTimer(75, "timerOozesCD", 16372)
 --local timerVoidBoltCD	= mod:NewCDTimer(10.5, 108383, nil, mod:IsTank())--i can't quite see what makes him stop casting it yet throughout fight yet though to perfectly cancel/start it so it's semi inaccurate for now.
