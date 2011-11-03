@@ -3,7 +3,7 @@ if tonumber((select(2, GetBuildInfo()))) <= 14545 then return end
 local mod	= DBM:NewMod(331, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6663 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6668 $"):sub(12, -3))
 mod:SetCreatureID(55294)
 mod:SetModelID(39099)
 mod:SetZone()
@@ -33,6 +33,8 @@ local timerHourofTwilightCD			= mod:NewNextTimer(45, 109416)
 local timerTwilightEruptionCD		= mod:NewNextTimer(360, 106388)--Berserk timer more or less.
 local timerTwilightEruption			= mod:NewCastTimer(5, 106388)
 local timerFadingLightCD			= mod:NewNextTimer(10, 110080)
+
+local FadingLightCountdown			= mod:NewCountdown(10, 110080)--5-10 second variation that's random according to EJ
 
 local fadingLightCount = 0
 local fadingLightTargets = {}
@@ -75,14 +77,18 @@ function mod:SPELL_AURA_APPLIED(args)
 			timerFadingLightCD:Start()
 		end
 		if args:IsPlayer() then
+			local _, _, _, _, _, duration, expires, _, _ = UnitDebuff("player", args.spellName)--Find out what our specific seed timer is
 			specWarnFadingLight:Show()
+			FadingLightCountdown:Start(expires)
 		end
 		self:Unschedule(warnFadingLightTargets)
 		self:Schedule(0.3, warnFadingLightTargets)
 	elseif args:IsSpellID(105925, 109075, 110070, 110080) then--Damage done IDs, dps/healer debuffs
 		fadingLightTargets[#fadingLightTargets + 1] = args.destName
 		if args:IsPlayer() then
+			local _, _, _, _, _, duration, expires, _, _ = UnitDebuff("player", args.spellName)--Find out what our specific seed timer is
 			specWarnFadingLight:Show()
+			FadingLightCountdown:Start(expires)
 		end
 		self:Unschedule(warnFadingLightTargets)
 		self:Schedule(0.3, warnFadingLightTargets)
