@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(194, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6490 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6670 $"):sub(12, -3))
 mod:SetCreatureID(52530)
 mod:SetModelID(38446)
 mod:SetZone()
@@ -17,10 +17,13 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_AURA_REFRESH",
 	"SPELL_AURA_REMOVED",
-	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
 	"RAID_BOSS_EMOTE",
 	"CHAT_MSG_MONSTER_YELL"
+)
+
+mod:RegisterEvents(
+	"SPELL_CAST_START"
 )
 
 local warnMolting		= mod:NewSpellAnnounce(99464, 3)
