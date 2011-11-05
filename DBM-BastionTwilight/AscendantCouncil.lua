@@ -2,7 +2,7 @@
 local mod	= DBM:NewMod("AscendantCouncil", "DBM-BastionTwilight")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6637 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6671 $"):sub(12, -3))
 mod:SetCreatureID(43686, 43687, 43688, 43689, 43735)
 mod:SetModelID(34822)
 mod:SetZone()
@@ -675,7 +675,7 @@ function mod:RAID_BOSS_EMOTE(msg)
 end
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, spellName)
-	if not (uId == "boss1" or uId == "boss2" or uId == "boss3" or uId == "boss4") then return end--Anti spam to ignore all other args
+	if uId ~= "boss1" or uId ~= "boss2" or uId ~= "boss3" or uId ~= "boss4" then return end--Anti spam to ignore all other args
 --	"<60.5> Feludius:Possible Target<nil>:boss1:Frost Xplosion (DND)::0:94739"
 	if spellName == GetSpellInfo(94739) then -- Frost Xplosion (Phase 2 starts)
 		updateBossFrame(2)
