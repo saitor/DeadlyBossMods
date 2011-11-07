@@ -3,7 +3,7 @@ if tonumber((select(2, GetBuildInfo()))) <= 14545 then return end
 local mod	= DBM:NewMod(324, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6645 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6673 $"):sub(12, -3))
 mod:SetCreatureID(55308)
 mod:SetModelID(39138)
 mod:SetZone()
@@ -27,7 +27,7 @@ local warnShadows				= mod:NewSpellAnnounce(103434, 3)
 local warnBlackBlood			= mod:NewSpellAnnounce(104378, 2)
 
 local specWarnVoidofUnmaking	= mod:NewSpecialWarningSpell(103571, nil, nil, nil, true)
-local specWarnPsychicDrain		= mod:NewSpecialWarningSpell(104322, mod:IsTank())
+local specWarnPsychicDrain		= mod:NewSpecialWarningSpell(104322, false)
 local specWarnShadows			= mod:NewSpecialWarningYou(103434)
 
 local timerVoidofUnmakingCD		= mod:NewCDTimer(90, 103571, 103527)
