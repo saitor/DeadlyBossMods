@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(198, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6682 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6683 $"):sub(12, -3))
 mod:SetCreatureID(52409)
 mod:SetModelID(37875)
 mod:SetZone()
@@ -531,14 +531,9 @@ function mod:SPELL_CAST_SUCCESS(args)
 		end
 	elseif args:IsSpellID(99268) then
 		meteorSpawned = meteorSpawned + 1
---[[		warnLivingMeteor:Cancel()--Unschedule the first warning in the 2 spawn sets before it goes off.
-		timerLivingMeteorCD:Cancel()--Cancel timer
-		MeteorCountdown:Cancel()--And countdown
-		warnLivingMeteorSoon:Cancel()--]]
 		if meteorSpawned == 1 or meteorSpawned % 2 == 0 then--Spam filter, announce at 1, 2, 4, 6, 8, 10 etc. The way that they spawn
 			scansDone = 0
 			self:TargetScanner(99268)
-			--warnLivingMeteor:Show(meteorSpawned)
 			timerLivingMeteorCD:Start(45, meteorSpawned+1)--Start new one with new count.
 			MeteorCountdown:Start(45)
 			warnLivingMeteorSoon:Schedule(35)
