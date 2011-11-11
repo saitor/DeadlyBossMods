@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(198, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6656 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6682 $"):sub(12, -3))
 mod:SetCreatureID(52409)
 mod:SetModelID(37875)
 mod:SetZone()
@@ -597,7 +597,7 @@ function mod:UNIT_DIED(args)
 			DBM.InfoFrame:Hide()
 			if magmaTrapSpawned >= 1 and self.Options.InfoHealthFrame then--If traps are still up we restore the health frame (why on earth traps would still up in phase 4 is beyond me).
 				DBM.InfoFrame:SetHeader(L.HealthInfo)
-				DBM.InfoFrame:Show(5, "health", 110000)
+				DBM.InfoFrame:Show(5, "health", 100000)
 			end
 		end	
 	elseif cid == 53189 then--Molten elemental
@@ -606,7 +606,7 @@ function mod:UNIT_DIED(args)
 			DBM.InfoFrame:Hide()
 			if magmaTrapSpawned >= 1 and self.Options.InfoHealthFrame then--If traps are still up we restore the health frame.
 				DBM.InfoFrame:SetHeader(L.HealthInfo)
-				DBM.InfoFrame:Show(5, "health", 110000)
+				DBM.InfoFrame:Show(5, "health", 100000)
 			end
 		end	
 	end
