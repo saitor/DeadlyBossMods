@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Xariona", "DBM-Party-Cataclysm", 15)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6572 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6685 $"):sub(12, -3))
 mod:SetCreatureID(50061)
 mod:SetModelID(32229)
 mod:SetZone(640)--Deepholm
@@ -12,12 +12,14 @@ mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
 	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED"
+	"SPELL_AURA_REMOVED",
+	"UNIT_POWER"
 )
 
 local warnTwilightZone			= mod:NewSpellAnnounce(93553, 2)--Used for protection against UnleashedMagic
 local warnTwilightFissure		= mod:NewTargetAnnounce(93546, 3)--Typical void zone.
 local warnTwilightBuffet		= mod:NewTargetAnnounce(93551, 3)
+local warnUnleashedMagicSoon	= mod:NewSoonAnnounce(93556, 3)--An attack that one shots anyone not in a twilight zone.
 local warnUnleashedMagic		= mod:NewCastAnnounce(93556, 4)--An attack that one shots anyone not in a twilight zone.
 
 local specWarnUnleashedMagic	= mod:NewSpecialWarningSpell(93556, nil, nil, nil, true)
@@ -74,5 +76,14 @@ end
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(93551) then
 		timerTwilightBuffet:Cancel(args.destName)
+	end
+end
+
+function mod:UNIT_POWER(uId)
+	if self:GetUnitCreatureId(uId) == 50061 and UnitPower(uId) == 80 then
+		warnUnleashedMagicSoon:Show()
+		DBM.Bars:CreateBar(10, "Big AOE Testbar")
+		--Will change to prewarn when i get right tuning and can find right energy level for 10 seconds.
+		--Also once i get that info i'll be able to auto start/correct the timer whenever, and detect whether it's bugged or not.
 	end
 end
