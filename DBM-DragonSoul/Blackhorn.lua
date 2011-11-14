@@ -3,7 +3,7 @@ if tonumber((select(2, GetBuildInfo()))) <= 14545 then return end
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6689 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6691 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -31,6 +31,7 @@ local specWarnShockwave				= mod:NewSpecialWarningMove(108046)--Standing in circ
 local yellShockwave					= mod:NewYell(108046)
 local specWarnSunder				= mod:NewSpecialWarningStack(108043, mod:IsTank(), 3)
 
+local timerCombatStart				= mod:NewTimer(20.5, "TimerCombatStart", 2457)
 local timerTwilightOnslaughtCD		= mod:NewNextTimer(35, 107588)
 local timerSapperCD					= mod:NewTimer(40, "TimerSapper", 107752)
 --local timerShockwaveCD				= mod:NewNextTimer(20, 108046)--Forgot to log the good pull where i saw this phase :(
@@ -60,6 +61,7 @@ function mod:ShockwaveTarget()
 end
 
 function mod:OnCombatStart(delay)
+	timerCombatStart:Start(-delay)
 	timerTwilightOnslaughtCD:Start(48-delay)--Need a log with actual engage time for this
 	timerSapperCD:Start(70-delay)
 end
