@@ -3,7 +3,7 @@ if tonumber((select(2, GetBuildInfo()))) <= 14545 then return end
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6669 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6688 $"):sub(12, -3))
 mod:SetCreatureID(56427)
 mod:SetModelID(39399)
 mod:SetZone()
@@ -18,7 +18,7 @@ mod:RegisterEventsInCombat(
 )
 
 local warnHarpoon					= mod:NewSpellAnnounce(108038, 2)
-local warnTwilightOnslaught			= mod:NewCastAnnounce(108862, 4)
+local warnTwilightOnslaught			= mod:NewSpellAnnounce(108862, 4)
 local warnSunder					= mod:NewStackAnnounce(108043, 3, nil, mod:IsTank() or mod:IsHealer())
 
 local specWarnHarpoon				= mod:NewSpecialWarningSpell(108038, mod:IsDps())
