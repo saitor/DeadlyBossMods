@@ -2,7 +2,7 @@
 local mod	= DBM:NewMod("ValionaTheralion", "DBM-BastionTwilight")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6672 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6696 $"):sub(12, -3))
 mod:SetCreatureID(45992, 45993)
 mod:SetModelID(34812)
 mod:SetZone()
@@ -353,7 +353,6 @@ function mod:SPELL_DAMAGE(args)
 		end
 	end
 end
-
 mod.SPELL_MISSED = mod.SPELL_DAMAGE--Absorbs still show as spell missed, such as PWS, but with this you'll still get a special warning to GTFO, instead of dbm waiting til your shield breaks and you take a second tick :)
 
 function mod:RAID_BOSS_EMOTE(msg)
