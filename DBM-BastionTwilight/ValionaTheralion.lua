@@ -2,7 +2,7 @@
 local mod	= DBM:NewMod("ValionaTheralion", "DBM-BastionTwilight")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6696 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6697 $"):sub(12, -3))
 mod:SetCreatureID(45992, 45993)
 mod:SetModelID(34812)
 mod:SetZone()
@@ -184,7 +184,7 @@ function mod:FabFlamesTarget()
 			end
 			local inRange = DBM.RangeCheck:GetDistance("player", x, y)
 			if inRange and inRange < 11 then--What's exact radius of this circle?
-				specWarnFabFlamesNear:Show(targetname)
+				specWarnFabulousFlamesNear:Show(targetname)
 			end
 		end
 	end
