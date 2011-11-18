@@ -2,7 +2,7 @@
 local mod	= DBM:NewMod("Sinestra", "DBM-BastionTwilight")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6633 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6700 $"):sub(12, -3))
 mod:SetCreatureID(45213)
 mod:SetModelID(34335)
 mod:SetZone()
@@ -48,7 +48,7 @@ local timerEggWeakening		= mod:NewTimer(4, "TimerEggWeakening", 61357)
 local timerEggWeaken		= mod:NewTimer(30, "TimerEggWeaken", 61357)
 local timerDragon			= mod:NewTimer(50, "TimerDragon", 69002)
 local timerRedEssenceCD		= mod:NewNextTimer(22, 87946)--21-23 seconds after red egg dies
-local timerRedEssence		= mod:NewBuffActiveTimer(180, 87946)
+local timerRedEssence		= mod:NewBuffFadesTimer(180, 87946)
 
 local OrbsCountdown			= mod:NewCountdown(28, 92954, nil, "OrbsCountdown")
 
