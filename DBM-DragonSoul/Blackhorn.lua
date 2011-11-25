@@ -3,7 +3,7 @@ if tonumber((select(2, GetBuildInfo()))) <= 14545 then return end
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6715 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6717 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -72,6 +72,7 @@ end
 
 function mod:OnCombatStart(delay)
 	phase2Started = false
+	lastFlames = 0
 	timerCombatStart:Start(-delay)
 	timerSapperCD:Start(69-delay)
 	if self:IsDifficulty("heroic10", "heroic25") then
