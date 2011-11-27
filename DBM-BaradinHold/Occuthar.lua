@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(140, "DBM-BaradinHold", nil, 74)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6719 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6726 $"):sub(12, -3))
 mod:SetCreatureID(52363)
 mod:SetModelID(37876)
 mod:SetZone()
@@ -64,13 +64,13 @@ function mod:SPELL_DAMAGE(args)
 	if args:IsSpellID(97212) and args:IsPlayer() and GetTime() - spamFire > 4 then--Is this even right one? 96883, 101004 are ones that do a lot of damage?
 		specWarnFocusedFire:Show()
 		spamFire = GetTime()
-	elseif args:GetDestCreatureID() == 52363 and args.overkill > 0 then--Hack cause occuthar doesn't die in combat log since 4.2. SO we look for a killing blow that has overkill.
+	elseif args:GetDestCreatureID() == 52363 and (args.overkill or 0) > 0 then--Hack cause occuthar doesn't die in combat log since 4.2. SO we look for a killing blow that has overkill.
 		DBM:EndCombat(self)
 	end
 end
 
 function mod:SWING_DAMAGE(args)
-	if args:GetDestCreatureID() == 52363 and args.overkill > 0 then--Hack cause occuthar doesn't die in combat log since 4.2. SO we look for a killing blow that has overkill.
+	if args:GetDestCreatureID() == 52363 and (args.overkill or 0) > 0 then--Hack cause occuthar doesn't die in combat log since 4.2. SO we look for a killing blow that has overkill.
 		DBM:EndCombat(self)
 	end
 end
