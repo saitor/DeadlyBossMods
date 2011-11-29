@@ -1,13 +1,13 @@
 local mod	= DBM:NewMod("Azshara", "DBM-Party-Cataclysm", 13)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6731 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6734 $"):sub(12, -3))
 mod:SetCreatureID(54853)
 mod:SetModelID(39391)
 mod:SetZone()
 
 mod:RegisterCombat("combat")
---Needs working kill detection, right now always wipes on victories, my logging failed and i didn't get what i need. maybe another time.
+mod:RegisterKill("yell", L.Kill)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",
