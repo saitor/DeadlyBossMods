@@ -1,9 +1,7 @@
-if tonumber((select(4, GetBuildInfo()))) < 40300 then return end
-
 local mod	= DBM:NewMod("EchoTyrande", "DBM-Party-Cataclysm", 12)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6658 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6731 $"):sub(12, -3))
 mod:SetCreatureID(54544)
 mod:SetModelID(39617)
 mod:SetZone()
