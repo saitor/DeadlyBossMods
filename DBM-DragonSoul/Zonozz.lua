@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(324, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6743 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6749 $"):sub(12, -3))
 mod:SetCreatureID(55308)
 mod:SetModelID(39138)
 mod:SetZone()
@@ -87,7 +87,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerVoidDiffusionCD:Start()
 	elseif args:IsSpellID(103434, 104599, 104600, 104601) then--103434 confirmed 10 man normal.
 		shadowsTargets[#shadowsTargets + 1] = args.destName
-		if args:IsPlayer() then
+		if args:IsPlayer() and self:IsDifficulty("heroic10", "heroic25") then
 			specWarnShadows:Show()
 		end
 		self:Unschedule(warnShadowsTargets)
