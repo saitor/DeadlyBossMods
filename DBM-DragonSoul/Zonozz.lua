@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(324, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6731 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6742 $"):sub(12, -3))
 mod:SetCreatureID(55308)
 mod:SetModelID(39138)
 mod:SetZone()
@@ -20,7 +20,7 @@ mod:RegisterEventsInCombat(
 local warnVoidofUnmaking		= mod:NewSpellAnnounce(103571, 4, 103527)
 local warnVoidDiffusion			= mod:NewStackAnnounce(106836, 2)
 local warnFocusedAnger			= mod:NewStackAnnounce(104543, 3, nil, mod:IsTank() or mod:IsHealer())
-local warnPsychicDrain			= mod:NewStackAnnounce(104322, 4, nil, mod:IsTank())
+local warnPsychicDrain			= mod:NewSpellAnnounce(104322, 4, nil, mod:IsTank())
 local warnShadows				= mod:NewSpellAnnounce(103434, 3)
 local warnBlackBlood			= mod:NewSpellAnnounce(104378, 2)
 

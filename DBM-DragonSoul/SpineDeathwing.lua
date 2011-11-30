@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6731 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6742 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -23,7 +23,7 @@ local warnGrip				= mod:NewTargetAnnounce(109459, 4)
 local warnNuclearBlast		= mod:NewCastAnnounce(105845, 4)
 
 local specWarnTendril		= mod:NewSpecialWarning("SpecWarnTendril")
-local specWarnGrip			= mod:NewSpecialWarningSpell(109459, mod:IsDPS())
+local specWarnGrip			= mod:NewSpecialWarningSpell(109459, mod:IsDps())
 local specWarnNuclearBlast	= mod:NewSpecialWarningRun(105845, mod:IsMelee())
 
 local soundNuclearBlast		= mod:NewSound(105845, nil, mod:IsMelee())
