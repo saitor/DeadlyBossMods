@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6755 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6757 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -110,7 +110,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		phase2Started = true
 		--timerDeckFireCD:Cancel()--This continue into phase 2 or do we cancel it?
 		warnPhase2:Show()
-		timerCombatStart:Start(10)--8-10 seconds until blackhorn gets ejected by Goriona. Not sure if he's targetable at eject passenger or yell so using 10 for now.
+		timerCombatStart:Start(5)--Shorter now on live? 5-6 seems about right now. Lets try 5.
 		timerTwilightFlamesCD:Start(22)
 		timerShockwaveCD:Start()--23-26 second variation
 	end
@@ -118,7 +118,7 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(108051) then
+	if args:IsSpellID(108051, 109216, 109217, 109218) then
 		warnTwilightFlames:Show()--Target scanning? will need to put drake on focus and see
 		timerTwilightFlamesCD:Start()
 	end
