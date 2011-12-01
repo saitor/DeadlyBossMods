@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6731 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6755 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -22,6 +22,7 @@ mod:RegisterEventsInCombat(
 
 local warnHarpoon					= mod:NewTargetAnnounce(108038, 2)
 local warnTwilightOnslaught			= mod:NewSpellAnnounce(108862, 4)
+local warnPhase2					= mod:NewPhaseAnnounce(2, 3)
 local warnTwilightFlames			= mod:NewSpellAnnounce(108051, 3)
 local warnShockwave					= mod:NewTargetAnnounce(108862, 4)
 local warnSunder					= mod:NewStackAnnounce(108043, 3, nil, mod:IsTank() or mod:IsHealer())
@@ -108,7 +109,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(108040) and not phase2Started then--Goriona is being shot by the ships Artillery Barrage (phase 2 trigger)
 		phase2Started = true
 		--timerDeckFireCD:Cancel()--This continue into phase 2 or do we cancel it?
-		Phase2:Show()
+		warnPhase2:Show()
 		timerCombatStart:Start(10)--8-10 seconds until blackhorn gets ejected by Goriona. Not sure if he's targetable at eject passenger or yell so using 10 for now.
 		timerTwilightFlamesCD:Start(22)
 		timerShockwaveCD:Start()--23-26 second variation
