@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6759 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6760 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -82,7 +82,7 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpellID(105847) then
 		warnSealArmor:Show()
 		specWarnSealArmor:Show()
-		timerSealArmor:Start()
+		timerSealArmor:Start(args.sourceGUID)--Super rare, but 2 of these might be out at same time too.
 	end
 end
 
@@ -129,5 +129,7 @@ function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
 	if cid == 53891 then
 		timerGripCD:Cancel(args.sourceGUID)
+	elseif cid == 56341 then
+		timerSealArmor:Cancel(args.sourceGUID)
 	end
 end
