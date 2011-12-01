@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(317, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6769 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6771 $"):sub(12, -3))
 mod:SetCreatureID(55689)
 mod:SetModelID(39318)
 mod:SetZone()
@@ -184,7 +184,7 @@ end
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(104448) then
 		warnFrostTombCast:Show()
-		specWarnFrostTombCast:Show()
+		specWarnFrostTombCast:Show(args.spellName)
 		timerFrostTomb:Start()
 	elseif args:IsSpellID(105256, 109552, 109553, 109554) then--109552 25man normal confirmed, rest wowhead drycodes
 		timerAssaultCD:Cancel()
