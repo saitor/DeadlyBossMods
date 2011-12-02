@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(317, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6772 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6775 $"):sub(12, -3))
 mod:SetCreatureID(55689)
 mod:SetModelID(39318)
 mod:SetZone()
@@ -32,7 +32,7 @@ local specWarnFrostTomb		= mod:NewSpecialWarningYou(104451)
 
 local timerFrostTomb		= mod:NewCastTimer(8, 104448)
 local timerFrostTombCD		= mod:NewNextTimer(20, 104451)
-local timerIceLance			= mod:NewBuffFadesTimer(18, 105269)
+local timerIceLance			= mod:NewBuffActiveTimer(18, 105269)
 local timerIceLanceCD		= mod:NewCDTimer(30, 105269)
 local timerSpecialCD		= mod:NewTimer(62, "TimerSpecial", "Interface\\Icons\\Spell_Nature_WispSplode")
 local timerTempestCD		= mod:NewCDTimer(62, 105256)
