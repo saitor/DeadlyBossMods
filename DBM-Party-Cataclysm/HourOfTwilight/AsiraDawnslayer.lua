@@ -1,12 +1,13 @@
 local mod	= DBM:NewMod("AsiraDawnslayer", "DBM-Party-Cataclysm", 14)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6777 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6780 $"):sub(12, -3))
 mod:SetCreatureID(54968)
 mod:SetModelID(38995)
 mod:SetZone()
 
-mod:RegisterCombat("combat")
+mod:RegisterCombat("yell", L.Pull)
+mod:SetMinCombatTime(15)	-- need to do another run to confirm it works
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS",

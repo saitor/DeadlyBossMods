@@ -1,12 +1,13 @@
 local mod	= DBM:NewMod("Arcurion", "DBM-Party-Cataclysm", 14)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6731 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6780 $"):sub(12, -3))
 mod:SetCreatureID(54590)
 mod:SetModelID(35978)
 mod:SetZone()
 
-mod:RegisterCombat("combat")
+mod:RegisterCombat("yell", L.Pull)
+mod:SetMinCombatTime(30)	-- guessed, need to do another run to confirm if it works
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS",
