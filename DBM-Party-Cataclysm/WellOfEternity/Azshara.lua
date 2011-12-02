@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Azshara", "DBM-Party-Cataclysm", 13)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6734 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6782 $"):sub(12, -3))
 mod:SetCreatureID(54853)
 mod:SetModelID(39391)
 mod:SetZone()
@@ -16,16 +16,27 @@ mod:RegisterEventsInCombat(
 
 local warnServant		= mod:NewSpellAnnounce(102334, 4)
 local warnObedience		= mod:NewSpellAnnounce(103241, 4)
+local warnAdds			= mod:NewAnnounce("WarnAdds", 3)
 
 local specWarnServant	= mod:NewSpecialWarningSpell(102334, nil, nil, nil, true)
 local specWarnObedience	= mod:NewSpecialWarningInterrupt(103241)
 
 local timerServantCD	= mod:NewCDTimer(26, 102334)--Still don't have good logs, and encounter bugs a lot so i can't get any reliable timers except for first casts on engage.
 local timerObedienceCD	= mod:NewCDTimer(37, 103241)
+local timerAdds		= mod:NewTimer(42, "TimerAdds")
+
+function mod:Adds()
+	timerAdds:Start()
+	warnAdds:Schedule(37)
+	self:ScheduleMethod(42, "Adds")
+end
 
 function mod:OnCombatStart(delay)
 	timerServantCD:Start(24-delay)
 	timerObedienceCD:Start(36-delay)
+	timerAdds:Start(18-delay)
+	warnAdds:Schedule(14-delay)
+	self:ScheduleMethod(18, "Adds")
 end
 
 function mod:SPELL_CAST_START(args)
