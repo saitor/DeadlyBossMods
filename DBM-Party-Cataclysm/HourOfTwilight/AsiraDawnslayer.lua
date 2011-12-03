@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("AsiraDawnslayer", "DBM-Party-Cataclysm", 14)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6790 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6794 $"):sub(12, -3))
 mod:SetCreatureID(54968)
 mod:SetModelID(38995)
 mod:SetMinSyncRevision(6780)
@@ -25,9 +25,9 @@ local timerFireTotem	= mod:NewNextTimer(23, 108374)
 local timerMarkofSilence= mod:NewNextTimer(8, 102726)	
 
 function mod:OnCombatStart(delay)
---	timerMarkofSilence:Start(5-delay)	-- inaccurate ? 
---	timerSmokeBomb:Start(16-delay)		-- inaccurate ? 
---	timerFireTotem:Start(22-delay)		-- inaccurate ?
+	timerMarkofSilence:Start(8-delay)
+	timerSmokeBomb:Start(10-delay)
+	timerFireTotem:Start(19-delay)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
