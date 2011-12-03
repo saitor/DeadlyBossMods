@@ -1,9 +1,10 @@
 local mod	= DBM:NewMod("Arcurion", "DBM-Party-Cataclysm", 14)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6780 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6790 $"):sub(12, -3))
 mod:SetCreatureID(54590)
 mod:SetModelID(35978)
+mod:SetMinSyncRevision(6780)
 mod:SetZone()
 
 mod:RegisterCombat("yell", L.Pull)

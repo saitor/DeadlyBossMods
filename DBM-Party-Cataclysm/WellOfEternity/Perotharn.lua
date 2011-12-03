@@ -1,9 +1,10 @@
 local mod	= DBM:NewMod("Perotharn", "DBM-Party-Cataclysm", 13)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6787 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6790 $"):sub(12, -3))
 mod:SetCreatureID(55085)
 mod:SetModelID(39182)
+mod:SetMinSyncRevision(6780)
 mod:SetZone()
 
 mod:RegisterCombat("say", L.Pull)
