@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = ("$Revision: 6790 $"):sub(12, -3),
+	Revision = ("$Revision: 6791 $"):sub(12, -3),
 	DisplayVersion = "4.10.2", -- the string that is shown as version
 	ReleaseRevision = 6763 -- the revision of the latest stable version that is available
 }
@@ -2641,7 +2641,8 @@ local soundFiles = {
 	"Sound\\Creature\\PrinceMalchezzar\\PrinceAxeToss01.wav",
 	"Sound\\Creature\\PrinceMalchezzar\\PrinceSpecial01.wav",
 	"Sound\\Creature\\MedivhsEcho\\ChessKnightTaken01.wav",
-	"Sound\\Creature\\MedivhsEcho\\ChessBegin01.wav"
+	"Sound\\Creature\\MedivhsEcho\\ChessBegin01.wav",
+	"sound\\CREATURE\\ALIZABAL\\VO_BH_ALIZABAL_RESET_01.OGG"
 }
 
 function DBM:AprilFools()
