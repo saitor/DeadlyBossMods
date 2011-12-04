@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(333, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6807 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6808 $"):sub(12, -3))
 mod:SetCreatureID(56173)--Will this work? does he die?
 mod:SetModelID(40087)
 mod:SetZone()
@@ -18,8 +18,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_AURA_REMOVED",
 	"UNIT_DIED",
-	"UNIT_SPELLCAST_SUCCEEDED",
-	"CHAT_MSG_MONSTER_YELL"
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 local warnImpale				= mod:NewStackAnnounce(106400, 3, nil, mod:IsTank() or mod:IsHealer())
