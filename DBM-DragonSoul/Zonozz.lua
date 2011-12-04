@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(324, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6805 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6806 $"):sub(12, -3))
 mod:SetCreatureID(55308)
 mod:SetModelID(39138)
 mod:SetZone()
@@ -106,7 +106,7 @@ function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(104378, 110322) then
 		--Everything but void will be cast 6 seconds after blood phase.
 		timerFocusedAngerCD:Start(6)
-		timerPsychicDrainCD:Start(6)
+--		timerPsychicDrainCD:Start(6)--This has changed, disable for now and use my 10 and 25 man logs to fix it later.
 		timerShadowsCD:Start(6)
 	end
 end	
