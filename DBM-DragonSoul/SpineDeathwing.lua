@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6831 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6832 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -139,9 +139,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 			self:SetIcon(args.destName, gripIcon)
 			gripIcon = gripIcon - 1
-		end
-		if self.Options.ShowShieldInfo then
-			setPlasmaTarget(args.destGUID, args.destName)
 		end
 		self:Unschedule(showGripWarning)
 		self:Schedule(0.3, showGripWarning)
