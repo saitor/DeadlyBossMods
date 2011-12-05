@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(331, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6798 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6816 $"):sub(12, -3))
 mod:SetCreatureID(55294)
 mod:SetModelID(39099)
 mod:SetZone()
@@ -109,5 +109,13 @@ end
 function mod:CHAT_MSG_MONSTER_SAY(msg)
 	if msg == L.Pull or msg:find(L.Pull) then
 		timerCombatStart:Start()
+	end
+end
+
+--			"<18.7> CHAT_MSG_MONSTER_YELL#It is good to see you again, Alexstrasza. I have been busy in my absence.#Deathwing###Notarget##0#0##0#3731##0#false", -- [1]
+--			"<271.9> [UNIT_SPELLCAST_SUCCEEDED] Twilight Assaulter:Possible Target<nil>:target:Twilight Escape::0:109904", -- [11926]
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.Trash or msg:find(L.Trash) then
+		DBM.Bars:CreateBar(253, "Skyrim")
 	end
 end
