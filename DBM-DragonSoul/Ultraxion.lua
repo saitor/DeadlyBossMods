@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(331, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6816 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6817 $"):sub(12, -3))
 mod:SetCreatureID(55294)
 mod:SetModelID(39099)
 mod:SetZone()
@@ -16,7 +16,8 @@ mod:RegisterEventsInCombat(
 )
 
 mod:RegisterEvents(
-	"CHAT_MSG_MONSTER_SAY"
+	"CHAT_MSG_MONSTER_SAY",
+	"CHAT_MSG_MONSTER_YELL"
 )
 
 local warnHourofTwilight			= mod:NewCountAnnounce(109416, 4)
