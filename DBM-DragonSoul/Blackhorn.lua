@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6786 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6828 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -43,6 +43,8 @@ local timerDeckFireCD				= mod:NewCDTimer(20, 110095)--Not the best log, so not 
 local timerTwilightFlamesCD			= mod:NewNextTimer(8, 108051)
 local timerShockwaveCD				= mod:NewCDTimer(23, 108046)
 local timerSunder					= mod:NewTargetTimer(30, 108043, nil, mod:IsTank() or mod:IsHealer())
+
+local berserkTimer					= mod:NewBerserkTimer(250)
 
 local phase2Started = false
 local lastFlames = 0
@@ -114,6 +116,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerCombatStart:Start(5)--Shorter now on live? 5-6 seems about right now. Lets try 5.
 		timerTwilightFlamesCD:Start(22)
 		timerShockwaveCD:Start()--23-26 second variation
+		if not self:IsDifficulty("lfr25") then--Assumed, but i find it unlikely a 4 min berserk timer will be active on LFR
+			berserkTimer:Start()
+		end
 	end
 end		
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
