@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(333, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6833 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6834 $"):sub(12, -3))
 mod:SetCreatureID(56173)--Will this work? does he die?
 mod:SetModelID(40087)
 mod:SetZone()
@@ -69,6 +69,7 @@ function mod:OnCombatStart(delay)
 	engageCount = 0
 	phase2 = false
 	table.wipe(shrapnelTargets)
+	berserkTimer:Start(-delay)
 end
 
 function mod:OnCombatEnd()
