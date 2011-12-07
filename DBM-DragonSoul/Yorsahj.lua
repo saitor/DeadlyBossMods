@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(325, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6814 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6852 $"):sub(12, -3))
 mod:SetCreatureID(55312)
 mod:SetModelID(39101)
 mod:SetZone()
@@ -47,6 +47,15 @@ Seem to be alternate versions of Yellow and Blue on ptr.wowhead.com. heroic stro
 --105027,"Blue Blood of Shu'ma"
 --108221,"Yellow Blood of Shu'ma"
 --]]
+
+local oozeColorsHeroic = {
+	[105420] = { L.Purple, L.Green, L.Blue, L.Black },
+	[105435] = { L.Green, L.Red, L.Black, L.Blue },
+	[105436] = { L.Green, L.Yellow, L.Red, L.Black },
+	[105437] = { L.Blue, L.Purple, L.Yellow, L.Green },
+	[105439] = { L.Blue, L.Black, L.Yellow, L.Purple },
+	[105440] = { L.Purple, L.Red, L.Black, L.Yellow },
+}
 
 local oozeColors = {
 	[105420] = { L.Purple, L.Green, L.Blue },
@@ -101,11 +110,21 @@ end
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, spellName, _, _, spellID)
 	if uId ~= "boss1" then return end
-	if oozeColors[spellID] then
-		warnOozes:Show(table.concat(oozeColors[spellID], ", "))
-		specWarnOozes:Show()
-		timerOozesActive:Start()
---		timerVoidBoltCD:Start(40)
-		timerOozesCD:Start()
+	if self:IsDifficulty("heroic10", "heroic25") then
+		if oozeColorsHeroic[spellID] then
+			warnOozes:Show(table.concat(oozeColorsHeroic[spellID], ", "))
+			specWarnOozes:Show()
+			timerOozesActive:Start()
+--			timerVoidBoltCD:Start(40)
+			timerOozesCD:Start()
+		end
+	else
+		if oozeColors[spellID] then
+			warnOozes:Show(table.concat(oozeColors[spellID], ", "))
+			specWarnOozes:Show()
+			timerOozesActive:Start()
+--			timerVoidBoltCD:Start(40)
+			timerOozesCD:Start()
+		end
 	end
 end
