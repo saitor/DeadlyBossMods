@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(311, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6849 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6850 $"):sub(12, -3))
 mod:SetCreatureID(55265)
 mod:SetModelID(39094)
 mod:SetZone()
@@ -121,9 +121,9 @@ function mod:SPELL_SUMMON(args)
 		if args:GetSrcCreatureID() == 55265 then
 			crystalCount = crystalCount + 1
 			warnCrystal:Show()
-			if crystalCount > 1 and crystalCount < 3 then	-- only mimics 2nd+3rd Crystals?
+			if crystalCount < 3 then	
 				timerCrystal:Start()
-				if UnitExists("boss2") then
+				if UnitExists("boss2") and crystalCount > 1 then	-- only mimics 2nd+3rd Crystals?
 					timerKohcromCD:Start(6, args.spellname)
 				end
 			end
