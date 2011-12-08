@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(311, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6858 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6860 $"):sub(12, -3))
 mod:SetCreatureID(55265)
 mod:SetModelID(39094)
 mod:SetZone()
@@ -42,7 +42,7 @@ local timerKohcromCD	= mod:NewTimer(5, "KohcromCD", 55342)--Enable when we have 
 --We will not start timers using Kohcrom's casts, it'll waste WAY too much space.
 --EJ is pretty clear, they are cast shortly after morchok, always. So echo timer is perfect and clean solution.
 
-local berserkTimer		= mod:NewBerserkTimer(360)
+local berserkTimer		= mod:NewBerserkTimer(420)
 
 mod:AddBoolOption("RangeFrame", false)--For achievement
 
