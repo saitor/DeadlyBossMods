@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(325, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6852 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6856 $"):sub(12, -3))
 mod:SetCreatureID(55312)
 mod:SetModelID(39101)
 mod:SetZone()
@@ -49,19 +49,19 @@ Seem to be alternate versions of Yellow and Blue on ptr.wowhead.com. heroic stro
 --]]
 
 local oozeColorsHeroic = {
-	[105420] = { L.Purple, L.Green, L.Blue, L.Black },
-	[105435] = { L.Green, L.Red, L.Black, L.Blue },
-	[105436] = { L.Green, L.Yellow, L.Red, L.Black },
-	[105437] = { L.Blue, L.Purple, L.Yellow, L.Green },
-	[105439] = { L.Blue, L.Black, L.Yellow, L.Purple },
-	[105440] = { L.Purple, L.Red, L.Black, L.Yellow },
+	[105420] = { L.Purple, L.Green, L.Black, L.Blue },
+	[105435] = { L.Green, L.Red, L.Blue, L.Black },
+	[105436] = { L.Green, L.Yellow, L.Black, L.Red },
+	[105437] = { L.Blue, L.Purple, L.Green, L.Yellow },
+	[105439] = { L.Blue, L.Black, L.Purple, L.Yellow },
+	[105440] = { L.Purple, L.Red, L.Yellow, L.Black },
 }
 
 local oozeColors = {
 	[105420] = { L.Purple, L.Green, L.Blue },
 	[105435] = { L.Green, L.Red, L.Black },
 	[105436] = { L.Green, L.Yellow, L.Red },
-	[105437] = { L.Blue, L.Purple, L.Yellow },
+	[105437] = { L.Purple, L.Blue, L.Yellow },
 	[105439] = { L.Blue, L.Black, L.Yellow },
 	[105440] = { L.Purple, L.Red, L.Black },
 }
