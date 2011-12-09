@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(324, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6866 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6869 $"):sub(12, -3))
 mod:SetCreatureID(55308)
 mod:SetModelID(39138)
 mod:SetZone()
@@ -53,7 +53,7 @@ end
 local shadowsDebuffFilter
 do
 	shadowsDebuffFilter = function(uId)
-		return UnitDebuff(uId, (GetSpellInfo(103434)))	-- if it works wrong way around:  return not UnitDebuff(..)
+		return UnitDebuff(uId, (GetSpellInfo(103434)))
 	end
 end
 
