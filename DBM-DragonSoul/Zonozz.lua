@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(324, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6859 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6861 $"):sub(12, -3))
 mod:SetCreatureID(55308)
 mod:SetModelID(39138)
 mod:SetZone()
@@ -64,7 +64,7 @@ function mod:OnCombatStart(delay)
 	table.wipe(shadowsTargets)
 	timerVoidofUnmakingCD:Start(6-delay)
 	timerFocusedAngerCD:Start(10.5-delay)
-	timerPsychicDrainCD:Start(-delay)
+	timerPsychicDrainCD:Start(16-delay)
 	timerShadowsCD:Start(-delay)
 	if not self:IsDifficulty("lfr25") then--Can confirm what others saw, LFR definitely doesn't have a 6 min berserk. It's either much longer or not there.
 		berserkTimer:Start(-delay)
