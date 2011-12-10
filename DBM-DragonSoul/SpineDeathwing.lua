@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6832 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6875 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -98,6 +98,11 @@ end
 
 
 function mod:OnCombatStart(delay)
+	if self:IsDifficulty("lfr25") then
+		warnSealArmor = mod:NewCastAnnounce(105847, 4, 34.5)
+	else
+		warnSealArmor = mod:NewCastAnnounce(105847, 4)
+	end
 	table.wipe(gripTargets)
 	gripIcon = 6
 end
@@ -116,7 +121,11 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpellID(105847) then
 		warnSealArmor:Show()
 		specWarnSealArmor:Show()
-		timerSealArmor:Start(args.sourceGUID)--Super rare, but 2 of these might be out at same time too.
+		if self:IsDifficulty("lfr25") then
+			timerSealArmor:Start(34.5, args.sourceGUID)--Super rare, but 2 of these might be out at same time too.
+		else
+			timerSealArmor:Start(nil, args.sourceGUID)--Super rare, but 2 of these might be out at same time too.
+		end
 	end
 end
 
