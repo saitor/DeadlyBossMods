@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(324, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6869 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6872 $"):sub(12, -3))
 mod:SetCreatureID(55308)
 mod:SetModelID(39138)
 mod:SetZone()
@@ -70,7 +70,11 @@ local function blackBloodEnds()
 	voidWarned = false
 	timerFocusedAngerCD:Start(6)
 	timerShadowsCD:Start(6)
-	timerVoidofUnmakingCD:Start()--Always before drain, but timing variates slightly too. But this should be more accurate then it was before
+	if self:IsDifficulty("lfr25") then
+		timerVoidofUnmakingCD:Start(6)--Always sooner in LFR?
+	else
+		timerVoidofUnmakingCD:Start()--Always before drain, but timing variates slightly too. But this should be more accurate then it was before
+	end
 	timerPsychicDrainCD:Start()--Does this start here? seeing too many variations on this.
 end
 
