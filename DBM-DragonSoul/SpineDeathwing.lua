@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6875 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6894 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -122,9 +122,9 @@ function mod:SPELL_CAST_START(args)
 		warnSealArmor:Show()
 		specWarnSealArmor:Show()
 		if self:IsDifficulty("lfr25") then
-			timerSealArmor:Start(34.5, args.sourceGUID)--Super rare, but 2 of these might be out at same time too.
+			timerSealArmor:Start(34.5)
 		else
-			timerSealArmor:Start(nil, args.sourceGUID)--Super rare, but 2 of these might be out at same time too.
+			timerSealArmor:Start()
 		end
 	end
 end

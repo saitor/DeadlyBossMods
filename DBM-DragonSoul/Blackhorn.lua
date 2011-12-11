@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6873 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6894 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -96,11 +96,11 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(107588) then--Assumed since it's only cast ID spellid in ptr.wowhead
+	if args:IsSpellID(107588) then
 		warnTwilightOnslaught:Show()
 		specWarnTwilightOnslaught:Show()
 		timerTwilightOnslaughtCD:Start()
-	elseif args:IsSpellID(108046) then--Assumed since it's only cast ID spellid in ptr.wowhead
+	elseif args:IsSpellID(108046) then
 		self:ScheduleMethod(0.2, "ShockwaveTarget")
 		timerShockwaveCD:Start()
 	end
@@ -123,6 +123,8 @@ function mod:SPELL_AURA_APPLIED(args)
 		phase2Started = true
 		self:UnscheduleMethod("AddsRepeat")
 		timerAdd:Cancel()
+		timerTwilightOnslaughtCD:Cancel()
+		timerSapperCD:Cancel()
 		--timerDeckFireCD:Cancel()--This continue into phase 2 or do we cancel it?
 		warnPhase2:Show()
 		timerCombatStart:Start(5)--Shorter now on live? 5-6 seems about right now. Lets try 5.
