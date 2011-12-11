@@ -38,7 +38,7 @@
 --
 --
 
-local revision =("$Revision: 6874 $"):sub(12, -3) 
+local revision =("$Revision: 6883 $"):sub(12, -3) 
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -283,7 +283,7 @@ do
 	end
 
 	local function replaceJournalLinks(id)
-		local title = EJ_GetSectionInfo(id)
+		local title = EJ_GetSectionInfo(id) or DBM_CORE_UNKNOWN
 		return ("|cff71d5ff%s|r"):format(title)
 	end
 	
