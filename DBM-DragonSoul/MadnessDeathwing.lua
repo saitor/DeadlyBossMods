@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(333, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6877 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6882 $"):sub(12, -3))
 mod:SetCreatureID(56173)--Will this work? does he die?
 mod:SetModelID(40087)
 mod:SetZone()
@@ -35,7 +35,7 @@ local specWarnImpaleOther		= mod:NewSpecialWarningTarget(106400, mod:IsTank())
 local specWarnElementiumBolt	= mod:NewSpecialWarningSpell(105651, nil, nil, nil, true)
 local specWarnTentacle			= mod:NewSpecialWarning("SpecWarnTentacle", mod:IsDps())--Maybe add healer to defaults too?
 local specWarnHemorrhage		= mod:NewSpecialWarningSpell(105863, mod:IsDps())
-local specWarnFragments			= mod:NewSpecialWarningSpell(109568, nil, nil, nil, true)
+local specWarnFragments			= mod:NewSpecialWarningSpell("ej4115", nil, nil, nil, true)
 local specWarnTerror			= mod:NewSpecialWarningSpell(106765, mod:IsTank())--Not need to warn everyone, tanks for sure, everyone else depends on strat and set. Normally kill first set ignore second on normal.
 local specWarnShrapnel			= mod:NewSpecialWarningYou(106789)
 
