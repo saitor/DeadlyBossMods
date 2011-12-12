@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6895 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6897 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -91,7 +91,7 @@ do
 
 	function clearPlasmaTarget(guid, name)
 		DBM.BossHealth:RemoveBoss(L.PlasmaTarget:format(name))
-		plasmarTargets[guid] = nil
+		plasmaTargets[guid] = nil
 		healed[guid] = nil
 	end
 end
