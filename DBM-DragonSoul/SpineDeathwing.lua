@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6897 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6900 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -66,6 +66,7 @@ local function showGripWarning()
 	table.wipe(gripTargets)
 end
 
+--This wasn't working right on 25 man at all, i think more then one went out at a time, and it spam changed name, it didn't want to add more then 1 name to frame at a time so instead it kept replacing the frame, alli saw was about 6 names flash by within 1 second.
 local clearPlasmaTarget, setPlasmaTarget
 do
 	local plasmaTargets = {}
