@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6910 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6912 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -80,7 +80,6 @@ do
 	mod.SPELL_PERIODIC_HEAL = mod.SPELL_HEAL
 
 	function setPlasmaTarget(guid, name)
-		DBM.BossHealth:Show(L.name)
 		plasmaTargets[guid] = name
 		healed[guid] = 0
 		local maxAbsorb =	mod:IsDifficulty("heroic25") and 420000 or
