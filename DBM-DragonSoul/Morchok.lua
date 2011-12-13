@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(311, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6915 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6916 $"):sub(12, -3))
 mod:SetCreatureID(55265)
 mod:SetModelID(39094)
 mod:SetZone()
@@ -142,7 +142,7 @@ function mod:SPELL_SUMMON(args)
 		else
 			KohcromWarning:Show(args.sourceName, args.spellName)
 		end
-	elseif args:IsSpeellID(109017) then
+	elseif args:IsSpellID(109017) then
 		warnKohcrom:Show()
 		-- once Kohcrom summoned, stomp and Crystal timer restarts. For my encounter, always show Kohcrom before first crystal summons. so confirmed only one way.
 		if not firstCrystalSummoned then
