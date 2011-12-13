@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6907 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6914 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -77,8 +77,8 @@ function mod:ShockwaveTarget()
 	end
 end
 
-function mod:AddsRepeat() -- it seems to be adds summon only 4 times. and timer needs more tweak..
-	if addsCount < 4 then
+function mod:AddsRepeat() -- it seems to be adds summon only 3 times. needs more review
+	if addsCount < 2 then -- fix logical error
 		addsCount = addsCount + 1
 		timerAdd:Start()
 		self:ScheduleMethod(61, "AddsRepeat")
