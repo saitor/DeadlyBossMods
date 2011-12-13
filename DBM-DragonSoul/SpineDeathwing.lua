@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6900 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6907 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -120,7 +120,7 @@ function mod:SPELL_CAST_START(args)
 		warnNuclearBlast:Show()
 		specWarnNuclearBlast:Show()
 		soundNuclearBlast:Play()
-	elseif args:IsSpellID(105847) then
+	elseif args:IsSpellID(105847, 105848) then -- sometimes spellid 105848, maybe related to positions?
 		warnSealArmor:Show()
 		specWarnSealArmor:Show()
 		if self:IsDifficulty("lfr25") then
