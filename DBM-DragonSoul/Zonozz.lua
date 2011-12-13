@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(324, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6906 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6913 $"):sub(12, -3))
 mod:SetCreatureID(55308)
 mod:SetModelID(39138)
 mod:SetZone()
@@ -10,7 +10,7 @@ mod:SetUsedIcons()
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
---	"UNIT_SPELLCAST_START"--Register out of combat to test it on trash too.
+	"UNIT_SPELLCAST_START"--Register out of combat to test it on trash too.
 )
 
 mod:RegisterEventsInCombat(
