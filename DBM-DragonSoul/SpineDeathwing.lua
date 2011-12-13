@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6907 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6910 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -153,7 +153,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 		self:Unschedule(showGripWarning)
 		self:Schedule(0.3, showGripWarning)
-	elseif args:IsSpellID(109379, 109362, 109363, 109364) then -- confirmed 109379 in 10 man. otherid is drycoded.
+	elseif args:IsSpellID(105479, 109362, 109363, 109364) then -- 105479 in 10 man. otherid is drycoded.
 		if self.Options.ShowShieldInfo then
 			setPlasmaTarget(args.destGUID, args.destName)
 		end
@@ -166,7 +166,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		if self.Options.SetIconOnGrip then
 			self:SetIcon(args.destName, 0)
 		end
-	elseif args:IsSpellID(109379, 109362, 109363, 109364) then -- confirmed 109379 in 10 man. otherid is drycoded.
+	elseif args:IsSpellID(105479, 109362, 109363, 109364) then -- 105479 in 10 man. otherid is drycoded.
 		if self.Options.ShowShieldInfo then
 			clearPlasmaTarget(args.destGUID, args.destName)
 		end
