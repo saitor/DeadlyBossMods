@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(317, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6926 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6932 $"):sub(12, -3))
 mod:SetCreatureID(55689)
 mod:SetModelID(39318)
 mod:SetZone()
@@ -94,7 +94,7 @@ function mod:OnCombatStart(delay)
 	timerIceLanceCD:Start(12-delay)
 --	timerFrostTombCD:Start(16-delay)--No longer cast on engage? most recent log she only casts it after specials now and not after pull
 	timerSpecialCD:Start(30-delay)
-	SpecialCountdown(30-delay)
+	SpecialCountdown:Start(30-delay)
 	berserkTimer:Start(-delay)
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(3)
