@@ -1,17 +1,13 @@
 local mod	= DBM:NewMod(324, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6913 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6924 $"):sub(12, -3))
 mod:SetCreatureID(55308)
 mod:SetModelID(39138)
 mod:SetZone()
 mod:SetUsedIcons()
 
 mod:RegisterCombat("combat")
-
-mod:RegisterEvents(
-	"UNIT_SPELLCAST_START"--Register out of combat to test it on trash too.
-)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS",
@@ -150,21 +146,6 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(104600, 104601) and args:IsPlayer() then--Only heroic spellids here, no reason to call functions that aren't needed on normal or LFR
 		self:updateRangeFrame()
-	end
-end		
-
---Eye stalk debug code, they are interruptable but their casts are hidden. I know for a fact they fire a succeeded event when it ends, but i wasn't targeting one (as a tank) long enough to catch any cast starts.
---"<2.0> Eye of Go'rath:Possible Target<Zaey>:target:Shadow Gaze::0:104604", -- [1]
---Uncomment in event handler to test, i don't want to cause lua errors with this experiment for end users. Advanced users can enable it by registering UNIT_SPELLCAST_START
-function mod:UNIT_SPELLCAST_START(uId, spellName)
-	if uId == "target" then
-		if spellName == GetSpellInfo(104604) then--This spellid is same in 10/25 and raid finder, and assuming also same in heroic. No reason to use spellname, or other IDs.
-			warnShadowGaze:Show(spellName, UnitName("targettarget"), "target")
-		end
-	elseif uId == "focus" then
-		if spellName == GetSpellInfo(104604) then--This spellid is same in 10/25 and raid finder, and assuming also same in heroic. No reason to use spellname, or other IDs.
-			warnShadowGaze:Show(spellName, UnitName("focustarget"), "focus")
-		end
 	end
 end
 
