@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6914 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6936 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -70,7 +70,7 @@ function mod:ShockwaveTarget()
 				x, y = GetPlayerMapPosition(uId)
 			end
 			local inRange = DBM.RangeCheck:GetDistance("player", x, y)
-			if inRange and inRange < 6 then--Might be able to tune range?
+			if inRange and inRange < 5 then--Might be able to tune range?
 				specWarnShockwaveNear:Show(targetname)
 			end
 		end
