@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(317, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6936 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6941 $"):sub(12, -3))
 mod:SetCreatureID(55689)
 mod:SetModelID(39318)
 mod:SetZone()
@@ -34,7 +34,6 @@ local specWarnAssault		= mod:NewSpecialWarningSpell(107851, mod:IsTank())
 --local specWarnFrostTomb		= mod:NewSpecialWarningYou(104451)
 local specWarnWatery		= mod:NewSpecialWarningMove(110317)
 local specWarnStormPillars	= mod:NewSpecialWarningClose(109557)	-- if target != nil
-local specWarnWatery		= mod:NewSpecialWarningMove(110317)
 local specWarnFrostflake	= mod:NewSpecialWarningYou(109325)
 local yellFrostflake		= mod:NewYell(109325)
 
