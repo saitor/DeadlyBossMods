@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = ("$Revision: 6936 $"):sub(12, -3),
+	Revision = ("$Revision: 6937 $"):sub(12, -3),
 	DisplayVersion = "4.10.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 6839 -- the revision of the latest stable version that is available
 }
@@ -1428,6 +1428,7 @@ do
 				"LFG_PROPOSAL_SHOW",
 				"LFG_PROPOSAL_FAILED",
 				"LFG_UPDATE",
+				"UPDATE_BATTLEFIELD_STATUS",
 				"UPDATE_MOUSEOVER_UNIT",
 				"PLAYER_TARGET_CHANGED"			
 			)
@@ -1467,6 +1468,12 @@ function DBM:LFG_UPDATE()
             DBM.Bars:CancelBar(DBM_LFG_INVITE)
         end
     end
+end
+
+function DBM:UPDATE_BATTLEFIELD_STATUS()
+	if GetBattlefieldStatus(1) == "confirm" or GetBattlefieldStatus(2) == "confirm" then
+		DBM.Bars:CreateBar(85, DBM_LFG_INVITE, "Interface\\Icons\\Spell_Holy_BorrowedTime")	-- need to confirm the timer
+	end
 end
 
 --Loading routeens hacks for world bosses based on target or mouseover.
