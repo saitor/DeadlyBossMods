@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(331, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6945 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6947 $"):sub(12, -3))
 mod:SetCreatureID(55294)
 mod:SetModelID(39099)
 mod:SetZone()
@@ -71,12 +71,13 @@ function mod:SPELL_CAST_START(args)
 		hourOfTwilightCount = hourOfTwilightCount + 1
 		warnHourofTwilight:Show(hourOfTwilightCount)
 		specWarnHourofTwilight:Show()
-		timerHourofTwilight:Start()
 		timerHourofTwilightCD:Start(45, hourOfTwilightCount+1)
 		if self:IsDifficulty("heroic10", "heroic25") then
 			timerFadingLightCD:Start(13)
+			timerHourofTwilight:Start(3)
 		else
 			timerFadingLightCD:Start(20)--Same in raid finder too? too many difficulties now
+			timerHourofTwilight:Start()
 		end
 	elseif args:IsSpellID(106388) then
 		specWarnTwilightEruption:Show()
