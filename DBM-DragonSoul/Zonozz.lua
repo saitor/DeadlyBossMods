@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(324, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6946 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6948 $"):sub(12, -3))
 mod:SetCreatureID(55308)
 mod:SetModelID(39138)
 mod:SetZone()
@@ -122,6 +122,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		phase2Started = true
 		timerFocusedAngerCD:Cancel()
 		timerPsychicDrainCD:Cancel()
+		timerShadowsCD:Cancel()
 		specWarnBlackBlood:Show()
 		timerBlackBlood:Start()
 		self:Schedule(30, blackBloodEnds)--More accurate way then tracking spell aura removed of black blood. Players dying in the phase were falsely triggering the phase ending early.
