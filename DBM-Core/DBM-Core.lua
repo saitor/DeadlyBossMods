@@ -15,7 +15,7 @@
 --    * ruRU: Vampik					admin@vampik.ru
 --    * zhTW: Hman						herman_c1@hotmail.com
 --    * zhTW: Azael/kc10577				paul.poon.kw@gmail.com
---    * koKR: BlueNyx/nBlueWiz			bluenyx@gmail.com(Twitter: @Nyx_Khang, http://wow.somegate.com) / everfinale@gmail.com
+--    * koKR: BlueNyx/nBlueWiz			bluenyx@gmail.com(Twitter: @Nyx_Khang) / everfinale@gmail.com
 --    * esES: Snamor/1nn7erpLaY      	romanscat@hotmail.com
 --
 -- Special thanks to:
@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = ("$Revision: 6955 $"):sub(12, -3),
+	Revision = ("$Revision: 6956 $"):sub(12, -3),
 	DisplayVersion = "4.10.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 6839 -- the revision of the latest stable version that is available
 }
