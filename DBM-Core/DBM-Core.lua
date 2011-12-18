@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = ("$Revision: 6961 $"):sub(12, -3),
+	Revision = ("$Revision: 6962 $"):sub(12, -3),
 	DisplayVersion = "4.10.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 6839 -- the revision of the latest stable version that is available
 }
@@ -3281,14 +3281,6 @@ function bossModPrototype:IsManaUser()--Similar to ranged, but includes all pala
 	or (class == "DRUID" and not IsSpellKnown(84840))--Vengeance Check (False)
 end
 
---Unfortunately since feral dps also have vengeance we still have to go more in dept for them.
-local function IsDruidTank()
-	local tankTalents = (getTalentpointsSpent(57880) >= 2 and 1 or 0) +		-- Natural Reaction
-						(getTalentpointsSpent(16931) >= 3 and 1 or 0) +		-- Thick Hide
-						(getTalentpointsSpent(61336) >= 1 and 1 or 0)		-- Survival Instincts
-	return tankTalents >= 3
-end
-
 function bossModPrototype:IsDps()--For features that simply should only be on for dps and not healers or tanks and without me having to use "not is heal or not is tank" rules :)
 	return (class == "WARRIOR" and not IsSpellKnown(93098))--Veangeance Check (false)
 	or (class == "DEATHKNIGHT" and not IsSpellKnown(93099))--Veangeance Check (false)
@@ -3300,6 +3292,14 @@ function bossModPrototype:IsDps()--For features that simply should only be on fo
 	or class == "MAGE"
 	or class == "HUNTER"
 	or class == "ROGUE"
+end
+
+--Unfortunately since feral dps also have vengeance we still have to go more in dept for them.
+local function IsDruidTank()
+	local tankTalents = (getTalentpointsSpent(57880) >= 2 and 1 or 0) +		-- Natural Reaction
+						(getTalentpointsSpent(16931) >= 3 and 1 or 0) +		-- Thick Hide
+						(getTalentpointsSpent(61336) >= 1 and 1 or 0)		-- Survival Instincts
+	return tankTalents >= 3
 end
 
 --A simple check to see if these classes know "Vengeance".
