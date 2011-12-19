@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6939 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 6976 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -195,7 +195,7 @@ function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
 	if cid == 53891 then
 --		timerGripCD:Cancel(args.sourceGUID)
-	elseif cid == 56341 then
+	elseif cid == 56341 or cid == 56575 then
 		timerSealArmor:Cancel(args.sourceGUID)
 	end
 end
