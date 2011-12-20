@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 6993 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 6994 $"):sub(12, -3)),
 	DisplayVersion = "4.10.7 alpha", -- the string that is shown as version
 	ReleaseRevision = 6966 -- the revision of the latest stable version that is available
 }
@@ -4581,6 +4581,12 @@ function bossModPrototype:SetWipeTime(t)
 end
 
 function bossModPrototype:GetBossHPString(cId)
+        for i = 1, 4 do
+		local guid = UnitGUID("boss"..i)
+		if guid and tonumber(guid:sub(7, 10), 16) == cId then
+			return math.floor(UnitHealth("boss"..i) / UnitHealthMax("boss"..i) * 100) .. "%"
+		end
+	end
 	local idType = (GetNumRaidMembers() == 0 and "party") or "raid"
 	for i = 0, math.max(GetNumRaidMembers(), GetNumPartyMembers()) do
 		local unitId = ((i == 0) and "target") or idType..i.."target"
