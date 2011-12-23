@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Benedictus", "DBM-Party-Cataclysm", 14)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7019 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7023 $"):sub(12, -3))
 mod:SetCreatureID(54938)
 mod:SetModelID(38991)
 mod:SetZone()
@@ -32,7 +32,7 @@ local specwarnWaveVirtue		= mod:NewSpecialWarningSpell(103678, nil, nil, nil, tr
 local specwarnTwilight			= mod:NewSpecialWarningMove(103775)
 local specwarnWaveTwilight		= mod:NewSpecialWarningSpell(103780, nil, nil, nil, true)
 
-local timerCombatStart			= mod:NewTimer(42, "TimerCombatStart", 2457)
+local timerCombatStart			= mod:NewTimer(51.5, "TimerCombatStart", 2457)
 local timerWaveVirtueCD			= mod:NewNextTimer(30, 103678)--Will he do it more then once? if you are terrible and take > 30 sec to push him?
 local timerWaveTwilightCD		= mod:NewNextTimer(30, 103780)--^
 
