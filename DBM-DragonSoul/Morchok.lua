@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(311, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6938 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7033 $"):sub(12, -3))
 mod:SetCreatureID(55265)
 mod:SetModelID(39094)
 mod:SetZone()
@@ -99,12 +99,12 @@ function mod:SPELL_CAST_START(args)
 			warnStomp:Show()
 			if crystalCount < 3 or (firstPhase and crystalCount < 2) then
 				timerStomp:Start()
-				if UnitExists("boss2") then
-					if self:IsDifficulty("heroic25") then
-						timerKohcromCD:Start(5, args.spellName)--I went through another dozon logs on WoL Expression editor. it comes earlier on 25 man. because 6 was way wrong
-					else
-						timerKohcromCD:Start(6, args.spellName)--it was 6 in all the 10 man logs though.
-					end
+			end
+			if UnitExists("boss2") then
+				if self:IsDifficulty("heroic25") then
+					timerKohcromCD:Start(5, args.spellName)--I went through another dozon logs on WoL Expression editor. it comes earlier on 25 man. because 6 was way wrong
+				else
+					timerKohcromCD:Start(6, args.spellName)--it was 6 in all the 10 man logs though.
 				end
 			end
 		else
