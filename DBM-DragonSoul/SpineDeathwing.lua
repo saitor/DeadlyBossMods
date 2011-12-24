@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7034 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7035 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -38,7 +38,7 @@ local soundNuclearBlast		= mod:NewSound(105845, nil, mod:IsMelee())
 
 mod:AddBoolOption("InfoFrame", true)
 mod:AddBoolOption("SetIconOnGrip", true)
-mod:AddBoolOption("ShowShieldInfo", true)
+mod:AddBoolOption("ShowShieldInfo", mod:IsHealer())
 
 local gripTargets = {}
 local gripIcon = 6
