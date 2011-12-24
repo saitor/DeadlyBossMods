@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7025 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7026 $"):sub(12, -3)),
 	DisplayVersion = "4.10.7 alpha", -- the string that is shown as version
 	ReleaseRevision = 6966 -- the revision of the latest stable version that is available
 }
@@ -1438,9 +1438,15 @@ do
 			local enabled, loadable = select(4, GetAddOnInfo("DBM_API"))
 			if enabled and loadable then showOldVerWarning() end
 			-- setup MovieFrame hook (TODO: replace this by a proper filtering function that only filters certain movie IDs (which requires some API for boss mods to specify movie IDs and default actions)))
-			MovieFrame:HookScript("OnEvent", function(self, event, movieId)
+			-- do not use HookScript here, the movie must not even be started to prevent a strange WoW crash bug on OS X with some movies
+			local oldMovieEventHandler = MovieFrame:GetScript("OnEvent")
+			MovieFrame:SetScript("OnEvent", function(self, event, movieId, ...)
 				if event == "PLAY_MOVIE" and DBM.Options.DisableCinematics then
-					MovieFrame_OnMovieFinished(MovieFrame) -- this function actually just calls GameMovieFinished() and then hides the MovieFrame
+					-- do nothing
+					return
+				else
+					-- other event or cinematics enabled
+					return oldMovieEventHandler and oldMovieEventHandler(self, event, movieId, ...)
 				end
 			end)
 		elseif modname == "DBM-BurningCrusade" then
