@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7026 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7027 $"):sub(12, -3)),
 	DisplayVersion = "4.10.7 alpha", -- the string that is shown as version
 	ReleaseRevision = 6966 -- the revision of the latest stable version that is available
 }
@@ -1442,7 +1442,8 @@ do
 			local oldMovieEventHandler = MovieFrame:GetScript("OnEvent")
 			MovieFrame:SetScript("OnEvent", function(self, event, movieId, ...)
 				if event == "PLAY_MOVIE" and DBM.Options.DisableCinematics then
-					-- do nothing
+					-- you still have to call OnMovieFinished, even if you never actually told the movie frame to start the movie, otherwise you will end up in a weird state (input stops working)
+					MovieFrame_OnMovieFinished(MovieFrame)
 					return
 				else
 					-- other event or cinematics enabled
