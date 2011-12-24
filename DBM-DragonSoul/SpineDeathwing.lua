@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7033 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7034 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -122,7 +122,9 @@ function mod:OnCombatStart(delay)
 	end
 	table.wipe(gripTargets)
 	table.wipe(corruptionActive)
-	clearPlasmaVariables()
+	if self.Options.ShowShieldInfo then
+		clearPlasmaVariables()
+	end
 	gripIcon = 6
 end
 
