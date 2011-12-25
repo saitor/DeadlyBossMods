@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7038 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7039 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -33,6 +33,7 @@ local warnSunder					= mod:NewStackAnnounce(108043, 3, nil, mod:IsTank() or mod:
 local specWarnHarpoon				= mod:NewSpecialWarningTarget(108038, false)
 local specWarnTwilightOnslaught		= mod:NewSpecialWarningSpell(107588, nil, nil, nil, true)
 local specWarnShockwave				= mod:NewSpecialWarningMove(108046)
+local specWarnShockwaveOther		= mod:NewSpecialWarningTarget(108046, false)
 local specWarnTwilightFlames		= mod:NewSpecialWarningMove(108076)
 local yellShockwave					= mod:NewYell(108046)
 local specWarnSunder				= mod:NewSpecialWarningStack(108043, mod:IsTank(), 3)
@@ -60,6 +61,8 @@ function mod:ShockwaveTarget()
 	if targetname == UnitName("player") then
 		specWarnShockwave:Show()
 		yellShockwave:Yell()
+	else
+		specWarnShockwaveOther:Show(targetname)
 	end
 end
 
