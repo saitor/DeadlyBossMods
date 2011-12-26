@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7043 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7044 $"):sub(12, -3)),
 	DisplayVersion = "4.10.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 7028 -- the revision of the latest stable version that is available
 }
@@ -1429,7 +1429,8 @@ do
 				"LFG_UPDATE",
 				"UPDATE_BATTLEFIELD_STATUS",
 				"UPDATE_MOUSEOVER_UNIT",
-				"PLAYER_TARGET_CHANGED"			
+				"PLAYER_TARGET_CHANGED"	,
+				"CINEMATIC_START"		
 			)
 			self:ZONE_CHANGED_NEW_AREA()
 			self:RAID_ROSTER_UPDATE()
@@ -1546,6 +1547,12 @@ function DBM:PLAYER_TARGET_CHANGED()
 				end
 			end
 		end
+	end
+end
+
+function DBM:CINEMATIC_START()
+	if DBM.Options.DisableCinematics and IsInInstance() then--This will also kill non movie cinematics, like the bridge in firelands
+		CinematicFrame_CancelCinematic()
 	end
 end
 
