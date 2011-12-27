@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7042 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7047 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -33,6 +33,8 @@ local specWarnSealArmor		= mod:NewSpecialWarningSpell(105847, mod:IsDps())
 local timerSealArmor		= mod:NewCastTimer(23, 105847)
 local timerBarrelRoll		= mod:NewCastTimer(5, "ej4050")
 local timerGripCD			= mod:NewCDTimer(32, 109457)
+
+local berserkTimer			= mod:NewBerserkTimer(900)
 
 local soundNuclearBlast		= mod:NewSound(105845, nil, mod:IsMelee())
 
@@ -113,6 +115,7 @@ do
 end
 
 function mod:OnCombatStart(delay)
+	berserkTimer:Start(-delay)
 	if self:IsDifficulty("lfr25") then
 		warnSealArmor = mod:NewCastAnnounce(105847, 4, 34.5)
 	else
