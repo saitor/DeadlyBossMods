@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(333, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7062 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7067 $"):sub(12, -3))
 mod:SetCreatureID(56173)
 mod:SetModelID(40087)
 mod:SetZone()
@@ -57,7 +57,7 @@ local timerTerrorCD				= mod:NewNextTimer(90, 106765)
 local timerShrapnel				= mod:NewCastTimer(6, 109598)
 local timerParasite				= mod:NewTargetTimer(10, 108649)
 local timerParasiteCD			= mod:NewCDTimer(60, 108649)
---local timerUnstableCorruption	= mod:NewCastTimer(10, 108813)--Don't have a spellid for it, wowhead has no data on spell :\ Will have to wait for longs
+--local timerUnstableCorruption	= mod:NewCastTimer(10, 108813)--Don't have a spellid for it, wowhead has no data on spell :\ Will have to wait for logs
 
 local berserkTimer				= mod:NewBerserkTimer(900)
 
