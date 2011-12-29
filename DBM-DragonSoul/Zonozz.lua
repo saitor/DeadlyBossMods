@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(324, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7059 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7060 $"):sub(12, -3))
 mod:SetCreatureID(55308)
 mod:SetModelID(39138)
 mod:SetZone()
@@ -175,8 +175,13 @@ local function blackBloodEnds()
 	--It DOES appear to be difficulty based to a minor extent, i've verified it through MANY guilds 10 and 25 herioc logs. particularly the 7-9 stack on heroic without a doubt being 3 seconds later then normal in every log.
 	--Still need data for the following (0, 2, 4, 6, 8 stacks in all difficulties. 1, 10 for heroic difficulties. 8 and 9 for normal difficulties)
 	--[[
-	timerVoidofUnmakingCD:Start(voidTimers[voidStacks])
-	timerPsychicDrainCD:Start(voidTimers[voidStacks] + 8.5)
+	if self:IsDifficulty("heroic10", "heroic25") then
+		timerVoidofUnmakingCD:Start(heroicvoidTimers[voidStacks])
+		timerPsychicDrainCD:Start(heroicvoidTimers[voidStacks] + 8.5)
+	else
+		timerVoidofUnmakingCD:Start(voidTimers[voidStacks])
+		timerPsychicDrainCD:Start(voidTimers[voidStacks] + 8.5)
+	end
 	voidStacks = 0
 	]]
 	if mod:IsDifficulty("lfr25") then -- absoultely 10 stacks
