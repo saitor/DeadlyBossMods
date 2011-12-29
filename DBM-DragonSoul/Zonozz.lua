@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(324, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7055 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7057 $"):sub(12, -3))
 mod:SetCreatureID(55308)
 mod:SetModelID(39138)
 mod:SetZone()
@@ -92,6 +92,7 @@ local function blackBloodEnds()
 	timerFocusedAngerCD:Start(6)
 	timerShadowsCD:Start(6)
 	--absolutely not difficulty based. it's timer depends on Void Diffusion stacks. But since timer not confirmed, temporarly commented it.
+	--My guild does 9 7 7 5 on heroic, i'll run a new transcriptor log to confirm there is any diff between the 9 and the 7s for you. I don't remember one though.
 	--[[
 	timerVoidofUnmakingCD:Start(voidTimers[voidStacks])
 	timerPsychicDrainCD:Start(voidTimers[voidStacks] + 8.5)
