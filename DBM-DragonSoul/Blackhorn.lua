@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7039 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7071 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -43,7 +43,7 @@ local timerAdd						= mod:NewTimer(61, "TimerAdd", 107752)
 local timerTwilightOnslaughtCD		= mod:NewNextTimer(35, 107588)
 local timerSapperCD					= mod:NewTimer(40, "TimerSapper", 107752)
 local timerDeckFireCD				= mod:NewCDTimer(20, 110095)--Not the best log, so not sure if this is accurate or actually based on other variables.
-local timerRoarCD					= mod:NewCDTimer(19, 109228)--19~22 variables
+local timerRoarCD					= mod:NewCDTimer(19, 109228)--19~22 variables (i haven't seen any logs where this wasn't always 21.5, are 19s on WoL somewhere?)
 local timerTwilightFlamesCD			= mod:NewNextTimer(8, 108051)
 local timerShockwaveCD				= mod:NewCDTimer(23, 108046)
 local timerSunder					= mod:NewTargetTimer(30, 108043, nil, mod:IsTank() or mod:IsHealer())

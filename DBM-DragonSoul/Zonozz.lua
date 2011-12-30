@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(324, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7063 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7071 $"):sub(12, -3))
 mod:SetCreatureID(55308)
 mod:SetModelID(39138)
 mod:SetZone()
@@ -41,6 +41,8 @@ local berserkTimer				= mod:NewBerserkTimer(360)
 
 mod:AddBoolOption("RangeFrame", true)--For heroic shadows, with debuff filtering.
 mod:AddBoolOption("NoFilterRangeFrame", false)--For those that want the range frame to simply work as it used to, always show everyone.
+--When popup feature is added, range frame options will be expanded, maybe even consilidated into one option, just the popup.
+--Popup will include: Disable range Frame, Always show dynamic Range Frane, Show normal RF in p1 and dynamic in p2, Always show normal RF
 
 local shadowsTargets = {}
 local phase2Started = false
