@@ -38,7 +38,7 @@
 --
 --
 
-local revision =("$Revision: 7080 $"):sub(12, -3) 
+local revision =("$Revision: 7086 $"):sub(12, -3) 
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -2221,12 +2221,12 @@ do
 					else
 						button:SetPoint("TOPLEFT", lastButton, "BOTTOMLEFT", 0, -10)
 					end
-					button:SetScript("OnShow", function(self)
-						-- set the correct selected value if the mod is being loaded after the gui is loaded (hack because the dropdown menu lacks a SetSelectedValue method)
-						_G[button:GetName().."Text"]:SetText(mod.localization.options[v])
-						button.value = v
-						button.text = mod.localization.options[v]
-					end)
+--					button:SetScript("OnShow", function(self)
+--						-- set the correct selected value if the mod is being loaded after the gui is loaded (hack because the dropdown menu lacks a SetSelectedValue method)
+--						_G[button:GetName().."Text"]:SetText(mod.localization.options[v])
+--						button.value = v
+--						button.text = mod.localization.options[v]
+--					end)
 				end
 			end
 			catpanel:AutoSetDimension()
