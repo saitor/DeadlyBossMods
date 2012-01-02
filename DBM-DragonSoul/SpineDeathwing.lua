@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7094 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7095 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -151,6 +151,7 @@ function mod:SPELL_CAST_START(args)
 		end
 	elseif args:IsSpellID(109379) then
 		if not corruptionActive[args.sourceGUID] then
+			corruptionActive[args.sourceGUID] = 0
 			if self:IsDifficulty("normal25", "heroic25") then
 				timerGripCD:Start(16, args.sourceGUID)
 			else
