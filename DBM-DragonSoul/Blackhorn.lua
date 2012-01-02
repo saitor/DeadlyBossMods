@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7092 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7094 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -90,6 +90,11 @@ function mod:OnCombatStart(delay)
 	else
 		timerTwilightOnslaughtCD:Start(48-delay)
 	end
+	if DBM.BossHealth:IsShown() then
+		local shipname = EJ_GetSectionInfo(4202)
+		DBM.BossHealth:Clear()
+		DBM.BossHealth:AddBoss(56598, shipname)
+	end
 end
 
 function mod:SPELL_CAST_START(args)
@@ -137,6 +142,10 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerShockwaveCD:Start()--23-26 second variation
 		if not self:IsDifficulty("lfr25") then--Assumed, but i find it unlikely a 4 min berserk timer will be active on LFR
 			berserkTimer:Start()
+		end
+		if DBM.BossHealth:IsShown() then
+			DBM.BossHealth:Clear()
+			DBM.BossHealth:AddBoss(56427, L.name)
 		end
 	end
 end		
