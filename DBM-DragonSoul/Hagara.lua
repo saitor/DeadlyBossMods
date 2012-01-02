@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(317, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6977 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7098 $"):sub(12, -3))
 mod:SetCreatureID(55689)
 mod:SetModelID(39318)
 mod:SetZone()
@@ -218,7 +218,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		if not self:IsDifficulty("lfr25") then
 			timerFrostTombCD:Start()
 		end
-		timerAssaultCD:Start(20)
+		timerAssaultCD:Start()
 		timerLightningStormCD:Start()
 		SpecialCountdown:Start(62)
 		if self.Options.RangeFrame then
@@ -231,7 +231,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		if not self:IsDifficulty("lfr25") then
 			timerFrostTombCD:Start()
 		end
-		timerAssaultCD:Start(20)
+		timerAssaultCD:Start()
 		timerTempestCD:Start()
 		SpecialCountdown:Start(62)
 		if self.Options.RangeFrame then
