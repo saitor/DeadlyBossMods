@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(324, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7104 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7105 $"):sub(12, -3))
 mod:SetCreatureID(55308)
 mod:SetModelID(39138)
 mod:SetZone()
@@ -211,7 +211,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		specWarnBlackBlood:Show()
 		timerBlackBlood:Start()
 		self:Schedule(30, blackBloodEnds)--More accurate way then tracking spell aura removed of black blood. Players dying in the phase were falsely triggering the phase ending early.
-		if mod:IsDifficulty("heroic10", "heroic25") then
+		if self:IsDifficulty("heroic10", "heroic25") then
 			if timerVoidofUnmakingCD:GetTime() < 45 then--Heroic has a failsafe in place, if CD exausts before 15 seconds after black phase ending, it's extended, probably to allow raid more time to repositoin vs normal
 				timerVoidofUnmakingCD:Update(45.3, 90.3)
 			end
