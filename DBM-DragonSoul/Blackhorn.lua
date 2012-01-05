@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7101 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7112 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -42,7 +42,7 @@ local timerCombatStart				= mod:NewTimer(20.5, "TimerCombatStart", 2457)
 local timerAdd						= mod:NewTimer(61, "TimerAdd", 107752)
 local timerTwilightOnslaughtCD		= mod:NewNextTimer(35, 107588)
 local timerSapperCD					= mod:NewNextTimer(40, "ej4200", nil, nil, nil, 107752)
-local timerDeckFireCD				= mod:NewCDTimer(20, 110095)--Not the best log, so not sure if this is accurate or actually based on other variables.
+--local timerDeckFireCD				= mod:NewCDTimer(20, 110095)--Not the best log, so not sure if this is accurate or actually based on other variables.
 local timerRoarCD					= mod:NewCDTimer(19, 109228)--19~22 variables (i haven't seen any logs where this wasn't always 21.5, are 19s on WoL somewhere?)
 local timerTwilightFlamesCD			= mod:NewNextTimer(8, 108051)
 local timerShockwaveCD				= mod:NewCDTimer(23, 108046)
@@ -86,7 +86,7 @@ function mod:OnCombatStart(delay)
 	end
 	if self:IsDifficulty("heroic10", "heroic25") then
 		timerTwilightOnslaughtCD:Start(48-delay)--Not sure if variation is cause it was heroic or cause the first one is not consistent
-		timerDeckFireCD:Start(60-delay)--Consistent?
+--		timerDeckFireCD:Start(60-delay)--Consistent?
 	else
 		timerTwilightOnslaughtCD:Start(48-delay)
 	end
@@ -172,7 +172,7 @@ function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.SapperEmote or msg:find(L.SapperEmote) then
 		timerSapperCD:Start()
 	elseif msg:find(L.DeckFire) then
-		timerDeckFireCD:Start()
+--		timerDeckFireCD:Start()
 	end
 end
 
