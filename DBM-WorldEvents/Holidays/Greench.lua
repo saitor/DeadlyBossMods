@@ -1,7 +1,7 @@
-local mod	= DBM:NewMod("Greench", "DBM-WorldEvents")
+local mod	= DBM:NewMod("Greench", "DBM-WorldEvents", 1)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7012 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7125 $"):sub(12, -3))
 mod:SetCreatureID(54499)--He has multiple IDs, sigh.
 mod:SetModelID(39021)
 mod:SetZone(24)--Hillsbread Foothills
