@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Shot", "DBM-WorldEvents", 2)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7125 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7126 $"):sub(12, -3))
 mod:SetZone()
 
 mod:RegisterCombat("combat")
@@ -12,6 +12,9 @@ mod:RegisterEvents(
 )
 
 local timerGame		= mod:NewBuffActiveTimer(60, 101871)
+
+mod:RemoveOption("HealthFrame")
+mod:RemoveOption("SpeedKillTimer")
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(101871) and args:IsPlayer() then

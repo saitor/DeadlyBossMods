@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Cannon", "DBM-WorldEvents", 2)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7125 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7126 $"):sub(12, -3))
 mod:SetZone()
 
 mod:RegisterEvents(
@@ -14,6 +14,9 @@ local timerMagicWings				= mod:NewBuffFadesTimer(8.5, 102116)
 local MagicWingsCountdown			= mod:NewCountdown(7.5, 102116)
 
 local markWings = false
+
+mod:RemoveOption("HealthFrame")
+mod:RemoveOption("SpeedKillTimer")
 
 local function wingsRemoved()
 	markWings = false
