@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(331, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7118 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7131 $"):sub(12, -3))
 mod:SetCreatureID(55294)
 mod:SetModelID(39099)
 mod:SetZone()
@@ -72,7 +72,7 @@ function mod:OnCombatStart(delay)
 	fadingLightCount = 0
 	warnHourofTwilightSoon:Schedule(30.5)
 	if self.Options.SpecWarnHoTN == "One" then
-		specWarnHourofTwilightN:Schedule(40.5, args.spellName, hourOfTwilightCount+1)
+		specWarnHourofTwilightN:Schedule(40.5, GetSpellInfo(109416), hourOfTwilightCount+1)
 	end
 	timerHourofTwilightCD:Start(45.5-delay, 1)
 	HourofTwilightCountdown:Start(45.5)
