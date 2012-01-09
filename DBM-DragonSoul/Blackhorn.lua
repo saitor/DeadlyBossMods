@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7132 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7136 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -176,8 +176,6 @@ mod.SPELL_MISSED = mod.SPELL_DAMAGE
 function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.SapperEmote or msg:find(L.SapperEmote) then
 		timerSapperCD:Start()
-	elseif msg:find(L.DeckFire) then
-
 	end
 end
 
