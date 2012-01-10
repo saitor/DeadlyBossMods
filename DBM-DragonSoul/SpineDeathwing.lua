@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7099 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7140 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -169,7 +169,8 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(105248) then
-		warnAbsorbedBlood:Show(args.destName, args.amount or 1)
+		warnAbsorbedBlood:Unschedule()--Just a little anti spam
+		warnAbsorbedBlood:Schedule(1, args.destName, args.amount or 1)
 	elseif args:IsSpellID(105490, 109457, 109458, 109459) then
 		gripTargets[#gripTargets + 1] = args.destName
 		timerGripCD:Cancel(args.sourceGUID)
