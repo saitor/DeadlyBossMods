@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(333, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7103 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7138 $"):sub(12, -3))
 mod:SetCreatureID(56173)
 mod:SetModelID(40087)
 mod:SetZone()
@@ -60,6 +60,8 @@ local timerParasiteCD			= mod:NewCDTimer(60, 108649)
 --local timerUnstableCorruption	= mod:NewCastTimer(10, 108813)--Don't have a spellid for it, wowhead has no data on spell :\ Will have to wait for logs
 
 local berserkTimer				= mod:NewBerserkTimer(900)
+
+local ShrapnelCountdown			= mod:NewCountdown(6, 109598)
 
 mod:AddBoolOption("RangeFrame", true)--For heroic parasites, with debuff filtering.
 mod:AddBoolOption("SetIconOnParasite", true)
@@ -175,6 +177,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		self:Unschedule(warnShrapnelTargets)
 		if args:IsPlayer() then
 			specWarnShrapnel:Show()
+			ShrapnelCountdown:Start(6)
 		end
 		if (self:IsDifficulty("normal10") and #shrapnelTargets >= 3) then -- confirmed only in 10man normal
 			warnShrapnelTargets()
