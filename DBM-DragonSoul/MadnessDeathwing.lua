@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(333, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7138 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7143 $"):sub(12, -3))
 mod:SetCreatureID(56173)
 mod:SetModelID(40087)
 mod:SetZone()
@@ -61,7 +61,7 @@ local timerParasiteCD			= mod:NewCDTimer(60, 108649)
 
 local berserkTimer				= mod:NewBerserkTimer(900)
 
-local ShrapnelCountdown			= mod:NewCountdown(6, 109598)
+local ShrapnelCountdown			= mod:NewCountdown(6, 109598, not mod:IsTank())
 
 mod:AddBoolOption("RangeFrame", true)--For heroic parasites, with debuff filtering.
 mod:AddBoolOption("SetIconOnParasite", true)
