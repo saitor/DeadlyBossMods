@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7140 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7141 $"):sub(12, -3)),
 	DisplayVersion = "4.10.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 7028 -- the revision of the latest stable version that is available
 }
@@ -409,7 +409,7 @@ do
 			end
 		elseif event:sub(1, 5) == "SPELL" then
 			args.spellId, args.spellName, args.spellSchool = select(1, ...)
-			if event == "SPELL_DAMAGE" then
+			if event == "SPELL_DAMAGE" or event == "SPELL_BUILDING_DAMAGE" then -- SPELL_BUILDING_DAMAGE args guessed
 				args.amount, args.overkill, args.school, args.resisted, args.blocked, args.absorbed, args.critical, args.glancing, args.crushing = select(4, ...)
 			elseif event == "SPELL_MISSED" then
 				args.missType, args.amountMissed = select(4, ...)
