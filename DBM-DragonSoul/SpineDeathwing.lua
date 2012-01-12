@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7143 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7164 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -191,7 +191,18 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	end
 end		
-mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
+
+function mod:SPELL_AURA_APPLIED_DOSE(args)
+	if args:IsSpellID(105248) then
+		if args.amount == 9 then
+			warnAbsorbedBlood:Cancel()--Just a little anti spam
+			warnAbsorbedBlood:Show(args.destName, 9)
+		else
+			warnAbsorbedBlood:Cancel()--Just a little anti spam
+			warnAbsorbedBlood:Schedule(2, args.destName, args.amount or 1)
+		end
+	end
+end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(105490, 109457, 109458, 109459) then
