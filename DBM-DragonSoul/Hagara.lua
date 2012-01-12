@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(317, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7157 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7163 $"):sub(12, -3))
 mod:SetCreatureID(55689)
 mod:SetModelID(39318)
 mod:SetZone()
@@ -36,6 +36,7 @@ local specWarnLightingStorm	= mod:NewSpecialWarningSpell(105465, nil, nil, nil, 
 local specWarnAssault		= mod:NewSpecialWarningSpell(107851, mod:IsTank())
 local specWarnWatery		= mod:NewSpecialWarningMove(110317)
 local specWarnFrostflake	= mod:NewSpecialWarningYou(109325)
+local specWarnShattering	= mod:NewSpecialWarningYou(105289, false)
 local yellFrostflake		= mod:NewYell(109325)
 
 local timerFrostTomb		= mod:NewCastTimer(8, 104448)
@@ -74,6 +75,9 @@ function mod:ShatteredIceTarget()
 	if not targetname then return end
 	warnShatteringIce:Show(targetname)
 	timerShatteringCD:Start()
+	if UnitName("player") == targetname then
+		specWarnShattering:Show()
+	end
 end
 
 function mod:OnCombatStart(delay)
