@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(317, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7153 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7156 $"):sub(12, -3))
 mod:SetCreatureID(55689)
 mod:SetModelID(39318)
 mod:SetZone()
@@ -67,7 +67,7 @@ local tombTargets = {}
 local tombIconTargets = {}
 local pillarsRemaining = 4
 local frostPillar = EJ_GetSectionInfo(3919)
-local lightningPillar = EJ_GetSectionInfo(4202)
+local lightningPillar = EJ_GetSectionInfo(4069)
 
 function mod:ShatteredIceTarget()
 	local targetname = self:GetBossTarget(55689)
