@@ -1,7 +1,7 @@
-local mod	= DBM:NewMod("DSTrash", "DBM-Dragonsoul")
+local mod	= DBM:NewMod("DSTrash", "DBM-DragonSoul")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7167 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7169 $"):sub(12, -3))
 --mod:SetModelID(29539)
 
 mod:RegisterEvents(
