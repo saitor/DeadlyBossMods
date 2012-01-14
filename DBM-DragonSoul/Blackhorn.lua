@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7174 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7175 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -71,7 +71,7 @@ local function Phase2Delay()
 	twilightOnslaughtCountdown:Cancel()
 	timerBroadsideCD:Cancel()
 	timerSapperCD:Cancel()
-	timerRoarCD:Start(11)
+	timerRoarCD:Start(10)
 	timerTwilightFlamesCD:Start(12)
 	timerShockwaveCD:Start(13)--13-16 second variation
 	timerConsumingShroud:Start(45)	-- 45seconds once P2 starts?
