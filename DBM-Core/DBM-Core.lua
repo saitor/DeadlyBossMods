@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7182 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7183 $"):sub(12, -3)),
 	DisplayVersion = "4.10.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 7028 -- the revision of the latest stable version that is available
 }
@@ -2359,6 +2359,7 @@ function DBM:StartCombat(mod, delay, synced)
 			mod.stats.heroic25Pulls = mod.stats.heroic25Pulls + 1
 			savedDifficulty = PLAYER_DIFFICULTY2.." - "
 		else--you were not in an instance when you started combat, this is an outdoor boss.
+			mod.stats.normalPulls = mod.stats.normalPulls + 1--Treat it as normal for kill stats.
 			savedDifficulty = ""--So lets just return no difficulty :)
 		end
 		self:AddMsg(DBM_CORE_COMBAT_STARTED:format(savedDifficulty..mod.combatInfo.name))
