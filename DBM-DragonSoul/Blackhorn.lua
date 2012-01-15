@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7180 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7184 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -47,7 +47,7 @@ local timerAdd						= mod:NewTimer(61, "TimerAdd", 107752)
 local timerTwilightOnslaught		= mod:NewCastTimer(7, 107588)
 local timerTwilightOnslaughtCD		= mod:NewNextCountTimer(35, 107588)
 local timerSapperCD					= mod:NewNextTimer(40, "ej4200", nil, nil, nil, 107752)
-local timerBladeRushCD				= mod:NewCDTimer(17, 107594)--Experiment, should be precise, if it even works right. Hate casts that have no reasonable trigger :(
+local timerBladeRushCD				= mod:NewCDTimer(17, 107594)--Experiment, 17sec seemed common for heroic, LFR was a variatable 20-25sec? Just need more data, a lot more.
 local timerBroadsideCD				= mod:NewNextTimer(90, 110153)
 local timerRoarCD					= mod:NewCDTimer(19, 109228)--19~22 variables (i haven't seen any logs where this wasn't always 21.5, are 19s on WoL somewhere?)
 local timerTwilightFlamesCD			= mod:NewNextTimer(8, 108051)
