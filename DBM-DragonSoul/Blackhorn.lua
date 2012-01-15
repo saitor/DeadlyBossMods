@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7175 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7180 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -220,11 +220,7 @@ end
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, spellName)
 	if spellName == GetSpellInfo(107594) then--Blade Rush, cast start is not detectable, only cast finish, can't use target scanning, or pre warn (ie when the lines go out), only able to detect when they actually finish rush
-		if uId == "target" then--Hack to get GUID, i'm not sure if it's possible to get GUID from UNIT_SPELLCAST_SUCCEEDED or not, all i see is unitname in transcriptor
-			self:SendSync("BladeRush", UnitGUID("target"))--Send your target's GUID since we know it's right, because the UNIT_SPELLCAST_SUCCEEDED came from your target.
-		elseif uId == "focus" then
-			self:SendSync("BladeRush", UnitGUID("focus"))--Send your focus GUID since we know it's right, because the UNIT_SPELLCAST_SUCCEEDED came from your focus.
-		end
+		self:SendSync("BladeRush", UnitGUID(uId))
 	end
 end
 
