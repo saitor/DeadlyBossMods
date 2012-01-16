@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7188 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7190 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -253,6 +253,7 @@ function mod:UNIT_DIED(args)
 		timerTwilightFlamesCD:Cancel()
 	elseif cid == 56848 or cid == 56854 then
 		timerBladeRushCD:Cancel(args.sourceGUID)
+		timerDegenerationCD:Cancel(args.sourceGUID)
 	end
 end
 
