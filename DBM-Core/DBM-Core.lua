@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7192 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7193 $"):sub(12, -3)),
 	DisplayVersion = "4.10.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 7028 -- the revision of the latest stable version that is available
 }
@@ -3522,6 +3522,10 @@ do
 	
 	function bossModPrototype:NewSpellAnnounce(spellId, color, ...)
 		return newAnnounce(self, "spell", spellId, color or 3, ...)
+	end
+
+	function bossModPrototype:NewAddsLeftAnnounce(spellId, color, ...)
+		return newAnnounce(self, "adds", spellId, color or 2, ...)
 	end
 
 	function bossModPrototype:NewCountAnnounce(spellId, color, ...)
