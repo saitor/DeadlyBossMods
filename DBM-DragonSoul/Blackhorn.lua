@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7207 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7208 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -212,7 +212,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnPhase2:Show()--We still warn phase 2 here though to get into position, especially since he can land on deck up to 5 seconds before his yell.
 		timerCombatStart:Start(5)--5-8 seems variation, we use shortest.
 		if DBM.BossHealth:IsShown() then
-			DBM.BossHealth:Clear()
 			DBM.BossHealth:AddBoss(56427, L.name)
 		end
 	elseif args:IsSpellID(110598, 110214) then
