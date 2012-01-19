@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7204 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7207 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetModelID(39399)
 mod:SetZone()
@@ -182,7 +182,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerDevastateCD:Start()
 	elseif args:IsSpellID(107558, 108861, 109207, 109208) then
 		timerDegenerationCD:Start(args.sourceGUID)
-	elseif args:IsSpellID(108039) then
+	elseif args:IsSpellID(108038) then
 		timerHarpoonCD:Start(args.sourceGUID)
 	end
 end
