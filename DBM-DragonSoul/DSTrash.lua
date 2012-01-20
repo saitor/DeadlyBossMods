@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("DSTrash", "DBM-DragonSoul")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7205 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7212 $"):sub(12, -3))
 mod:SetModelID(39378)
 
 mod:RegisterEvents(
@@ -56,8 +56,8 @@ function mod:BoulderTarget(sGUID)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(107597) then
-		self:ScheduleMethod(0.2, "BoulderTarget", args.sourceGUID)
+	if args:IsSpellID(107597) then -- this spell cast 3 sec. and use at target's cast end position. not begin.
+		self:ScheduleMethod(3, "BoulderTarget", args.sourceGUID)
 	end
 end
 
