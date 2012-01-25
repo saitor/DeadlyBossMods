@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(325, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7231 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7233 $"):sub(12, -3))
 mod:SetCreatureID(55312)
 mod:SetModelID(39101)
 mod:SetZone()
@@ -214,14 +214,14 @@ local oozePos = {
   ["BLACK"] = 	{ 71, 65 },
 }
 function mod:CHAT_MSG_ADDON(prefix, message, channel, sender)
-  if prefix ~= "DBM-YORSAHJARROW" then return end
-  local cmd = message or ""
-  cmd = cmd:match("^(%w+)") or ""
-  cmd = cmd:upper()
-  if cmd == "CLEAR" then
-    DBM.Arrow:Hide()
-  elseif oozePos[cmd] then
-    DBM.Arrow:ShowRunTo(oozePos[cmd][1]/100,oozePos[cmd][2]/100,nil,20)
-  end
+	if prefix ~= "DBM-YORSAHJARROW" then return end
+	local cmd = message or ""
+	cmd = cmd:match("^(%w+)") or ""
+	cmd = cmd:upper()
+	if cmd == "CLEAR" then
+		DBM.Arrow:Hide()
+	elseif oozePos[cmd] then
+		DBM.Arrow:ShowRunTo(oozePos[cmd][1]/100,oozePos[cmd][2]/100,nil,20)
+	end
 end
 

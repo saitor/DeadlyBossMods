@@ -1,9 +1,9 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7231 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7233 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
---TODO, find a way to fix it so status whispers return blackhorns health, not the ships health.
+mod:SetMainBossID(56427)
 mod:SetModelID(39399)
 mod:SetZone()
 mod:SetUsedIcons()

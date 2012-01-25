@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7232 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7233 $"):sub(12, -3)),
 	DisplayVersion = "4.10.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 7028 -- the revision of the latest stable version that is available
 }
@@ -4601,6 +4601,11 @@ function bossModPrototype:SetWipeTime(t)
 	self.combatInfo.wipeTimer = t
 end
 
+-- updated for status whisper.
+function bossModPrototype:SetMainBossID(...)
+	self.mainbossid = ...
+end
+
 function bossModPrototype:GetBossHPString(cId)
         for i = 1, 4 do
 		local guid = UnitGUID("boss"..i)
@@ -4620,7 +4625,7 @@ function bossModPrototype:GetBossHPString(cId)
 end
 
 function bossModPrototype:GetHP()
-	return self:GetBossHPString((self.combatInfo and self.combatInfo.mob) or self.creatureId)
+	return self:GetBossHPString(self.mainbossid or (self.combatInfo and self.combatInfo.mob) or self.creatureId)
 end
 
 function bossModPrototype:IsWipe()
