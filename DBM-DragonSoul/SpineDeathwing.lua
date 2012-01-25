@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7209 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7230 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -35,7 +35,7 @@ local specWarnSealArmor		= mod:NewSpecialWarningSpell(105847, mod:IsDps())
 
 local timerSealArmor		= mod:NewCastTimer(23, 105847)
 local timerBarrelRoll		= mod:NewCastTimer(5, "ej4050")
-local timerGripCD			= mod:NewCDTimer(32, 109457)
+local timerGripCD			= mod:NewNextTimer(32, 109457)
 
 
 local soundNuclearBlast		= mod:NewSound(105845, nil, mod:IsMelee())
