@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("DSTrash", "DBM-DragonSoul")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7225 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7231 $"):sub(12, -3))
 mod:SetModelID(39378)
 
 mod:RegisterEvents(
@@ -57,7 +57,7 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(107597) then -- this spell cast 3 sec. and use at target's cast end position. not begin.
-		self:ScheduleMethod(3, "BoulderTarget", args.sourceGUID)--0.2 worked for me, it was announcing boulder target, NOT tank.
+		self:ScheduleMethod(3, "BoulderTarget", args.sourceGUID)
 	end
 end
 
