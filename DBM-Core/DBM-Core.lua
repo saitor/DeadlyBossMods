@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7242 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7243 $"):sub(12, -3)),
 	DisplayVersion = "4.10.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 7028 -- the revision of the latest stable version that is available
 }
@@ -1516,7 +1516,7 @@ function DBM:UPDATE_MOUSEOVER_UNIT()
 					break
 				end
 			end
-		elseif (cId == 55003 or cId == 54499) and not DBM:GetModByName("Greench") then--The Abominable Greench (Winter Veil world boss)
+		elseif (cId == 55003 or cId == 54499 or cId == 15467 or cId == 15466) and not DBM:GetModByName("Greench") then--The Abominable Greench & his helpers (Winter Veil world boss), Omen & his minions (Lunar Festival world boss)
 			for i, v in ipairs(DBM.AddOns) do
 				if v.modId == "DBM-WorldEvents" then
 					DBM:LoadMod(v)
@@ -1546,7 +1546,7 @@ function DBM:PLAYER_TARGET_CHANGED()
 					break
 				end
 			end
-		elseif (cId == 55003 or cId == 54499) and not DBM:GetModByName("Greench") then--The Abominable Greench & his helpers (Winter Veil world boss)
+		elseif (cId == 55003 or cId == 54499 or cId == 15467 or cId == 15466) and not DBM:GetModByName("Greench") then--The Abominable Greench & his helpers (Winter Veil world boss), Omen & his minions (Lunar Festival world boss)
 			for i, v in ipairs(DBM.AddOns) do
 				if v.modId == "DBM-WorldEvents" then
 					DBM:LoadMod(v)

@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(325, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7242 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7243 $"):sub(12, -3))
 mod:SetCreatureID(55312)
 mod:SetModelID(39101)
 mod:SetZone()
@@ -134,7 +134,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if #oozesHitTable == expectedOozes then
 			warnOozesHit:Show(bossName, table.concat(oozesHitTable, ", "))
 		end
-		specWarnPurple:Show()
+		specWarnPurple:Show()--We warn here to make sure everyone is topped off and things like healing rain are not on ground.
 	elseif args:IsSpellID(105027) and args:GetDestCreatureID() == 55312 then--Blue
 		table.insert(oozesHitTable, L.Blue)
 		if #oozesHitTable == expectedOozes then
