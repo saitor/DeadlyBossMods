@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(325, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7243 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7246 $"):sub(12, -3))
 mod:SetCreatureID(55312)
 mod:SetModelID(39101)
 mod:SetZone()
@@ -28,7 +28,7 @@ local warnDeepCorruption	= mod:NewSpellAnnounce(105171, 4)
 local specWarnOozes			= mod:NewSpecialWarningSpell("ej3978")
 local specWarnVoidBolt		= mod:NewSpecialWarningStack(108383, mod:IsTank(), 3)
 local specWarnManaVoid		= mod:NewSpecialWarningSpell(105530, mod:IsManaUser())
-local specWarnPurple		= mod:NewSpecialWarningSpell(105171, mod:IsTank() or mod:IsHealer())
+local specWarnPurple		= mod:NewSpecialWarningSpell(104896, mod:IsTank() or mod:IsHealer())
 
 local timerOozesCD			= mod:NewNextTimer(90, "ej3978")
 local timerOozesActive		= mod:NewTimer(7, "timerOozesActive", 16372) -- varies (7.0~8.5)
