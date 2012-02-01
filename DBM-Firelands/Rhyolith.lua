@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(193, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7245 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7250 $"):sub(12, -3))
 mod:SetCreatureID(52558)--or does 53772 die instead?didn't actually varify this fires right unit_died event yet so we'll see tonight
 mod:SetModelID(38414)
 mod:SetZone()
@@ -127,6 +127,10 @@ end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.yellPhase2 or msg:find(L.yellPhase2) then
+		StompCountown:Cancel()
+		timerFlameStomp:Cancel()
+		StompCountown:Start(6)
+		timerFlameStomp:Start(6)
 		warnPhase2:Show()
 		phase = 2
 	end
