@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("DSTrash", "DBM-DragonSoul")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7263 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7267 $"):sub(12, -3))
 mod:SetModelID(39378)
 
 mod:RegisterEvents(
@@ -61,8 +61,8 @@ function mod:SPELL_CAST_START(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlag, spellId)
-	if spellId == 105579 and destName == UnitName("player") and GetTime() - antiSpam >= 3 then
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if spellID == 105579 and destGUID == UnitGUID("player") and GetTime() - antiSpam >= 3 then
 		specWarnFlames:Show()
 		antiSpam = GetTime()
 	end
