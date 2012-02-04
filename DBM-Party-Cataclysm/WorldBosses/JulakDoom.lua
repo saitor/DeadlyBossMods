@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("JulakDoom", "DBM-Party-Cataclysm", 15)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6515 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7268 $"):sub(12, -3))
 mod:SetCreatureID(50089)
 mod:SetModelID(24301)
 mod:SetUsedIcons(8, 7)
@@ -77,12 +77,10 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(args)
-	if args:IsSpellID(93612) and args:IsPlayer() and GetTime() - lastBreath > 3 then
-		if args:IsPlayer() and GetTime() - lastBreath > 3  then
-			specWarnBreath:Show()
-			lastBreath = GetTime()
-		end
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlag, spellId)
+	if spellId == 93612 and destName == UnitName("player") and GetTime() - lastBreath > 3 then
+		specWarnBreath:Show()
+		lastBreath = GetTime()
 	end
 end
 mod.SPELL_MISSED = mod.SPELL_DAMAGE

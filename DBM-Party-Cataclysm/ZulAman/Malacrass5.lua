@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Malacrass5", "DBM-Party-Cataclysm", 10)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6706 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7268 $"):sub(12, -3))
 mod:SetCreatureID(24239)
 mod:SetModelID(22332)
 mod:SetZone()
@@ -104,14 +104,14 @@ end
 
 do 
 	local lastSIS = 0--Last S.I.S. (Stand in shit)
-	function mod:SPELL_PERIODIC_DAMAGE(args)
-		if args:IsSpellID(43429) and args:IsPlayer() and GetTime() - lastSIS > 3 then	--Paladin (Consecration)
+	function mod:SPELL_PERIODIC_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlag, spellId)
+		if spellId == 43429 and destName == UnitName("player") and GetTime() - lastSIS > 3 then	--Paladin (Consecration)
 			specWarnConsecration:Show()
 			lastSIS = GetTime()
-		elseif args:IsSpellID(43440) and args:IsPlayer() and GetTime() - lastSIS > 3 then	--Warlock(Rain of Fire)
+		elseif spellId == 43440 and destName == UnitName("player") and GetTime() - lastSIS > 3 then	--Warlock(Rain of Fire)
 			specWarnRainofFire:Show()
 			lastSIS = GetTime()
-		elseif args:IsSpellID(61603) and args:IsPlayer() and GetTime() - lastSIS > 3 then	--Death Knight(Death and Decay)
+		elseif spellId == 61603 and destName == UnitName("player") and GetTime() - lastSIS > 3 then	--Death Knight(Death and Decay)
 			specWarnDeathNDecay:Show()
 			lastSIS = GetTime()
 		end

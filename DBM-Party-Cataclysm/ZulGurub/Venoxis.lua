@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Venoxis", "DBM-Party-Cataclysm", 11)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6706 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7268 $"):sub(12, -3))
 mod:SetCreatureID(52155)
 mod:SetModelID(37788)
 mod:SetZone()
@@ -110,11 +110,11 @@ function mod:SPELL_CAST_START(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(args)
-	if args:IsSpellID(97338) and GetTime() - spamEffusion >= 3 and args:IsPlayer() then
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlag, spellId)
+	if spellId == 97338 and GetTime() - spamEffusion >= 3 and destName == UnitName("player") then
 		specWarnEffusion:Show()
 		spamEffusion = GetTime()
-	elseif args:IsSpellID(97089) and GetTime() - spamPool >= 3 and args:IsPlayer() then
+	elseif spellId == 97089 and GetTime() - spamPool >= 3 and destName == UnitName("player") then
 		specWarnPoolAcridTears:Show()
 		spamPool = GetTime()
 	end
