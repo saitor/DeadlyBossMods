@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(311, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7267 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7283 $"):sub(12, -3))
 mod:SetCreatureID(55265)
 mod:SetModelID(39094)
 mod:SetZone()
@@ -66,7 +66,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
+	if self.Options.RangeFrame and not self:IsDifficulty("lfr25") then
 		DBM.RangeCheck:Hide()
 	end
 end
@@ -91,7 +91,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerStomp:Start(19)
 		timerCrystal:Start(26)
 		timerVortexNext:Start()
-		if self.Options.RangeFrame then
+		if self.Options.RangeFrame and not self:IsDifficulty("lfr25") then
 			DBM.RangeCheck:Hide()
 		end
 		if self:IsDifficulty("heroic10", "heroic25") then
@@ -184,7 +184,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerKohcromCD:Cancel()
 		warnVortex:Show()
 		specwarnVortex:Show()
-		if self.Options.RangeFrame then
+		if self.Options.RangeFrame and not self:IsDifficulty("lfr25") then
 			DBM.RangeCheck:Show(5)
 		end
 	end

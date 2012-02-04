@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(317, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7234 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7283 $"):sub(12, -3))
 mod:SetCreatureID(55689)
 mod:SetModelID(39318)
 mod:SetZone()
@@ -90,13 +90,13 @@ function mod:OnCombatStart(delay)
 	timerSpecialCD:Start(30-delay)
 	SpecialCountdown:Start(30-delay)
 	berserkTimer:Start(-delay)
-	if self.Options.RangeFrame then
+	if self.Options.RangeFrame and not self:IsDifficulty("lfr25") then
 		DBM.RangeCheck:Show(3)
 	end
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
+	if self.Options.RangeFrame and not self:IsDifficulty("lfr25") then
 		DBM.RangeCheck:Hide()
 	end
 end
@@ -197,7 +197,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerAssaultCD:Start()
 		timerLightningStormCD:Start()
 		SpecialCountdown:Start(62)
-		if self.Options.RangeFrame then
+		if self.Options.RangeFrame and not self:IsDifficulty("lfr25") then
 			DBM.RangeCheck:Show(3)
 		end
 	elseif args:IsSpellID(105409, 109560, 109561, 109562) then--Water Shield
@@ -210,7 +210,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerAssaultCD:Start()
 		timerTempestCD:Start()
 		SpecialCountdown:Start(62)
-		if self.Options.RangeFrame then
+		if self.Options.RangeFrame and not self:IsDifficulty("lfr25") then
 			DBM.RangeCheck:Show(3)
 		end
 	elseif args:IsSpellID(105311) then--Frost defeated.
@@ -234,7 +234,7 @@ function mod:SPELL_CAST_START(args)
 		warnTempest:Show()
 		specWarnTempest:Show()
 		timerIceWave:Start()
-		if self.Options.RangeFrame then
+		if self.Options.RangeFrame and not self:IsDifficulty("lfr25") then
 			DBM.RangeCheck:Hide()
 		end
 	elseif args:IsSpellID(105409, 109560, 109561, 109562) then--Water Shield
@@ -247,7 +247,7 @@ function mod:SPELL_CAST_START(args)
 		timerIceLanceCD:Cancel()
 		warnLightningStorm:Show()
 		specWarnLightingStorm:Show()
-		if self.Options.RangeFrame then
+		if self.Options.RangeFrame and not self:IsDifficulty("lfr25") then
 			DBM.RangeCheck:Show(10)
 		end
 	elseif args:IsSpellID(105289, 108567, 110887, 110888) then
