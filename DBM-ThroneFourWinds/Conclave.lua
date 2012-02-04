@@ -2,7 +2,7 @@
 local mod	= DBM:NewMod("Conclave", "DBM-ThroneFourWinds")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7269 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7276 $"):sub(12, -3))
 mod:SetCreatureID(45870, 45871, 45872)
 mod:SetModelID(35232)
 mod:SetZone()
@@ -137,7 +137,7 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(args)
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
 	if (spellId == 86111 or spellId == 93129 or spellId == 93130 or spellId == 93131) and destGUID == UnitGUID("player") and GetTime() - iceSpam >= 3 then
 		iceSpam = GetTime()
 		specWarnIcePatch:Show()

@@ -2,7 +2,7 @@
 local mod	= DBM:NewMod("AlAkir", "DBM-ThroneFourWinds")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7274 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7276 $"):sub(12, -3))
 mod:SetCreatureID(46753)
 mod:SetModelID(35248)
 mod:SetZone()
@@ -178,7 +178,7 @@ function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, 
 end
 mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
-function mod:SPELL_PERIODIC_DAMAGE(args)
+function mod:SPELL_PERIODIC_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
 	if (spellId == 91020 or spellId == 93258 or spellId == 93259 or spellId == 93260) and GetTime() - spamIce >= 4 and destGUID == UnitGUID("player") then
 		specWarnIceStorm:Show()
 		spamIce = GetTime()
