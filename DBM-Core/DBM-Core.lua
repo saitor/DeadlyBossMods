@@ -42,7 +42,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7279 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7280 $"):sub(12, -3)),
 	DisplayVersion = "4.10.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 7028 -- the revision of the latest stable version that is available
 }
@@ -389,6 +389,7 @@ do
 		SWING_DAMAGE = true,
 		SWING_MISSED = true,
 		SPELL_DAMAGE = true,
+		SPELL_BUILDING_DAMAGE = true,
 		SPELL_MISSED = true,
 		RANGE_DAMAGE = true,
 		RANGE_MISSED = true,
