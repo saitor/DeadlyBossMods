@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7267 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7273 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -189,7 +189,7 @@ end
 
 --Damage event that indicates an ooze is taking damage
 --we check its GUID to see if it's a resurrected ooze and if so remove it from table.
-function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlag)
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags)
 	if oozeGUIDS[sourceGUID] and self:GetCIDFromGUID(sourceGUID) == 53889 then--It is an ooze that died earlier. We check source instead of dest, cause then we detect all oozes once they attack someone, vs only oozes that get attacked (and missing untanked oozes)
 		oozeGUIDS[sourceGUID] = nil --Remove it
 		residueCount = residueCount - 1 --Reduce count

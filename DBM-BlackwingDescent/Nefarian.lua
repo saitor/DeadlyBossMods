@@ -2,7 +2,7 @@
 local mod	= DBM:NewMod("Nefarian", "DBM-BlackwingDescent")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7271 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7273 $"):sub(12, -3))
 mod:SetCreatureID(41376, 41270)
 mod:SetModelID(32716)
 mod:SetZone()
@@ -25,6 +25,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_SUCCESS",
 	"SPELL_DAMAGE",
+	"SPELL_MISSED",
 	"SWING_DAMAGE",
 	"CHAT_MSG_MONSTER_YELL",
 	"RAID_BOSS_EMOTE",
@@ -286,6 +287,7 @@ function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, 
 		end
 	end
 end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 function mod:SWING_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags)
 	if self:GetCIDFromGUID(destGUID) == 41918 and bit.band(sourceFlags, COMBATLOG_OBJECT_TYPE_PLAYER) ~= 0 and self:IsInCombat() then
