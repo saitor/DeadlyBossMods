@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7267 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7288 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetMainBossID(56427)
 mod:SetModelID(39399)
@@ -267,9 +267,11 @@ function mod:RAID_BOSS_EMOTE(msg)
 	elseif msg == L.DeckFire or msg:find(L.DeckFire) then
 		specWarnDeckFireCast:Show()
 	elseif msg == L.GorionaRetreat or msg:find(L.GorionaRetreat) then
-		timerTwilightBreath:Cancel()
-		timerConsumingShroud:Cancel()
-		timerTwilightFlamesCD:Cancel()
+		self:Schdule(1.5, function()
+			timerTwilightBreath:Cancel()
+			timerConsumingShroud:Cancel()
+			timerTwilightFlamesCD:Cancel()
+		end)
 	end
 end
 
