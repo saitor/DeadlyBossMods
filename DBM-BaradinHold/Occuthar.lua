@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(140, "DBM-BaradinHold", nil, 74)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7266 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7285 $"):sub(12, -3))
 mod:SetCreatureID(52363)
 mod:SetModelID(37876)
 mod:SetZone()
@@ -49,7 +49,7 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpellID(96913, 101007) then
 		warnSearingShadows:Show()
 		timerSearingShadows:Start()
-		specWarnSearingShadows:Schedule(3.2) -- Tank switch after spell happened (could be done on SPELL_AURA_APPLIED as well, but then a spam function is needed in case more ppl get hit)
+		specWarnSearingShadows:Schedule(3.2)
 	end
 end
 
