@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7288 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7291 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -57,7 +57,6 @@ local gripTargets = {}
 local gripIcon = 6
 local corruptionActive = {}
 local residueCount = 0
-local resurrectedOozeTime = 0
 local diedOozeGUIDS = {}
 local resurrectedOozeTime = {}
 
