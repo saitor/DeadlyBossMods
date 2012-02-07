@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(318, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7291 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7306 $"):sub(12, -3))
 mod:SetCreatureID(53879)
 mod:SetModelID(35268)
 mod:SetZone()
@@ -80,7 +80,7 @@ end
 
 local function warningResidue()
 	warnResidue:Cancel()
-	if residueCount > 4 and residueCount < 16 then -- announce 9 stacks (ready to eat blood!), sometimes it can be missing 2~3 stacks, announce to 15 stacks.
+	if residueCount > 2 and residueCount < 16 then -- announce 9 stacks (ready to eat blood!), sometimes it can be missing 2~3 stacks, announce to 15 stacks.
 		warnResidue:Schedule(1.25, residueCount)
 	end
 end
