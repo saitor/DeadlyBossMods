@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Tonks", "DBM-WorldEvents", 2)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7295 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7309 $"):sub(12, -3))
 mod:SetZone()
 
 mod:RegisterEvents(
@@ -53,5 +53,6 @@ end
 function mod:UNIT_EXITED_VEHICLE(uId)
 	if uId == "player" then 
 		timerGame:Cancel()
+		countdownGame:Cancel()
 	end
 end
