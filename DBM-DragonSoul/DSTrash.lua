@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("DSTrash", "DBM-DragonSoul")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7315 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7317 $"):sub(12, -3))
 mod:SetModelID(39378)
 
 mod:RegisterEvents(
@@ -117,7 +117,7 @@ function mod:OnSync(msg)
 	if msg == "Skyrim" then
 		drakesCount = 15--Reset drakes here too soo they stay accurate after wipes.
 		timerDrakes:Start(231, GetSpellInfo(109904))
-	elseif msg == "EoEPortal" then
+	elseif msg == "EoEPortal" and timerEoE:GetTime() == 0 then--Why this starts more then once is beyond me, hopefully this fixes it.
 		timerEoE:Start()
 	end
 end
