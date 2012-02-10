@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("DSTrash", "DBM-DragonSoul")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7327 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7332 $"):sub(12, -3))
 mod:SetModelID(39378)
 mod:SetZone()
 
@@ -86,6 +86,9 @@ function mod:UNIT_DIED(args)
 	-- http://www.wowhead.com/search?q=twilight+assaulter
 	if cid == 56249 or cid == 56250 or cid == 56251 or cid == 56252 or cid == 57281 or cid == 57795 then
 		drakesCount = drakesCount - 1
+		if drakesCount >= 0 then
+			warnDrakesLeft:Show(drakesCount)
+		end
 		warnDrakesLeft:Show(drakesCount)
 		if drakesCount == 0 then
 			self:SendSync("SkyrimEnded")
