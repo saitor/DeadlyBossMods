@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(333, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7331 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7336 $"):sub(12, -3))
 mod:SetCreatureID(56173)
 mod:SetModelID(40087)
 mod:SetZone()
@@ -43,7 +43,7 @@ local specWarnFragments			= mod:NewSpecialWarningSpell("ej4115", mod:IsDps())--N
 local specWarnTerror			= mod:NewSpecialWarningSpell("ej4117")--Same as fragments.
 local specWarnShrapnel			= mod:NewSpecialWarningYou(109598)
 local specWarnParasite			= mod:NewSpecialWarningYou(108649)
-local specWarnParasiteDPS		= mod:NewSpecialWarningSwitch("ej4347", mod:IsDps(), 108649)
+local specWarnParasiteDPS		= mod:NewSpecialWarningSwitch("ej4347", mod:IsDps())
 local yellParasite				= mod:NewYell(108649)
 --local specWarnCongealingBlood	= mod:NewSpecialWarningSwitch("ej4350", mod:IsDps())--15%, 10%, 5% on heroic. spellid is 109089.
 
