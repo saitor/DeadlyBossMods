@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(311, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7335 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7337 $"):sub(12, -3))
 mod:SetCreatureID(55265)
 mod:SetModelID(39094)
 mod:SetZone()
@@ -183,7 +183,7 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(103821, 110045, 110046, 110047) and GetTime() - antiSpam > 3 then
-		antiSpam = GetTIme()
+		antiSpam = GetTime()
 		crystalCount = 0
 		timerStomp:Cancel()
 		timerCrystal:Cancel()
