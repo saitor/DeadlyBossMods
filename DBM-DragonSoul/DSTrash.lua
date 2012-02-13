@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("DSTrash", "DBM-DragonSoul")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7347 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7348 $"):sub(12, -3))
 mod:SetModelID(39378)
 mod:SetZone()
 
@@ -84,7 +84,7 @@ mod.SPELL_MISSED = mod.SPELL_DAMAGE
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
 	-- drake seems to have 4 cids only. (56249, 56250, 56251, 56252)
-	-- but sometimes UNIT_DIED not fires on drake dies. Because of this bug, drake warning is not perfect and count is incorrect. (koKR only?)
+	-- but sometimes UNIT_DIED not fires on drake dies (especially in LFR). Because of this bug, drake warning is not perfect and count is incorrect. (koKR only?)
 	-- So currently, this stuff is partly broken.
 	if cid == 56249 or cid == 56250 or cid == 56251 or cid == 56252 or cid == 57281 or cid == 57795 then
 		drakesCount = drakesCount - 1
