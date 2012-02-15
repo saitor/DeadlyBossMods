@@ -1,13 +1,14 @@
 local mod	= DBM:NewMod("DSTrash", "DBM-DragonSoul")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7350 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7351 $"):sub(12, -3))
 mod:SetModelID(39378)
 mod:SetZone()
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_DAMAGE",
+	"SWING_DAMAGE",
 	"SPELL_MISSED",
 	"UNIT_DIED",
 	"CHAT_MSG_MONSTER_YELL",
