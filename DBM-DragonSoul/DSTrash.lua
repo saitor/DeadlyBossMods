@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("DSTrash", "DBM-DragonSoul")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7354 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7355 $"):sub(12, -3))
 mod:SetModelID(39378)
 mod:SetZone()
 
@@ -96,7 +96,7 @@ function mod:SWING_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, 
 		self:SendSync("DrakeDied", destGUID)
 	end
 end
-mod.RANGE_DAMAGE = mod.SWING_DAMAGE
+--mod.RANGE_DAMAGE = mod.SWING_DAMAGE
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
