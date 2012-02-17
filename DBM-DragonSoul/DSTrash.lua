@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("DSTrash", "DBM-DragonSoul")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7362 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7363 $"):sub(12, -3))
 mod:SetModelID(39378)
 mod:SetZone()
 
@@ -137,7 +137,6 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 				"UNIT_DIED"
 			)
 			drakeRunning = true
-			print ("event registered")
 		end
 		table.wipe(drakeguid)
 		drakesCount = 15--Reset drakes here still in case no one running current dbm is targeting thrall
