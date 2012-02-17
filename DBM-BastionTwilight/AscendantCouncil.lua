@@ -2,7 +2,7 @@
 local mod	= DBM:NewMod("AscendantCouncil", "DBM-BastionTwilight")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 6711 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7366 $"):sub(12, -3))
 mod:SetCreatureID(43686, 43687, 43688, 43689, 43735)
 mod:SetModelID(34822)
 mod:SetZone()
@@ -248,6 +248,7 @@ do
 end
 
 function mod:OnCombatStart(delay)
+	DBM:GetModByName("BoTrash"):SetFlamestrike(true)
 	updateBossFrame(1)
 	table.wipe(frozenTargets)
 	table.wipe(lightningRodTargets)
