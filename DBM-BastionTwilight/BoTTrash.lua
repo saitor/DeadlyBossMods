@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BoTrash", "DBM-BastionTwilight")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7366 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7370 $"):sub(12, -3))
 mod:SetModelID(37193)
 
 mod:RegisterEvents(
@@ -35,7 +35,7 @@ function mod:SetFlamestrike(CouncilPull)
 		flamestrikeRunning = false
 	end
 	if not flamestrikeRunning and not CouncilPull then
-		self:RegisterEventsShortTerm(
+		self:RegisterShortTermEvents(
 			"SPELL_DAMAGE",
 			"SPELL_MISSED"
 		)

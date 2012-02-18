@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("DSTrash", "DBM-DragonSoul")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7365 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7370 $"):sub(12, -3))
 mod:SetModelID(39378)
 mod:SetZone()
 
@@ -128,7 +128,7 @@ end
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.UltraxionTrash or msg:find(L.UltraxionTrash) then
 		if not drakeRunning then
-			self:RegisterEventsShortTerm(
+			self:RegisterShortTermEvents(
 				"SPELL_DAMAGE",
 				"SPELL_MISSED",
 				"SWING_DAMAGE",
@@ -167,7 +167,7 @@ end
 function mod:OnSync(msg, GUID)
 	if msg == "Skyrim" then
 		if not drakeRunning then
-			self:RegisterEventsShortTerm(
+			self:RegisterShortTermEvents(
 				"SPELL_DAMAGE",
 				"SPELL_MISSED",
 				"SWING_DAMAGE",
