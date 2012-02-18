@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(333, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7372 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7373 $"):sub(12, -3))
 mod:SetCreatureID(56173)
 mod:SetModelID(40087)
 mod:SetZone()
@@ -274,9 +274,11 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, spellName)
 		warnPhase2:Show()
 		timerFragmentsCD:Start(11)
 		timerTerrorCD:Start(36)
-		self:RegisterShortTermEvents(
-			"UNIT_HEALTH_FREQUENT"
-		)
+		if self:IsDifficulty("heroic10", "heroic25") then--Only register on heroic, we don't need on normal.
+			self:RegisterShortTermEvents(
+				"UNIT_HEALTH_FREQUENT"
+			)
+		end
 	elseif spellName == GetSpellInfo(109568) then--Summon Impaling Tentacle (Fragments summon)
 		warnFragments:Show()
 		specWarnFragments:Show()
