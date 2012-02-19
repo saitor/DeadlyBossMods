@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(333, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7376 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7377 $"):sub(12, -3))
 mod:SetCreatureID(56173)
 mod:SetModelID(40087)
 mod:SetZone()
@@ -185,6 +185,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerHemorrhageCD:Cancel()--Does this one cancel in event you super overgear this and stomp his ass this fast?
 		timerCataclysm:Cancel()
 		timerCataclysmCD:Cancel()
+		if self:IsDifficulty("heroic10", "heroic25") then
+			timerParasiteCD:Cancel()
+		end
 	elseif args:IsSpellID(106400) then
 		warnImpale:Show(args.destName)
 		timerImpale:Start(args.destName)
