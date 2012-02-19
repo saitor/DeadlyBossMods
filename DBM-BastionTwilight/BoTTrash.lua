@@ -1,8 +1,9 @@
 local mod	= DBM:NewMod("BoTrash", "DBM-BastionTwilight")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7370 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7387 $"):sub(12, -3))
 mod:SetModelID(37193)
+mod:SetZone()
 
 mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS",
