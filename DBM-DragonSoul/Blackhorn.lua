@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(332, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7385 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7389 $"):sub(12, -3))
 mod:SetCreatureID(56598)--56427 is Boss, but engage trigger needs the ship which is 56598
 mod:SetMainBossID(56427)
 mod:SetModelID(39399)
@@ -201,7 +201,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				specWarnSunder:Show(args.amount)
 			end
 		else
-			if (args.amount or 1) >= 2 and not UnitDebuff("player", GetSpellInfo(108043)) then--Other tank has 2 or more sunders and you have none.
+			if (args.amount or 1) >= 2 and not UnitDebuff("player", GetSpellInfo(108043)) and not UnitIsDeadOrGhost("player") then--Other tank has 2 or more sunders and you have none.
 				specWarnSunderOther:Show(args.destName)--So nudge you to taunt it off other tank already.
 			end
 		end
