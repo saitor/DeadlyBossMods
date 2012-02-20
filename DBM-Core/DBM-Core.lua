@@ -42,7 +42,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7391 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7392 $"):sub(12, -3)),
 	DisplayVersion = "4.10.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 7325 -- the revision of the latest stable version that is available
 }
@@ -2478,6 +2478,9 @@ function DBM:EndCombat(mod, wipe)
 			for i, v in pairs(mod.combatInfo.killMobs) do
 				mod.combatInfo.killMobs[i] = true
 			end
+		end
+		if not savedDifficulty then -- prevent error when timer recovery function worked and etc (StartCombat not called)
+			savedDifficulty = ""
 		end
 		if wipe then
 			local thisTime = GetTime() - mod.combatInfo.pull

@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(196, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7386 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7392 $"):sub(12, -3))
 mod:SetCreatureID(53494)
 mod:SetModelID(38621)
 mod:SetZone()
@@ -206,7 +206,7 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId, spellName)
 	if spellId == 99353 then--Decimation Strike
 		strikeCount = strikeCount + 1
 		warnStrike:Show(spellName, strikeCount)
