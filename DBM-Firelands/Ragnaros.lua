@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(198, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7417 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7418 $"):sub(12, -3))
 mod:SetCreatureID(52409)
 mod:SetModelID(37875)
 mod:SetZone()
@@ -261,6 +261,9 @@ end
 function mod:TargetScanner(SpellID, Force)
 	scansDone = scansDone + 1
 	local targetname = self:GetBossTarget(52409)
+	-- This stuff still buggy. Sometimes targetname returns Unknown.
+	-- So, you can see this message "Unkown is not in your party."
+	-- I guess that this message caused by GetPartyAssignment function?
 	if targetname then--Better way to check if target exists and prevent nil errors at same time, without stopping scans from starting still. so even if target is nil, we stil do more checks instead of just blowing off a trap warning.
 		if isTank(targetname) and not Force then--He's targeting his highest threat target.
 			if scansDone < 12 then--Make sure no infinite loop.
