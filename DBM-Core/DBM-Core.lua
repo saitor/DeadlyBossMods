@@ -42,7 +42,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7423 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7424 $"):sub(12, -3)),
 	DisplayVersion = "4.10.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 7325 -- the revision of the latest stable version that is available
 }
@@ -2803,16 +2803,13 @@ local soundFiles = {
 
 function DBM:AprilFools()
 	DBM:Unschedule(DBM.AprilFools)
+	if IsInInstance() then return end--Don't play joke if you're raiding.
 	DBM:Schedule(900 + math.random(0, 600) , DBM.AprilFools)
-	if IsInInstance() then--Don't play joke if you're raiding.
-		DBM:Unschedule(DBM.AprilFools)--Unschedule/disable it even.
+	local x = math.random(1, #soundFiles)
+	if DBM.Options.UseMasterVolume then
+		PlaySoundFile(soundFiles[x], "Master")
 	else
-		local x = math.random(1, #soundFiles)
-		if DBM.Options.UseMasterVolume then
-			PlaySoundFile(soundFiles[x], "Master")
-		else
-			PlaySoundFile(soundFiles[x])
-		end
+		PlaySoundFile(soundFiles[x])
 	end
 end
 
