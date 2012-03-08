@@ -42,7 +42,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7440 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7441 $"):sub(12, -3)),
 	DisplayVersion = "4.10.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 7325 -- the revision of the latest stable version that is available
 }
@@ -3330,11 +3330,12 @@ function bossModPrototype:GetBossTarget(cid)
 	if name and realm then
 		name = name.."-"..realm
 	end
-	if DBM:GetRaidUnitId(name) ~= "none" then
+	--This apsolutely breaks on non human controled units (pets, bosses, mobs etc.) Find another way to filter unknown. Meteors, soothing breeze, etc, do target non players.
+--	if DBM:GetRaidUnitId(name) ~= "none" then
 		return name, uid	
-	else
-		return nil, nil
-	end
+--	else
+--		return nil, nil
+--	end
 end
 
 function bossModPrototype:GetThreatTarget(cid)
