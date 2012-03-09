@@ -42,7 +42,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7443 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7444 $"):sub(12, -3)),
 	DisplayVersion = "4.10.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 7325 -- the revision of the latest stable version that is available
 }
@@ -3399,9 +3399,9 @@ function bossModPrototype:LatencyCheck()
 end
 
 -- An anti spam function to throttle spammy events (e.g. SPELL_AURA_APPLIED on all group members)
--- @param id the id to distinguish different events (optional, only necessary if your mod keeps track of two different spam events at the same time)
 -- @param time the time to wait between two events (optional, default 2.5 seconds)
-function bossModPrototype:AntiSpam(id, time)
+-- @param id the id to distinguish different events (optional, only necessary if your mod keeps track of two different spam events at the same time)
+function bossModPrototype:AntiSpam(time, id)
 	if GetTime() - (id and (self["lastAntiSpam" .. tostring(id)] or 0) or self.lastAntiSpam or 0) > (time or 2.5) then
 		if id then
 			self["lastAntiSpam" .. tostring(id)] = GetTime()
