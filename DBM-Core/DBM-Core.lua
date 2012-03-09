@@ -42,7 +42,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7441 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7442 $"):sub(12, -3)),
 	DisplayVersion = "4.10.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 7325 -- the revision of the latest stable version that is available
 }
@@ -171,6 +171,7 @@ local loadModOptions
 local checkWipe
 local fireEvent
 local _, class = UnitClass("player")
+local lastCast = 0
 local LastZoneText = ""
 local LastZoneMapID = -1
 local queuedBattlefield = {}
@@ -3395,7 +3396,17 @@ function bossModPrototype:SetUsedIcons(...)
 end
 
 function bossModPrototype:LatencyCheck()
-	return select(4, GetNetStats()) < DBM.Options.LatencyThreshold--Uses new world ping in 4.0.6
+	return select(4, GetNetStats()) < DBM.Options.LatencyThreshold
+end
+
+--A universal anti spam function. This should avoid constantly having ot make them in so many individual mods, they can just call this instead.
+function bossModPrototype:AntiSpam()
+	if GetTime() - lastCast > 2.5 then
+		lastCast = GetTime()
+		return true
+	else
+		return false
+	end
 end
 
 local function getTalentpointsSpent(spellID)
