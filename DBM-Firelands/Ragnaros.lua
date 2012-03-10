@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(198, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7444 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7447 $"):sub(12, -3))
 mod:SetCreatureID(52409)
 mod:SetModelID(37875)
 mod:SetZone()
@@ -259,7 +259,7 @@ function mod:TargetScanner(SpellID, Force)
 	scansDone = scansDone + 1
 	local targetname, uId = self:GetBossTarget(52409)
 --	print(targetname, uId)
-	if targetname and uId then--Check if target exists.
+	if UnitExists(targetname) then--Check if target exists.
 		if isTank(uId) and not Force then--He's targeting his highest threat target.
 			if scansDone < 12 then--Make sure no infinite loop.
 				self:ScheduleMethod(0.025, "TargetScanner", SpellID)--Check multiple times to be sure it's not on something other then tank.

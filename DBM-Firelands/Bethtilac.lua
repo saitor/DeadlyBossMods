@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(192, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7445 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7447 $"):sub(12, -3))
 mod:SetCreatureID(52498)
 mod:SetModelID(38227)
 mod:SetZone()
@@ -96,7 +96,7 @@ function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(99052) then
 		smolderingCount = smolderingCount + 1
 		warnSmolderingDevastation:Show(smolderingCount)
-		if self:GetUnitCreatureId("target") == 52498 or self:GetBossTarget(52498) == UnitName("target") then--If spider is you're target or it's tank is, you're up top.
+		if self:GetUnitCreatureId("target") == 52498 or self:GetBossTarget(52498) == UnitName("player") then--If spider is you're target or it's tank is, you're up top.
 			specWarnSmolderingDevastation:Show()
 		end
 		timerSmolderingDevastation:Start()
