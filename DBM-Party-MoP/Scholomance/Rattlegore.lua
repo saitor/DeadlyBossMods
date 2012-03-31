@@ -1,9 +1,9 @@
 local mod	= DBM:NewMod("Rattlegore", "DBM-Party-MoP", 7)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7461 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7463 $"):sub(12, -3))
 --mod:SetCreatureID(54432)
---mod:SetModelID(38931)
+--mod:SetModelID(31092)
 mod:SetZone()
 
 --mod:RegisterCombat("combat")
