@@ -1,9 +1,9 @@
 local mod	= DBM:NewMod("Gadok", "DBM-Party-MoP", 4)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7461 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7464 $"):sub(12, -3))
 --mod:SetCreatureID(54432)
---mod:SetModelID(38931)
+--mod:SetModelID(37755)
 mod:SetZone()
 
 --mod:RegisterCombat("combat")

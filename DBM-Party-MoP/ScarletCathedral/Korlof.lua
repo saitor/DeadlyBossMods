@@ -1,9 +1,9 @@
 local mod	= DBM:NewMod("Korlof", "DBM-Party-MoP", 9)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7461 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7464 $"):sub(12, -3))
 --mod:SetCreatureID(59303)
---mod:SetModelID(34573)--Still need correct modelId, wowhead has no data on this guy yet
+--mod:SetModelID(41154)--Still need correct modelId, wowhead has no data on this guy yet
 
 --mod:RegisterCombat("combat")
 

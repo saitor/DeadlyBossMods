@@ -1,10 +1,10 @@
 local mod	= DBM:NewMod("Anger", "DBM-Party-MoP", 10)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7459 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7464 $"):sub(12, -3))
 --mod:SetCreatureID(50063)
---mod:SetModelID(34573)
---mod:SetZone(748, 720)--Kun-Lai Summit (zoneid not yet known)
+--mod:SetModelID(41148)
+--mod:SetZone(809)--Kun-Lai Summit (zoneid not yet known)
 
 mod:RegisterCombat("combat")
 

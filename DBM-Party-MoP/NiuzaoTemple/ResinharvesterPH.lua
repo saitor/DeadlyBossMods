@@ -1,9 +1,9 @@
 local mod	= DBM:NewMod("ResinharvesterPH", "DBM-Party-MoP", 6)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7461 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7464 $"):sub(12, -3))
 --mod:SetCreatureID(54432)
---mod:SetModelID(38931)
+--mod:SetModelID(27394)
 mod:SetZone()
 
 --mod:RegisterCombat("combat")
