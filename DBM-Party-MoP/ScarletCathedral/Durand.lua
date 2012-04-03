@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Durand", "DBM-Party-MoP", 9)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7473 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7477 $"):sub(12, -3))
 mod:SetCreatureID(60040)--3977 is High Inquisitor Whitemane and 60040 is Commander Durand, we don't really need to add her ID, because we don't ever engage her, and he true death is at same time as her.
 --mod:SetModelID(41220)--Still need correct modelId, wowhead has no data on this guy yet
 
@@ -65,5 +65,6 @@ function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, _, _, _, overk
 		end
 	end
 end
+mod.SWING_DAMAGE = mod.SPELL_DAMAGE
 mod.SPELL_PERIODIC_DAMAGE = mod.SPELL_DAMAGE
 mod.RANGE_DAMAGE = mod.SPELL_DAMAGE
