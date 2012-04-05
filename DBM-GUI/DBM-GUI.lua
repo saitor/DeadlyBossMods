@@ -38,7 +38,7 @@
 --
 --
 
-local revision =("$Revision: 7485 $"):sub(12, -3) 
+local revision =("$Revision: 7486 $"):sub(12, -3) 
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -1387,6 +1387,7 @@ local function CreateOptionsMenu()
 		local generalWhispersArea = generalWarningPanel:CreateArea(L.WhisperMessages, nil, 135, true)
 		generalWhispersArea:CreateCheckButton(L.AutoRespond, true, nil, "AutoRespond")
 		generalWhispersArea:CreateCheckButton(L.EnableStatus, true, nil, "StatusEnabled")
+		generalWhispersArea:CreateCheckButton(L.WhisperStats, true, nil, "WhisperStats")
 		generalCoreArea:AutoSetDimension()
 		generalMessagesArea:AutoSetDimension()
 		generalWhispersArea:AutoSetDimension()
