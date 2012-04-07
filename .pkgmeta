@@ -10,4 +10,5 @@ move-folders:
     DBM-Core/DBM-PvP: DBM-PvP
     DBM-Core/DBM-ThroneFourWinds: DBM-ThroneFourWinds
     DBM-Core/DBM-WorldEvents: DBM-WorldEvents
+    DBM-Core/DBM-Party-MoP: DBM-Party-MoP
     DBM-Core/DBM-Core: DBM-Core
