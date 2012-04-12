@@ -1,7 +1,7 @@
-local mod	= DBM:NewMod("Fear", "DBM-Party-MoP", 10)
+local mod	= DBM:NewMod("Salyis", "DBM-Party-MoP", 10)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7463 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7499 $"):sub(12, -3))
 --mod:SetCreatureID(50063)
 --mod:SetModelID(41772)
 --mod:SetZone(858)--Dread Wastes (zoneid not yet known)
