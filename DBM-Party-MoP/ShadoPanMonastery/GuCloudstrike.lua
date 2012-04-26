@@ -1,9 +1,9 @@
 local mod	= DBM:NewMod("GuCloudstrike", "DBM-Party-MoP", 3)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7509 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7510 $"):sub(12, -3))
 --mod:SetCreatureID(54432)
---mod:SetModelID(40339)
+--mod:SetModelID(39489)
 mod:SetZone()
 
 --mod:RegisterCombat("combat")
