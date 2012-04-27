@@ -1,7 +1,7 @@
-local mod	= DBM:NewMod("WeaponmasterXin", "DBM-Party-MoP", 5)
+local mod	= DBM:NewMod(698, "DBM-Party-MoP", 5, 321)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7510 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7511 $"):sub(12, -3))
 --mod:SetCreatureID(54432)
 --mod:SetModelID(41987)
 mod:SetZone()
