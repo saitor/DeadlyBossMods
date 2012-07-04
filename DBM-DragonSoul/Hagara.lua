@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(317, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7508 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7599 $"):sub(12, -3))
 mod:SetCreatureID(55689)
 mod:SetModelID(39318)
 mod:SetModelSound("sound\\CREATURE\\HAGARA\\VO_DS_HAGARA_INTRO_01.OGG", "sound\\CREATURE\\HAGARA\\VO_DS_HAGARA_CRYSTALDEAD_05.OGG")
@@ -32,7 +32,7 @@ local warnPillars			= mod:NewAnnounce("WarnPillars", 2, 105311)
 
 local specWarnAssault		= mod:NewSpecialWarningSpell(107851, mod:IsTank())
 local specWarnShattering	= mod:NewSpecialWarningYou(105289, false)
-local specWarnIceLance		= mod:NewSpecialWarningStack(107061, nil, 3)
+local specWarnIceLance		= mod:NewSpecialWarningStack(105316, nil, 3)
 local specWarnFrostTombCast	= mod:NewSpecialWarningSpell(104448, nil, nil, nil, true)
 local specWarnTempest		= mod:NewSpecialWarningSpell(109552, nil, nil, nil, true)
 local specWarnLightingStorm	= mod:NewSpecialWarningSpell(105465, nil, nil, nil, true)

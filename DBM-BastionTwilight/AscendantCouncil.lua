@@ -2,7 +2,7 @@
 local mod	= DBM:NewMod("AscendantCouncil", "DBM-BastionTwilight")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7549 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7599 $"):sub(12, -3))
 mod:SetCreatureID(43686, 43687, 43688, 43689, 43735)
 mod:SetModelID(34822)
 mod:SetZone()
@@ -286,7 +286,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(82772, 92503, 92504, 92505) then--Some spellids drycoded
+	if args:IsSpellID(82772, 92503, 92504, 92505) then
 		frozenCount = frozenCount + 1
 		frozenTargets[#frozenTargets + 1] = args.destName
 		self:Unschedule(showFrozenWarning)
@@ -405,7 +405,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REFRESH(args)--We do not combine refresh with applied cause it causes issues with burning blood/heart of ice.
-	if args:IsSpellID(82772, 92503, 92504, 92505) then--Some spellids drycoded
+	if args:IsSpellID(82772, 92503, 92504, 92505) then
 		frozenCount = frozenCount + 1
 		frozenTargets[#frozenTargets + 1] = args.destName
 		self:Unschedule(showFrozenWarning)
