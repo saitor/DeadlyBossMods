@@ -2,7 +2,7 @@
 local mod	= DBM:NewMod("Maloriak", "DBM-BlackwingDescent")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7473 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7600 $"):sub(12, -3))
 mod:SetCreatureID(41378)
 mod:SetModelID(33186)
 mod:SetZone()
@@ -55,7 +55,7 @@ local timerEngulfingDarknessCD	= mod:NewNextTimer(12, 92754, nil, mod:IsHealer()
 
 local specWarnBitingChill		= mod:NewSpecialWarningYou(77760)
 local specWarnConsumingFlames	= mod:NewSpecialWarningYou(77786)
-local specWarnSludge			= mod:NewSpecialWarningMove(92987)
+local specWarnSludge			= mod:NewSpecialWarningMove(92930)
 local specWarnArcaneStorm		= mod:NewSpecialWarningInterrupt(77896, false)
 local specWarnMagmaJets			= mod:NewSpecialWarningMove(78194, mod:IsTank())
 local specWarnEngulfingDarkness	= mod:NewSpecialWarningSpell(92754, mod:IsHealer() or mod:IsTank())--Heroic Ability
