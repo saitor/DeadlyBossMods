@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(192, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7448 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7607 $"):sub(12, -3))
 mod:SetCreatureID(52498)
 mod:SetModelID(38227)
 mod:SetZone()
@@ -26,7 +26,7 @@ local warnFixate					= mod:NewTargetAnnounce(99559, 4)--Heroic ability
 local specWarnFixate				= mod:NewSpecialWarningYou(99559)
 local specWarnTouchWidowKiss		= mod:NewSpecialWarningYou(99476)
 local specWarnSmolderingDevastation	= mod:NewSpecialWarningSpell(99052)
-local specWarnVolatilePoison		= mod:NewSpecialWarningMove(101133)--Heroic ability
+local specWarnVolatilePoison		= mod:NewSpecialWarningMove(99278)--Heroic ability
 local specWarnTouchWidowKissOther	= mod:NewSpecialWarningTarget(99476, mod:IsTank())
 
 local timerSpinners 				= mod:NewNextTimer(15, "ej2770", nil, nil, nil, 97370) -- 15secs after Smoldering cast start
