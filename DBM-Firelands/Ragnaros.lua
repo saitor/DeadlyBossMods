@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(198, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7607 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7609 $"):sub(12, -3))
 mod:SetCreatureID(52409)
 mod:SetModelID(37875)
 mod:SetZone()
@@ -42,6 +42,7 @@ mod:AddBoolOption("warnSeedsLand", false, "announce")
 local warnSplittingBlow		= mod:NewAnnounce("warnSplittingBlow", 3, 98951)
 local warnSonsLeft			= mod:NewAddsLeftAnnounce("ej2637", 2, 99014)
 local warnEngulfingFlame	= mod:NewAnnounce("warnEngulfingFlame", 4, 99171)
+mod:AddBoolOption("warnEngulfingFlameHeroic", false, "announce")
 local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3, 3)
 local warnBlazingHeat		= mod:NewTargetAnnounce(100460, 4)--Second transition adds ability.
 local warnLivingMeteorSoon	= mod:NewPreWarnAnnounce(99268, 10, 3)
