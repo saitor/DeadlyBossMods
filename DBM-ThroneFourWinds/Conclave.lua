@@ -2,7 +2,7 @@
 local mod	= DBM:NewMod("Conclave", "DBM-ThroneFourWinds")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7601 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7646 $"):sub(12, -3))
 mod:SetCreatureID(45870, 45871, 45872)
 mod:SetModelID(35232)
 mod:SetZone()
@@ -89,7 +89,6 @@ function mod:OnCombatStart(delay)
 	if self:GetUnitCreatureId("target") == 45871 or self:GetUnitCreatureId("focus") == 45871 or not self.Options.OnlyWarnforMyTarget then--Nezir
 		timerPermaFrostCD:Start(-delay)
 	end
-
 end
 
 function mod:BreezeTarget()
