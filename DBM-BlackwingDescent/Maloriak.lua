@@ -2,7 +2,7 @@
 local mod	= DBM:NewMod("Maloriak", "DBM-BlackwingDescent")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7600 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7654 $"):sub(12, -3))
 mod:SetCreatureID(41378)
 mod:SetModelID(33186)
 mod:SetZone()
@@ -29,7 +29,7 @@ local isDispeller = select(2, UnitClass("player")) == "MAGE"
 
 local warnPhase					= mod:NewAnnounce("WarnPhase", 2)
 local warnReleaseAdds			= mod:NewSpellAnnounce(77569, 3)
-local warnRemainingAdds			= mod:NewAnnounce("WarnRemainingAdds", 2, 77569)
+local warnRemainingAdds			= mod:NewAddsLeftAnnounce("ej2932", 2, 77569)
 local warnFlashFreeze			= mod:NewTargetAnnounce(77699, 4)
 local warnBitingChill			= mod:NewTargetAnnounce(77760, 3)
 local warnRemedy				= mod:NewSpellAnnounce(77912, 3)

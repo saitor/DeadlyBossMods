@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(193, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7607 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7654 $"):sub(12, -3))
 mod:SetCreatureID(52558)--or does 53772 die instead?didn't actually varify this fires right unit_died event yet so we'll see tonight
 mod:SetModelID(38414)
 mod:SetZone()
@@ -23,7 +23,7 @@ mod:RegisterEventsInCombat(
 
 local warnHeatedVolcano		= mod:NewSpellAnnounce(98493, 3)
 local warnFlameStomp		= mod:NewSpellAnnounce(97282, 3, nil, mod:IsMelee())--According to journal only hits players within 20 yards of him, so melee by default?
-local warnMoltenArmor		= mod:NewStackAnnounce(98255, 4, nil, mod:IsTank() or mod:IsHealer())	-- Would this be nice if we could show this in the infoFrame? (changed defaults to tanks/healers, if you aren't either it doesn't concern you unless you find shit to stand in)
+local warnMoltenArmor		= mod:NewStackAnnounce(98255, 4, nil, mod:IsTank() or mod:IsHealer())	-- Would this be nice if we could show this in the infoFrame? (changed defaults to tanks/healers, if you aren't either it doesn't concern you unless you find stuff to stand in)
 local warnDrinkMagma		= mod:NewSpellAnnounce(98034, 4)	-- if you "kite" him to close to magma
 local warnFragments			= mod:NewSpellAnnounce("ej2531", 2, 98136)
 local warnShard				= mod:NewCountAnnounce("ej2532", 3, 98552)
@@ -53,8 +53,8 @@ local prewarnedPhase2 = false
 function mod:OnCombatStart(delay)
 	timerFragmentCD:Start(-delay)
 	timerHeatedVolcano:Start(30-delay)
-	timerFlameStomp:Start(16-delay)--Actually found an old log, maybe this is right.
-	countdownStomp:Start(16-delay)--^^
+	timerFlameStomp:Start(16-delay)
+	countdownStomp:Start(16-delay)
 	if self:IsDifficulty("heroic10", "heroic25") then
 		timerSuperheated:Start(300-delay)--5 min on heroic
 	else
@@ -111,7 +111,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		if self:IsDifficulty("heroic10", "heroic25") then
 			timerHeatedVolcano:Start()
 		else
-			timerHeatedVolcano:Start(40)--40 seconds on normal post Aug 16th 2011 hotfix.
+			timerHeatedVolcano:Start(40)
 		end
 	elseif args:IsSpellID(97225) then
 		warnMagmaFlow:Show()
