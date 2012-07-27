@@ -1,7 +1,9 @@
 local mod	= DBM:NewMod(195, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
+local Riplimb	= EJ_GetSectionInfo(2581)
+local Rageface	= EJ_GetSectionInfo(2583)
 
-mod:SetRevision(("$Revision: 7607 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7664 $"):sub(12, -3))
 mod:SetCreatureID(53691)
 mod:SetModelID(38448)
 mod:SetZone()
@@ -25,8 +27,8 @@ mod:RegisterEventsInCombat(
 
 mod:SetBossHealthInfo(
 	53691,	L.name,
-	53694,	L.Riplimb,
-	53695,	L.Rageface
+	53694,	Riplimb,
+	53695,	Rageface
 )
 
 local warnFaceRage				= mod:NewTargetAnnounce(99947, 4)
