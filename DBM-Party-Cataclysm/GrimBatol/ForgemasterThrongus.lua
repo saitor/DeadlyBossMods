@@ -1,7 +1,7 @@
-local mod	= DBM:NewMod("ForgemasterThrongus", "DBM-Party-Cataclysm", 3)
+local mod	= DBM:NewMod(132, "DBM-Party-Cataclysm", 3, 71)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7445 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7663 $"):sub(12, -3))
 mod:SetCreatureID(40177)
 mod:SetModelID(33429)
 mod:SetZone()

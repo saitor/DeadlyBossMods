@@ -1,8 +1,7 @@
-﻿if tonumber((select(2, GetBuildInfo()))) < 13682 then return end
-local mod	= DBM:NewMod("Janalai5", "DBM-Party-Cataclysm", 10)
+﻿local mod	= DBM:NewMod(188, "DBM-Party-Cataclysm", 10, 77)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7445 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7663 $"):sub(12, -3))
 mod:SetCreatureID(23578)
 mod:SetModelID(21633)
 mod:SetZone()
