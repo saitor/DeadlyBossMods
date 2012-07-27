@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(333, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7625 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7657 $"):sub(12, -3))
 mod:SetCreatureID(56173)
 mod:SetModelID(40087)
 mod:SetModelSound("sound\\CREATURE\\Deathwing\\VO_DS_DEATHWING_MAELSTROMEVENT_01.OGG", "sound\\CREATURE\\Deathwing\\VO_DS_DEATHWING_MAELSTROMSPELL_04.OGG")
@@ -85,7 +85,7 @@ local firstAspect = true
 local engageCount = 0
 local shrapnelTargets = {}
 local warnedCount = 0
-local hemorrhage = GetSpellInfo(105863)
+local hemorrhage = EJ_GetSectionInfo(4108)
 local fragment = GetSpellInfo(106775)
 local activateTetanusTimers = false
 local parasite = EJ_GetSectionInfo(4347)
@@ -168,7 +168,7 @@ function mod:SPELL_CAST_START(args)
 			timerImpaleCD:Start(22)
 			timerElementiumBoltCD:Start(40.5)
 			if self:IsDifficulty("heroic10", "heroic25") then
-				timerHemorrhageCD:Start(55.5)--Appears to be 30 seconds earlier in heroic
+				timerHemorrhageCD:Start(55.5)
 				timerParasiteCD:Start(11)
 			else
 				timerHemorrhageCD:Start(85.5)
@@ -331,8 +331,7 @@ end
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, spellName, _, _, spellId)
 	if spellId == 110663 and self:AntiSpam(2, 3) then--Elementium Meteor Transform (apparently this doesn't fire UNIT_DIED anymore, need to use this alternate method)
 		self:SendSync("BoltDied")--Send sync because Elementium bolts do not have a bossN arg, which means event only fires if it's current target/focus.
-	end
-	if spellName == hemorrhage and self:AntiSpam(2, 2) then
+	elseif spellName == hemorrhage and self:AntiSpam(2, 2) then
 		warnHemorrhage:Show()
 		specWarnHemorrhage:Show()
 	elseif spellId == 105551 and self:AntiSpam(2, 2) then--Spawn Blistering Tentacles
