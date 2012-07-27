@@ -1,8 +1,7 @@
---local mod	= DBM:NewMod(157, "DBM-BastionTwilight", nil, 72)
-local mod	= DBM:NewMod("ValionaTheralion", "DBM-BastionTwilight")
+local mod	= DBM:NewMod(157, "DBM-BastionTwilight", nil, 72)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7599 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7661 $"):sub(12, -3))
 mod:SetCreatureID(45992, 45993)
 mod:SetModelID(34812)
 mod:SetZone()

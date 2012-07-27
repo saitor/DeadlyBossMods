@@ -1,8 +1,7 @@
---local mod	= DBM:NewMod(155, "DBM-ThroneFourWinds", nil, 75)
-local mod	= DBM:NewMod("AlAkir", "DBM-ThroneFourWinds")
+local mod	= DBM:NewMod(155, "DBM-ThroneFourWinds", nil, 75)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7601 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7661 $"):sub(12, -3))
 mod:SetCreatureID(46753)
 mod:SetModelID(35248)
 mod:SetZone()
