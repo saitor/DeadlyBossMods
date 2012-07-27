@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(333, "DBM-DragonSoul", nil, 187)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7657 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7658 $"):sub(12, -3))
 mod:SetCreatureID(56173)
 mod:SetModelID(40087)
 mod:SetModelSound("sound\\CREATURE\\Deathwing\\VO_DS_DEATHWING_MAELSTROMEVENT_01.OGG", "sound\\CREATURE\\Deathwing\\VO_DS_DEATHWING_MAELSTROMSPELL_04.OGG")
@@ -85,7 +85,7 @@ local firstAspect = true
 local engageCount = 0
 local shrapnelTargets = {}
 local warnedCount = 0
-local hemorrhage = EJ_GetSectionInfo(4108)
+local hemorrhage = GetSpellInfo(105863)
 local fragment = GetSpellInfo(106775)
 local activateTetanusTimers = false
 local parasite = EJ_GetSectionInfo(4347)
