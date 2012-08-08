@@ -42,7 +42,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7746 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7749 $"):sub(12, -3)),
 	DisplayVersion = "4.10.15 alpha", -- the string that is shown as version
 	ReleaseRevision = 7705 -- the revision of the latest stable version that is available
 }
@@ -1247,6 +1247,10 @@ do
 
 	function DBM:IsInRaid()
 		return inRaid
+	end
+
+	function DBM:GetGroupMembers()
+		return math.max(GetNumRaidMembers(), GetNumPartyMembers())
 	end
 
 	function DBM:GetRaidRank(name)
