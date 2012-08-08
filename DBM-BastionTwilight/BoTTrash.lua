@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BoTrash", "DBM-BastionTwilight")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7599 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7745 $"):sub(12, -3))
 mod:SetModelID(37193)
 mod:SetZone()
 
@@ -48,7 +48,7 @@ function mod:RuptureTarget(sGUID)
 	local targetname = nil
 	for i=1, GetNumRaidMembers() do
 		if UnitGUID("raid"..i.."target") == sGUID then
-			targetname = UnitName("raid"..i.."targettarget")
+			targetname = DBM:GetUnitFullName("raid"..i.."targettarget")
 			break
 		end
 	end
@@ -60,7 +60,7 @@ function mod:FlameStrikeTarget(sGUID)
 	local targetname = nil
 	for i=1, GetNumRaidMembers() do
 		if UnitGUID("raid"..i.."target") == sGUID then
-			targetname = UnitName("raid"..i.."targettarget")
+			targetname = DBM:GetUnitFullName("raid"..i.."targettarget")
 			break
 		end
 	end

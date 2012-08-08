@@ -42,7 +42,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7744 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7745 $"):sub(12, -3)),
 	DisplayVersion = "4.10.15 alpha", -- the string that is shown as version
 	ReleaseRevision = 7705 -- the revision of the latest stable version that is available
 }
@@ -1267,6 +1267,13 @@ do
 	function DBM:GetRaidUnitId(name)
 		name = name or UnitName("player")
 		return (raid[name] and raid[name].id) or "none"
+	end
+
+	function DBM:GetUnitFullName(uId)
+		uId = uId or "player"
+		local name, realm = UnitName(uId)
+		if realm then name = name.."-"..realm end
+		return name or "none"
 	end
 end
 
