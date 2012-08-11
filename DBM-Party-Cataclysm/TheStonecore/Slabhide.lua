@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(111, "DBM-Party-Cataclysm", 7, 67)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7663 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7759 $"):sub(12, -3))
 mod:SetCreatureID(43214)
 mod:SetModelID(36476)
 mod:SetZone()
@@ -21,7 +21,7 @@ local warnAirphase			= mod:NewAnnounce("WarnAirphase", 2, "Interface\\AddOns\\DB
 local warnFissure			= mod:NewSpellAnnounce(80803, 3)
 local warnCrystalStorm		= mod:NewSpellAnnounce(92265, 4)
 
-local specWarnEruption 		= mod:NewSpecialWarningMove(92658)
+local specWarnEruption 		= mod:NewSpecialWarningMove(80801)
 local specWarnCrystalStorm 	= mod:NewSpecialWarning("specWarnCrystalStorm")
 
 local timerFissureCD		= mod:NewCDTimer(6.2, 80803)
