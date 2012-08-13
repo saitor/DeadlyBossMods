@@ -42,7 +42,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7759 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7767 $"):sub(12, -3)),
 	DisplayVersion = "4.10.15 alpha", -- the string that is shown as version
 	ReleaseRevision = 7705 -- the revision of the latest stable version that is available
 }
@@ -1277,7 +1277,7 @@ do
 		uId = uId or "player"
 		local name, realm = UnitName(uId)
 		if realm then name = name.."-"..realm end
-		return name or "none"
+		return name
 	end
 end
 
