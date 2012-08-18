@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(167, "DBM-BastionTwilight", nil, 72)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7749 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7773 $"):sub(12, -3))
 mod:SetCreatureID(43324)
 mod:SetModelID(34576)
 mod:SetZone()
@@ -170,7 +170,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif args:IsSpellID(81194, 93264, 93265, 93266) then
 		warnFlamingDestruction:Show()
-		if self:GetUnitCreatureId("target") == 43324 or self:GetBossTarget(43324) == self:GetUnitFullName("target") then--Add tank doesn't need this spam, just tank on chogal and healers healing that tank.
+		if self:GetUnitCreatureId("target") == 43324 or self:GetBossTarget(43324) == DBM:GetUnitFullName("target") then--Add tank doesn't need this spam, just tank on chogal and healers healing that tank.
 			specwarnFlamingDestruction:Show()
 		end
 		timerFlamingDestruction:Start()

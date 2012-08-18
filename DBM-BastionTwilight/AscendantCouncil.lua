@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(158, "DBM-BastionTwilight", nil, 72)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7759 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7773 $"):sub(12, -3))
 mod:SetCreatureID(43686, 43687, 43688, 43689, 43735)
 mod:SetModelID(34822)
 mod:SetZone()
@@ -339,7 +339,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			self:Schedule(0.3, showLightningRodWarning)
 		end
 	elseif args:IsSpellID(82777) then
-		if self:GetUnitCreatureId("target") == 43686 or self:GetBossTarget(43686) == self:GetUnitFullName("target") then--Warn if the boss casting it is your target, OR your target is the person its being cast on.
+		if self:GetUnitCreatureId("target") == 43686 or self:GetBossTarget(43686) == DBM:GetUnitFullName("target") then--Warn if the boss casting it is your target, OR your target is the person its being cast on.
 			warnFlameTorrent:Show()
 		end
 	elseif args:IsSpellID(82631, 92512, 92513, 92514) then--Aegis of Flame
