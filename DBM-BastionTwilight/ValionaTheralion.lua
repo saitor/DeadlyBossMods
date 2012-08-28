@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(157, "DBM-BastionTwilight", nil, 72)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7779 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7780 $"):sub(12, -3))
 mod:SetCreatureID(45992, 45993)
 mod:SetModelID(34812)
 mod:SetZone()
@@ -339,8 +339,8 @@ function mod:SPELL_CAST_START(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(args)
-	if (args.spellId == 86505 or args.spellId == 92907 or args.spellId == 92908 or args.spellId == 92909) and args.destGUID == UnitGUID("player") and GetTime() - lastFab > 3 then
+function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
+	if (spellId == 86505 or spellId == 92907 or spellId == 92908 or spellId == 92909) and destGUID == UnitGUID("player") and GetTime() - lastFab > 3 then
 		specWarnFabulousFlames:Show()
 		lastFab = GetTime()
 	end
