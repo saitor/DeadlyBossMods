@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(172, "DBM-BlackwingDescent", nil, 73)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7745 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7779 $"):sub(12, -3))
 mod:SetCreatureID(43296)
 mod:SetModelID(33308)
 mod:SetZone()
@@ -97,7 +97,6 @@ function mod:OnCombatStart(delay)
 	timerBreakCD:Start(4.5-delay)
 	prewarnedPhase2 = false
 	botOffline = false
-	slimeIcon = 8
 	massacreCast = 0
 	phase2 = false
 	table.wipe(slimeTargets)

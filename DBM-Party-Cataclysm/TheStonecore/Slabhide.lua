@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(111, "DBM-Party-Cataclysm", 7, 67)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7759 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7779 $"):sub(12, -3))
 mod:SetCreatureID(43214)
 mod:SetModelID(36476)
 mod:SetZone()
@@ -44,7 +44,6 @@ function mod:airphase()
 end
 
 function mod:OnCombatStart(delay)
-	spamEruption = 0
 --	timerFissureCD:Start(-delay)
 	timerAirphase:Start(12.5-delay)
 	self:ScheduleMethod(12.5-delay, "airphase")

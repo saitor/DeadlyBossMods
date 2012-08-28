@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BoTrash", "DBM-BastionTwilight")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7749 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7779 $"):sub(12, -3))
 mod:SetModelID(37193)
 mod:SetZone()
 
@@ -88,7 +88,8 @@ end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(80652) then
-		timerFrostWhirl:Cancel()
+		-- FIXME: the timer object below doesn't exist... should it?
+--		timerFrostWhirl:Cancel()
 	elseif args:IsSpellID(87903) then--I will have to log this trash to verify this spell event.
 		timerVolcanicWrath:Cancel()
 	end

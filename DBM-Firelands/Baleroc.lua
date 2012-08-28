@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(196, "DBM-Firelands", nil, 78)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7759 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7779 $"):sub(12, -3))
 mod:SetCreatureID(53494)
 mod:SetModelID(38621)
 mod:SetZone()
@@ -226,7 +226,7 @@ function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, 
 				lastStrikeDiff = lastStrikeDiff - 6
 				timerStrikeCD:Start(6-lastStrikeDiff, spellName)
 			elseif lastStrikeDiff < 6 then
-				lastDiff = 6 - lastStrikeDiff
+				lastStrikeDiff = 6 - lastStrikeDiff
 				timerStrikeCD:Start(6+lastStrikeDiff, spellName)
 			end
 		end
