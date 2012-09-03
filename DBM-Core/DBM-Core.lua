@@ -42,7 +42,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7820 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7821 $"):sub(12, -3)),
 	DisplayVersion = "5.0.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 7811 -- the revision of the latest stable version that is available
 }
@@ -161,6 +161,7 @@ DBM_OPTION_SPACER = newproxy(false)
 --------------
 --  Locals  --
 --------------
+local _ --prevent taint issue on glyph window.
 local inCombat = {}
 local combatInfo = {}
 local updateFunctions = {}
