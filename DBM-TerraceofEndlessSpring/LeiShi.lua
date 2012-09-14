@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(729, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7834 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7839 $"):sub(12, -3))
 mod:SetCreatureID(62983)--62995 Animated Protector
 mod:SetModelID(42811)
 
@@ -31,11 +31,14 @@ local timerSpecialCD					= mod:NewTimer(22, "timerSpecialCD", 123250)--Not even 
 local timerSpray						= mod:NewTargetTimer(10, 123121, nil, mod:IsTank() or mod:IsHealer())
 local timerGetAway						= mod:NewBuffActiveTimer(30, 123461)
 
+local berserkTimer						= mod:NewBerserkTimer(600)
+
 local hideActive = false
 
 function mod:OnCombatStart(delay)
 	hideActive = false
 	timerSpecialCD:Start(52-delay)--the ONLY timer that ever seems to be right, is FIRST special.
+	berserkTimer:Start(-delay)
 end
 
 function mod:OnCombatEnd()
