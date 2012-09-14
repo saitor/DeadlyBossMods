@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(729, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7839 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7841 $"):sub(12, -3))
 mod:SetCreatureID(62983)--62995 Animated Protector
 mod:SetModelID(42811)
 
@@ -49,6 +49,11 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(123250) then
 		warnProtect:Show()
 		specWarnAnimatedProtector:Show()
+	elseif args:IsSpellID(123505) then
+--[[Adds need super fancy icons for their spawns using this data.
+"<84.9> [CLEU] SPELL_AURA_APPLIED#false#0xF130F61300000686#Animated Protector#2632#0#0xF130F61300000686#Animated Protector#2632#0#123505#Protect#8#BUFF", -- [14636]
+"<84.9> [CLEU] SPELL_AURA_APPLIED#false#0xF130F61300000687#Animated Protector#2632#0#0xF130F61300000687#Animated Protector#2632#0#123505#Protect#8#BUFF", -- [14637]
+"<84.9> [CLEU] SPELL_AURA_APPLIED#false#0xF130F61300000679#Animated Protector#2632#0#0xF130F61300000679#Animated Protector#2632#0#123505#Protect#8#BUFF", -- [14638]--]]
 	elseif args:IsSpellID(123461) then
 		warnGetAway:Show()
 		specWarnGetAway:Show()
