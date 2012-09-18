@@ -1,13 +1,13 @@
 local mod	= DBM:NewMod("TheramoreFall", "DBM-Scenario-MoP", 1)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7856 $"):sub(12, -3))
-mod:SetCreatureID(65442)--Warlord Rok'nah
+mod:SetRevision(("$Revision: 7858 $"):sub(12, -3))
+mod:SetCreatureID(65442, 99999)--Warlord Rok'nah (Alliance), 
 --mod:SetModelID(43283)
 mod:SetZone()
 
 mod:RegisterCombat("combat")
---mod:RegisterKill("yell", L.Victory)--maybe not needed, if unit_died for 65442 fires
+mod:RegisterKill("yell", L.AllianceVictory, L.HordeVictory)--Required, leader dying doesn't trigger ending, leader AND all his adds do.
 mod:SetWipeTime(1200)--Lame hack, I need to write an exclusions function so i can set, on a mod level, what determines end combat, so at very least we can exclude combat_regen
 
 mod:RegisterEventsInCombat(
