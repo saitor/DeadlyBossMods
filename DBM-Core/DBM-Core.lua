@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7864 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7865 $"):sub(12, -3)),
 	DisplayVersion = "5.0.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 7846 -- the revision of the latest stable version that is available
 }
@@ -1687,7 +1687,7 @@ do
 		--Scenarios hack to start those mods up in the apsense of a good engage trigger that fires at right time (engage does fire, but BEFORE the zone change, lame)
 		if IsAddOnLoaded("DBM-Scenario-MoP") then
 			if LastZoneMapID == 906 or LastZoneMapID == 851 then--This one has two IDs, one for each faction
-				DBM:Schedule(4, DBM.StartCombat, DBM, DBM:GetModByName("TheramoreFall"), 0)
+				DBM:Schedule(6, DBM.StartCombat, DBM, DBM:GetModByName("TheramoreFall"), 0)
 			end
 		end
 		if select(2, IsInInstance()) == "pvp" and not DBM:GetModByName("AlteracValley") then
