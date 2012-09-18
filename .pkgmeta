@@ -10,3 +10,4 @@ move-folders:
     DBM-Core/DBM-PvP: DBM-PvP
     DBM-Core/DBM-WorldEvents: DBM-WorldEvents
     DBM-Core/DBM-Core: DBM-Core
+    DBM-Core/DBM-Scenario-MoP: DBM-Scenario-MoP
