@@ -1,14 +1,14 @@
 local mod	= DBM:NewMod("TheramoreFall", "DBM-Scenario-MoP")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7864 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7869 $"):sub(12, -3))
 mod:SetCreatureID(65442, 58840)--Warlord Rok'nah (Alliance), Hedric Evencane (Horde)
 --mod:SetModelID(43283)
 mod:SetZone()
 
 mod:RegisterCombat("combat")
-mod:RegisterKill("yell", L.AllianceVictory, L.HordeVictory)--Required, leader dying doesn't trigger ending, leader AND all his adds do.
-mod:SetWipeTime(1200)--Lame hack, I need to write an exclusions function so i can set, on a mod level, what determines end combat, so at very least we can exclude combat_regen
+mod:RegisterKill("say", L.AllianceVictory, L.HordeVictory)--Required, leader dying doesn't trigger ending, leader AND all his adds do.
+mod:SetWipeTime(1800)--Lame hack, I need to write an exclusions function so i can set, on a mod level, what determines end combat, so at very least we can exclude combat_regen
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED"
