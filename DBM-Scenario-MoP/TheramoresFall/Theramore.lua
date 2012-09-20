@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("TheramoreFall", "DBM-Scenario-MoP")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7869 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7870 $"):sub(12, -3))
 mod:SetCreatureID(65442, 58840)--Warlord Rok'nah (Alliance), Hedric Evencane (Horde)
 --mod:SetModelID(43283)
 mod:SetZone()
@@ -18,6 +18,8 @@ local warnWarEnginesSights		= mod:NewTargetAnnounce(114570, 4)
 
 local specWarnWarEnginesSights	= mod:NewSpecialWarningMove(114570)--Actually used by his trash, but in a speed run, you tend to pull it all together
 local yellWarEnginesSights		= mod:NewYell(114570)
+
+mod:RemoveOption("HealthFrame")
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(114570) then
