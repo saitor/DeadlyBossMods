@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 7871 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 7872 $"):sub(12, -3)),
 	DisplayVersion = "5.0.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 7846 -- the revision of the latest stable version that is available
 }
@@ -1201,13 +1201,13 @@ do
 	local inRaid = false
 	local playerRank = 0
 	
-	function DBM:GROUP_ROSTER_UPDATE()
+	local function updateAllRoster()
 		if IsInRaid() then
 			local playerWithHigherVersionPromoted = false
 			if not inRaid then
 				inRaid = true
 				sendSync("H")
-				self:Schedule(2, DBM.RequestTimers, DBM)
+				DBM:Schedule(2, DBM.RequestTimers, DBM)
 				fireEvent("raidJoin", UnitName("player"))
 			end
 			for i = 1, GetNumGroupMembers() do
@@ -1244,7 +1244,7 @@ do
 				-- joined a new party
 				inRaid = true
 				sendSync("H")
-				self:Schedule(2, DBM.RequestTimers, DBM)
+				DBM:Schedule(2, DBM.RequestTimers, DBM)
 				fireEvent("partyJoin", UnitName("player"))
 			end
 			for i = 0, GetNumSubgroupMembers() do
@@ -1287,6 +1287,10 @@ do
 			enableIcons = true
 			fireEvent("raidLeave", UnitName("player"))
 		end
+	end
+	
+	function DBM:GROUP_ROSTER_UPDATE()
+		self:Schedule(1.5, updateAllRoster)
 	end
 	
 	function DBM:IsInRaid()
