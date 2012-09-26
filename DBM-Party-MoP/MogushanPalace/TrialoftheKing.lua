@@ -1,18 +1,14 @@
 local mod	= DBM:NewMod(708, "DBM-Party-MoP", 5, 321)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7834 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7874 $"):sub(12, -3))
 mod:SetCreatureID(61442, 61444, 61445)--61442 (Kuai the Brute), 61453 (Mu'Shiba, Kuai's Add), 61444 (Ming the Cunning), 61445 (Haiyan the Unstoppable)
 mod:SetModelID(42060)	-- 42059=Ming the Cunning | 42058=Kuai the Brute | 42060=Haiyan the Unstoppable
 mod:SetZone()
 
 --http://www.wowpedia.org/Clan_Leaders_of_the_Mogu
---I do not know where that "pull" local came from, because it does not exist in my own logs nor this wiki.
---This wiki is ALL the lines in encounter. there is no universal pull string AT ALL. the only thing you can pull mod off of is whatever group aproaches first
-mod:RegisterCombat("yell", L.Kuai, L.Ming, L.Haiyan)--Pull boss off first group to aggro, whichever it may be.
+mod:RegisterCombat("yell", L.Pull)
 mod:RegisterKill("yell", L.Defeat)--Defeat off first line said after all are defeated.
---6/6 21:19:55.375  You are now saved to this instance
---6/6 21:19:58.324  Kuai the Brute yells: Who allowed these outsiders inside our halls? Only Clan Harthak or Clan Kargesh would stoop to such treachery!
 mod:SetWipeTime(30)--Based on data, phase transitions are 10-16 seconds, 20 should be enough, but can raise if needed.
 
 mod:RegisterEventsInCombat(
