@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(657, "DBM-Party-MoP", 3, 312)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7885 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7886 $"):sub(12, -3))
 mod:SetCreatureID(56541)
 mod:SetModelID(39887)
 mod:SetZone()
@@ -83,13 +83,13 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 end
 
 function mod:RAID_BOSS_WHISPER(msg)
-	if msg:find("spell:106774") then
+	if msg:find("spell:106774") then--May not be accurate at higher dps levels, this does NOT fire when event starts, it fires when a mob chooses you specificly for it's fixate, if 5th spawned mob chooses you, 1st mob could already be dead
 		self:SendSync("NovicesStart")
 	end
 end
 
 function mod:OnSync(msg)
-	if msg == "NovicesStart" then--Does this function fail to alert second healer if 2 different paladins are grabbed within < 2.5 seconds?
+	if msg == "NovicesStart" then
 		remainingNovice = 20
 		self:RegisterShortTermEvents(
 			"SPELL_DAMAGE",
