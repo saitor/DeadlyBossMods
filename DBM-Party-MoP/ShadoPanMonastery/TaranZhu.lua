@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(686, "DBM-Party-MoP", 3, 312)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7878 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7884 $"):sub(12, -3))
 mod:SetCreatureID(56884)
 mod:SetModelID(41121)
 mod:SetZone()
@@ -54,7 +54,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(115002) and self:AntiSpam(1, 2) then
+	if args:IsSpellID(115002) and self:AntiSpam(5, 2) then
 		warnGrippingHatred:Show()
 		specWarnGrippingHatred:Show()
 	end
