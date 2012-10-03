@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(679, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7834 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7891 $"):sub(12, -3))
 mod:SetCreatureID(60051, 60043, 59915, 60047)--Cobalt: 60051 Jade: 60043 Jasper: 59915
 mod:SetModelID(41892)
 mod:SetZone()
@@ -159,3 +159,12 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		timerPetrification:Start()
 	end
 end
+
+-- overload this to handle the 10-men version (which only has 3 of the bosses) properly
+function mod:GetHP()
+	-- shared health pool, we only need to find one of these mobs, reporting all of them would be pointless
+	local cobaltHp = self:GetBossHPString(60051)
+	local jadeHp = self:GetBossHPString(60043)
+	return cobaltHp ~= DBM_CORE_UNKNOWN and cobaltHp or jadeHp
+end
+
