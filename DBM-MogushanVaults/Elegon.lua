@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(726, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7897 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7899 $"):sub(12, -3))
 mod:SetCreatureID(60410)--Energy Charge (60913), Emphyreal Focus (60776), Cosmic Spark (62618), Celestial Protector (60793)
 mod:SetModelID(41399)
 mod:SetZone()
@@ -21,7 +21,7 @@ spellid = 116994 or spell = "Icy Touch"  and targetname = "Elegon" and sourcenam
 
 local warnPhase1					= mod:NewPhaseAnnounce(1, 2)--117727 Charge Vortex
 local warnBreath					= mod:NewSpellAnnounce(117960, 3)
-local warnProtector					= mod:NewSpellAnnounce(117954, 3)
+local warnProtector					= mod:NewCountAnnounce(117954, 3)
 local warnArcingEnergy				= mod:NewSpellAnnounce(117945, 2)--Cast randomly at 2 players, it is avoidable.
 local warnClosedCircuit				= mod:NewTargetAnnounce(117949, 3, nil, mod:IsHealer())--what happens if you fail to avoid the above
 local warnTotalAnnihilation			= mod:NewCastAnnounce(129711, 4)--Protector dying(exploding)
@@ -46,6 +46,7 @@ local timerArcingEnergyCD			= mod:NewCDTimer(11.5, 117945)
 local berserkTimer					= mod:NewBerserkTimer(570)
 
 local phase2Started = false
+local protectorCount = 0
 local closedCircuitTargets = {}
 
 local function warnClosedCircuitTargets()
@@ -54,6 +55,7 @@ local function warnClosedCircuitTargets()
 end
 
 function mod:OnCombatStart(delay)
+	protectorCount = 0
 	table.wipe(closedCircuitTargets)
 	timerBreathCD:Start(8-delay)
 	timerProtectorCD:Start(14-delay)
@@ -93,7 +95,8 @@ function mod:SPELL_CAST_START(args)
 		warnBreath:Show()
 		timerBreathCD:Start()
 	elseif args:IsSpellID(117954) then
-		warnProtector:Show()
+		protectorCount = protectorCount + 1
+		warnProtector:Show(protectorCount)
 		specWarnProtector:Show()
 		timerProtectorCD:Start()
 	elseif args:IsSpellID(117945) then
