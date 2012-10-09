@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(682, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7901 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7919 $"):sub(12, -3))
 mod:SetCreatureID(60143)
 mod:SetModelID(41256)
 mod:SetZone()
@@ -75,6 +75,7 @@ local function removeIcon(target)
 		if j == target then
 			table.remove(voodooDollTargetIcons, i)
 			mod:SetIcon(target, 0)
+			break
 		end
 	end
 end
@@ -188,7 +189,7 @@ function mod:OnSync(msg, guid)
 			end
 		end
 	elseif msg == "VoodooGoneTargets" and guids[guid] and self.Options.SetIconOnVoodoo then
-		removeIcon(guids[guid])
+		removeIcon(DBM:GetRaidUnitId(guids[guid]))
 	elseif msg == "SpiritualTargets" and guids[guid] then
 		spiritualInnervationTargets[#spiritualInnervationTargets + 1] = guids[guid]
 		self:Unschedule(warnSpiritualInnervationTargets)
