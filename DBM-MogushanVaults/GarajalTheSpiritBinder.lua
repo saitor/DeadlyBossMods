@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(682, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7919 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7921 $"):sub(12, -3))
 mod:SetCreatureID(60143)
 mod:SetModelID(41256)
 mod:SetZone()
@@ -45,7 +45,7 @@ local timerShadowyAttackCD			= mod:NewCDTimer(8, "ej6698", nil, nil, nil, 117222
 
 local berserkTimer					= mod:NewBerserkTimer(360)
 
-mod:AddBoolOption("SetIconOnVoodoo", false)
+mod:AddBoolOption("SetIconOnVoodoo", true)
 
 local voodooDollTargets = {}
 local spiritualInnervationTargets = {}
