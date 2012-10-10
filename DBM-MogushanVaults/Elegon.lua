@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(726, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7923 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7924 $"):sub(12, -3))
 mod:SetCreatureID(60410)--Energy Charge (60913), Emphyreal Focus (60776), Cosmic Spark (62618), Celestial Protector (60793)
 mod:SetModelID(41399)
 mod:SetZone()
@@ -34,7 +34,7 @@ local specWarnOvercharged			= mod:NewSpecialWarningStack(117878, nil, 6)
 local specWarnTotalAnnihilation		= mod:NewSpecialWarningSpell(129711, nil, nil, nil, true)
 local specWarnProtector				= mod:NewSpecialWarningSwitch("ej6178", mod:IsDps() or mod:IsTank())
 local specWarnClosedCircuit			= mod:NewSpecialWarningDispel(117949, false)--Probably a spammy mess if this hits a few at once. But here in case someone likes spam.
-local specWarnDrawPower				= mod:NewSpecialWarningStack(119387, nil, 1, nil, nil, true)
+local specWarnDrawPower				= mod:NewSpecialWarningStack(119387, nil, 1)
 local specWarnDespawnFloor			= mod:NewSpecialWarning("specWarnDespawnFloor", nil, nil, nil, true)
 local specWarnRadiatingEnergies		= mod:NewSpecialWarningSpell(118310, nil, nil, nil, true)
 
