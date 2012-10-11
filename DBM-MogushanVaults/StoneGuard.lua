@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(679, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7941 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7942 $"):sub(12, -3))
 mod:SetCreatureID(60051, 60043, 59915, 60047)--Cobalt: 60051, Jade: 60043, Jasper: 59915, Amethyst: 60047
 mod:SetModelID(41892)
 mod:SetZone()
@@ -303,21 +303,21 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		timerPetrification:Start()
 		if self.Options.InfoFrame then
 			DBM.InfoFrame:SetHeader(Cobalt)
-			DBM.InfoFrame:Show(1, "playerpower", 1, ALTERNATE_POWER_INDEX)
+			DBM.InfoFrame:Show(4, "enemypower", 1, nil)
 		end
 	elseif spellId == 116006 and self:AntiSpam(2, 2) then
 		activePetrification = "Jade"
 		timerPetrification:Start()
 		if self.Options.InfoFrame then
 			DBM.InfoFrame:SetHeader(Jade)
-			DBM.InfoFrame:Show(1, "playerpower", 1, ALTERNATE_POWER_INDEX)
+			DBM.InfoFrame:Show(4, "enemypower", 1, nil)
 		end
 	elseif spellId == 116036 and self:AntiSpam(2, 3) then
 		activePetrification = "Jasper"
 		timerPetrification:Start()
 		if self.Options.InfoFrame then
 			DBM.InfoFrame:SetHeader(Jasper)
-			DBM.InfoFrame:Show(1, "playerpower", 1, ALTERNATE_POWER_INDEX)
+			DBM.InfoFrame:Show(4, "enemypower", 1, nil)
 		end
 		if playerHasChains then
 			local uId = getBossuId(Jasper)
@@ -331,7 +331,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		timerPetrification:Start()
 		if self.Options.InfoFrame then
 			DBM.InfoFrame:SetHeader(Amethyst)
-			DBM.InfoFrame:Show(1, "playerpower", 1, ALTERNATE_POWER_INDEX)
+			DBM.InfoFrame:Show(4, "enemypower", 1, nil)
 		end
 	elseif spellId == 129424 and self:AntiSpam(2, 5) then
 		scansDone = 0
