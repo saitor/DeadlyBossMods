@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(679, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7940 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7941 $"):sub(12, -3))
 mod:SetCreatureID(60051, 60043, 59915, 60047)--Cobalt: 60051, Jade: 60043, Jasper: 59915, Amethyst: 60047
 mod:SetModelID(41892)
 mod:SetZone()
@@ -208,11 +208,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerJasperChainsCD:Start()
 		self:Unschedule(warnJasperChainsTargets)
 		self:Schedule(0.3, warnJasperChainsTargets)
-		if args:IsPlayer() then
-			playerHasChains = true
-			specWarnJasperChains:Show()
-			yellJasperChains:Yell()
-		end
 		if activePetrification ~= "Jasper" then
 			if self.Options.ArrowOnJasperChains and #jasperChainsTargets == 2 then
 				if jasperChainsTargets[1] == UnitName("player") then
@@ -220,6 +215,16 @@ function mod:SPELL_AURA_APPLIED(args)
 				elseif jasperChainsTargets[2] == UnitName("player") then
 					DBM.Arrow:ShowRunTo(jasperChainsTargets[1])
 				end
+			end
+		end
+		if args:IsPlayer() then
+			playerHasChains = true
+			specWarnJasperChains:Show()
+			yellJasperChains:Yell()
+			local uId = getBossuId(Jasper)
+			if uId and UnitPower(uId) <= 50 and activePetrification == "Jasper" then--Make sure his energy isn't already high, otherwise breaking chains when jasper will only be active for a few seconds is bad
+				specWarnBreakJasperChains:Show()
+				DBM.Arrow:Hide()
 			end
 		end
 	elseif args:IsSpellID(130774) and args:IsPlayer() then
