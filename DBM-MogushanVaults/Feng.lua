@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(689, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7936 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7937 $"):sub(12, -3))
 mod:SetCreatureID(60009)--60781 Soul Fragment
 mod:SetModelID(41192)
 mod:SetZone()
@@ -254,7 +254,7 @@ function mod:SPELL_AURA_REMOVED(args)
 	elseif args:IsSpellID(131792) then
 		timerShadowBurn:Cancel(args.destName)
 	elseif args:IsSpellID(118302) then
-		timerReversalLightningFists:Cancel(args.destName)
+		timerReversalLightningFists:Cancel()
 	elseif args:IsSpellID(116018) then
 		timerEpicenter:Cancel()--Epicenter can be removed by Lightning Fists (tank can steal). So added remove stuff.
 	elseif args:IsSpellID(116784) then
