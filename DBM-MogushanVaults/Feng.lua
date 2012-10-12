@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(689, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7937 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7944 $"):sub(12, -3))
 mod:SetCreatureID(60009)--60781 Soul Fragment
 mod:SetModelID(41192)
 mod:SetZone()
@@ -228,7 +228,7 @@ function mod:SPELL_AURA_APPLIED_DOSE(args)
 			end
 		end
 	elseif args:IsSpellID(131792) then
-		warnShadowBurn:Show(args.destName, 1)
+		warnShadowBurn:Show(args.destName, args.amount or 1)
 		timerShadowBurn:Start(args.destName)
 		timerShadowBurnCD:Start()
 		if args:IsPlayer() and (args.amount or 1) >= 3 then
