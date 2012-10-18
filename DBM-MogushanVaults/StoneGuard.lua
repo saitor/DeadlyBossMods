@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(679, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7943 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7964 $"):sub(12, -3))
 mod:SetCreatureID(60051, 60043, 59915, 60047)--Cobalt: 60051, Jade: 60043, Jasper: 59915, Amethyst: 60047
 mod:SetModelID(41892)
 mod:SetZone()
@@ -22,9 +22,9 @@ local warnJadeOverload				= mod:NewSpellAnnounce(115842, 4)
 local warnJasperOverload			= mod:NewSpellAnnounce(115843, 4)
 local warnAmethystOverload			= mod:NewSpellAnnounce(115844, 4)
 local warnCobaltMine				= mod:NewTargetAnnounce(129424, 4)
-local warnJadeShards				= mod:NewSpellAnnounce(116223, 3)
+local warnJadeShards				= mod:NewSpellAnnounce(116223, 3, nil, false)
 local warnJasperChains				= mod:NewTargetAnnounce(130395, 4)
-local warnAmethystPool				= mod:NewTargetAnnounce(130774, 3)
+local warnAmethystPool				= mod:NewTargetAnnounce(130774, 3, nil, false)
 
 local specWarnOverloadSoon			= mod:NewSpecialWarning("SpecWarnOverloadSoon", nil, nil, nil, true)
 local specWarnJasperChains			= mod:NewSpecialWarningYou(130395)
