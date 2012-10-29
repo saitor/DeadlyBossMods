@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(677, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7989 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7993 $"):sub(12, -3))
 mod:SetCreatureID(60399, 60400)--60396 (Rage), 60397 (Strength), 60398 (Courage), 60480 (Titan Spark), 60399 (Qin-xi), 60400 (Jan-xi)
 mod:SetModelID(41391)
 mod:SetZone()
@@ -170,9 +170,9 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		warnArcLeft:Show(comboCount)
 		if self.Options.ArrowOnCombo then
 			if self:IsTank() then--Assume tank is in front of the boss
-				DBM.Arrow:ShowStatic(240, 3)
-			else--Assume anyone else is behind the boss
 				DBM.Arrow:ShowStatic(90, 3)
+			else--Assume anyone else is behind the boss
+				DBM.Arrow:ShowStatic(270, 3)
 			end
 		end
 	elseif spellId == 116971 then--Arc Right
@@ -180,9 +180,9 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		warnArcRight:Show(comboCount)
 		if self.Options.ArrowOnCombo then
 			if self:IsTank() then--Assume tank is in front of the boss
-				DBM.Arrow:ShowStatic(90, 3)
+				DBM.Arrow:ShowStatic(270, 3)
 			else--Assume anyone else is behind the boss
-				DBM.Arrow:ShowStatic(240, 3)
+				DBM.Arrow:ShowStatic(90, 3)
 			end
 		end
 	elseif spellId == 116972 then--Arc Center
@@ -237,10 +237,11 @@ end--]]
 -- also timerComboCD is not be fixed. their mana increases 1 or 2 randomly every boss's melee attacks.
 -- 
 function mod:UNIT_POWER(uId)
-	if (self:GetUnitCreatureId(uId) == 60399 or self:GetUnitCreatureId(uId) == 60400) and UnitPower(uId) == 18 and not comboWarned then
+	if uId ~= "target" then return end
+	if UnitPower(uId) == 18 and not comboWarned then
 		comboWarned = true
 		specWarnCombo:Show()
-	elseif (self:GetUnitCreatureId(uId) == 60399 or self:GetUnitCreatureId(uId) == 60400) and UnitPower(uId) == 1 then
+	elseif UnitPower(uId) == 1 then
 		comboWarned = false
 		comboCount = 0
 --		timerComboCD:Start()
