@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(713, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7834 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 7998 $"):sub(12, -3))
 mod:SetCreatureID(63191)--Also has CID 62164. He has 2 CIDs for a single target, wtf? It seems 63191 is one players attack though so i'll try just it.
 mod:SetModelID(42368)
 mod:SetZone()
@@ -41,6 +41,8 @@ local timerMendLegCD			= mod:NewNextTimer(30, 123495)
 local timerFury					= mod:NewBuffActiveTimer(30, 122754)
 local timerPungency				= mod:NewBuffFadesTimer(120, 123081)
 
+local berserkTimer				= mod:NewBerserkTimer(360)
+
 --mod:AddBoolOption("InfoFrame", true)--Not sure how to do yet, i need to see 25 man first to get a real feel for number of people with debuff at once.
 mod:AddBoolOption("PheromonesIcon", true)
 
@@ -53,6 +55,7 @@ function mod:OnCombatStart(delay)
 	PeromonesIcon = 1
 	brokenLegs = 0
 	timerFuriousSwipeCD:Start(-delay)--8-11 sec on pull
+	berserkTimer:Start(-delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
