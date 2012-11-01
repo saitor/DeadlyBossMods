@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(713, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8004 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8006 $"):sub(12, -3))
 mod:SetCreatureID(63191)--Also has CID 62164. He has 2 CIDs for a single target, wtf? It seems 63191 is one players attack though so i'll try just it.
 mod:SetModelID(42368)
 mod:SetZone()
@@ -65,7 +65,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(122786) and args:GetDestCreatureID() == 63191 then--This one also hits both CIDs, so filter second one here as well.
 		madeUpNumber = madeUpNumber + 1
 		brokenLegs = (args.amount or 1)
-		warnBrokenLeg:Show(brokenLegs)
+		warnBrokenLeg:Show(args.destName, brokenLegs)
 		timerMendLegCD:Start(30, madeUpNumber)--using madeUpNumber jus to serve purpose of making each bar unique entire fight, legs die and rez all fight, there will be many mend leg Cd bars, often at once.
 	elseif args:IsSpellID(122835) then
 		warnPheromones:Show(args.destName)
