@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(679, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8008 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8009 $"):sub(12, -3))
 mod:SetCreatureID(60051, 60043, 59915, 60047)--Cobalt: 60051, Jade: 60043, Jasper: 59915, Amethyst: 60047
 mod:SetModelID(41892)
 mod:SetZone()
@@ -25,7 +25,7 @@ local warnCobaltMine				= mod:NewTargetAnnounce(129424, 4)
 local warnJadeShards				= mod:NewSpellAnnounce(116223, 3, nil, false)
 local warnJasperChains				= mod:NewTargetAnnounce(130395, 4)
 local warnAmethystPool				= mod:NewTargetAnnounce(130774, 3, nil, false)
-local warnPowerDown					= mod:NewSpellAnnounce(116529, 4)
+local warnPowerDown					= mod:NewSpellAnnounce(116529, 4, nil, not mod:IsTank())
 
 local specWarnOverloadSoon			= mod:NewSpecialWarning("SpecWarnOverloadSoon", nil, nil, nil, true)
 local specWarnJasperChains			= mod:NewSpecialWarningYou(130395)
@@ -36,7 +36,7 @@ local specWarnCobaltMineNear		= mod:NewSpecialWarningClose(129424)
 local yellCobaltMine				= mod:NewYell(129424)
 local specWarnAmethystPool			= mod:NewSpecialWarningMove(130774)
 local yellAmethystPool				= mod:NewYell(130774, nil, false)
-local specWarnPowerDown				= mod:NewSpecialWarningSpell(116529)
+local specWarnPowerDown				= mod:NewSpecialWarningSpell(116529, not mod:IsTank())
 
 local timerCobaltMineCD				= mod:NewNextTimer(10.5, 129424)--12-15second variations
 local timerPetrification			= mod:NewNextTimer(76, 125091)
