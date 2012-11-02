@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(741, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8017 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8020 $"):sub(12, -3))
 mod:SetCreatureID(62397)
 mod:SetModelID(42645)
 mod:SetZone()
@@ -248,7 +248,7 @@ function mod:SPELL_CAST_START(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(_, _, _, destName, destGUID, _, _, _, spellId)
+function mod:SPELL_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId)
 	if spellId == 131830 then
 		windBombTargets[#windBombTargets + 1] = destName
 		self:Unschedule(warnWindBombTargets)
