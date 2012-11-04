@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(737, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8033 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8034 $"):sub(12, -3))
 mod:SetCreatureID(62511)
 mod:SetModelID(43126)
 mod:SetZone()
@@ -55,6 +55,7 @@ local specwarnWillPower				= mod:NewSpecialWarning("specwarnWillPower")--Special
 local specwarnBurningAmber		= mod:NewSpecialWarningMove(122504)--Standing in a puddle
 --Amber Monstrosity
 local specwarnAmberMonstrosity	= mod:NewSpecialWarningSwitch("ej6254", not mod:IsHealer())
+local specwarnFling				= mod:NewSpecialWarningSpell(122413, mod:IsTank())
 local specwarnMassiveStomp		= mod:NewSpecialWarningSpell(122408, nil, nil, nil, true)
 
 --Boss
@@ -214,6 +215,7 @@ function mod:SPELL_CAST_START(args)
 		timerMassiveStompCD:Start()
 	elseif args:IsSpellID(122413) then
 		warnFling:Show()
+		specwarnFling:Show()
 		timerFlingCD:Start()
 	end
 end
