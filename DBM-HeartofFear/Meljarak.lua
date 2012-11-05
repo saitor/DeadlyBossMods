@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(741, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8036 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8049 $"):sub(12, -3))
 mod:SetCreatureID(62397)
 mod:SetModelID(42645)
 mod:SetZone()
@@ -113,6 +113,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(122224) and args.sourceName == UnitName("player") then
 --		warnImpalingSpear:Schedule(45)
+		countdownImpalingSpear:Cancel()
 		countdownImpalingSpear:Start()
 		timerImpalingSpear:Start(args.destName)
 	elseif args:IsSpellID(121881) then--Not a mistake, 121881 is targeting spellid.
