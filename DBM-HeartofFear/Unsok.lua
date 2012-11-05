@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(737, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8039 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8044 $"):sub(12, -3))
 mod:SetCreatureID(62511)
 mod:SetModelID(43126)
 mod:SetZone()
@@ -73,7 +73,7 @@ local timerMassiveStompCD		= mod:NewCDTimer(18, 122540)--18-25 seconds variation
 local timerFlingCD				= mod:NewCDTimer(25, 122413)--25-40sec variation.
 local timerAmberExplosionAMCD	= mod:NewTimer(49, "timerAmberExplosionAMCD", 122402)--Special timer just for amber monstrosity. easier to cancel, easier to tell apart. His bar is the MOST important and needs to be seperate from any other bar option.
 
-mod:AddBoolOption("InfoFrame", false)--Needs more work.
+mod:AddBoolOption("InfoFrame", true)
 
 local Phase = 1
 local Puddles = 0
