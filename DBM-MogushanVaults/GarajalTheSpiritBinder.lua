@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(682, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8027 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8043 $"):sub(12, -3))
 mod:SetCreatureID(60143)
 mod:SetModelID(41256)
 mod:SetZone()
@@ -196,7 +196,7 @@ function mod:OnSync(msg, guid)
 		warnTotem:Show(totemCount)
 		specWarnTotem:Show()
 		if self:IsDifficulty("normal25", "heroic25") then
-			timerTotemCD:Start(20-delay, totemCount+1)
+			timerTotemCD:Start(20, totemCount+1)
 		elseif self:IsDifficulty("lfr25") then
 			timerTotemCD:Start(30, totemCount+1)
 		else
