@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(713, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8036 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8059 $"):sub(12, -3))
 mod:SetCreatureID(63191)--Also has CID 62164. He has 2 CIDs for a single target, wtf? It seems 63191 is one players attack though so i'll try just it.
 mod:SetModelID(42368)
 mod:SetZone()
@@ -89,6 +89,8 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(123081) and args:IsPlayer() then
 		if self:IsDifficulty("normal25", "heroic25") then--Is it also 4 min on LFR?
 			timerPungency:Start(240)
+		elseif self:IsDifficulty("lfr25") then
+			timerPungency:Start(20)
 		else
 			timerPungency:Start()
 		end
