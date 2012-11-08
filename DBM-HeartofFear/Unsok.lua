@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(737, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8058 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8063 $"):sub(12, -3))
 mod:SetCreatureID(62511)
 mod:SetModelID(43126)
 mod:SetZone()
@@ -213,7 +213,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerMassiveStompCD:Cancel()
 		timerFlingCD:Cancel()
 		timerAmberExplosionAMCD:Cancel()
-		countdownAmberExplosionAM:Cancel()
+--		countdownAmberExplosionAM:Cancel()
 		warnAmberExplosionSoon:Cancel()
 		--He does NOT reset reshape live cd here, he finishes out last CD first, THEN starts using new one.
 	end
@@ -323,6 +323,6 @@ function mod:OnSync(msg, str, sender)
 	if msg == "InterruptAvailable" and guids[guid] and spellId then
 		canInterrupt[#canInterrupt + 1] = guids[guid]
 		self:Unschedule(warnAmberExplosionCast)
-		self:Schedule(0.3, warnAmberExplosionCast, spellId)
+		self:Schedule(0.5, warnAmberExplosionCast, spellId)
 	end
 end
