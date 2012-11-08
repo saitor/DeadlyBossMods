@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(726, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8026 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8064 $"):sub(12, -3))
 mod:SetCreatureID(60410)--Energy Charge (60913), Emphyreal Focus (60776), Cosmic Spark (62618), Celestial Protector (60793)
 mod:SetModelID(41399)
 mod:SetZone()
@@ -89,7 +89,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		focusActivated = 0
 		phase2Started = false
 		warnPhase3:Show()
-		specWarnDespawnFloor:Show()
 	elseif args:IsSpellID(117878) and args:IsPlayer() then
 		if (args.amount or 1) >= 6 and args.amount % 3 == 0 then--Warn every 3 stacks at 6 and above.
 			specWarnOvercharged:Show(args.amount)
@@ -127,6 +126,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		end
 		if focusActivated == 6 then
 			timerDespawnFloor:Start()
+			specWarnDespawnFloor:Show()
 		end
 	elseif args:IsSpellID(116989) then--Cast when defeated (or rathor 1 HP)
 		DBM.BossHealth:RemoveBoss(args.sourceGUID)

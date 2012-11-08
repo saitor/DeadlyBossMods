@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(677, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7993 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8064 $"):sub(12, -3))
 mod:SetCreatureID(60399, 60400)--60396 (Rage), 60397 (Strength), 60398 (Courage), 60480 (Titan Spark), 60399 (Qin-xi), 60400 (Jan-xi)
 mod:SetModelID(41391)
 mod:SetZone()
@@ -84,7 +84,6 @@ function mod:OnCombatStart(delay)
 	titanGasCast = 0
 	timerBossesActivates:Start(-delay)--Still start here to give perspective
 	timerCourageActivates:Start(75-delay)
-	timerTitanGasCD:Start(221-delay, 1)
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:SetHeader(focusedAssault)
 		DBM.InfoFrame:Show(10, "playerbaddebuff", 116525)
@@ -143,6 +142,9 @@ function mod:RAID_BOSS_EMOTE(msg)
 		warnBossesActivated:Schedule(10)
 		specWarnBossesActivated:Schedule(10)
 		timerBossesActivates:Update(99, 109)
+		if not self:IsDifficulty("heroic10", "heroic25") then
+			timerTitanGasCD:Start(123, 1)
+		end
 	elseif msg:find("spell:116779") then
 		timerCourageActivates:Start(105)--Resets timer
 		if self:IsDifficulty("heroic10", "heroic25") then--On heroic the boss activates this perminantly on pull and it's always present
