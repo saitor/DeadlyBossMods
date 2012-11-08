@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(679, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8009 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8069 $"):sub(12, -3))
 mod:SetCreatureID(60051, 60043, 59915, 60047)--Cobalt: 60051, Jade: 60043, Jasper: 59915, Amethyst: 60047
 mod:SetModelID(41892)
 mod:SetZone()
@@ -287,7 +287,7 @@ end
 
 function mod:OnSync(msg, boss)
 	-- if boss aprats from 10 yard and get Solid Stone, power no longer increase. If this, overlord not casts. So timer can be confusing. Disabled for find better way. 
-	if msg == "Overload" then
+	if msg == "Overload" and boss ~= activePetrification then
 		specWarnOverloadSoon:Show(Overload[boss])
 	end
 end
