@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(744, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8071 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8072 $"):sub(12, -3))
 mod:SetCreatureID(62543)
 mod:SetModelID(43141)
 mod:SetZone()
@@ -75,7 +75,9 @@ function mod:OnCombatStart(delay)
 	timerWindStepCD:Start(20.5-delay)
 	timerUnseenStrikeCD:Start(30.5-delay)
 	timerIntensifyCD:Start(intensifyCD-delay)
-	berserkTimer:Start(-delay)
+	if not self:IsDifficulty("lfr25") then
+		berserkTimer:Start(-delay)
+	end
 	if self:IsDifficulty("heroic10", "heroic25") then
 		timerBladeTempestCD:Start(-delay)
 	end
