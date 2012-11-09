@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(679, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8075 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8086 $"):sub(12, -3))
 mod:SetCreatureID(60051, 60043, 59915, 60047)--Cobalt: 60051, Jade: 60043, Jasper: 59915, Amethyst: 60047
 mod:SetModelID(41892)
 mod:SetZone()
@@ -249,21 +249,25 @@ function mod:SPELL_CAST_SUCCESS(args)
 		if activePetrification == "Cobalt" then
 			timerPetrification:Cancel()
 		end
+		activePetrification = nil
 	elseif args:IsSpellID(115842) then -- Jade
 		warnJadeOverload:Show()
 		if activePetrification == "Jade" then
 			timerPetrification:Cancel()
 		end
+		activePetrification = nil
 	elseif args:IsSpellID(115843) then -- Jasper
 		warnJasperOverload:Show()
 		if activePetrification == "Jasper" then
 			timerPetrification:Cancel()
 		end
+		activePetrification = nil
 	elseif args:IsSpellID(115844) then -- Amethyst
 		warnAmethystOverload:Show()
 		if activePetrification == "Amethyst" then
 			timerPetrification:Cancel()
 		end
+		activePetrification = nil
 	elseif args:IsSpellID(116223) then
 		warnJadeShards:Show()
 		timerJadeShardsCD:Start()
