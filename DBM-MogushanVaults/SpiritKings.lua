@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(687, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8010 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8077 $"):sub(12, -3))
 mod:SetCreatureID(60701, 60708, 60709, 60710)--Adds: 60731 Undying Shadow, 60958 Pinning Arrow
 mod:SetModelID(41813)
 mod:SetZone()
@@ -83,7 +83,7 @@ local timerDeliriousCD			= mod:NewCDTimer(20.5, 117837, nil, mod:CanRemoveEnrage
 --Qiang
 local timerAnnihilateCD			= mod:NewNextTimer(39, 117948)
 local timerFlankingOrdersCD		= mod:NewNextTimer(40, 117910)
-local timerImperviousShieldCD	= mod:NewCDTimer(40, 117961)
+local timerImperviousShieldCD	= mod:NewCDTimer(42, 117961)
 --Subetai
 local timerVolleyCD				= mod:NewNextTimer(41, 118094)
 local timerRainOfArrowsCD		= mod:NewNextTimer(41, 118122)
@@ -219,7 +219,7 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpellID(117961) then
 		warnImperviousShield:Show(args.sourceName)
 		specWarnImperviousShield:Show(args.sourceName)
---		timerImperviousShieldCD:Start()--Not yet known
+		timerImperviousShieldCD:Start()
 	end
 end
 
