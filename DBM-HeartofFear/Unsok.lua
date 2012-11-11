@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(737, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8090 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8091 $"):sub(12, -3))
 mod:SetCreatureID(62511)
 mod:SetModelID(43126)
 mod:SetZone()
@@ -203,9 +203,9 @@ function mod:SPELL_AURA_REMOVED(args)
 	elseif args:IsSpellID(122784) then
 		Constructs = Constructs - 1
 		if args:IsPlayer() then
+			countdownAmberExplosion:Cancel()
 			playerIsConstruct = false
 		end
-		countdownAmberExplosion:Cancel()
 		timerAmberExplosionCD:Cancel(args.destName)
 	elseif args:IsSpellID(121994) then
 		timerAmberScalpelCD:Start()

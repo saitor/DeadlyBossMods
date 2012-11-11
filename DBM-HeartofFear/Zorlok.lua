@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(745, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8090 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8091 $"):sub(12, -3))
 mod:SetCreatureID(62980)
 mod:SetModelID(42807)
 mod:SetZone()
@@ -71,7 +71,7 @@ function mod:OnCombatStart(delay)
 --	platform = 0
 	table.wipe(MCTargets)
 	berserkTimer:Start(-delay)
-	if self.Options.ArrowOnCombo then
+	if self.Options.ArrowOnAttenuation then
 		DBM.Arrow:Hide()
 	end
 end
