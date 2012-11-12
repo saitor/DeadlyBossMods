@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(737, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8101 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8102 $"):sub(12, -3))
 mod:SetCreatureID(62511)
 mod:SetModelID(43126)
 mod:SetZone()
@@ -40,7 +40,7 @@ local warnBurningAmber			= mod:NewCountAnnounce("ej6567", 2, nil, false)--Keep t
 --Amber Monstrosity
 local warnAmberCarapace			= mod:NewTargetAnnounce(122540, 4)--Monstrosity Shielding Boss (phase 2 start)
 local warnMassiveStomp			= mod:NewCastAnnounce(122408, 3)
-local warnAmberExplosionSoon	= mod:NewPreWarnAnnounce(122402, 10, 3)
+local warnAmberExplosionSoon	= mod:NewSoonAnnounce(122402, 3)
 local warnFling					= mod:NewSpellAnnounce(122413, 3)--think this always does his aggro target but not sure. If it does random targets it will need target scanning.
 local warnInterruptsAvailable	= mod:NewAnnounce("warnInterruptsAvailable", 1, 122398)
 
@@ -221,7 +221,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		specwarnAmberMonstrosity:Show()
 		timerMassiveStompCD:Start(20)
 		timerFlingCD:Start(33)
-		warnAmberExplosionSoon:Schedule(45.5)
+		warnAmberExplosionSoon:Schedule(50.5)
 		timerAmberExplosionAMCD:Start(55.5, amberExplosion, Monstrosity)
 	elseif args:IsSpellID(122395) and Phase < 3 then
 		warnStruggleForControl:Show(args.destName)
@@ -310,7 +310,7 @@ function mod:SPELL_CAST_START(args)
 			end
 		end
 		warnAmberExplosionSoon:Cancel()
-		warnAmberExplosionSoon:Schedule(39)
+		warnAmberExplosionSoon:Schedule(41)
 		timerAmberExplosionAMCD:Start(46, args.spellName, args.sourceName)
 	elseif args:IsSpellID(122408) then
 		warnMassiveStomp:Show()
