@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(726, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8092 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8097 $"):sub(12, -3))
 mod:SetCreatureID(60410)--Energy Charge (60913), Emphyreal Focus (60776), Cosmic Spark (62618), Celestial Protector (60793)
 mod:SetModelID(41399)
 mod:SetZone()
@@ -128,6 +128,10 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(116994) then--phase 3 end
 		warnPhase1:Show()
+	elseif args:IsSpellID(132226) then
+		if self.Options.SetIconOnDestabilized then
+			self:SetIcon(args.destName, 0)
+		end
 	end
 end
 
