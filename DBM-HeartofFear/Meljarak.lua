@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(741, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8093 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8100 $"):sub(12, -3))
 mod:SetCreatureID(62397)
 mod:SetModelID(42645)
 mod:SetZone()
@@ -59,7 +59,7 @@ local yellWindBomb						= mod:NewYell(131830)
 
 --local timerWhirlingBladeCD				= mod:NewCDTimer(30, 121896)--30~60 sec. very large variable. timer useless?
 local timerRainOfBladesCD				= mod:NewCDTimer(48, 122406)--48-64 sec variation now. so much for it being a precise timer.
-local timerRecklessness					= mod:NewBuffActiveTimer(30, 125873)
+local timerRecklessness					= mod:NewBuffActiveTimer(30, 125873)--Heroic recklessness
 local timerReinforcementsCD				= mod:NewNextCountTimer(50, "ej6554")--EJ says it's 45 seconds after adds die but it's actually 50 in logs. EJ is not updated for current tuning.
 local timerImpalingSpear				= mod:NewTargetTimer(50, 122224)--Filtered to only show your own target, may change to a popup option later that lets you pick whether you show ALL of them or your own (all will be spammy)
 local timerAmberPrisonCD				= mod:NewNextTimer(36, 121876)--each add has their own CD. This is on by default since it concerns everyone.
@@ -173,10 +173,10 @@ function mod:SPELL_CAST_START(args)
 		timerCorrosiveResinCD:Start(36, args.sourceGUID)
 	elseif args:IsSpellID(122193) then
 		warnMending:Show()
+		timerMendingCD:Start(36, args.sourceGUID)
 		if args.sourceGUID == UnitGUID("target") or args.sourceGUID == UnitGUID("focus") then
 			specWarnMending:Show(args.sourceName)
 		end
-		timerMendingCD:Start(36, args.sourceGUID)
 	elseif args:IsSpellID(122149) then
 		warnQuickening:Show()
 		specWarnQuickening:Show(args.sourceName)
