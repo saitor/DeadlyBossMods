@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(745, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8092 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8106 $"):sub(12, -3))
 mod:SetCreatureID(62980)
 mod:SetModelID(42807)
 mod:SetZone()
@@ -122,7 +122,6 @@ function mod:SPELL_CAST_START(args)
 		specwarnAttenuation:Show()
 		timerAttenuation:Start()
 	elseif args:IsSpellID(122713) then
-		specwarnForce:Show()
 		timerForce:Start()
 --[[	elseif args:IsSpellID(123791) and recentPlatformChange then--No one is in melee range of boss, he's aoeing. (i.e., he's arrived at new platform)
 		recentPlatformChange = false--we want to ignore when this happens as a result of players doing fight wrong. Only interested in platform changes.--]]
@@ -147,6 +146,7 @@ end
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	if spellId == 122933 and self:AntiSpam(2, 1) then--Clear Throat (4 seconds before force and verve)
 		warnForceandVerve:Show()
+		specwarnForce:Show()
 		timerForceCast:Start()
 	end
 end
