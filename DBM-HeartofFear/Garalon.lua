@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(713, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8072 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8109 $"):sub(12, -3))
 mod:SetCreatureID(63191)--Also has CID 62164. He has 2 CIDs for a single target, wtf? It seems 63191 is one players attack though so i'll try just it.
 mod:SetModelID(42368)
 mod:SetZone()
@@ -64,7 +64,11 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(122754) and args:GetDestCreatureID() == 63191 then--It applies to both creatureids, so we antispam it
 		warnFury:Show(args.destName, args.amount or 1)
-		timerFury:Start()
+		if self:IsDifficulty("lfr25") then
+			timerFury:Start(15)
+		else
+			timerFury:Start()
+		end
 	elseif args:IsSpellID(122786) and args:GetDestCreatureID() == 63191 then--This one also hits both the leg and the boss, so filter second one here as well.
 		-- this warn seems not works? needs review.
 		warnBrokenLeg:Show(args.destName, args.amount or 1)
