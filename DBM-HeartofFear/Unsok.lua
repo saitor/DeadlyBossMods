@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(737, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8113 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8114 $"):sub(12, -3))
 mod:SetCreatureID(62511)
 mod:SetModelID(43126)
 mod:SetZone()
@@ -163,9 +163,11 @@ function mod:OnCombatStart(delay)
 		--Now change all settings to make the nameplates while in constructs not terrible.
 		if Totems then
 			SetCVar("nameplateShowEnemyTotems", 0)
-		elseif Guardians then
+		end
+		if Guardians then
 			SetCVar("nameplateShowEnemyGuardians", 0)
-		elseif Pets then
+		end
+		if Pets then
 			SetCVar("nameplateShowEnemyPets", 0)
 		end
 		--Check for Tidy plates threat plates (it has additional options to even further hide worthless nameplates on unsok.
@@ -188,9 +190,11 @@ function mod:OnCombatEnd()
 		--if any of settings were on before pull, we put them back to way they were.
 		if Totems then
 			SetCVar("nameplateShowEnemyTotems", 1)
-		elseif Guardians then
+		end
+		if Guardians then
 			SetCVar("nameplateShowEnemyGuardians", 1)
-		elseif Pets then
+		end
+		if Pets then
 			SetCVar("nameplateShowEnemyPets", 1)
 		end
 		if IsAddOnLoaded("TidyPlates_ThreatPlates") then
