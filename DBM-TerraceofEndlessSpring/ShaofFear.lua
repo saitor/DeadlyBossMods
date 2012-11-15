@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(709, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8112 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8113 $"):sub(12, -3))
 mod:SetCreatureID(60999)--61042 Cheng Kang, 61046 Jinlun Kun, 61038 Yang Guoshi, 61034 Terror Spawn
 mod:SetModelID(41772)
 
@@ -81,16 +81,17 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnBreathOfFear:Show()
 		if not onPlatform then--not in middle, not your problem
 			specWarnBreathOfFear:Show()
+			timerBreathOfFearCD:Start()
+			countdownBreathOfFear:Start(33.3)
 		end
 		warnBreathOfFearSoon:Schedule(23.4)
-		timerBreathOfFearCD:Start()--we still start this for EVERYONE though because you can't blindly leave platform and walk into a breath cause you didn't know it was soon.
-		countdownBreathOfFear:Start(33.3)
 	elseif args:IsSpellID(129147) then
 		ominousCackleTargets[#ominousCackleTargets + 1] = args.destName
 		if args:IsPlayer() then
 			onPlatform = true
 			specWarnOminousCackleYou:Show()
---			countdownBreathOfFear:Cancel()--Maybe not cancel it though? for returns? not sure yet. i don't cancel timer
+			countdownBreathOfFear:Cancel()
+			timerBreathOfFearCD:Cancel()
 		end
 		self:Unschedule(warnOminousCackleTargets)
 		self:Schedule(2, warnOminousCackleTargets)--this actually staggers a bit, so wait the full 2 seconds to get em all in one table
