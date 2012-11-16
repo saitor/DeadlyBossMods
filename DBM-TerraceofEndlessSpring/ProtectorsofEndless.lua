@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(683, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8121 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8122 $"):sub(12, -3))
 mod:SetCreatureID(60585, 60586, 60583)--60583 Protector Kaolan, 60585 Elder Regail, 60586 Elder Asani
 mod:SetModelID(41503)--Protector Kaolan, 41502 and 41504 are elders
 mod:SetZone()
@@ -64,6 +64,8 @@ local timerDefiledGroundCD			= mod:NewNextTimer(15.5, 117986, nil, mod:IsMelee()
 local timerExpelCorruptionCD		= mod:NewNextTimer(38.5, 117975)--It's a next timer, except first cast. that one variates.
 
 local countdownExpelCorruption		= mod:NewCountdown(38.5, 117975)
+
+local berserkTimer					= mod:NewBerserkTimer(490)
 
 mod:AddBoolOption("RangeFrame")--For Lightning Prison
 mod:AddBoolOption("SetIconOnPrison", true)--For Lightning Prison (icons don't go out until it's DISPELLABLE, not when targetting is up).
