@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(687, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8081 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8129 $"):sub(12, -3))
 mod:SetCreatureID(60701, 60708, 60709, 60710)--Adds: 60731 Undying Shadow, 60958 Pinning Arrow
 mod:SetModelID(41813)
 mod:SetZone()
@@ -339,6 +339,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, boss)
 		timerFlankingOrdersCD:Start(25)
 		if self:IsDifficulty("heroic10", "heroic25") then
 			timerImperviousShieldCD:Start(40.7)
+			countdownImperviousShield:Cancel()--Fix a bug where sometimes the last pulls countdown not get canceled when you reset boss.
 			countdownImperviousShield:Start(40.7)
 		end
 	elseif boss == Subetai then
