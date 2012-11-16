@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(743, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8125 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8127 $"):sub(12, -3))
 mod:SetCreatureID(62837)--62847 Dissonance Field, 63591 Kor'thik Reaver, 63589 Set'thik Windblade
 mod:SetModelID(42730)
 mod:SetZone()
@@ -218,7 +218,9 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if (msg == L.YellPhase3 or msg:find(L.YellPhase3)) and not phase3Started then
 		phase3Started = true
 		self:UnregisterShortTermEvents()
-		DBM.RangeCheck:Hide()
+		if self.Options.RangeFrame then
+			DBM.RangeCheck:Hide()
+		end
 		timerPhase2:Cancel()
 		timerConsumingTerrorCD:Cancel()
 		timerScreechCD:Cancel()
