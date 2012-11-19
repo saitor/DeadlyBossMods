@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8136 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8137 $"):sub(12, -3)),
 	DisplayVersion = "5.0.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 8086 -- the revision of the latest stable version that is available
 }
@@ -723,7 +723,7 @@ do
 		
 		-- execute scheduled tasks
 		local nextTask = getMin()
-		while nextTask and nextTask.time <= time do
+		while nextTask and nextTask.func and nextTask.time <= time do
 			deleteMin()
 			nextTask.func(unpack(nextTask))
 			pushCachedTable(nextTask)

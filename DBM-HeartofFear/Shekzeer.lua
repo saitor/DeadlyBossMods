@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(743, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8127 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8137 $"):sub(12, -3))
 mod:SetCreatureID(62837)--62847 Dissonance Field, 63591 Kor'thik Reaver, 63589 Set'thik Windblade
 mod:SetModelID(42730)
 mod:SetZone()
@@ -176,8 +176,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(123735) then
 		warnScreech:Show()
 		timerScreechCD:Start()
-	elseif args:IsSpellID(124748) then
-		warnAmberTrap:Show(1)
 	elseif args:IsSpellID(125826) then
 		specwarnAmberTrap:Show()
 	elseif args:IsSpellID(124845) then
