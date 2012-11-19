@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(687, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8130 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8138 $"):sub(12, -3))
 mod:SetCreatureID(60701, 60708, 60709, 60710)--Adds: 60731 Undying Shadow, 60958 Pinning Arrow
 mod:SetModelID(41813)
 mod:SetZone()
@@ -127,6 +127,13 @@ function mod:OnCombatStart(delay)
 	table.wipe(pinnedTargets)
 	table.wipe(diedShadow)
 	berserkTimer:Start(-delay)
+	qiangActive = true
+	timerAnnihilateCD:Start(10.5)
+	timerFlankingOrdersCD:Start(25)
+	if self:IsDifficulty("heroic10", "heroic25") then
+		timerImperviousShieldCD:Start(40.7)
+		countdownImperviousShield:Start(40.7)
+	end
 end
 
 function mod:OnCombatEnd()
@@ -231,6 +238,7 @@ function mod:SPELL_CAST_START(args)
 		warnImperviousShield:Show(args.sourceName)
 		specWarnImperviousShield:Show(args.sourceName)
 		timerImperviousShieldCD:Start()
+		countdownImperviousShield:Cancel()
 		countdownImperviousShield:Start(42)
 	end
 end
@@ -336,15 +344,8 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, boss)
 		else
 			timerMaddeningShoutCD:Start(20.5)
 		end
-	elseif boss == Qiang then
-		qiangActive = true
-		timerAnnihilateCD:Start(10.5)
-		timerFlankingOrdersCD:Start(25)
-		if self:IsDifficulty("heroic10", "heroic25") then
-			timerImperviousShieldCD:Start(40.7)
-			countdownImperviousShield:Cancel()--Fix a bug where sometimes the last pulls countdown not get canceled when you reset boss.
-			countdownImperviousShield:Start(40.7)
-		end
+--	elseif boss == Qiang then
+
 	elseif boss == Subetai then
 		subetaiActive = true
 		timerVolleyCD:Start(5)
