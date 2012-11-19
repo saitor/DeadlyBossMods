@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(687, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8138 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8139 $"):sub(12, -3))
 mod:SetCreatureID(60701, 60708, 60709, 60710)--Adds: 60731 Undying Shadow, 60958 Pinning Arrow
 mod:SetModelID(41813)
 mod:SetZone()
@@ -119,15 +119,14 @@ local function warnPinnedDownTargets()
 end
 
 function mod:OnCombatStart(delay)
-	zianActive = false
-	mengActive = false
-	qiangActive = false
-	subetaiActive = false
 	table.wipe(bossesActivated)
 	table.wipe(pinnedTargets)
 	table.wipe(diedShadow)
-	berserkTimer:Start(-delay)
+	zianActive = false
+	mengActive = false
+	subetaiActive = false
 	qiangActive = true
+	berserkTimer:Start(-delay)
 	timerAnnihilateCD:Start(10.5)
 	timerFlankingOrdersCD:Start(25)
 	if self:IsDifficulty("heroic10", "heroic25") then
