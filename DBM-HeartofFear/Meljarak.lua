@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(741, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8142 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8144 $"):sub(12, -3))
 mod:SetCreatureID(62397)
 mod:SetModelID(42645)
 mod:SetZone()
@@ -110,7 +110,9 @@ function mod:OnCombatStart(delay)
 	table.wipe(windBombTargets)
 	--timerWhirlingBladeCD:Start(35.5-delay)
 	timerRainOfBladesCD:Start(60-delay)
-	berserkTimer:Start(-delay)
+	if not self:IsDifficulty("lfr25") then
+		berserkTimer:Start(-delay)
+	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
