@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(687, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8142 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8143 $"):sub(12, -3))
 mod:SetCreatureID(60701, 60708, 60709, 60710)--Adds: 60731 Undying Shadow, 60958 Pinning Arrow
 mod:SetModelID(41813)
 mod:SetZone()
@@ -32,7 +32,7 @@ local warnUndyingShadows		= mod:NewSpellAnnounce(117506, 3)--Target scanning?
 local warnFixate				= mod:NewTargetAnnounce(118303, 4)--Maybe spammy late fight, if zian is first boss you get? (adds are immortal, could be many up)
 local warnShieldOfDarkness		= mod:NewTargetAnnounce(117697, 4)
 --Meng
-local warnCrazyThought			= mod:NewCastAnnounce(117833, 2, nil, false)--Just doesn't seem all that important right now.
+local warnCrazyThought			= mod:NewCastAnnounce(117833, 2, nil, nil, false)--Just doesn't seem all that important right now.
 local warnMaddeningShout		= mod:NewSpellAnnounce(117708, 4)
 local warnCrazed				= mod:NewTargetAnnounce(117737, 3)--Basically stance change
 local warnCowardice				= mod:NewTargetAnnounce(117756, 3)--^^
@@ -54,7 +54,7 @@ local specWarnUndyingShadow		= mod:NewSpecialWarningSwitch("ej5854", mod:IsDps()
 local specWarnFixate			= mod:NewSpecialWarningYou(118303)
 local yellFixate				= mod:NewYell(118303)
 local specWarnCoalescingShadows	= mod:NewSpecialWarningMove(117558)
-local specWarnShadowBlast		= mod:NewSpecialWarningInterrupt(117628, mod:IsMelee())
+local specWarnShadowBlast		= mod:NewSpecialWarningInterrupt(117628, false)--very spammy. better to optional use
 local specWarnShieldOfDarkness	= mod:NewSpecialWarningTarget(117697, nil, nil, nil, true)--Heroic Ability
 local specWarnShieldOfDarknessD	= mod:NewSpecialWarningDispel(117697, isDispeller)--Heroic Ability
 --Meng
