@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(683, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8150 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8153 $"):sub(12, -3))
 mod:SetCreatureID(60585, 60586, 60583)--60583 Protector Kaolan, 60585 Elder Regail, 60586 Elder Asani
 mod:SetModelID(41503)--Protector Kaolan, 41502 and 41504 are elders
 mod:SetZone()
@@ -243,7 +243,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(117986) then
 		warnDefiledGround:Show()
 		timerDefiledGroundCD:Start()
-		if args.sourcename == UnitName("target") then 
+		if args.sourceName == UnitName("target") then 
 			specWarnDefiledGround:Show()
 		end
 	elseif args:IsSpellID(117052) and phase < 3 then--Phase changes
