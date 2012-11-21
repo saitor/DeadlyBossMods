@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(744, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8126 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8148 $"):sub(12, -3))
 mod:SetCreatureID(62543)
 mod:SetModelID(43141)
 mod:SetZone()
@@ -43,7 +43,7 @@ local timerIntensifyCD					= mod:NewNextTimer(60, 123471)
 local timerBladeTempest					= mod:NewBuffActiveTimer(9, 125310)
 local timerBladeTempestCD				= mod:NewNextTimer(60, 125310)--Always cast after immediately intensify since they essencially have same CD
 
-local berserkTimer						= mod:NewBerserkTimer(480)
+local berserkTimer						= mod:NewBerserkTimer(490)
 
 local soundBladeTempest					= mod:NewSound(125310)
 
