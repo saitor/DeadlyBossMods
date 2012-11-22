@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(709, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8137 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8154 $"):sub(12, -3))
 mod:SetCreatureID(60999)--61042 Cheng Kang, 61046 Jinlun Kun, 61038 Yang Guoshi, 61034 Terror Spawn
 mod:SetModelID(41772)
 
@@ -37,7 +37,7 @@ local timerDreadSprayCD					= mod:NewNextTimer(20.5, 120047)
 
 local berserkTimer						= mod:NewBerserkTimer(900)
 
-local countdownBreathOfFear			= mod:NewCountdown(33.3, 119414)
+local countdownBreathOfFear			= mod:NewCountdown(33.3, 119414, nil, nil, 10)
 
 local ominousCackleTargets = {}
 local platformGUIDs = {}
