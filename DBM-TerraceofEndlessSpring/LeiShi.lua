@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(729, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8154 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8156 $"):sub(12, -3))
 mod:SetCreatureID(62983)--62995 Animated Protector
 mod:SetModelID(42811)
 
@@ -35,7 +35,7 @@ local timerGetAway						= mod:NewBuffActiveTimer(30, 123461)
 
 local berserkTimer						= mod:NewBerserkTimer(600)
 
-mod:AddBoolOption("SetIconOnGuard", false)
+mod:AddBoolOption("SetIconOnGuard", true)
 
 local hideActive = false
 
