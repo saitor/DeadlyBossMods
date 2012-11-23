@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8159 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8160 $"):sub(12, -3)),
 	DisplayVersion = "5.0.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 8086 -- the revision of the latest stable version that is available
 }
@@ -3538,7 +3538,7 @@ function bossModPrototype:IsMelee()
 	return class == "ROGUE"
 	or class == "WARRIOR"
 	or class == "DEATHKNIGHT"
-	or (class == "PALADIN" and not IsSpellKnown(95859))--Meditation Check (False)
+	or (class == "PALADIN" and not IsSpellKnown(112859))--Meditation Check (False)
     or (class == "SHAMAN" and IsSpellKnown(86629))--Dual Wield Check (True)
 	or (class == "DRUID" and IsSpellKnown(84840))--Vengeance Check (True)
 	or (class == "MONK" and (IsSpellKnown(121278) or IsSpellKnown(113656)))--Iffy slope, monk healers will be ranged and melee. :\
@@ -3549,7 +3549,7 @@ function bossModPrototype:IsRanged()
 	or class == "HUNTER"
 	or class == "WARLOCK"
 	or class == "PRIEST"
-	or (class == "PALADIN" and IsSpellKnown(95859))--Meditation Check (True)
+	or (class == "PALADIN" and IsSpellKnown(112859))--Meditation Check (True)
     or (class == "SHAMAN" and not IsSpellKnown(86629))--Dual Wield Check (False)
 	or (class == "DRUID" and not IsSpellKnown(84840))--Vengeance Check (False)
 	or (class == "MONK" and IsSpellKnown(121278))--Iffy slope, monk healers will be ranged and melee. :\
