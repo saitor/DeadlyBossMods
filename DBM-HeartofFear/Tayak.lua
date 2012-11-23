@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(744, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8153 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8159 $"):sub(12, -3))
 mod:SetCreatureID(62543)
 mod:SetModelID(43141)
 mod:SetZone()
@@ -47,7 +47,7 @@ local berserkTimer						= mod:NewBerserkTimer(490)
 
 local soundBladeTempest					= mod:NewSound(125310)
 
-mod:AddBoolOption("RangeFrame", mod:IsRanged())--For Wind Step
+mod:AddBoolOption("RangeFrame", mod:IsRanged() or mod:IsHealer())--For Wind Step
 mod:AddBoolOption("UnseenStrikeArrow")
 
 local emoteFired = false

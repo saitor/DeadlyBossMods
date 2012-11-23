@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(729, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8156 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8159 $"):sub(12, -3))
 mod:SetCreatureID(62983)--62995 Animated Protector
 mod:SetModelID(42811)
 
@@ -69,8 +69,12 @@ end
 function mod:OnCombatStart(delay)
 	guardActivated = 0
 	hideActive = false
-	timerSpecialCD:Start(42.5-delay)--the ONLY timer that ever seems to be right, is FIRST special.
-	berserkTimer:Start(-delay)
+--	timerSpecialCD:Start(42.5-delay)--FIRST special not match if your party is high DPS. 
+	if self:IsDifficulty("heroic10", "heroic25") then
+		berserkTimer:Start(420-delay)
+	else
+		berserkTimer:Start(-delay)
+	end
 end
 
 function mod:OnCombatEnd()
