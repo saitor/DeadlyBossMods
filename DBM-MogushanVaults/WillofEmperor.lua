@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(677, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8168 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8170 $"):sub(12, -3))
 mod:SetCreatureID(60399, 60400)--60396 (Rage), 60397 (Strength), 60398 (Courage), 60480 (Titan Spark), 60399 (Qin-xi), 60400 (Jan-xi)
 mod:SetModelID(41391)
 mod:SetZone()
@@ -78,6 +78,7 @@ local comboCount = 0
 local titanGasCast = 0
 local courageCount = 0
 local strengthCount = 0
+local rageCount = 0
 local focusedAssault = GetSpellInfo(116525)
 
 local rageTimers = {
@@ -103,6 +104,7 @@ function mod:OnCombatStart(delay)
 	sparkCount = 0
 	comboCount = 0
 	titanGasCast = 0
+	rageCount = 0
 	strengthCount = 0
 	courageCount = 0
 	if self:IsDifficulty("heroic10", "heroic25") then--Heroic trigger is shorter, everything comes about 6 seconds earlier
