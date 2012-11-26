@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(677, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8166 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8167 $"):sub(12, -3))
 mod:SetCreatureID(60399, 60400)--60396 (Rage), 60397 (Strength), 60398 (Courage), 60480 (Titan Spark), 60399 (Qin-xi), 60400 (Jan-xi)
 mod:SetModelID(41391)
 mod:SetZone()
@@ -33,7 +33,7 @@ local warnCourageActivated		= mod:NewCountAnnounce("ej5676", 3, 116778)
 local warnFocusedDefense		= mod:NewTargetAnnounce(116778, 4)
 --Sparks (Heroic Only)
 --local warnSpark					= mod:NewCountAnnounce("ej5674", 3)--Probably not very accurate. Not without wasting stupid amounts of cpu same way we do on spine. :\
-local warnFocusedEnergy			= mod:NewTargetAnnounce(116829, 4)
+--local warnFocusedEnergy			= mod:NewTargetAnnounce(116829, 4)
 --Jan-xi and Qin-xi
 local warnBossesActivatedSoon	= mod:NewPreWarnAnnounce("ej5726", 10, 3, 116815)
 local warnBossesActivated		= mod:NewSpellAnnounce("ej5726", 3, 116815)
@@ -126,7 +126,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnFocusedDefense:Show()
 		end
 	elseif args:IsSpellID(116829) then
-		warnFocusedEnergy:Show(args.destName)
+--		warnFocusedEnergy:Show(args.destName)
 		if args:IsPlayer() then
 			specWarnFocusedEnergy:Show()
 		end
