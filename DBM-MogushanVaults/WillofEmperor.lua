@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(677, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8174 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8176 $"):sub(12, -3))
 mod:SetCreatureID(60399, 60400)--60396 (Rage), 60397 (Strength), 60398 (Courage), 60480 (Titan Spark), 60399 (Qin-xi), 60400 (Jan-xi)
 mod:SetModelID(41391)
 mod:SetZone()
@@ -178,12 +178,17 @@ local function addsDelay(add)
 		--Titan gas delay has funny interaction with these and causes 30 or 60 second delays. Pretty much have to use a table.
 		timerRageActivates:Start(rageTimers[rageCount] or 33, rageCount+1)
 		mod:Schedule(rageTimers[rageCount] or 33, addsDelay, "Rage")--Because he doesn't always yell, schedule next one here as a failsafe
+	elseif add == "Boss" then
+		warnBossesActivated:Show()
+		specWarnBossesActivated:Show(10)
+		if not mod:IsDifficulty("heroic10", "heroic25") then
+			timerTitanGasCD:Start(113, 1)
+		end
 	end
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.Rage or msg:find(L.Rage) then--Apparently boss only yells sometimes, so this isn't completely reliable
-		--TODO, verify this is even correct. https://docs.google.com/spreadsheet/ccc?key=0AjsIknfmLMegdDRKTE5wa3ZyQy1ScUVPOHBJX053clE#gid=0
 		self:Unschedule(addsDelay, "Rage")--Unschedule any failsafes that triggered and resync to yell
 		self:Schedule(14, addsDelay, "Rage")
 	end
@@ -196,11 +201,7 @@ function mod:RAID_BOSS_EMOTE(msg)
 		self:Schedule(10, addsDelay, "Courage")
 	elseif msg == L.Boss or msg:find(L.Boss) then
 		warnBossesActivatedSoon:Show()
-		warnBossesActivated:Schedule(10)
-		specWarnBossesActivated:Schedule(10)
-		if not self:IsDifficulty("heroic10", "heroic25") then
-			timerTitanGasCD:Start(123, 1)
-		end
+		self:Schedule(10, addsDelay, "Boss")
 	elseif msg:find("spell:116779") then
 		if self:IsDifficulty("heroic10", "heroic25") then--On heroic the boss activates this perminantly on pull and it's always present
 			if not self:IsInCombat() then
@@ -257,6 +258,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 end
 
 function mod:UNIT_POWER(uId)
+	if not uId:find("boss") then return end
 	if uId ~= "target" then return end
 	if UnitPower(uId) == 18 and not comboWarned then
 		comboWarned = true
