@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(677, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8170 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8172 $"):sub(12, -3))
 mod:SetCreatureID(60399, 60400)--60396 (Rage), 60397 (Strength), 60398 (Courage), 60480 (Titan Spark), 60399 (Qin-xi), 60400 (Jan-xi)
 mod:SetModelID(41391)
 mod:SetZone()
@@ -177,7 +177,7 @@ local function addsDelay(add)
 		warnRageActivated:Show(rageCount)
 		--Titan gas delay has funny interaction with these and causes 30 or 60 second delays. Pretty much have to use a table.
 		timerRageActivates:Start(rageTimers[rageCount] or 30, rageCount+1)
-		self:Schedule(rageTimers[rageCount] or 30, addsDelay, "Rage")--Because he doesn't always yell, schedule next one here as a failsafe
+		mod:Schedule(rageTimers[rageCount] or 30, addsDelay, "Rage")--Because he doesn't always yell, schedule next one here as a failsafe
 	end
 end
 
