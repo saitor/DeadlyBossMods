@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(737, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8180 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8184 $"):sub(12, -3))
 mod:SetCreatureID(62511)
 mod:SetModelID(43126)
 mod:SetZone()
@@ -255,7 +255,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			timerAmberExplosionCD:Start(15, args.destName)--Only player needs to see this, they are only person who can do anything about it.
 			countdownAmberExplosion:Start(15)
 			if IsAddOnLoaded("TidyPlates_ThreatPlates") then
-				TPTPNormal = TidyPlatesThreat.db.profile.nameplate.toggle["Normal"]--Returns true or false, use TidyPlatesNormal to save that value on pull
 				if TPTPNormal == true then
 					TidyPlatesThreat.db.profile.nameplate.toggle["Normal"] = false
 					TidyPlates:ReloadTheme()--Call the Tidy plates update methods
