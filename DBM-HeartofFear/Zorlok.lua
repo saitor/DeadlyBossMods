@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(745, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8158 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8196 $"):sub(12, -3))
 mod:SetCreatureID(62980)--63554 (Special invisible Vizier that casts the direction based spellid versions of attenuation)
 mod:SetModelID(42807)
 mod:SetZone()
@@ -63,7 +63,11 @@ end
 
 function mod:OnCombatStart(delay)
 	table.wipe(MCTargets)
-	berserkTimer:Start(-delay)
+	if self:IsDifficulty("heroic10", "heroic25") then
+		berserkTimer:Start(-delay)
+	else
+		berserkTimer:Start(600-delay)--still 10 min on normal. they only raised it to 11 minutes on heroic apparently.
+	end
 end
 
 function mod:OnCombatEnd()
