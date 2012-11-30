@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(687, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8197 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8200 $"):sub(12, -3))
 mod:SetCreatureID(60701, 60708, 60709, 60710)--Adds: 60731 Undying Shadow, 60958 Pinning Arrow
 mod:SetModelID(41813)
 mod:SetZone()
@@ -216,11 +216,11 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpellID(117697) then
 		warnShieldOfDarkness:Show(args.sourceName)
 		specWarnShieldOfDarkness:Show(args.sourceName)
-		warnShieldOfDarknessSoon:Schedule(35, 5)--Start pre warning with regular warnings only as you don't move at this point yet.
-		warnShieldOfDarknessSoon:Schedule(36, 4)
-		warnShieldOfDarknessSoon:Schedule(37, 3)
-		warnShieldOfDarknessSoon:Schedule(38, 2)
-		warnShieldOfDarknessSoon:Schedule(39, 1)
+		warnShieldOfDarknessSoon:Schedule(37.5, 5)--Start pre warning with regular warnings only as you don't move at this point yet.
+		warnShieldOfDarknessSoon:Schedule(38.5, 4)
+		warnShieldOfDarknessSoon:Schedule(39.5, 3)
+		warnShieldOfDarknessSoon:Schedule(40.5, 2)
+		warnShieldOfDarknessSoon:Schedule(41.5, 1)
 		timerShieldOfDarknessCD:Start()
 		countdownShieldOfDarkness:Start()
 	elseif args:IsSpellID(117833) then
@@ -318,7 +318,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 		if subetaiActive then
 			timerPillageCD:Start()
 		else
---			timerPillageCD:Start(75)--Not yet known. Probably 75
+			timerPillageCD:Start(75)
 		end
 		if target then
 			warnPillage:Show(target)
