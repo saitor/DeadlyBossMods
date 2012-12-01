@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(726, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8156 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8203 $"):sub(12, -3))
 mod:SetCreatureID(60410)--Energy Charge (60913), Emphyreal Focus (60776), Cosmic Spark (62618), Celestial Protector (60793)
 mod:SetModelID(41399)
 mod:SetZone()
@@ -162,7 +162,9 @@ function mod:SPELL_CAST_SUCCESS(args)
 			timerDespawnFloor:Start()
 			specWarnDespawnFloor:Show()
 		end
-		if self.Options.SetIconOnCreature and not creatureIcons[args.sourceGUID] then
+--"<1.0 00:25:21> [CLEU] SPELL_CAST_SUCCESS#false#0xF130ED6800007AF8#Empyreal Focus#2632#0#0xF130ED6800007AFB#Empyreal Focus#68168#0#116598#Energy Conduit#1", -- [123]
+--Icons not working with sourceGUID (but boss health is so i'll leave that alone). Based on log source and dest GUId diff. maybe players can't target sourceguid? lets see how destguid works for icons
+		if self.Options.SetIconOnCreature and not creatureIcons[args.destGUID] then
 			creatureIcons[args.sourceGUID] = creatureIcon
 			creatureIcon = creatureIcon - 1
 		end
