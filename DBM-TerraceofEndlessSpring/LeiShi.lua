@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(729, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8205 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8206 $"):sub(12, -3))
 mod:SetCreatureID(62983)--62995 Animated Protector
 mod:SetModelID(42811)
 
@@ -162,7 +162,7 @@ mod:RegisterOnUpdateHandler(function(self)
 			elseif existingIcons then
 				iconsSet[creatureIcon] = true
 			end
-			guards[guid] = nil
+			guards[guid2] = nil
 		end
 	end
 end, 0.2) -- this will be more faster, but leggy and waste cpu. 
