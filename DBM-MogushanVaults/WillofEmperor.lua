@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(677, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8222 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8223 $"):sub(12, -3))
 mod:SetCreatureID(60399, 60400)--60396 (Rage), 60397 (Strength), 60398 (Courage), 60480 (Titan Spark), 60399 (Qin-xi), 60400 (Jan-xi)
 mod:SetModelID(41391)
 mod:SetZone()
@@ -86,7 +86,7 @@ local rageTimers = {
 	[1] = 33,
 	[2] = 33,
 	[3] = 33,
-	[4] = 40,--unverified
+	[4] = 33,--no idea, maybe this one is just random 33-40, rest are dead on though.
 	[5] = 33,
 	[6] = 83,
 	[7] = 33,
@@ -168,7 +168,7 @@ local function addsDelay(add)
 		warnStrengthActivated:Show(strengthCount)
 		specWarnStrengthActivated:Show()
 		--Titan gases delay spawns by 50 seconds, even on heroic (even though there is no actual gas phase, the timing stays same on heroic)
-		if strengthCount == 4 or strengthCount == 6 or strengthCount == 8 then--The add counts where the delays are
+		if strengthCount == 4 or strengthCount == 6 or strengthCount == 8 then--Unverified
 			timerStrengthActivates:Start(100, strengthCount+1)
 		else
 			timerStrengthActivates:Start(50, strengthCount+1)
