@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(677, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8219 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8220 $"):sub(12, -3))
 mod:SetCreatureID(60399, 60400)--60396 (Rage), 60397 (Strength), 60398 (Courage), 60480 (Titan Spark), 60399 (Qin-xi), 60400 (Jan-xi)
 mod:SetModelID(41391)
 mod:SetZone()
@@ -263,7 +263,7 @@ function mod:UNIT_POWER(uId)
 	if UnitPower(uId) == 18 and not comboWarned then
 		comboWarned = true
 		specWarnCombo:Show()
-	elseif UnitPower(uId) < 2 and comboWarned then
+	elseif UnitPower(uId) < 1 and comboWarned then
 		comboWarned = false
 		comboCount = 0
 	end
