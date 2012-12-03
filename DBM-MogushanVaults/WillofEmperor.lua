@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(677, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8227 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8228 $"):sub(12, -3))
 mod:SetCreatureID(60399, 60400)--60396 (Rage), 60397 (Strength), 60398 (Courage), 60480 (Titan Spark), 60399 (Qin-xi), 60400 (Jan-xi)
 mod:SetModelID(41391)
 mod:SetZone()
@@ -262,7 +262,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 end
 
 function mod:UNIT_POWER(uId)
-	if (uId ~= "target" or uId ~= "targettarget") or UnitIsFriend(uId) then return end
+	if (uId ~= "target" or uId ~= "targettarget") or UnitIsFriend(uId, "player") then return end
 	if UnitPower(uId) == 18 and not comboWarned then
 		comboCount = 0
 		comboWarned = true
