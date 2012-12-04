@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(742, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8199 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8229 $"):sub(12, -3))
 mod:SetCreatureID(62442)--62919 Unstable Sha, 62969 Embodied Terror
 mod:SetModelID(42532)
 mod:SetReCombatTime(60)--fix lfr combat re-starts after killed.
@@ -131,7 +131,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() and (args.amount or 1) >= 9 and (args.amount or 1) % 3 == 0  then
 			specWarnDreadShadows:Show(args.amount)
 		end
-	elseif args:IsSpellID(123012) and args:GetDestCreatureID() == 42832 then
+	elseif args:IsSpellID(123012) and args:GetDestCreatureID() == 62442 then
 		warnTerrorize:Show(args.destName)
 		specWarnTerrorize:Show(args.destName)
 	end
