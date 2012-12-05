@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(679, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8194 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8234 $"):sub(12, -3))
 mod:SetCreatureID(60051, 60043, 59915, 60047)--Cobalt: 60051, Jade: 60043, Jasper: 59915, Amethyst: 60047
 mod:SetModelID(41892)
 mod:SetZone()
@@ -186,7 +186,11 @@ function mod:OnCombatStart(delay)
 		for i = 1, 4 do
 			local id = self:GetUnitCreatureId("boss" .. i)
 			if id == 60051 then -- cobalt
-				timerCobaltMineCD:Start(-delay)
+				if self:IsDifficulty("lfr25") then
+					timerCobaltMineCD:Start(10.5-delay)
+				else
+					timerCobaltMineCD:Start(-delay)
+				end
 			elseif id == 60043 then -- jade
 				timerJadeShardsCD:Start(-delay)
 			elseif id == 59915 then -- jasper
@@ -349,7 +353,11 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 --		scansDone = 0
 --		self:ScanHandler()
 		warnCobaltMine:Show()
-		timerCobaltMineCD:Start()
+		if self:IsDifficulty("lfr25") then
+			timerCobaltMineCD:Start(10.5)
+		else
+			timerCobaltMineCD:Start()
+		end
 	end
 end
 
