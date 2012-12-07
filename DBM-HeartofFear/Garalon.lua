@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(713, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8246 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8247 $"):sub(12, -3))
 mod:SetCreatureID(63191)--Also has CID 62164. He has 2 CIDs for a single target, wtf? It seems 63191 is one players attack though so i'll try just it.
 mod:SetModelID(42368)
 mod:SetZone()
@@ -102,7 +102,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.PheromonesIcon then
 			self:SetIcon(args.destName, 2)
 		end
-	elseif args:IsSpellID(123081) then
+	elseif args:IsSpellID(123081) and not self:IsDifficulty("lfr25") then
 		if (args.amount or 1) >= 9 and (args.amount or 1) % 3 == 0 then
 			warnPungency:Show(args.destName, args.amount)
 		end
