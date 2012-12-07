@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Brawlers", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8241 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8244 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 --mod:SetModelID(41448)
 mod:SetZone()
@@ -53,7 +53,7 @@ local timerSummonTwisterCD		= mod:NewCDTimer(15, 132670)--15-17 sec variation
 
 mod:AddBoolOption("SpectatorMode", true)
 
-local matchActive = true
+local matchActive = false
 local playerisFighting = false
 
 function mod:SPELL_CAST_START(args)

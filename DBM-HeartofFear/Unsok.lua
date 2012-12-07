@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(737, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8242 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8244 $"):sub(12, -3))
 mod:SetCreatureID(62511)
 mod:SetModelID(43126)
 mod:SetZone()
@@ -74,7 +74,7 @@ local timerParasiticGrowthCD	= mod:NewCDTimer(35, 121949, nil, mod:IsHealer())--
 local timerParasiticGrowth		= mod:NewTargetTimer(30, 121949, nil, mod:IsHealer())
 --Construct
 local timerAmberExplosionCD		= mod:NewNextSourceTimer(13, 122398)--13 second cd on player controled units, 18 seconds on non player controlled constructs
-local timerDestabalize			= mod:NewTargetTimer(10, 123059, nil, false)
+local timerDestabalize			= mod:NewTargetTimer(15, 123059, nil, false)
 local timerStruggleForControl	= mod:NewTargetTimer(5, 122395, nil, false)
 --Amber Monstrosity
 local timerMassiveStompCD		= mod:NewCDTimer(18, 122408, nil, mod:IsHealer() or mod:IsMelee())--18-25 seconds variation
