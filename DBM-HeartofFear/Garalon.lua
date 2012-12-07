@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(713, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8164 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8243 $"):sub(12, -3))
 mod:SetCreatureID(63191)--Also has CID 62164. He has 2 CIDs for a single target, wtf? It seems 63191 is one players attack though so i'll try just it.
 mod:SetModelID(42368)
 mod:SetZone()
@@ -62,6 +62,8 @@ function mod:OnCombatStart(delay)
 	end
 	if not self:IsDifficulty("lfr25") then
 		berserkTimer:Start(-delay)
+	else
+		berserkTimer:Start(720-delay)
 	end
 end
 
