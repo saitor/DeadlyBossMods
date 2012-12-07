@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(737, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8234 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8242 $"):sub(12, -3))
 mod:SetCreatureID(62511)
 mod:SetModelID(43126)
 mod:SetZone()
@@ -307,6 +307,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerMassiveStompCD:Cancel()
 		timerFlingCD:Cancel()
 		timerAmberExplosionAMCD:Cancel()
+		timerDestabalize:Cancel(Monstrosity)
 		warnAmberExplosionSoon:Cancel()
 		--He does NOT reset reshape live cd here, he finishes out last CD first, THEN starts using new one.
 	end
