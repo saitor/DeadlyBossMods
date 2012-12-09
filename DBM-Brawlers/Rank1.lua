@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BrawlRank1", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8252 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8255 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 mod:SetModelID(46327)--Last Boss of Rank 1
 mod:SetZone()
@@ -29,6 +29,9 @@ local timerHeatedPokers			= mod:NewBuffActiveTimer(8, 133286)
 local timerHeatedPokersCD		= mod:NewCDTimer(29, 133286)
 local timerVolatileFlamesCD		= mod:NewCDTimer(11, 134740)--11-20 sec variation
 local timerFireLineCD			= mod:NewCDTimer(15, 133607)--15-22 sec variation
+
+mod:RemoveOption("HealthFrame")
+mod:RemoveOption("SpeedKillTimer")
 
 local brawlersMod = DBM:GetModByName("Brawlers")
 

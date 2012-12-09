@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BrawlRank3", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8252 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8255 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 mod:SetModelID(28649)
 mod:SetZone()
@@ -19,6 +19,9 @@ local specWarnDevastatingThrust	= mod:NewSpecialWarningMove(134777)
 
 local timerFirewallCD			= mod:NewCDTimer(18, 132666)--18-22 sec variation
 local timerDevastatingThrustCD	= mod:NewCDTimer(12, 134777)--Need more data to verify CD
+
+mod:RemoveOption("HealthFrame")
+mod:RemoveOption("SpeedKillTimer")
 
 local brawlersMod = DBM:GetModByName("Brawlers")
 

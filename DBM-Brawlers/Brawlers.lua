@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Brawlers", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8253 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8255 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 --mod:SetModelID(41448)
 mod:SetZone()
@@ -14,6 +14,8 @@ mod:RegisterEvents(
 local specWarnYourTurn			= mod:NewSpecialWarning("specWarnYourTurn")
 
 mod:AddBoolOption("SpectatorMode", true)
+mod:RemoveOption("HealthFrame")
+mod:RemoveOption("SpeedKillTimer")
 
 local matchActive = false
 local playerIsFighting = false
