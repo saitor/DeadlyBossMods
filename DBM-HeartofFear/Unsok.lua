@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(737, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8258 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8259 $"):sub(12, -3))
 mod:SetCreatureID(62511)
 mod:SetModelID(43126)
 mod:SetZone()
@@ -231,7 +231,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif args:IsSpellID(121949) then
 		warnParasiticGrowth:Show(args.destName)
-		specwarnParasiticGrowth:Show(args.destName)
+		if not playerIsConstruct then--Healers do need to know this, but it's still a distraction as a construct for sound, they got the reg warning.
+			specwarnParasiticGrowth:Show(args.destName)
+		end
 		if args:IsPlayer() then
 			specwarnParasiticGrowthYou:Show()
 		end
