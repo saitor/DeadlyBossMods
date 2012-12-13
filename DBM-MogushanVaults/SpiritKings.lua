@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(687, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8200 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8278 $"):sub(12, -3))
 mod:SetCreatureID(60701, 60708, 60709, 60710)--Adds: 60731 Undying Shadow, 60958 Pinning Arrow
 mod:SetModelID(41813)
 mod:SetZone()
@@ -30,7 +30,7 @@ local isDispeller = select(2, UnitClass("player")) == "MAGE"
 local warnChargedShadows		= mod:NewTargetAnnounce(117685, 2)
 local warnUndyingShadows		= mod:NewSpellAnnounce(117506, 3)--Target scanning?
 local warnFixate				= mod:NewTargetAnnounce(118303, 4)--Maybe spammy late fight, if zian is first boss you get? (adds are immortal, could be many up)
-local warnShieldOfDarknessSoon	= mod:NewAnnounce("DarknessSoon", 3, 117697, nil, nil, true)
+local warnShieldOfDarknessSoon	= mod:NewAnnounce("DarknessSoon", 4, 117697, nil, nil, true)
 local warnShieldOfDarkness		= mod:NewTargetAnnounce(117697, 4)
 --Meng
 local warnCrazyThought			= mod:NewCastAnnounce(117833, 2, nil, nil, false)--Just doesn't seem all that important right now.
