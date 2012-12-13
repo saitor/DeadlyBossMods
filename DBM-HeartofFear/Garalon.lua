@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(713, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8247 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8277 $"):sub(12, -3))
 mod:SetCreatureID(63191)--Also has CID 62164. He has 2 CIDs for a single target, wtf? It seems 63191 is one players attack though so i'll try just it.
 mod:SetModelID(42368)
 mod:SetZone()
@@ -151,7 +151,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
-	if spellId == 123120 and destGUID == UnitGUID("player") and self:AntiSpam(3) then
+	if spellId == 123120 and destGUID == UnitGUID("player") and self:AntiSpam(3, 1) then
 		specwarnPheromoneTrail:Show()
 	end
 end
@@ -159,8 +159,10 @@ mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 	if msg:find("spell:122774") then
-		warnCrush:Show()
-		specwarnCrush:Show()
+		if self:AntiSpam(3, 2) then
+			warnCrush:Show()
+			specwarnCrush:Show()
+		end
 		timerCrush:Start()
 		if self:IsDifficulty("heroic10", "heroic25") and not msg:find(L.UnderHim) then--unconfirmed
 			timerCrushCD:Start()--unconfirmed, assumed by video
