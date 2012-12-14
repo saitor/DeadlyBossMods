@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8279 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8280 $"):sub(12, -3)),
 	DisplayVersion = "5.0.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 8187 -- the revision of the latest stable version that is available
 }
@@ -2447,6 +2447,8 @@ function checkWipe(confirm)
 	if #inCombat > 0 then
 		local wipe = true
 		if IsInScenarioGroup() then -- prevent wipe on ghost in Scenario Group.
+			wipe = false
+		elseif IsEncounterInProgress() then
 			wipe = false
 		else
 			local uId = (IsInRaid() and "raid") or "party"

@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(677, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8274 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8280 $"):sub(12, -3))
 mod:SetCreatureID(60399, 60400)--60396 (Rage), 60397 (Strength), 60398 (Courage), 60480 (Titan Spark), 60399 (Qin-xi), 60400 (Jan-xi)
 mod:SetModelID(41391)
 mod:SetZone()
@@ -229,7 +229,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		warnEnergizingSmash:Show()
 	elseif spellId == 116968 then--Arc Left
 		comboCount = comboCount + 1
-		if self.Options.CountOutCombo then--Male voice count past 5 yet. still waiting on him to do it. So female voice is only option for now.
+		if self.Options.CountOutCombo and comboCount < 11 then--Male voice count past 5 yet. still waiting on him to do it. So female voice is only option for now.
 			if DBM.Options.UseMasterVolume then
 				PlaySoundFile("Interface\\AddOns\\DBM-Core\\Sounds\\Corsica_S\\"..comboCount..".ogg", "Master")
 			else
@@ -246,7 +246,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		end
 	elseif spellId == 116971 then--Arc Right
 		comboCount = comboCount + 1
-		if self.Options.CountOutCombo then--Male voice count past 5 yet. still waiting on him to do it. So female voice is only option for now.
+		if self.Options.CountOutCombo and comboCount < 11 then--Male voice count past 5 yet. still waiting on him to do it. So female voice is only option for now.
 			if DBM.Options.UseMasterVolume then
 				PlaySoundFile("Interface\\AddOns\\DBM-Core\\Sounds\\Corsica_S\\"..comboCount..".ogg", "Master")
 			else
@@ -263,7 +263,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		end
 	elseif spellId == 116972 then--Arc Center
 		comboCount = comboCount + 1
-		if self.Options.CountOutCombo then--Male voice count past 5 yet. still waiting on him to do it. So female voice is only option for now.
+		if self.Options.CountOutCombo and comboCount < 11 then--Male voice count past 5 yet. still waiting on him to do it. So female voice is only option for now.
 			if DBM.Options.UseMasterVolume then
 				PlaySoundFile("Interface\\AddOns\\DBM-Core\\Sounds\\Corsica_S\\"..comboCount..".ogg", "Master")
 			else
@@ -278,7 +278,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		end
 	elseif (spellId == 116969 or spellId == 132425) then--Stomp
 		comboCount = comboCount + 1
-		if self.Options.CountOutCombo then--Male voice count past 5 yet. still waiting on him to do it. So female voice is only option for now.
+		if self.Options.CountOutCombo and comboCount < 11 then--Male voice count past 5 yet. still waiting on him to do it. So female voice is only option for now.
 			if DBM.Options.UseMasterVolume then
 				PlaySoundFile("Interface\\AddOns\\DBM-Core\\Sounds\\Corsica_S\\"..comboCount..".ogg", "Master")
 			else
