@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(726, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8278 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8279 $"):sub(12, -3))
 mod:SetCreatureID(60410)--Energy Charge (60913), Emphyreal Focus (60776), Cosmic Spark (62618), Celestial Protector (60793)
 mod:SetModelID(41399)
 mod:SetZone()
@@ -128,6 +128,7 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(116994) then--phase 3 end
 		warnPhase1:Show()
+	--"<104.1 22:25:29> [CLEU] SPELL_AURA_REMOVED#false#0x040000000479BEA6#Settesh#1298#16#0x040000000479BEA6#Settesh#1298#16#132226#Destabilized#1#DEBUFF", -- [17597]
 	elseif args:IsSpellID(132226) then
 		if self.Options.SetIconOnDestabilized then
 			self:SetIcon(args.destName, 0)--Sometimes this doesn't work, no idea why?
