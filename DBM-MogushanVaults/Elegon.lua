@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(726, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8286 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8287 $"):sub(12, -3))
 mod:SetCreatureID(60410)--Energy Charge (60913), Emphyreal Focus (60776), Cosmic Spark (62618), Celestial Protector (60793)
 mod:SetModelID(41399)
 mod:SetZone()
@@ -46,8 +46,8 @@ local timerDespawnFloor				= mod:NewTimer(6.5, "timerDespawnFloor", 116994)--6.5
 
 local berserkTimer					= mod:NewBerserkTimer(570)
 
-mod:AddBoolOption("SetIconOnDestabilized", true)--Icon lasts 2 min. Is that intended?
-mod:AddBoolOption("SetIconOnCreature", true)--Does not work
+mod:AddBoolOption("SetIconOnDestabilized", false)--Does not work correctly (applies but RARELY removes). refer to comment on SPELL_AURA_REMOVED.
+mod:AddBoolOption("SetIconOnCreature", false)--Does not work
 mod:AddBoolOption("HealthFrame", false)
 
 local phase2Started = false
@@ -139,7 +139,7 @@ function mod:SPELL_AURA_REMOVED(args)
 			timerDestabilized:Cancel()
 		end
 		if self.Options.SetIconOnDestabilized then
-			self:SetIcon(args.destName, 0)--Sometimes this doesn't work, no idea why?
+			self:SetIcon(args.destName, 0)--Sometimes this doesn't work. Event fires, i verify in my own combat log, dbm doesn't remove icon, no idea why. There is literally no logical explanation for it.
 		end
 	end
 end
