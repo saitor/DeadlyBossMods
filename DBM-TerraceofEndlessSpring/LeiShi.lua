@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(729, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8304 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8305 $"):sub(12, -3))
 mod:SetCreatureID(62983)--62995 Animated Protector
 mod:SetModelID(42811)
 
@@ -219,9 +219,13 @@ end
 
 function mod:CHAT_MSG_TARGETICONS(msg)
 	--TARGET_ICON_SET = "|Hplayer:%s|h[%s]|h sets |TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t on %s.";
-	if msg == TARGET_ICON_SET then
+	--if msg == TARGET_ICON_SET then
 		--Insert fancy code that pulls icon number out of here somehow
---		iconsSet[icon] = true--Then sets it to true
+		--iconsSet[icon] = true--Then sets it to true
+	--end
+	local icon = tonumber(string.sub(string.match(msg, "RaidTargetingIcon_%d"), -1))
+	if icon then
+		iconsSet[icon] = true
 	end
 end
 
