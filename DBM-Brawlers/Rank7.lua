@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BrawlRank7", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8320 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8321 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 mod:SetModelID(46798)
 mod:SetZone()
@@ -24,8 +24,5 @@ function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(133212) then
 		warnRockets:Show()
 		timerRockets:Start()--First one is 5 seconds after combat start
-		if brawlersMod:PlayerFighting() then
-			specWarnFireWall:Show()
-		end
 	end
 end
