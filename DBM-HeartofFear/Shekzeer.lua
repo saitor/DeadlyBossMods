@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(743, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8317 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8319 $"):sub(12, -3))
 mod:SetCreatureID(62837)--62847 Dissonance Field, 63591 Kor'thik Reaver, 63589 Set'thik Windblade
 mod:SetModelID(42730)
 mod:SetZone()
@@ -20,7 +20,7 @@ mod:RegisterEventsInCombat(
 )
 
 local warnScreech				= mod:NewSpellAnnounce(123735, 3, nil, false)--Not useful.
-local warnCryOfTerror			= mod:NewTargetAnnounce(123788, 3)
+local warnCryOfTerror			= mod:NewTargetAnnounce(123788, 3, nil, mod:IsRanged())
 local warnEyes					= mod:NewStackAnnounce(123707, 2, nil, mod:IsTank())
 local warnSonicDischarge		= mod:NewSoonAnnounce(123504, 4)--Iffy reliability but better then nothing i suppose.
 local warnRetreat				= mod:NewSpellAnnounce(125098, 4)
