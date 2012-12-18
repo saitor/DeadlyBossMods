@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(687, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8278 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8315 $"):sub(12, -3))
 mod:SetCreatureID(60701, 60708, 60709, 60710)--Adds: 60731 Undying Shadow, 60958 Pinning Arrow
 mod:SetModelID(41813)
 mod:SetZone()
@@ -83,7 +83,7 @@ local timerShieldOfDarknessCD  	= mod:NewNextTimer(42.5, 117697)
 local timerMaddeningShoutCD		= mod:NewCDTimer(47, 117708)--47-50 sec variation. So a CD timer instead of next.
 local timerDeliriousCD			= mod:NewCDTimer(20.5, 117837, nil, mod:CanRemoveEnrage())
 --Qiang
-local timerMassiveAttackCD		= mod:NewCDTimer(5, 117921, nil, mod:IsTank())
+local timerMassiveAttackCD		= mod:NewCDTimer(5, 117921)--This timer needed for all players to figure out Flanking Orders moves.
 local timerAnnihilateCD			= mod:NewNextTimer(39, 117948)
 local timerFlankingOrdersCD		= mod:NewCDTimer(40, 117910)--Every 40 seconds on normal, but on heroic it has a 40-50 second variation so has to be a CD bar instead of next
 local timerImperviousShieldCD	= mod:NewCDTimer(42, 117961)
