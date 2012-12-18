@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BrawlRank7", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8321 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8322 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 mod:SetModelID(46798)
 mod:SetZone()
@@ -23,6 +23,6 @@ function mod:SPELL_CAST_START(args)
 	if not brawlersMod.Options.SpectatorMode and not brawlersMod:PlayerFighting() then return end--Spectator mode is disabled, do nothing.
 	if args:IsSpellID(133212) then
 		warnRockets:Show()
-		timerRockets:Start()--First one is 5 seconds after combat start
+		timerRockets:Schedule(4)--First one is 5 seconds after combat start
 	end
 end
