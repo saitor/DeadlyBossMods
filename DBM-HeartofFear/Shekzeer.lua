@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(743, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8319 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8337 $"):sub(12, -3))
 mod:SetCreatureID(62837)--62847 Dissonance Field, 63591 Kor'thik Reaver, 63589 Set'thik Windblade
 mod:SetModelID(42730)
 mod:SetZone()
@@ -62,7 +62,7 @@ local timerPhase2				= mod:NewNextTimer(151, 125098)--152 until trigger, but pro
 local timerCalamityCD			= mod:NewCDTimer(6, 124845, nil, mod:IsHealer())
 local timerVisionsCD			= mod:NewCDTimer(19.5, 124862)
 local timerConsumingTerrorCD	= mod:NewCDTimer(32, 124849, nil, not mod:IsTank())
-local timerHeartOfFear			= mod:NewBuffActiveTimer(6, 125638)
+local timerHeartOfFear			= mod:NewBuffFadesTimer(6, 125638)
 
 local berserkTimer				= mod:NewBerserkTimer(900)
 

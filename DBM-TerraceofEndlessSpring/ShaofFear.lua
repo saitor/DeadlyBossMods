@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(709, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8302 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8337 $"):sub(12, -3))
 mod:SetCreatureID(60999)--61042 Cheng Kang, 61046 Jinlun Kun, 61038 Yang Guoshi, 61034 Terror Spawn
 mod:SetModelID(41772)
 
@@ -54,7 +54,7 @@ local timerBreathOfFearCD				= mod:NewNextTimer(33.3, 119414)--Based off bosses 
 local timerOminousCackleCD				= mod:NewNextTimer(45.5, 119693)
 local timerDreadSpray					= mod:NewBuffActiveTimer(8, 120047)
 local timerDreadSprayCD					= mod:NewNextTimer(20.5, 120047)
-local timerDeathBlossom					= mod:NewCastTimer(5, 119888)
+local timerDeathBlossom					= mod:NewBuffActiveTimer(5, 119888)
 --local timerTerrorSpawnCD				= mod:NewNextTimer(60, 119108)--every 60 or so seconds, maybe a little more maybe a little less, not sure. this is just based on instinct after seeing where 30 fit.
 local timerFearless						= mod:NewBuffFadesTimer(30, 118977)
 -- Heroic Phase 2
