@@ -1,13 +1,12 @@
 local mod	= DBM:NewMod("Brawlers", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8328 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8329 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 --mod:SetModelID(41448)
 mod:SetZone()
 
 mod:RegisterEvents(
-	"PLAYER_REGEN_ENABLED",
 	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_SPELLCAST_SUCCEEDED"
 )
@@ -61,14 +60,8 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
 	end
 end
 
---TODO: Maybe add a PLAYE_REGEN_DISABLED event that checks current target for deciding what special bars to start on engage.
-function mod:PLAYER_REGEN_ENABLED()
-	if playerIsFighting then--We check playerIsFighting to filter bar brawls, this should only be true if we were ported into ring.
-		playerIsFighting = false
-		self:SendSync("MatchEnd")
-	end
-end
-
+--Only fires for target, focus, mouseover. So we still need all the yells for the average user not targeting player.
+--None the less, this rendency should catch more match ends if "player" casting it is in a buff group with us.
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	--"<43.1 01:41:37> [UNIT_SPELLCAST_SUCCEEDED] All›nnar [[focus:General Trigger 1::0:136195]]", -- [251]
 	if spellId == 136195 and self:AntiSpam() then
