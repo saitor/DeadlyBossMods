@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Brawlers", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8338 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8339 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 --mod:SetModelID(41448)
 mod:SetZone()
@@ -83,10 +83,11 @@ end
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	--"<43.1 01:41:37> [UNIT_SPELLCAST_SUCCEEDED] All›nnar [[focus:General Trigger 1::0:136195]]", -- [251]
 	if spellId == 136195 and self:AntiSpam() then
-		if playerIsFighting then--We check playerIsFighting to filter bar brawls, this should only be true if we were ported into ring.
-			playerIsFighting = false
-		end
-		self:SendSync("MatchEnd")
+		print("Teleport Detected", uId, UnitName(uId))
+--		if playerIsFighting then--We check playerIsFighting to filter bar brawls, this should only be true if we were ported into ring.
+--			playerIsFighting = false
+--		end
+--		self:SendSync("MatchEnd")
 	end
 end
 
