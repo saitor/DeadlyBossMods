@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BrawlRank4", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8323 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8335 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 mod:SetModelID(28115)
 mod:SetZone()
@@ -35,7 +35,7 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if not brawlersMod.Options.SpectatorMode and not brawlersMod:PlayerFighting() then return end--Spectator mode is disabled, do nothing.
-	if args:IsSpellID(129888) then
+	if args:IsSpellID(129888) and self:AntiSpam() then
 		warnSolarBeam:Show()
 		timerSolarBeamCD:Start()
 	end
