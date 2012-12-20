@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BrawlRank8", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8367 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8369 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 mod:SetModelID(46265)
 mod:SetZone()
@@ -53,7 +53,7 @@ function mod:SPELL_CAST_START(args)
 		end
 	elseif args:IsSpellID(135621) then
 		warnStaticCharge:Show()
-		timerStaticChargeCD:Start()
+--		timerStaticChargeCD:Start()
 		if brawlersMod:PlayerFighting() then
 			specWarnStaticCharge:Show(args.sourceName)
 		end
