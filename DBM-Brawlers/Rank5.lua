@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BrawlRank5", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8363 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8364 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 mod:SetModelID(6923)
 mod:SetZone()
@@ -55,7 +55,7 @@ function mod:SPELL_CAST_START(args)
 		warnTorrent:Show()
 		timerTorrentCD:Start()
 		if brawlersMod:PlayerFighting() then
-			specWarnTorrent:Show()
+			specWarnTorrent:Show(args.sourceName)
 		end
 	end
 end

@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BrawlRank6", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8363 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8364 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 mod:SetModelID(39166)
 mod:SetZone()
@@ -42,7 +42,7 @@ function mod:SPELL_CAST_START(args)
 		warnChainLightning:Show()
 		timerChainLightningCD:Start()
 		if brawlersMod:PlayerFighting() then
-			specWarnChainLightning:Show()
+			specWarnChainLightning:Show(args.sourceName)
 		end
 	end
 end
