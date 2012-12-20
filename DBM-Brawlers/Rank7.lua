@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BrawlRank7", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8336 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8355 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 mod:SetModelID(46798)
 mod:SetZone()
@@ -40,7 +40,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if not brawlersMod.Options.SpectatorMode and not brawlersMod:PlayerFighting() then return end
 	if args:IsSpellID(133015) then
 		remainingMines = 8
-		warnMinesSpawning:Start()
+		warnMinesSpawning:Show()
 		if brawlersMod:PlayerFighting() then
 			specWarnMinesSpawning:Show()
 		end
