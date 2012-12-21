@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(745, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8356 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8373 $"):sub(12, -3))
 mod:SetCreatureID(62980)--63554 (Special invisible Vizier that casts the direction based spellid versions of attenuation)
 mod:SetModelID(42807)
 mod:SetZone()
@@ -150,6 +150,13 @@ end
 
 function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.Platform or msg:find(L.Platform) then
+		if platform == 0 and self:IsDifficulty("heroic10", "heroic25") then--Always flies right on heroic
+			timerForceCD:Start(24)
+		elseif platform == 1 and self:IsDifficulty("heroic10", "heroic25") then--Which means left is always 2nd platform
+			timerAttenuationCD:Start(23)
+		elseif platform == 2 then--This platform is same in all modes
+			timerConvertCD:Start(22.5)
+		end
 		platform = platform + 1
 		specwarnPlatform:Show()
 		timerForceCD:Cancel()
