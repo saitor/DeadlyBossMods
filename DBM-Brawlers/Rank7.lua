@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BrawlRank7", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8385 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8387 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 mod:SetModelID(46798)
 mod:SetZone()
@@ -15,7 +15,7 @@ local warnRockets				= mod:NewCastAnnounce(133212, 4)
 local warnShadowbolt			= mod:NewSpellAnnounce(125212, 3)
 local warnGhost					= mod:NewSpellAnnounce(133465, 4)
 local warnMines					= mod:NewCountAnnounce(133018, 3)
-local warnMinesSpawning			= mod:NewSpellAnnounce(133018, 4)
+local warnMinesSpawning			= mod:NewSpellAnnounce(133015, 4)
 
 local specWarnShadowbolt		= mod:NewSpecialWarningSpell(125212, false)--Let you choose which one is important to warn for
 local specWarnGhost				= mod:NewSpecialWarningSpell(133465, false)
