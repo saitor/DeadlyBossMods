@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BrawlRank4", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8352 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8384 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 mod:SetModelID(28115)
 mod:SetZone()
@@ -17,7 +17,7 @@ local warnEarthSeed				= mod:NewSpellAnnounce(134743, 3)
 local warnSolarBeam				= mod:NewSpellAnnounce(129888, 3)
 
 local timerChargingCD			= mod:NewCDTimer(20, 133253)--20-24 sec variation.
-local timerEarthSeedCD			= mod:NewNextTimer(15.5, 134743)
+local timerEarthSeedCD			= mod:NewCDTimer(15.5, 134743)
 local timerSolarBeamCD			= mod:NewCDTimer(18.5, 129888)
 
 mod:RemoveOption("HealthFrame")
