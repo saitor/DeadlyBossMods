@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(729, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8405 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8407 $"):sub(12, -3))
 mod:SetCreatureID(62983)--62995 Animated Protector
 mod:SetModelID(42811)
 
@@ -17,7 +17,8 @@ mod:RegisterEventsInCombat(
 	"CHAT_MSG_TARGETICONS",
 	"UNIT_SPELLCAST_SUCCEEDED",
 	"SPELL_DAMAGE",
-	"SPELL_PERIODIC_DAMAGE"
+	"SPELL_PERIODIC_DAMAGE",
+	"RANGE_DAMAGE"
 )
 
 local warnProtect						= mod:NewSpellAnnounce(123250, 2)
