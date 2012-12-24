@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(745, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8414 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8415 $"):sub(12, -3))
 mod:SetCreatureID(62980)--63554 (Special invisible Vizier that casts the direction based spellid versions of attenuation)
 mod:SetModelID(42807)
 mod:SetZone()
@@ -166,7 +166,7 @@ function mod:RAID_BOSS_EMOTE(msg)
 		timerForceCD:Cancel()
 		timerAttenuationCD:Cancel()
 		if platform == 1 then
-			timerForceCD:Start(24)
+			timerForceCD:Start(22)
 		elseif platform == 2 then
 			timerAttenuationCD:Start(23)
 		elseif platform == 3 then
