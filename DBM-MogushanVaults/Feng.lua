@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(689, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8411 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8416 $"):sub(12, -3))
 mod:SetCreatureID(60009)--60781 Soul Fragment
 mod:SetModelID(41192)
 mod:SetZone()
@@ -281,6 +281,10 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerWildSpark:Cancel(args.destName)
 	elseif args:IsSpellID(116711) then
 		timerDrawFlameCD:Start(nil, specialCount + 1)
+	elseif args:IsSpellID(116417) then
+		if self.Options.SetIconOnAR then
+			self:SetIcon(args.destName, 0)
+		end
 	elseif args:IsSpellID(116364) then
 		timerArcaneVelocity:Cancel()
 		timerArcaneVelocityCD:Start(nil, specialCount + 1)
