@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(709, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8357 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8420 $"):sub(12, -3))
 mod:SetCreatureID(60999)--61042 Cheng Kang, 61046 Jinlun Kun, 61038 Yang Guoshi, 61034 Terror Spawn
 mod:SetModelID(41772)
 
@@ -107,7 +107,7 @@ local function leavePlatform()
 			timerBreathOfFearCD:Start(33.3-shaPower)
 			countdownBreathOfFear:Start(33.3-shaPower)
 		end
-		if self.Options.RangeFrame then
+		if mod.Options.RangeFrame then
 			DBM.RangeCheck:Show(2)
 		end
 	end
