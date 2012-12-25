@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(745, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8415 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8419 $"):sub(12, -3))
 mod:SetCreatureID(62980)--63554 (Special invisible Vizier that casts the direction based spellid versions of attenuation)
 mod:SetModelID(42807)
 mod:SetZone()
@@ -45,7 +45,7 @@ local timerForceCast			= mod:NewCastTimer(4, 122713)
 local timerForce				= mod:NewBuffActiveTimer(12.5, 122713)
 local timerAttenuationCD		= mod:NewCDTimer(32.5, 127834)--32.5-41 second variations, when not triggered off exhale. It's ALWAYS 11 seconds after exhale.
 local timerAttenuation			= mod:NewBuffActiveTimer(14, 127834)
-local timerConvertCD			= mod:NewCDTimer(40, 122740)--40-50 second variations
+local timerConvertCD			= mod:NewCDTimer(33, 122740)--33-50 second variations
 
 local berserkTimer				= mod:NewBerserkTimer(660)
 
@@ -166,7 +166,7 @@ function mod:RAID_BOSS_EMOTE(msg)
 		timerForceCD:Cancel()
 		timerAttenuationCD:Cancel()
 		if platform == 1 then
-			timerForceCD:Start(22)
+			timerForceCD:Start(16)
 		elseif platform == 2 then
 			timerAttenuationCD:Start(23)
 		elseif platform == 3 then
