@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(709, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8420 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8427 $"):sub(12, -3))
 mod:SetCreatureID(60999)--61042 Cheng Kang, 61046 Jinlun Kun, 61038 Yang Guoshi, 61034 Terror Spawn
 mod:SetModelID(41772)
 
@@ -273,7 +273,8 @@ end
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
-	if cid == 61042 or cid == 61046 or cid == 61038 then
+	if platformGUIDs[args.destGUID] then
+		platformGUIDs[args.destGUID] = nil
 		timerDreadSpray:Cancel(args.destGUID)
 		timerDreadSprayCD:Cancel(args.destGUID)
 		-- If you die on platform, and revived after platform mob die, Fearless will not be applied on you. This stuff will be slove this.

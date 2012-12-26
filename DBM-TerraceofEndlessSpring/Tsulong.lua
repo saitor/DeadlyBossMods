@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(742, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8411 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8427 $"):sub(12, -3))
 mod:SetCreatureID(62442)--62919 Unstable Sha, 62969 Embodied Terror
 mod:SetModelID(42532)
 mod:SetReCombatTime(60)--fix lfr combat re-starts after killed.
@@ -120,6 +120,7 @@ end
 function mod:OnCombatStart(delay)
 	timerShadowBreathCD:Start(8.5-delay)
 	timerNightmaresCD:Start(15-delay)
+	countdownNightmares:Cancel() -- sometimes it doubles OnCombatStart, wtf?..
 	countdownNightmares:Start(15-delay)
 	timerDayCD:Start(-delay)
 	if not self:IsDifficulty("lfr25") then
