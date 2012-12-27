@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(729, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8413 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8434 $"):sub(12, -3))
 mod:SetCreatureID(62983)--62995 Animated Protector
 mod:SetModelID(42811)
 
@@ -312,8 +312,6 @@ function mod:SPELL_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId, _, _, s
 		end
 		hideDebug = hideDebug + 1--To see if it's number of hits
 		timeDebug = GetTime() - hideTime
-		warnHideProgress:Cancel()
-		warnHideProgress:Schedule(5, hideDebug, damageDebug, tostring(format("%.1f", timeDebug)))
 	end
 end
 mod.SPELL_PERIODIC_DAMAGE = mod.SPELL_DAMAGE
