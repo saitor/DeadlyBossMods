@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(729, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8434 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8436 $"):sub(12, -3))
 mod:SetCreatureID(62983)--62995 Animated Protector
 mod:SetModelID(42811)
 
@@ -15,10 +15,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_START",
 	"CHAT_MSG_TARGETICONS",
-	"UNIT_SPELLCAST_SUCCEEDED",
-	"SPELL_DAMAGE",
-	"SPELL_PERIODIC_DAMAGE",
-	"RANGE_DAMAGE"
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 local warnProtect						= mod:NewSpellAnnounce(123250, 2)
@@ -288,7 +285,10 @@ function mod:SPELL_CAST_START(args)
 		specWarnHide:Show()
 		timerSpecialCD:Start()
 		self:RegisterShortTermEvents(
-			"INSTANCE_ENCOUNTER_ENGAGE_UNIT"--We register on hide, because it also fires just before hide, every time and don't want to trigger "hide over" at same time as hide.
+			"INSTANCE_ENCOUNTER_ENGAGE_UNIT",--We register on hide, because it also fires just before hide, every time and don't want to trigger "hide over" at same time as hide.
+			"SPELL_DAMAGE",
+			"SPELL_PERIODIC_DAMAGE",
+			"RANGE_DAMAGE"
 		)
 		if self.Options.RangeFrame then
 			DBM.RangeCheck:Show(3)--Show everyone during hide
