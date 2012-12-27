@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(742, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8427 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8438 $"):sub(12, -3))
 mod:SetCreatureID(62442)--62919 Unstable Sha, 62969 Embodied Terror
 mod:SetModelID(42532)
 mod:SetReCombatTime(60)--fix lfr combat re-starts after killed.
@@ -179,8 +179,10 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	if spellId == 122770 and self:AntiSpam(2, 1) then--Nightmares (Night Phase)
 		targetScansDone = 0
 		self:TargetScanner()
-		timerNightmaresCD:Start()
-		countdownNightmares:Start(15.5)
+		if timerDayCD:GetTime() < 106 then
+			timerNightmaresCD:Start()
+			countdownNightmares:Start(15.5)
+		end
 	elseif spellId == 123252 and self:AntiSpam(2, 2) then--Dread Shadows Cancel (Sun Phase)
 		timerShadowBreathCD:Cancel()
 		timerSunbeamCD:Cancel()
