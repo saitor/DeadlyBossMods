@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Brawlers", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8424 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8430 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 --mod:SetModelID(41448)
 mod:SetZone(DBM_DISABLE_ZONE_DETECTION)
@@ -90,7 +90,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
 		self:SendSync("MatchBegin")
 	end
 	--Only boss with a custom berserk timer. His is 1 minute, but starts at different yell than 2 min berserk, so it's not actually 60 sec shorter but more like 50-55 sec shorter
-	if msg == L.Proboskus or msg:find(L.Proboskus) then
+	if msg == L.Proboskus or msg:find(L.Proboskus) or msg == L.Proboskus2 or msg:find(L.Proboskus2) then
 		berserkTimer:Cancel()
 		berserkTimer:Start(60)
 	end
