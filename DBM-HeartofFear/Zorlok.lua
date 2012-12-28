@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(745, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8439 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8440 $"):sub(12, -3))
 mod:SetCreatureID(62980)--63554 (Special invisible Vizier that casts the direction based spellid versions of attenuation)
 mod:SetModelID(42807)
 mod:SetZone()
@@ -117,8 +117,14 @@ function mod:SPELL_CAST_START(args)
 		timerForce:Start()
 	elseif args:IsSpellID(122474, 122496, 123721) then--All direction IDs are cast by an invisible version of Vizier.
 		lastDirection = L.Left
+		if self.Options.ArrowOnAttenuation then
+			DBM.Arrow:ShowStatic(90, 12)
+		end
 	elseif args:IsSpellID(122479, 122497, 123722) then--We monitor direction, but we need to announce off non invisible mob
 		lastDirection = L.Right
+		if self.Options.ArrowOnAttenuation then
+			DBM.Arrow:ShowStatic(270, 12)
+		end
 	elseif args:IsSpellID(127834) then--This is only id that properly identifies CORRECT boss source
 		--Example
 		--http://worldoflogs.com/reports/rt-g8ncl718wga0jbuj/xe/?enc=bosses&boss=66791&x=%28spellid+%3D+127834+or+spellid+%3D+122496+or+spellid+%3D+122497%29+and+fulltype+%3D+SPELL_CAST_START
@@ -135,9 +141,6 @@ function mod:SPELL_CAST_START(args)
 					timerAttenuationCD:Start(54, args.sourceGUID)
 				end
 			end
-		end
-		if self.Options.ArrowOnAttenuation then
-			DBM.Arrow:ShowStatic(270, 12)
 		end
 	end
 end
