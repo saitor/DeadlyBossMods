@@ -44,8 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8446 $"):sub(12, -3)),
-	-- Current release is 5.1.0, then alpha needs to set 5.1.1? (alpha revision is always bigger than release revision)
+	Revision = tonumber(("$Revision: 8447 $"):sub(12, -3)),
 	DisplayVersion = "5.1.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 8421 -- the revision of the latest stable version that is available
 }
