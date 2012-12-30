@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(709, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8451 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8452 $"):sub(12, -3))
 mod:SetCreatureID(60999)--61042 Cheng Kang, 61046 Jinlun Kun, 61038 Yang Guoshi, 61034 Terror Spawn
 mod:SetModelID(41772)
 
@@ -138,7 +138,7 @@ function mod:OnCombatStart(delay)
 --	self:ScheduleMethod(25.5-delay, "TerrorSpawns")
 	warnBreathOfFearSoon:Schedule(23.3-delay)
 	timerBreathOfFearCD:Start(-delay)
-	self:ScheduleMethod(26.3-delay-shaPower, "CheckWall")
+	self:ScheduleMethod(26.3-delay, "CheckWall")
 	countdownBreathOfFear:Start(33.3-delay)
 	onPlatform = false
 	platformMob = nil

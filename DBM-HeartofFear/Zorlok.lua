@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(745, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8440 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8452 $"):sub(12, -3))
 mod:SetCreatureID(62980)--63554 (Special invisible Vizier that casts the direction based spellid versions of attenuation)
 mod:SetModelID(42807)
 mod:SetZone()
@@ -202,7 +202,7 @@ function mod:UNIT_DIED(args)
 		EchoAlive = false
 		if platform < 4 then
 			timerAttenuationCD:Cancel()
-		else--No echo left up in final phase, cancel al timers because they are going to go back to clusterfuck random (as in may weave convert in but may not, and delay other abilities by as much as 30-50 seconds)
+		else--No echo left up in final phase, cancel all timers because they are going to go back to clusterfuck random (as in may weave convert in but may not, and delay other abilities by as much as 30-50 seconds)
 			timerAttenuationCD:Cancel()
 			timerForceCD:Cancel()
 		end
