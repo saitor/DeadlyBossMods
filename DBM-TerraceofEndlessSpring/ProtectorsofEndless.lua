@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(683, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8447 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8451 $"):sub(12, -3))
 mod:SetCreatureID(60585, 60586, 60583)--60583 Protector Kaolan, 60585 Elder Regail, 60586 Elder Asani
 mod:SetModelID(41503)--Protector Kaolan, 41502 and 41504 are elders
 mod:SetZone()
@@ -144,7 +144,9 @@ function mod:OnCombatStart(delay)
 	else
 		timerTouchOfShaCD:Start(15-delay)
 	end
-	berserkTimer:Start(-delay)
+	if not self:IsDifficulty("lfr25") then--lfr not berserks or more than 8m 10sec.
+		berserkTimer:Start(-delay)
+	end
 end
 
 function mod:OnCombatEnd()
