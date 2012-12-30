@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(709, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8427 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8450 $"):sub(12, -3))
 mod:SetCreatureID(60999)--61042 Cheng Kang, 61046 Jinlun Kun, 61038 Yang Guoshi, 61034 Terror Spawn
 mod:SetModelID(41772)
 
@@ -37,7 +37,7 @@ local specWarnThrash					= mod:NewSpecialWarningSpell(131996, mod:IsTank())
 --local specWarnOminousCackle				= mod:NewSpecialWarningSpell(119693, nil, nil, nil, true)--Cast, warns the entire raid.
 local specWarnOminousCackleYou			= mod:NewSpecialWarningYou(129147)--You have debuff, just warns you.
 --local specWarnTerrorSpawn				= mod:NewSpecialWarningSwitch("ej6088",  mod:IsDps())
-local specWarnDreadSpray				= mod:NewSpecialWarningSpell(120047, nil, nil, nil, true)--Platform ability, particularly nasty damage, and fear.
+local specWarnDreadSpray				= mod:NewSpecialWarningSpell(120047, true)--Platform ability, particularly nasty damage, and fear.
 local specWarnDeathBlossom				= mod:NewSpecialWarningSpell(119888, nil, nil, nil, true)--Cast, warns the entire raid.
 -- Heroic Phase 2
 local specWarnDreadThrash				= mod:NewSpecialWarningSpell(132007, mod:IsTank())
@@ -178,8 +178,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		--"<78.3> [CLEU] SPELL_AURA_APPLIED#false#0x0100000000011E0F#Derevka#1300#0#0x0100000000011E0F#Derevka#1300#0#129147#Ominous Cackle#32#DEBUFF", -- [12440]
 	elseif args:IsSpellID(120047) and platformMob and args.sourceName == platformMob then--might change
 		warnDreadSpray:Show()
-		timerDreadSpray:Start()
-		timerDreadSprayCD:Start()
+		specWarnDreadSpray:Show()
+		timerDreadSpray:Start(args.sourceGUID)
+		timerDreadSprayCD:Start(args.sourceGUID)
 	elseif args:IsSpellID(119888) and platformMob and args.sourceName == platformMob then
 		timerDeathBlossom:Show()
 	elseif args:IsSpellID(118977) and args:IsPlayer() then--Fearless, you're leaving platform 
