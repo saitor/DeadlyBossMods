@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(737, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8447 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8455 $"):sub(12, -3))
 mod:SetCreatureID(62511)
 mod:SetModelID(43126)
 mod:SetZone()
@@ -17,8 +17,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS",
 	"SPELL_DAMAGE",
 	"SPELL_MISSED",
-	"UNIT_SPELLCAST_STOP",
-	"UNIT_POWER"
+	"UNIT_SPELLCAST_STOP"
 )
 
 --[[WoL Reg Expression
@@ -265,7 +264,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnReshapeLife:Show(args.spellName, args.destName, constructCount)
 		if args:IsPlayer() then
 			self:RegisterShortTermEvents(
-				"UNIT_POWER"
+				"UNIT_POWER_FREQUENT"
 			)
 			playerIsConstruct = true
 			warnedWill = true -- fix bad low will special warning on entering Construct. After entering vehicle, this will be return to false. (on alt.power changes)
@@ -400,7 +399,7 @@ function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 end
 mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
-function mod:UNIT_POWER(uId)
+function mod:UNIT_POWER_FREQUENT(uId)
 	if uId ~= "player" then return end
 	local playerWill = UnitPower(uId, ALTERNATE_POWER_INDEX)
 	if playerWill > willNumber then willNumber = playerWill end--Will power has gone up since last warning so reset that warning.
