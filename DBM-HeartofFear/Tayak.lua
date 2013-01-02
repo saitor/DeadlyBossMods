@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(744, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8337 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8463 $"):sub(12, -3))
 mod:SetCreatureID(62543)
 mod:SetModelID(43141)
 mod:SetZone()
@@ -159,7 +159,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 			yellUnseenStrike:Yell()
 		end
 		if self.Options.UnseenStrikeArrow then
-			DBM.Arrow:ShowRunTo(target, 2, 0, 5)
+			DBM.Arrow:ShowRunTo(target, 3, 3, 5)
 		end
 		self:Schedule(5, function()
 			emoteFired = false
