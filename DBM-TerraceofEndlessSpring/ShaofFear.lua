@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(709, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8470 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8481 $"):sub(12, -3))
 mod:SetCreatureID(60999)--61042 Cheng Kang, 61046 Jinlun Kun, 61038 Yang Guoshi, 61034 Terror Spawn
 mod:SetModelID(41772)
 
@@ -30,7 +30,7 @@ local warnWaterspout					= mod:NewTargetAnnounce(120519, 3)
 local warnHuddleInTerror				= mod:NewTargetAnnounce(120629, 3)
 local warnImplacableStrike				= mod:NewSpellAnnounce(120672, 4)
 local warnChampionOfTheLight			= mod:NewTargetAnnounce(120268, 3, nil, false)--seems spammy.
-local warnSubmerge						= mod:NewSpellAnnounce(120455)
+local warnSubmerge						= mod:NewCountAnnounce(120455)
 --local warnEmerge						= mod:NewSpellAnnounce(120458)--do not match he actually emerges.
 
 -- Normal and heroic Phase 1
