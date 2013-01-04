@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(729, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8456 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8484 $"):sub(12, -3))
 mod:SetCreatureID(62983)--62995 Animated Protector
 mod:SetModelID(42811)
 
@@ -283,7 +283,7 @@ function mod:SPELL_CAST_START(args)
 		hideActive = true
 		warnHide:Show(specialsCast)
 		specWarnHide:Show()
-		timerSpecialCD:Start(specialsCast+1)
+		timerSpecialCD:Start(nil, specialsCast+1)
 		self:RegisterShortTermEvents(
 			"INSTANCE_ENCOUNTER_ENGAGE_UNIT",--We register on hide, because it also fires just before hide, every time and don't want to trigger "hide over" at same time as hide.
 			"SPELL_DAMAGE",
