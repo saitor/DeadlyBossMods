@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(683, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8451 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8485 $"):sub(12, -3))
 mod:SetCreatureID(60585, 60586, 60583)--60583 Protector Kaolan, 60585 Elder Regail, 60586 Elder Asani
 mod:SetModelID(41503)--Protector Kaolan, 41502 and 41504 are elders
 mod:SetZone()
@@ -38,6 +38,7 @@ local isDispeller = select(2, UnitClass("player")) == "MAGE"
 local warnPhase2					= mod:NewPhaseAnnounce(2)
 local warnPhase3					= mod:NewPhaseAnnounce(3)
 --Elder Asani
+local warnWaterBolt					= mod:NewCountAnnounce(118312, 3, nil, false)
 local warnCleansingWaters			= mod:NewTargetAnnounce(117309, 3)--Phase 1+ ability. If target scanning fails, will switch to spell announce
 local warnCorruptingWaters			= mod:NewSpellAnnounce(117227, 4)--Phase 2+ ability.
 --Elder Regail (Also uses Overwhelming Corruption in phase 3)
@@ -88,6 +89,7 @@ local prisonTargets = {}
 local prisonIcon = 1--Will try to start from 1 and work up, to avoid using icons you are probalby putting on bosses (unless you really fail at spreading).
 local prisonDebuff = GetSpellInfo(79339)
 local prisonCount = 0
+local asaniCasts = 0
 
 local DebuffFilter
 do
@@ -136,6 +138,7 @@ function mod:OnCombatStart(delay)
 	totalTouchOfSha = 0
 	prisonCount = 0
 	scansDone = 0
+	asaniCasts = 0
 	table.wipe(prisonTargets)
 	timerCleansingWatersCD:Start(10-delay)
 	timerLightningPrisonCD:Start(15.5-delay)
@@ -248,6 +251,10 @@ function mod:SPELL_CAST_START(args)
 		else
 			timerLightningStormCD:Start(41)
 		end
+	elseif args:IsSpellID(118312) then--Asani water bolt
+		if asaniCasts == 3 then asaniCasts = 0 end
+		asaniCasts = asaniCasts + 1
+		warnWaterBolt:Show(asaniCasts)
 	end
 end
 
