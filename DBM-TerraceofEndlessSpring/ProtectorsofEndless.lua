@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(683, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8491 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8492 $"):sub(12, -3))
 mod:SetCreatureID(60585, 60586, 60583)--60583 Protector Kaolan, 60585 Elder Regail, 60586 Elder Asani
 mod:SetModelID(41503)--Protector Kaolan, 41502 and 41504 are elders
 mod:SetZone()
@@ -149,7 +149,7 @@ end
 
 local function findGroupNumber()
 	for i=1, MAX_RAID_MEMBERS do
-		name, _, subgroup = GetRaidRosterInfo(i);
+		local name, _, subgroup = GetRaidRosterInfo(i);
 		if name == UnitName("player") then
 			myGroup = subgroup
 		end
@@ -317,8 +317,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 			findGroupNumber()
 		end
 		corruptedCount = corruptedCount + 1
-		--25 man 5 2 2 2, 1 2 2 2, 1 2 2 2, 1 2 2 2, 1 1 1 1 strat.
 		if self:IsDifficulty("heroic25") then
+			--25 man 5 2 2 2, 1 2 2 2, 1 2 2 2, 1 2 2 2, 1 1 1 1 strat.
 			if corruptedCount == 5 or corruptedCount == 12 or corruptedCount == 19 or corruptedCount == 26 or corruptedCount == 33 then
 				warnGroupOrder:Show(2)
 				if myGroup == 2 then
