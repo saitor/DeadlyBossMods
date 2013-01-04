@@ -12,3 +12,4 @@ move-folders:
     DBM-Core/DBM-Core: DBM-Core
     DBM-Core/DBM-Scenario-MoP: DBM-Scenario-MoP
     DBM-Core/DBM-Brawlers: DBM-Brawlers
+	DBM-Core/DBM-ThroneofThunder: DBM-ThroneofThunder
