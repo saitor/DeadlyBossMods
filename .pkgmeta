@@ -9,7 +9,7 @@ move-folders:
     DBM-Core/DBM-Party-MoP: DBM-Party-MoP
     DBM-Core/DBM-PvP: DBM-PvP
     DBM-Core/DBM-WorldEvents: DBM-WorldEvents
-    DBM-Core/DBM-Core: DBM-Core
     DBM-Core/DBM-Scenario-MoP: DBM-Scenario-MoP
     DBM-Core/DBM-Brawlers: DBM-Brawlers
-	DBM-Core/DBM-ThroneofThunder: DBM-ThroneofThunder
+    DBM-Core/DBM-ThroneofThunder: DBM-ThroneofThunder
+    DBM-Core/DBM-Core: DBM-Core

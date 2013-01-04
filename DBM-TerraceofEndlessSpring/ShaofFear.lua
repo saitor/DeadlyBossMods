@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(709, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8483 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8494 $"):sub(12, -3))
 mod:SetCreatureID(60999)--61042 Cheng Kang, 61046 Jinlun Kun, 61038 Yang Guoshi, 61034 Terror Spawn
 mod:SetModelID(41772)
 
@@ -261,7 +261,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(120629) then-- Huddle In Terror
 		huddleInTerrorTargets[#huddleInTerrorTargets + 1] = args.destName
 		self:Unschedule(warnHuddleInTerrorTargets)
-		self:Schedule(0.3, warnHuddleInTerrorTargets)
+		self:Schedule(0.5, warnHuddleInTerrorTargets)
 		huddle = 1
 		if huddle == 1 and spout == 1 and strike == 0 then
 			timerImplacableStrikeCD:Start()
