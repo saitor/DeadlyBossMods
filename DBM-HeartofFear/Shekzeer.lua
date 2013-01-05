@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(743, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8337 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8495 $"):sub(12, -3))
 mod:SetCreatureID(62837)--62847 Dissonance Field, 63591 Kor'thik Reaver, 63589 Set'thik Windblade
 mod:SetModelID(42730)
 mod:SetZone()
@@ -211,6 +211,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 			DBM.RangeCheck:Hide()
 		end
 		timerPhase2:Cancel()
+		timerCryOfTerrorCD:Cancel()
 		timerConsumingTerrorCD:Cancel()
 		timerScreechCD:Cancel()
 		warnPhase2:Show()
@@ -240,6 +241,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 			DBM.RangeCheck:Hide()
 		end
 		timerPhase2:Cancel()
+		timerCryOfTerrorCD:Cancel()
 		timerConsumingTerrorCD:Cancel()
 		timerScreechCD:Cancel()
 		warnPhase2:Show()
