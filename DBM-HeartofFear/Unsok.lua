@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(737, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8499 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8500 $"):sub(12, -3))
 mod:SetCreatureID(62511)
 mod:SetModelID(43126)
 mod:SetZone()
@@ -424,8 +424,8 @@ function mod:UNIT_POWER(uId)
 	if uId ~= "player" then return end
 	local playerWill = UnitPower(uId, ALTERNATE_POWER_INDEX)
 	if playerWill > willNumber then willNumber = playerWill end--Will power has gone up since last warning so reset that warning.
-	if playerWill == 75 and willNumber > 75 then--Doesn't work? A mystery
-		willNumber = 75
+	if playerWill == 80 and willNumber > 80 then
+		willNumber = 80
 		warnWillPower:Show(willNumber)
 	elseif playerWill == 50 and willNumber > 50 then--Works
 		willNumber = 50
