@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(743, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8498 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8502 $"):sub(12, -3))
 mod:SetCreatureID(62837)--62847 Dissonance Field, 63591 Kor'thik Reaver, 63589 Set'thik Windblade
 mod:SetModelID(42730)
 mod:SetZone()
@@ -53,9 +53,9 @@ local specWarnConsumingTerror	= mod:NewSpecialWarningSpell(124849, not mod:IsTan
 local specWarnHeartOfFear		= mod:NewSpecialWarningYou(125638)
 local yellHeartOfFear			= mod:NewYell(125638)
 
-local timerScreechCD			= mod:NewNextTimer(7, 123735, nil, mod:IsRanged())
+local timerScreechCD			= mod:NewNextTimer(7, 123735, nil, false)
 local timerCryOfTerror			= mod:NewTargetTimer(20, 123788, nil, mod:IsHealer())
-local timerCryOfTerrorCD		= mod:NewCDTimer(25, 123788)
+local timerCryOfTerrorCD		= mod:NewCDTimer(25, 123788, nil, mod:IsRanged())
 local timerEyes					= mod:NewTargetTimer(30, 123707, nil, mod:IsTank())
 local timerEyesCD				= mod:NewNextTimer(11, 123707, nil, mod:IsTank())
 local timerDissonanceFieldCD	= mod:NewNextCountTimer(66, 123255)
@@ -217,7 +217,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		end
 		timerPhase2:Cancel()
 		timerCryOfTerrorCD:Cancel()
-		timerConsumingTerrorCD:Cancel()
+		timerDissonanceFieldCD:Cancel()
 		timerScreechCD:Cancel()
 		warnPhase2:Show()
 		timerVisionsCD:Start(4)
@@ -253,7 +253,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		end
 		timerPhase2:Cancel()
 		timerCryOfTerrorCD:Cancel()
-		timerConsumingTerrorCD:Cancel()
+		timerDissonanceFieldCD:Cancel()
 		timerScreechCD:Cancel()
 		warnPhase2:Show()
 		timerVisionsCD:Start(7)
