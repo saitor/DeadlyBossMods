@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(743, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8502 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8503 $"):sub(12, -3))
 mod:SetCreatureID(62837)--62847 Dissonance Field, 63591 Kor'thik Reaver, 63589 Set'thik Windblade
 mod:SetModelID(42730)
 mod:SetZone()
@@ -226,7 +226,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args:IsSpellID(123255) and self:AntiSpam(2, 3) then
 		fieldCount = fieldCount + 1
 		warnDissonanceField:Show(fieldCount)
-		if fieldCount < 3 then
+		if fieldCount < 2 then
 			timerDissonanceFieldCD:Start(nil, fieldCount+1)
 		end
 	end
@@ -268,6 +268,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		table.wipe(resinTargets)
 		timerScreechCD:Cancel()
 		timerCryOfTerrorCD:Cancel()
+		timerDissonanceFieldCD:Cancel()
 		timerEyesCD:Cancel()
 		warnRetreat:Show()
 		specWarnRetreat:Show()
