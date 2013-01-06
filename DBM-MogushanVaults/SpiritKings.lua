@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(687, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8473 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8505 $"):sub(12, -3))
 mod:SetCreatureID(60701, 60708, 60709, 60710)--Adds: 60731 Undying Shadow, 60958 Pinning Arrow
 mod:SetModelID(41813)
 mod:SetZone()
@@ -410,9 +410,9 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, boss)
 		timerPillageCD:Start(25)
 		if self:IsDifficulty("heroic10", "heroic25") then
 			timerSleightOfHandCD:Start(40.7)
-			timerRainOfArrowsCD:Start(40)
+			timerRainOfArrowsCD:Start(40, rainTimerText)
 		else
-			timerRainOfArrowsCD:Start(15)
+			timerRainOfArrowsCD:Start(15, rainTimerText)
 		end
 		if self.Options.RangeFrame then
 			DBM.RangeCheck:Show(8)
