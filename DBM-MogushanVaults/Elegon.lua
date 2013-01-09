@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(726, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8502 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8524 $"):sub(12, -3))
 mod:SetCreatureID(60410)--Energy Charge (60913), Emphyreal Focus (60776), Cosmic Spark (62618), Celestial Protector (60793)
 mod:SetModelID(41399)
 mod:SetZone()
@@ -37,7 +37,7 @@ local specWarnDespawnFloor			= mod:NewSpecialWarning("specWarnDespawnFloor", nil
 local specWarnRadiatingEnergies		= mod:NewSpecialWarningSpell(118310, nil, nil, nil, true)
 
 local timerBreathCD					= mod:NewCDTimer(18, 117960)
-local timerProtectorCD				= mod:NewCDTimer(35.5, 117954)
+local timerProtectorCD				= mod:NewCDTimer(41, 117954)
 local timerArcingEnergyCD			= mod:NewCDTimer(11.5, 117945)
 local timerTotalAnnihilation		= mod:NewCastTimer(4, 129711)
 local timerDestabilized				= mod:NewBuffFadesTimer(120, 132226)
