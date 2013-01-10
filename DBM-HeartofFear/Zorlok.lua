@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(745, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8471 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8525 $"):sub(12, -3))
 mod:SetCreatureID(62980)--63554 (Special invisible Vizier that casts the direction based spellid versions of attenuation)
 mod:SetModelID(42807)
 mod:SetZone()
@@ -30,6 +30,7 @@ local warnExhale			= mod:NewTargetAnnounce(122761, 3)
 local warnForceandVerve		= mod:NewCastAnnounce(122713, 4, 4)
 local warnAttenuation		= mod:NewAnnounce("warnAttenuation", 4, 127834)
 local warnConvert			= mod:NewTargetAnnounce(122740, 4)
+local warnEcho				= mod:NewAnnounce("warnEcho", 4, 127834)--Maybe come up with better icon later then just using attenuation icon
 
 local specwarnPlatform		= mod:NewSpecialWarning("specwarnPlatform")
 local specwarnForce			= mod:NewSpecialWarningSpell(122713)
@@ -210,6 +211,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		end
 	elseif (spellId == 130297 or spellId == 127541) and not EchoAlive then--Echo of Zor'lok
 		EchoAlive = true
+		warnEcho:Show()
 		if platform == 1 then--Boss flew off from first platform to 2nd, and this means the echo that spawned is an Echo of Force and Verve
 --			timerForceCD:Start()
 		elseif platform == 2 then--Boss flew to 3rd platform and left an Echo of Attenuation behind on 2nd.
