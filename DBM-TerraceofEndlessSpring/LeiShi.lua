@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(729, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8484 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8532 $"):sub(12, -3))
 mod:SetCreatureID(62983)--62995 Animated Protector
 mod:SetModelID(42811)
 
@@ -214,15 +214,17 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(123250) then
-		local protectElapsed = GetTime() - lastProtect
-		local specialCD = specialRemaining - protectElapsed
-		if specialCD < 5 then
-			timerSpecialCD:Start(5, specialsCast+1)
-		else
-			timerSpecialCD:Start(specialCD, specialsCast+1)
-		end
 		if self.Options.SetIconOnGuard then
 			guardActivated = 0
+		end
+		if timerSpecialCD:GetTime(specialsCast+1) == 0 then -- failsafe. (i.e : 79.8% hide -> protect... bar remains)
+			local protectElapsed = GetTime() - lastProtect
+			local specialCD = specialRemaining - protectElapsed
+			if specialCD < 5 then 
+				timerSpecialCD:Start(5, specialsCast+1)
+			else
+				timerSpecialCD:Start(specialCD, specialsCast+1)
+			end
 		end
 	elseif args:IsSpellID(123121) then
 		timerSpray:Cancel(args.destName)
