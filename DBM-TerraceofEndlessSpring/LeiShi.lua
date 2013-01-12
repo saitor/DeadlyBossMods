@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(729, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8534 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8535 $"):sub(12, -3))
 mod:SetCreatureID(62983)--62995 Animated Protector
 mod:SetModelID(42811)
 
@@ -352,7 +352,9 @@ function mod:INSTANCE_ENCOUNTER_ENGAGE_UNIT(event)
 	warnHideOver:Show(GetSpellInfo(123244))
 	warnHideProgress:Cancel()
 	warnHideProgress:Show(hideDebug, damageDebug, tostring(format("%.1f", timeDebug)))--Show right away instead of waiting out the schedule
-	self:ScaryFogRepeat()
+	if self:IsDifficulty("heroic10", "heroic25") then
+		self:ScaryFogRepeat()
+	end
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(3, bossTank)--Go back to showing only tanks
 	end
