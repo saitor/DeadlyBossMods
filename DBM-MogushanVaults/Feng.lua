@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(689, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8463 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8537 $"):sub(12, -3))
 mod:SetCreatureID(60009)--60781 Soul Fragment
 mod:SetModelID(41192)
 mod:SetZone()
@@ -301,7 +301,7 @@ function mod:SPELL_CAST_START(args)
 		soundEpicenter:Play()
 		timerEpicenter:Start()
 		timerEpicenterCD:Start(nil, specialCount + 1)
-	elseif args:IsSpellID(116157) then
+	elseif args:IsSpellID(116157, 116295) then
 		warnLightningFists:Show()
 		timerLightningFistsCD:Start()
 	end

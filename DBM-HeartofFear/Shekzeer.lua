@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(743, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8530 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8537 $"):sub(12, -3))
 mod:SetCreatureID(62837)--62847 Dissonance Field, 63591 Kor'thik Reaver, 63589 Set'thik Windblade
 mod:SetModelID(42730)
 mod:SetZone()
@@ -174,7 +174,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 	elseif args:IsSpellID(124077) then
-		if args.sourceGUID == UnitGUID("target") then--Only show warning for your own target.
+		if args.sourceGUID == UnitGUID("target") or args.sourceGUID == UnitGUID("focus") then--Only show warning for your own target.
 			specWarnDispatch:Show(args.sourceName)
 		end
 	elseif args:IsSpellID(123845) then
