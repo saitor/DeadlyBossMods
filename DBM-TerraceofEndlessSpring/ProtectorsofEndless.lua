@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(683, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8525 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8538 $"):sub(12, -3))
 mod:SetCreatureID(60585, 60586, 60583)--60583 Protector Kaolan, 60585 Elder Regail, 60586 Elder Asani
 mod:SetModelID(41503)--Protector Kaolan, 41502 and 41504 are elders
 mod:SetZone()
@@ -135,7 +135,7 @@ function mod:WatersTarget()
 			if scansDone < 15 then--Make sure no infinite loop.
 				self:ScheduleMethod(0.1, "WatersTarget")--Check multiple times to find a target that isn't a player.
 			end
-		else--He's not targeting a player, it's definitely breeze target.
+		else--He's not targeting a player, it's definitely right target
 			warnCleansingWaters:Show(targetname)
 			if targetname == UnitName("target") then--You are targeting the target of this spell.
 				specWarnCleansingWaters:Show(targetname)
@@ -173,7 +173,7 @@ function mod:OnCombatStart(delay)
 	else
 		timerTouchOfShaCD:Start(15-delay)
 	end
-	if not self:IsDifficulty("lfr25") then--lfr not berserks or more than 8m 10sec.
+	if not self:IsDifficulty("lfr25") then
 		berserkTimer:Start(-delay)
 	end
 	findGroupNumber()
