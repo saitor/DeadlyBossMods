@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(737, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8521 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8549 $"):sub(12, -3))
 mod:SetCreatureID(62511)
 mod:SetModelID(43126)
 mod:SetZone()
@@ -246,12 +246,15 @@ function mod:OnCombatEnd()
 end 
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(123059) and args:GetDestCreatureID() ~= 62691 then--Only track debuffs on boss, constructs, or monstrosity, ignore oozes.
-		warnDestabalize:Show(args.destName, args.amount or 1)
-		if self:IsDifficulty("lfr25") then
-			timerDestabalize:Start(60, args.destName)
-		else
-			timerDestabalize:Start(args.destName)
+	if args:IsSpellID(123059) and Phase < 3 then -- ignore phase3, not useful and super spammy.
+		local cid = args:GetDestCreatureID()
+		if cid == 62511 or cid == 62701 or cid == 62711 then -- Destabalize can be applid player's pet. so filter only boss, constructs, or monstrosity
+			warnDestabalize:Show(args.destName, args.amount or 1)
+			if self:IsDifficulty("lfr25") then
+				timerDestabalize:Start(60, args.destName)
+			else
+				timerDestabalize:Start(args.destName)
+			end
 		end
 	elseif args:IsSpellID(121949) then
 		warnParasiticGrowth:Show(args.destName)
