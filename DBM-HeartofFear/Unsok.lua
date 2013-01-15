@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(737, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8551 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8553 $"):sub(12, -3))
 mod:SetCreatureID(62511)
 mod:SetModelID(43126)
 mod:SetZone()
@@ -253,6 +253,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		if cid == 62511 or cid == 62711 then -- Only boss or monstrosity (most raids do not care about to construct)
 			if Phase < 3 then -- ignore phase3, not useful and super spammy.
 				warnDestabalize:Show(args.destName, args.amount or 1)
+			end
+			if args.amount then
+				timerDestabalize:Cancel(args.destName, args.amount - 1)
 			end
 			if self:IsDifficulty("lfr25") then
 				timerDestabalize:Start(60, args.destName, args.amount or 1)
