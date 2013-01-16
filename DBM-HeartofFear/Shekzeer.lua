@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(743, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8555 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8556 $"):sub(12, -3))
 mod:SetCreatureID(62837)--62847 Dissonance Field, 63591 Kor'thik Reaver, 63589 Set'thik Windblade
 mod:SetModelID(42730)
 mod:SetZone()
@@ -175,7 +175,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif args:IsSpellID(124077) then
 		specWarnDispatch:Show(args.sourceName)
-		if self:IsDifficulty("normal25", "heroic25") then
+		if self:IsDifficulty("normal25", "heroic25", "lfr25") then
 			timerDispatchCD:Start()--25 is about 12-15 variation
 		else
 			timerDispatchCD:Start(21)--Longer Cd on 10 man (21-24 variation)
