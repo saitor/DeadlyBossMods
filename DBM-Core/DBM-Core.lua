@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8561 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8562 $"):sub(12, -3)),
 	DisplayVersion = "5.2.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 8421 -- the revision of the latest stable version that is available
 }
@@ -208,7 +208,6 @@ else
 		--5.2 mods are disabled for horde since they tried their hardest to prevent them from being developed
 		--This will be removed when PTR is over. But as long as horde is going WAY out of way to hinder bossmod development on PTR, they won't be allowed to use it there either.
 		"DBM-ThroneofThunder",
-		"DBM-Pandaria",
 	}
 end
 
