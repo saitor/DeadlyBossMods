@@ -2,8 +2,8 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(819, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8479 $"):sub(12, -3))
---mod:SetCreatureID(62983)
+mod:SetRevision(("$Revision: 8560 $"):sub(12, -3))
+mod:SetCreatureID(68476)
 --mod:SetModelID(42811)
 
 mod:RegisterCombat("combat")
