@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8572 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8573 $"):sub(12, -3)),
 	DisplayVersion = "5.2.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 8421 -- the revision of the latest stable version that is available
 }
@@ -3152,7 +3152,7 @@ end
 do
 	local old = RaidBossEmoteFrame:GetScript("OnEvent")
 	RaidBossEmoteFrame:SetScript("OnEvent", function(...)
-		if DBM.Options.HideBossEmoteFrame and #inCombat > 0 then
+		if DBM.Options.HideBossEmoteFrame and IsInInstance() then--Function doesn't work, AT ALL. Table returns nil here, so try it a different way
 			return
 		end
 		return old(...)
