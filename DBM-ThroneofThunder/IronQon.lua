@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(817, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8574 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8578 $"):sub(12, -3))
 mod:SetCreatureID(68079, 68080, 68081, 68078)--Ro'shak 68079, Quet'zal 68080, Dam'ren 68081, Iron Qon 68078
 mod:SetModelID(46627) -- Iron Qon, 46628 Ro'shak, 46629 Quet'zal, 46630 Dam'ren
 
@@ -104,14 +104,14 @@ end
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
-	if cid == 68168 then--Ro'shak
+	if cid == 68079 then--Ro'shak
 		--Only one log, but i looks like spear cd from phase 1 remains intact
 		phase = 2
 		timerUnleashedFlameCD:Cancel()
 		timerMoltenOverload:Cancel()
 		timerLightningStormCD:Start(17)
 		print("Mod beyond phase 1 incomplete. You can thank horde grieving instance portal for that")
-	elseif cid == 68168 then--Quet'zal
+	elseif cid == 68080 then--Quet'zal
 		phase = 3
 		timerLightningStormCD:Cancel()
 	elseif cid == 68081 then--Dam'ren
