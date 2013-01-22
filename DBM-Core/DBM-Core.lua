@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8592 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8593 $"):sub(12, -3)),
 	DisplayVersion = "5.2.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 8421 -- the revision of the latest stable version that is available
 }
@@ -3174,11 +3174,9 @@ end
 do
 	local old = RaidBossEmoteFrame:GetScript("OnEvent")
 	RaidBossEmoteFrame:SetScript("OnEvent", function(...)
-		if DBM.Options.HideBossEmoteFrame and IsEncounterInProgress() then--Function doesn't work, AT ALL. Table returns nil here, so try it a different way
-			print("Emote Frame hidden")
+		if DBM.Options.HideBossEmoteFrame and #inCombat > 0 then--#inCombat returns correct value. I cannot found error on this function on live server.
 			return
 		end
-		print("Emote frame not hidden")
 		return old(...)
 	end)
 end
