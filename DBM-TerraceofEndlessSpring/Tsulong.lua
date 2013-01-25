@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(742, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8607 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8608 $"):sub(12, -3))
 mod:SetCreatureID(62442)--62919 Unstable Sha, 62969 Embodied Terror
 mod:SetModelID(42532)
 mod:SetReCombatTime(60)--fix lfr combat re-starts after killed.
@@ -41,7 +41,7 @@ local specWarnLightOfDay				= mod:NewSpecialWarningSpell("ej6551", mod:IsHealer(
 
 local timerNightCD						= mod:NewNextTimer(121, "ej6310", nil, nil, nil, 130013)
 local timerSunbeamCD					= mod:NewCDTimer(41, 122789)
-local timerShadowBreathCD				= mod:NewCDTimer(28, 122752, nil, mod:IsTank() or mod:IsHealer())
+local timerShadowBreathCD				= mod:NewCDTimer(26, 122752, nil, mod:IsTank() or mod:IsHealer())
 local timerNightmaresCD					= mod:NewNextTimer(15.5, 122770)
 local timerDarkOfNightCD				= mod:NewCDTimer(30.5, "ej6550", nil, nil, nil, 130013)
 local timerDayCD						= mod:NewNextTimer(121, "ej6315", nil, nil, nil, 122789)
