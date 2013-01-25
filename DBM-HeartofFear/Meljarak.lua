@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(741, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8556 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8607 $"):sub(12, -3))
 mod:SetCreatureID(62397)
 mod:SetModelID(42645)
 mod:SetZone()
@@ -196,7 +196,9 @@ function mod:SPELL_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId)
 		self:Schedule(0.3, warnWindBombTargets)
 		if destGUID == UnitGUID("player") and self:AntiSpam(3, 3) then
 			specWarnWindBomb:Show()
-			yellWindBomb:Yell()
+			if not self:IsDifficulty("lfr25") then
+				yellWindBomb:Yell()
+			end
 		end
 	elseif spellId == 122125 and destGUID == UnitGUID("player") and self:AntiSpam(3, 4) then
 		specWarnCorrosiveResinPool:Show()
