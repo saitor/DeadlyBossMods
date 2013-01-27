@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8631 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8632 $"):sub(12, -3)),
 	DisplayVersion = "5.2.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 8421 -- the revision of the latest stable version that is available
 }
@@ -846,7 +846,7 @@ SlashCmdList["DEADLYBOSSMODS"] = function(msg)
 		time = min * 60 + sec
 		DBM:CreatePizzaTimer(time, text, true)
 	elseif cmd:sub(0,5) == "break" then
-		if DBM:GetRaidRank() == 0 or IsInGroup(LE_PARTY_CATEGORY_INSTANCE) or IsEncounterInProgress() or not IsInGroup() then--No break timers if not assistant or if it's LFR (because break timers in LFR are just not cute)
+		if DBM:GetRaidRank() == 0 or IsInGroup(LE_PARTY_CATEGORY_INSTANCE) or IsEncounterInProgress() then--No break timers if not assistant or if it's LFR (because break timers in LFR are just not cute)
 			DBM:AddMsg(DBM_ERROR_NO_PERMISSION)
 			return
 		end
@@ -855,26 +855,30 @@ SlashCmdList["DEADLYBOSSMODS"] = function(msg)
 		local channel = (IsInRaid() and "RAID_WARNING") or "PARTY"
 		DBM:CreatePizzaTimer(timer, DBM_CORE_TIMER_BREAK, true)
 		DBM:Unschedule(SendChatMessage)
-		SendChatMessage(DBM_CORE_BREAK_START:format(timer/60), channel)
-		if timer/60 > 5 then DBM:Schedule(timer - 5*60, SendChatMessage, DBM_CORE_BREAK_MIN:format(5), channel) end
-		if timer/60 > 2 then DBM:Schedule(timer - 2*60, SendChatMessage, DBM_CORE_BREAK_MIN:format(2), channel) end
-		if timer/60 > 1 then DBM:Schedule(timer - 1*60, SendChatMessage, DBM_CORE_BREAK_MIN:format(1), channel) end
-		if timer > 30 then DBM:Schedule(timer - 30, SendChatMessage, DBM_CORE_BREAK_SEC:format(30), channel) end
-		DBM:Schedule(timer, SendChatMessage, DBM_CORE_ANNOUNCE_BREAK_OVER, channel)
+		if IsInGroup() then
+			SendChatMessage(DBM_CORE_BREAK_START:format(timer/60), channel)
+			if timer/60 > 5 then DBM:Schedule(timer - 5*60, SendChatMessage, DBM_CORE_BREAK_MIN:format(5), channel) end
+			if timer/60 > 2 then DBM:Schedule(timer - 2*60, SendChatMessage, DBM_CORE_BREAK_MIN:format(2), channel) end
+			if timer/60 > 1 then DBM:Schedule(timer - 1*60, SendChatMessage, DBM_CORE_BREAK_MIN:format(1), channel) end
+			if timer > 30 then DBM:Schedule(timer - 30, SendChatMessage, DBM_CORE_BREAK_SEC:format(30), channel) end
+			DBM:Schedule(timer, SendChatMessage, DBM_CORE_ANNOUNCE_BREAK_OVER, channel)
+		end
 	elseif cmd:sub(1, 4) == "pull" then
-		if DBM:GetRaidRank() == 0 or IsEncounterInProgress() or not IsInGroup() then
+		if DBM:GetRaidRank() == 0 or IsEncounterInProgress() then
 			return DBM:AddMsg(DBM_ERROR_NO_PERMISSION)
 		end
 		local timer = tonumber(cmd:sub(5)) or 10
 		local channel = (IsInGroup(LE_PARTY_CATEGORY_INSTANCE) and "INSTANCE_CHAT") or (IsInRaid() and "RAID_WARNING") or "PARTY"
 		DBM:Unschedule(SendChatMessage)
-		SendChatMessage(("*** %s ***"):format(DBM_CORE_ANNOUNCE_PULL:format(timer)), channel)--Sent mainly for those who have no boss mod (bigwigs or DBM)
-		for i = 1, 5 do
-			if timer > i then
-				DBM:Schedule(timer - i, SendChatMessage, ("*** %s ***"):format(DBM_CORE_ANNOUNCE_PULL:format(i)), channel)
+		if IsInGroup() then
+			SendChatMessage(("*** %s ***"):format(DBM_CORE_ANNOUNCE_PULL:format(timer)), channel)--Sent mainly for those who have no boss mod (bigwigs or DBM)
+			for i = 1, 5 do
+				if timer > i then
+					DBM:Schedule(timer - i, SendChatMessage, ("*** %s ***"):format(DBM_CORE_ANNOUNCE_PULL:format(i)), channel)
+				end
 			end
+			DBM:Schedule(timer, SendChatMessage, ("*** %s ***"):format(DBM_CORE_ANNOUNCE_PULL_NOW), channel)
 		end
-		DBM:Schedule(timer, SendChatMessage, ("*** %s ***"):format(DBM_CORE_ANNOUNCE_PULL_NOW), channel)
 		sendSync("PT", timer)
 	elseif cmd:sub(1, 5) == "arrow" then
 		if not DBM:IsInRaid() then
