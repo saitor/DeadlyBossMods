@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(832, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8621 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8622 $"):sub(12, -3))
 mod:SetCreatureID(68397)
 --[[
 Diffusion Chain Conduit 68696
@@ -100,6 +100,12 @@ function mod:OnCombatStart(delay)
 	westDestroyed = false
 	timerThunderstruckCD:Start(25-delay)
 	timerDecapitateCD:Start(45-delay)--First seems to be 45, rest 50. it's a CD though, not a "next"
+end
+
+function mod:OnCombatEnd()
+	if self.Options.RangeFrame then
+		DBM.RangeCheck:Hide()
+	end
 end
 
 function mod:SPELL_CAST_START(args)
