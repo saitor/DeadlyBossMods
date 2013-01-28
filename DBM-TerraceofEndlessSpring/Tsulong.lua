@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(742, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8610 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8638 $"):sub(12, -3))
 mod:SetCreatureID(62442)--62919 Unstable Sha, 62969 Embodied Terror
 mod:SetModelID(42532)
 mod:SetReCombatTime(60)--fix lfr combat re-starts after killed.
@@ -226,7 +226,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		countdownNightmares:Start(15.5)
 		timerDayCD:Start()
 		if self:IsDifficulty("heroic10", "heroic25") then
-			timerDarkOfNightCD:Start(10-delay)
+			timerDarkOfNightCD:Start(10)
 			darkOfNightCount = 0
 		end
 	elseif spellId == 123813 and self:AntiSpam(2, 3) then--The Dark of Night (Night Phase)
