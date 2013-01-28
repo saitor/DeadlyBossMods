@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(742, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8638 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8641 $"):sub(12, -3))
 mod:SetCreatureID(62442)--62919 Unstable Sha, 62969 Embodied Terror
 mod:SetModelID(42532)
 mod:SetReCombatTime(60)--fix lfr combat re-starts after killed.
@@ -124,6 +124,7 @@ function mod:OnCombatStart(delay)
 	timerNightmaresCD:Start(15-delay)
 	countdownNightmares:Cancel() -- sometimes it doubles OnCombatStart, wtf?..
 	countdownNightmares:Start(15-delay)
+	timerSunbeamCD:Start(43-delay)--Sometimes he doesn't emote first cast, so we start a bar for SECOND cast on pull, if we does cast it though, we'll update bar off first cast
 	timerDayCD:Start(-delay)
 	if not self:IsDifficulty("lfr25") then
 		berserkTimer:Start(-delay)
