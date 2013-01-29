@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8648 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8649 $"):sub(12, -3)),
 	DisplayVersion = "5.2.0 alpha", -- the string that is shown as version
 	ReleaseRevision = 8421 -- the revision of the latest stable version that is available
 }
@@ -872,7 +872,7 @@ SlashCmdList["DEADLYBOSSMODS"] = function(msg)
 		local timer = tonumber(cmd:sub(5)) or 10
 		local channel = (IsInGroup(LE_PARTY_CATEGORY_INSTANCE) and "INSTANCE_CHAT") or (IsInRaid() and "RAID_WARNING") or "PARTY"
 		DBM:Unschedule(SendChatMessage)
-		if IsInGroup() then
+		if IsInGroup() and timer > 1 then
 			SendChatMessage(DBM_CORE_ANNOUNCE_PULL:format(timer), channel)--Still give everyone first raid warning (but only that one)
 			for i = 1, 5 do
 				if timer > i then
