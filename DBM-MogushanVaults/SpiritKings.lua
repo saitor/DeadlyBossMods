@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(687, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8518 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8650 $"):sub(12, -3))
 mod:SetCreatureID(60701, 60708, 60709, 60710)--Adds: 60731 Undying Shadow, 60958 Pinning Arrow
 mod:SetModelID(41813)
 mod:SetZone()
@@ -135,15 +135,9 @@ function mod:OnCombatStart(delay)
 	timerFlankingOrdersCD:Start(25)
 	if self:IsDifficulty("heroic10", "heroic25") then
 		rainTimerText = DBM_CORE_AUTO_TIMER_TEXTS.next:format(GetSpellInfo(118122))
-		if self:IsDifficulty("heroic10") then
-			timerImperviousShieldCD:Start(60.7)
-			countdownImperviousShield:Start(60.7)
-			warnImperviousShieldSoon:Schedule(55.7)
-		else
-			timerImperviousShieldCD:Start(40.7)
-			countdownImperviousShield:Start(40.7)
-			warnImperviousShieldSoon:Schedule(35.7)
-		end
+		timerImperviousShieldCD:Start(40.7)
+		countdownImperviousShield:Start(40.7)
+		warnImperviousShieldSoon:Schedule(35.7)
 	else
 		rainTimerText = DBM_CORE_AUTO_TIMER_TEXTS.cd:format(GetSpellInfo(118122))
 	end
