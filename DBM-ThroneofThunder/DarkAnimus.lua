@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(824, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8661 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8673 $"):sub(12, -3))
 mod:SetCreatureID(69427)
 mod:SetModelID(47527)
 
@@ -75,7 +75,7 @@ mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 --"<83.8 14:59:54> [RAID_BOSS_WHISPER] RAID_BOSS_WHISPER#%s is pursuing you!#Crimson Wake#1#false", -- [5382]
 --Seems to have no debuff event on combat log. Could possibly use UNIT_AURA, but this should be less cpu and since we can do it without localizing, no harm in doing it this way.
---Now, if target scanning doesn't work, may switch to unit aura to detect it on players other than self.
+--Now, if target scanning doesn't work, may switch to unit aura to detect it on players other than self without requiring syncing.
 function mod:RAID_BOSS_WHISPER(msg, npc)
 	if npc == crimsonWake then--In case target scanning fails, personal warnings still always go off. Target scanning is just so everyone else in raid knows who it's on (since only target sees this emote)
 		if self:AntiSpam(3, 1) then--This actually doesn't spam, but we ues same antispam here so that the MOVE warning doesn't fire at same time unless you fail to move for 2 seconds
