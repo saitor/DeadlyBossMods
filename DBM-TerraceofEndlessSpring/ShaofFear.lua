@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(709, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8669 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8670 $"):sub(12, -3))
 mod:SetCreatureID(60999)--61042 Cheng Kang, 61046 Jinlun Kun, 61038 Yang Guoshi, 61034 Terror Spawn
 mod:SetModelID(45065)
 mod:SetUsedIcons(8, 7, 6, 5, 4)
@@ -19,7 +19,7 @@ mod:RegisterEventsInCombat(
 )
 
 -- Normal and heroic Phase 1
-local warnThrash						= mod:NewSpellAnnounce(131996, 4, nil, mod:IsTank() or mod:IsHealer())
+local warnThrash						= mod:NewSpellAnnounce(131996, 3, nil, mod:IsTank() or mod:IsHealer())
 local warnBreathOfFearSoon				= mod:NewPreWarnAnnounce(119414, 10, 3)
 local warnBreathOfFear					= mod:NewSpellAnnounce(119414, 4)
 mod:AddBoolOption("warnBreathOnPlatform", false, "announce")
@@ -156,6 +156,7 @@ function mod:CheckPlatformLeaved()--Check you are leaved platform by Wall of Lig
 end
 
 function mod:LeavePlatform()
+	if not self:IsInCombat() then return end--Because sometimes this still gets scheduled on combat end
 	if onPlatform then
 		if DBM.BossHealth:IsShown() then
 			DBM.BossHealth:RemoveBoss(61038)
@@ -223,7 +224,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(119414) and self:AntiSpam(5, 1) then--using this with antispam is still better then registering SPELL_CAST_SUCCESS for a single event when we don't have to. Less cpu cause mod won't have to check every SPELL_CAST_SUCCESS event.
+	if args:IsSpellID(119414) and self:AntiSpam(5, 1) and not phase2 then--using this with antispam is still better then registering SPELL_CAST_SUCCESS for a single event when we don't have to. Less cpu cause mod won't have to check every SPELL_CAST_SUCCESS event.
 		warnBreathOfFear:Show()
 		if not platformSent or self.Options.warnBreathOnPlatform then--not in middle, not your problem
 			timerBreathOfFearCD:Start()
