@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(737, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8553 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8697 $"):sub(12, -3))
 mod:SetCreatureID(62511)
 mod:SetModelID(43126)
 mod:SetZone()
@@ -115,8 +115,8 @@ local guids = {}
 local guidTableBuilt = false--Entirely for DCs, so we don't need to reset between pulls cause it doesn't effect building table on combat start and after a DC then it will be reset to false always
 local function buildGuidTable()
 	table.wipe(guids)
-	for i = 1, DBM:GetGroupMembers() do
-		guids[UnitGUID("raid"..i) or "none"] = GetRaidRosterInfo(i)
+	for uId, i in DBM:GetGroupMembers() do
+		guids[UnitGUID(uId) or "none"] = GetRaidRosterInfo(i)
 	end
 end
 

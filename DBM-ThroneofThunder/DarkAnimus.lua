@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(824, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8673 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8697 $"):sub(12, -3))
 mod:SetCreatureID(69427)
 mod:SetModelID(47527)
 
@@ -35,8 +35,8 @@ local guids = {}
 local guidTableBuilt = false--Entirely for DCs, so we don't need to reset between pulls cause it doesn't effect building table on combat start and after a DC then it will be reset to false always
 local function buildGuidTable()
 	table.wipe(guids)
-	for i = 1, DBM:GetGroupMembers() do
-		guids[UnitGUID("raid"..i) or "none"] = GetRaidRosterInfo(i)
+	for uId, i in DBM:GetGroupMembers() do
+		guids[UnitGUID(uId) or "none"] = GetRaidRosterInfo(i)
 	end
 end
 
