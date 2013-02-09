@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Landfall", "DBM-Scenario-MoP")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8652 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8701 $"):sub(12, -3))
 mod:SetZone()
 
 mod:RegisterCombat("scenario", 911, 920)
@@ -44,7 +44,7 @@ local heroes = {
 local achievementFailed = false
 
 function mod:OnCombatStart(delay)
-	achivementFailed = false
+	achievementFailed = false
 end
 
 function mod:SPELL_CAST_START(args)
