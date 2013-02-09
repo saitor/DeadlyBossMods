@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(829, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8665 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8699 $"):sub(12, -3))
 mod:SetCreatureID(68905, 68904)--Lu'lin 68905, Suen 68904
 mod:SetModelID(46975)--Lu'lin, 46974 Suen
 
@@ -126,7 +126,7 @@ function mod:SPELL_SUMMON(args)
 	if args:IsSpellID(137419) then
 		warnIceCommet:Show()
 		specWarnIceCommet:Show()
-		timerIceCommetD:Start()
+		timerIceCommetCD:Start()
 	end
 end
 
@@ -149,7 +149,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		timerLightOfDayCD:Start()
 		timerFanOfFlamesCD:Start()
 		timerFlamesOfPassionCD:Start(12.5)
-		timerIceCommetD:Start()
+		timerIceCommetCD:Start()
 	elseif spellId == 138823 and self:AntiSpam(2, 3) then
 		warnLightOfDay:Show()
 		timerLightOfDayCD:Start()
