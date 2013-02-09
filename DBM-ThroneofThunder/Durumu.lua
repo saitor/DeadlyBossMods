@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8684 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8700 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetModelID(47189)
 
@@ -74,7 +74,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 				end
 				local inRange = DBM.RangeCheck:GetDistance("player", x, y)
 				if inRange and inRange < 6 then--Guessed range.
-					specWarnForceOfWillNear:Show(targetname)
+					specWarnForceOfWillNear:Show(args.destName)
 				end
 			end
 		end
