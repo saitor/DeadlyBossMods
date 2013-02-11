@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(682, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8697 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8705 $"):sub(12, -3))
 mod:SetCreatureID(60143)
 mod:SetModelID(41256)
 mod:SetZone()
@@ -112,6 +112,7 @@ end
 function mod:OnCombatStart(delay)
 	totemCount = 0
 	buildGuidTable()
+	guidTableBuilt = true
 	table.wipe(voodooDollTargets)
 	table.wipe(crossedOverTargets)
 	table.wipe(voodooDollTargetIcons)
