@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8723 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8724 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70212, 70235, 70247)--flaming 70212. Frozen 70235, Venomous 70247
 mod:SetModelID(47414)--Hydra Fire Head, 47415 Frost Head, 47416 Poison Head
 
@@ -188,7 +188,7 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 function mod:SPELL_DAMAGE(sourceGUID, _, _, _, destGUID, _, _, _, spellId, spellName)
 	if spellId == 139850 and self:AntiSpam(2, 1) then
 		timerAcidRainCD:Start(13.5)--TODO, it should be cast more often more heads there are. this is timing with two heads in back. Find out timing with 1 head, or 3 or 4
-	elseif spellId == 139889 and self:AntiSpam(2, 2) then
+	elseif spellId == 139889 and destGUID == UnitGUID("player") and self:AntiSpam(2, 2) then
 		specWarnTorrentofIce:Show()
 	end
 end
