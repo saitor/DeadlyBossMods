@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(817, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8684 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8713 $"):sub(12, -3))
 mod:SetCreatureID(68079, 68080, 68081, 68078)--Ro'shak 68079, Quet'zal 68080, Dam'ren 68081, Iron Qon 68078
 mod:SetModelID(46627) -- Iron Qon, 46628 Ro'shak, 46629 Quet'zal, 46630 Dam'ren
 
@@ -94,27 +94,27 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerLightningStormCD:Start()
 	--Dead zone IDs, each dead zone has two shields and two openings. Each spellid identifies those openings.
 	elseif args:IsSpellID(137226) then--Front, Right Shielded
-		warnDeadZone:Show(args.spellName, L.Front, L.Right)
+		warnDeadZone:Show(args.spellName, DBM_CORE_FRONT, DBM_CORE_RIGHT)
 		timerDeadZoneCD:Start()
 		--Attack left or Behind (maybe add special warning that says where you can attack, for dps?)
 	elseif args:IsSpellID(137227) then--Left, Right Shielded
-		warnDeadZone:Show(args.spellName, L.Left, L.Right)
+		warnDeadZone:Show(args.spellName, DBM_CORE_LEFT, DBM_CORE_RIGHT)
 		timerDeadZoneCD:Start()
 		--Attack Front or Behind
 	elseif args:IsSpellID(137228) then--Left, Front Shielded
-		warnDeadZone:Show(args.spellName, L.Left, L.Front)
+		warnDeadZone:Show(args.spellName, DBM_CORE_LEFT, DBM_CORE_FRONT)
 		timerDeadZoneCD:Start()
 		--Attack Right or Behind
 	elseif args:IsSpellID(137229) then--Back, Front Shielded
-		warnDeadZone:Show(args.spellName, L.Back, L.Front)
+		warnDeadZone:Show(args.spellName, DBM_CORE_BACK, DBM_CORE_FRONT)
 		timerDeadZoneCD:Start()
 		--Attack left or Right
 	elseif args:IsSpellID(137230) then--Back, Left Shielded
-		warnDeadZone:Show(args.spellName, L.Back, L.Left)
+		warnDeadZone:Show(args.spellName, DBM_CORE_BACK, DBM_CORE_LEFT)
 		timerDeadZoneCD:Start()
 		--Attack Front or Right
 	elseif args:IsSpellID(137231) then--Back, Right Shielded
-		warnDeadZone:Show(args.spellName, L.Back, L.Right)
+		warnDeadZone:Show(args.spellName, DBM_CORE_BACK, DBM_CORE_RIGHT)
 		timerDeadZoneCD:Start()
 		--Attack Front or Left
 	end
