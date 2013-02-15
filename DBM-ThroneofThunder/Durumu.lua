@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8716 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8729 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetModelID(47189)
 
@@ -152,6 +152,7 @@ mod.SPELL_MISSED = mod.SPELL_DAMAGE
 --Beams wildly jump targets and don't give new target a warning at all nor does it even show in damn combat log.
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 	if msg:find("spell:134122") then--Blue Rays
+		timerForceOfWillCD:Cancel()
 		warnBlueBeam:Show(target)
 		if target == UnitName("player") then
 			warnBlueBeam:Show()
