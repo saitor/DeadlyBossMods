@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(817, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8729 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8730 $"):sub(12, -3))
 mod:SetCreatureID(68079, 68080, 68081, 68078)--Ro'shak 68079, Quet'zal 68080, Dam'ren 68081, Iron Qon 68078
 mod:SetModelID(46627) -- Iron Qon, 46628 Ro'shak, 46629 Quet'zal, 46630 Dam'ren
 
@@ -141,6 +141,7 @@ function mod:SPELL_SUMMON(args)
 	if args:IsSpellID(134926) then
 		warnThrowSpear:Show()
 		specWarnThrowSpear:Show()
+		timerThrowSpearCD:Start()
 	end
 end
 
