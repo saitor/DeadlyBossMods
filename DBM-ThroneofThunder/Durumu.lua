@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8729 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8732 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetModelID(47189)
 
@@ -188,10 +188,12 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, spellName, _, _, spellId)
 		if self.Options.ArrowOnBeam then
 			DBM.Arrow:ShowStatic(90)
 		end
+		print("Mod beyond this point is incomplete and most timers will be unavailable")
 	elseif spellId == 136316 and self:AntiSpam(2, 2) then--Disintegration Beam (counter-clockwise)
 		specWarnDisintegrationBeam:Show(spellName, DBM_CORE_RIGHT)
 		if self.Options.ArrowOnBeam then
 			DBM.Arrow:ShowStatic(270)
 		end
+		print("Mod beyond this point is incomplete and most timers will be unavailable")
 	end
 end
