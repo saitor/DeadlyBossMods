@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(745, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8713 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8744 $"):sub(12, -3))
 mod:SetCreatureID(62980)--63554 (Special invisible Vizier that casts the direction based spellid versions of attenuation)
 mod:SetModelID(42807)
 mod:SetZone()
@@ -146,7 +146,7 @@ function mod:SPELL_CAST_START(args)
 			local inRange = DBM.RangeCheck:GetDistance("player", x, y)--We check how far we are from the tank who has that boss
 			if (inRange and inRange < 60) or (x == 0 and y == 0) then--Only show warning if we are near the boss casting it (or rathor, the player tanking that boss). I realize orbs go very far, but the special warning is for the dance, not stray discs, that's what normal warning is for
 				if self.Options.ArrowOnAttenuation then
-					DBM.Arrow:ShowStatic(lastDirection == L.Left and 90 or 270, 12)
+					DBM.Arrow:ShowStatic(lastDirection == DBM_CORE_LEFT and 90 or 270, 12)
 				end
 				specwarnAttenuation:Show(args.spellName, args.sourceName, lastDirection)
 				timerAttenuation:Start()
