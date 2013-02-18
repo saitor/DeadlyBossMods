@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(824, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8731 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8736 $"):sub(12, -3))
 mod:SetCreatureID(69427)
 mod:SetModelID(47527)
 
@@ -35,7 +35,7 @@ local specWarnExplosiveSlam			= mod:NewSpecialWarningStack(138569, mod:IsTank(),
 local specWarnExplosiveSlamOther	= mod:NewSpecialWarningTarget(138569, mod:IsTank())
 --Boss
 local specWarnAnimaRing				= mod:NewSpecialWarningYou(136954)
-local specWarnAnimaRingOther		= mod:NewSpecialWarningOther(136954, false)
+local specWarnAnimaRingOther		= mod:NewSpecialWarningTarget(136954, false)
 local yellAnimaRing					= mod:NewYell(136954)
 local specWarnInterruptingJolt		= mod:NewSpecialWarningSpell(138763, nil, nil, nil, 2)
 
