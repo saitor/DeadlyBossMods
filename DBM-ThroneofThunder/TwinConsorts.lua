@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(829, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8726 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8737 $"):sub(12, -3))
 mod:SetCreatureID(68905, 68904)--Lu'lin 68905, Suen 68904
 mod:SetModelID(46975)--Lu'lin, 46974 Suen
 
@@ -63,9 +63,12 @@ local timerNuclearInfernoCD				= mod:NewCDTimer(55.5, 137491)
 --Dusk
 ---:(
 
+local berserkTimer						= mod:NewBerserkTimer(600)
+
 mod:AddBoolOption("RangeFrame")--For various abilities that target even melee. SO yes, even melee need to spread out or not come.
 
 function mod:OnCombatStart(delay)
+	berserkTimer:Start(-delay)
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(8)
 	end
