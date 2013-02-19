@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8744 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8745 $"):sub(12, -3)),
 	DisplayVersion = "5.2.0 beta", -- the string that is shown as version
 	ReleaseRevision = 8421 -- the revision of the latest stable version that is available
 }
@@ -4200,9 +4200,10 @@ do
 	function bossModPrototype:NewYell(spellId, yellText, optionDefault, optionName, chatType)
 		if yellText == nil then
 			if type(spellId) == "string" and spellId:match("ej%d+") then
-				yellText = DBM_CORE_AUTO_YELL_ANNOUNCE_TEXT:format(EJ_GetSectionInfo(string.sub(spellId, 3)) or DBM_CORE_UNKNOWN)
+				DBM:Schedule(timer, SendChatMessage, ("*** %s ***"):format(DBM_CORE_ANNOUNCE_PULL_NOW), channel)--^
+				yellText = ("*** %s ***"):format(DBM_CORE_AUTO_YELL_ANNOUNCE_TEXT:format(EJ_GetSectionInfo(string.sub(spellId, 3)) or DBM_CORE_UNKNOWN))
 			else
-				yellText = DBM_CORE_AUTO_YELL_ANNOUNCE_TEXT:format(GetSpellInfo(spellId) or DBM_CORE_UNKNOWN)
+				yellText = ("*** %s ***"):format(DBM_CORE_AUTO_YELL_ANNOUNCE_TEXT:format(GetSpellInfo(spellId) or DBM_CORE_UNKNOWN))
 			end
 		end
 		local obj = setmetatable(
