@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(743, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8606 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8750 $"):sub(12, -3))
 mod:SetCreatureID(62837)--62847 Dissonance Field, 63591 Kor'thik Reaver, 63589 Set'thik Windblade
 mod:SetModelID(42730)
 mod:SetZone()
@@ -48,7 +48,6 @@ local specwarnFixate			= mod:NewSpecialWarningYou(125390)
 local specWarnDispatch			= mod:NewSpecialWarningInterrupt(124077, mod:IsMelee())
 local specWarnAdvance			= mod:NewSpecialWarningSpell(125304)
 local specwarnVisions			= mod:NewSpecialWarningYou(124862)
-local yellVisions				= mod:NewYell(124862, nil, false)
 local specWarnConsumingTerror	= mod:NewSpecialWarningSpell(124849, not mod:IsTank())
 local specWarnHeartOfFear		= mod:NewSpecialWarningYou(125638)
 local yellHeartOfFear			= mod:NewYell(125638)
@@ -156,7 +155,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		visonsTargets[#visonsTargets + 1] = args.destName
 		if args:IsPlayer() then
 			specwarnVisions:Show()
-			yellVisions:Yell()
 		end
 		self:Unschedule(warnVisionsTargets)
 		self:Schedule(0.3, warnVisionsTargets)
