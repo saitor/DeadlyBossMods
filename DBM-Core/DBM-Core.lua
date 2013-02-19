@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8747 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8748 $"):sub(12, -3)),
 	DisplayVersion = "5.2.0 beta", -- the string that is shown as version
 	ReleaseRevision = 8421 -- the revision of the latest stable version that is available
 }
@@ -155,7 +155,7 @@ DBM.DefaultOptions = {
 	MoviesSeen = {},
 	MovieFilters = {},
 	LastRevision = 0,
-	FilterSayAndYell = GetCVarBool("ChatBubbles")
+	FilterSayAndYell = not not GetCVarBool("ChatBubbles") -- convert to boolean (function returns 1/nil) as we need to distinguish between 'setting not present' and 'disabled'
 }
 
 DBM.Bars = DBT:New()
