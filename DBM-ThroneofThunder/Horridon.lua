@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(819, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8756 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8757 $"):sub(12, -3))
 mod:SetCreatureID(68476)
 mod:SetModelID(47325)
 
@@ -48,6 +48,7 @@ local timerPuncture				= mod:NewTargetTimer(90, 136767, nil, mod:IsTank() or mod
 local timerPunctureCD			= mod:NewCDTimer(11, 136767, nil, mod:IsTank() or mod:IsHealer())
 local timerJalakCD				= mod:NewNextTimer(10, "ej7087")--Maybe it's time for a better worded spawn timer than "Next mobname". Maybe NewSpawnTimer with "mobname activates" or something.
 local timerBestialCryCD			= mod:NewNextCountTimer(10, 136817)
+local timerDisorientingRoarCD	= mod:NewCDTimer(55, 137458)--Heroic
 
 local jalakEngaged = false
 
@@ -57,6 +58,9 @@ function mod:OnCombatStart(delay)
 	timerDoubleSwipeCD:Start(16-delay)--16-17 second variation
 	timerAddsCD:Start(17-delay)
 	timerChargeCD:Start(31-delay)--31-35sec variation
+	if self:IsDifficulty("heroic10", "heroic25") then
+		timerDisorientingRoarCD:Start(-delay)
+	end
 end
 
 --[[
@@ -84,6 +88,7 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpellID(137458) then
 		warnDisorientingRoar:Show()
 		specWarnDisorientingRoar:Show()
+		timerDisorientingRoarCD:Start()--CD is reset when he breaks a door though.
 	end
 end
 
