@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(828, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8680 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8759 $"):sub(12, -3))
 mod:SetCreatureID(69712)
 mod:SetModelID(46675)
 
@@ -23,7 +23,7 @@ local warnLayEgg			= mod:NewSpellAnnounce(134367, 3)
 local warnTalonRake			= mod:NewStackAnnounce(134366, 3, nil, mod:IsTank() or mod:IsHealer())
 
 local specWarnQuills		= mod:NewSpecialWarningSpell(134380, nil, nil, nil, true)
-local specWarnFlock			= mod:NewSpecialWarningSwitch("ej7348", false)--For those assigned in egg/bird killing group to enable on their own
+local specWarnFlock			= mod:NewSpecialWarningSwitch("ej7348", false)--For those assigned in egg/bird killing group to enable on their own (and tank on heroic)
 local specWarnTalonRake		= mod:NewSpecialWarningStack(134366, mod:IsTank(), 3)--Might change to 2 if blizz fixes timing issues with it
 local specWarnTalonRakeOther= mod:NewSpecialWarningTarget(134366, mod:IsTank())
 
