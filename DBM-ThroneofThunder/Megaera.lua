@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8769 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8770 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70212, 70235, 70247)--flaming 70212. Frozen 70235, Venomous 70247
 mod:SetModelID(47414)--Hydra Fire Head, 47415 Frost Head, 47416 Poison Head
 
@@ -255,7 +255,7 @@ local function CheckHeads(GUID)
 	for i = 1, 5 do
 		if UnitExists("boss"..i) and not activeHeadGUIDS[UnitGUID("boss"..i)] then--Check if new units exist we haven't detected and added yet.
 			activeHeadGUIDS[UnitGUID("boss"..i)] = true
-			local cid = self:GetCIDFromGUID(UnitGUID("boss"..i))
+			local cid = mod:GetCIDFromGUID(UnitGUID("boss"..i))
 			if cid == 70235 then--Frozen
 				iceInFront = iceInFront + 1
 				if iceBehind > 0 then
