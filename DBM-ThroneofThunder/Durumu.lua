@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8767 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8768 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetModelID(47189)
 
@@ -238,6 +238,8 @@ function mod:UNIT_DIED(args)
 		crimsonFogs = crimsonFogs - 1
 		if crimsonFogs >= 1 and not self:IsDifficulty("lfr25") then--LFR does something completely different than kill 3 crimson adds to end phase. in LFR, they kill 1 of each color (which is completely against what you do in 10N, 25N, 10H, 25H)
 			warnCrimsonLeft:Show(crimsonFogs)
+		else--No adds left, force ability is re-enabled
+			timerForceOfWillCD:Start()
 		end
 	end
 end
