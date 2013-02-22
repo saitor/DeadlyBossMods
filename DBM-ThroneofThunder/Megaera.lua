@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8743 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8769 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70212, 70235, 70247)--flaming 70212. Frozen 70235, Venomous 70247
 mod:SetModelID(47414)--Hydra Fire Head, 47415 Frost Head, 47416 Poison Head
 
@@ -105,12 +105,11 @@ function mod:OnCombatStart(delay)
 	fireInFront = 0
 	venomInFront = 0
 	iceInFront = 0
-	fireBehind = 0
+	fireBehind = 1
 	venomBehind = 0
 	iceBehind = 0
 	if self:IsDifficulty("heroic10", "heroic25") then
 		arcaneBehind = 1
-		fireBehind = 1
 		arcaneInFront = 0
 		timerCinderCD:Start(18)--Debuff application, not cast
 		timerNetherTearCD:Start()

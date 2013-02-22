@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(709, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8764 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8769 $"):sub(12, -3))
 mod:SetCreatureID(60999)--61042 Cheng Kang, 61046 Jinlun Kun, 61038 Yang Guoshi, 61034 Terror Spawn
 mod:SetModelID(45065)
 mod:SetUsedIcons(8, 7, 6, 5, 4)
@@ -52,6 +52,7 @@ local MoveWarningBack					= mod:NewSpecialWarning("MoveBack", nil, false)--Move 
 -- Heroic Phase 2
 local specWarnDreadThrash				= mod:NewSpecialWarningSpell(132007, mod:IsTank(), nil, nil, 3)--Extra emphesis special warning.
 local specWarnNakedAndAfraidOther		= mod:NewSpecialWarningTarget(120669, mod:IsTank())
+local specWarnWaterspoutCast			= mod:NewSpecialWarningSpell(120519, nil, nil, nil, 2)
 local specWarnWaterspout				= mod:NewSpecialWarningYou(120519)
 local specWarnWaterspoutNear			= mod:NewSpecialWarningClose(120519)
 local yellWaterspout					= mod:NewYell(120519)
@@ -465,6 +466,8 @@ function mod:SPELL_CAST_START(args)
 		if self.Options.timerSpecialAbility then
 			timerSpecialAbilityCD:Start()
 		end
+	elseif args:IsSpellID(120519) then--Waterspout
+		specWarnWaterspoutCast:Show()
 	--elseif args:IsSpellID(120458) then
 		--warnEmerge:Show()
 	end
