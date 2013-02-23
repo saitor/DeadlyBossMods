@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8768 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8777 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetModelID(47189)
 
@@ -36,7 +36,7 @@ local warnIceWall					= mod:NewSpellAnnounce(134587, 3)
 local specWarnSeriousWound			= mod:NewSpecialWarningStack(133767, mod:IsTank(), 4)--This we will use debuff on though.
 local specWarnSeriousWoundOther		= mod:NewSpecialWarningTarget(133767, mod:IsTank())
 local specWarnForceOfWill			= mod:NewSpecialWarningYou(136932, nil, nil, nil, 3)--VERY important, if you get hit by this you are out of fight for rest of pull.
-local specWarnForceOfWillNear		= mod:NewSpecialWarningClose(136932)
+local specWarnForceOfWillNear		= mod:NewSpecialWarningClose(136932, nil, nil, nil, 3)
 local yellForceOfWill				= mod:NewYell(136932)
 local specWarnLingeringGaze			= mod:NewSpecialWarningYou(134044)
 local yellLingeringGaze				= mod:NewYell(134044, nil, false)

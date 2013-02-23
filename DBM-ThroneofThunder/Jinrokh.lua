@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(827, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8720 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8777 $"):sub(12, -3))
 mod:SetCreatureID(69465)
 mod:SetModelID(47552)
 
@@ -29,9 +29,9 @@ local specWarnStaticBurst			= mod:NewSpecialWarningYou(137162, mod:IsTank())
 local specWarnStaticBurstOther		= mod:NewSpecialWarningTarget(137162, mod:IsTank())
 local specWarnThrow					= mod:NewSpecialWarningYou(137175, mod:IsTank())
 local specWarnThrowOther			= mod:NewSpecialWarningTarget(137175, mod:IsTank())
-local specWarnStorm					= mod:NewSpecialWarningSpell(137313, nil, nil, nil, true)
+local specWarnStorm					= mod:NewSpecialWarningSpell(137313, nil, nil, nil, 2)
 local specWarnElectrifiedWaters		= mod:NewSpecialWarningMove(138006)
-local specWarnIonization			= mod:NewSpecialWarningSpell(138732, not mod:IsTank(), nil, nil, true)
+local specWarnIonization			= mod:NewSpecialWarningSpell(138732, not mod:IsTank(), nil, nil, 2)
 
 local timerFocusedLightningCD		= mod:NewCDTimer(10, 137399)--10-18 second variation, tends to lean toward 11-12 except when delayed by other casts such as throw or storm. Pull one also seems to variate highly
 local timerStaticBurstCD			= mod:NewCDTimer(19, 137162, mod:IsTank())

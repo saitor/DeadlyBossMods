@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(832, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8622 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8777 $"):sub(12, -3))
 mod:SetCreatureID(68397)
 --[[
 Diffusion Chain Conduit 68696
@@ -45,11 +45,11 @@ local specWarnBouncingBolt				= mod:NewSpecialWarningSpell(136395, false)
 --Phase 1
 local specWarnDecapitate				= mod:NewSpecialWarningRun(135000, mod:IsTank())
 local specWarnDecapitateOther			= mod:NewSpecialWarningTarget(135000, mod:IsTank())
-local specWarnThunderstruck				= mod:NewSpecialWarningSpell(135095, nil, nil, nil, true)
+local specWarnThunderstruck				= mod:NewSpecialWarningSpell(135095, nil, nil, nil, 2)
 --Phase 2
-local specWarnFusionSlash				= mod:NewSpecialWarningSpell(136478, mod:IsTank())--Cast (394514 is debuff. We warn for cast though because it knocks you off platform if not careful)
-local specWarnLightningWhip				= mod:NewSpecialWarningSpell(136850, nil, nil, nil, true)
-local specWarnSummonBallLightning		= mod:NewSpecialWarningSpell(136543, nil, nil, nil, true)
+local specWarnFusionSlash				= mod:NewSpecialWarningSpell(136478, mod:IsTank(), nil, nil, 3)--Cast (394514 is debuff. We warn for cast though because it knocks you off platform if not careful)
+local specWarnLightningWhip				= mod:NewSpecialWarningSpell(136850, nil, nil, nil, 2)
+local specWarnSummonBallLightning		= mod:NewSpecialWarningSpell(136543, nil, nil, nil, 2)
 --Phase 3
 
 --Conduits (All phases)

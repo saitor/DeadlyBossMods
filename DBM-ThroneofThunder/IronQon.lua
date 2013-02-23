@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(817, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8745 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8777 $"):sub(12, -3))
 mod:SetCreatureID(68079, 68080, 68081, 68078)--Ro'shak 68079, Quet'zal 68080, Dam'ren 68081, Iron Qon 68078
 mod:SetModelID(46627) -- Iron Qon, 46628 Ro'shak, 46629 Quet'zal, 46630 Dam'ren
 
@@ -31,10 +31,10 @@ local warnFrostSpike					= mod:NewSpellAnnounce(139181, 3)--Heroic Phase 2
 
 local specWarnImpale					= mod:NewSpecialWarningStack(134691, mod:IsTank(), 3)
 local specWarnImpaleOther				= mod:NewSpecialWarningTarget(134691, mod:IsTank())
-local specWarnThrowSpear				= mod:NewSpecialWarningSpell(134926, nil, nil, nil, true)
+local specWarnThrowSpear				= mod:NewSpecialWarningSpell(134926, nil, nil, nil, 2)
 local specWarnBurningCinders			= mod:NewSpecialWarningMove(137668)
-local specWarnMoltenOverload			= mod:NewSpecialWarningSpell(137221, nil, nil, nil, true)
-local specWarnWindStorm					= mod:NewSpecialWarningSpell(136577, nil, nil, nil, true)
+local specWarnMoltenOverload			= mod:NewSpecialWarningSpell(137221, nil, nil, nil, 2)
+local specWarnWindStorm					= mod:NewSpecialWarningSpell(136577, nil, nil, nil, 2)
 local specWarnStormCloud				= mod:NewSpecialWarningMove(137669)
 local specWarnLightningStorm			= mod:NewSpecialWarningYou(136192)
 local yellLightningStorm				= mod:NewYell(136192)

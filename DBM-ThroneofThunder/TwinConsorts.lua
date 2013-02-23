@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(829, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8737 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8777 $"):sub(12, -3))
 mod:SetCreatureID(68905, 68904)--Lu'lin 68905, Suen 68904
 mod:SetModelID(46975)--Lu'lin, 46974 Suen
 
@@ -34,14 +34,14 @@ local warnNuclearInferno				= mod:NewCastAnnounce(137491, 4)--Heroic
 ---No logs for this :(
 
 --Darkness
-local specWarnCosmicBarrage				= mod:NewSpecialWarningSpell(136752, false, nil, nil, true)
-local specWarnTearsOfSun				= mod:NewSpecialWarningSpell(137404, nil, nil, nil, true)
+local specWarnCosmicBarrage				= mod:NewSpecialWarningSpell(136752, false, nil, nil, 2)
+local specWarnTearsOfSun				= mod:NewSpecialWarningSpell(137404, nil, nil, nil, 2)
 local specWarnBeastOfNightmares			= mod:NewSpecialWarningSpell(137375, mod:IsTank())
 --Light
 local specWarnFanOfFlames				= mod:NewSpecialWarningStack(137408, mod:IsTank(), 2)
 local specWarnFanOfFlamesOther			= mod:NewSpecialWarningTarget(137408, mod:IsTank())
 local specWarnIceCommet					= mod:NewSpecialWarningSpell(137419, false)
-local specWarnNuclearInferno			= mod:NewSpecialWarningSpell(137491, nil, nil, nil, true)--Heroic
+local specWarnNuclearInferno			= mod:NewSpecialWarningSpell(137491, nil, nil, nil, 2)--Heroic
 
 --Dusk
 ---:(
