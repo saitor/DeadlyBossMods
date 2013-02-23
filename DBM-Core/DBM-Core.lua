@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8777 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8778 $"):sub(12, -3)),
 	DisplayVersion = "5.2.0 beta", -- the string that is shown as version
 	ReleaseRevision = 8421 -- the revision of the latest stable version that is available
 }
@@ -1102,6 +1102,10 @@ do
 	local callOnLoad = {}
 	function DBM:LoadGUI()
 		if not IsAddOnLoaded("DBM-GUI") then
+			if InCombatLockdown() then
+				self:AddMsg(DBM_CORE_LOAD_GUI_COMBAT)
+				return
+			end
 			local _, _, _, enabled = GetAddOnInfo("DBM-GUI")
 			if not enabled then
 				EnableAddOn("DBM-GUI")
