@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(819, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8787 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8790 $"):sub(12, -3))
 mod:SetCreatureID(68476)
 mod:SetModelID(47325)
 
@@ -52,6 +52,8 @@ local timerJalakCD				= mod:NewNextTimer(10, "ej7087", nil, nil, nil, 2457)--May
 local timerBestialCryCD			= mod:NewNextCountTimer(10, 136817)
 local timerDisorientingRoarCD	= mod:NewCDTimer(55, 137458)--Heroic
 
+local berserkTimer				= mod:NewBerserkTimer(720)
+
 local jalakEngaged = false
 
 function mod:OnCombatStart(delay)
@@ -60,6 +62,7 @@ function mod:OnCombatStart(delay)
 	timerDoubleSwipeCD:Start(16-delay)--16-17 second variation
 	timerAddsCD:Start(16.5-delay)
 	timerChargeCD:Start(31-delay)--31-35sec variation
+	berserkTimer:Start(-delay)
 	if self:IsDifficulty("heroic10", "heroic25") then
 		timerDisorientingRoarCD:Start(-delay)
 	end
