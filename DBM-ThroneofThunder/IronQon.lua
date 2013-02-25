@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(817, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8777 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8791 $"):sub(12, -3))
 mod:SetCreatureID(68079, 68080, 68081, 68078)--Ro'shak 68079, Quet'zal 68080, Dam'ren 68081, Iron Qon 68078
 mod:SetModelID(46627) -- Iron Qon, 46628 Ro'shak, 46629 Quet'zal, 46630 Dam'ren
 
@@ -65,9 +65,9 @@ function mod:OnCombatStart(delay)
 	timerThrowSpearCD:Start(-delay)
 	if self.Options.RangeFrame then
 		if self:IsDifficulty("normal10", "heroic10") then
-			DBM.RangeCheck:Show(10, nil, nil, 2)--You can have 1 person in range safely. Frame goes red at 2
+			DBM.RangeCheck:Show(10, nil, nil, 2)
 		else
-			DBM.RangeCheck:Show(10, nil, nil, 4)--You can have 3 others near you, frame goes red at 4
+			DBM.RangeCheck:Show(10, nil, nil, 6)
 		end
 	end
 	if self:IsDifficulty("heroic10", "heroic25") then
