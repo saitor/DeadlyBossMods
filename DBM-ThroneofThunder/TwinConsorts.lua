@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(829, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8794 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8795 $"):sub(12, -3))
 mod:SetCreatureID(68905, 68904)--Lu'lin 68905, Suen 68904
 mod:SetModelID(46975)--Lu'lin, 46974 Suen
 
@@ -53,7 +53,7 @@ local timerCosmicBarrageCD				= mod:NewCDTimer(23, 136752)
 local timerTearsOfTheSunCD				= mod:NewCDTimer(40, 137404)
 local timerBeastOfNightmaresCD			= mod:NewCDTimer(50, 137375)
 --Light
-local timerNightCD						= mod:NewNextTimer(184, "ej7641", nil, nil, nil, 130013)
+local timerDuskCD						= mod:NewNextTimer(184, "ej7633", nil, nil, nil, 130013)
 local timerLightOfDayCD					= mod:NewCDTimer(6, 137403)--In this phase we do track it so we can time shadows usage, although it's still highly variable. Plus in this phase since boss isn't hiding we can detect it without SPELL_DAMAGE
 local timerFanOfFlamesCD				= mod:NewNextTimer(12, 137408, nil, mod:IsTank() or mod:IsHealer())
 local timerFanOfFlames					= mod:NewTargetTimer(30, 137408, nil, mod:IsTank())
@@ -61,7 +61,6 @@ local timerFlamesOfPassionCD			= mod:NewCDTimer(30, 137414)
 local timerIceCommetCD					= mod:NewNextTimer(15, 137419)
 local timerNuclearInfernoCD				= mod:NewCDTimer(55.5, 137491)
 --Dusk
---local timerDuskCD						= mod:NewNextTimer(184, "ej7633", nil, nil, nil, 130013)
 ---:(
 
 local berserkTimer						= mod:NewBerserkTimer(600)
