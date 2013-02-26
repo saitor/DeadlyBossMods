@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(824, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8745 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8801 $"):sub(12, -3))
 mod:SetCreatureID(69427)
 mod:SetModelID(47527)
 
@@ -37,7 +37,7 @@ local specWarnExplosiveSlamOther	= mod:NewSpecialWarningTarget(138569, mod:IsTan
 local specWarnAnimaRing				= mod:NewSpecialWarningYou(136954)
 local specWarnAnimaRingOther		= mod:NewSpecialWarningTarget(136954, false)
 local yellAnimaRing					= mod:NewYell(136954)
-local specWarnInterruptingJolt		= mod:NewSpecialWarningSpell(138763, nil, nil, nil, 2)
+local specWarnInterruptingJolt		= mod:NewSpecialWarningCast(138763, nil, nil, nil, 2)
 
 local timerMatterSwap				= mod:NewTargetTimer(12, 138609)--If not dispelled, it ends after 12 seconds regardless
 --Boss
