@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8796 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8797 $"):sub(12, -3)),
 	DisplayVersion = "5.2.0 beta", -- the string that is shown as version
 	ReleaseRevision = 8421 -- the revision of the latest stable version that is available
 }
@@ -140,7 +140,7 @@ DBM.DefaultOptions = {
 	DontSetIcons = false,
 	DontShowRangeFrame = false,
 	DontShowInfoFrame = false,
-	DontShowPT = false,
+	DontShowPT = true,
 	DontShowPTCountdownText = false,
 	DontPlayPTCountdown = false,
 	LatencyThreshold = 250,
