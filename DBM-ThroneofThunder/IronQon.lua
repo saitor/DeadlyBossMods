@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(817, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8793 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8794 $"):sub(12, -3))
 mod:SetCreatureID(68079, 68080, 68081, 68078)--Ro'shak 68079, Quet'zal 68080, Dam'ren 68081, Iron Qon 68078
 mod:SetModelID(46627) -- Iron Qon, 46628 Ro'shak, 46629 Quet'zal, 46630 Dam'ren
 
@@ -26,8 +26,8 @@ local warnWindStorm						= mod:NewSpellAnnounce(136577, 4)
 local warnLightningStorm				= mod:NewTargetAnnounce(136192, 3)
 local warnDeadZone						= mod:NewAnnounce("warnDeadZone", 3, 137229)
 local warnFreeze						= mod:NewTargetAnnounce(135145, 3)
-local warnWhirlingWinds					= mod:NewSpellAnnounce(139172, 3)--Heroic Phase 1
-local warnFrostSpike					= mod:NewSpellAnnounce(139181, 3)--Heroic Phase 2
+local warnWhirlingWinds					= mod:NewSpellAnnounce(139167, 3)--Heroic Phase 1
+local warnFrostSpike					= mod:NewSpellAnnounce(139180, 3)--Heroic Phase 2
 
 local specWarnImpale					= mod:NewSpecialWarningStack(134691, mod:IsTank(), 3)
 local specWarnImpaleOther				= mod:NewSpecialWarningTarget(134691, mod:IsTank())
@@ -52,8 +52,8 @@ local timerLightningStormCD				= mod:NewCDTimer(20, 136192)
 local timerWindStormCD					= mod:NewCDTimer(90, 136577)
 local timerFreezeCD						= mod:NewCDTimer(20, 135145)
 local timerDeadZoneCD					= mod:NewCDTimer(15, 137229)
-local timerWhirlingWindsCD				= mod:NewCDTimer(30, 139172)--Heroic Phase 1
-local timerFrostSpikeCD					= mod:NewCDTimer(12, 139181)--Heroic Phase 2
+local timerWhirlingWindsCD				= mod:NewCDTimer(30, 139167)--Heroic Phase 1
+local timerFrostSpikeCD					= mod:NewCDTimer(12, 139180)--Heroic Phase 2
 
 
 mod:AddBoolOption("RangeFrame", true)--One tooltip says 8 yards, other says 10. Confirmed it's 10 during testing though. Ignore the 8 on spellid 134611
