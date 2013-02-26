@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(832, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8798 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8799 $"):sub(12, -3))
 mod:SetCreatureID(68397)
 --[[
 Diffusion Chain Conduit 68696
@@ -19,6 +19,8 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_SUCCESS",
+	"SPELL_DAMAGE",
+	"SPELL_MISSED",
 	"CHAT_MSG_RAID_BOSS_EMOTE",
 	"UNIT_SPELLCAST_SUCCEEDED"
 )
@@ -46,6 +48,7 @@ local specWarnBouncingBolt				= mod:NewSpecialWarningSpell(136361, false)
 local specWarnDecapitate				= mod:NewSpecialWarningRun(135000, mod:IsTank())
 local specWarnDecapitateOther			= mod:NewSpecialWarningTarget(135000, mod:IsTank())
 local specWarnThunderstruck				= mod:NewSpecialWarningSpell(135095, nil, nil, nil, 2)
+local specWarnCrashingThunder			= mod:NewSpecialWarningMove(135150)
 --Phase 2
 local specWarnFusionSlash				= mod:NewSpecialWarningSpell(136478, mod:IsTank(), nil, nil, 3)--Cast (394514 is debuff. We warn for cast though because it knocks you off platform if not careful)
 local specWarnLightningWhip				= mod:NewSpecialWarningSpell(136850, nil, nil, nil, 2)
@@ -191,6 +194,13 @@ function mod:SPELL_AURA_REMOVED(args)
 	--Conduit deactivations
 	end
 end
+
+function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
+	if spellId == 135150 and destGUID == UnitGUID("player") and self:AntiSpam(3, 4) then
+		specWarnCrashingThunder:Show()
+	end
+end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 	if msg:find("spell:137176") then--Overloaded Circuits (Intermission ending and next phase beginning)
