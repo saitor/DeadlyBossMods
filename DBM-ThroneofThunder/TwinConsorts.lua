@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(829, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8777 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8792 $"):sub(12, -3))
 mod:SetCreatureID(68905, 68904)--Lu'lin 68905, Suen 68904
 mod:SetModelID(46975)--Lu'lin, 46974 Suen
 
@@ -160,7 +160,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		timerTearsOfTheSunCD:Cancel()
 		timerBeastOfNightmaresCD:Cancel()
 		warnDay:Show()
-		timerNightCD:Start()
+		timerDuskCD:Start()
 		timerLightOfDayCD:Start()
 		timerFanOfFlamesCD:Start()
 		timerFlamesOfPassionCD:Start(12.5)
