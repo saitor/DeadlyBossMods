@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(827, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8796 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8804 $"):sub(12, -3))
 mod:SetCreatureID(69465)
 mod:SetModelID(47552)
 
@@ -121,7 +121,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnStaticBurst:Show(args.destName)
 		timerStaticBurstCD:Start()
 		if args:IsPlayer() then
-			specWarnStaticBurst:Show(args.destName)
+			specWarnStaticBurst:Show()
 		else
 			specWarnStaticBurstOther:Show(args.destName)
 		end
