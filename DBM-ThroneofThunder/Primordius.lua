@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(820, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8794 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8810 $"):sub(12, -3))
 mod:SetCreatureID(69017)--69070 Viscous Horror
 mod:SetModelID(47009)
 
@@ -34,6 +34,7 @@ local specWarnFullyMutated			= mod:NewSpecialWarningYou(140546)
 local specWarnCausticGas			= mod:NewSpecialWarningSpell(136216, nil, nil, nil, 2)--All must be in front for this.
 local specWarnPustuleEruption		= mod:NewSpecialWarningSpell(136247, false, nil, nil, 2)--off by default since every 5 sec, very spammy for special warning
 local specWarnVolatilePathogen		= mod:NewSpecialWarningYou(136228)
+local specWarnViscousHorror			= mod:NewSpecialWarningSwitch("ej6969", mod:IsTank())
 
 local timerMalformedBlood			= mod:NewTargetTimer(60, 136050, nil, mod:IsTank() or mod:IsHealer())
 local timerPrimordialStrikeCD		= mod:NewCDTimer(24, 136037)
@@ -41,6 +42,7 @@ local timerCausticGasCD				= mod:NewCDTimer(14, 136216)
 local timerPustuleEruptionCD		= mod:NewCDTimer(5, 136247, nil, false)
 local timerVolatilePathogenCD		= mod:NewCDTimer(28, 136228)--Too cute blizzard, too cute. (those who get the 28 reference for pathogen get an A+)
 local timerBlackBlood				= mod:NewTargetTimer(60, 137000, nil, mod:IsTank() or mod:IsHealer())
+local timerViscousHorrorCD			= mod:NewNextTimer(30, "ej6969", nil, nil, nil, 137000)
 
 local berserkTimer					= mod:NewBerserkTimer(480)
 
@@ -50,11 +52,21 @@ local metabolicBoost = false
 local acidSpinesActive = false--Spread of 5 yards
 local postulesActive = false
 
+function mod:BigOoze()
+	specWarnViscousHorror:Show()
+	timerViscousHorrorCD:Start()
+	self:ScheduleMethod(30, "BigOoze")
+end
+
 function mod:OnCombatStart(delay)
 	metabolicBoost = false
 	acidSpinesActive = false
 	postulesActive = false
 	berserkTimer:Start(-delay)
+	if self:IsDifficulty("heroic10", "heroic25") then
+		timerViscousHorrorCD:Start(12-delay)
+		self:ScheduleMethod(12-delay, "BigOoze")
+	end
 end
 
 function mod:OnCombatEnd()
