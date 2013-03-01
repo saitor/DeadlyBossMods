@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(827, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8804 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8812 $"):sub(12, -3))
 mod:SetCreatureID(69465)
 mod:SetModelID(47552)
 
@@ -137,6 +137,10 @@ function mod:SPELL_AURA_REMOVED(args)
 		if self.Options.RangeFrame then
 			DBM.RangeCheck:Hide()
 		end
+	elseif args:IsSpellID(137422) and args:IsPlayer() then
+		if self.Options.RangeFrame then
+			DBM.RangeCheck:Hide()
+		end
 	end
 end
 
@@ -167,19 +171,6 @@ function mod:RAID_BOSS_WHISPER(msg)
 		soundFocusedLightning:Play()
 		if self.Options.RangeFrame then
 			DBM.RangeCheck:Show(8)
-		end
-		self:RegisterShortTermEvents(
-			"UNIT_AURA"--Does not show in combat log, at all, so we have to use hack to detect removal
-		)
-	end
-end
-
-function mod:UNIT_AURA(uId)
-	if uId ~= "player" then return end
-	if not UnitDebuff("player", GetSpellInfo(137422)) then
-		self:UnregisterShortTermEvents()
-		if self.Options.RangeFrame then
-			DBM.RangeCheck:Hide()
 		end
 	end
 end
