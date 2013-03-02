@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(829, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8797 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8816 $"):sub(12, -3))
 mod:SetCreatureID(68905, 68904)--Lu'lin 68905, Suen 68904
 mod:SetModelID(46975)--Lu'lin, 46974 Suen
 
@@ -68,7 +68,7 @@ local timerTidalForceCD					= mod:NewCDTimer(74, 137531)
 
 local berserkTimer						= mod:NewBerserkTimer(600)
 
-mod:AddBoolOption("RangeFrame")--For various abilities that target even melee. SO yes, even melee need to spread out or not come.
+mod:AddBoolOption("RangeFrame")--For various abilities that target even melee. UPDATE, cosmic barrage (worst of the 3 abilities) no longer target melee. However, light of day and tears of teh sun still do. melee want to split into 2-3 groups (depending on how many) but no longer have to stupidly spread about all crazy and out of range of boss during cosmic barrage to avoid dying. On that note, MAYBE change this to ranged default instead of all.
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
