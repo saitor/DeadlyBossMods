@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(817, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8797 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8818 $"):sub(12, -3))
 mod:SetCreatureID(68078, 68079, 68080, 68081)--Ro'shak 68079, Quet'zal 68080, Dam'ren 68081, Iron Qon 68078
 mod:SetMainBossID(68078)
 mod:SetModelID(46627) -- Iron Qon, 46628 Ro'shak, 46629 Quet'zal, 46630 Dam'ren
@@ -60,6 +60,43 @@ local timerFrostSpikeCD					= mod:NewCDTimer(12, 139180)--Heroic Phase 2
 mod:AddBoolOption("RangeFrame", true)--One tooltip says 8 yards, other says 10. Confirmed it's 10 during testing though. Ignore the 8 on spellid 134611
 
 local phase = 1--Not sure this is useful yet, coding it in, in case spear cd is different in different phases
+local scansDone = 0
+
+local function isTank(unit)
+	-- 1. check blizzard tanks first
+	-- 2. check blizzard roles second
+	-- 3. check boss1's highest threat target
+	if GetPartyAssignment("MAINTANK", unit, 1) then
+		return true
+	end
+	if UnitGroupRolesAssigned(unit) == "TANK" then
+		return true
+	end
+	if UnitExists("boss1target") and UnitDetailedThreatSituation(unit, "boss1") then
+		return true
+	end
+	return false
+end
+
+function mod:TargetScanner(Force)
+	scansDone = scansDone + 1
+	local targetname, uId = self:GetBossTarget(68078)
+	if UnitExists(targetname) then
+		if isTank(uId) and not Force then
+			if scansDone < 12 then
+				self:ScheduleMethod(0.025, "TargetScanner")
+			else
+				self:TargetScanner(true)
+			end
+		else
+			print("DBM Debug: Spear on ", targetname)
+		end
+	else
+		if scansDone < 12 then
+			self:ScheduleMethod(0.025, "TargetScanner")
+		end
+	end
+end
 
 function mod:OnCombatStart(delay)
 	phase = 1
@@ -174,6 +211,8 @@ end
 
 function mod:SPELL_SUMMON(args)
 	if args:IsSpellID(134926) then
+		scansDone = 0
+		self:TargetScanner()
 		warnThrowSpear:Show()
 		specWarnThrowSpear:Show()
 		timerThrowSpearCD:Start()
@@ -281,4 +320,3 @@ function mod:UNIT_DIED(args)
 		phase = 4
 	end
 end
-
