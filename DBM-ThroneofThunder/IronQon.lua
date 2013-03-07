@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(817, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8828 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8832 $"):sub(12, -3))
 mod:SetCreatureID(68078, 68079, 68080, 68081)--Ro'shak 68079, Quet'zal 68080, Dam'ren 68081, Iron Qon 68078
 mod:SetMainBossID(68078)
 mod:SetModelID(46627) -- Iron Qon, 46628 Ro'shak, 46629 Quet'zal, 46630 Dam'ren
@@ -56,6 +56,7 @@ local timerDeadZoneCD					= mod:NewCDTimer(15, 137229)
 local timerWhirlingWindsCD				= mod:NewCDTimer(30, 139167)--Heroic Phase 1
 local timerFrostSpikeCD					= mod:NewCDTimer(12, 139180)--Heroic Phase 2
 
+local berserkTimer						= mod:NewBerserkTimer(600)
 
 mod:AddBoolOption("RangeFrame", true)--One tooltip says 8 yards, other says 10. Confirmed it's 10 during testing though. Ignore the 8 on spellid 134611
 
@@ -126,6 +127,7 @@ function mod:OnCombatStart(delay)
 			"UNIT_DIED"--Alternate phase detection for normal (not sure if needed, but just in case, i deleted my normal mode log and don't remember if they fired "eject all passengers" there.
 		)
 	end
+	berserkTimer:Start(-delay)
 end
 
 function mod:OnCombatEnd()
