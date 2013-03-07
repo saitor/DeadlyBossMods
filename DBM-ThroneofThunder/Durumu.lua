@@ -2,7 +2,7 @@ if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8831 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8836 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetModelID(47189)
 mod:SetUsedIcons(7, 6, 1)
@@ -55,7 +55,7 @@ local timerSeriousWound				= mod:NewTargetTimer(60, 133767, mod:IsTank() or mod:
 local timerLingeringGazeCD			= mod:NewCDTimer(45, 138467)
 local timerForceOfWillCD			= mod:NewCDTimer(20, 136413)--Actually has a 20 second cd but rarely cast more than once per phase because of how short the phases are (both beams phases cancel this ability)
 local timerLightSpectrumCD			= mod:NewCDTimer(60, "ej6891")--Don't know when 2nd one is cast.
-local timerDarkParasite				= mod:NewTargetTimer(30, 136413, mod:IsHealer())--Only healer/dispeler needs to know this.
+local timerDarkParasite				= mod:NewTargetTimer(30, 133597, mod:IsHealer())--Only healer/dispeler needs to know this.
 local timerDarkPlague				= mod:NewTargetTimer(30, 133598)--EVERYONE needs to know this, if dispeler messed up and dispelled parasite too early you're going to get a new add every 3 seconds for remaining duration of this bar.
 local timerDisintegrationBeam		= mod:NewBuffActiveTimer(60, "ej6882")
 local timerDisintegrationBeamCD		= mod:NewNextTimer(131, "ej6882")
