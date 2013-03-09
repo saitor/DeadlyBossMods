@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("ToTTrash", "DBM-ThroneofThunder")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8804 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8852 $"):sub(12, -3))
 --mod:SetModelID(39378)
 mod:SetZone()
 
@@ -55,7 +55,7 @@ function mod:SPELL_CAST_START(args)
 		self:ScheduleMethod(0.2, "SpiritFireTarget", args.sourceGUID)--Untested scan timing (don't even know if scanning works
 		timerSpiritfireCD:Start()
 		if self.Options.RangeFrame and not DBM.RangeCheck:IsShown() then
-			DBM.RangeCheck:Show(10)
+			DBM.RangeCheck:Show(3)
 		end
 	end
 end
