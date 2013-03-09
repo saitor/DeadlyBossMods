@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8855 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8856 $"):sub(12, -3)),
 	DisplayVersion = "5.2.1 alpha", -- the string that is shown as version
 	ReleaseRevision = 8828 -- the revision of the latest stable version that is available
 }
@@ -2691,8 +2691,11 @@ function DBM:EndCombat(mod, wipe)
 		if not wipe then
 			mod.lastKillTime = GetTime()
 			if mod.inCombatOnlyEvents then
+				--Timer issues not super rare (At lease for me). It causes every time for me at lfr Tsulong (if we kill him at night, he changes to day phase on die. This fires UNIT_SPELLCAST_SUCCEEDED/spellid 123532 event. If this evert fires after he yells (die trigger), this can cause bad timer starts.)
 				--mod:UnregisterInCombatEvents()
 				DBM:Schedule(1.5, mod.UnregisterInCombatEvents, mod) -- Delay unregister events to make sure icon clear functions get to run their course. We want to catch some SPELL_AURA_REMOVED events that fire after boss death and get those icons cleared
+				--Remove bad started timer after boss dies.
+				DBM:Schedule(1.6, mod.Stop, mod)
 				mod.inCombatOnlyEventsRegistered = nil
 			end
 		end
