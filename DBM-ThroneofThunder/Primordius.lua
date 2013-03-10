@@ -1,8 +1,7 @@
-if select(4, GetBuildInfo()) < 50200 then return end--Don't load on live
 local mod	= DBM:NewMod(820, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8848 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8862 $"):sub(12, -3))
 mod:SetCreatureID(69017)--69070 Viscous Horror, 69069 good ooze, 70579 bad ooze
 mod:SetModelID(47009)
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3, 2, 1)
