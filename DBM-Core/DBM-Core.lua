@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8881 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8882 $"):sub(12, -3)),
 	DisplayVersion = "5.2.1 alpha", -- the string that is shown as version
 	ReleaseRevision = 8828 -- the revision of the latest stable version that is available
 }
@@ -1869,11 +1869,14 @@ end
 -----------------------------
 do
 	local function checkForActualPull()
-		if DBM.Options.AutologBosses and LoggingCombat() and #inCombat == 0 then
-			LoggingCombat(0)
-		end
-		if DBM.Options.AdvancedAutologBosses and IsAddOnLoaded("Transcriptor") then
-			Transcriptor:StopLog()
+		if #inCombat == 0 then
+			if DBM.Options.AutologBosses and LoggingCombat() then
+				LoggingCombat(0)
+				print(COMBATLOGDISABLED)
+			end
+			if DBM.Options.AdvancedAutologBosses and IsAddOnLoaded("Transcriptor") then
+				Transcriptor:StopLog()
+			end
 		end
 	end
 
@@ -1955,6 +1958,7 @@ do
 		end
 		if DBM.Options.AutologBosses and not LoggingCombat() then--Start logging here to catch pre pots.
 			LoggingCombat(1)
+			print(COMBATLOGENABLED)
 			DBM:Unschedule(checkForActualPull)
 			DBM:Schedule(timer+10, checkForActualPull)--But if pull was canceled and we don't have a boss engaged within 10 seconds of pull timer ending, abort log
 		end
@@ -2689,6 +2693,7 @@ function DBM:StartCombat(mod, delay, synced)
 		end
 		if DBM.Options.AutologBosses and not LoggingCombat() then
 			LoggingCombat(1)
+			print(COMBATLOGENABLED)
 		end
 		if DBM.Options.AdvancedAutologBosses and IsAddOnLoaded("Transcriptor") then
 			Transcriptor:StartLog()
@@ -2886,6 +2891,7 @@ function DBM:EndCombat(mod, wipe)
 		DBM:ToggleRaidBossEmoteFrame(0)
 		if DBM.Options.AutologBosses and LoggingCombat() then
 			LoggingCombat(0)
+			print(COMBATLOGDISABLED)
 		end
 		if DBM.Options.AdvancedAutologBosses and IsAddOnLoaded("Transcriptor") then
 			Transcriptor:StopLog()
