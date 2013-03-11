@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8876 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8877 $"):sub(12, -3)),
 	DisplayVersion = "5.2.1 alpha", -- the string that is shown as version
 	ReleaseRevision = 8828 -- the revision of the latest stable version that is available
 }
@@ -1956,12 +1956,12 @@ do
 		if DBM.Options.AutologBosses and not LoggingCombat() then--Start logging here to catch pre pots.
 			LoggingCombat(1)
 			DBM:Unschedule(checkForActualPull)
-			DBM:Schedule(timer+5, checkForActualPull)--But if pull was canceled and we don't have a boss engaged within 5 seconds of pull timer ending, abort log
+			DBM:Schedule(timer+10, checkForActualPull)--But if pull was canceled and we don't have a boss engaged within 10 seconds of pull timer ending, abort log
 		end
 		if DBM.Options.AdvancedAutologBosses and IsAddOnLoaded("Transcriptor") then
 			Transcriptor:StartLog()
 			DBM:Unschedule(checkForActualPull)
-			DBM:Schedule(timer+5, checkForActualPull)--But if pull was canceled and we don't have a boss engaged within 5 seconds of pull timer ending, abort log
+			DBM:Schedule(timer+10, checkForActualPull)--But if pull was canceled and we don't have a boss engaged within 10 seconds of pull timer ending, abort log
 		end
 	end
 
