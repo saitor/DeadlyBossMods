@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("ToTTrash", "DBM-ThroneofThunder")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8869 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8873 $"):sub(12, -3))
 --mod:SetModelID(39378)
 mod:SetZone()
 
@@ -86,7 +86,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		self:Schedule(0.3, warnStormCloudTargets)
 	elseif args:IsSpellID(140296) then
 		warnConductiveShield:Show(args.destName)
-		specWarnConductiveShield:Show(args.destname)
+		specWarnConductiveShield:Show(args.destName)
 		timerConductiveShieldCD:Start(20, args.destName, args.sourceGUID)
 	end
 end
