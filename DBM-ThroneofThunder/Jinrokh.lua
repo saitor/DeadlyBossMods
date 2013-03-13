@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(827, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8862 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8901 $"):sub(12, -3))
 mod:SetCreatureID(69465)
 mod:SetModelID(47552)
 
@@ -42,6 +42,8 @@ local timerIonizationCD				= mod:NewCDTimer(60, 138732)
 local soundFocusedLightning			= mod:NewSound(137422)
 
 local berserkTimer					= mod:NewBerserkTimer(540)
+
+local countdownIonization			= mod:NewCountdown(60, 138732)
 
 mod:AddBoolOption("RangeFrame")
 
@@ -89,6 +91,7 @@ function mod:OnCombatStart(delay)
 	timerThrowCD:Start(30-delay)
 	if self:IsDifficulty("heroic10", "heroic25") then
 		timerIonizationCD:Start(60-delay)
+		countdownIonization:Start(60-delay)
 	end
 	berserkTimer:Start(-delay)
 end
@@ -111,6 +114,7 @@ function mod:SPELL_CAST_START(args)
 		timerThrowCD:Start()
 		if self:IsDifficulty("heroic10", "heroic25") then
 			timerIonizationCD:Start(61.5)
+			countdownIonization:Start(61.5)
 		end
 	elseif args:IsSpellID(138732) then
 		warnIonization:Show()
