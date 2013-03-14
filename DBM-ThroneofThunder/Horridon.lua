@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(819, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8886 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8904 $"):sub(12, -3))
 mod:SetCreatureID(68476)
 mod:SetModelID(47325)
 
@@ -147,7 +147,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	--He jumps down 10 seconds after 4th door is smashed, or when Horridon reaches 30%
 	elseif args:IsSpellID(136817) then
 		warnBestialCry:Show(args.destName, args.amount or 1)
-		timerBestialCryCD:Start(5, (args.amount or 1)+1)
+		timerBestialCryCD:Start(10, (args.amount or 1)+1)
 	elseif args:IsSpellID(136821) then
 		warnRampage:Show(args.destName)
 		specWarnRampage:Show(args.destName)
