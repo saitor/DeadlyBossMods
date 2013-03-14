@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8906 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8907 $"):sub(12, -3)),
 	DisplayVersion = "5.2.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 8892 -- the revision of the latest stable version that is available
 }
@@ -1965,7 +1965,9 @@ do
 			DBM:Schedule(timer+10, checkForActualPull)--But if pull was canceled and we don't have a boss engaged within 10 seconds of pull timer ending, abort log
 		end
 		if DBM.Options.AdvancedAutologBosses and IsAddOnLoaded("Transcriptor") then
-			Transcriptor:StartLog()
+			if not Transcriptor:IsLogging() then
+				Transcriptor:StartLog()
+			end
 			DBM:Unschedule(checkForActualPull)
 			DBM:Schedule(timer+10, checkForActualPull)--But if pull was canceled and we don't have a boss engaged within 10 seconds of pull timer ending, abort log
 		end
@@ -2698,7 +2700,9 @@ function DBM:StartCombat(mod, delay, synced)
 			print(COMBATLOGENABLED)
 		end
 		if DBM.Options.AdvancedAutologBosses and IsAddOnLoaded("Transcriptor") then
-			Transcriptor:StartLog()
+			if not Transcriptor:IsLogging() then
+				Transcriptor:StartLog()
+			end
 		end
 	end
 end
