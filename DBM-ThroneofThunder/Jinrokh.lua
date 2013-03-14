@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(827, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8906 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8908 $"):sub(12, -3))
 mod:SetCreatureID(69465)
 mod:SetModelID(47552)
 
@@ -9,6 +9,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",
+	"SPELL_CAST_SUCCESS",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
 	"SPELL_PERIODIC_DAMAGE",
@@ -124,10 +125,15 @@ function mod:SPELL_CAST_START(args)
 	end
 end
 
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpellID(137162) then
+		timerStaticBurstCD:Start()
+	end
+end
+
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(137162) then
 		warnStaticBurst:Show(args.destName)
-		timerStaticBurstCD:Start()
 		if args:IsPlayer() then
 			specWarnStaticBurst:Show()
 		else
