@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(825, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8912 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8913 $"):sub(12, -3))
 mod:SetCreatureID(67977)
 mod:SetModelID(46559)
 
@@ -87,7 +87,9 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpellID(136294) then
 		warnCallofTortos:Show()
 		specWarnCallofTortos:Show()
-		timerCallTortosCD:Start()
+		if self:AntiSpam(59, 3) then -- On below 10%, he casts Call of Tortos always. This cast ignores cooldown, so filter below 10% cast.
+			timerCallTortosCD:Start()
+		end
 	elseif args:IsSpellID(135251) then
 		warnBite:Show()
 		timerBiteCD:Start()
