@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(729, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8915 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8916 $"):sub(12, -3))
 mod:SetCreatureID(62983)--62995 Animated Protector
 mod:SetModelID(42811)
 
@@ -200,7 +200,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			timerGetAway:Start()
 		end
-		if self.Options.GWHealthFrame then
+		if self.Options.HealthFrame and self.Options.GWHealthFrame then
 			local getAwayHealth = math.floor(UnitHealthMax("boss1") * 0.04)
 			showDamagedHealthBar(self, args.sourceGUID, args.spellName, getAwayHealth)
 		end
@@ -243,7 +243,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerSpray:Cancel(args.destName)
 	elseif args:IsSpellID(123461) then
 		timerGetAway:Cancel()
-		if self.Options.GWHealthFrame then
+		if self.Options.HealthFrame and self.Options.GWHealthFrame then
 			hideDamagedHealthBar()
 		end
 	end
