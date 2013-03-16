@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8918 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8919 $"):sub(12, -3)),
 	DisplayVersion = "5.2.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 8892 -- the revision of the latest stable version that is available
 }
@@ -2734,6 +2734,7 @@ function DBM:EndCombat(mod, wipe)
 				-- unregister all events except for SPELL_AURA_REMOVED events (might still be needed to remove icons etc...)
 				mod:UnregisterInCombatEvents("SPELL_AURA_REMOVED")
 				DBM:Schedule(2, mod.UnregisterInCombatEvents, mod) -- 2 seconds should be enough for all auras to fade
+				DBM:Schedule(2.1, mod.Stop, mod) -- Remove accident started timers.
 				mod.inCombatOnlyEventsRegistered = nil
 			end
 		end
