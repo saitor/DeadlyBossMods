@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(819, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8929 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8930 $"):sub(12, -3))
 mod:SetCreatureID(68476)
 mod:SetModelID(47325)
 
@@ -46,7 +46,7 @@ local specWarnPunctureOther		= mod:NewSpecialWarningTarget(136767, mod:IsTank())
 local specWarnSandTrap			= mod:NewSpecialWarningMove(136723)
 local specWarnDino				= mod:NewSpecialWarningSwitch("ej7086", not mod:IsHealer())
 local specWarnMending			= mod:NewSpecialWarningInterrupt(136797, mod:IsDps())--High priority interrupt. All dps needs warning because boss heals 1% per second it's not interrupted.
-local specWarnOrbofControl		= mod:NewSpecialWarning("specWarnOrbofControl")
+local specWarnOrbofControl		= mod:NewSpecialWarning("specWarnOrbofControl", false)--Usually an assigned role for 1-2 people. Do not want someone assigned to interrupts for example hear this and think it's interrupt time. This should be turned on by orb person
 local specWarnVenomBolt			= mod:NewSpecialWarningInterrupt(136587)--Can be on for all since it only triggers off target/focus
 local specWarnChainLightning	= mod:NewSpecialWarningInterrupt(136480)--Can be on for all since it only triggers off target/focus
 local specWarnFireball			= mod:NewSpecialWarningInterrupt(136465)--Can be on for all since it only triggers off target/focus
