@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(816, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8918 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8924 $"):sub(12, -3))
 mod:SetCreatureID(69078, 69132, 69134, 69131)--69078 Sul the Sandcrawler, 69132 High Prestess Mar'li, 69131 Frost King Malakk, 69134 Kazra'jin --Adds: 69548 Shadowed Loa Spirit,
 mod:SetModelID(47229)--Kazra'jin, 47505 Sul the Sandcrawler, 47506 Frost King Malakk, 47730 High Priestes Mar'li
 
@@ -262,7 +262,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			else
 				bossHealth = math.floor(UnitHealthMax("boss2") * 0.25) 
 			end
-			showDamagedHealthBar(self, args.destGUID, args.spellName, bossHealth)
+			showDamagedHealthBar(self, args.destGUID, args.spellName.." : "..args.destName, bossHealth)
 		end
 	elseif args:IsSpellID(136903) then--Player Debuff version, not cast version
 		timerFrigidAssault:Start(args.destName)
