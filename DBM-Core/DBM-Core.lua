@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8934 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8935 $"):sub(12, -3)),
 	DisplayVersion = "5.2.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 8892 -- the revision of the latest stable version that is available
 }
@@ -1329,8 +1329,12 @@ do
 		return inRaid
 	end
 
-	function DBM:GetUnitFullNameByGUID(guid)
+	function DBM:GetFullPlayerNameByGUID(guid)
 		return raidGuids[guid]
+	end
+
+	function DBM:GetPlayerNameByGUID(guid)
+		return raidGuids[guid] and raidGuids[guid]:gsub("%-.*$", "")
 	end
 end
 	

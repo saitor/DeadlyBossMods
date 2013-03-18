@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(819, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8930 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8935 $"):sub(12, -3))
 mod:SetCreatureID(68476)
 mod:SetModelID(47325)
 
@@ -239,7 +239,7 @@ end
 
 function mod:OnSync(msg, guid)
 	if msg == "Charge" and guid then
-		warnCharge:Show(UnitName(guid))
+		warnCharge:Show(DBM:GetFullPlayerNameByGUID(guid))
 		timerCharge:Start()
 		timerChargeCD:Start()
 		if guid == UnitGUID("player") then
