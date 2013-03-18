@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8862 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8937 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70212, 70235, 70247)--flaming 70212. Frozen 70235, Venomous 70247
 mod:SetModelID(47414)--Hydra Fire Head, 47415 Frost Head, 47416 Poison Head
 
@@ -71,14 +71,6 @@ local iceBehind = 0
 local arcaneBehind = 0
 local rampageCast = 0
 local activeHeadGUIDS = {}
-local guids = {}
-local guidTableBuilt = false--Entirely for DCs, so we don't need to reset between pulls cause it doesn't effect building table on combat start and after a DC then it will be reset to false always
-local function buildGuidTable()
-	table.wipe(guids)
-	for uId, i in DBM:GetGroupMembers() do
-		guids[UnitGUID(uId) or "none"] = GetRaidRosterInfo(i)
-	end
-end
 
 local function isTank(unit)
 	-- 1. check blizzard tanks first
@@ -109,8 +101,6 @@ local function isTank(unit)
 end
 
 function mod:OnCombatStart(delay)
-	buildGuidTable()
-	guidTableBuilt = true
 	table.wipe(activeHeadGUIDS)
 	rampageCast = 0
 	fireInFront = 0
@@ -341,11 +331,7 @@ end
 
 --TODO, check for an aura method instead?
 function mod:OnSync(msg, guid)
-	if not guidTableBuilt then
-		buildGuidTable()
-		guidTableBuilt = true
-	end
-	if msg == "IceTarget" and guids[guid] then
-		warnTorrentofIce:Show(guids[guid])
+	if msg == "IceTarget" and guid then
+		warnTorrentofIce:Show(DBM:GetFullPlayerNameByGUID(guid))
 	end
 end
