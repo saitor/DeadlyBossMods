@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8942 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8943 $"):sub(12, -3)),
 	DisplayVersion = "5.2.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 8892 -- the revision of the latest stable version that is available
 }
@@ -3854,6 +3854,19 @@ function bossModPrototype:IsTank()
 	or (class == "PALADIN" and (GetSpecialization() == 2))
 	or (class == "DRUID" and (GetSpecialization() == 3))
 	or (class == "MONK" and (GetSpecialization() == 1))
+end
+
+function bossModPrototype:IsTanking(unit, boss)
+	if GetPartyAssignment("MAINTANK", unit, 1) then
+		return true
+	end
+	if UnitGroupRolesAssigned(unit) == "TANK" then
+		return true
+	end
+	if UnitExists(boss) and UnitDetailedThreatSituation(unit, boss) then
+		return true
+	end
+	return false
 end
 
 function bossModPrototype:IsHealer()
