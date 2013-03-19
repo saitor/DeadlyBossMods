@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(824, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8943 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8946 $"):sub(12, -3))
 mod:SetCreatureID(69427)
 mod:SetModelID(47527)
 
@@ -101,7 +101,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(138569) then
 		local uId = DBM:GetRaidUnitId(args.destName)
-		if isTank(uId) then--Only want sprays that are on tanks, not bads standing on tanks.
+		if self:IsTanking(uId, "boss1") then--Only want sprays that are on tanks, not bads standing on tanks.
 			warnExplosiveSlam:Show(args.destName, args.amount or 1)
 			timerExplosiveSlam:Start(args.destName)
 			if args:IsPlayer() then
