@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(819, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8935 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8962 $"):sub(12, -3))
 mod:SetCreatureID(68476)
 mod:SetModelID(47325)
 
@@ -76,10 +76,10 @@ local soundDireFixate			= mod:NewSound(140946)
 
 local doorNumber = 0
 local jalakEngaged = false
-local Farraki	= EJ_GetSectionInfo(7081)
-local Gurubashi	= EJ_GetSectionInfo(7082)
-local Drakkari	= EJ_GetSectionInfo(7083)
-local Amani		= EJ_GetSectionInfo(7084)
+local Farraki	= EJ_GetSectionInfo(7098)
+local Gurubashi	= EJ_GetSectionInfo(7100)
+local Drakkari	= EJ_GetSectionInfo(7103)
+local Amani		= EJ_GetSectionInfo(7106)
 
 function mod:OnCombatStart(delay)
 	doorNumber = 0
