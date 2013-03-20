@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8959 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8960 $"):sub(12, -3)),
 	DisplayVersion = "5.2.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 8892 -- the revision of the latest stable version that is available
 }
@@ -1481,6 +1481,7 @@ do
 				end
 				savedOptions[v.id] = savedOptions[v.id] or v.Options
 				for option, optionValue in pairs(v.Options) do
+					v.DefaultOptions[option] = optionValue
 					if savedOptions[v.id][option] == nil then
 						savedOptions[v.id][option] = optionValue
 					end
@@ -3508,7 +3509,9 @@ do
 			{
 				Options = {
 					Enabled = true,
-					Announce = false,
+				},
+				DefaultOptions = {
+					Enabled = true,
 				},
 				subTab = modSubTab,
 				optionCategories = {
