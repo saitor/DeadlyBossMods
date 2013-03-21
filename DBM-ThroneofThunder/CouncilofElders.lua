@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(816, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8951 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8967 $"):sub(12, -3))
 mod:SetCreatureID(69078, 69132, 69134, 69131)--69078 Sul the Sandcrawler, 69132 High Prestess Mar'li, 69131 Frost King Malakk, 69134 Kazra'jin --Adds: 69548 Shadowed Loa Spirit,
 mod:SetModelID(47229)--Kazra'jin, 47505 Sul the Sandcrawler, 47506 Frost King Malakk, 47730 High Priestes Mar'li
 mod:SetUsedIcons(7, 6)
@@ -72,7 +72,7 @@ local specWarnFrigidAssaultOther	= mod:NewSpecialWarningTarget(136903, mod:IsTan
 local specWarnChilled				= mod:NewSpecialWarningYou(137085, false)--Heroic
 
 --All
-local timerDarkPowerCD				= mod:NewCDTimer(73, 136507) -- needs review.
+local timerDarkPowerCD				= mod:NewCDTimer(68, 136507) -- needs review.
 --Kazra'jin
 local timerRecklessChargeCD			= mod:NewCDTimer(6, 137122, nil, false)
 --Sul the Sandcrawler
@@ -235,7 +235,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(136442) then--Possessed
 		local cid = args:GetDestCreatureID()
 		local uid
-		local darkPowerCD = 73 -- calculated in 25man normal.
+		local darkPowerCD = 68 -- calculated in 25man normal.
 		for i = 1, 5 do
 			if UnitName("boss"..i) == args.destName then
 				uid = "boss"..i
