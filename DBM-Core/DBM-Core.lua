@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8983 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8984 $"):sub(12, -3)),
 	DisplayVersion = "5.2.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 8892 -- the revision of the latest stable version that is available
 }
@@ -1494,7 +1494,6 @@ do
 			-- left the current group/raid
 			inRaid = false
 			enableIcons = true
---			raidHasDuplicateShortName = false -- ?
 			fireEvent("raidLeave", playerName)
 			-- restore playerinfo into raid table on raidleave. (for solo raid)
 			raid[playerName] = {}
