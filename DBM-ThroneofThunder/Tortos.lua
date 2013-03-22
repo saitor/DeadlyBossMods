@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(825, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8975 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8976 $"):sub(12, -3))
 mod:SetCreatureID(67977)
 mod:SetModelID(46559)
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3)
@@ -35,7 +35,7 @@ local timerBiteCD					= mod:NewCDTimer(8, 135251, nil, mod:IsTank())
 local timerRockfallCD				= mod:NewCDTimer(10, 134476)
 local timerCallTortosCD				= mod:NewNextTimer(60.5, 136294)
 local timerStompCD					= mod:NewNextCountTimer(49, 134920)
-local timerBreathCD					= mod:NewNextTimer(47, 133939)
+local timerBreathCD					= mod:NewCDTimer(46, 133939)
 local timerStompActive				= mod:NewBuffActiveTimer(10.8, 134920)--Duration f the rapid caveins??
 local timerShellConcussion			= mod:NewBuffFadesTimer(20, 136431)
 
