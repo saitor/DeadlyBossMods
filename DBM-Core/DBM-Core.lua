@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8982 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8983 $"):sub(12, -3)),
 	DisplayVersion = "5.2.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 8892 -- the revision of the latest stable version that is available
 }
@@ -1367,16 +1367,18 @@ do
 
 	--	save playerinfo into raid table on load. (for solo raid)
 	DBM:RegisterOnLoadCallback(function()
-		raid[playerName] = {}
-		raid[playerName].name = playerName
-		raid[playerName].shortname = playerName
-		raid[playerName].guid = UnitGUID("player")
-		raid[playerName].rank = 0
-		raid[playerName].class = class
-		raid[playerName].id = "player"
-		raidUIds["player"] = playerName
-		raidGuids[UnitGUID("player")] = playerName
-		raidShortNames[playerName] = playerName
+		DBM:Schedule(60, function()
+			raid[playerName] = {}
+			raid[playerName].name = playerName
+			raid[playerName].shortname = playerName
+			raid[playerName].guid = UnitGUID("player")
+			raid[playerName].rank = 0
+			raid[playerName].class = class
+			raid[playerName].id = "player"
+			raidUIds["player"] = playerName
+			raidGuids[UnitGUID("player")] = playerName
+			raidShortNames[playerName] = playerName
+		end)
 	end)
 
 	local function updateAllRoster()
