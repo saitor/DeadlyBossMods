@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(825, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8970 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8971 $"):sub(12, -3))
 mod:SetCreatureID(67977)
 mod:SetModelID(46559)
 
@@ -179,10 +179,9 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(133971) then--Shell Block (turtles dying and becoming kickable)
 		shellsRemaining = shellsRemaining + 1
+		addsActivated = addsActivated - 1
 	elseif args:IsSpellID(133974) and self.Options.SetIconOnTurtles then--Spinning Shell
-		if addsActivated == 0 then
-			resetaddstate()
-		end
+		resetaddstate()
 		addsActivated = addsActivated + 1
 		if not adds[args.sourceGUID] then
 			adds[args.destGUID] = true
