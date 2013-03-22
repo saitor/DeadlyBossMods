@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(825, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8965 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8970 $"):sub(12, -3))
 mod:SetCreatureID(67977)
 mod:SetModelID(46559)
 
@@ -131,6 +131,7 @@ function mod:OnCombatStart(delay)
 	shellsRemaining = 0
 	lastConcussion = 0
 	addsActivated = 0
+	resetaddstate()
 	table.wipe(adds)
 	table.wipe(kickedShells)
 	timerRockfallCD:Start(15-delay)
