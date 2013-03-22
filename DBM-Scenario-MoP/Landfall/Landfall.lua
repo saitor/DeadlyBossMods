@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Landfall", "DBM-Scenario-MoP")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8974 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8978 $"):sub(12, -3))
 mod:SetZone()
 
 mod:RegisterCombat("scenario", 911, 920)
@@ -50,7 +50,7 @@ end
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 135403 then
 		warnDivineLight:Show()
-		specWarnDivineLight:Show()
+		specWarnDivineLight:Show(args.soruceName)
 	elseif args.spellId == 135404 then
 		warnDivineStorm:Show()
 	end

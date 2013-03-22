@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(827, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8974 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8978 $"):sub(12, -3))
 mod:SetCreatureID(69465)
 mod:SetModelID(47552)
 
@@ -72,7 +72,7 @@ function mod:TargetScanner(Force)
 end
 
 function mod:OnCombatStart(delay)
-	timerFocusedLightningCD:Start(-delay)
+	timerFocusedLightningCD:Start(8-delay)
 	timerStaticBurstCD:Start(13-delay)
 	timerThrowCD:Start(30-delay)
 	if self:IsDifficulty("heroic10", "heroic25") then
@@ -151,6 +151,7 @@ mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 	if msg:find("spell:137175") then
+		local target = DBM:GetFullNameByShortName(target)
 		warnThrow:Show(target)
 		timerStormCD:Start()
 		if target == UnitName("player") then

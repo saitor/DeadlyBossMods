@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(687, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8974 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8978 $"):sub(12, -3))
 mod:SetCreatureID(60701, 60708, 60709, 60710)--Adds: 60731 Undying Shadow, 60958 Pinning Arrow
 mod:SetModelID(41813)
 mod:SetZone()
@@ -339,6 +339,7 @@ end
 
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 	if msg:find("spell:118047") then
+		local target = DBM:GetFullNameByShortName(target)
 		if subetaiActive then
 			timerPillageCD:Start()
 		else
@@ -348,6 +349,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 			warnPillage:Show(target)
 			if target == UnitName("player") then
 				specWarnPillage:Show()
+			else
 				local uId = DBM:GetRaidUnitId(target)
 				if uId then
 					local x, y = GetPlayerMapPosition(uId)

@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(725, "DBM-Pandaria", nil, 322)	-- 322 = Pandaria/Outdoor I assume
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8854 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8978 $"):sub(12, -3))
 mod:SetCreatureID(62346)--Salyis not dies. Only Galleon attackable and dies.
 mod:SetModelID(42439)	--Galleon=42439, Salyis=42468 / main boss is Galleon
 mod:SetZone(807)--Valley of the Four winds
@@ -26,9 +26,9 @@ local timerStompCD				= mod:NewNextTimer(60, 121787)
 local timerStomp				= mod:NewCastTimer(3, 121787)
 local timerWarmongerCD			= mod:NewNextTimer(10, "ej6200", nil, nil, nil, 121747)--Comes after Stomp. (Also every 60 sec.)
 
-function mod:OnCombatStart(delay)
-	timerCannonBarrageCD:Start(24-delay)
-	timerStompCD:Start(50-delay)
+function mod:OnCombatStart(delay)--disable start timer for world boss because combat can be entered while other people fighting.
+	--timerCannonBarrageCD:Start(24-delay)
+	--timerStompCD:Start(50-delay)
 end
 
 function mod:RAID_BOSS_EMOTE(msg)
