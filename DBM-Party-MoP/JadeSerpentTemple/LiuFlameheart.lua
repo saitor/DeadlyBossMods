@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(658, "DBM-Party-MoP", 1, 313)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8943 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8974 $"):sub(12, -3))
 mod:SetCreatureID(56732)
 mod:SetModelID(39487)
 mod:SetZone()
@@ -67,27 +67,27 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(106823) then--Phase 1 dragonstrike
+	if args.spellId == 106823 then--Phase 1 dragonstrike
 		warnDragonStrike:Show()
 		timerDragonStrikeCD:Start()
-	elseif args:IsSpellID(106841) then--phase 2 dragonstrike
+	elseif args.spellId == 106841 then--phase 2 dragonstrike
 		warnJadeDragonStrike:Show()
 		timerJadeDragonStrikeCD:Start()
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(106797) then--Jade Essence removed, (Phase 3 trigger)
+	if args.spellId == 106797 then--Jade Essence removed, (Phase 3 trigger)
 		warnPhase3:Show()
 		timerJadeDragonStrikeCD:Cancel()
 	end
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(106797) then--Jade Essence (Phase 2 trigger)
+	if args.spellId == 106797 then--Jade Essence (Phase 2 trigger)
 		warnPhase2:Show()
 		timerDragonStrikeCD:Cancel()
-	elseif args:IsSpellID(107045) then
+	elseif args.spellId == 107045 then
 		timerJadeFireCD:Start()
 		scansDone = 0
 		self:TargetScanner()
