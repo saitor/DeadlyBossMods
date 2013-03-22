@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8978 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 8979 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70212, 70235, 70247)--flaming 70212. Frozen 70235, Venomous 70247
 mod:SetModelID(47414)--Hydra Fire Head, 47415 Frost Head, 47416 Poison Head
 mod:SetUsedIcons(7, 6)
@@ -348,7 +348,7 @@ function mod:OnSync(msg, guid)
 		local target = DBM:GetFullPlayerNameByGUID(guid)
 		warnTorrentofIce:Show(target)
 		if self.Options.SetIconOnTorrentofIce then
-			self:SetIcon(args.destName, 6, 8)--do not have cleu, so use scheduler.
+			self:SetIcon(target, 6, 8)--do not have cleu, so use scheduler.
 		end
 	end
 end
