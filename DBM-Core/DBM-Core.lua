@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8999 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9000 $"):sub(12, -3)),
 	DisplayVersion = "5.2.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 8892 -- the revision of the latest stable version that is available
 }
@@ -3938,7 +3938,7 @@ function bossModPrototype:IsTanking(unit, boss)
 	if UnitGroupRolesAssigned(unit) == "TANK" then
 		return true
 	end
-	if UnitExists(boss) and UnitDetailedThreatSituation(unit, boss) then
+	if UnitExists(boss.."target") and UnitDetailedThreatSituation(unit, boss) then
 		return true
 	end
 	return false
