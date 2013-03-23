@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8996 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8997 $"):sub(12, -3)),
 	DisplayVersion = "5.2.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 8892 -- the revision of the latest stable version that is available
 }
@@ -1879,7 +1879,7 @@ do
 end
 
 function DBM:ScenarioCheck()
-	self:Unschedule(DBM.ScenarioCheck)
+	DBM:Unschedule(DBM.ScenarioCheck)
 	if combatInfo[LastZoneMapID] then
 		for i, v in ipairs(combatInfo[LastZoneMapID]) do
 			if v.type == "scenario" and checkEntry(v.msgs, LastZoneMapID) then
