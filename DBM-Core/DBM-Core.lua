@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 8998 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 8999 $"):sub(12, -3)),
 	DisplayVersion = "5.2.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 8892 -- the revision of the latest stable version that is available
 }
@@ -3932,7 +3932,6 @@ function bossModPrototype:IsTank()
 end
 
 function bossModPrototype:IsTanking(unit, boss)
-	if not unit then return false end
 	if GetPartyAssignment("MAINTANK", unit, 1) then
 		return true
 	end
