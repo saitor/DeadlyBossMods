@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(741, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8998 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9001 $"):sub(12, -3))
 mod:SetCreatureID(62397)
 mod:SetModelID(42645)
 mod:SetZone()
@@ -187,7 +187,7 @@ function mod:SPELL_CAST_START(args)
 			zarthikCount = zarthikCount + 1
 			zarthikGUIDS[args.sourceGUID] = zarthikCount
 		end
-		warnQuickening:Show(args.sourceName)--maybe better to warn when spell applied?
+		warnQuickening:Show(args.sourceName, zarthikCount)--maybe better to warn when spell applied?
 		specWarnQuickening:Show(args.sourceName)
 		timerQuickeningCD:Start(nil, args.sourceGUID)
 	end
