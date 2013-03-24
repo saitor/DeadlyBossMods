@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9012 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9013 $"):sub(12, -3)),
 	DisplayVersion = "5.2.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 8892 -- the revision of the latest stable version that is available
 }
@@ -1069,12 +1069,12 @@ SlashCmdList["DEADLYBOSSMODS"] = function(msg)
 			DBM.Revision = myRealRevision--Restore it
 			DBM:AddMsg(DBM_ABSOLUTE_MODE_OFF)
 			sendSync("V", ("%d\t%s\t%s\t%s"):format(DBM.Revision, DBM.Version, DBM.DisplayVersion, GetLocale()))--Two syncs because we need to also disable mods that don't know what "AM" is
-			sendSync("AM", false)
+			sendSync("AM", "false")
 		else
 			DBM.Revision = 99999
 			DBM:AddMsg(DBM_ABSOLUTE_MODE_ON)
 			sendSync("V", ("%d\t%s\t%s\t%s"):format(DBM.Revision, DBM.Version, DBM.DisplayVersion, GetLocale()))
-			sendSync("AM", true)
+			sendSync("AM", "true")
 		end
 	else
 		DBM:LoadGUI()
@@ -2060,10 +2060,11 @@ do
 	end
 
 	syncHandlers["AM"] = function(sender, status)
-		if status == true then
-			self:AddMsg(DBM_ABSOLUTE_MODE_NOTIFY_ON:format(sender))
+		if sender == playerName then return end
+		if status == "true" then
+			DBM:AddMsg(DBM_ABSOLUTE_MODE_NOTIFY_ON:format(sender))
 		else
-			self:AddMsg(DBM_ABSOLUTE_MODE_NOTIFY_OFF:format(sender))
+			DBM:AddMsg(DBM_ABSOLUTE_MODE_NOTIFY_OFF:format(sender))
 			if highestRealVersion == DBM.Version then
 				enableIcons = true
 			end
