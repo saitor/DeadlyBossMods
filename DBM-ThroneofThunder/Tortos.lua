@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(825, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9002 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9006 $"):sub(12, -3))
 mod:SetCreatureID(67977)
 mod:SetModelID(46559)
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3)
@@ -41,7 +41,7 @@ local timerShellConcussion			= mod:NewBuffFadesTimer(20, 136431)
 local berserkTimer					= mod:NewBerserkTimer(780)
 
 mod:AddBoolOption("InfoFrame")
-mod:AddBoolOption("SetIconOnTurtles", true)
+mod:AddBoolOption("SetIconOnTurtles", GetLocale() == "koKR" and false or true)
 
 local shelldName = GetSpellInfo(137633)
 local shellConcussion = GetSpellInfo(136431)
