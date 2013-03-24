@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(709, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8974 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9008 $"):sub(12, -3))
 mod:SetCreatureID(60999)--61042 Cheng Kang, 61046 Jinlun Kun, 61038 Yang Guoshi, 61034 Terror Spawn
 mod:SetModelID(45065)
 mod:SetUsedIcons(8, 7, 6, 5, 4)
@@ -31,8 +31,8 @@ local warnDreadSpray					= mod:NewSpellAnnounce(120047, 2)
 local warnPhase2						= mod:NewPhaseAnnounce(2)
 local warnDreadThrash					= mod:NewSpellAnnounce(132007, 4, nil, mod:IsTank() or mod:IsHealer())
 local warnNakedAndAfraid				= mod:NewTargetAnnounce(120669, 2, nil, mod:IsTank())
-local warnWaterspout					= mod:NewAnnounce("warnWaterspout", 3, 120519)
-local warnHuddleInTerror				= mod:NewAnnounce("warnHuddleInTerror", 3, 120629)
+local warnWaterspout					= mod:NewTargetCountAnnounce(120519, 3)
+local warnHuddleInTerror				= mod:NewTargetCountAnnounce(120629, 3)
 local warnImplacableStrike				= mod:NewCountAnnounce(120672, 4)
 local warnChampionOfTheLight			= mod:NewTargetAnnounce(120268, 3, nil, false)--seems spammy.
 local warnSubmerge						= mod:NewCountAnnounce(120455)

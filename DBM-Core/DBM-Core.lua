@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9007 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9008 $"):sub(12, -3)),
 	DisplayVersion = "5.2.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 8892 -- the revision of the latest stable version that is available
 }
@@ -4611,6 +4611,10 @@ do
 
 	function bossModPrototype:NewSpecialWarningCast(text, optionDefault, ...)
 		return newSpecialWarning(self, "cast", text, nil, optionDefault, ...)
+	end
+
+	function bossModPrototype:NewSpecialWarningCount(text, optionDefault, ...)
+		return newSpecialWarning(self, "count", text, nil, optionDefault, ...)
 	end
 
 	function bossModPrototype:NewSpecialWarningStack(text, optionDefault, stacks, ...)
