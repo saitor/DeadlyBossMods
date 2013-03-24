@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(827, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8978 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9019 $"):sub(12, -3))
 mod:SetCreatureID(69465)
 mod:SetModelID(47552)
 
@@ -54,6 +54,7 @@ local scansDone = 0
 function mod:TargetScanner(Force)
 	scansDone = scansDone + 1
 	local targetname, uId = self:GetBossTarget(69465)
+	print(targetname, uId)
 	if UnitExists(targetname) then
 		if self:IsTanking(uId, "boss1") and not Force then
 			if scansDone < 12 then

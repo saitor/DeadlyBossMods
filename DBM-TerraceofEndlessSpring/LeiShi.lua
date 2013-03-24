@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(729, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9014 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9019 $"):sub(12, -3))
 mod:SetCreatureID(62983)--62995 Animated Protector
 mod:SetModelID(42811)
 
@@ -208,7 +208,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			local getAwayHealth = math.floor(UnitHealthMax("boss1") * 0.04)
 			showDamagedHealthBar(self, args.sourceGUID, args.spellName, getAwayHealth)
 		end
-	elseif args.spellId == 123121 then
+	elseif args.spellId == 123121 and args:IsDestTypePlayer() then
 		local uId = DBM:GetRaidUnitId(args.destName)
 		if self:IsTanking(uId, "boss1") then--Only want sprays that are on tanks, not bads standing on tanks.
 			timerSpray:Start(args.destName)

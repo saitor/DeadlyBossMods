@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(683, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8974 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9019 $"):sub(12, -3))
 mod:SetCreatureID(60585, 60586, 60583)--60583 Protector Kaolan, 60585 Elder Regail, 60586 Elder Asani
 mod:SetModelID(41503)--Protector Kaolan, 41502 and 41504 are elders
 mod:SetZone()
@@ -130,6 +130,7 @@ end
 function mod:WatersTarget()
 	scansDone = scansDone + 1
 	local targetname, uId = self:GetBossTarget(60586)
+	print(targetname, uId)
 	if targetname and uId then
 		if UnitIsFriend("player", uId) then--He's targeting a friendly unit, he doesn't cast this on players, so it's wrong target.
 			if scansDone < 15 then--Make sure no infinite loop.
