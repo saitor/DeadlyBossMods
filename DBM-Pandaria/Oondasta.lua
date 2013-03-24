@@ -1,13 +1,12 @@
 local mod	= DBM:NewMod(826, "DBM-Pandaria", nil, 322)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8995 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9016 $"):sub(12, -3))
 mod:SetCreatureID(69161)
 mod:SetModelID(47257)
 mod:SetZone(929)--Isle of Giants
 
 mod:RegisterCombat("combat")
-mod:SetWipeTime(120)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",

@@ -1,19 +1,13 @@
 local mod	= DBM:NewMod(691, "DBM-Pandaria", nil, 322)	-- 322 = Pandaria/Outdoor I assume
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8995 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9016 $"):sub(12, -3))
 mod:SetCreatureID(60491)
 mod:SetModelID(41448)
 mod:SetZone(809)--Kun-Lai Summit
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3, 2, 1)
 
--- TODO: This is field boss, if you die while combat, you can go tomb and revive as you wish.
--- But if you go tomb, DBM regards combat ends and messing up timer and warns.
--- So, needs to improve combat detection and ends on field boss. 
--- Also, you can enter combat while boss fights (not 100% health). 
--- On this situration, block OnCombatStart() function will be better (+ do not record kill time)
 mod:RegisterCombat("combat")
-mod:SetWipeTime(120)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",
@@ -121,6 +115,9 @@ function mod:OnCombatEnd()
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Hide()
 	end
+	playerMCed = false
+	table.wipe(warnpreMCTargets)
+	table.wipe(warnMCTargets)
 	yellTriggered = false
 end
 
