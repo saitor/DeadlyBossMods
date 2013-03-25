@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(827, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9030 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9031 $"):sub(12, -3))
 mod:SetCreatureID(69465)
 mod:SetModelID(47552)
 
@@ -51,6 +51,13 @@ mod:AddBoolOption("RangeFrame")
 
 function mod:FocusedLightningTarget(targetname)
 	warnFocusedLightning:Show(targetname)
+	if targetname == UnitName("player") then
+		specWarnFocusedLightning:Show()
+		yellFocusedLightning:Yell()
+		if self.Options.RangeFrame then
+			DBM.RangeCheck:Show(8)
+		end
+	end
 end
 
 function mod:OnCombatStart(delay)
