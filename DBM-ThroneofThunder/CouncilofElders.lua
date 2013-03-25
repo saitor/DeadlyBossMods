@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(816, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9019 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9026 $"):sub(12, -3))
 mod:SetCreatureID(69078, 69132, 69134, 69131)--69078 Sul the Sandcrawler, 69132 High Prestess Mar'li, 69131 Frost King Malakk, 69134 Kazra'jin --Adds: 69548 Shadowed Loa Spirit,
 mod:SetModelID(47229)--Kazra'jin, 47505 Sul the Sandcrawler, 47506 Frost King Malakk, 47730 High Priestes Mar'li
 mod:SetUsedIcons(7, 6)
@@ -164,7 +164,6 @@ end
 function mod:BoltTarget()
 	scansDone = scansDone + 1
 	local targetname, uId = self:GetBossTarget(69078)
-	print(targetname, uId)
 	if targetname and uId then
 		if isTank(uId) and scansDone < 15 then--Make sure no infinite loop.
 			self:ScheduleMethod(0.1, "BoltTarget")--Check multiple times to find a target that isn't a player.
