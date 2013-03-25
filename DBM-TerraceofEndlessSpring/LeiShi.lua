@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(729, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9019 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9024 $"):sub(12, -3))
 mod:SetCreatureID(62983)--62995 Animated Protector
 mod:SetModelID(42811)
 
@@ -324,7 +324,7 @@ function mod:INSTANCE_ENCOUNTER_ENGAGE_UNIT(event)
 end
 
 local function FindFastestHighestVersion()
-	DBM:SendSync("FastestPerson", UnitGUID("player"))
+	mod:SendSync("FastestPerson", UnitGUID("player"))
 end
 
 function mod:OnSync(msg, guid, ver)

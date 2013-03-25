@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(825, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9014 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9024 $"):sub(12, -3))
 mod:SetCreatureID(67977)
 mod:SetModelID(46559)
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3)
@@ -223,7 +223,7 @@ function mod:UNIT_AURA(uId)
 end
 
 local function FindFastestHighestVersion()
-	DBM:SendSync("FastestPerson", UnitGUID("player"))
+	mod:SendSync("FastestPerson", UnitGUID("player"))
 end
 
 function mod:OnSync(msg, guid, ver)
