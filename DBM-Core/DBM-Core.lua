@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9043 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9044 $"):sub(12, -3)),
 	DisplayVersion = "5.2.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 8892 -- the revision of the latest stable version that is available
 }
@@ -1916,6 +1916,8 @@ do
 	end
 end
 
+--LFG_IsHeroicScenario(dungeonID)--5.3
+--Going to have to stop neglecting scenario mods. in fact, we should get all the current scenarios finished now, they all have heroics in 5.3
 function DBM:ScenarioCheck()
 	DBM:Unschedule(DBM.ScenarioCheck)
 	if combatInfo[LastZoneMapID] then
