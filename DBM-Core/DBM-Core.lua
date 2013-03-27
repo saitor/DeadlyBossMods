@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9061 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9062 $"):sub(12, -3)),
 	DisplayVersion = "5.2.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 8892 -- the revision of the latest stable version that is available
 }
@@ -1436,7 +1436,7 @@ do
 					else
 						raidShortNames[shortname] = DBM_CORE_GENERIC_WARNING_DUPLICATE:format(name:gsub("%-.*$", ""))
 					end
-					if not playerWithHigherVersionPromoted and rank >= 1 and raid[name].version and raid[name].version > tonumber(DBM.Version) then
+					if not playerWithHigherVersionPromoted and rank >= 1 and raid[name].version and raid[name].version ~= "" and raid[name].version > tonumber(DBM.Version) then
 						playerWithHigherVersionPromoted = true
 					end
 				end
@@ -3002,7 +3002,7 @@ function DBM:EndCombat(mod, wipe)
 			end
 			local totalKills = (savedDifficulty == "lfr25" and mod.stats.lfr25Kills) or ((savedDifficulty == "heroic5" or savedDifficulty == "heroic10") and mod.stats.heroicKills) or (savedDifficulty == "challenge5" and mod.stats.challengeKills) or (savedDifficulty == "normal25" and mod.stats.normal25Kills) or (savedDifficulty == "heroic25" and mod.stats.heroic25Kills) or mod.stats.normalKills
 			if DBM.Options.ShowKillMessage then
-				if not thisTime then--was a bad pull so we ignored thisTime
+				if not thisTime or mod.ignoreBestkill then--was a bad pull so we ignored thisTime
 					self:AddMsg(DBM_CORE_BOSS_DOWN:format(difficultyText..mod.combatInfo.name, DBM_CORE_UNKNOWN))
 				elseif not lastTime then
 					self:AddMsg(DBM_CORE_BOSS_DOWN:format(difficultyText..mod.combatInfo.name, strFromTime(thisTime)))
