@@ -1,9 +1,11 @@
 local mod	= DBM:NewMod("ToTTrash", "DBM-ThroneofThunder")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9003 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9072 $"):sub(12, -3))
 --mod:SetModelID(39378)
 mod:SetZone()
+
+mod.isTrashMod = true
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",
