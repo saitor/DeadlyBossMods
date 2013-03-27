@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9057 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9058 $"):sub(12, -3)),
 	DisplayVersion = "5.2.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 8892 -- the revision of the latest stable version that is available
 }
@@ -1529,6 +1529,10 @@ do
 			raidUIds["player"] = playerName
 			raidGuids[UnitGUID("player")] = playerName
 			raidShortNames[playerName] = playerName
+			if DBM.Revision == 99999 then--if it's already 99999 when we leave raid, turn it back off
+				DBM.Revision = myRealRevision
+				DBM:AddMsg(DBM_ABSOLUTE_MODE_OFF)
+			end
 		end
 	end
 
