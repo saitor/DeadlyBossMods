@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(827, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9031 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9067 $"):sub(12, -3))
 mod:SetCreatureID(69465)
 mod:SetModelID(47552)
 
@@ -54,6 +54,7 @@ function mod:FocusedLightningTarget(targetname)
 	if targetname == UnitName("player") then
 		specWarnFocusedLightning:Show()
 		yellFocusedLightning:Yell()
+		soundFocusedLightning:Play()
 		if self.Options.RangeFrame then
 			DBM.RangeCheck:Show(8)
 		end
