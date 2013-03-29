@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9089 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9094 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70212, 70235, 70247, 70248)--flaming 70212. Frozen 70235, Venomous 70247
 mod:SetMainBossID(68065)
 mod:SetModelID(47414)--Hydra Fire Head, 47415 Frost Head, 47416 Poison Head
@@ -80,7 +80,7 @@ local activeHeadGUIDS = {}
 local function isTank(unit)
 	-- 1. check blizzard tanks first
 	-- 2. check blizzard roles second
-	-- 3. check boss1's highest threat target
+	-- 3. check boss' highest threat target
 	if GetPartyAssignment("MAINTANK", unit, 1) then
 		return true
 	end
@@ -224,7 +224,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 		timerArcticFreezeCD:Cancel()
 		timerIgniteFleshCD:Cancel()
 		timerRotArmorCD:Cancel()
-		--Not if back ones always cancel here, they seem too
+		--Not sure if back ones always cancel here, they seem too
 --		timerCinderCD:Cancel()
 --		timerTorrentofIceCD:Cancel()
 --		timerAcidRainCD:Cancel()

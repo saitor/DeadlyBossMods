@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9093 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9094 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetModelID(47189)
 mod:SetUsedIcons(8, 7, 6, 1)
@@ -265,7 +265,6 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg, npc, _, _, target)
 		timerForceOfWillCD:Cancel()
 		if self:IsDifficulty("heroic10", "heroic25") then
 			timerObliterateCD:Start()
-			timerIceWallCD:Start(87)
 		end
 		if self:IsDifficulty("heroic10", "heroic25", "lfr25") then
 			warnYellowBeam:Show(target)
