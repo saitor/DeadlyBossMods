@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(817, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9084 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9090 $"):sub(12, -3))
 mod:SetCreatureID(68078, 68079, 68080, 68081)--Ro'shak 68079, Quet'zal 68080, Dam'ren 68081, Iron Qon 68078
 mod:SetMainBossID(68078)
 mod:SetModelID(46627) -- Iron Qon, 46628 Ro'shak, 46629 Quet'zal, 46630 Dam'ren
@@ -374,10 +374,6 @@ function mod:UNIT_DIED(args)
 		timerFreezeCD:Cancel()
 		warnPhase4:Show()
 		timerRisingAngerCD:Start()
-		if self:IsDifficulty("normal25", "lfr25") then --lfr not comfirms
-			timerFistSmashCD:Start(22.5, 1)
-		else
-			timerFistSmashCD:Start(31.5, 1)
-		end
+		timerFistSmashCD:Start(22.5, 1)--fist smash cd is random. (22.5 or 31.5)
 	end
 end

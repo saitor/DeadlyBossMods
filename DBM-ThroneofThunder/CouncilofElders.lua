@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(816, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9028 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9090 $"):sub(12, -3))
 mod:SetCreatureID(69078, 69132, 69134, 69131)--69078 Sul the Sandcrawler, 69132 High Prestess Mar'li, 69131 Frost King Malakk, 69134 Kazra'jin --Adds: 69548 Shadowed Loa Spirit,
 mod:SetModelID(47229)--Kazra'jin, 47505 Sul the Sandcrawler, 47506 Frost King Malakk, 47730 High Priestes Mar'li
 mod:SetUsedIcons(7, 6)
@@ -211,7 +211,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			if self:IsDifficulty("heroic10", "heroic25") then
 				timerDarkPowerCD:Start(math.floor(68 * (1-(stack*0.15))))--need review
 			elseif self:IsDifficulty("normal10", "normal25") then
-				timerDarkPowerCD:Start(math.floor(73 * (1-(stack*0.1))))--need review
+				timerDarkPowerCD:Start(math.floor(71 * (1-(stack*0.1))))--need review
 			else -- lfr
 				timerDarkPowerCD:Start(math.floor(97 * (1-(stack*0.05))))--need review
 			end
