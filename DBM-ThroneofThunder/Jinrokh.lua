@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(827, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9102 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9107 $"):sub(12, -3))
 mod:SetCreatureID(69465)
 mod:SetModelID(47552)
 
@@ -51,13 +51,13 @@ local countdownIonization			= mod:NewCountdown(61.5, 138732)
 mod:AddBoolOption("RangeFrame")
 
 local function checkWaterIonization()
-	if UnitDebuff("player", GetSpellInfo(138470)) and UnitDebuff("player", GetSpellInfo(138732)) and not UnitIsDeadOrGhost("player") then
+	if UnitDebuff("player", GetSpellInfo(138002)) and UnitDebuff("player", GetSpellInfo(138732)) and not UnitIsDeadOrGhost("player") then
 		specWarnWaterMove:Show(GetSpellInfo(138732))
 	end
 end
 
 local function checkWaterStorm()
-	if UnitDebuff("player", GetSpellInfo(138470)) and not UnitIsDeadOrGhost("player") then
+	if UnitDebuff("player", GetSpellInfo(138002)) and not UnitIsDeadOrGhost("player") then
 		specWarnWaterMove:Show(GetSpellInfo(137313))
 	end
 end
