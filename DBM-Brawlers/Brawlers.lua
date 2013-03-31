@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Brawlers", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 8974 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9112 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 --mod:SetModelID(41448)
 mod:SetZone(DBM_DISABLE_ZONE_DETECTION)
@@ -111,6 +111,7 @@ function mod:PLAYER_REGEN_ENABLED()
 end
 
 function mod:UNIT_DIED(args)
+	if not args.destName then return end
 	--Another backup for when npc doesn't yell. This is a way to detect a wipe at least.
 	local thingThatDied = string.split("-", args.destName)--currentFighter never has realm name, so we need to strip it from combat log for CRZ support
 	if currentFighter and currentFighter == thingThatDied then--They wiped.
