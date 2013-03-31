@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(825, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9106 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9111 $"):sub(12, -3))
 mod:SetCreatureID(67977)
 mod:SetModelID(46559)
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3)
@@ -50,6 +50,7 @@ if GetLocale() == "koKR" then
 else
 	mod:AddBoolOption("SetIconOnTurtles", true)
 end
+mod:AddBoolOption("ClearIconOnTurtles", false)--Different option, because you may want auto marking but not auto clearing. or you may want auto clearning when they "die" but not auto marking when they spawn
 
 local shelldName = GetSpellInfo(137633)
 local shellConcussion = GetSpellInfo(136431)
@@ -179,6 +180,15 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 133971 then--Shell Block (turtles dying and becoming kickable)
 		shellsRemaining = shellsRemaining + 1
 		addsActivated = addsActivated - 1
+		if DBM:GetRaidRank() > 0 and self.Options.ClearIconOnTurtles then
+			for i = 1, DBM:GetNumGroupMembers() do
+				local uId = "raid"..i.."target"
+				local guid = UnitGUID(uId)
+				if args.destGUID == guid then
+					SetRaidTarget(uId, 0)
+				end
+			end
+		end
 	elseif args.spellId == 133974 and self.Options.SetIconOnTurtles then--Spinning Shell
 		if self:AntiSpam(5, 6) then
 			resetaddstate()
