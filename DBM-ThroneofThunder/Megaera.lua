@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9106 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9122 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70212, 70235, 70247)--flaming 70212. Frozen 70235, Venomous 70247
 mod:SetMainBossID(68065)
 mod:SetModelID(47414)--Hydra Fire Head, 47415 Frost Head, 47416 Poison Head
@@ -32,7 +32,7 @@ local warnCinders				= mod:NewTargetAnnounce(139822, 4)
 local warnTorrentofIce			= mod:NewTargetAnnounce(139889, 4)
 local warnNetherTear			= mod:NewSpellAnnounce(140138, 3)--Heroic
 
-local specWarnRampage			= mod:NewSpecialWarningSpell(139458, nil, nil, nil, 2)
+local specWarnRampage			= mod:NewSpecialWarningCount(139458, nil, nil, nil, 2)
 local specWarnArcticFreeze		= mod:NewSpecialWarningStack(139843, mod:IsTank(), 2)
 local specWarnIgniteFlesh		= mod:NewSpecialWarningStack(137731, mod:IsTank(), 2)
 local specWarnRotArmor			= mod:NewSpecialWarningStack(139840, mod:IsTank(), 2)
@@ -229,7 +229,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 --		timerTorrentofIceCD:Cancel()
 --		timerAcidRainCD:Cancel()
 --		timerNetherTearCD:Cancel()
-		specWarnRampage:Show()
+		specWarnRampage:Show(rampageCast)
 		timerRampage:Start()
 	elseif msg == L.rampageEnds or msg:find(L.rampageEnds) then
 		if iceInFront > 0 then
