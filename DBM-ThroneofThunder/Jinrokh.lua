@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(827, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9107 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9136 $"):sub(12, -3))
 mod:SetCreatureID(69465)
 mod:SetModelID(47552)
 
@@ -68,7 +68,7 @@ function mod:FocusedLightningTarget(targetname)
 		specWarnFocusedLightning:Show()
 		yellFocusedLightning:Yell()
 		soundFocusedLightning:Play()
-		if self.Options.RangeFrame then
+		if self.Options.RangeFrame and not self:IsDifficulty("lfr25") then
 			DBM.RangeCheck:Show(8)
 		end
 	end

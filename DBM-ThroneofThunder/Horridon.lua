@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(819, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9124 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9136 $"):sub(12, -3))
 mod:SetCreatureID(68476)
 mod:SetModelID(47325)
 mod:SetUsedIcons(1)
@@ -299,7 +299,7 @@ function mod:OnSync(msg, target)
 			timerAdds:Start(18.9, Amani)
 			warnAdds:Schedule(18.9, Amani)
 			self:Schedule(18.9, addsDelay, Amani)
-			if self.Options.RangeFrame then
+			if self.Options.RangeFrame and not self:IsDifficulty("lfr25") then
 				DBM.RangeCheck:Show(5)
 			end
 		end

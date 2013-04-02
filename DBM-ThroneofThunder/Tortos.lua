@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(825, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9111 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9136 $"):sub(12, -3))
 mod:SetCreatureID(67977)
 mod:SetModelID(46559)
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3)
@@ -116,7 +116,9 @@ end
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 133939 then
 		warnStoneBreath:Show()
-		specWarnStoneBreath:Show(args.sourceName)
+		if not self:IsDifficulty("lfr25") then
+			specWarnStoneBreath:Show(args.sourceName)
+		end
 		timerBreathCD:Start()
 	elseif args.spellId == 136294 then
 		warnCallofTortos:Show()
