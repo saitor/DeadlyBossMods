@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(817, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9090 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9130 $"):sub(12, -3))
 mod:SetCreatureID(68078, 68079, 68080, 68081)--Ro'shak 68079, Quet'zal 68080, Dam'ren 68081, Iron Qon 68078
 mod:SetMainBossID(68078)
 mod:SetModelID(46627) -- Iron Qon, 46628 Ro'shak, 46629 Quet'zal, 46630 Dam'ren
@@ -279,7 +279,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 			warnPhase2:Show()
 			if self:IsDifficulty("heroic10", "heroic25") then
 				timerFreezeCD:Start(13)
-				timerFrostSpikeCD:Start(18)
+				timerFrostSpikeCD:Start(15)
 			end
 			timerLightningStormCD:Start()
 			warnWindStorm:Schedule(52)
@@ -310,7 +310,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 			timerFreezeCD:Cancel()
 			warnPhase4:Show()
 			timerRisingAngerCD:Start(15)
-			timerFistSmashCD:Start(25, 1)
+			timerFistSmashCD:Start(62, 1)
 		end
 	elseif spellId == 139172 and self:AntiSpam(2, 7) then--Whirling Winds (Phase 1 Heroic)
 		warnWhirlingWinds:Show()
@@ -330,7 +330,11 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		fistSmashCount = fistSmashCount + 1
 		warnFistSmash:Show(fistSmashCount)
 		specWarnFistSmash:Show()
-		timerFistSmashCD:Start(nil, fistSmashCount+1)
+		if self:IsDifficulty("heroic10", "heroic25") then
+			timerFistSmashCD:Start(30, fistSmashCount+1) -- heroic cd longer.
+		else
+			timerFistSmashCD:Start(nil, fistSmashCount+1)
+		end
 	end
 end
 
