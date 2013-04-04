@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(827, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9136 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9148 $"):sub(12, -3))
 mod:SetCreatureID(69465)
 mod:SetModelID(47552)
 
@@ -164,7 +164,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 		local target = DBM:GetFullNameByShortName(target)
 		warnThrow:Show(target)
 		timerStormCD:Start()
-		self:Schedule(57.5, checkWaterStorm)--check before 3 sec.
+		self:Schedule(55.5, checkWaterStorm)--check before 5 sec.
 		if target == UnitName("player") then
 			specWarnThrow:Show()
 		else
