@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(828, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9156 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9157 $"):sub(12, -3))
 mod:SetCreatureID(69712)
 mod:SetModelID(46675)
 
@@ -61,7 +61,7 @@ function mod:OnCombatStart(delay)
 	end
 	timerDowndraftCD:Start(91-delay)
 	if self.Options.RangeFrame and not self:IsDifficulty("lfr25") then
-		DBM.RangeCheck:Show(8)
+		DBM.RangeCheck:Show(10)
 	end
 end
 
