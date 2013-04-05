@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9151 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9152 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70212, 70235, 70247)--flaming 70212. Frozen 70235, Venomous 70247
 mod:SetMainBossID(68065)
 mod:SetModelID(47414)--Hydra Fire Head, 47415 Frost Head, 47416 Poison Head
@@ -392,7 +392,8 @@ function mod:UNIT_AURA(uId)
 	if UnitDebuff(uId, iceTorrent) then
 		print("ice Torrent detected")
 		local _, _, _, _, _, duration, expires = UnitDebuff(uId, iceTorrent)
-		if expires ~= lastTorrent then
+		if lastTorrent ~= expires then
+			lastTorrent = expires
 			local name = DBM:GetUnitFullName(uId)
 			warnTorrentofIce:Show(name)
 			if name == UnitName("player") then
