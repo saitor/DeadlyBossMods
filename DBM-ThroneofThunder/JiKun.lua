@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(828, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9164 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9165 $"):sub(12, -3))
 mod:SetCreatureID(69712)
 mod:SetModelID(46675)
 
@@ -17,7 +17,7 @@ mod:RegisterEventsInCombat(
 )
 
 local warnCaws				= mod:NewSpellAnnounce(138923, 2)
-local warnQuills			= mod:NewSpellAnnounce(134380, 4)
+local warnQuills			= mod:NewCountAnnounce(134380, 4)
 local warnFlock				= mod:NewAnnounce("warnFlock", 3, 15746)--Some random egg icon
 local warnLayEgg			= mod:NewSpellAnnounce(134367, 3)
 local warnTalonRake			= mod:NewStackAnnounce(134366, 3, nil, mod:IsTank() or mod:IsHealer())
@@ -48,11 +48,13 @@ mod:AddBoolOption("RangeFrame", mod:IsRanged())
 
 local flockC = 0
 local lastFlock = 0
+local quillsCount = 0
 local trippleNest = false
 local flockName = EJ_GetSectionInfo(7348)
 
 function mod:OnCombatStart(delay)
 	flockC = 0
+	quillsCount = 0
 	trippleNest = false
 	if self:IsDifficulty("normal10", "heroic10", "lfr25") then
 		timerQuillsCD:Start(60-delay)
@@ -109,7 +111,8 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 134380 then
-		warnQuills:Show()
+		quillsCount = quillsCount + 1
+		warnQuills:Show(quillsCount)
 		specWarnQuills:Show()
 		timerQuills:Start()
 		if self:IsDifficulty("normal10", "heroic10", "lfr25") then
