@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("GreenFire", "DBM-Scenario-MoP")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9115 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9177 $"):sub(12, -3))
 mod:SetZone(919)
 
 mod:RegisterCombat("scenario", 919)
@@ -47,6 +47,9 @@ local timerSummonImpSwarmCast 	= mod:NewCastTimer(10, 138685)
 local timerSummonFelhunterCast	= mod:NewCastTimer(9, 138751)
 local timerSummonDoomlordCast	= mod:NewCastTimer(10, 138755)
 local timerEnslaveDemon			= mod:NewTargetTimer(300, 1098)
+local timerDoom					= mod:NewBuffFadesTimer(419, 138558)
+
+local countdownDoom				= mod:NewCountdown(419, 138558, nil, nil, 10)
 
 mod:RemoveOption("HealthFrame")
 
@@ -91,6 +94,9 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 1098 and args:GetDestCreatureID() == 70075 then
 		timerEnslaveDemon:Start(args.destName)
+	elseif args.spellId == 138558 then
+		timerDoom:Start()
+		countdownDoom:Start()
 	end
 end
 
@@ -98,6 +104,9 @@ function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 1098 and args:GetDestCreatureID() == 70075 and kanrathadAlive then
 		timerEnslaveDemon:Cancel(args.destName)
 		specWarnEnslavePitLord:Show()
+	elseif args.spellId == 138558 then
+		timerDoom:Cancel()
+		countdownDoom:Cancel()
 	end
 end
 
