@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(832, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9175 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9176 $"):sub(12, -3))
 mod:SetCreatureID(68397)--Diffusion Chain Conduit 68696, Static Shock Conduit 68398, Bouncing Bolt conduit 68698, Overcharge conduit 68697
 mod:SetModelID(46770)
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3, 2, 1)--All icons can be used, because if a pillar is level 3, it puts out 4 debuffs on 25 man (if both are level 3, then you will have 8)
@@ -368,9 +368,9 @@ local function LoopIntermission()
 			specWarnBouncingBolt:Schedule(15)
 			timerBouncingBoltCD:Start(15)
 		else
-			warnBouncingBolt:Schedule(19)
-			specWarnBouncingBolt:Schedule(19)
-			timerBouncingBoltCD:Start(19)
+			warnBouncingBolt:Schedule(18.5)
+			specWarnBouncingBolt:Schedule(18.5)
+			timerBouncingBoltCD:Start(18.5)
 		end
 	end
 	if not northDestroyed then
@@ -459,9 +459,9 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 				specWarnBouncingBolt:Schedule(14)
 				timerBouncingBoltCD:Start(14)
 			else
-				warnBouncingBolt:Schedule(18)
-				specWarnBouncingBolt:Schedule(18)
-				timerBouncingBoltCD:Start(18)
+				warnBouncingBolt:Schedule(17.5)
+				specWarnBouncingBolt:Schedule(17.5)
+				timerBouncingBoltCD:Start(17.5)
 			end
 		end
 		if not northDestroyed then
