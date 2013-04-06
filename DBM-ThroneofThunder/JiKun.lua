@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(828, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9168 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9169 $"):sub(12, -3))
 mod:SetCreatureID(69712)
 mod:SetModelID(46675)
 
@@ -188,11 +188,11 @@ Nest27: Lower NE--27 & 29 could be flipped
 Nest28: Upper Middle
 Nest29: Lower NW
 
-Nest30: Upper SE
-Nest31: Lower SW
+Nest30: Upper SW
+Nest31: Lower SE
 
-Nest32: Upper
-Nest33: Lower
+Nest32: Upper NE
+Nest33: Lower SW
 Nest34: Upper
 
 Nest35: Lower
