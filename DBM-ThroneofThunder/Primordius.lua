@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(820, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9142 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9171 $"):sub(12, -3))
 mod:SetCreatureID(69017)--69070 Viscous Horror, 69069 good ooze, 70579 bad ooze (patched out of game, :\)
 mod:SetModelID(47009)
 
@@ -175,7 +175,5 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		warnPustuleEruption:Show()
 		specWarnPustuleEruption:Show()
 		timerPustuleEruptionCD:Start()
-	elseif spellId == 136050 and self:AntiSpam(2, 2) then--Malformed Blood
-		
 	end
 end
