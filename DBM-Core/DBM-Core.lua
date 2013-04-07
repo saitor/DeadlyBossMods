@@ -22,7 +22,7 @@
 -- Special thanks to:
 --    * Arta
 --    * Tennberg (a lot of fixes in the enGB/enUS localization)
---    * nBlueWiz (a lot of fixes in the koKR localization as well as boss mod work) Contant: everfinale@gmail.com
+--    * nBlueWiz (a lot of fixes in the koKR localization as well as boss mod work) Contact: everfinale@gmail.com
 --
 --
 -- The code of this addon is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 License. (see license.txt)
@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9199 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9200 $"):sub(12, -3)),
 	DisplayVersion = "5.2.3 alpha", -- the string that is shown as version
 	ReleaseRevision = 9085 -- the revision of the latest stable version that is available
 }
