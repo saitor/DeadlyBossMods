@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9192 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9193 $"):sub(12, -3)),
 	DisplayVersion = "5.2.3 alpha", -- the string that is shown as version
 	ReleaseRevision = 9085 -- the revision of the latest stable version that is available
 }
@@ -2736,6 +2736,8 @@ function DBM:StartCombat(mod, delay, synced, syncedStartHp)
 		local startHp = tonumber((mod:GetHP():gsub("%%$", ""))) or syncedStartHp or -1
 		if mod:IsDifficulty("worldboss") and startHp < 98 then--Boss was not full health when engaged, disable combat start timer and kill record. (regards full health : 98, 99, 100)
 			mod.ignoreBestkill = true
+		else--Reset ignoreBestkill after wipe
+			mod.ignoreBestkill = false
 		end
 		if (DBM.Options.AlwaysShowSpeedKillTimer or mod.Options.SpeedKillTimer) and not mod.ignoreBestkill then
 			local bestTime
