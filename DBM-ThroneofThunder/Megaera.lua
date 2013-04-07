@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9163 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9190 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70212, 70235, 70247)--flaming 70212. Frozen 70235, Venomous 70247
 mod:SetMainBossID(68065)
 mod:SetModelID(47414)--Hydra Fire Head, 47415 Frost Head, 47416 Poison Head
@@ -140,7 +140,7 @@ function mod:OnCombatStart(delay)
 		arcaneInFront = 0
 		timerCinderCD:Start(13)
 		timerNetherTearCD:Start()
-	else
+	elseif self:IsDifficulty("normal10", "normal25") then -- lfr seems first Cinder not comes
 		timerCinderCD:Start()
 	end
 	self:RegisterShortTermEvents(
@@ -287,7 +287,11 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 			end
 		end
 		if fireBehind > 0 then
-			timerCinderCD:Start(5)--5-8 second variation
+			if self:IsDifficulty("lfr25") then
+				timerCinderCD:Start(11)--11-14 second variatio
+			else
+				timerCinderCD:Start(5)--5-8 second variatio
+			end
 		end
 --[[		if venomBehind > 0 then
 			timerAcidRainCD:Start(15)--15-20 seconds after rampage ends, unknown heroic value, this number is from normal log.
