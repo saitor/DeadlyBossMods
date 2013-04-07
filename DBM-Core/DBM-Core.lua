@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9191 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9192 $"):sub(12, -3)),
 	DisplayVersion = "5.2.3 alpha", -- the string that is shown as version
 	ReleaseRevision = 9085 -- the revision of the latest stable version that is available
 }
@@ -1450,7 +1450,6 @@ do
 					raidShortNames[shortname] = DBM_CORE_GENERIC_WARNING_DUPLICATE:format(name:gsub("%-.*$", ""))
 				end
 			end
-			DBM:ElectMaster()
 			for i, v in pairs(raid) do
 				if not v.updated then
 					raidUIds[v.id] = nil
