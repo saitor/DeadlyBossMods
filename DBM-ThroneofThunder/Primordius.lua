@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(820, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9213 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9215 $"):sub(12, -3))
 mod:SetCreatureID(69017)--69070 Viscous Horror, 69069 good ooze, 70579 bad ooze (patched out of game, :\)
 mod:SetModelID(47009)
 
@@ -34,7 +34,6 @@ local warnBlackBlood				= mod:NewStackAnnounce(137000, 2, nil, mod:IsTank() or m
 local specWarnFullyMutated			= mod:NewSpecialWarningYou(140546)
 local specWarnFullyMutatedFaded		= mod:NewSpecialWarningFades(140546)
 local specWarnCausticGas			= mod:NewSpecialWarningSpell(136216, nil, nil, nil, 2)--All must be in front for this.
-local specWarnPustuleEruption		= mod:NewSpecialWarningSpell(136247, false, nil, nil, 2)--off by default since every 5 sec, very spammy for special warning
 local specWarnVolatilePathogen		= mod:NewSpecialWarningYou(136228)
 local specWarnViscousHorror			= mod:NewSpecialWarningCount("ej6969", mod:IsTank())
 
@@ -207,7 +206,6 @@ end
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	if spellId == 136248 and self:AntiSpam(2, 1) then--Pustule Eruption
 		warnPustuleEruption:Show()
-		specWarnPustuleEruption:Show()
 		timerPustuleEruptionCD:Start()
 	end
 end
