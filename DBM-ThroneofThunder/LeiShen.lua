@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(832, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9191 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9206 $"):sub(12, -3))
 mod:SetCreatureID(68397)--Diffusion Chain Conduit 68696, Static Shock Conduit 68398, Bouncing Bolt conduit 68698, Overcharge conduit 68697
 mod:SetModelID(46770)
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3, 2, 1)--All icons can be used, because if a pillar is level 3, it puts out 4 debuffs on 25 man (if both are level 3, then you will have 8)
@@ -83,6 +83,8 @@ local timerSummonBallLightningCD		= mod:NewNextTimer(45.5, 136543)--Seems exact 
 --Phase 3
 local timerViolentGaleWinds				= mod:NewBuffActiveTimer(18, 136889)
 local timerViolentGaleWindsCD			= mod:NewNextTimer(30.5, 136889)
+
+local soundDecapitate					= mod:NewSound(134912)
 
 mod:AddBoolOption("RangeFrame")
 mod:AddBoolOption("OverchargeArrow")--On by default because the overcharge target is always pinned and unable to run away. You must always run to them, so everyone will want this arrow on
@@ -176,6 +178,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerDecapitateCD:Start()
 		if args:IsPlayer() then
 			specWarnDecapitate:Show()
+			soundDecapitate:Play()
 		else
 			specWarnDecapitateOther:Show(args.destName)
 		end
