@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9211 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9212 $"):sub(12, -3)),
 	DisplayVersion = "5.2.3 alpha", -- the string that is shown as version
 	ReleaseRevision = 9085 -- the revision of the latest stable version that is available
 }
@@ -52,8 +52,6 @@ DBM = {
 -- Legacy crap; that stupid "Version" field was never a good idea.
 -- Some functions that should be using ReleaseRevision still use this one, so we will just keep it and set to ReleaseRevision
 DBM.Version = tostring(DBM.ReleaseRevision)
--- Hack until 5.2.4 release
-DBM.ReleaseRevision = DBM.Revision
 
 -- support for git svn which doesn't support svn keyword expansion
 if not DBM.Revision then
