@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(820, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9207 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9213 $"):sub(12, -3))
 mod:SetCreatureID(69017)--69070 Viscous Horror, 69069 good ooze, 70579 bad ooze (patched out of game, :\)
 mod:SetModelID(47009)
 
@@ -177,8 +177,8 @@ end
 
 local good1 = GetSpellInfo(136180)
 local good2 = GetSpellInfo(136182)
-local good2 = GetSpellInfo(136184)
-local good3 = GetSpellInfo(136186)
+local good3 = GetSpellInfo(136184)
+local good4 = GetSpellInfo(136186)
 local bad1 = GetSpellInfo(136181)
 local bad2 = GetSpellInfo(136183)
 local bad3 = GetSpellInfo(136185)
