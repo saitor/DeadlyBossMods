@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9232 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9233 $"):sub(12, -3)),
 	DisplayVersion = "5.2.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 9213 -- the revision of the latest stable version that is available
 }
@@ -2693,7 +2693,7 @@ function DBM:StartCombat(mod, delay, synced, syncedStartHp, noKillRecord)
 			return
 		end
 		table.insert(inCombat, mod)
-		bossHealth[mod.combatInfo.mob] = 1
+		bossHealth[mod.combatInfo.mob or -1] = 1
 		if mod.multiMobPullDetection then
 			for _, mob in ipairs(mod.multiMobPullDetection) do
 				if not bossHealth[mob] then bossHealth[mob] = 1 end
@@ -3161,7 +3161,7 @@ do
 			if not mod.combatInfo then return end
 			self:AddMsg(DBM_CORE_COMBAT_STATE_RECOVERED:format(mod.combatInfo.name, strFromTime(time + lag)))
 			table.insert(inCombat, mod)
-			bossHealth[mod.combatInfo.mob] = 1
+			bossHealth[mod.combatInfo.mob or -1] = 1
 			if mod.multiMobPullDetection then
 				for _, mob in ipairs(mod.multiMobPullDetection) do
 					if not bossHealth[mob] then bossHealth[mob] = 1 end
