@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Brawlers", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9221 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9225 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 --mod:SetModelID(41448)
 mod:SetZone(DBM_DISABLE_ZONE_DETECTION)
@@ -139,8 +139,14 @@ function mod:ZONE_CHANGED_NEW_AREA()
 	self:Stop()
 	self:UnregisterShortTermEvents()
 	eventsRegistered = false
-	for i = 0, 9 do
+	for i = 1, 9 do
 		local mod2 = DBM:GetModByName("BrawlRank" .. i)
+		if mod2 then
+			mod2:Stop()--Stop all timers and warnings
+		end
+	end
+	for i = 1, 2 do
+		local mod2 = DBM:GetModByName("BrawlRare" .. i)
 		if mod2 then
 			mod2:Stop()--Stop all timers and warnings
 		end
@@ -166,16 +172,17 @@ function mod:OnSync(msg)
 		if not (currentZoneID == 0 or currentZoneID == 922 or currentZoneID == 925) then return end
 		currentFighter = nil
 		self:Stop()
-		local mod2 = DBM:GetModByName("BrawlRank" .. currentRank)
-		if mod2 then
-			mod2:Stop()--Stop all timers and warnings
+		--Boss from any rank can be faught by any rank at max level, so we just need to always cancel them all
+		for i = 1, 9 do
+			local mod2 = DBM:GetModByName("BrawlRank" .. i)
+			if mod2 then
+				mod2:Stop()--Stop all timers and warnings
+			end
 		end
-		if currentRank == 0 then--We walked in on an in progress match and didn't capture what rank it is, so lets make sure when match ends we stop ALL mods
-			for i = 0, 9 do
-				local mod2 = DBM:GetModByName("BrawlRank" .. i)
-				if mod2 then
-					mod2:Stop()--Stop all timers and warnings
-				end
+		for i = 1, 2 do
+			local mod2 = DBM:GetModByName("BrawlRare" .. i)
+			if mod2 then
+				mod2:Stop()--Stop all timers and warnings
 			end
 		end
 	end
