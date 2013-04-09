@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(828, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9206 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9220 $"):sub(12, -3))
 mod:SetCreatureID(69712)
 mod:SetModelID(46675)
 
@@ -352,8 +352,8 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg, _, _, _, target)
 			warnFlock:Show(messageText, flockName, flockText.." ("..locationText..")")
 			specWarnFlock:Show(messageText, flockName, flockText.." ("..locationText..")")
 		else
-			warnFlock:Show(messageText, flockName, flockText)
-			specWarnFlock:Show(messageText, flockName, flockText)
+			warnFlock:Show(messageText, flockName, "("..flockText..")")
+			specWarnFlock:Show(messageText, flockName, "("..flockText..")")
 		end
 	end
 end

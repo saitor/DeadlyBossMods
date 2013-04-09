@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9194 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9220 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70212, 70235, 70247)--flaming 70212. Frozen 70235, Venomous 70247
 mod:SetMainBossID(68065)
 mod:SetModelID(47414)--Hydra Fire Head, 47415 Frost Head, 47416 Poison Head
@@ -142,8 +142,10 @@ function mod:OnCombatStart(delay)
 		arcaneInFront = 0
 		timerCinderCD:Start(13)
 		timerNetherTearCD:Start()
-	elseif self:IsDifficulty("normal10", "normal25") then -- lfr seems first Cinder not comes
+	elseif self:IsDifficulty("normal10", "normal25") then
 		timerCinderCD:Start()
+	else
+		timerCinderCD:Start(58)
 	end
 	self:RegisterShortTermEvents(
 		"INSTANCE_ENCOUNTER_ENGAGE_UNIT"--We register here to prevent detecting first heads on pull before variables reset from first engage fire. We'll catch them on delayed engages fired couple seconds later
@@ -292,7 +294,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 		end
 		if fireBehind > 0 then
 			if self:IsDifficulty("lfr25") then
-				timerCinderCD:Start(11)--11-14 second variatio
+				timerCinderCD:Start(12)--12-15 second variatio
 			else
 				timerCinderCD:Start(5)--5-8 second variatio
 			end
