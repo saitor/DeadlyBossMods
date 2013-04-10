@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9241 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9242 $"):sub(12, -3)),
 	DisplayVersion = "5.2.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 9213 -- the revision of the latest stable version that is available
 }
@@ -1348,6 +1348,9 @@ do
 				sendSync("H")
 				DBM:Schedule(2, DBM.RequestTimers, DBM)
 				fireEvent("raidJoin", playerName)
+				if IsAddOnLoaded("BigWigs") and BigWigs.db.profile.raidicon and not DBM.Options.DontSetIcons then--Both DBM and bigwigs have raid icon marking turned on.
+					DBM:AddMsg(DBM_CORE_BIGWIGS_ICON_CONFLICT)--Warn that one of them should be turned off to prevent conflict (which they turn off is obviously up to raid leaders preference, dbm accepts either ore turned off to stop this alert)
+				end
 			end
 			for i = 1, GetNumGroupMembers() do
 				local name, rank, subgroup, _, _, className = GetRaidRosterInfo(i)
@@ -1375,7 +1378,7 @@ do
 					else
 						raidShortNames[shortname] = DBM_CORE_GENERIC_WARNING_DUPLICATE:format(name:gsub("%-.*$", ""))
 					end
-					if not playerWithHigherVersionPromoted and rank >= 1 and (raid[name].revision and raid[name].revision > tonumber(DBM.Revision) or IsAddOnLoaded("BigWigs")) then
+					if not playerWithHigherVersionPromoted and rank >= 1 and raid[name].revision and raid[name].revision > tonumber(DBM.Revision) then
 						playerWithHigherVersionPromoted = true
 					end
 				end
