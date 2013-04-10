@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9240 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9241 $"):sub(12, -3)),
 	DisplayVersion = "5.2.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 9213 -- the revision of the latest stable version that is available
 }
@@ -1375,7 +1375,7 @@ do
 					else
 						raidShortNames[shortname] = DBM_CORE_GENERIC_WARNING_DUPLICATE:format(name:gsub("%-.*$", ""))
 					end
-					if not playerWithHigherVersionPromoted and rank >= 1 and raid[name].revision and raid[name].revision > tonumber(DBM.Revision) then
+					if not playerWithHigherVersionPromoted and rank >= 1 and (raid[name].revision and raid[name].revision > tonumber(DBM.Revision) or IsAddOnLoaded("BigWigs")) then
 						playerWithHigherVersionPromoted = true
 					end
 				end
