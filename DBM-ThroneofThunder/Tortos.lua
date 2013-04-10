@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(825, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9241 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9248 $"):sub(12, -3))
 mod:SetCreatureID(67977)
 mod:SetModelID(46559)
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3)
@@ -47,11 +47,7 @@ local countdownStomp				= mod:NewCountdown(49, 134920, mod:IsHealer())
 local berserkTimer					= mod:NewBerserkTimer(780)
 
 mod:AddBoolOption("InfoFrame")
-if GetLocale() == "koKR" then
-	mod:AddBoolOption("SetIconOnTurtles", false)
-else
-	mod:AddBoolOption("SetIconOnTurtles", true)
-end
+mod:AddBoolOption("SetIconOnTurtles", false)
 mod:AddBoolOption("ClearIconOnTurtles", false)--Different option, because you may want auto marking but not auto clearing. or you may want auto clearning when they "die" but not auto marking when they spawn
 
 local shelldName = GetSpellInfo(137633)
