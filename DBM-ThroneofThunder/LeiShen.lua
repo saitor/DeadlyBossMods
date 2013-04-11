@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(832, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9236 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9264 $"):sub(12, -3))
 mod:SetCreatureID(68397)--Diffusion Chain Conduit 68696, Static Shock Conduit 68398, Bouncing Bolt conduit 68698, Overcharge conduit 68697
 mod:SetModelID(46770)
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3, 2, 1)--All icons can be used, because if a pillar is level 3, it puts out 4 debuffs on 25 man (if both are level 3, then you will have 8)
@@ -260,11 +260,13 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.RangeFrame and self:IsRanged() then--Shouldn't target melee during a normal pillar, only during intermission when all melee are with ranged and out of melee range of boss
 			DBM.RangeCheck:Show(8)--Assume 8 since spell tooltip has no info
 		end
-	elseif args.spellId == 136914 and (args.amount or 1) % 3 == 0 then
-		warnElectricalShock:Show(args.destName, args.amount or 1)
-		if (args.amount or 1) >= 12 then
+	elseif args.spellId == 136914 then
+		local amount = args.amount or 1
+		if not amount % 3 == 0 then return end
+		warnElectricalShock:Show(args.destName, amount)
+		if amount >= 12 then
 			if args:IsPlayer() then
-				specWarnElectricalShock:Show(args.amount)
+				specWarnElectricalShock:Show(amount)
 			else
 				if not UnitDebuff("player", GetSpellInfo(136914)) and not UnitIsDeadOrGhost("player") then
 					specWarnElectricalShockOther:Show(args.destName)

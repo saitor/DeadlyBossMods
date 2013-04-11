@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9258 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9264 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetModelID(47189)
 mod:SetUsedIcons(7, 6, 4, 1)
@@ -190,13 +190,13 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 133767 then
 		timerSeriousWound:Start(args.destName)
-		if args:IsPlayer() then
-			if (args.amount or 1) >= 4 then
+		if (args.amount or 1) >= 5 then
+			if args:IsPlayer() then
 				specWarnSeriousWound:Show(args.amount)
-			end
-		else
-			if (args.amount or 1) >= 3 and not UnitDebuff("player", GetSpellInfo(133767)) and not UnitIsDeadOrGhost("player") then
-				specWarnSeriousWoundOther:Show(args.destName)
+			else
+				if not UnitDebuff("player", GetSpellInfo(133767)) and not UnitIsDeadOrGhost("player") then
+					specWarnSeriousWoundOther:Show(args.destName)
+				end
 			end
 		end
 	elseif args.spellId == 133597 then--Dark Parasite

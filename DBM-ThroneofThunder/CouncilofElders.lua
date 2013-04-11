@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(816, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9263 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9264 $"):sub(12, -3))
 mod:SetCreatureID(69078, 69132, 69134, 69131)--69078 Sul the Sandcrawler, 69132 High Prestess Mar'li, 69131 Frost King Malakk, 69134 Kazra'jin --Adds: 69548 Shadowed Loa Spirit,
 mod:SetModelID(47229)--Kazra'jin, 47505 Sul the Sandcrawler, 47506 Frost King Malakk, 47730 High Priestes Mar'li
 mod:SetUsedIcons(7, 6)
@@ -220,7 +220,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				timerDarkPowerCD:Start(math.floor(68/(0.15*stack+1.0)+0.5))--(68, 59, 52, 47)
 			elseif self:IsDifficulty("normal25") then--This is now 25man normal only
 				timerDarkPowerCD:Start(math.floor(68/(0.10*stack+1.0)+0.5))--(68, 62, 57, 52)
-			elseif self:IsDifficulty("normal10") then--Updaetd 10 man data post hotfix as seen in this log here http://worldoflogs.com/reports/8sy56hojz9x3ej7j/xe/?s=6609&e=7296&x=spellid+%3D+136442+or+spellid+%3D+136507+and+targetname+%3D+%22Slayhoof%22
+			elseif self:IsDifficulty("normal10") then--Updated 10 man data post hotfix as seen in this log here http://worldoflogs.com/reports/8sy56hojz9x3ej7j/xe/?s=6609&e=7296&x=spellid+%3D+136442+or+spellid+%3D+136507+and+targetname+%3D+%22Slayhoof%22
 				timerDarkPowerCD:Start(math.floor(68/(0.10*(stack-1.0)+1.0)+0.5))--(76, 68, 62, x)
 			else -- lfr
 				timerDarkPowerCD:Start(math.floor(97/(0.05*stack+1.0)+0.5))--(97, 92, 88, 84)
