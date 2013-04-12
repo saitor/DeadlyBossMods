@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(824, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9264 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9267 $"):sub(12, -3))
 mod:SetCreatureID(69427)
 mod:SetModelID(47527)
 
@@ -159,8 +159,8 @@ function mod:INSTANCE_ENCOUNTER_ENGAGE_UNIT()
 		self:UnregisterShortTermEvents()--Once boss is out, unregister event, since we need it no longer.
 		if self:IsDifficulty("heroic10", "heroic25") then
 			timerSiphonAnimaCD:Start(120)--VERY important on heroic. boss activaet on pull, you have 2 minutes to do as much with adds as you can before he starts using siphon anima
-		else
-			timerSiphonAnimaCD:Start(30)--Still useful on normal for first 30 second timer depending on how many adds you have up, cause he may gain enough anima to activate new abilities instant he casts this
+		elseif self:IsDifficulty("normal10", "normal25") then
+			timerSiphonAnimaCD:Start(5.3)
 		end
 	end
 end
