@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(816, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9264 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9272 $"):sub(12, -3))
 mod:SetCreatureID(69078, 69132, 69134, 69131)--69078 Sul the Sandcrawler, 69132 High Prestess Mar'li, 69131 Frost King Malakk, 69134 Kazra'jin --Adds: 69548 Shadowed Loa Spirit,
 mod:SetModelID(47229)--Kazra'jin, 47505 Sul the Sandcrawler, 47506 Frost King Malakk, 47730 High Priestes Mar'li
 mod:SetUsedIcons(7, 6)
@@ -105,6 +105,7 @@ mod:AddBoolOption("PHealthFrame", true)
 mod:AddBoolOption("RangeFrame")--For Sand Bolt and charge and biting cold
 mod:AddBoolOption("SetIconOnBitingCold", true)
 mod:AddBoolOption("SetIconOnFrostBite", true)
+mod:AddBoolOption("AnnounceCooldowns", mod:HasRaidCooldown())
 
 local lingeringPresence = GetSpellInfo(136467)
 local chilledDebuff = GetSpellInfo(137085)
@@ -316,6 +317,13 @@ function mod:SPELL_AURA_APPLIED(args)
 		dischargeCount = dischargeCount + 1
 		warnDischarge:Show(dischargeCount)
 		specWarnDischarge:Show(dischargeCount)
+		if self.Options.AnnounceCooldowns then
+			if DBM.Options.UseMasterVolume then
+				PlaySoundFile("Interface\\AddOns\\DBM-Core\\Sounds\\Corsica_S\\"..dischargeCount..".ogg", "Master")
+			else
+				PlaySoundFile("Interface\\AddOns\\DBM-Core\\Sounds\\Corsica_S\\"..dischargeCount..".ogg")
+			end
+		end
 	elseif args.spellId == 137641 and args:IsPlayer() then
 		specWarnSoulFragment:Show()
 	end

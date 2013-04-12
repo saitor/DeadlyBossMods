@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9271 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9272 $"):sub(12, -3)),
 	DisplayVersion = "5.2.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 9213 -- the revision of the latest stable version that is available
 }
@@ -4113,8 +4113,15 @@ function bossModPrototype:IsHealer()
 	return (class == "PALADIN" and (GetSpecialization() == 1))
 	or (class == "SHAMAN" and (GetSpecialization() == 3))
 	or (class == "DRUID" and (GetSpecialization() == 4))
-	or (class == "PRIEST" and (GetSpecialization() ~= 3))
 	or (class == "MONK" and (GetSpecialization() == 2))
+end
+
+function bossModPrototype:HasRaidCooldown()
+	return class == "WARRIOR"--Rallying Cry/Demoralizing Banner
+	or class == "PALADIN"--Aura Mastery
+	or class == "ROGUE"--Smoke Bomb
+	or (class == "PRIEST" and (GetSpecialization() == 1))--Power Word: Barrier
+	or (class == "SHAMAN" and (GetSpecialization() == 3))--Spirit Link Totem
 end
 
 --These don't matter since they don't check talents
