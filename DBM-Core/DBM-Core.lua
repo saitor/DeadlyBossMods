@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9264 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9265 $"):sub(12, -3)),
 	DisplayVersion = "5.2.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 9213 -- the revision of the latest stable version that is available
 }
@@ -1108,12 +1108,20 @@ do
 				self:AddMsg(DBM_CORE_VERSIONCHECK_ENTRY_NO_DBM:format(v.name))
 			end
 		end
+		local TotalUsers = #sortMe
+		local NoDBM = 0
+		local NoBigwigs = 0
 		for i = #sortMe, 1, -1 do
 			if not sortMe[i].revision then
-				table.remove(sortMe, i)
+				NoDBM = NoDBM + 1
+			end
+			if not (sortMe[i].bwarevision or sortMe[i].bwrevision) then
+				NoBigwigs = NoBigwigs + 1
 			end
 		end
-		self:AddMsg(DBM_CORE_VERSIONCHECK_FOOTER:format(#sortMe))
+		local TotalDBM = TotalUsers - NoDBM
+		local TotalBW = TotalUsers - NoBigwigs
+		self:AddMsg(DBM_CORE_VERSIONCHECK_FOOTER:format(TotalDBM, TotalBW))
 		for i = #sortMe, 1, -1 do
 			sortMe[i] = nil
 		end
@@ -2061,7 +2069,7 @@ do
 	end
 	
 	syncHandlers["VRA"] = function(sender, bwarevision)--Sent by bigwigs Alphas
-		if bwrevision and raid[sender] then
+		if bwarevision and raid[sender] then
 			raid[sender].bwarevision = bwarevision
 		end
 	end
