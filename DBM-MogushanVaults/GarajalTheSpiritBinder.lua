@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(682, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9277 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9279 $"):sub(12, -3))
 mod:SetCreatureID(60143)
 mod:SetModelID(41256)
 mod:SetZone()
@@ -50,7 +50,7 @@ local berserkTimer					= mod:NewBerserkTimer(360)
 
 local countdownCrossedOver			= mod:NewCountdown(29, 116161)
 
-mod:AddBoolOption("SetIconOnVoodoo", true)
+mod:AddBoolOption("SetIconOnVoodoo", false)
 
 local totemCount = 0
 local voodooDollTargets = {}
