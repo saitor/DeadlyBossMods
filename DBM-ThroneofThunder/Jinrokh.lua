@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(827, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9280 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9283 $"):sub(12, -3))
 mod:SetCreatureID(69465)
 mod:SetModelID(47552)
 
@@ -66,7 +66,7 @@ end
 
 function mod:FocusedLightningTarget(targetname, uId)
 	if not targetname then return end
-	if self:IsTanking(uId) then--Focused Lightning never target tanks, so if target is tank, that means scanning failed.
+	if self:IsTanking(uId, "boss1") then--Focused Lightning never target tanks, so if target is tank, that means scanning failed.
 		scanFailed = true
 	else
 		warnFocusedLightning:Show(targetname)
