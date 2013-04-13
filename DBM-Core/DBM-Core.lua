@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9279 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9280 $"):sub(12, -3)),
 	DisplayVersion = "5.2.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 9213 -- the revision of the latest stable version that is available
 }
@@ -4113,6 +4113,7 @@ function bossModPrototype:IsHealer()
 	return (class == "PALADIN" and (GetSpecialization() == 1))
 	or (class == "SHAMAN" and (GetSpecialization() == 3))
 	or (class == "DRUID" and (GetSpecialization() == 4))
+	or (class == "PRIEST" and (GetSpecialization() ~= 3))
 	or (class == "MONK" and (GetSpecialization() == 2))
 end
 
