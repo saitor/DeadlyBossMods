@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(691, "DBM-Pandaria", nil, 322)	-- 322 = Pandaria/Outdoor I assume
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9281 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9282 $"):sub(12, -3))
 mod:SetCreatureID(60491)
 mod:SetModelID(41448)
 mod:SetZone(809)--Kun-Lai Summit
@@ -133,7 +133,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			--Added to fix a bug with duplicate entries of same person in icon table more than once
 			local foundDuplicate = false
 			for i = #mcTargetIcons, 1, -1 do
-				if not mcTargetIcons[i].targetUnitID then--make sure they aren't in table before inserting into table again. (not sure why this happens in LFR but it does, probably someone really high ping that cranked latency check way up)
+				if mcTargetIcons[i].targetUnitID then--make sure they aren't in table before inserting into table again. (not sure why this happens in LFR but it does, probably someone really high ping that cranked latency check way up)
 					foundDuplicate = true
 				end
 			end
