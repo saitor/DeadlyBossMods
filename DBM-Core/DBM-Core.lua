@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9298 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9299 $"):sub(12, -3)),
 	DisplayVersion = "5.2.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 9213 -- the revision of the latest stable version that is available
 }
@@ -225,6 +225,11 @@ local tinsert, tremove, twipe = table.insert, table.remove, table.wipe
 local type = type
 local select = select
 local floor = math.floor
+local GetNumGroupMembers = GetNumGroupMembers
+local GetRaidRosterInfo = GetRaidRosterInfo
+local IsInRaid = IsInRaid
+local IsInGroup = IsInGroup
+local IsInInstance = IsInInstance
 local UnitAffectingCombat = UnitAffectingCombat
 local UnitExists = UnitExists
 local GetSpellInfo = GetSpellInfo
