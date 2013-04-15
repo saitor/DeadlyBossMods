@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(825, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9278 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9300 $"):sub(12, -3))
 mod:SetCreatureID(67977)
 mod:SetModelID(46559)
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3)
@@ -134,7 +134,7 @@ function mod:SPELL_CAST_START(args)
 	elseif args.spellId == 134920 then
 		stompActive = true
 		stompCount = stompCount + 1
-		if stompCast == 3 then stompCast = 0 end
+		if stompCast == 4 then stompCast = 0 end
 		stompCast = stompCast + 1
 		warnQuakeStomp:Show(stompCount)
 		specWarnQuakeStomp:Show()
