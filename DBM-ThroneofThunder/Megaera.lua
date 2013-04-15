@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9293 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9301 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70212, 70235, 70247)--flaming 70212. Frozen 70235, Venomous 70247
 mod:SetMainBossID(68065)
 mod:SetModelID(47414)--Hydra Fire Head, 47415 Frost Head, 47416 Poison Head
@@ -417,6 +417,11 @@ local function warnTorrent(name)
 	end
 end
 
+--This is VERY broken, i'm going to drastically change it when done raiding unless you can fix it.
+--Following problems
+--People are yelling 10 times, literally. it spams chat yells when it's on you
+--It's announcing every target twice
+--it's using both icons on every target.
 function mod:UNIT_AURA(uId)
 	if UnitDebuff(uId, iceTorrent) and not torrentTarget1 and (torrentTarget2 or "") ~= uId then
 		torrentTarget1 = uId
