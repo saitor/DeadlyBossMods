@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(832, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9302 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9318 $"):sub(12, -3))
 mod:SetCreatureID(68397)--Diffusion Chain Conduit 68696, Static Shock Conduit 68398, Bouncing Bolt conduit 68698, Overcharge conduit 68697
 mod:SetModelID(46770)
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3, 2, 1)--All icons can be used, because if a pillar is level 3, it puts out 4 debuffs on 25 man (if both are level 3, then you will have 8)
@@ -158,7 +158,7 @@ function mod:SPELL_CAST_START(args)
 			countdownThunderstruck:Start()
 		else
 			timerThunderstruckCD:Start(30)
-			countdownThunderstruck:Start()
+			countdownThunderstruck:Start(30)
 		end
 	--"<206.2 20:38:58> [UNIT_SPELLCAST_SUCCEEDED] Lei Shen [[boss1:Lightning Whip::0:136845]]", -- [13762] --This event comes about .5 seconds earlier than SPELL_CAST_START. Maybe worth using?
 	elseif args.spellId == 136850 then
@@ -388,7 +388,7 @@ local function LoopIntermission()
 end
 
 function mod:UNIT_HEALTH_FREQUENT(uId)
-	if uId == "boss1" then
+	if UnitName(uId) == L.name then
 		local hp = UnitHealth(uId) / UnitHealthMax(uId) * 100
 		if hp > 65 and hp < 66.5 and warnedCount == 0 then
 			warnedCount = 1
