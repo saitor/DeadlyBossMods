@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9307 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9308 $"):sub(12, -3)),
 	DisplayVersion = "5.2.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 9213 -- the revision of the latest stable version that is available
 }
@@ -3726,10 +3726,10 @@ do
 			local t = EJ_GetEncounterInfo(tonumber(name))
 			obj.localization.general.name = string.split(",", t)
 		elseif name:match("z%d+") then
-			local t = GetRealZoneText(string.sub(name, 2)):gsub(" %(.*$", "")
+			local t = GetRealZoneText(string.sub(name, 2))
 			obj.localization.general.name = string.split(",", t)
 		elseif name:match("d%d+") then
-			local t = GetDungeonInfo(string.sub(name, 2)):gsub(" %(.*$", "")
+			local t = GetDungeonInfo(string.sub(name, 2))
 			obj.localization.general.name = string.split(",", t)
 		end
 		table.insert(self.Mods, obj)
