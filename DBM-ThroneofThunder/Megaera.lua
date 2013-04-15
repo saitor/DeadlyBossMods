@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9302 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9303 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70212, 70235, 70247)--flaming 70212. Frozen 70235, Venomous 70247
 mod:SetMainBossID(68065)
 mod:SetModelID(47414)--Hydra Fire Head, 47415 Frost Head, 47416 Poison Head
@@ -445,6 +445,7 @@ function mod:UNIT_AURA(uId)
 	end
 end
 
+--We have at least 4 frost heads in back, debuffs going out very often, often 2 back to back within 2 seconds of one another, this causes problems because name 2 resets name 1. also, Spell name for getting hit by beam applies a different and SAME name aura and also fires UNIT_aura event. i'll upload screen shots later but this method VERY inaccurate and spammed icons all over place, tons of chat bubbles, and multiple announces "torrent on name1, torrent on name1"
 --There is not logical problem, maybe. issues on other way. This is test code.
 --[[
 function mod:Test(uId, torrentActive)
