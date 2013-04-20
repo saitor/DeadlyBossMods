@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9340 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9341 $"):sub(12, -3)),
 	DisplayVersion = "5.2.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 9314 -- the revision of the latest stable version that is available
 }
@@ -2102,13 +2102,13 @@ do
 
 	syncHandlers["VR"] = function(sender, bwrevision)--Sent by bigwigs releases
 		if bwrevision and raid[sender] then
-			raid[sender].bwrevision = bwrevision
+			raid[sender].bwrevision = tonumber(bwrevision)
 		end
 	end
 	
 	syncHandlers["VRA"] = function(sender, bwarevision)--Sent by bigwigs Alphas
 		if bwarevision and raid[sender] then
-			raid[sender].bwarevision = bwarevision
+			raid[sender].bwarevision = tonumber(bwarevision)
 		end
 	end
 
