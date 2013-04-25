@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("d499", "DBM-Scenario-MoP")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9357 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9362 $"):sub(12, -3))
 mod:SetZone()
 
 mod:RegisterCombat("scenario", 882)
@@ -22,7 +22,7 @@ local specWarnOrange		= mod:NewSpecialWarningSpell(121895)
 --Captain Ook
 --local timerOrangeCD		= mod:NewCDTimer(45, 121895)--Not good sample size, could be inaccurate
 
-local timerSpillNoEvil		= mod:NewAchievementTimer(240, 7231)
+local timerKegRunner		= mod:NewAchievementTimer(240, 7232)
 
 mod:RemoveOption("HealthFrame")
 
@@ -62,9 +62,9 @@ end
 
 function mod:OnSync(msg)
 	if msg == "Phase2" then
-		timerSpillNoEvil:Start()
+		timerKegRunner:Start()
 	elseif msg == "Phase3" then
-		timerSpillNoEvil:Cancel()
+		timerKegRunner:Cancel()
 --		timerOrangeCD:Start()
 	elseif msg == "Orange" then
 		warnOrange:Show()
