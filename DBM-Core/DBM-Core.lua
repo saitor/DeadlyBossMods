@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9365 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9366 $"):sub(12, -3)),
 	DisplayVersion = "5.2.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 9314 -- the revision of the latest stable version that is available
 }
@@ -281,7 +281,7 @@ local function sendSync(prefix, msg)
 	end
 end
 
---
+
 local function strFromTime(time)
 	if type(time) ~= "number" then time = 0 end
 	time = math.floor(time)
