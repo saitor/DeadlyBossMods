@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(817, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9350 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9364 $"):sub(12, -3))
 mod:SetCreatureID(68078, 68079, 68080, 68081)--Ro'shak 68079, Quet'zal 68080, Dam'ren 68081, Iron Qon 68078
 mod:SetMainBossID(68078)
 mod:SetModelID(46627) -- Iron Qon, 46628 Ro'shak, 46629 Quet'zal, 46630 Dam'ren
@@ -388,7 +388,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	elseif spellId == 139181 and self:AntiSpam(2, 7) then--Frost Spike (Phase 2 Heroic)
 		warnFrostSpike:Show()
 		timerFrostSpikeCD:Start()
-	elseif spellId == 137656 and self:AntiSpam(2, 1) then--Rushing Winds (Wind Storm end trigger)
+	elseif spellId == 137656 and self:AntiSpam(2, 1) and phase == 2 then--Rushing Winds (Wind Storm end trigger)
 		warnWindStorm:Cancel()
 		specWarnWindStorm:Cancel()
 		warnWindStormEnd:Show()
