@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("d539", "DBM-Scenario-MoP")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9372 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9373 $"):sub(12, -3))
 mod:SetZone()
 
 mod:RegisterCombat("scenario", 884)
@@ -28,7 +28,7 @@ local specWarnFireLine		= mod:NewSpecialWarningSpell(125392, nil, nil, nil, 2)
 --Li Te
 local timerWaterShellCD		= mod:NewNextTimer(19.5, 124653)
 --Den Mother Moof
-local timerBurrowCD			= mod:NewNextTimer(26.5, 124653)
+local timerBurrowCD			= mod:NewNextTimer(26.5, 124359)
 --Warbringer Qobi
 local timerFireLineCD		= mod:NewCDTimer(16, 125392)
 
