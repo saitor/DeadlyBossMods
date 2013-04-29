@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9379 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9380 $"):sub(12, -3)),
 	DisplayVersion = "5.2.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 9314 -- the revision of the latest stable version that is available
 }
@@ -2710,7 +2710,7 @@ function checkWipe(confirm)
 			savedDifficulty, difficultyText = DBM:GetCurrentInstanceDifficulty()
 		end
 		local wipe = true
-		if IsInScenarioGroup() then -- do not wipe in Scenario Group even player is ghot.
+		if IsInScenarioGroup() then -- do not wipe in Scenario Group even player is ghost.
 			wipe = false
 		elseif IsEncounterInProgress() then
 			wipe = false
