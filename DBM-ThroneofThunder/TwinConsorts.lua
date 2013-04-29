@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(829, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9382 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9383 $"):sub(12, -3))
 mod:SetCreatureID(68905, 68904)--Lu'lin 68905, Suen 68904
 mod:SetModelID(46975)--Lu'lin, 46974 Suen
 mod:SetQuestID(32755)
@@ -84,12 +84,30 @@ local berserkTimer						= mod:NewBerserkTimer(600)
 mod:AddBoolOption("RangeFrame")--For various abilities that target even melee. UPDATE, cosmic barrage (worst of the 3 abilities) no longer target melee. However, light of day and tears of teh sun still do. melee want to split into 2-3 groups (depending on how many) but no longer have to stupidly spread about all crazy and out of range of boss during cosmic barrage to avoid dying. On that note, MAYBE change this to ranged default instead of all.
 
 local phase3Started = false
+local invokeTiger = GetSpellInfo(138264)
+local invokeCrane = GetSpellInfo(138189)
+local invokeSerpent = GetSpellInfo(138267)
+local invokeOx = GetSpellInfo(138254)
+
+local function isRunner(unit)
+	if UnitDebuff(unit, invokeTiger) or nitDebuff(unit, invokeCrane) or nitDebuff(unit, invokeSerpent) or nitDebuff(unit, invokeOx) then
+		return true
+	end
+	return false
+end
+
+local constellationRunner
+do
+	constellationRunner = function(uId)
+		return isRunner(uId)
+	end
+end
 
 function mod:OnCombatStart(delay)
 	phase3Started = false
 	berserkTimer:Start(-delay)
 	if self.Options.RangeFrame then
-		DBM.RangeCheck:Show(8)
+		DBM.RangeCheck:Show(8, not constellationRunner)
 	end
 end
 
