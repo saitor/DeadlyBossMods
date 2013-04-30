@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(828, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9383 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9392 $"):sub(12, -3))
 mod:SetCreatureID(69712)
 mod:SetModelID(46675)
 mod:SetQuestID(32749)
@@ -50,13 +50,11 @@ mod:AddBoolOption("RangeFrame", mod:IsRanged())
 
 local flockCount = 0
 local quillsCount = 0
-local trippleNest = false
 local flockName = EJ_GetSectionInfo(7348)
 
 function mod:OnCombatStart(delay)
 	flockCount = 0
 	quillsCount = 0
-	trippleNest = false
 	if self:IsDifficulty("normal10", "heroic10", "lfr25") then
 		timerQuillsCD:Start(60-delay, 1)
 	else
