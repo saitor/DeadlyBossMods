@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9387 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9388 $"):sub(12, -3)),
 	DisplayVersion = "5.2.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 9314 -- the revision of the latest stable version that is available
 }
@@ -3208,9 +3208,10 @@ end
 
 function DBM:GetCurrentInstanceDifficulty()
 	local _, instanceType, difficulty, _, maxPlayers = GetInstanceInfo()
-	if not instanceType then--It's a scenario and blizzard reports these really goofy. Only place instanceType is nil
+	if instanceType == "scenario" and difficulty == 1 then
 		return "normal5", GUILD_CHALLENGE_TYPE4.." - "--Just treat these like 5 man normals, for stat purposes.
-		--5.3, heroic scenarios added, they can be heroic5 GUILD_CHALLENGE_TYPE4
+	elseif instanceType == "scenario" and difficulty == 2 then
+		return "heroic5", GUILD_CHALLENGE_TYPE4.." - "--Just treat these like 5 man heroics, for stat purposes.
 	elseif difficulty == 1 then
 		if instanceType == "party" then
 			return "normal5", PLAYER_DIFFICULTY1.." ("..maxPlayers..") - "
