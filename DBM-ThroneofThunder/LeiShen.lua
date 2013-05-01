@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(832, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9383 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9405 $"):sub(12, -3))
 mod:SetCreatureID(68397)--Diffusion Chain Conduit 68696, Static Shock Conduit 68398, Bouncing Bolt conduit 68698, Overcharge conduit 68697
 mod:SetModelID(46770)
 mod:SetQuestID(32756)
@@ -384,12 +384,8 @@ local function LoopIntermission()
 			timerBouncingBoltCD:Start(15)
 		end
 	end
-	if not northDestroyed then
-		if mod:IsDifficulty("lfr25") then
-			--Don't know LFR timer for this yet, best not to show it since this one is wrong.
-		else
-			timerStaticShockCD:Start(16)
-		end
+	if not mod:IsDifficulty("lfr25") and not northDestroyed then--Doesn't cast a 2nd one in LFR
+		timerStaticShockCD:Start(16)
 	end
 end
 
@@ -445,7 +441,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		end
 		if not northDestroyed then
 			if self:IsDifficulty("lfr25") then
-				--Still need LFR timing on this. Forgot to log first transition and we blew up static shock first so it not up in second transition log
+				timerStaticShockCD:Start(21)
 			else
 				timerStaticShockCD:Start(19)
 			end
