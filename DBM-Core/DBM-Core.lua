@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9405 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9406 $"):sub(12, -3)),
 	DisplayVersion = "5.2.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 9314 -- the revision of the latest stable version that is available
 }
@@ -1897,12 +1897,6 @@ do
 				end
 			end
 		end
-		if instanceType == "scenario" then
-			--Depending on speed of computer, scenario check needs to run multiple times to ensure it fires properly (it will fail if it tries to start in a loading screen)
-			self:Schedule(4, DBM.ScenarioCheck)
-			self:Schedule(8, DBM.ScenarioCheck)
-			self:Schedule(12, DBM.ScenarioCheck)
-		end
 	end
 end
 
@@ -1964,7 +1958,10 @@ function DBM:LoadMod(mod)
 		if DBM_GUI then
 			DBM_GUI:UpdateModList()
 		end
-		local _, instanceType, difficulty, _, maxPlayers = GetInstanceInfo()
+		local _, instanceType = GetInstanceInfo()
+		if instanceType == "scenario" then
+			self:Schedule(1, DBM.ScenarioCheck)
+		end
 		if not InCombatLockdown() then--We loaded in combat because a raid boss was in process, but lets at least delay the garbage collect so at least load mod is half as bad, to do our best to avoid "script ran too long"
 			collectgarbage("collect")
 		end
