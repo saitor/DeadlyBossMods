@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9406 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9407 $"):sub(12, -3)),
 	DisplayVersion = "5.2.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 9314 -- the revision of the latest stable version that is available
 }
@@ -1896,6 +1896,9 @@ do
 					break
 				end
 			end
+		end
+		if instanceType == "scenario" and self:GetModByName("d511") then--mod already loaded
+			self:Schedule(1, DBM.ScenarioCheck)
 		end
 	end
 end
