@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9416 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9417 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetModelID(47189)
 mod:SetQuestID(32750)
@@ -228,7 +228,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args.spellId == 133798 and self.Options.InfoFrame then -- Force update
 		DBM.InfoFrame:Update("playerdebuffstacks")
 		if args:IsPlayer() and not self:IsDifficulty("lfr25") then
-			yellLifeDrain:Yell(playerNameargs.amount or 1)
+			yellLifeDrain:Yell(playerName, args.amount or 1)
 		end
 	end
 end
