@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9417 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9418 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetModelID(47189)
 mod:SetQuestID(32750)
@@ -169,6 +169,8 @@ function mod:OnCombatEnd()
 	lfrEngaged = false
 	if self.Options.SetIconRays and lastRed then
 		self:SetIcon(lastRed, 0)
+	end
+	if self.Options.SetIconRays and lastBlue then
 		self:SetIcon(lastBlue, 0)
 	end
 	if self.Options.InfoFrame then
@@ -425,6 +427,8 @@ function mod:UNIT_DIED(args)
 			timerForceOfWillCD:Start(15)
 			if self.Options.SetIconRays and lastRed then
 				self:SetIcon(lastRed, 0)
+			end
+			if self.Options.SetIconRays and lastBlue then
 				self:SetIcon(lastBlue, 0)
 			end
 			lastRed = nil
