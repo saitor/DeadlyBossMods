@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9419 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9423 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetModelID(47189)
 mod:SetQuestID(32750)
@@ -348,7 +348,7 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg, npc, _, _, target)
 		if self:IsDifficulty("heroic10", "heroic25") then
 			timerObliterateCD:Start()
 			if lifeDrained then -- Check 1st Beam ended.
-				timerIceWallCD:Start(87)--NO, Ice wall always comes before 8s do phase change(only igroned first spectrum). So it is not duplicate timer. Ice wall has nothing to do with 3rd red.
+				timerIceWallCD:Start(87)
 			end
 		end
 		if self:IsDifficulty("heroic10", "heroic25", "lfr25") then
