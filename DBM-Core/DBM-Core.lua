@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9429 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9430 $"):sub(12, -3)),
 	DisplayVersion = "5.2.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 9413 -- the revision of the latest stable version that is available
 }
@@ -3756,11 +3756,12 @@ function DBM:Capitalize(str)
 	return str:sub(1, numBytes):upper()..str:sub(numBytes + 1):lower()
 end
 
---Credits to Funkeh`
+--copied from big wigs with permission from funkydude
 function DBM:RoleCheck()
 	if not DBM.Options.SetPlayerRole then return end
 	if not InCombatLockdown() and IsInGroup() and not IsPartyLFG() then
 		local spec = GetSpecialization()
+		if not spec then return end
 		local role = GetSpecializationRole(spec)
 		if UnitGroupRolesAssigned("player") ~= role then
 			UnitSetRole("player", role)
