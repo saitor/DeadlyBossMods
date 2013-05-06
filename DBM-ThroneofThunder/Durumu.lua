@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9443 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9444 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetModelID(47189)
 mod:SetQuestID(32750)
@@ -293,6 +293,10 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerSeriousWound:Cancel(args.destName)
 	elseif args.spellId == 137727 and self.Options.SetIconLifeDrain then -- Life Drain current target.
 		self:SetIcon(args.destName, 0)
+	elseif args.spellId == 133597 then--Dark Parasite
+		if self.Options.SetIconOnParasite then
+			self:SetIcon(args.destName, 0)
+		end
 	end
 end
 
