@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9444 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9445 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetModelID(47189)
 mod:SetQuestID(32750)
@@ -416,7 +416,7 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg, npc, _, _, target)
 			yellLifeDrain:Yell(target, 1)
 		end
 		if self.Options.SetIconLifeDrain then
-			self:SetIcon(target, 4) -- Triangle
+			self:SetIcon(target, 8)--Skull
 		end
 		if self.Options.InfoFrame then
 			DBM.InfoFrame:SetHeader(GetSpellInfo(133795))
