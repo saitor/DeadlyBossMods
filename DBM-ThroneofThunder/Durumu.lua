@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9447 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9448 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetModelID(47189)
 mod:SetQuestID(32750)
@@ -48,8 +48,8 @@ local yellLingeringGaze				= mod:NewYell(134044, nil, false)
 local specWarnLingeringGazeMove		= mod:NewSpecialWarningMove(134044)
 local specWarnBlueBeam				= mod:NewSpecialWarning("specWarnBlueBeam", nil, nil, nil, 3)
 local specWarnBlueBeamLFR			= mod:NewSpecialWarningYou(139202, true, false)
-local specWarnRedBeam				= mod:NewSpecialWarningYou(139204)
-local specWarnYellowBeam			= mod:NewSpecialWarningYou(133738)
+local specWarnRedBeam				= mod:NewSpecialWarningYou(139204, nil, nil, nil, 3)
+local specWarnYellowBeam			= mod:NewSpecialWarningYou(133738, nil, nil, nil, 3)
 local specWarnFogRevealed			= mod:NewSpecialWarning("specWarnFogRevealed", nil, nil, nil, 2)--Use another "Be Aware!" sound because Lingering Gaze comes on Spectrum phase.
 local specWarnDisintegrationBeam	= mod:NewSpecialWarningSpell("ej6882", nil, nil, nil, 2)
 local specWarnEyeSore				= mod:NewSpecialWarningMove(140502)
