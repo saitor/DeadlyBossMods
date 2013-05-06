@@ -1,12 +1,12 @@
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9442 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9443 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetModelID(47189)
 mod:SetQuestID(32750)
 mod:SetZone()
-mod:SetUsedIcons(7, 6, 4, 1)
+mod:SetUsedIcons(8, 7, 6, 5, 4, 3, 1)
 
 mod:RegisterCombat("combat")
 
@@ -278,7 +278,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			self:Schedule(0.5, warnLingeringGazeTargets)
 		end
 	elseif args.spellId == 137727 and self.Options.SetIconLifeDrain then -- Life Drain current target. If target warning needed, insert into this block. (maybe very spammy)
-		self:SetIcon(args.destName, 4)--Triangle
+		self:SetIcon(args.destName, 8)--Skull
 	elseif args.spellId == 133798 and self.Options.InfoFrame then -- Force update
 		DBM.InfoFrame:Update("playerdebuffstacks")
 		if args:IsPlayer() and not self:IsDifficulty("lfr25") then
