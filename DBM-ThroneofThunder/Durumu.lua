@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9423 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9437 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetModelID(47189)
 mod:SetQuestID(32750)
@@ -219,7 +219,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		darkParasiteTargets[#darkParasiteTargets + 1] = args.destName
 		local _, _, _, _, _, duration = UnitDebuff(args.destName, args.spellName)
 		timerDarkParasite:Start(duration, args.destName)
-		self:Unschedule(warnLingeringGazeTargets)
+		self:Unschedule(warnDarkParasiteTargets)
 		if #darkParasiteTargets >= 3 and self:IsDifficulty("heroic25") or self:IsDifficulty("heroic10") then
 			warnDarkParasiteTargets()
 		else
