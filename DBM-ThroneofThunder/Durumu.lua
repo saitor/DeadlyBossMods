@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9446 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9447 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetModelID(47189)
 mod:SetQuestID(32750)
@@ -130,7 +130,7 @@ local function BeamEnded()
 	timerForceOfWillCD:Start(19)
 	if mod:IsDifficulty("heroic10", "heroic25") then
 		timerDarkParasiteCD:Start(10)
-		timerIceWallCD:Start(35)
+		timerIceWallCD:Start(32)
 	end
 	if mod:IsDifficulty("lfr25") then
 		timerLightSpectrumCD:Start(66)
@@ -168,7 +168,7 @@ function mod:OnCombatStart(delay)
 	countdownLightSpectrum:Start(40-delay)
 	if self:IsDifficulty("heroic10", "heroic25") then
 		timerDarkParasiteCD:Start(-delay)
-		timerIceWallCD:Start(128-delay)
+		timerIceWallCD:Start(127-delay)
 	end
 	if self:IsDifficulty("lfr25") then
 		lfrEngaged = true
@@ -229,6 +229,9 @@ function mod:SPELL_CAST_START(args)
 		specWarnFogRevealed:Show(crimsonFog)
 	elseif args.spellId == 134587 and self:AntiSpam(3, 3) then
 		warnIceWall:Show()
+		if timerDarkParasiteCD:GetTime() > 10 then--if less than 50 seconds remaining on cd when ice wall goes up
+			timerDarkParasiteCD:Start(50)--it gets extended to 50 seconds remaining (Just a theory)
+		end
 	end
 end
 
@@ -288,7 +291,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		if self:IsDifficulty("heroic10", "heroic25") then
 			timerObliterateCD:Start()
 			if lifeDrained then -- Check 1st Beam ended.
-				timerIceWallCD:Start(87)
+				timerIceWallCD:Start(88.5)
 			end
 		end
 		if self:IsDifficulty("heroic10", "heroic25", "lfr25") then
