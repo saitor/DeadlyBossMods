@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(817, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9399 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9465 $"):sub(12, -3))
 mod:SetCreatureID(68078, 68079, 68080, 68081)--Ro'shak 68079, Quet'zal 68080, Dam'ren 68081, Iron Qon 68078
 mod:SetMainBossID(68078)
 mod:SetModelID(46627) -- Iron Qon, 46628 Ro'shak, 46629 Quet'zal, 46630 Dam'ren
@@ -87,6 +87,10 @@ local Damren = select(2, EJ_GetCreatureInfo(4, 817))
 local arcingName = GetSpellInfo(136193)
 local phase = 1--Not sure this is useful yet, coding it in, in case spear cd is different in different phases
 local fistSmashCount = 0
+--Spear method called VERY often, so cache these globals locally
+local UnitDetailedThreatSituation = UnitDetailedThreatSituation
+local UnitExists = UnitExists
+local UnitClass = UnitClass
 
 local function updateHealthFrame()
 	if DBM.BossHealth:IsShown() then
