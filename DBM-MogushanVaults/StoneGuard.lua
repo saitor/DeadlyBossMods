@@ -1,9 +1,8 @@
 local mod	= DBM:NewMod(679, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9227 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9469 $"):sub(12, -3))
 mod:SetCreatureID(60051, 60043, 59915, 60047)--Cobalt: 60051, Jade: 60043, Jasper: 59915, Amethyst: 60047
-mod:SetModelID(41892)
 mod:SetZone()
 
 mod:RegisterCombat("combat")
