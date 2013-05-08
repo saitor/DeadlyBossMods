@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9470 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9471 $"):sub(12, -3)),
 	DisplayVersion = "5.2.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 9413 -- the revision of the latest stable version that is available
 }
@@ -242,6 +242,7 @@ local GetSpellInfo = GetSpellInfo
 local EJ_GetSectionInfo = EJ_GetSectionInfo
 local GetCurrentMapDungeonLevel = GetCurrentMapDungeonLevel
 local GetMapInfo = GetMapInfo
+local GetCurrentMapZone = GetCurrentMapZone
 
 -- for Phanx' Class Colors
 local RAID_CLASS_COLORS = CUSTOM_CLASS_COLORS or RAID_CLASS_COLORS
@@ -3774,10 +3775,10 @@ function DBM:RegisterMapSize(zone, ...)
 end
 
 function DBM:GetMapSizes()
-	SetMapToCurrentZone()
 	-- try custom map size first
 	local mapName = GetMapInfo()
 	local floor, a1, b1, c1, d1 = GetCurrentMapDungeonLevel()
+	if floor == 0 then SetMapToCurrentZone() end
 	local dims = DBM.MapSizes[mapName] and DBM.MapSizes[mapName][floor]
 	if dims then return dims end 
 
