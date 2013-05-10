@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(828, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9476 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9488 $"):sub(12, -3))
 mod:SetCreatureID(69712)
 mod:SetQuestID(32749)
 mod:SetZone()
@@ -215,7 +215,7 @@ local function GetNestPositions(flockC)
 	if mod:IsDifficulty("lfr25") then
 		--LFR: L, L, L, U, U, U (Repeating)
 		if ((flockC-1) % 6) < 3 then dir = L.Lower -- 1,2,3,7,8,9,...
-		else                         dir = L.Upper -- 6,7,8,10,11,12,...
+		else                         dir = L.Upper -- 4,5,6,10,11,12,...
 		end
 	elseif mod:IsDifficulty("normal10", "heroic10") then
 		--TODO, find out locations for these to improve the warnings.
