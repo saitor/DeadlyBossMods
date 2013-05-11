@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9483 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9498 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetQuestID(32750)
 mod:SetZone()
@@ -80,7 +80,7 @@ mod:AddBoolOption("SetIconRays", true)
 mod:AddBoolOption("SetIconLifeDrain", true)
 mod:AddBoolOption("InfoFrame", true) -- may be need special warning or generic warning high stack player? or do not needed at all?
 mod:AddBoolOption("SetIconOnParasite", false)
-mod:AddBoolOption("SetParticle", false)
+mod:AddBoolOption("SetParticle", true)
 
 local totalFogs = 3
 local lingeringGazeTargets = {}
