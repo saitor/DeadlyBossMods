@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9498 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9499 $"):sub(12, -3)),
 	DisplayVersion = "5.2.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 9413 -- the revision of the latest stable version that is available
 }
@@ -4967,12 +4967,10 @@ do
 			},
 			mt
 		)
-		if optionName then
-			obj.option = optionName
-			self:AddBoolOption(optionName, optionDefault, "announce")
-		elseif not (optionName == false) then
-			obj.option = text
-			self:AddBoolOption(text, optionDefault, "announce")
+		local optionId = optionName or optionName ~= false and text
+		if optionId then
+			obj.option = optionId
+			self:AddSpecialWarningOption(optionId, optionDefault, "announce")
 		end
 		table.insert(self.specwarns, obj)
 		return obj
@@ -5585,18 +5583,11 @@ function bossModPrototype:AddBoolOption(name, default, cat, func)
 	end
 end
 
-function bossModPrototype:RemoveOption(name)
-	self.Options[name] = nil
-	for i, options in pairs(self.optionCategories) do
-		removeEntry(options, name)
-		if #options == 0 then
-			self.optionCategories[i] = nil
-			removeEntry(self.categorySort, i)
-		end
-	end
-	if self.optionFuncs then
-		self.optionFuncs[name] = nil
-	end
+function bossModPrototype:AddSpecialWarningOption(name, default, defaultSound, cat)
+	cat = cat or "misc"
+	self.Options[name] = (default == nil) or default
+	self.Options[name .. "SpecialWarningSound"] = defaultSound or "Sound\\Spells\\PVPFlagTaken.wav"
+	self:SetOptionCategory(name, cat)
 end
 
 function bossModPrototype:AddSliderOption(name, minValue, maxValue, valueStep, default, cat, func)
@@ -5655,6 +5646,19 @@ function bossModPrototype:AddTimerSpacer()
 	return self:AddOptionSpacer("timer")
 end
 
+function bossModPrototype:RemoveOption(name)
+	self.Options[name] = nil
+	for i, options in pairs(self.optionCategories) do
+		removeEntry(options, name)
+		if #options == 0 then
+			self.optionCategories[i] = nil
+			removeEntry(self.categorySort, i)
+		end
+	end
+	if self.optionFuncs then
+		self.optionFuncs[name] = nil
+	end
+end
 
 function bossModPrototype:SetOptionCategory(name, cat)
 	for _, options in pairs(self.optionCategories) do
