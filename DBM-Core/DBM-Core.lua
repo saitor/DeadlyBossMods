@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9507 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9508 $"):sub(12, -3)),
 	DisplayVersion = "5.2.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 9413 -- the revision of the latest stable version that is available
 }
@@ -4935,8 +4935,8 @@ do
 			frame:SetAlpha(1)
 			frame.timer = 5
 			if self.sound then
-				--This code is also broken, test mod always plays sound 3, no other sound, even though it is supposed ot use ids 1 2 and 3
-				--Was unable to test actual boss encounters for same bug do to inability to do solo
+				--This code breaks TestMod (testmod always plays sound 3)
+				--TODO, does it break on other mods if GUI hasn't been loaded yet to populate options with default values?
 				local soundId = self.mod.Options[self.option .. "SpecialWarningSound"]
 				local sound = type(soundId) == "number" and DBM.Options["SpecialWarningSound" .. (soundId == 1 and "" or soundId)] or soundId or DBM.Options.SpecialWarningSound
 				if DBM.Options.UseMasterVolume then
