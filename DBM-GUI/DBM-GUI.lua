@@ -40,7 +40,7 @@
 
 
 
-local revision =("$Revision: 9515 $"):sub(12, -3)
+local revision =("$Revision: 9516 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -352,7 +352,7 @@ do
 		   dropdown = self:CreateDropdown(nil,sounds,mod.Options[soundVal], function(value)
 				mod.Options[soundVal] = value
 				DBM:PlaySpecialWarningSound(value)
-			end, 25, button)
+			end, 20, button)
 		end
 		local textbeside = button
 		local textpad = 0
