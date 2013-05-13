@@ -341,6 +341,7 @@ local BNSendWhisper = sendWhisper
 --------------
 do
 	local registeredEvents = {}
+	local registeredUnitEventIds = {}
 	local argsMT = {__index = {}}
 	local args = setmetatable({}, argsMT)
 
@@ -394,14 +395,15 @@ do
 	end
 
 	local function handleEvent(self, event, ...)
-		if self == mainFrame and event == "UNIT_HEALTH" or event == "UNIT_HEALTH_FREQUENT" then
-			event = event == "UNIT_HEALTH" and "UNIT_HEALTH_UNFILTERED" or "UNIT_HEALTH_FREQUENT_UNFILTERED"
+		if self == mainFrame and event:sub(0, 5) == "UNIT_" then
+			-- UNIT_* events that come from mainFrame are _UNFILTERED variants and need their suffix
+			event = event .. "_UNFILTERED"
 		end
 		if not registeredEvents[event] or not enabled then return end
 		for i, v in ipairs(registeredEvents[event]) do
 			local zones = v.zones
 			local handler = v[event]
-			if handler and (not zones or zones[LastZoneMapID]) and enabled and not (v.isTrashMod and IsEncounterInProgress()) then
+			if handler and (not zones or zones[LastZoneMapID]) and not (v.isTrashMod and IsEncounterInProgress()) then
 				handler(v, ...)
 			end
 		end
@@ -409,57 +411,79 @@ do
 
 	local registerUnitEvent, unregisterUnitEvent
 	do
-		local unitEventFrame1 = CreateFrame("Frame")
-		local unitEventFrame2 = CreateFrame("Frame")
-		local unitEventFrame3 = CreateFrame("Frame")
-		local unitEventFrame4 = CreateFrame("Frame")
+		local frames = {} -- frames that are being used for unit events, one frame per unit id (this could be optimized, as it currently creates a new frame even for a different event, but that's not worth the effort as 90% of all calls are just boss1 anyways)
 
-		unitEventFrame1:SetScript("OnEvent", handleEvent)
-		unitEventFrame2:SetScript("OnEvent", handleEvent)
-		unitEventFrame3:SetScript("OnEvent", handleEvent)
-		unitEventFrame4:SetScript("OnEvent", handleEvent)
-
-		function registerUnitEvent(event)
-			unitEventFrame1:RegisterUnitEvent(event, "boss1", "boss2")
-			unitEventFrame2:RegisterUnitEvent(event, "boss3", "boss4")
-			unitEventFrame3:RegisterUnitEvent(event, "boss5", "target")
-			unitEventFrame4:RegisterUnitEvent(event, "focus", "mouseover")
+		function registerUnitEvent(event, ...)
+			print(event, ...)
+			for i = 1, select("#", ...) do
+				local uId = select(i, ...)
+				local frame = frames[uId]
+				if not frame then
+					frame = CreateFrame("Frame")
+					frame:SetScript("OnEvent", handleEvent)
+					frames[uId] = frame
+				end
+				print("Register", event, uId, frame)
+				frame:RegisterUnitEvent(event, uId)
+			end
 		end
 
-		function unregisterUnitEvent(event)
-			unitEventFrame1:UnregisterEvent(event)
-			unitEventFrame2:UnregisterEvent(event)
-			unitEventFrame3:UnregisterEvent(event)
-			unitEventFrame4:UnregisterEvent(event)
+		function unregisterUnitEvent(event, ...)
+			for i = 1, select("#", ...) do
+				local uId = select(i, ...)
+				local frame = frames[uId]
+				if frame then
+					frame:UnregisterUnitEvent(event)
+				end
+			end
 		end
 
 	end
+	
 
+	-- UNIT_* events are special: they can take 'parameters' like this: "UNIT_HEALTH boss1 boss" which only trigger the event for the given unit ids
+	-- there is one (obvious) bug in this implementation: if you register the same event with overlapping unit IDs twice, then unregister one before the other
 	function DBM:RegisterEvents(...)
 		for i = 1, select("#", ...) do
 			local event = select(i, ...)
-			registeredEvents[event] = registeredEvents[event] or {}
-			tinsert(registeredEvents[event], self)
-			-- unit events that default to boss1-5, target, and focus only
-			-- for now: only UNIT_HEALTH(_FREQUENT), more events (and a lookup table for these events) might be added later
-			if event == "UNIT_HEALTH" or event == "UNIT_HEALTH_FREQUENT" then
-				registerUnitEvent(event)
-			elseif event == "UNIT_HEALTH_UNFILTERED" or event == "UNIT_HEALTH_FREQUENT_UNFILTERED" then
-				-- unfiltered version of these events
-				mainFrame:RegisterEvent(event:sub(0, -12))
+			-- unit events need special care
+			if event:sub(0, 5) == "UNIT_" then
+				-- unit events are limited to 8 "parameters", as there is no good reason to ever use more than 5 (it's just that the code old code supported 8 (boss1-5, target, focus, mouseover))
+				local arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8
+				event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8 = strsplit(" ", event)
+				local _, args = strsplit(" ", event, 2)
+				if type(registeredUnitEventIds[event]) == "string" then
+					registeredUnitEventIds[event] = { registeredUnitEventIds[event] }
+				end
+				if type(registeredUnitEventIds[event]) == "table" then
+					registeredUnitEventIds[event][#registeredUnitEventIds[event] + 1] = args
+				else
+					registeredUnitEventIds[event] = args
+				end
+				if event:sub(event:len() - 10) == "_UNFILTERED" then
+					-- we really want *all* unit ids
+					mainFrame:RegisterEvent(event:sub(0, -12))
+				else
+					registerUnitEvent(event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
+				end
 			else
 				-- normal events
 				mainFrame:RegisterEvent(event)
 			end
+			registeredEvents[event] = registeredEvents[event] or {}
+			tinsert(registeredEvents[event], self)
 		end
 	end
-
+	
 	local function unregisterEvent(event)
 		registeredEvents[event] = nil
-		if event == "UNIT_HEALTH" or event == "UNIT_HEALTH_FREQUENT" then
-			unregisterUnitEvent(event)
-		elseif event == "UNIT_HEALTH_UNFILTERED" or event == "UNIT_HEALTH_FREQUENT_UNFILTERED" then
-			mainFrame:UnregisterEvent(event:sub(0, -12))
+		if event:sub(0, 5) == "UNIT_" then
+			local event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8 = strsplit(" ", event)
+			if event:sub(event:len() - 10) == "_UNFILTERED" then 
+				mainFrame:UnregisterEvent(event:sub(0, -12))
+			else
+				unregisterUnitEvent(event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
+			end
 		else
 			mainFrame:UnregisterEvent(event)
 		end
@@ -681,9 +705,9 @@ do
 				"PLAYER_REGEN_DISABLED",
 				"PLAYER_REGEN_ENABLED",
 				"INSTANCE_ENCOUNTER_ENGAGE_UNIT",
-				"UNIT_DIED",
-				"UNIT_DESTROYED",
-				"UNIT_HEALTH",
+				"UNIT_DIED_UNFILTERED",
+				"UNIT_DESTROYED_UNFILTERED",
+				"UNIT_HEALTH mouseover target focus boss1 boss2 boss3 boss4 boss5",
 				"CHAT_MSG_WHISPER",
 				"CHAT_MSG_BN_WHISPER",
 				"CHAT_MSG_MONSTER_YELL",
@@ -3291,12 +3315,12 @@ function DBM:GetCurrentInstanceDifficulty()
 	end
 end
 
-function DBM:UNIT_DIED(args)
+function DBM:UNIT_DIED_UNFILTERED(args)
 	if bit.band(args.destGUID:sub(1, 5), 0x00F) == 3 or bit.band(args.destGUID:sub(1, 5), 0x00F) == 5  then
 		self:OnMobKill(tonumber(args.destGUID:sub(6, 10), 16))
 	end
 end
-DBM.UNIT_DESTROYED = DBM.UNIT_DIED
+DBM.UNIT_DESTROYED_UNFILTERED = DBM.UNIT_DIED_UNFILTERED
 
 
 ----------------------
@@ -3961,7 +3985,9 @@ function bossModPrototype:SetZone(...)
 	end
 end
 
-
+--------------
+--  Events  --
+--------------
 function bossModPrototype:RegisterEventsInCombat(...)
 	if not self.inCombatOnlyEvents then
 		self.inCombatOnlyEvents = {...}
@@ -4391,9 +4417,9 @@ do
 			end
 			if self.sound then
 				if DBM.Options.UseMasterVolume then
-					PlaySoundFile(DBM.Options.RaidWarningSound, "Master")--4.0.6 arg to use master sound channel, re-enableing sound playback when effects are turned off.
+					PlaySoundFile(DBM.Options.RaidWarningSound, "Master")
 				else
-					PlaySoundFile(DBM.Options.RaidWarningSound)--not cata so we don't use the channel arg to maintain CN wow compatability.
+					PlaySoundFile(DBM.Options.RaidWarningSound)
 				end
 			end
 		end
@@ -4937,12 +4963,7 @@ do
 			frame.timer = 5
 			if self.sound then
 				local soundId = self.mod.Options[self.option .. "SpecialWarningSound"]
-				local sound = type(soundId) == "number" and DBM.Options["SpecialWarningSound" .. (soundId == 1 and "" or soundId)] or soundId or DBM.Options.SpecialWarningSound
-				if DBM.Options.UseMasterVolume then
-					PlaySoundFile(sound, "Master")
-				else
-					PlaySoundFile(sound)
-				end
+				DBM:PlaySpecialWarningSound(soundId)
 			end
 		end
 	end
@@ -5099,6 +5120,15 @@ do
 
 	function bossModPrototype:NewSpecialWarningPreWarn(text, optionDefault, time, ...)
 		return newSpecialWarning(self, "prewarn", text, time, optionDefault, ...)
+	end
+	
+	function DBM:PlaySpecialWarningSound(soundId)
+		local sound = type(soundId) == "number" and DBM.Options["SpecialWarningSound" .. (soundId == 1 and "" or soundId)] or soundId or DBM.Options.SpecialWarningSound
+		if DBM.Options.UseMasterVolume then
+			PlaySoundFile(sound, "Master")
+		else
+			PlaySoundFile(sound)
+		end
 	end
 
 	do
