@@ -40,7 +40,7 @@
 
 
 
-local revision =("$Revision: 9528 $"):sub(12, -3)
+local revision =("$Revision: 9530 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -992,6 +992,7 @@ do
 			return
 		end
 
+		local changed = container.displayedFrame ~= frame
 		if ( container.displayedFrame ) then
 			container.displayedFrame:Hide()
 		end
@@ -1007,6 +1008,10 @@ do
 			_G[frameName.."FOV"]:Show()
 			_G[frameName.."FOV"]:SetScrollChild(frame)
 			_G[frameName.."FOVScrollBar"]:SetMinMaxValues(0, mymax)
+			local val = _G[frameName.."FOVScrollBar"]:GetValue() or 0
+			if changed then
+			  _G[frameName.."FOVScrollBar"]:SetValue(0) -- scroll to top, and ensure widget appears
+			end
 
 			if frame.isfixed then
 				frame.isfixed = nil
