@@ -40,7 +40,7 @@
 
 
 
-local revision =("$Revision: 9525 $"):sub(12, -3)
+local revision =("$Revision: 9528 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -373,7 +373,7 @@ do
 			-- oscarucb: proper html encoding is required here for hyperlink line wrapping to work correctly
 			name = "<html><body><p>"..name.."</p></body></html>"
                 end
-		_G[buttonName .. 'Text']:SetWidth( self.frame:GetWidth() - 50 - ((dropdown and dropdown:GetWidth()) or 0))
+		_G[buttonName .. 'Text']:SetWidth( self.frame:GetWidth() - 57 - ((dropdown and dropdown:GetWidth()) or 0))
 		_G[buttonName .. 'Text']:SetText(name or DBM_CORE_UNKNOWN)
 
 		if textleft then
