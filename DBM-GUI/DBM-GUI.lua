@@ -40,7 +40,7 @@
 
 
 
-local revision =("$Revision: 9545 $"):sub(12, -3)
+local revision =("$Revision: 9546 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -1975,7 +1975,7 @@ local function CreateOptionsMenu()
 		}
 		if GetSharedMedia3() then
 			for k,v in next, GetSharedMedia3():HashTable("sound") do
-				if k ~= "None" then -- lol ace .. playsound accepts empty strings.. quite.mp3 wtf!
+				if k ~= "None" and k ~= "NPCScan" then -- lol ace .. playsound accepts empty strings.. quite.mp3 wtf!
 					-- duplicates should be filtered out - TODO: make a generic function for all shared media / do not copy&paste
 					local insertme = true
 					for _, v2 in next, Sounds do
