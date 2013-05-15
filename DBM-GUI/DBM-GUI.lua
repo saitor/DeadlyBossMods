@@ -40,7 +40,7 @@
 
 
 
-local revision =("$Revision: 9539 $"):sub(12, -3)
+local revision =("$Revision: 9540 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -223,7 +223,7 @@ local function GetSharedMedia3()
 			LSM:Register("sound", "Yogg Saron: Laugh", [[Sound\Creature\YoggSaron\UR_YoggSaron_Slay01.ogg]])
 			LSM:Register("sound", "Loatheb: I see you", [[Sound\Creature\Loathstare\Loa_Naxx_Aggro02.ogg]])
 			LSM:Register("sound", "Lady Malande: Flee", [[Sound\Creature\LadyMalande\BLCKTMPLE_LadyMal_Aggro01.ogg]])
-			LSM:Register("sound", "Milhouse: Light You Up", [[Sound\Creature\illhouseManastorm\TEMPEST_Millhouse_Pyro01.ogg]])
+			LSM:Register("sound", "Milhouse: Light You Up", [[Sound\Creature\MillhouseManastorm\TEMPEST_Millhouse_Pyro01.ogg]])
 			LSM:Register("sound", "Kael: Obey Me", [[Sound\Creature\PrinceKaelThas\TEMPEST_Kael_MndCntrl01.ogg]])
 			LSM:Register("sound", "Void Reaver: Marked", [[Sound\Creature\VoidReaver\TEMPEST_VoidRvr_Aggro01.ogg]])
 			LSM:Register("sound", "Kaz'rogal: Marked", [[Sound\Creature\KazRogal\CAV_Kaz_Mark02.ogg]])
