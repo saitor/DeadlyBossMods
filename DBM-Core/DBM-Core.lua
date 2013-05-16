@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9548 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9549 $"):sub(12, -3)),
 	DisplayVersion = "5.2.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 9413 -- the revision of the latest stable version that is available
 }
@@ -1762,14 +1762,13 @@ end
 
 function DBM:PLAYER_REGEN_ENABLED()
 	if loadDelay then
-		local modsToLoad = loadDelay
 		loadDelay = nil
-		if type(modsToLoad) == "table" then
+		if type(loadDelay) == "table" then
 			for i, v in ipairs(modsToLoad) do
 				DBM:LoadMod(v)
 			end
 		else
-			DBM:LoadMod(modsToLoad)
+			DBM:LoadMod(loadDelay)
 		end
 	end
 	if guiRequested and not IsAddOnLoaded("DBM-GUI") then
@@ -1985,11 +1984,13 @@ function DBM:LoadMod(mod)
 	--IF we are fighting a boss, we don't have much of a choice but to try and load anyways since script ran too long isn't actually a guarentee.
 	--it's mainly for slower computers that fail to load mods in combat. Most can load in combat if we delay the garbage collect
 	if InCombatLockdown() and IsInInstance() and not IsEncounterInProgress() then
-		if loadDelay then
+		if loadDelay and loadDelay ~= mod then
 			if type(loadDelay) ~= "table" then
 				loadDelay = { loadDelay }
 			end
-			loadDelay[#loadDelay + 1] = mod
+			if not loadDelay[mod] then
+				loadDelay[#loadDelay + 1] = mod
+			end
 		else
 			loadDelay = mod
 		end
@@ -2009,6 +2010,7 @@ function DBM:LoadMod(mod)
 		end
 		return false
 	else
+		loadDelay = nil
 		if DBM.Options.ShowLoadMessage then--Make load option optional for advanced users, option is NOT in the GUI.
 			self:AddMsg(DBM_CORE_LOAD_MOD_SUCCESS:format(tostring(mod.name)))
 		end
