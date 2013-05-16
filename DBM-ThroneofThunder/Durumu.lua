@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9542 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9550 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050, 
 mod:SetQuestID(32750)
 mod:SetZone()
@@ -72,6 +72,7 @@ local timerObliterateCD				= mod:NewNextTimer(80, 137747)--Heroic
 
 local soundLingeringGaze			= mod:NewSound(134044)
 local countdownLightSpectrum		= mod:NewCountdown(60, "ej6891")
+local countdownDisintegrationbeam	= mod:NewCountdownFades(55, "ej6882")
 
 local berserkTimer					= mod:NewBerserkTimer(600)
 
@@ -456,6 +457,7 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg, npc, _, _, target)
 		specWarnDisintegrationBeam:Show()
 		--Best to start next phase bars when this one ends, so artifically create a "phase end" trigger
 		timerDisintegrationBeam:Start()
+		countdownDisintegrationbeam:Start()
 		self:Schedule(55, BeamEnded)
 	end
 end
