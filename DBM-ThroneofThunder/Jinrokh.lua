@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(827, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9553 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9554 $"):sub(12, -3))
 mod:SetCreatureID(69465)
 mod:SetQuestID(32744)
 mod:SetZone()
@@ -119,6 +119,9 @@ function mod:SPELL_CAST_START(args)
 	elseif args.spellId == 138732 then
 		warnIonization:Show()
 		specWarnIonization:Show()
+		if timerStaticBurstCD:GetTime() > 5 then
+			timerStaticBurstCD:Start(12)
+		end
 	end
 end
 
