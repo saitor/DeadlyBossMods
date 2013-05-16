@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(827, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9476 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9553 $"):sub(12, -3))
 mod:SetCreatureID(69465)
 mod:SetQuestID(32744)
 mod:SetZone()
@@ -110,7 +110,7 @@ function mod:SPELL_CAST_START(args)
 		warnStorm:Show()
 		specWarnStorm:Show()
 		timerStorm:Start()
-		timerStaticBurstCD:Start(22.5)--May need tweaking
+		timerStaticBurstCD:Start(20.5)
 		timerThrowCD:Start()
 		if self:IsDifficulty("heroic10", "heroic25") then
 			timerIonizationCD:Start()
