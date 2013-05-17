@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(824, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9476 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9555 $"):sub(12, -3))
 mod:SetCreatureID(69427)
 mod:SetQuestID(32752)
 mod:SetZone()
@@ -55,6 +55,7 @@ local timerInterruptingJoltCD		= mod:NewCDTimer(23, 138763)--seems 23~24 normal 
 local berserkTimer					= mod:NewBerserkTimer(600)
 
 local countdownActivation			= mod:NewCountdown(60, 139537)
+local countdownInterruptingJolt		= mod:NewCountdown(23, 138763)
 
 local soundCrimsonWake				= mod:NewSound(138480)
 
@@ -89,6 +90,7 @@ function mod:SPELL_CAST_START(args)
 		warnInterruptingJolt:Show()
 		specWarnInterruptingJolt:Show()
 		timerInterruptingJoltCD:Start()
+		countdownInterruptingJolt:Start()
 	end
 end
 
