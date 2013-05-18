@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9567 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9568 $"):sub(12, -3)),
 	DisplayVersion = "5.2.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 9413 -- the revision of the latest stable version that is available
 }
@@ -4844,10 +4844,10 @@ do
 		)
 		if optionName then
 			obj.option = optionName
-			self:AddBoolOption(optionName, optionDefault, "announce")
+			self:AddBoolOption(optionName, optionDefault, "misc")
 		elseif not (optionName == false) then
 			obj.option = "Yell"..(yellText or spellId)
-			self:AddBoolOption("Yell"..(yellText or spellId), optionDefault, "announce")
+			self:AddBoolOption("Yell"..(yellText or spellId), optionDefault, "misc")
 			self.localization.options["Yell"..(yellText or spellId)] = DBM_CORE_AUTO_YELL_OPTION_TEXT:format(spellId)
 		end
 		return obj
