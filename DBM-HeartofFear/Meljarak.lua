@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(741, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9469 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9574 $"):sub(12, -3))
 mod:SetCreatureID(62397)
 mod:SetZone()
 mod:SetUsedIcons(1, 2)
@@ -55,7 +55,7 @@ local specWarnQuickening				= mod:NewSpecialWarningCount(122149, isDispeller)--T
 local specWarnKorthikStrike				= mod:NewSpecialWarningYou(123963)
 local specWarnKorthikStrikeOther		= mod:NewSpecialWarningTarget(123963, mod:IsHealer())
 local yellKorthikStrike					= mod:NewYell(123963)
-local specWarnWindBomb					= mod:NewSpecialWarningMove(131830)
+local specWarnWindBomb					= mod:NewSpecialWarningMove(131830, nil, nil, nil, 3)
 local specWarnWhirlingBladeMove			= mod:NewSpecialWarningMove(121898)
 local yellWindBomb						= mod:NewYell(131830)
 local specWarnReinforcements			= mod:NewSpecialWarningTarget("ej6554", not mod:IsHealer())--Also important to dps. (Espcially CC classes)
