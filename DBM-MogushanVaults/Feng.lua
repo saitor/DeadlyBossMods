@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(689, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9580 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9581 $"):sub(12, -3))
 mod:SetCreatureID(60009)--60781 Soul Fragment
 mod:SetZone()
 mod:SetUsedIcons(8, 7, 6)
@@ -296,7 +296,7 @@ function mod:SPELL_CAST_START(args)
 		timerEpicenter:Start()
 		timerEpicenterCD:Start(nil, specialCount + 1)
 		if UnitBuff(GetSpellInfo(115811), "player") and self:IsDifficulty("lfr25") then
-			specWarnBarrierNow:Show()
+			specWarnBarrierNow:Schedule(2)
 		end
 	elseif args:IsSpellID(116157, 116295) then
 		warnLightningFists:Show()
