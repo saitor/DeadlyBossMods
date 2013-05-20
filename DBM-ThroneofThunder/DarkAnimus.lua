@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(824, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9582 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9583 $"):sub(12, -3))
 mod:SetCreatureID(69427)
 mod:SetQuestID(32752)
 mod:SetZone()
@@ -196,9 +196,9 @@ function mod:INSTANCE_ENCOUNTER_ENGAGE_UNIT()
 		if self:IsDifficulty("heroic10", "heroic25") then
 			timerAnimaFontCD:Start(14)
 			timerAnimaRingCD:Start(23)
-			timerSiphonAnimaCD:Start(120)--VERY important on heroic. boss activaet on pull, you have 2 minutes to do as much with adds as you can before he starts using siphon anima
+			timerSiphonAnimaCD:Start(120, 1)--VERY important on heroic. boss activaet on pull, you have 2 minutes to do as much with adds as you can before he starts using siphon anima
 		elseif self:IsDifficulty("normal10", "normal25") then
-			timerSiphonAnimaCD:Start(5.3)
+			timerSiphonAnimaCD:Start(5.3, 1)
 		end
 	end
 end
