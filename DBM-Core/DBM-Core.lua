@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9584 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9585 $"):sub(12, -3)),
 	DisplayVersion = "5.2.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 9413 -- the revision of the latest stable version that is available
 }
@@ -3864,7 +3864,7 @@ function DBM:MovieFilter(mod, ...)
 			i = i + 2
 			default = nil
 		end
-		mod:AddBoolOption(tostring(id), default == "Block", "BlockMovies")
+		mod:AddBoolOption(tostring(id), default == "OnlyFirst", "BlockMovies")
 		-- mod:AddButton
 	end
 end

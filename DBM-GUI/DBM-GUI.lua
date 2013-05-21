@@ -40,7 +40,7 @@
 
 
 
-local revision =("$Revision: 9577 $"):sub(12, -3)
+local revision =("$Revision: 9585 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -319,7 +319,7 @@ do
 				if (not ChatFrameEditBox:IsShown()) then
 					ChatEdit_ActivateChat(ChatFrameEditBox)
 				end
-				ChatFrameEditBox:Insert(link)
+				ChatFrameEditBox:Insert(data)
 				ChatFrameEditBox:HighlightText()
 				return
 			end
