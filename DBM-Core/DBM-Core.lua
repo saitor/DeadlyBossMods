@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9597 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9598 $"):sub(12, -3)),
 	DisplayVersion = "5.3.1 alpha", -- the string that is shown as version
 	ReleaseRevision = 9592 -- the revision of the latest stable version that is available
 }
@@ -3775,11 +3775,13 @@ end
 --copied from big wigs with permission from funkydude. Modified by MysticalOS
 local roleEventUnregistered = false
 function DBM:RoleCheck()
+	local spec = GetSpecialization()
+	if not spec then return end
+	local role = GetSpecializationRole(spec)
+	local specID = GetLootSpecialization()
+	local _, _, _, _, _, lootrole = GetSpecializationInfoByID(specID)
 	if DBM.Options.SetPlayerRole then
 		if not InCombatLockdown() and IsInGroup() and not IsPartyLFG() then
-			local spec = GetSpecialization()
-			if not spec then return end
-			local role = GetSpecializationRole(spec)
 			if UnitGroupRolesAssigned("player") ~= role then
 				UnitSetRole("player", role)
 			end
@@ -3787,6 +3789,9 @@ function DBM:RoleCheck()
 				roleEventUnregistered = true
 				RolePollPopup:UnregisterEvent("ROLE_POLL_BEGIN")
 			end
+		end
+		if role ~= lootrole then
+			self:AddMsg(DBM_CORE_LOOT_SPEC_REMINDER:format(role, lootrole))
 		end
 	else
 		if roleEventUnregistered then
