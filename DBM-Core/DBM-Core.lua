@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9600 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9601 $"):sub(12, -3)),
 	DisplayVersion = "5.3.1 alpha", -- the string that is shown as version
 	ReleaseRevision = 9592 -- the revision of the latest stable version that is available
 }
@@ -3789,7 +3789,7 @@ function DBM:RoleCheck()
 				roleEventUnregistered = true
 				RolePollPopup:UnregisterEvent("ROLE_POLL_BEGIN")
 			end
-			if role ~= lootrole then
+			if role and lootrole and (role ~= lootrole) then
 				self:AddMsg(DBM_CORE_LOOT_SPEC_REMINDER:format(role, lootrole))
 			end
 		end
