@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(709, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9469 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9610 $"):sub(12, -3))
 mod:SetCreatureID(60999)--61042 Cheng Kang, 61046 Jinlun Kun, 61038 Yang Guoshi, 61034 Terror Spawn
 mod:SetUsedIcons(8, 7, 6, 5, 4)
 
@@ -138,12 +138,12 @@ local function warnOminousCackleTargets()
 end
 
 local function warnWaterspoutTargets()
-	warnWaterspout:Show(waterspout, specialCount, table.concat(waterspoutTargets, "<, >"))
+	warnWaterspout:Show(specialCount, table.concat(waterspoutTargets, "<, >"))
 	table.wipe(waterspoutTargets)
 end
 
 local function warnHuddleInTerrorTargets()
-	warnHuddleInTerror:Show(huddleinterror, specialCount, table.concat(huddleInTerrorTargets, "<, >"))
+	warnHuddleInTerror:Show(specialCount, table.concat(huddleInTerrorTargets, "<, >"))
 	table.wipe(huddleInTerrorTargets)
 	huddleIcon = 8
 end
