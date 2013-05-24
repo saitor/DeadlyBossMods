@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(816, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9613 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9614 $"):sub(12, -3))
 mod:SetCreatureID(69078, 69132, 69134, 69131)--69078 Sul the Sandcrawler, 69132 High Prestess Mar'li, 69131 Frost King Malakk, 69134 Kazra'jin --Adds: 69548 Shadowed Loa Spirit,
 mod:SetQuestID(32746)
 mod:SetZone()
@@ -108,12 +108,10 @@ mod:AddBoolOption("SetIconOnFrostBite", true)
 mod:AddBoolOption("AnnounceCooldowns", mod:HasRaidCooldown())
 
 local lingeringPresence = GetSpellInfo(136467)
-local chilledDebuff = GetSpellInfo(137085)
 local boltCasts = 0
 local kazraPossessed = false
 local possessesDone = 0
 local dischargeCount = 0
-local chilledWarned = false
 local darkPowerWarned = false
 
 local showDamagedHealthBar, hideDamagedHealthBar
@@ -155,7 +153,6 @@ end
 
 function mod:OnCombatStart(delay)
 	kazraPossessed = false
-	chilledWarned = false
 	darkPowerWarned = false
 	possessesDone = 0
 	boltCasts = 0
