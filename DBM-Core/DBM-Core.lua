@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9620 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9621 $"):sub(12, -3)),
 	DisplayVersion = "5.3.1 alpha", -- the string that is shown as version
 	ReleaseRevision = 9592 -- the revision of the latest stable version that is available
 }
@@ -2719,9 +2719,6 @@ do
 				DBM:EndCombat(v)
 			end
 		end
-		if LastZoneMapID == 11 then--Northern barrens caravan messages
-			PlaySoundFile("Sound\\interface\\UI_RaidBossWhisperWarning.ogg", "Master")
-		end
 	end
 
 	function DBM:CHAT_MSG_MONSTER_YELL(msg)
@@ -2729,6 +2726,9 @@ do
 	end
 
 	function DBM:CHAT_MSG_MONSTER_EMOTE(msg)
+		if LastZoneMapID == 11 then--Northern barrens caravan messages
+			PlaySoundFile("Sound\\interface\\UI_RaidBossWhisperWarning.ogg", "Master")
+		end
 		return onMonsterMessage("emote", msg)
 	end
 
