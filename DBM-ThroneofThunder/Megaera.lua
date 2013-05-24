@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9617 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9626 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70212, 70235, 70247)--flaming 70212. Frozen 70235, Venomous 70247
 mod:SetMainBossID(68065)
 mod:SetQuestID(32748)
@@ -354,7 +354,7 @@ local function CheckHeads(GUID)
 		mod:UnregisterShortTermEvents()--Wipe old short term events
 		mod:RegisterShortTermEvents(--Update them with both IEEU and UNIT_AURA
 			"INSTANCE_ENCOUNTER_ENGAGE_UNIT",
-			"UNIT_AURA"
+			"UNIT_AURA_UNFILTERED"
 		)
 	end
 --	print("DBM Boss Debug: ", "Active Heads: ".."Fire: "..fireInFront.." Ice: "..iceInFront.." Venom: "..venomInFront.." Arcane: "..arcaneInFront)
@@ -432,7 +432,7 @@ local function warnTorrent(name)
 end
 
 --Combat log bugged, UNIT_AURA only good way to work around.
-function mod:UNIT_AURA(uId)
+function mod:UNIT_AURA_UNFILTERED(uId)
 	cpuWaste1 = cpuWaste1 + 1
 	local name = DBM:GetUnitFullName(uId)
 	if not name then return end
