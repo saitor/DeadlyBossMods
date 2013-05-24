@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Cannon", "DBM-WorldEvents", 2)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9627 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9628 $"):sub(12, -3))
 mod:SetZone()
 
 mod:RegisterEvents(
@@ -29,7 +29,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
-function mod:UNIT_AURA_UNFILTERED(uId)
+function mod:UNIT_AURA(uId)
 	if UnitBuff("player", GetSpellInfo(102116)) and not markWings then
 		MagicWingsCountdown:Start(7.5)--Might need to reduce it by 1 or use UnitDebuff duration arg.
 		timerMagicWings:Start()
