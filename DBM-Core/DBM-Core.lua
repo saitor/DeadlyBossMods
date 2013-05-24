@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9619 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9620 $"):sub(12, -3)),
 	DisplayVersion = "5.3.1 alpha", -- the string that is shown as version
 	ReleaseRevision = 9592 -- the revision of the latest stable version that is available
 }
@@ -2718,6 +2718,9 @@ do
 			if v.combatInfo.killType == type and v.combatInfo.killMsgs[msg] then
 				DBM:EndCombat(v)
 			end
+		end
+		if LastZoneMapID == 11 then--Northern barrens caravan messages
+			PlaySoundFile("Sound\\interface\\UI_RaidBossWhisperWarning.ogg", "Master")
 		end
 	end
 
