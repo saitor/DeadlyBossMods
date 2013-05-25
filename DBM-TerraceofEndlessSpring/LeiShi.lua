@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(729, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9643 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9644 $"):sub(12, -3))
 mod:SetCreatureID(62983)--62995 Animated Protector
 
 mod:RegisterCombat("combat")
@@ -174,7 +174,7 @@ mod:RegisterOnUpdateHandler(function(self)
 		end
 		local guid2 = UnitGUID("mouseover")
 		if guards[guid2] then
-			for g,i in pairs(adds) do
+			for g,i in pairs(guards) do
 				if i == 8 and g ~= guid2 then -- always set skull on first we see
 					guards[g] = guards[guid2]
 					guards[guid2] = 8

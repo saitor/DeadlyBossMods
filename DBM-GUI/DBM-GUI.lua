@@ -40,7 +40,7 @@
 
 
 
-local revision =("$Revision: 9609 $"):sub(12, -3)
+local revision =("$Revision: 9644 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -841,7 +841,7 @@ DBM_GUI_Bosses = CreateNewFauxScrollFrameList()
 DBM_GUI_Options = CreateNewFauxScrollFrameList()
 
 
-local UpdateAnimationFrame
+local UpdateAnimationFrame, CreateAnimationFrame
 do
 	local function HideScrollBar(frame)
 		local frameName = frame:GetName()
