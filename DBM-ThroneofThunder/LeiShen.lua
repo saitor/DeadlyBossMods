@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(832, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9638 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9640 $"):sub(12, -3))
 mod:SetCreatureID(68397)--Diffusion Chain Conduit 68696, Static Shock Conduit 68398, Bouncing Bolt conduit 68698, Overcharge conduit 68697
 mod:SetQuestID(32756)
 mod:SetZone()
@@ -149,7 +149,7 @@ function mod:OnCombatStart(delay)
 	timerDecapitateCD:Start(40-delay)--First seems to be 45, rest 50. it's a CD though, not a "next"
 	berserkTimer:Start(-delay)
 	self:RegisterShortTermEvents(
-		"UNIT_HEALTH_FREQUENT"
+		"UNIT_HEALTH_FREQUENT boss1"
 	)-- Do not use on phase 3.
 end
 
