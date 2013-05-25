@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(819, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9641 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9642 $"):sub(12, -3))
 mod:SetCreatureID(68476)
 mod:SetQuestID(32745)
 mod:SetZone()
@@ -329,7 +329,9 @@ function mod:UNIT_DIED(args)
 	end
 end
 
-function mod:OnSync(msg, target)
+function mod:OnSync(msg, targetOrGuid, ver)
+	local target = targetOrGuid
+	local guid = targetOrGuid
 	if msg == "ChargeTo" and target then
 		local target = DBM:GetFullNameByShortName(target)
 		warnCharge:Show(target)
