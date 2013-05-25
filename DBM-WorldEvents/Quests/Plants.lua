@@ -1,11 +1,11 @@
 local mod	= DBM:NewMod("PlantsVsZombies", "DBM-WorldEvents", 3)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7834 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9631 $"):sub(12, -3))
 mod:SetZone(24)--Hillsbrad Foothills
 
 mod:RegisterEvents(
-	"UNIT_SPELLCAST_SUCCEEDED",
+	"UNIT_SPELLCAST_SUCCEEDED player",
 	"UNIT_EXITED_VEHICLE",
 	"RAID_BOSS_WHISPER"
 )
@@ -29,7 +29,6 @@ local wave = 0
 local addCount = 0
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellID)
-	if uId ~= "player" then return end
 	if spellID == 92816 then--Create Battery (Game Start)
 --		timerWave:Start(285)
 		wave = 0
