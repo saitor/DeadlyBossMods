@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9638 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9639 $"):sub(12, -3)),
 	DisplayVersion = "5.3.1 alpha", -- the string that is shown as version
 	ReleaseRevision = 9592 -- the revision of the latest stable version that is available
 }
@@ -4035,7 +4035,7 @@ function bossModPrototype:RegisterEventsInCombat(...)
 	end
 	self.inCombatOnlyEvents = {...}
 	for k, v in pairs(self.inCombatOnlyEvents) do
-		if v:sub(0, 5) == "UNIT_" and v:sub(v:len() - 10) ~= "_UNFILTERED" and not v:find(" ") and event ~= "UNIT_DIED" and event ~= "UNIT_DESTROYED" then
+		if v:sub(0, 5) == "UNIT_" and v:sub(v:len() - 10) ~= "_UNFILTERED" and not v:find(" ") and v ~= "UNIT_DIED" and v ~= "UNIT_DESTROYED" then
 			-- legacy event, oh noes
 			self.inCombatOnlyEvents[k] = v .. " boss1 boss2 boss3 boss4 boss5 target focus mouseover"
 		end
@@ -4048,7 +4048,7 @@ function bossModPrototype:RegisterShortTermEvents(...)
 	end
 	self.shortTermRegisterEvents = {...}
 	for k, v in pairs(self.shortTermRegisterEvents) do
-		if v:sub(0, 5) == "UNIT_" and v:sub(v:len() - 10) ~= "_UNFILTERED" and not v:find(" ") and event ~= "UNIT_DIED" and event ~= "UNIT_DESTROYED" then
+		if v:sub(0, 5) == "UNIT_" and v:sub(v:len() - 10) ~= "_UNFILTERED" and not v:find(" ") and v ~= "UNIT_DIED" and v ~= "UNIT_DESTROYED" then
 			-- legacy event, oh noes
 			self.shortTermRegisterEvents[k] = v .. " boss1 boss2 boss3 boss4 boss5 target focus mouseover"
 		end
