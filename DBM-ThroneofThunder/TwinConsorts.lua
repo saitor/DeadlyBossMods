@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(829, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9615 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9645 $"):sub(12, -3))
 mod:SetCreatureID(68905, 68904)--Lu'lin 68905, Suen 68904
 mod:SetQuestID(32755)
 mod:SetZone()
@@ -209,11 +209,13 @@ function mod:UNIT_DIED(args)
 		if self.Options.RangeFrame then
 			DBM.RangeCheck:Hide()
 		end
+		phase3Started = true
 	elseif cid == 68904 then--Suen
 		--timerFlamesOfPassionCD:Cancel()
 		timerBeastOfNightmaresCD:Start(64)
 		timerNuclearInfernoCD:Cancel()
 		warnNight:Show()
+		phase3Started = true
 	end
 end
 
