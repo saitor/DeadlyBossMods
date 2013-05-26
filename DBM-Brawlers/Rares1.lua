@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BrawlRare1", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9651 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9652 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 mod:SetModelID(46265)
 mod:SetZone()
@@ -37,6 +37,7 @@ local timerDestructolaserCD		= mod:NewNextTimer(30, 133250)
 
 mod:RemoveOption("HealthFrame")
 mod:RemoveOption("SpeedKillTimer")
+mod:AddBoolOption("ArrowOnBoxing")
 
 local brawlersMod = DBM:GetModByName("Brawlers")
 
@@ -62,6 +63,12 @@ function mod:SPELL_CAST_START(args)
 		if brawlersMod:PlayerFighting() then
 			specWarnStaticCharge:Show(args.sourceName)
 		end
+	elseif args.spellId == 140868 and self.Options.ArrowOnBoxing and brawlersMod:PlayerFighting() then--Left Hook
+		DBM.Arrow:ShowStatic(270, 3)
+	elseif args.spellId == 140862 and self.Options.ArrowOnBoxing and brawlersMod:PlayerFighting() then--Right Hook
+		DBM.Arrow:ShowStatic(90, 3)
+	elseif args.spellId == 140886 and self.Options.ArrowOnBoxing and brawlersMod:PlayerFighting() then--Right Hook
+		DBM.Arrow:ShowStatic(180, 3)
 	end
 end
 
