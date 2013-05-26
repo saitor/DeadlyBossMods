@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Gnoll", "DBM-WorldEvents", 2)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9631 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9656 $"):sub(12, -3))
 mod:SetZone()
 
 mod:RegisterEvents(
@@ -52,7 +52,7 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, spellName, _, _, spellID)
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellID)
 	if spellID == 102044 then--Hogger
 		if gameEarnedPoints < 30 then--You earned 30 points in first game, stop counting points you didn't earn so you get more accurate depiction of hwo many you missed, not how many you ignored when you finished.
 			gameMaxPoints = gameMaxPoints + 3
