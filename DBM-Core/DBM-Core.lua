@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9665 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9666 $"):sub(12, -3)),
 	DisplayVersion = "5.3.1 alpha", -- the string that is shown as version
 	ReleaseRevision = 9592 -- the revision of the latest stable version that is available
 }
@@ -429,7 +429,15 @@ do
 				local frame = frames[uId]
 				if not frame then
 					frame = CreateFrame("Frame")
-					frame:SetScript("OnEvent", handleEvent)
+					if uId == "mouseover" then
+						-- work-around for mouse-over events (broken!)
+						frame:SetScript("OnEvent", function(self, event, uId, ...)
+							-- we registered mouseover events, so we only want mouseover events, thanks.
+							handleEvent(self, event, "mouseover", ...)
+						end)
+					else
+						frame:SetScript("OnEvent", handleEvent)
+					end
 					frames[uId] = frame
 				end
 				registeredUnitEventIds[event .. uId] = (registeredUnitEventIds[event .. uId] or 0) + 1
