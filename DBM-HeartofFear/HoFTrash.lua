@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("HoFTrash", "DBM-HeartofFear")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9664 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9667 $"):sub(12, -3))
 --mod:SetModelID(47785)
 mod:SetZone()
 
@@ -9,7 +9,7 @@ mod.isTrashMod = true
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",
-	"UNIT_SPELLCAST_SUCCEEDED target focus mouseover"
+	"UNIT_SPELLCAST_SUCCEEDED target focus"
 )
 
 local warnUnseenStrike			= mod:NewTargetAnnounce(122949, 4, 123017)
