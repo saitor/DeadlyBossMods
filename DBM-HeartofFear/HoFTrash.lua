@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("HoFTrash", "DBM-HeartofFear")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9659 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9662 $"):sub(12, -3))
 --mod:SetModelID(47785)
 mod:SetZone()
 
@@ -38,8 +38,8 @@ local function findUnseen()
 				yellUnseenStrike:Yell()
 			else
 				specWarnUnseenStrikeOther:Show(name)
-				if self.Options.UnseenStrikeArrow then
-					DBM.Arrow:ShowRunTo(target, 3, 3, 5)
+				if mod.Options.UnseenStrikeArrow then
+					DBM.Arrow:ShowRunTo(uId, 3, 3, 5)
 				end
 			end
 			return
