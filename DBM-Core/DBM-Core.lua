@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9652 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9653 $"):sub(12, -3)),
 	DisplayVersion = "5.3.1 alpha", -- the string that is shown as version
 	ReleaseRevision = 9592 -- the revision of the latest stable version that is available
 }
@@ -1966,6 +1966,10 @@ function DBM:ZONE_CHANGED_INDOORS()
 		SetMapToCurrentZone()
 		DBM:UpdateMapSizes()
 	end
+end
+
+function DBM:GetCurrentArea()
+	return LastZoneMapID
 end
 
 --------------------------------
