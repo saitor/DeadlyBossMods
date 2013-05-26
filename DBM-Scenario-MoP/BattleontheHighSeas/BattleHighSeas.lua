@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("d652", "DBM-Scenario-MoP")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9645 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9646 $"):sub(12, -3))
 mod:SetZone()
 
 mod:RegisterCombat("scenario", 940)
@@ -25,7 +25,7 @@ local specWarnWaterJets			= mod:NewSpecialWarningSpell(133121, false)
 --Lieutenant Fizzel
 local specWarnVolatileConcoction= mod:NewSpecialWarningSpell(141327)
 --Admiral Hagman
-local specWarnVerticalSlash		= mod:NewSpecialWarningMove(141187)
+local specWarnVerticalSlash		= mod:NewSpecialWarningSpell(141187)
 
 --Lieutenant Drak'on
 local timerSwashbucklingCD		= mod:NewNextTimer(17, 141438)
