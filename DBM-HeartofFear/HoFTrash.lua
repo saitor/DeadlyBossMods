@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("HoFTrash", "DBM-HeartofFear")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9662 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9664 $"):sub(12, -3))
 --mod:SetModelID(47785)
 mod:SetZone()
 
@@ -33,6 +33,7 @@ local function findUnseen()
 		local uId = "raid"..i
 		local name = DBM:GetUnitFullName(uId)
 		if UnitDebuff(uId, spellName) then
+			warnUnseenStrike(name)
 			if name == UnitName("player") then
 				specWarnUnseenStrike:Show()
 				yellUnseenStrike:Yell()
