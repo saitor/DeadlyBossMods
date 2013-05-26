@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Brawlers", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9654 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9655 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 --mod:SetModelID(41448)
 mod:SetZone(DBM_DISABLE_ZONE_DETECTION)
@@ -44,7 +44,7 @@ if currentZoneID == 922 or currentZoneID == 925 then
 		"UNIT_DIED",
 		"UNIT_AURA player"
 	)
-end--We returned to arena, reset variable
+end
 
 function mod:PlayerFighting() -- for external mods
 	return playerIsFighting
@@ -178,7 +178,8 @@ function mod:OnSync(msg)
 			self:RegisterShortTermEvents(
 				"SPELL_CAST_START",
 				"PLAYER_REGEN_ENABLED",
-				"UNIT_DIED"
+				"UNIT_DIED",
+				"UNIT_AURA player"
 			)
 		end
 		if not (currentZoneID == 0 or currentZoneID == 922 or currentZoneID == 925) then return end
