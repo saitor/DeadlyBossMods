@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9671 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9672 $"):sub(12, -3)),
 	DisplayVersion = "5.3.1 alpha", -- the string that is shown as version
 	ReleaseRevision = 9592 -- the revision of the latest stable version that is available
 }
@@ -2098,7 +2098,11 @@ function DBM:LoadMod(mod)
 		if not InCombatLockdown() then--We loaded in combat because a raid boss was in process, but lets at least delay the garbage collect so at least load mod is half as bad, to do our best to avoid "script ran too long"
 			collectgarbage("collect")
 		end
-		loadDelay = nil
+		if type(loadDelay) == "table" then
+			loadDelay[mod] = nil
+		elseif loadDelay == mod then
+			loadDelay = nil
+		end
 		return true
 	end
 end
