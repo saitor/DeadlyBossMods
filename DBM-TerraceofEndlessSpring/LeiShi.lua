@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(729, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9644 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9678 $"):sub(12, -3))
 mod:SetCreatureID(62983)--62995 Animated Protector
 
 mod:RegisterCombat("combat")
@@ -156,8 +156,8 @@ end
 	
 mod:RegisterOnUpdateHandler(function(self)
 	if hasHighestVersion and not (iconsSet == guardActivated) then
-		for i = 1, DBM:GetNumGroupMembers() do
-			local uId = "raid"..i.."target"
+		for uId in DBM:GetGroupMembers() do
+			local uId = uId.."target"
 			local guid = UnitGUID(uId)
 			if guards[guid] then
 				for g,i in pairs(guards) do
