@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9673 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9674 $"):sub(12, -3)),
 	DisplayVersion = "5.3.1 alpha", -- the string that is shown as version
 	ReleaseRevision = 9592 -- the revision of the latest stable version that is available
 }
@@ -164,7 +164,8 @@ DBM.DefaultOptions = {
 	MovieFilters = {},
 	LastRevision = 0,
 	FilterSayAndYell = false,
-	ChatFrame = "DEFAULT_CHAT_FRAME"
+	ChatFrame = "DEFAULT_CHAT_FRAME",
+	barrensSounds = true,
 }
 
 DBM.Bars = DBT:New()
@@ -2799,8 +2800,12 @@ do
 	end
 
 	function DBM:CHAT_MSG_MONSTER_EMOTE(msg)
-		if LastZoneMapID == 11 then--Northern barrens caravan messages
-			PlaySoundFile("Sound\\interface\\UI_RaidBossWhisperWarning.ogg", "Master")
+		if DBM.Options.barrensSounds and LastZoneMapID == 11 then--Northern barrens caravan messages
+			if DBM.Options.UseMasterVolume then
+				PlaySoundFile("Sound\\interface\\UI_RaidBossWhisperWarning.ogg", "Master")
+			else
+				PlaySoundFile("Sound\\interface\\UI_RaidBossWhisperWarning.ogg")
+			end
 		end
 		return onMonsterMessage("emote", msg)
 	end
