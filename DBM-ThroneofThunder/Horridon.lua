@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(819, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9678 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9683 $"):sub(12, -3))
 mod:SetCreatureID(68476)
 mod:SetQuestID(32745)
 mod:SetZone()
@@ -147,14 +147,14 @@ end
 mod:RegisterOnUpdateHandler(function(self)
 	if hasHighestVersion and not (iconsSet == addsJumped) then
 		for uId in DBM:GetGroupMembers() do
-			local uId = uId.."target"
-			local guid = UnitGUID(uId)
+			local unitid = uId.."target"
+			local guid = UnitGUID(unitid)
 			local cid = self:GetCIDFromGUID(guid)
 			if not adds[guid] and balcMobs[cid] then
 				if cid == 69221 then--Dinomancer always skull
-					SetRaidTarget(uId, 8)
+					SetRaidTarget(unitid, 8)
 				else
-					SetRaidTarget(uId, AddIcon)
+					SetRaidTarget(unitid, AddIcon)
 					AddIcon = AddIcon - 1
 				end
 				iconsSet = iconsSet + 1
