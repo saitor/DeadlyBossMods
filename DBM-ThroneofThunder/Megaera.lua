@@ -1,12 +1,13 @@
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9689 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9696 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70212, 70235, 70247)--flaming 70212. Frozen 70235, Venomous 70247
 mod:SetMainBossID(68065)
 mod:SetQuestID(32748)
 mod:SetZone()
 mod:SetUsedIcons(7, 6, 4, 2)
+mod:SetBossHPInfoToHighest()--This shouldn't be nessesary but apparently SetMainBossID doesn't work. boss health is still using lowest HP head. if mainid is set in boss health it should IGNORE ALL OTHER IDs
 
 mod:RegisterCombat("combat")
 
