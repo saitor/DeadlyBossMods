@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9697 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9698 $"):sub(12, -3)),
 	DisplayVersion = "5.3.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 9689 -- the revision of the latest stable version that is available
 }
@@ -1692,7 +1692,7 @@ do
 end
 
 function DBM:GetNumGroupMembers()
-	return GetNumGroupMembers()
+	return IsInGroup() and GetNumGroupMembers() or 1
 end
 
 function DBM:GetBossUnitId(name)
