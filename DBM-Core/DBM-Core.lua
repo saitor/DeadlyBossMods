@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9700 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9701 $"):sub(12, -3)),
 	DisplayVersion = "5.3.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 9689 -- the revision of the latest stable version that is available
 }
@@ -2051,12 +2051,10 @@ function DBM:LoadMod(mod)
 	--IF we are fighting a boss, we don't have much of a choice but to try and load anyways since script ran too long isn't actually a guarentee.
 	--it's mainly for slower computers that fail to load mods in combat. Most can load in combat if we delay the garbage collect
 	if InCombatLockdown() and IsInInstance() and not IsEncounterInProgress() then
---		print("DBM Debug: Mod load delayed because of combat: ", mod)
+		self:AddMsg(DBM_CORE_LOAD_MOD_COMBAT:format(tostring(mod.name)))
 		if loadDelay and loadDelay ~= mod then--Check if load delay exists, but make sure this isn't a loop of same mod before making a second load delay
---			print("DBM Debug: Adding second mod to load delay: ", mod)
 			loadDelay2 = mod
 		else
---			print("DBM Debug: Adding first mod to load delay: ", mod)
 			loadDelay = mod
 		end
 		return
