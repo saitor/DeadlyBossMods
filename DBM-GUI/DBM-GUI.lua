@@ -40,7 +40,7 @@
 
 
 
-local revision =("$Revision: 9644 $"):sub(12, -3)
+local revision =("$Revision: 9708 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -1567,6 +1567,7 @@ local function CreateOptionsMenu()
 		local countSounds = {
 			{	text	= "Mosh (Male)",	value 	= "Mosh"},
 			{	text	= "Corsica (Female)",value 	= "Corsica"},
+			{	text	= "Kolt (Male)",value 	= "Kolt"},
 			{	text	= "None",value 	= "None"},
 		}
 		local CountSoundDropDown = raidwarnoptions:CreateDropdown(L.CountdownVoice, countSounds,
