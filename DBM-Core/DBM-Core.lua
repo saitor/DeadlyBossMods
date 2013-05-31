@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9714 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9715 $"):sub(12, -3)),
 	DisplayVersion = "5.3.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 9689 -- the revision of the latest stable version that is available
 }
@@ -3879,7 +3879,7 @@ function DBM:FindDungeonIDs()
 	for i=1, 1000 do
 		local dungeon = GetDungeonInfo(i)
 		if dungeon then
-			print(i..": "..dungeon)
+			self:AddMsg(i..": "..dungeon)
 		end
 	end
 end
