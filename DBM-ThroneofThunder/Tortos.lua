@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(825, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9708 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9709 $"):sub(12, -3))
 mod:SetCreatureID(67977)
 mod:SetQuestID(32747)
 mod:SetZone()
@@ -158,13 +158,7 @@ function mod:SPELL_CAST_START(args)
 		timerStompCD:Start(nil, stompCount+1)
 		countdownStomp:Start()
 		if self.Options.AnnounceCooldowns then
-			local voice = DBM.Options.CountdownVoice
-			if (voice == "Mosh" and stompCount > 5) or stompCount > 10 then return end
-			if DBM.Options.UseMasterVolume then
-				PlaySoundFile("Interface\\AddOns\\DBM-Core\\Sounds\\"..voice.."\\"..stompCount..".ogg", "Master")
-			else
-				PlaySoundFile("Interface\\AddOns\\DBM-Core\\Sounds\\"..voice.."\\"..stompCount..".ogg")
-			end
+			DBM:PlayCountSound(stompCount)
 		end
 	end
 end

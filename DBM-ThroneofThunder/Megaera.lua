@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9708 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9709 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70212, 70235, 70247)--flaming 70212. Frozen 70235, Venomous 70247
 mod:SetMainBossID(68065)
 mod:SetQuestID(32748)
@@ -352,14 +352,8 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
 			if rampageCast >= 3 then rampageCast = 0 end--We already checked and know option isn't set to 2 or never, so it's definitely set to 3, no need to check option.
 		end
 		if (self.Options.AnnounceCooldowns == "Never") or (arcaneInFront > 0 or arcaneRecent) and ((self.Options.AnnounceCooldowns == "EveryTwoExcludeDiff") or (self.Options.AnnounceCooldowns == "EveryThreeExcludeDiff")) then return end--You have a diffused player, don't call out cds
-		local voice = DBM.Options.CountdownVoice
 		rampageCast = rampageCast + 1
-		if rampageCast > 10 or (rampageCast > 5 and voice == "Mosh") then return end --failsafe
-		if DBM.Options.UseMasterVolume then
-			PlaySoundFile("Interface\\AddOns\\DBM-Core\\Sounds\\"..voice.."\\"..rampageCast..".ogg", "Master")
-		else
-			PlaySoundFile("Interface\\AddOns\\DBM-Core\\Sounds\\"..voice.."\\"..rampageCast..".ogg")
-		end
+		DBM:PlayCountSound(rampageCast)
 	elseif msg == L.rampageEnds or msg:find(L.rampageEnds) then
 		arcaneRecent = false
 		warnRampageFaded:Show()

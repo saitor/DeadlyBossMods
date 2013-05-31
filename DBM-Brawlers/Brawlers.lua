@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Brawlers", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9708 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9709 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 --mod:SetModelID(41448)
 mod:SetZone(DBM_DISABLE_ZONE_DETECTION)
@@ -214,13 +214,7 @@ function mod:UNIT_AURA(uId)
 			specWarnYourNext:Show()
 		end
 		if self.Options.SpeakOutQueue then
-			local voice = DBM.Options.CountdownVoice
-			if (voice == "Mosh" and currentQueueRank > 5) or currentQueueRank > 10 then return end
-			if DBM.Options.UseMasterVolume then
-				PlaySoundFile("Interface\\AddOns\\DBM-Core\\Sounds\\"..voice.."\\"..currentQueueRank..".ogg", "Master")
-			else
-				PlaySoundFile("Interface\\AddOns\\DBM-Core\\Sounds\\"..voice.."\\"..currentQueueRank..".ogg")
-			end
+			DBM:PlayCountSound(currentQueueRank)
 		end
 	end
 end
