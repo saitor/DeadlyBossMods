@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9709 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9721 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70212, 70235, 70247)--flaming 70212. Frozen 70235, Venomous 70247
 mod:SetMainBossID(68065)
 mod:SetQuestID(32748)
@@ -64,7 +64,7 @@ local timerBreathsCD			= mod:NewTimer(16, "timerBreathsCD", 137731, nil, false)-
 
 --TODO, maybe monitor length since last cast and if it's 28 instead of 25, make next timer also 28 for remainder of that head phase (then return to 25 after rampage unless we detect another 28)
 --TODO, Verify timers on normal. WoL bugs out and combines GUIDs making it hard to determine actual CDs in my logs.
-local timerCinderCD				= mod:NewCDTimer(25, 139822, nil, not mod:IsTank())--The cd is either 25 or 28 (either or apparently, no in between). it can even swap between teh two in SAME pull
+local timerCinderCD				= mod:NewCDTimer(25, 139822, nil, not mod:IsTank())--The cd is either 25 or 28 (either or apparently, no in between). it can even swap between the two in SAME pull
 local timerTorrentofIce			= mod:NewBuffFadesTimer(11, 139866)
 local timerTorrentofIceCD		= mod:NewCDTimer(25, 139866, nil, not mod:IsTank())--Same as bove, either 25 or 28
 local timerNetherTearCD			= mod:NewCDTimer(25, 140138)--Heroic. Also either 25 or 28. On by default since these require more pre planning than fire and ice.
