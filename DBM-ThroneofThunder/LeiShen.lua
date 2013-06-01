@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(832, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9723 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9726 $"):sub(12, -3))
 mod:SetCreatureID(68397)--Diffusion Chain Conduit 68696, Static Shock Conduit 68398, Bouncing Bolt conduit 68698, Overcharge conduit 68697
 mod:SetQuestID(32756)
 mod:SetZone()
@@ -92,7 +92,7 @@ local timerHelmOfCommand				= mod:NewCDTimer(14, 139011)
 local berserkTimer						= mod:NewBerserkTimer(900)--Confirmed in LFR, probably the same in all modes though?
 
 local countdownThunderstruck			= mod:NewCountdown(46, 135095)
-local countdownBouncingBolt				= mod:NewCountdown(40, 136361)--Pretty big deal on heroic, it's the one perminent ability you see in all strats. Should now play nice with thunderstruck with alternate voice code in ;)
+local countdownBouncingBolt				= mod:NewCountdown(40, 136361, nil, nil, nil, nil, true)--Pretty big deal on heroic, it's the one perminent ability you see in all strats. Should now play nice with thunderstruck with alternate voice code in ;)
 local countdownStaticShockFades			= mod:NewCountdownFades(7, 135695, false)--May confuse with thundershock option default so off as default.
 
 local soundDecapitate					= mod:NewSound(134912)
