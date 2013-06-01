@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(824, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9723 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9724 $"):sub(12, -3))
 mod:SetCreatureID(69427)
 mod:SetQuestID(32752)
 mod:SetZone()
@@ -209,6 +209,10 @@ end
 function mod:OnSync(msg, guid)
 	if msg == "WakeTarget" and guid then
 		warnCrimsonWake:Show(DBM:GetFullPlayerNameByGUID(guid))
+	elseif msg == "TestFunction" then
+		countdownAnimaRing:Start(13)
+		timerAnimaRingCD:Start(13)
+		countdownInterruptingJolt:Start(11)
+		timerInterruptingJoltCD:Start(11)
 	end
 end
-
