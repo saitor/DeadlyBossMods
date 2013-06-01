@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9721 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9722 $"):sub(12, -3)),
 	DisplayVersion = "5.3.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 9689 -- the revision of the latest stable version that is available
 }
@@ -5209,10 +5209,15 @@ do
 		return newSpecialWarning(self, "prewarn", text, time, optionDefault, ...)
 	end
 	
-	function DBM:PlayCountSound(number)
+	function DBM:PlayCountSound(number, forceVoice)
 		if number > 10 then return end
-		local voice = DBM.Options.CountdownVoice
-		local voice2 = DBM.Options.CountdownVoice2
+		local voice, voice2
+		if forceVoice then--Primarlly for options
+			voice = forceVoice
+		else
+			voice = DBM.Options.CountdownVoice
+			voice2 = DBM.Options.CountdownVoice2
+		end
 		if number > 5 and (voice == "Mosh") then--Can't count past 5
 			if voice ~= voice2 then
 				voice = voice2--Fall back to secondary voice option if primary is mosh
