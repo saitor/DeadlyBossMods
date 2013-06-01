@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(832, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9712 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9723 $"):sub(12, -3))
 mod:SetCreatureID(68397)--Diffusion Chain Conduit 68696, Static Shock Conduit 68398, Bouncing Bolt conduit 68698, Overcharge conduit 68697
 mod:SetQuestID(32756)
 mod:SetZone()
@@ -92,6 +92,7 @@ local timerHelmOfCommand				= mod:NewCDTimer(14, 139011)
 local berserkTimer						= mod:NewBerserkTimer(900)--Confirmed in LFR, probably the same in all modes though?
 
 local countdownThunderstruck			= mod:NewCountdown(46, 135095)
+local countdownBouncingBolt				= mod:NewCountdown(40, 136361)--Pretty big deal on heroic, it's the one perminent ability you see in all strats. Should now play nice with thunderstruck with alternate voice code in ;)
 local countdownStaticShockFades			= mod:NewCountdownFades(7, 135695, false)--May confuse with thundershock option default so off as default.
 
 local soundDecapitate					= mod:NewSound(134912)
@@ -330,6 +331,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerOverchargeCD:Cancel()
 	elseif args.spellId == 135683 and args:GetDestCreatureID() == 68397 and not intermissionActive then--West (Bouncing Bolt)
 		timerBouncingBoltCD:Cancel()
+		countdownBouncingBolt:Cancel()
 		specWarnBouncingBoltSoon:Cancel()
 	--Conduit deactivations
 	elseif args.spellId == 135695 and self.Options.SetIconOnStaticShock then
@@ -385,6 +387,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 			end
 			if westDestroyed then
 				timerBouncingBoltCD:Start(14)
+				countdownBouncingBolt:Start(14)
 			end
 		end
 		if phase == 2 then--Start Phase 2 timers
@@ -470,6 +473,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		timerDiffusionChainCD:Cancel()
 		timerOverchargeCD:Cancel()
 		timerBouncingBoltCD:Cancel()
+		countdownBouncingBolt:Cancel()
 		if not eastDestroyed then
 			if self:IsDifficulty("lfr25") then
 				timerDiffusionChainCD:Start(10)
@@ -507,6 +511,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		warnBouncingBolt:Show()
 		specWarnBouncingBolt:Show()
 		timerBouncingBoltCD:Start()
+		countdownBouncingBolt:Start()
 		specWarnBouncingBoltSoon:Schedule(36)
 	elseif spellId == 136869 and self:AntiSpam(2, 4) then--Violent Gale Winds
 		warnViolentGaleWinds:Show()
