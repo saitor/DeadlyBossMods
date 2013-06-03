@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9746 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9747 $"):sub(12, -3)),
 	DisplayVersion = "5.3.3 alpha", -- the string that is shown as version
 	ReleaseRevision = 9727 -- the revision of the latest stable version that is available
 }
@@ -2883,7 +2883,7 @@ end
 function DBM:StartCombat(mod, delay, synced, syncedStartHp, noKillRecord, triggerEvent)
 	--Seeing more and more bad pulls during raids. Need to track down source of this problem. Bosses "engaging" during trash that should be impossible. Trolled syncs, or a mysterious bug on our end?
 	if triggerEvent then
-		print("DBM Combat Debug: ", "Combat started by "..triggerEvent, ". Encounter in progress: "..IsEncounterInProgress())
+		print("DBM Combat Debug: Combat started by "..triggerEvent..". Encounter in progress: "..IsEncounterInProgress())
 	end
 	if not checkEntry(inCombat, mod) then
 		if not mod.Options.Enabled then return end
