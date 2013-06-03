@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(832, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9740 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9749 $"):sub(12, -3))
 mod:SetCreatureID(68397)--Diffusion Chain Conduit 68696, Static Shock Conduit 68398, Bouncing Bolt conduit 68698, Overcharge conduit 68697
 mod:SetQuestID(32756)
 mod:SetZone()
@@ -12,13 +12,8 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_SUCCESS",
-	"SPELL_DAMAGE",
-	"SPELL_MISSED",
-	"SPELL_PERIODIC_DAMAGE",
-	"SPELL_PERIODIC_MISSED",
 	"CHAT_MSG_RAID_BOSS_EMOTE",
 	"UNIT_SPELLCAST_SUCCEEDED"
 )
@@ -153,7 +148,11 @@ function mod:OnCombatStart(delay)
 	timerDecapitateCD:Start(40-delay)--First seems to be 45, rest 50. it's a CD though, not a "next"
 	berserkTimer:Start(-delay)
 	self:RegisterShortTermEvents(
-		"UNIT_HEALTH_FREQUENT boss1"
+		"UNIT_HEALTH_FREQUENT boss1",
+		"SPELL_DAMAGE",
+		"SPELL_MISSED",
+		"SPELL_PERIODIC_DAMAGE",
+		"SPELL_PERIODIC_MISSED"
 	)-- Do not use on phase 3.
 end
 
