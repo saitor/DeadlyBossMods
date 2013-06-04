@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9745 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9754 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70212, 70235, 70247)--flaming 70212. Frozen 70235, Venomous 70247
 mod:SetMainBossID(68065)
 mod:SetQuestID(32748)
@@ -98,6 +98,7 @@ local arcaneRecent = false
 
 local function warnTorrent(name)
 	if not name then return end
+	print("DBM Torrent Debug: "..name)
 	warnTorrentofIce:Show(name)
 	if name == UnitName("player") then
 		specWarnTorrentofIceYou:Show()
