@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BrawlRare2", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9758 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9759 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 mod:SetModelID(46265)
 mod:SetZone()
@@ -31,6 +31,8 @@ local timerRockpaperScissorsCD		= mod:NewCDTimer(42, 141206)--Not a large enough
 local timerBlindStrikeCD			= mod:NewNextTimer(5, 141189)
 local timerSwiftStrikeCD			= mod:NewNextTimer(2.4, 141190, nil, false)--May help some but off by default so it doesn't detour focus from the most important one, blind cleave
 local timerBlindCleaveD				= mod:NewNextTimer(13, 141192)
+
+local soundBlindCleave				= mod:NewSound(141192)
 
 mod:RemoveOption("HealthFrame")
 mod:RemoveOption("SpeedKillTimer")
@@ -71,6 +73,11 @@ function mod:SPELL_CAST_START(args)
 		warnSwiftStrike:Show(swiftStrike)
 		if swiftStrike < 4 then
 			timerSwiftStrikeCD:Start()
+		else
+			if brawlersMod:PlayerFighting() then
+				specWarnBlindCleave:Show()
+				soundBlindCleave:Play()
+			end
 		end
 		if brawlersMod:PlayerFighting() and self.Options.SpeakOutStrikes then
 			DBM:PlayCountSound(swiftStrike)
@@ -78,8 +85,5 @@ function mod:SPELL_CAST_START(args)
 	elseif args.spellId == 141192 then
 		warnBlindCleave:Show()
 		timerBlindStrikeCD:Start()
-		if brawlersMod:PlayerFighting() then
-			specWarnBlindCleave:Show()
-		end
 	end
 end
