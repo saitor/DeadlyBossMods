@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BrawlRare2", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9770 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9771 $"):sub(12, -3))
 --mod:SetCreatureID(60491)
 mod:SetModelID(48465)
 mod:SetZone()
@@ -54,6 +54,10 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
 		lastRPS = L.scissors
 	end
 end
+
+brawlersMod:OnMatchStart(function()
+	lastRPS = DBM_CORE_UNKNOWN
+end)
 
 function mod:SPELL_AURA_APPLIED(args)
 	if not brawlersMod.Options.SpectatorMode and not brawlersMod:PlayerFighting() then return end--Spectator mode is disabled, do nothing.
