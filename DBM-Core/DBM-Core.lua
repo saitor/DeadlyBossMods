@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9772 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9773 $"):sub(12, -3)),
 	DisplayVersion = "5.3.3 alpha", -- the string that is shown as version
 	ReleaseRevision = 9727 -- the revision of the latest stable version that is available
 }
@@ -2218,7 +2218,7 @@ do
 		end
 		if not DBM.Options.DontShowPTText then
 			DBM:AddMsg(DBM_CORE_ANNOUNCE_PULL:format(timer))
-			DBM:Schedule(timer, DBM:AddMsg(DBM_CORE_ANNOUNCE_PULL_NOW))
+--			DBM:Schedule(timer, DBM:AddMsg(DBM_CORE_ANNOUNCE_PULL_NOW))--Not working at the moment?
 		end
 		DBM:StartLogging(timer, checkForActualPull)
 	end
