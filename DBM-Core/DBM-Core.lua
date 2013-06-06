@@ -44,7 +44,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9777 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9778 $"):sub(12, -3)),
 	DisplayVersion = "5.3.3 alpha", -- the string that is shown as version
 	ReleaseRevision = 9727 -- the revision of the latest stable version that is available
 }
@@ -3869,7 +3869,7 @@ function DBM:RoleCheck()
 	end
 	--Loot reminder even if spec isn't known or we are in LFR where we have a valid for role without us being ones that set us.
 	if lootrole and (role ~= lootrole) then
-		self:AddMsg(DBM_CORE_LOOT_SPEC_REMINDER:format(role or DBM_CORE_UNKNOWN, lootrole))
+		self:AddMsg(DBM_CORE_LOOT_SPEC_REMINDER:format(_G[role] or DBM_CORE_UNKNOWN, _G[lootrole]))
 	end
 end
 
