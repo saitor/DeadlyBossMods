@@ -43,7 +43,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9809 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9810 $"):sub(12, -3)),
 	DisplayVersion = "5.3.3 alpha", -- the string that is shown as version
 	ReleaseRevision = 9727 -- the revision of the latest stable version that is available
 }
@@ -4021,14 +4021,14 @@ do
 
 		if tonumber(name) then
 			local t = EJ_GetEncounterInfo(tonumber(name))
-			obj.localization.general.name = string.split(",", t)
+			obj.localization.general.name = string.split(",", t or "")
 			obj.modelId = select(4, EJ_GetCreatureInfo(1, tonumber(name)))
 		elseif name:match("z%d+") then
 			local t = GetRealZoneText(string.sub(name, 2))
-			obj.localization.general.name = string.split(",", t)
+			obj.localization.general.name = string.split(",", t or "")
 		elseif name:match("d%d+") then
 			local t = GetDungeonInfo(string.sub(name, 2))
-			obj.localization.general.name = string.split(",", t)
+			obj.localization.general.name = string.split(",", t or "")
 		end
 		table.insert(self.Mods, obj)
 		modsById[name] = obj
