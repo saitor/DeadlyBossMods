@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(832, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9818 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9819 $"):sub(12, -3))
 mod:SetCreatureID(68397)--Diffusion Chain Conduit 68696, Static Shock Conduit 68398, Bouncing Bolt conduit 68698, Overcharge conduit 68697
 mod:SetQuestID(32756)
 mod:SetZone()
@@ -302,7 +302,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		self:Schedule(0.3, warnHelmOfCommandTargets)
 	elseif args.spellId == 136914 then
 		local amount = args.amount or 1
-		if amount >= 12 then
+		if amount >= 12 and self:AntiSpam(2.5, 6) then
 			if args:IsPlayer() then
 				specWarnElectricalShock:Show(args.amount)
 			else
