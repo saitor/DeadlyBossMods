@@ -43,7 +43,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9827 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9828 $"):sub(12, -3)),
 	DisplayVersion = "5.3.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 9810 -- the revision of the latest stable version that is available
 }
@@ -2896,6 +2896,7 @@ function DBM:StartCombat(mod, delay, synced, syncedStartHp, noKillRecord, trigge
 	if triggerEvent and not IsEncounterInProgress() and instanceType == "raid" then
 		print("DBM Combat Debug: Combat started by "..triggerEvent..". Encounter in progress: "..tostring(IsEncounterInProgress()))
 	end
+	if instanceType == "none" and not UnitAffectingCombat("player") then return end--Ignore world boss pulls if you aren't fighting them.
 	if not checkEntry(inCombat, mod) then
 		if not mod.Options.Enabled then return end
 		-- HACK: makes sure that we don't detect a false pull if the event fires again when the boss dies...
