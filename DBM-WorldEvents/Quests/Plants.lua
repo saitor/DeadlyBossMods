@@ -1,8 +1,7 @@
 local mod	= DBM:NewMod("PlantsVsZombies", "DBM-WorldEvents", 3)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9656 $"):sub(12, -3))
-mod:SetZone(24)--Hillsbrad Foothills
+mod:SetRevision(("$Revision: 9834 $"):sub(12, -3))
 
 mod:RegisterEvents(
 	"UNIT_SPELLCAST_SUCCEEDED player",
