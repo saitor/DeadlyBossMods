@@ -1,10 +1,11 @@
 local mod	= DBM:NewMod("Omen", "DBM-WorldEvents", 1)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9834 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9838 $"):sub(12, -3))
 mod:SetCreatureID(15467)
 mod:SetModelID(15879)
 mod:SetReCombatTime(10)
+mod:SetZone(DBM_DISABLE_ZONE_DETECTION)
 
 mod:RegisterCombat("combat")
 
