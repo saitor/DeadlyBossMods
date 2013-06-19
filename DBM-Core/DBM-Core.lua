@@ -43,7 +43,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9838 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9839 $"):sub(12, -3)),
 	DisplayVersion = "5.3.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 9810 -- the revision of the latest stable version that is available
 }
@@ -1983,9 +1983,9 @@ end
 do	
 	--Faster and more accurate loading for instances, but useless outside of them
 	function DBM:LOADING_SCREEN_DISABLED()
-		if not IsInInstance() then return end
 		local _, instanceType, _, _, _, _, _, mapID = GetInstanceInfo()
 		LastInstanceMapID = mapID
+		if instanceType == "none" then return end
 		self:LoadModsOnDemand("mapId", mapID)
 		if instanceType == "scenario" and self:GetModByName("d511") then--mod already loaded
 			DBM:InstanceCheck()
