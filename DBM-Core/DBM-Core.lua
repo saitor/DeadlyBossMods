@@ -43,7 +43,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9836 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9837 $"):sub(12, -3)),
 	DisplayVersion = "5.3.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 9810 -- the revision of the latest stable version that is available
 }
@@ -3879,6 +3879,7 @@ end
 
 function DBM:UpdateMapSizes()
 	-- try custom map size first
+	SetMapToCurrentZone()
 	local mapName = GetMapInfo()
 	local floor, a1, b1, c1, d1 = GetCurrentMapDungeonLevel()
 	local dims = DBM.MapSizes[mapName] and DBM.MapSizes[mapName][floor]
@@ -3901,7 +3902,6 @@ end
 
 function DBM:GetMapSizes()
 	if not currentSizes then
-		SetMapToCurrentZone()
 		DBM:UpdateMapSizes()
 	end
 	return currentSizes
