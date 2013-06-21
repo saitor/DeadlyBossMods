@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(832, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9846 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9847 $"):sub(12, -3))
 mod:SetCreatureID(68397)--Diffusion Chain Conduit 68696, Static Shock Conduit 68398, Bouncing Bolt conduit 68698, Overcharge conduit 68697
 mod:SetQuestID(32756)
 mod:SetZone()
@@ -92,6 +92,7 @@ local timerViolentGaleWinds				= mod:NewBuffActiveTimer(18, 136889)
 local timerViolentGaleWindsCD			= mod:NewNextTimer(30.5, 136889)
 --Heroic
 local timerHelmOfCommand				= mod:NewCDTimer(14, 139011)
+local timerMassSpellReflect				= mod:NewBuffActiveTimer(5, 114028)
 
 local berserkTimer						= mod:NewBerserkTimer(900)--Confirmed in LFR, probably the same in all modes though?
 
@@ -358,6 +359,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		reflectCount = reflectCount + 1
 		warnMassSpellReflect:Show(reflectCount)
 		specWarnMassSpellReflect:Show(reflectCount)
+		timerMassSpellReflect:Start()
 	end
 end
 
