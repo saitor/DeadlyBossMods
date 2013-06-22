@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(832, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9855 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9859 $"):sub(12, -3))
 mod:SetCreatureID(68397)--Diffusion Chain Conduit 68696, Static Shock Conduit 68398, Bouncing Bolt conduit 68698, Overcharge conduit 68697
 mod:SetQuestID(32756)
 mod:SetZone()
@@ -22,7 +22,7 @@ mod:RegisterEventsInCombat(
 --Conduits (All phases)
 local warnStaticShock					= mod:NewTargetAnnounce(135695, 4)
 local warnDiffusionChain				= mod:NewTargetAnnounce(135991, 3)--More informative than actually preventative. (you need to just spread out, and that's it. can't control who it targets only that it doesn't spread)
-local warnDiffusionChainSpread			= mod:NewAnnounce("warnDiffusionChainSpread", 4, 135991, false)
+local warnDiffusionChainSpread			= mod:NewAnnounce("warnDiffusionChainSpread", 4, 135991)
 local warnOvercharged					= mod:NewTargetAnnounce(136295, 3)
 local warnBouncingBolt					= mod:NewSpellAnnounce(136361, 3)
 --Phase 1
@@ -343,7 +343,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnDiffusionChain:Show(diffusionCastTarget)
 		if not intermissionActive then
 			timerDiffusionChainCD:Start()
-			if not (phase == 2 and westDestroyed) then--Disable this countdown in phase 2 if using bouncing bolt strat. so they don't overlap. this is mainly for the diffusion chain strat (ie overloading DC and static shock on heroic vs bouncing and static)
+			if not (phase == 2 and westDestroyed) or not self:IsDifficulty("heroic10", "heroic25") then--Disable this countdown in phase 2 if using bouncing bolt strat. so they don't overlap. this is mainly for the diffusion chain strat (ie overloading DC and static shock on heroic vs bouncing and static)
 				countdownDiffusionChain:Start()
 			end
 			specWarnDiffusionChainSoon:Schedule(36)
@@ -466,7 +466,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 				end
 				if westDestroyed then
 					timerBouncingBoltCD:Start(14)
-					if not eastDestroyed then--Why in the hell would you do that? Diffusion chaim & bouncing bolts? you must be nuts
+					if not eastDestroyed or not self:IsDifficulty("heroic10", "heroic25") then--Why in the hell would you do that? Diffusion chaim & bouncing bolts? you must be nuts
 						countdownBouncingBolt:Start(14)--Of the two, diffusion chains more important so we disable bouncing count
 					end
 				end
@@ -489,7 +489,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 				end
 				if eastDestroyed then
 					timerDiffusionChainCD:Start(28)
-					if not westDestroyed then--Why in the fuck would you do that? Diffusion chaim & bouncing bolts? you must be nuts
+					if not westDestroyed or not self:IsDifficulty("heroic10", "heroic25") then--Why in the fuck would you do that? Diffusion chaim & bouncing bolts? you must be nuts
 						countdownDiffusionChain:Start(28)
 					end
 				end
@@ -608,7 +608,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		warnBouncingBolt:Show()
 		specWarnBouncingBolt:Show()
 		timerBouncingBoltCD:Start(40)
-		if not (phase == 2 and eastDestroyed) then--Disable this countdown in phase 2 if using diffusion strat
+		if not (phase == 2 and eastDestroyed) or not self:IsDifficulty("heroic10", "heroic25") then--Disable this countdown in phase 2 if using diffusion strat
 			countdownBouncingBolt:Start(40)
 		end
 		specWarnBouncingBoltSoon:Schedule(36)
