@@ -2,7 +2,7 @@ if GetBuildInfo() ~= "5.4.0" then return end
 local mod	= DBM:NewMod(861, "DBM-Pandaria", nil, 322)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9870 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9871 $"):sub(12, -3))
 mod:SetCreatureID(72057)
 --mod:SetQuestID(32519)
 mod:SetZone()
@@ -88,6 +88,7 @@ end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 144689 then
+		timerBurningSoul:Cancel(args.destName)
 		if self.Options.SetIconOnBurningSoul then
 			self:SetIcon(args.destName, 0)
 		end
