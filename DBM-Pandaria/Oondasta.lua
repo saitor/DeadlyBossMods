@@ -1,9 +1,9 @@
 local mod	= DBM:NewMod(826, "DBM-Pandaria", nil, 322)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9841 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9867 $"):sub(12, -3))
 mod:SetCreatureID(69161)
-mod:SetQuestID(32519)--Note, this is currently bugged and returns nalak's answer (ie, yes if nalak has been killed no if nalak hasn't, it doesn't reference oondasta at all until blizzard fixes it)
+mod:SetQuestID(32519)
 mod:SetZone()
 
 mod:RegisterCombat("combat")
