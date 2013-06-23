@@ -2,8 +2,8 @@ if GetBuildInfo() ~= "5.4.0" then return end
 local mod	= DBM:NewMod(860, "DBM-Pandaria", nil, 322)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9861 $"):sub(12, -3))
---mod:SetCreatureID(72617)
+mod:SetRevision(("$Revision: 9866 $"):sub(12, -3))
+mod:SetCreatureID(71953)
 --mod:SetQuestID(32519)--Note, this is currently bugged and returns nalak's answer (ie, yes if nalak has been killed no if nalak hasn't, it doesn't reference oondasta at all until blizzard fixes it)
 mod:SetZone()
 
