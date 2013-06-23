@@ -43,7 +43,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9868 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9869 $"):sub(12, -3)),
 	DisplayVersion = "5.3.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 9810 -- the revision of the latest stable version that is available
 }
@@ -4211,7 +4211,7 @@ function bossModPrototype:Stop(cid)
 end
 
 function bossModPrototype:IsDifficulty(...)
-	local diff = self:GetCurrentInstanceDifficulty()
+	local diff = DBM:GetCurrentInstanceDifficulty()
 	for i = 1, select("#", ...) do
 		if diff == select(i, ...) then
 			return true
