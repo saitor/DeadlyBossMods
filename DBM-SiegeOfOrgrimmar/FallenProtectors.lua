@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(849, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9879 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9880 $"):sub(12, -3))
 mod:SetCreatureID(71479)--he-softfoot
 --mod:SetQuestID(32744)
 mod:SetZone()
@@ -85,7 +85,7 @@ function mod:SPELL_CAST_START(args)
 		local source = args.sourceName
 		warnCorruptionShock:Show()
 		if source == UnitName("target") or source == UnitName("focus") then 
-			specWarnCorruptionShock:show(source)
+			specWarnCorruptionShock:Show(source)
 		end
 	elseif args.spellId == 143330 then
 		warnGouge:Show()
