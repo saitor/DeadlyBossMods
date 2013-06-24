@@ -1,8 +1,7 @@
-if GetBuildInfo() ~= "5.4.0" then return end
 local mod	= DBM:NewMod(852, "DBM-FallOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9874 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9877 $"):sub(12, -3))
 mod:SetCreatureID(71543, 72436)--Doesn't die, will need kill detection
 --mod:SetQuestID(32744)
 mod:SetZone()
