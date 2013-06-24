@@ -1,7 +1,7 @@
-local mod	= DBM:NewMod("FoOTrash", "DBM-FallOfOrgrimmar")
+local mod	= DBM:NewMod("FoOTrash", "DBM-SiegeOfOrgrimmar")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9877 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9878 $"):sub(12, -3))
 --mod:SetModelID(47785)
 mod:SetZone()
 
