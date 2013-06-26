@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("d504", "DBM-Scenario-MoP")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9883 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9891 $"):sub(12, -3))
 mod:SetZone()
 
 mod:RegisterCombat("scenario", 1030)
@@ -52,7 +52,7 @@ mod:RemoveOption("HealthFrame")
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 142884 then
 		warnFear:Show()
-		specWarnFear:Show()
+		specWarnFear:Show(args.sourceName)
 	elseif args.spellId == 119843 then
 		warnGuardianStrike:Show()
 		specWarnGuardianStrike:Show()
