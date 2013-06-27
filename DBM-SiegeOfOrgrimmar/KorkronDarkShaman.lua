@@ -1,10 +1,11 @@
 local mod	= DBM:NewMod(856, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9892 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9893 $"):sub(12, -3))
 mod:SetCreatureID(71859, 71858)--haromm, Kardris
 --mod:SetQuestID(32744)
 mod:SetZone()
+mod:SetUsedIcons(5, 4, 3, 2, 1)
 
 mod:RegisterCombat("combat")
 
@@ -75,10 +76,6 @@ local function warnToxicMistTargets()
 	table.wipe(toxicMistsTargets)
 end
 
-local function ClearToxicMistTargets()
-	table.wipe(toxicMistsTargetsIcons)
-end
-
 --Auto detection of "tank them apart" strategy. if you keep them > 40 yards apart like we did, abilities other casts do not concern you.
 local function checkTankDistance(cid)
 	local _, uId = mod:GetBossTarget(cid)
@@ -94,6 +91,10 @@ local function checkTankDistance(cid)
 		end
 	end
 	return false
+end
+
+local function ClearToxicMistTargets()
+	table.wipe(toxicMistsTargetsIcons)
 end
 
 do
