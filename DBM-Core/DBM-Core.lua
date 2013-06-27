@@ -43,7 +43,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9897 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9898 $"):sub(12, -3)),
 	DisplayVersion = "5.3.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 9810 -- the revision of the latest stable version that is available
 }
@@ -159,10 +159,9 @@ DBM.DefaultOptions = {
 	SettingsMessageShown = false,
 	ForumsMessageShown = false,
 	AlwaysShowSpeedKillTimer = true,
-	DisableCinematics = false,
 --	HelpMessageShown = false,
 	MoviesSeen = {},
-	MovieFilter = "AfterFirst",
+	MovieFilter = "Never",
 	LastRevision = 0,
 	FilterSayAndYell = false,
 	ChatFrame = "DEFAULT_CHAT_FRAME",
@@ -1916,13 +1915,14 @@ function DBM:PLAYER_TARGET_CHANGED()
 	end
 end
 
-function DBM:CINEMATIC_START(id)
-	print(id)
+function DBM:CINEMATIC_START(...)
 	if DBM.Options.MovieFilter == "Never" then return end
-	if DBM.Options.MovieFilter == "Block" or DBM.Options.MovieFilter == "AfterFirst" and DBM.Options.MoviesSeen[id] then
+	SetMapToCurrentZone()
+	local currentFloor = GetCurrentMapDungeonLevel() or 0
+	if DBM.Options.MovieFilter == "Block" or DBM.Options.MovieFilter == "AfterFirst" and DBM.Options.MoviesSeen[LastInstanceMapID..currentFloor] then
 		CinematicFrame_CancelCinematic()
 	else
-		DBM.Options.MoviesSeen[id] = true
+		DBM.Options.MoviesSeen[LastInstanceMapID..currentFloor] = true
 	end
 end
 
