@@ -43,7 +43,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9898 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9899 $"):sub(12, -3)),
 	DisplayVersion = "5.3.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 9810 -- the revision of the latest stable version that is available
 }
@@ -1918,11 +1918,12 @@ end
 function DBM:CINEMATIC_START(...)
 	if DBM.Options.MovieFilter == "Never" then return end
 	SetMapToCurrentZone()
+	local currentMapID = GetCurrentMapAreaID()
 	local currentFloor = GetCurrentMapDungeonLevel() or 0
-	if DBM.Options.MovieFilter == "Block" or DBM.Options.MovieFilter == "AfterFirst" and DBM.Options.MoviesSeen[LastInstanceMapID..currentFloor] then
+	if DBM.Options.MovieFilter == "Block" or DBM.Options.MovieFilter == "AfterFirst" and DBM.Options.MoviesSeen[currentMapID..currentFloor] then
 		CinematicFrame_CancelCinematic()
 	else
-		DBM.Options.MoviesSeen[LastInstanceMapID..currentFloor] = true
+		DBM.Options.MoviesSeen[currentMapID..currentFloor] = true
 	end
 end
 
