@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(831, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9900 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9901 $"):sub(12, -3))
 mod:SetCreatureID(69473)--69888
 mod:SetQuestID(32753)
 mod:SetZone()
@@ -98,6 +98,12 @@ function mod:OnCombatStart(delay)
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:SetHeader(L.WrongDebuff:format(L.NoSensitivity))
 		DBM.InfoFrame:Show(10, "reverseplayerbaddebuff", 138372, nil, nil, nil, nil, true)
+	end
+end
+
+function mod:OnCombatEnd()
+	if self.Options.InfoFrame then
+		DBM.InfoFrame:Hide()
 	end
 end
 
@@ -222,5 +228,8 @@ function mod:OnSync(msg)
 		timerFatalStrikeCD:Cancel()
 		timerCreationCD:Cancel()
 		timerCallEssenceCD:Start()
+--[[		if self.Options.InfoFrame then
+			DBM.InfoFrame:Hide()
+		end--]]
 	end
 end
