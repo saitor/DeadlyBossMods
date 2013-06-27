@@ -43,7 +43,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 9895 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 9896 $"):sub(12, -3)),
 	DisplayVersion = "5.3.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 9810 -- the revision of the latest stable version that is available
 }
@@ -1917,6 +1917,7 @@ function DBM:PLAYER_TARGET_CHANGED()
 end
 
 function DBM:CINEMATIC_START(id)
+	print(id)
 	if DBM.Options.MovieFilter == "Never" then return end
 	if DBM.Options.MovieFilter == "Block" or DBM.Options.MovieFilter == "AfterFirst" and DBM.Options.MoviesSeen[id] then
 		CinematicFrame_CancelCinematic()
