@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(831, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9912 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9913 $"):sub(12, -3))
 mod:SetCreatureID(69473)--69888
 mod:SetQuestID(32753)
 mod:SetZone()
@@ -47,7 +47,7 @@ local specWarnCracklingStalker	= mod:NewSpecialWarningSwitch(138339, mod:IsRange
 local specWarnVitaSensitive		= mod:NewSpecialWarningYou(138372)
 local specWarnVitaSoaker		= mod:NewSpecialWarning("specWarnVitaSoaker")
 local specWarnUnstablVita		= mod:NewSpecialWarningYou(138297, nil, nil, nil, 3)
-local specWarnUnstablVitaJump	= mod:NewSpecialWarningYou(138297, nil, nil, nil, 1)
+local specWarnUnstablVitaJump	= mod:NewSpecialWarningYou(138308, nil, nil, nil, 1)
 local yellUnstableVita			= mod:NewYell(138297, nil, false)
 --General
 local specWarnCreation			= mod:NewSpecialWarningSpell(138321, mod:IsDps())
@@ -252,7 +252,7 @@ end
 
 function mod:UNIT_POWER_FREQUENT(uId)
 	local power = UnitPower(uId)
-	if power == 90 and UnitBuff(uId, GetSpellInfo(138332)) then
+	if power == 90 and UnitBuff(uId, GetSpellInfo(138332)) and self:AntiSpam() then
 		specWarnFatalStrike:Show()
 	end
 end
