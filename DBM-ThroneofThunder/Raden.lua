@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(831, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9921 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9922 $"):sub(12, -3))
 mod:SetCreatureID(69473)--69888
 mod:SetQuestID(32753)
 mod:SetZone()
@@ -119,7 +119,7 @@ function mod:OnCombatStart(delay)
 	creationCount = 0
 	stalkerCount = 0
 	horrorCount = 0
-	lastsPlayerOne = nil
+	lastPlayerOne = nil
 	lastPlayerTwo = nil
 	timerCreationCD:Start(11-delay, 1)
 	countdownCreation:Start(11-delay)
