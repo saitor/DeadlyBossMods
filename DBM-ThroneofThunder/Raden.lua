@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(831, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9909 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9910 $"):sub(12, -3))
 mod:SetCreatureID(69473)--69888
 mod:SetQuestID(32753)
 mod:SetZone()
@@ -14,6 +14,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
 	"SPELL_AURA_APPLIED",
+	"SPELL_AURA_REMOVED",
 	"UNIT_SPELLCAST_SUCCEEDED boss1"
 )
 
@@ -199,7 +200,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.SetIconsOnVita then
 			playerWithVita = DBM:GetRaidUnitId(args.destName)
 			self:SetIcon(args.destName, 1)
-			self:UnscheduleMethod("checkVitaDistance")
 			self:ScheduleMethod(6, "checkVitaDistance")--Wait about 6 seconds for initial. don't want to spam icons before next target actually runs out. May raise initial even higher, debuff is 12 seconds. so maybe 7-8 if 6 too soon 
 		end
 		warnUnstableVita:Show(args.destName)
