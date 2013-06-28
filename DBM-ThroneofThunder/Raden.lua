@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(831, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9916 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9920 $"):sub(12, -3))
 mod:SetCreatureID(69473)--69888
 mod:SetQuestID(32753)
 mod:SetZone()
@@ -79,6 +79,7 @@ local furthestDistancePlayer = nil
 local lastfurthestDistancePlayer = nil
 local lastsPlayerOne = nil
 local lastPlayerTwo = nil
+local playerName = UnitName("player")
 local vitaName = GetSpellInfo(138332)
 local animaName = GetSpellInfo(138331)
 
@@ -105,13 +106,13 @@ function mod:checkVitaDistance()
 end
 
 local function infoFrameChanged(players)
-	if players[1] == UnitName("player") and self:AntiSpam(12, players[1]) then
+	if players[1] == playerName and playerName ~= lastsPlayerOne then
 		specWarnVitaSoaker:Show()
-		lastsPlayerOne = players[1]
-	elseif players[2] == UnitName("player") and self:AntiSpam(12, players[1]) then
+	elseif players[2] == playerName and playerName ~= lastPlayerTwo  then
 		warnVitaSoakerSoon:Show()
-		lastPlayerTwo = players[2]
 	end
+	lastsPlayerOne = players[1]
+	lastPlayerTwo = players[2]
 end
 
 function mod:OnCombatStart(delay)
