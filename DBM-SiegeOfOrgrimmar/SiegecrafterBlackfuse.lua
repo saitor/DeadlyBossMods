@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(865, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9951 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9954 $"):sub(12, -3))
 mod:SetCreatureID(71504)--71591 Automated Shredder
 --mod:SetQuestID(32744)
 mod:SetZone()
@@ -18,6 +18,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_PERIODIC_DAMAGE",
 	"SPELL_PERIODIC_MISSED",
 	"UNIT_DIED",
+	"CHAT_MSG_RAID_BOSS_EMOTE",
 	"RAID_BOSS_WHISPER"
 )
 
@@ -216,6 +217,13 @@ function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 end
 mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 
+function mod:UNIT_DIED(args)
+	local cid = self:GetCIDFromGUID(args.destGUID)
+	if cid == 71591 then
+		timerDeathFromAboveCD:Cancel(args.destGUID)
+	end
+end
+
 function mod:RAID_BOSS_WHISPER(msg)
 	if msg:find("spell:143266") then--Target scanning works on this one, but is about 1 second slower than emote. emote is .2 seconds after SPELL_CAST_START, but target scanning can't grab right target until like 1.0 or 1.2 sec into cast
 		specWarnLaunchSawblade:Show()
@@ -234,12 +242,5 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 		specWarnAutomatedShredder:Show()
 		timerDeathFromAboveCD:Start(17)
 --		timerAutomatedShredderCD:Start()
-	end
-end
-
-function mod:UNIT_DIED(args)
-	local cid = self:GetCIDFromGUID(args.destGUID)
-	if cid == 71591 then
-		timerDeathFromAboveCD:Cancel(args.destGUID)
 	end
 end
