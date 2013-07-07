@@ -40,7 +40,7 @@
 
 
 
-local revision =("$Revision: 9973 $"):sub(12, -3)
+local revision =("$Revision: 9974 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -2007,7 +2007,7 @@ local function CreateOptionsMenu()
 					DBM.Options.SpecialWarningFlashColor[1] = select(1, self:GetColorRGB())
 					DBM.Options.SpecialWarningFlashColor[2] = select(2, self:GetColorRGB())
 					DBM.Options.SpecialWarningFlashColor[3] = select(3, self:GetColorRGB())
-					color1text:SetTextColor(self:GetColorRGB())
+					color2text:SetTextColor(self:GetColorRGB())
 					DBM:UpdateSpecialWarningOptions()
 					DBM:ShowTestSpecialWarning()
 			end)
