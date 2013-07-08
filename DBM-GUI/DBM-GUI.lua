@@ -40,7 +40,7 @@
 
 
 
-local revision =("$Revision: 9979 $"):sub(12, -3)
+local revision =("$Revision: 9982 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -1950,7 +1950,8 @@ local function CreateOptionsMenu()
 				DBM:ShowTestSpecialWarning()
 			end)
 		end
-
+		
+		--NOTE, the UI in game is bugged, but values are not. UI slider is 1, 1, 2, 2, 3. this is because it math.floor's decimal values :\
 		local flashdurSlider = specArea:CreateSlider(L.SpecWarn_FlashDur, 1, 3, 0.5, 120)   -- (text , min_value , max_value , step , width)
      	flashdurSlider:SetPoint('BOTTOMLEFT', fontSizeSlider, "BOTTOMLEFT", 175, -0)
      	do
