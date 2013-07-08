@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(831, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9977 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 9978 $"):sub(12, -3))
 mod:SetCreatureID(69473)--69888
 mod:SetQuestID(32753)
 mod:SetZone()
@@ -285,9 +285,9 @@ end
 
 function mod:UNIT_POWER_FREQUENT(uId)
 	local power = UnitPower(uId)
-	if power == 90 and UnitBuff(uId, vitaName) and self:AntiSpam(3, 1) then
+	if power == 80 and UnitBuff(uId, vitaName) and self:AntiSpam(3, 1) then
 		specWarnFatalStrike:Show()
-	elseif power == 96 and UnitBuff(uId, animaName) and self:AntiSpam(3, 2) then
+	elseif power == 95 and UnitBuff(uId, animaName) and self:AntiSpam(3, 2) then
 		specWarnMurderousStrike:Show()
 	end
 end
