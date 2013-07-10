@@ -43,7 +43,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10001 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10002 $"):sub(12, -3)),
 	DisplayVersion = "5.3.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 9947 -- the revision of the latest stable version that is available
 }
@@ -141,9 +141,9 @@ DBM.DefaultOptions = {
 	SpecialWarningFlashColor1 = {1.0, 1.0, 0.0},--Yellow
 	SpecialWarningFlashColor2 = {1.0, 0.5, 0.0},--Orange
 	SpecialWarningFlashColor3 = {1.0, 0.0, 0.0},--Red
-	SpecialWarningFlashDur1 = 1,
-	SpecialWarningFlashDur2 = 1.5,
-	SpecialWarningFlashDur3 = 2,
+	SpecialWarningFlashDur1 = 0.25,
+	SpecialWarningFlashDur2 = 0.33,
+	SpecialWarningFlashDur3 = 1,
 	SpecialWarningFlashAlpha1 = 0.5,
 	SpecialWarningFlashAlpha2 = 0.5,
 	SpecialWarningFlashAlpha3 = 0.5,
