@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(832, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9956 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10014 $"):sub(12, -3))
 mod:SetCreatureID(68397)--Diffusion Chain Conduit 68696, Static Shock Conduit 68398, Bouncing Bolt conduit 68698, Overcharge conduit 68697
 mod:SetQuestID(32756)
 mod:SetZone()
@@ -52,7 +52,7 @@ local specWarnOverchargedNear			= mod:NewSpecialWarningClose(136295)
 local specWarnBouncingBoltSoon			= mod:NewSpecialWarningPreWarn(136361, nil, 4)
 local specWarnBouncingBolt				= mod:NewSpecialWarningSpell(136361)
 --Phase 1
-local specWarnDecapitate				= mod:NewSpecialWarningRun(134912, mod:IsTank())
+local specWarnDecapitate				= mod:NewSpecialWarningRun(134912, mod:IsTank(), nil, nil, 3)
 local specWarnDecapitateOther			= mod:NewSpecialWarningTarget(134912, mod:IsTank())
 local specWarnThunderstruck				= mod:NewSpecialWarningCount(135095, nil, nil, nil, 2)
 local specWarnCrashingThunder			= mod:NewSpecialWarningMove(135150)
