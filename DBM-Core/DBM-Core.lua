@@ -43,7 +43,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10007 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10008 $"):sub(12, -3)),
 	DisplayVersion = "5.3.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 9947 -- the revision of the latest stable version that is available
 }
@@ -144,9 +144,9 @@ DBM.DefaultOptions = {
 	SpecialWarningFlashDura1 = 0.2,
 	SpecialWarningFlashDura2 = 0.4,
 	SpecialWarningFlashDura3 = 1,
-	SpecialWarningFlashAlp1 = 0.3,
-	SpecialWarningFlashAlp2 = 0.4,
-	SpecialWarningFlashAlp3 = 0.5,
+	SpecialWarningFlashAlp1 = 0.2,
+	SpecialWarningFlashAlp2 = 0.3,
+	SpecialWarningFlashAlp3 = 0.4,
 	HealthFrameGrowUp = false,
 	HealthFrameLocked = false,
 	HealthFrameWidth = 200,
