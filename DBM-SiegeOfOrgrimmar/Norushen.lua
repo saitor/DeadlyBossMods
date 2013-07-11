@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(866, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10020 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10022 $"):sub(12, -3))
 mod:SetCreatureID(72276)
 --mod:SetQuestID(32744)
 mod:SetZone()
@@ -62,10 +62,12 @@ local berserkTimer						= mod:NewBerserkTimer(420)--EJ says fight has a 7 min be
 
 mod:AddBoolOption("InfoFrame")
 
+local corruptionLevel = EJ_GetSectionInfo(8252)
+
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
 	if self.Options.InfoFrame then
-		DBM.InfoFrame:SetHeader("Corruption")--Will localize later, just want this in before test in a few min
+		DBM.InfoFrame:SetHeader(corruptionLevel)--Will localize later, just want this in before test in a few min
 		DBM.InfoFrame:Show(5, "playerpower", 5, ALTERNATE_POWER_INDEX)
 	end
 end
