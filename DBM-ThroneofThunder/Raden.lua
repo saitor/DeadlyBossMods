@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(831, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10030 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10031 $"):sub(12, -3))
 mod:SetCreatureID(69473)--69888
 mod:SetQuestID(32753)
 mod:SetZone()
@@ -298,9 +298,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 end
 
 function mod:UNIT_DIED(args)
-	if not args:IsDestTypeHostile() then
-		if self.Options.InfoFrame then
-			DBM.InfoFrame:Update("reverseplayerbaddebuff")--Force update so player dies it reflects this
-		end
+	if not args:IsDestTypeHostile() and self.Options.InfoFrame then
+		DBM.InfoFrame:Update("reverseplayerbaddebuff")--Force update so player dies it reflects this
 	end
 end
