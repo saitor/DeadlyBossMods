@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(831, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10031 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10032 $"):sub(12, -3))
 mod:SetCreatureID(69473)--69888
 mod:SetQuestID(32753)
 mod:SetZone()
@@ -134,6 +134,8 @@ function mod:OnCombatStart(delay)
 		DBM.InfoFrame:SetHeader(L.NoSensitivity)
 		DBM.InfoFrame:Show(10, "reverseplayerbaddebuff", 138372, nil, nil, nil, true, true)
 		DBM.InfoFrame:RegisterCallback(infoFrameChanged)
+	elseif self.Options[specWarnVitaSoaker.option or ""] or self.Options[warnVitaSoakerSoon.option or ""] then
+		self:AddMsg(L.VitaSoakerOptionConflict)
 	end
 end
 
