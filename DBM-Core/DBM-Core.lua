@@ -43,7 +43,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10061 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10062 $"):sub(12, -3)),
 	DisplayVersion = "5.3.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 10055 -- the revision of the latest stable version that is available
 }
@@ -2241,9 +2241,11 @@ do
 			if version > tonumber(DBM.Version) then -- Update reminder
 				if not showedUpdateReminder then
 					local found = false
+					local other = nil
 					for i, v in pairs(raid) do
 						if v.version == version and v ~= raid[sender] then
 							found = true
+							other = i
 							break
 						end
 					end
@@ -2256,6 +2258,7 @@ do
 							DBM:AddMsg(DBM_CORE_UPDATEREMINDER_HEADER:match("\n(.*)"):format(displayVersion, version))
 							DBM:AddMsg(("|HDBM:update:%s:%s|h|cff3588ff[http://www.deadlybossmods.com]"):format(displayVersion, version))
 						end
+						print(("DBM Debug: Showing update notification because %s and %s are running version %d which is > than our version %d"):format(sender, other, version, DBM.Version))
 	--					if revDifference > 400 then--WTF? Sorry but your DBM is being turned off until you update. Grossly out of date mods cause fps loss, freezes, lua error spam, or just very bad information, if mod is not up to date with latest changes. All around undesirable experience to put yourself or other raid mates through
 	--						DBM:AddMsg(DBM_CORE_UPDATEREMINDER_DISABLE:format(revDifference))
 	--						DBM:Disable(true)
