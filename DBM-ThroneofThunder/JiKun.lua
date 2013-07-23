@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(828, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10070 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10072 $"):sub(12, -3))
 mod:SetCreatureID(69712)
 mod:SetQuestID(32749)
 mod:SetZone()
@@ -259,7 +259,7 @@ local function GetNestPositions(flockC)
 end
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg, _, _, _, target)
-	if (msg:find(L.eggsHatchL) or msg:find(L.eggsHatchU)) and self:AntiSpam(5, 2) then
+	if msg:find(L.eggsHatch) and self:AntiSpam(5, 2) then
 		flockCount = flockCount + 1--Now flock set number instead of nest number (for LFR it's both)
 		local flockCountText = tostring(flockCount)
 		local currentDirection, currentLocation = GetNestPositions(flockCount)
