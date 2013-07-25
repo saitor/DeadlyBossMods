@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(846, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10077 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10085 $"):sub(12, -3))
 mod:SetCreatureID(71454)
 --mod:SetQuestID(32744)
 mod:SetZone()
@@ -232,6 +232,7 @@ end
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	if spellId == 142898 then--Faster than combat log
+		arcingSmashCount = arcingSmashCount + 1
 		warnArcingSmash:Show(arcingSmashCount)
 		specWarnArcingSmash:Show(arcingSmashCount)
 		if arcingSmashCount < 3 then
