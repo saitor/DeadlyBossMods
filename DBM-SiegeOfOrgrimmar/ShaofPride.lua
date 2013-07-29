@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(867, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10091 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10095 $"):sub(12, -3))
 mod:SetCreatureID(71734)
 --mod:SetQuestID(32744)
 mod:SetZone()
@@ -111,7 +111,7 @@ local function warnProjectionTargets()
 	twipe(projectionTargets)
 end
 
-local function warnAuraOfPride()
+local function warnAuraOfPrideTargets()
 	warnAuraOfPride:Show(tconcat(auraOfPrideTargets, "<, >"))
 	twipe(auraOfPrideTargets)
 end
@@ -271,8 +271,8 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif args.spellId == 146817 then
 		auraOfPrideTargets[#auraOfPrideTargets + 1] = args.destName
-		self:Unschedule(warnAuraOfPride)
-		self:Schedule(0.5, warnAuraOfPride)
+		self:Unschedule(warnAuraOfPrideTargets)
+		self:Schedule(0.5, warnAuraOfPrideTargets)
 		if args:IsPlayer() then
 			specWarnAuraOfPride:Show()
 			yellAuraOfPride:Yell()
