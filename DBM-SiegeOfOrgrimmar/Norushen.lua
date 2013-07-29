@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(866, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10049 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10096 $"):sub(12, -3))
 mod:SetCreatureID(72276)
 --mod:SetQuestID(32744)
 mod:SetZone()
@@ -179,6 +179,7 @@ end
 function mod:OnSync(msg)
 	if msg == "BlindHatred" then
 		warnBlindHatred:Show()
+		specWarnBlindHatred:Show()
 		timerBlindHatred:Start()
 	elseif msg == "BlindHatredEnded" then
 		timerBlindHatredCD:Start()
