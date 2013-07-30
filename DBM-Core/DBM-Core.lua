@@ -43,7 +43,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10103 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10104 $"):sub(12, -3)),
 	DisplayVersion = "5.3.6 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.3.5", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10055 -- the revision of the latest stable version that is available
@@ -2103,6 +2103,10 @@ function DBM:LoadMod(mod)
 		if difficultyID == 8 then
 			RequestChallengeModeMapInfo()
 			RequestChallengeModeLeaders(mapID)
+		end
+		if instanceType == "pvp" and mod.revision == 0 then
+			--Not the new stand alone pvp mods these are old ones and user needs to remove them or install updated package
+			self:AddMsg(DBM_CORE_OUTDATED_PVP_MODS)
 		end
 		if not InCombatLockdown() then--We loaded in combat because a raid boss was in process, but lets at least delay the garbage collect so at least load mod is half as bad, to do our best to avoid "script ran too long"
 			collectgarbage("collect")
