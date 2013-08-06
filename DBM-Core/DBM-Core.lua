@@ -43,7 +43,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10123 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10124 $"):sub(12, -3)),
 	DisplayVersion = "5.3.6 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.3.5", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10055 -- the revision of the latest stable version that is available
@@ -3704,8 +3704,10 @@ do
 		end
 	end
 
-	function DBM:CHAT_MSG_WHISPER(msg, name)
-		return onWhisper(msg, name, false)
+	function DBM:CHAT_MSG_WHISPER(msg, name, _, _, _, status)
+		if status ~= "GM" then
+			return onWhisper(msg, name, false)
+		end
 	end
 
 	function DBM:CHAT_MSG_BN_WHISPER(msg, ...)
