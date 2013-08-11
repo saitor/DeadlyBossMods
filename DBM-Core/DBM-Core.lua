@@ -49,7 +49,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10138 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10139 $"):sub(12, -3)),
 	DisplayVersion = "5.3.6 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.3.5", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10055 -- the revision of the latest stable version that is available
@@ -1844,7 +1844,7 @@ do
 end
 
 function DBM:LFG_ROLE_CHECK_SHOW()
-	if DBM.Options.UseMasterVolume then
+	if not UnitIsGroupLeader("player") and DBM.Options.UseMasterVolume then
 		PlaySoundFile("Sound\\interface\\levelup2.ogg", "Master")--Because regular sound uses SFX channel which is too low of volume most of time
 	end
 end
