@@ -16,6 +16,7 @@
 --    * ruRU: TOM_RUS
 --    * zhTW: Whyv                      ultrashining@gmail.com
 --    * koKR: nBlueWiz					everfinale@gmail.com
+--    * esES/esMX: Sueñalobos				alcortesm@gmail.com
 --
 -- The former/inactive-translators:
 --    * ruRU: BootWin					bootwin@gmail.com
@@ -49,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10146 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10147 $"):sub(12, -3)),
 	DisplayVersion = "5.3.6 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.3.5", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10055 -- the revision of the latest stable version that is available
