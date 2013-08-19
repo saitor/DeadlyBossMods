@@ -2,7 +2,7 @@ if GetBuildInfo() ~= "5.4.0" then return end
 local mod	= DBM:NewMod(857, "DBM-Pandaria", nil, 322)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10159 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10160 $"):sub(12, -3))
 mod:SetCreatureID(71953)
 mod:SetZone()
 
@@ -52,7 +52,6 @@ function mod:SPELL_CAST_START(args)
 	elseif args.spellId == 144471 then
 		warnBlazingSong:Show()
 		specWarnBlazingSong:Show()
-		timerBlazingSong:Start()
 	elseif args.spellId == 144470 then
 		warnCraneRush:Show()
 		specWarnCraneRush:Show()
