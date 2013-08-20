@@ -2,7 +2,7 @@ if GetBuildInfo() ~= "5.4.0" then return end
 local mod	= DBM:NewMod(859, "DBM-Pandaria", nil, 322)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10159 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10161 $"):sub(12, -3))
 mod:SetCreatureID(71954)
 
 mod:RegisterCombat("combat")
@@ -26,7 +26,7 @@ local warnCharge				= mod:NewSpellAnnounce(144609, 4)
 
 local specWarnHeadbutt			= mod:NewSpecialWarningSpell(144610, mod:IsTank())
 local specWarnMassiveQuake		= mod:NewSpecialWarningCast(144611, mod:IsHealer())
-local specWarnCharge			= mod:NewSpecialWarningSpell(144609, nil, nil, nil, 2)
+local specWarnCharge			= mod:NewSpecialWarningSpell(144609, nil, nil, nil, 2)--66 and 33%. Maybe add pre warns
 
 local timerHeadbuttCD			= mod:NewCDTimer(47, 144610, nil, mod:IsTank())
 local timerMassiveQuakeCD		= mod:NewCDTimer(48, 137511)
