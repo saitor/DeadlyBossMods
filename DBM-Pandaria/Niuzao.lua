@@ -2,11 +2,11 @@ if GetBuildInfo() ~= "5.4.0" then return end
 local mod	= DBM:NewMod(859, "DBM-Pandaria", nil, 322)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10163 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10165 $"):sub(12, -3))
 mod:SetCreatureID(71954)
 mod:SetMinSyncRevision(10162)
 
---mod:RegisterCombat("combat")--Cannot be used, major problems with multiple world bosses engaging if wrong one is targeted by ANYONE in raid.
+mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",
