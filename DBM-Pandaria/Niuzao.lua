@@ -2,7 +2,7 @@ if GetBuildInfo() ~= "5.4.0" then return end
 local mod	= DBM:NewMod(859, "DBM-Pandaria", nil, 322)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10165 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10188 $"):sub(12, -3))
 mod:SetCreatureID(71954)
 mod:SetMinSyncRevision(10162)
 
@@ -72,7 +72,7 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.VictoryDem then--Only have demonic not regular yet
+	if msg == L.Victory or msg == L.VictoryDem then
 		self:SendSync("Victory")
 	elseif msg == L.Pull and not self:IsInCombat() then
 		if self:GetCIDFromGUID(UnitGUID("target")) == 71954 or self:GetCIDFromGUID(UnitGUID("targettarget")) == 71954 then
