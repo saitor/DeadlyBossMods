@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(866, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10191 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10209 $"):sub(12, -3))
 mod:SetCreatureID(72276)
 mod:SetZone()
 
@@ -50,7 +50,7 @@ local specWarnHurlCorruption			= mod:NewSpecialWarningInterrupt(144649, nil, nil
 local specWarnPiercingCorruption		= mod:NewSpecialWarningSpell(144657)
 
 --Amalgam of Corruption
-local timerCombatStarts					= mod:NewTimer(25, "timerCombatStarts", 2457)
+local timerCombatStarts					= mod:NewCombatTimer(25)
 local timerUnleashedAngerCD				= mod:NewCDTimer(11, 145216, nil, mod:IsTank())
 local timerBlindHatred					= mod:NewBuffActiveTimer(30, 145226)
 local timerBlindHatredCD				= mod:NewNextTimer(30, 145226)
