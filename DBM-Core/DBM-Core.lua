@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10206 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10207 $"):sub(12, -3)),
 	DisplayVersion = "5.3.7 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.3.6", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10174 -- the revision of the latest stable version that is available
@@ -3925,6 +3925,27 @@ function DBM:FindDungeonIDs()
 		local dungeon = GetDungeonInfo(i)
 		if dungeon then
 			self:AddMsg(i..": "..dungeon)
+		end
+	end
+end
+
+function DBM:FindInstanceIDs()
+	for i=1, 1000 do
+		local instance = EJ_GetInstanceInfo(i)
+		if instance then
+			self:AddMsg(i..": "..instance)
+		end
+	end
+end
+
+function DBM:FindEncounterIDs(instanceID)
+	if not instanceID then
+		self:AddMsg("Error: Function requires instanceID be provided")
+	end
+	for i=1, 25 do
+		local name, _, encounterID = EJ_GetEncounterInfoByIndex(i, instanceID)
+		if name then
+			self:AddMsg(encounterID..": "..name)
 		end
 	end
 end
