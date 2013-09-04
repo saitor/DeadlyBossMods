@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(853, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10218 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10219 $"):sub(12, -3))
 mod:SetCreatureID(71152, 71153, 71154, 71155, 71156, 71157, 71158, 71160, 71161)
 mod:SetZone()
 mod:SetUsedIcons(1)
@@ -203,7 +203,7 @@ end
 	for i = 1, 5 do
 		local unitID = "boss"..i
 		if UnitExists(unitID) and mod:GetCIDFromGUID(UnitGUID(unitID)) == 71161 then
-			if UnitExists(unitID.."target") and not mod:IsTanking(uId, unitID) then
+			if UnitExists(unitID.."target") and not mod:IsTanking(unitID.."target", unitID) then
 				mod:Unschedule(DFAScan)
 				local targetname = DBM:GetUnitFullName(unitID.."target")
 				warnDeathFromAbove:Show(targetname)
