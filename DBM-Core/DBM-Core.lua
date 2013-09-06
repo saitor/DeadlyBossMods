@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10240 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10241 $"):sub(12, -3)),
 	DisplayVersion = "5.3.7 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.3.6", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10174 -- the revision of the latest stable version that is available
@@ -1747,6 +1747,9 @@ end
 --This is very touchy though and will fail if everyone isn't in same SUB zone (ie same room/area)
 --It should work for pretty much any case we'd use it though except maybe a fight like heroic LK? TODO: check this
 function DBM:GetNumRealGroupMembers()
+	if not IsInInstance() then--Not accurate outside of instances (such as world bosses)
+		return IsInGroup() and GetNumGroupMembers() or 1--So just return regular group members.
+	end
 	SetMapToCurrentZone()
 	local currentMapId = GetCurrentMapAreaID()
 	local currentMapName = GetMapNameByID(currentMapId)
