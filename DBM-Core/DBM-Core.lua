@@ -6,7 +6,7 @@
 -- This addon is written and copyrighted by:
 --    * Paul Emmerich (Tandanu @ EU-Aegwynn) (DBM-Core)
 --    * Martin Verges (Nitram @ EU-Azshara) (DBM-GUI)
---    * Adam Williams (Omegal @ US-Whisperwind) (Primary boss mod author) Contact: Twitter @MysticalOS)
+--    * Adam Williams (Omegal @ US-Whisperwind) (Primary boss mod author & DBM maintainer) Contact: Twitter @MysticalOS)
 --
 -- The localizations are written by:
 --    * enGB/enUS: Tandanu & Omegal		http://www.deadlybossmods.com
@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10260 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10261 $"):sub(12, -3)),
 	DisplayVersion = "5.3.7 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.3.6", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10174 -- the revision of the latest stable version that is available
