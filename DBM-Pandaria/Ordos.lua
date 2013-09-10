@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(861, "DBM-Pandaria", nil, 322)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10271 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10272 $"):sub(12, -3))
 mod:SetCreatureID(72057)
 mod:SetZone()
 mod:SetUsedIcons(8)
@@ -79,7 +79,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.SetIconOnBurningSoul then
 			self:SetIcon(args.destName, 8)
 		end
-	elseif args.spellId == 144693 then
+	elseif args.spellId == 144693 and args:IsPlayer() then
 		specWarnPoolOfFire:Show()--maybe add DAMAGE event too if it feels like this isn't enough
 	end
 end
