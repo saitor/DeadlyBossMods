@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(866, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10211 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10273 $"):sub(12, -3))
 mod:SetCreatureID(72276)
 mod:SetZone()
 
@@ -119,7 +119,7 @@ function mod:SPELL_CAST_START(args)
 		timerTitanicSmashCD:Start()
 	elseif args.spellId == 144649 then
 		warnHurlCorruption:Show()
-		specWarnHurlCorruption:Show()
+		specWarnHurlCorruption:Show(args.sourceName)
 		timerHurlCorruptionCD:Start()
 		countdownHurlCorruption:Start()
 	elseif args.spellId == 144657 then
