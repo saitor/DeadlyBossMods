@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10276 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10277 $"):sub(12, -3)),
 	DisplayVersion = "5.4.1 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.0", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10267 -- the revision of the latest stable version that is available
@@ -1971,6 +1971,7 @@ function DBM:CINEMATIC_START(...)
 	if DBM.Options.MovieFilter == "Never" then return end
 	SetMapToCurrentZone()
 	local currentMapID = GetCurrentMapAreaID()
+	if currentMapID == 993 then return end--It bugs out in SoO and just skips all movies :\
 	local currentFloor = GetCurrentMapDungeonLevel() or 0
 	if DBM.Options.MovieFilter == "Block" or DBM.Options.MovieFilter == "AfterFirst" and DBM.Options.MoviesSeen[currentMapID..currentFloor] then
 		CinematicFrame_CancelCinematic()
