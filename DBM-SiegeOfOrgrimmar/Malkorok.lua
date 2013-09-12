@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(846, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10280 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10282 $"):sub(12, -3))
 mod:SetCreatureID(71454)
 mod:SetZone()
 
@@ -203,7 +203,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 		self:Unschedule(warnDisplacedEnergyTargets)
-		self:Schedule(0.3, warnDisplacedEnergyTargets)
+		self:Schedule(0.5, warnDisplacedEnergyTargets)
 	elseif args.spellId == 142990 then
 		local amount = args.amount or 1
 		if amount % 3 == 0 then
