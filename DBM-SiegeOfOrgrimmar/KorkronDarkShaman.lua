@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(856, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10280 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10281 $"):sub(12, -3))
 mod:SetCreatureID(71859, 71858)--haromm, Kardris
 mod:SetZone()
 mod:SetUsedIcons(5, 4, 3, 2, 1)
@@ -17,7 +17,7 @@ mod:RegisterEventsInCombat(
 )
 
 --Dogs
-local warnRend						= mod:NewStackAnnounce(144304, 2)
+local warnRend						= mod:NewStackAnnounce(144304, 2, nil, mod:IsTank())
 
 --General
 local warnPoisonmistTotem			= mod:NewSpellAnnounce(144288, 3)--85%
