@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10294 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10295 $"):sub(12, -3)),
 	DisplayVersion = "5.4.1 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.0", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10267 -- the revision of the latest stable version that is available
@@ -3893,6 +3893,11 @@ do
 		return DBM.Options.FilterSayAndYell and #inCombat > 0, ...
 	end
 
+	--This is the source of the taints. As well as function DBM:AddMsg(text, prefix) function
+	--It's also required and impossible to avoid since we need this stuff
+	--This taint LOOKS like a StaticPopupDialog taint but it is not. That taint was actaully fixed in 5.3
+	--Install http://www.wowace.com/addons/notaint/ which embeds libchatanims to fix problem.
+	--Additional information at http://www.wowace.com/addons/libchatanims/
 	ChatFrame_AddMessageEventFilter("CHAT_MSG_WHISPER_INFORM", filterOutgoing)
 	ChatFrame_AddMessageEventFilter("CHAT_MSG_BN_WHISPER_INFORM", filterOutgoing)
 	ChatFrame_AddMessageEventFilter("CHAT_MSG_WHISPER", filterIncoming)
