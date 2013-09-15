@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(868, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10307 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10308 $"):sub(12, -3))
 mod:SetCreatureID(72311, 72560, 72249)--Boss needs to engage off Varian/Lor'themar, not the boss. I include the boss too so we don't detect a win off losing varian. :)
 mod:SetReCombatTime(120)--fix combat re-starts after killed. Same issue as tsulong. Fires TONS of IEEU for like 1-2 minutes after fight ends.
 mod:SetMainBossID(72249)
@@ -69,9 +69,10 @@ local specWarnFlamesofGalakrondTank	= mod:NewSpecialWarningStack(147029, mod:IsT
 local specWarnFlamesofGalakrondOther= mod:NewSpecialWarningTarget(147029, mod:IsTank())
 
 --Stage 2: Bring Her Down!
-local timerAddsCD					= mod:NewTimer(55, "timerAddsCD", 2457)
+local timerAddsCD					= mod:NewNextTimer(55, "ej8553", nil, nil, nil, 2457)
 local timerTowerCD					= mod:NewTimer(151, "timerTowerCD", 88852)
 local timerDemolisherCD				= mod:NewNextTimer(20, "ej8562", nil, nil, nil, 116040)--EJ is just not complete yet, shouldn't need localizing
+local timerProtoCD					= mod:NewTimer(55, "ej8587", nil, nil, nil, 59961)
 ----High Enforcer Thranok (Road)
 local timerShatteringCleaveCD		= mod:NewCDTimer(7.5, 146849, nil, mod:IsTank())
 local timerCrushersCallCD			= mod:NewNextTimer(30, 146769)
@@ -234,6 +235,7 @@ function mod:OnSync(msg)
 		if addsCount == 1 then
 			timerAddsCD:Start(48)
 		elseif addsCount == 3 then
+			timerProtoCD:Start()
 			timerAddsCD:Start(110)
 		else
 			timerAddsCD:Start()
