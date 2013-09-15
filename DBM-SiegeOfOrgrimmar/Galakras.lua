@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(868, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10311 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10313 $"):sub(12, -3))
 mod:SetCreatureID(72311, 72560, 72249, 73910, 72302)--Boss needs to engage off friendly NCPS, not the boss. I include the boss too so we don't detect a win off losing varian. :)
 mod:SetReCombatTime(120)--fix combat re-starts after killed. Same issue as tsulong. Fires TONS of IEEU for like 1-2 minutes after fight ends.
 mod:SetMainBossID(72249)
@@ -72,7 +72,7 @@ local specWarnFlamesofGalakrondOther= mod:NewSpecialWarningTarget(147029, mod:Is
 local timerAddsCD					= mod:NewNextTimer(55, "ej8553", nil, nil, nil, 2457)
 local timerTowerCD					= mod:NewTimer(151, "timerTowerCD", 88852)
 local timerDemolisherCD				= mod:NewNextTimer(20, "ej8562", nil, nil, nil, 116040)--EJ is just not complete yet, shouldn't need localizing
-local timerProtoCD					= mod:NewTimer(55, "ej8587", nil, nil, nil, 59961)
+local timerProtoCD					= mod:NewNextTimer(55, "ej8587", nil, nil, nil, 59961)
 ----High Enforcer Thranok (Road)
 local timerShatteringCleaveCD		= mod:NewCDTimer(7.5, 146849, nil, mod:IsTank())
 local timerCrushersCallCD			= mod:NewNextTimer(30, 146769)
