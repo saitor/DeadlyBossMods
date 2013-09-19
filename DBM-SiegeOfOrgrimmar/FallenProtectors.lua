@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(849, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10280 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10332 $"):sub(12, -3))
 mod:SetCreatureID(71479, 71475, 71480)--He-Softfoot, Rook Stonetoe, Sun Tenderheart
 mod:SetZone()
 
@@ -128,7 +128,7 @@ function mod:OnCombatStart(delay)
 	timerCorruptedBrewCD:Start(18-delay)
 	timerGougeCD:Start(23-delay)
 	timerCalamityCD:Start(31-delay)
-	timerClashCD:Start(-delay)--Unsure if stll same, since this almost NEVER happens, at least one of them will enter a special and cancel this timer
+	timerClashCD:Start(45-delay)
 --	berserkTimer:Start(-delay)
 end
 
