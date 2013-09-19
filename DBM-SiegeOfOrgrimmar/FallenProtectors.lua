@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(849, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10333 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10336 $"):sub(12, -3))
 mod:SetCreatureID(71479, 71475, 71480)--He-Softfoot, Rook Stonetoe, Sun Tenderheart
 mod:SetZone()
 
@@ -17,6 +17,15 @@ mod:RegisterEventsInCombat(
 	"UNIT_SPELLCAST_SUCCEEDED boss1 boss2 boss3"
 )
 
+local Softfoot = EJ_GetSectionInfo(7889)
+local Stonetoe = EJ_GetSectionInfo(7885)
+local Tenderheart = EJ_GetSectionInfo(7904)
+
+mod:SetBossHealthInfo(
+	71479, Softfoot,
+	71475, Stonetoe,
+	71480, Tenderheart
+)
 
 --All
 local warnBondGoldenLotus			= mod:NewCastAnnounce(143497, 4)
