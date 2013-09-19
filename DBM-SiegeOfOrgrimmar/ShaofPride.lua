@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(867, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10336 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10338 $"):sub(12, -3))
 mod:SetCreatureID(71734)
 mod:SetZone()
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3, 2, 1)
@@ -72,6 +72,8 @@ local timerWeakenedResolve		= mod:NewBuffFadesTimer(60, 147207, nil, false)
 --Pride
 local timerBurstingPride		= mod:NewCastTimer(3, 144911)
 local timerProjection			= mod:NewCastTimer(6, 146822)
+
+local berserkTimer				= mod:NewBerserkTimer(600)
 
 local countdownSwellingPride	= mod:NewCountdown(75.5, 144400)
 local countdownReflection		= mod:NewCountdown(25, 144800, false, nil, nil, nil, true)
@@ -185,6 +187,7 @@ function mod:OnCombatStart(delay)
 	timerManifestationCD:Start(-delay)
 	timerSwellingPrideCD:Start(-delay, 1)
 	countdownSwellingPride:Start(-delay)
+	berserkTimer:Start(-delay)
 	firstWound = false
 	UnleashedCast = false
 	swellingCount = 0
@@ -240,9 +243,9 @@ function mod:SPELL_CAST_SUCCESS(args)
 				timerWoundedPrideCD:Start(11.5)
 			end
 		end
-		timerManifestationCD:Start()--Unconfirmed but likely remaining in sync with UNIT_POWER
-		timerSwellingPrideCD:Start(nil, swellingCount + 1)--Unconfirmed but likely remaining in sync with UNIT_POWER
-		countdownSwellingPride:Start()--Unconfirmed but likely remaining in sync with UNIT_POWER
+		timerManifestationCD:Start()
+		timerSwellingPrideCD:Start(nil, swellingCount + 1)
+		countdownSwellingPride:Start()
 		--This is done here because a lot can change during a cast, and we need to know players energy when cast ends, i.e. this event
 		for uId in DBM:GetGroupMembers() do
 			local maxPower = UnitPowerMax(uId, ALTERNATE_POWER_INDEX)
