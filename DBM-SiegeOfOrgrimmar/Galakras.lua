@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(868, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10357 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10358 $"):sub(12, -3))
 mod:SetCreatureID(72311, 72560, 72249, 73910, 72302)--Boss needs to engage off friendly NCPS, not the boss. I include the boss too so we don't detect a win off losing varian. :)
 mod:SetReCombatTime(120)--fix combat re-starts after killed. Same issue as tsulong. Fires TONS of IEEU for like 1-2 minutes after fight ends.
 mod:SetMainBossID(72249)
@@ -144,7 +144,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args.spellId == 147328 and self:checkTankDistance(args.sourceGUID, 40) then
 		warnWarBanner:Show()
 		specWarnWarBanner:Show()
-	elseif args.spellId == 146899 then--Can't tank check this case mobs target npcs only (and we cannot unit range them)
+	elseif args.spellId == 146899 and self:checkTankDistance(args.sourceGUID, 50) then--Use a bigger range than 40 since npcs tend to stand further out
 		warnFracture:Show(args.destName)
 		if args:IsPlayer() then
 			specWarnFractureYou:Show()
