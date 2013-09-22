@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10368 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10369 $"):sub(12, -3)),
 	DisplayVersion = "5.4.2 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.1", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10320 -- the revision of the latest stable version that is available
@@ -2347,9 +2347,11 @@ do
 							DBM:AddMsg(DBM_CORE_UPDATEREMINDER_HEADER:match("\n(.*)"):format(displayVersion, version))
 							DBM:AddMsg(("|HDBM:update:%s:%s|h|cff3588ff[http://www.deadlybossmods.com]"):format(displayVersion, version))
 						end
-						if revDifference > 400 then--WTF? Sorry but your DBM is being turned off until you update. Grossly out of date mods cause fps loss, freezes, lua error spam, or just very bad information, if mod is not up to date with latest changes. All around undesirable experience to put yourself or other raid mates through
-							DBM:AddMsg(DBM_CORE_UPDATEREMINDER_DISABLE:format(revDifference))
-							DBM:Disable(true)
+						if GetLocale() ~= "deDE" then--the following code give players the power to disable a mod of another player by spoofing the revision -> not acceptable for deDE
+							if revDifference > 400 then--WTF? Sorry but your DBM is being turned off until you update. Grossly out of date mods cause fps loss, freezes, lua error spam, or just very bad information, if mod is not up to date with latest changes. All around undesirable experience to put yourself or other raid mates through
+								DBM:AddMsg(DBM_CORE_UPDATEREMINDER_DISABLE:format(revDifference))
+								DBM:Disable(true)
+							end
 						end
 					end
 				end
