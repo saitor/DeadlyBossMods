@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10376 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10377 $"):sub(12, -3)),
 	DisplayVersion = "5.4.2 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.1", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10320 -- the revision of the latest stable version that is available
@@ -4418,10 +4418,10 @@ function bossModPrototype:BossTargetScanner(cid, returnFunc, scanInterval, scanT
 end
 
 function bossModPrototype:checkTankDistance(guid, distance)
-	local guid = guid or self.creatureId--CID fallback since GetBossTarget should sort it out
-	local distance = distance or 50
+	local guid = guid or self.creatureId--CID fallback since GetBossTarget should sort it out (supports GUID or CID)
+	local distance = distance or 40
 	local _, uId, mobuId = self:GetBossTarget(guid)
-	if mobuId and not uId or (uId and (uId == "boss1" or uId == "boss2" or uId == "boss3" or uId == "boss4" or uId == "boss5")) then--Mob has no target, or is targeting a UnitID we cannot range check
+	if mobuId and (not uId or (uId and (uId == "boss1" or uId == "boss2" or uId == "boss3" or uId == "boss4" or uId == "boss5"))) then--Mob has no target, or is targeting a UnitID we cannot range check
 		if IsInRaid() then
 			for i = 1, GetNumGroupMembers() do
 				if UnitDetailedThreatSituation("raid"..i, mobuId) == 3 then uId = "raid"..i end--Found highest threat target, make them uId
