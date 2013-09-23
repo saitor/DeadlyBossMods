@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(868, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10362 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10374 $"):sub(12, -3))
 mod:SetCreatureID(72311, 72560, 72249, 73910, 72302)--Boss needs to engage off friendly NCPS, not the boss. I include the boss too so we don't detect a win off losing varian. :)
 mod:SetReCombatTime(120)--fix combat re-starts after killed. Same issue as tsulong. Fires TONS of IEEU for like 1-2 minutes after fight ends.
 mod:SetMainBossID(72249)
@@ -138,9 +138,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.FixateIcon then
 			self:SetIcon(args.destName, 8)
 		end
-	elseif args.spellId == 147029 then--Tank debuff version
-		warnFlamesofGalakrond:Show(args.destName, 1)
-		timerFlamesofGalakrond:Start(args.destName)
 	elseif args.spellId == 147328 and self:checkTankDistance(args.sourceGUID, 40) then
 		warnWarBanner:Show()
 		specWarnWarBanner:Show()
