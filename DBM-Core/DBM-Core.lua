@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10380 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10381 $"):sub(12, -3)),
 	DisplayVersion = "5.4.2 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.1", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10320 -- the revision of the latest stable version that is available
@@ -1151,7 +1151,7 @@ SlashCmdList["DEADLYBOSSMODS"] = function(msg)
 		sendSync("PT", timer.."\t"..LastInstanceMapID)
 	elseif cmd:sub(1, 3) == "lag" then
 		sendSync("L")
-		DBM:AddMsg(VEM_CORE_LAG_CHECKING)
+		DBM:AddMsg(DBM_CORE_LAG_CHECKING)
 		DBM:Schedule(5, function() DBM:ShowLag() end)
 	elseif cmd:sub(1, 5) == "arrow" then
 		if not DBM:IsInRaid() then
