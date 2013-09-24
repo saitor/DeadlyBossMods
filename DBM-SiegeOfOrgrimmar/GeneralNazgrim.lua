@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(850, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10387 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10388 $"):sub(12, -3))
 mod:SetCreatureID(71515)
 mod:SetZone()
 mod:SetUsedIcons(8, 7, 6, 4, 2, 1)
@@ -251,7 +251,7 @@ function mod:SPELL_CAST_START(args)
 		end
 	end
 end
-DBM.InfoFrame:Show(4, "function", updateInfoFrame)
+
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 143589 then
 		warnBattleStance:Show()
