@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(849, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10390 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10393 $"):sub(12, -3))
 mod:SetCreatureID(71479, 71475, 71480)--He-Softfoot, Rook Stonetoe, Sun Tenderheart
 mod:SetZone()
 mod:SetUsedIcons(7)
@@ -180,7 +180,7 @@ function mod:SPELL_CAST_START(args)
 	elseif args.spellId == 143962 then
 		warnInfernoStrike:Show()
 		timerInfernoStrikeCD:Start()
-		self:BossTargetScanner(71481, "InfernoStrikeTarget", 0.5, 1)--This one is a pain, because boss looks at CORRECT target for a super split second, then stares at previous target for rest of time. Repeated scans don't fix it because you really can't tell good target from shit one
+--		self:BossTargetScanner(71481, "InfernoStrikeTarget", 0.5, 1)--This one is a pain, because boss looks at CORRECT target for a super split second, then stares at previous target for rest of time. Repeated scans don't fix it because you really can't tell good target from shit one
 	elseif args.spellId == 143497 then
 		warnBondGoldenLotus:Show()
 	elseif args.spellId == 144396 then
