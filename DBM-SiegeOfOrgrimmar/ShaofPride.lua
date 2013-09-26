@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(867, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10404 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10407 $"):sub(12, -3))
 mod:SetCreatureID(71734)
 mod:SetZone()
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3, 2, 1)
@@ -96,6 +96,7 @@ local markOfArroganceIcons = {}
 local corruptedPrisonTargets = {}
 local prideLevel = EJ_GetSectionInfo(8255)
 local firstWound = false
+local manifestationWarned = false
 local swellingCount = 0
 
 local function warnGiftOfTitansTargets()
@@ -189,6 +190,7 @@ function mod:OnCombatStart(delay)
 	countdownSwellingPride:Start(-delay)
 	berserkTimer:Start(-delay)
 	firstWound = false
+	manifestationWarned = false
 	swellingCount = 0
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:SetHeader(prideLevel)
@@ -376,8 +378,11 @@ end
 
 function mod:UNIT_POWER_FREQUENT(uId)
 	local power = UnitPower(uId)
-	if power == 80 and self:AntiSpam(3, 1) then--May not be 100% precise, but very close, it spawns around 80-85 energy
+	if power > 81 and not manifestationWarned then--May not be 100% precise, but very close, it spawns around 80-85 energy
+		manifestationWarned = true
 		warnManifestation:Show()
 		specWarnManifestation:Show()--No spawn trigger to speak of. fortunately for us, they spawn based on boss power.
+	elseif power > 10 and manifestationWarned then
+		manifestationWarned = false
 	end
 end
