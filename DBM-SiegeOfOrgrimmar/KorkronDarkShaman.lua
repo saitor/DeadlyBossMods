@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(856, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10414 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10415 $"):sub(12, -3))
 mod:SetCreatureID(71859, 71858)--haromm, Kardris
 mod:SetZone()
 mod:SetUsedIcons(5, 4, 3, 2, 1)
@@ -193,7 +193,6 @@ function mod:SPELL_CAST_START(args)
 		timerFallingAshCD:Start()
 		specWarnFallingAsh:Schedule(15)--Give special warning when damage happens, not cast
 	elseif args.spellId == 144330 and self:checkTankDistance(args:GetSrcCreatureID(), 50) then
-		warnIronPrison:Show()
 		timerIronPrisonCD:Start()
 	elseif args.spellId == 144328 and self:checkTankDistance(args:GetSrcCreatureID(), 50) then
 		warnIronTomb:Show()
