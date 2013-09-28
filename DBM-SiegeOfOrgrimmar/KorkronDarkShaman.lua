@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(856, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10432 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10434 $"):sub(12, -3))
 mod:SetCreatureID(71859, 71858)--haromm, Kardris
 mod:SetZone()
 mod:SetUsedIcons(5, 4, 3, 2, 1)
@@ -57,7 +57,7 @@ local yellIronPrisonFades			= mod:NewYell(144330, L.PrisonYell, false)--Off by d
 
 --Earthbreaker Haromm
 local timerFroststormStrike			= mod:NewTargetTimer(30, 144215, nil, mod:IsTank())
-local timerToxicMistsCD				= mod:NewCDTimer(32, 144089)--Pretty much a next timers unless boss is casting something else
+local timerToxicMistsCD				= mod:NewCDTimer(32, 144089, nil, false, nil, nil, nil, nil, nil, nil, 2)--Pretty much a next timers unless boss is casting something else
 local timerFoulStreamCD				= mod:NewCDTimer(32.5, 144090)--Pretty much a next timers unless boss is casting something else
 local timerAshenWallCD				= mod:NewCDTimer(32.5, 144070)--Pretty much a next timers unless boss is casting something else
 local timerIronTombCD				= mod:NewCDTimer(31.5, 144328)--Pretty much a next timers unless boss is casting something else
