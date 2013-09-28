@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(870, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10393 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10424 $"):sub(12, -3))
 mod:SetCreatureID(73720, 71512)
 mod:SetZone()
 
@@ -95,7 +95,7 @@ local timerPathOfBlossomsCD		= mod:NewCDTimer(15, 146253)
 local countdownSetToBlow		= mod:NewCountdownFades(29, 145996)
 local countdownArmageddon		= mod:NewCountdown(270, 145864, nil, nil, nil, nil, true)
 
-mod:AddBoolOption("RangeFrame")
+mod:AddRangeFrameOption(10, 145987)
 
 local activeBossGUIDS = {}
 local setToBlowTargets = {}

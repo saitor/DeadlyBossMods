@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(864, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10416 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10424 $"):sub(12, -3))
 mod:SetCreatureID(71466)
 mod:SetZone()
 
@@ -69,7 +69,7 @@ local soundCuttingLaser			= mod:NewSound(146325)
 
 local berserkTimer				= mod:NewBerserkTimer(600)
 
-mod:AddBoolOption("RangeFrame", mod:IsRanged())
+mod:AddRangeFrameOption(6, 144154, mod:IsRanged())
 
 local siegeMode = false
 local shockCount = 0

@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(856, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10423 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10424 $"):sub(12, -3))
 mod:SetCreatureID(71859, 71858)--haromm, Kardris
 mod:SetZone()
 mod:SetUsedIcons(5, 4, 3, 2, 1)
@@ -74,8 +74,8 @@ local countdownAshenWall			= mod:NewCountdown(32.5, 144070, nil, nil, nil, nil, 
 
 local berserkTimer					= mod:NewBerserkTimer(540)
 
-mod:AddBoolOption("RangeFrame")--This is more or less for foul geyser and foul stream splash damage
-mod:AddBoolOption("SetIconOnToxicMists", false)
+mod:AddRangeFrameOption(4, 143990)--This is more or less for foul geyser and foul stream splash damage
+mod:AddSetIconOption("SetIconOnToxicMists", 144089, false)
 
 local toxicMistsTargets = {}
 local toxicMistsTargetsIcons = {}
