@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10426 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10427 $"):sub(12, -3)),
 	DisplayVersion = "5.4.3 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.2", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10395 -- the revision of the latest stable version that is available
@@ -4510,10 +4510,10 @@ function bossModPrototype:BossTargetScanner(cid, returnFunc, scanInterval, scanT
 	end
 end
 
-function bossModPrototype:checkTankDistance(guid, distance)
-	local guid = guid or self.creatureId--CID fallback since GetBossTarget should sort it out (supports GUID or CID)
+function bossModPrototype:CheckTankDistance(cid, distance)
+	local cid = cid or self.creatureId--CID fallback since GetBossTarget should sort it out (CID)
 	local distance = distance or 40
-	local _, uId, mobuId = self:GetBossTarget(guid)
+	local _, uId, mobuId = self:GetBossTarget(cid)
 	if mobuId and (not uId or (uId and (uId == "boss1" or uId == "boss2" or uId == "boss3" or uId == "boss4" or uId == "boss5"))) then--Mob has no target, or is targeting a UnitID we cannot range check
 		local unitID = (IsInRaid() and "raid") or (IsInGroup() and "party") or "player"
 		for i = 1, DBM:GetNumGroupMembers() do
