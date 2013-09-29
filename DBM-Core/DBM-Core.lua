@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10448 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10449 $"):sub(12, -3)),
 	DisplayVersion = "5.4.3 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.2", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10395 -- the revision of the latest stable version that is available
@@ -4813,7 +4813,6 @@ do
 					pformat(self.text, table.concat(self.combinedtext, "<, >")),
 					(DBM.Options.WarningIconRight and self.icon and textureCode:format(self.icon)) or ""
 				)
-				self.combinedtext = {}
 			else
 				text = ("%s%s%s|r%s"):format(
 					(DBM.Options.WarningIconLeft and self.icon and textureCode:format(self.icon)) or "",
@@ -4822,6 +4821,7 @@ do
 					(DBM.Options.WarningIconRight and self.icon and textureCode:format(self.icon)) or ""
 				)
 			end
+			table.wipe(self.combinedtext)
 			if not cachedColorFunctions[self.color] then
 				local color = self.color -- upvalue for the function to colorize names, accessing self in the colorize closure is not safe as the color of the announce object might change (it would also prevent the announce from being garbage-collected but announce objects are never destroyed)
 				cachedColorFunctions[color] = function(cap)
@@ -4864,10 +4864,10 @@ do
 		end
 	end
 
-	function announcePrototype:CombinedShow(delay, text)
+	function announcePrototype:CombinedShow(delay, text, ...)
 		self.combinedtext[#self.combinedtext + 1] = text or ""
 		unschedule(self.Show, self.mod, self)
-		schedule(delay or 0.5, self.Show, self.mod, self)
+		schedule(delay or 0.5, self.Show, self.mod, self, ...)
 	end
 
 	function announcePrototype:Schedule(t, ...)
