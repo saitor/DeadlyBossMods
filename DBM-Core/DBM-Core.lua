@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10465 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10466 $"):sub(12, -3)),
 	DisplayVersion = "5.4.3 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.2", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10395 -- the revision of the latest stable version that is available
@@ -2934,7 +2934,7 @@ do
 			if targetList[mob] then
 				if delay > 0 and UnitAffectingCombat(targetList[mob]) then
 					DBM:StartCombat(mod, delay, nil, nil, nil, nil, "PLAYER_TARGET")
-				elseif select(2, GetInstanceInfo()) == "none" then
+				elseif (delay == 0) and select(2, GetInstanceInfo()) == "none" then
 					DBM:StartCombat(mod, 0, nil, nil, nil, true, "PLAYER_TARGET_AND_YELL")
 				end
 			end
