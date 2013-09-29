@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10460 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10461 $"):sub(12, -3)),
 	DisplayVersion = "5.4.3 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.2", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10395 -- the revision of the latest stable version that is available
@@ -4299,7 +4299,7 @@ do
 			end
 			obj.localization.general.name = string.split(",", t or name)
 			obj.modelId = select(4, EJ_GetCreatureInfo(1, tonumber(name)))
-		elseif name:match("z%d+") then
+		elseif name:match("z%d+") and modId ~= "DBM-PvP" then
 			local t = EJ_GetCreatureInfo(1, 817)(tonumber(name))
 			obj.localization.general.name = string.split(",", t or name)
 			obj.modelId = select(4, EJ_GetCreatureInfo(1, tonumber(name)))
