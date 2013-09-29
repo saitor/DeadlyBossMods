@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(870, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10469 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10470 $"):sub(12, -3))
 mod:SetCreatureID(73720, 71512)
 mod:SetZone()
 
@@ -96,6 +96,12 @@ local countdownArmageddon		= mod:NewCountdown(270, 145864, nil, nil, nil, nil, t
 mod:AddRangeFrameOption(10, 145987)
 
 local activeBossGUIDS = {}
+
+local function hideRangeFrame()
+	if mod.Options.RangeFrame then
+		DBM.RangeCheck:Hide()
+	end
+end
 
 function mod:OnCombatStart(delay)
 	table.wipe(activeBossGUIDS)
