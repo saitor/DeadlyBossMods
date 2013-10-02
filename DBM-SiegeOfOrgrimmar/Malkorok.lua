@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(846, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10506 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10507 $"):sub(12, -3))
 mod:SetCreatureID(71454)
 mod:SetZone()
 mod:SetUsedIcons(4, 3, 2, 1)
@@ -139,7 +139,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		if seismicSlamCount < 3 then
 			timerSeismicSlamCD:Start(nil, seismicSlamCount+1)
 		end
-		if self.Options.SetIconOnAdds then
+		if self.Options.SetIconOnAdds and self:IsDifficulty("heroic10", "heroic25") then
 			self:ScanForMobs(71644, 8, 30)
 		end
 	elseif args.spellId == 143913 then--May not be right spell event
