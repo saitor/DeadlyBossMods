@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Moonfang", "DBM-WorldEvents", 2)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10554 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10556 $"):sub(12, -3))
 mod:SetCreatureID(71992)
 --mod:SetModelID(328)
 mod:SetZone()
@@ -71,7 +71,7 @@ function mod:SPELL_CAST_START(args)
 	end
 end
 
-function mod:SPELL_CAST_START(args)
+function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 144590 and args:IsPlayer() then
 		specWarnCurse:Show()
 	end
