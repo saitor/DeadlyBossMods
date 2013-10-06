@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Moonfang", "DBM-WorldEvents", 2)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10553 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10554 $"):sub(12, -3))
 mod:SetCreatureID(71992)
 --mod:SetModelID(328)
 mod:SetZone()
@@ -22,7 +22,7 @@ local specWarnLeap			= mod:NewSpecialWarningYou(144546)
 local yellLeap				= mod:NewYell(144546)
 local specWarnLeapNear		= mod:NewSpecialWarningClose(144546)
 local specWarnCallPack		= mod:NewSpecialWarningSwitch(144602, mod:IsTank())
-local specWarnTears			= mod:NewSpecialWarningClose(144702, nil, nil, nil, 2)
+local specWarnTears			= mod:NewSpecialWarningSpell(144702, nil, nil, nil, 2)
 local specWarnMoonfangCurse	= mod:NewSpecialWarningRun(144590, mod:IsMelee())
 local specWarnCurse			= mod:NewSpecialWarningYou(144590)--You failed to move away. Maybe change to localized warning explaining that you need to spam 1 to break MC, not yell at others for not attacking you because you failed mechanic in first place.
 
