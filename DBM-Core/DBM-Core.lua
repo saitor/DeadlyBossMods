@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10569 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10570 $"):sub(12, -3)),
 	DisplayVersion = "5.4.3 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.2", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10395 -- the revision of the latest stable version that is available
@@ -3154,7 +3154,7 @@ end
 local combatStartedByIEEU = false
 
 function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
-	if DBM.Options.DebugMode then
+	if DBM.Options.DebugMode and not mod.inCombat then
 		if event then
 			print("DBM:StartCombat called by : "..event)
 		else
