@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10563 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10564 $"):sub(12, -3)),
 	DisplayVersion = "5.4.3 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.2", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10395 -- the revision of the latest stable version that is available
@@ -4541,16 +4541,6 @@ function bossModPrototype:GetBossTarget(cid)
 				uid = DBM:GetRaidUnitId(name) or (UnitExists("party"..i.."targettarget") and "party"..i.."targettarget")--overrride target uid because uid+"target" is variable uid.
 				break
 			end
-		end
-	else--Solo
-		if self:GetUnitCreatureId("playertarget") == cid or UnitGUID("playertarget") == cid then
-			bossuid = "playertarget"
-			name = DBM:GetUnitFullName("playertargettarget")
-			uid = "playertargettarget"
-		elseif self:GetUnitCreatureId("focustarget") == cid or UnitGUID("focustarget") == cid then
-			bossuid = "focustarget"
-			name = DBM:GetUnitFullName("focustargettarget")
-			uid = "focustargettarget"
 		end
 	end
 	return name, uid, bossuid
