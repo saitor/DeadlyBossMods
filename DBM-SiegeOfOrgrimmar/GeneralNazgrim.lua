@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(850, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10583 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10585 $"):sub(12, -3))
 mod:SetCreatureID(71515)
 mod:SetZone()
 mod:SetUsedIcons(8, 7, 6, 4, 2, 1)
@@ -116,8 +116,8 @@ local lines = {}
 local function sortInfoFrame(a, b)
 	local a = lines[a]
 	local b = lines[b]
-	if not tonumber(a) then a = 0 end
-	if not tonumber(b) then b = 0 end
+	if not tonumber(a) then a = -1 end
+	if not tonumber(b) then b = -1 end
 	if a > b then return true else return false end
 end
 
