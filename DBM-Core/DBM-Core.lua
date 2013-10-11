@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10604 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10605 $"):sub(12, -3)),
 	DisplayVersion = "5.4.3 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.2", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10395 -- the revision of the latest stable version that is available
@@ -3269,24 +3269,33 @@ function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
 				speedTimer:Start()
 			end
 		end
+		if mod.findFastestComputer and not DBM.Options.DontSetIcons then
+			if DBM:GetRaidRank() > 0 then
+				local optionName = mod.findFastestComputer[1]
+				if #mod.findFastestComputer == 1 and mod.Options[optionName] then
+					sendSync("IS", UnitGUID("player").."\t"..DBM.Revision.."\t"..optionName)
+				else
+					for i = 1, #mod.findFastestComputer do
+						local option = mod.findFastestComputer[i]
+						if mod.Options[option] then
+							sendSync("IS", UnitGUID("player").."\t"..DBM.Revision.."\t"..option)
+						end
+					end
+				end
+			elseif not IsInGroup() then
+				for i = 1, #mod.findFastestComputer do
+					local option = mod.findFastestComputer[i]
+					if mod.Options[option] then
+						canSetIcons[option] = true
+					end
+				end
+			end
+		end
 		if mod.OnCombatStart and not mod.ignoreBestkill then
 			mod:OnCombatStart(delay or 0, event == "PLAYER_TARGET_AND_YELL")
 		end
 		if not synced then
 			sendSync("C", (delay or 0).."\t"..mod.id.."\t"..(mod.revision or 0).."\t"..startHp.."\t"..DBM.Revision)
-		end
-		if DBM:GetRaidRank() > 0 and mod.findFastestComputer and not DBM.Options.DontSetIcons then
-			local optionName = mod.findFastestComputer[1]
-			if #mod.findFastestComputer == 1 and mod.Options[optionName] then
-				sendSync("IS", UnitGUID("player").."\t"..DBM.Revision.."\t"..optionName)
-			else
-				for i = 1, #mod.findFastestComputer do
-					local option = mod.findFastestComputer[i]
-					if mod.Options[option] then
-						sendSync("IS", UnitGUID("player").."\t"..DBM.Revision.."\t"..option)
-					end
-				end
-			end
 		end
 		fireEvent("pull", mod, delay, synced, startHp)
 		self:ToggleRaidBossEmoteFrame(1)
