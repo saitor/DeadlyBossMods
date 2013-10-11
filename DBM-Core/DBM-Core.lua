@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10605 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10606 $"):sub(12, -3)),
 	DisplayVersion = "5.4.3 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.2", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10395 -- the revision of the latest stable version that is available
@@ -2327,7 +2327,7 @@ do
 		if sender == playerName then return end
 		local _, instanceType = GetInstanceInfo()
 		if instanceType == "pvp" then return end
-		if instanceType == "none" and not UnitAffectingCombat("player") and #InCombat > 0 then return end--Ignore world boss pulls if you aren't fighting them. Also ignore world boss pull if already in combat.
+		if instanceType == "none" and not UnitAffectingCombat("player") and #inCombat > 0 then return end--Ignore world boss pulls if you aren't fighting them. Also ignore world boss pull if already in combat.
 		if not IsEncounterInProgress() and instanceType == "raid" and IsPartyLFG() then return end--Ignore syncs if we cannot validate IsEncounterInProgress as true
 		local lag = select(4, GetNetStats()) / 1000
 		delay = tonumber(delay or 0) or 0
