@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10614 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10615 $"):sub(12, -3)),
 	DisplayVersion = "5.4.3 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.2", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10395 -- the revision of the latest stable version that is available
@@ -4380,7 +4380,7 @@ do
 			local t = EJ_GetEncounterInfo(tonumber(name))
 			if type(nameModifier) == "number" then--Get name form EJ_GetCreatureInfo
 				t = select(2, EJ_GetCreatureInfo(nameModifier, tonumber(name)))
-			elseif type(nameModifier) == "function" then--custom name modifiy function
+			elseif type(nameModifier) == "function" then--custom name modify function
 				t = nameModifier(t or name)
 			else--default name modify
 				t = string.split(",", t or name)
@@ -4390,7 +4390,7 @@ do
 		elseif name:match("z%d+") then
 			local t = GetRealZoneText(string.sub(name, 2))
 			if type(nameModifier) == "number" then--do nothing
-			elseif type(nameModifier) == "function" then--custom name modifiy function
+			elseif type(nameModifier) == "function" then--custom name modify function
 				t = nameModifier(t or name)
 			else--default name modify
 				t = string.split(",", t or name)
@@ -4399,7 +4399,7 @@ do
 		elseif name:match("d%d+") then
 			local t = GetDungeonInfo(string.sub(name, 2))
 			if type(nameModifier) == "number" then--do nothing
-			elseif type(nameModifier) == "function" then--custom name modifiy function
+			elseif type(nameModifier) == "function" then--custom name modify function
 				t = nameModifier(t or name)
 			else--default name modify
 				t = string.split(",", t or name)
