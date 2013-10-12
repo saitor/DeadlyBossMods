@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(870, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10610 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10611 $"):sub(12, -3))
 mod:SetCreatureID(73720, 71512)
 mod:SetZone()
 
@@ -105,6 +105,7 @@ local berserkTimer				= mod:NewBerserkTimer(480)
 
 mod:AddRangeFrameOption(10, 145987)
 
+local select, tonumber, GetPlayerMapPosition, GetWorldStateUIInfo = select, tonumber, GetPlayerMapPosition, GetWorldStateUIInfo
 local point1 = {0.488816, 0.208129}
 local point2 = {0.562330, 0.371684}
 local worldTimer = 0
@@ -292,7 +293,6 @@ function mod:UNIT_DIED(args)
 	end
 end
 
-local select, tonumber, GetWorldStateUIInfo = select, tonumber, GetWorldStateUIInfo--World state spam called.
 function mod:UPDATE_WORLD_STATES()
 	local text = select(4, GetWorldStateUIInfo(5))
 	local time = tonumber(string.match(text or "", "%d+"))
