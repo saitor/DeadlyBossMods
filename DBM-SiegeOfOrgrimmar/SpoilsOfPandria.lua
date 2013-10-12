@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(870, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10611 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10612 $"):sub(12, -3))
 mod:SetCreatureID(73720, 71512)
 mod:SetZone()
 
@@ -18,8 +18,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_DAMAGE",
 	"SPELL_MISSED",
 	"UNIT_DIED",
-	"UPDATE_WORLD_STATES",
-	"CHAT_MSG_MONSTER_YELL"
+	"UPDATE_WORLD_STATES"
 )
 
 local warnSuperNova				= mod:NewCastAnnounce(146815, 4)--Heroic
