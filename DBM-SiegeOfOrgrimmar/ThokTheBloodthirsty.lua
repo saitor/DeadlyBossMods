@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(851, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10625 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10626 $"):sub(12, -3))
 mod:SetCreatureID(71529)
 mod:SetZone()
 mod:SetUsedIcons(8)
@@ -141,13 +141,14 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 143343 then--Assumed, 2 second channel but "Instant" cast flagged, this generally means SPELL_AURA_APPLIED
 		timerDeafeningScreechCD:Cancel()
-		if screechCount < 7 then--Don't spam special warning once cd is lower than 4.8 seconds.
-			timerDeafeningScreechCD:Start(screechTimers[screechCount], screechCount+1)
-			specWarnDeafeningScreech:Schedule(screechTimers[screechCount]-1.5)
-		end
 		if self:IsDifficulty("lfr25") then
 			timerDeafeningScreechCD:Start(18, screechCount+1)
 			specWarnDeafeningScreech:Show()
+		else
+			if screechCount < 7 then--Don't spam special warning once cd is lower than 4.8 seconds.
+				timerDeafeningScreechCD:Start(screechTimers[screechCount], screechCount+1)
+				specWarnDeafeningScreech:Schedule(screechTimers[screechCount]-1.5)
+			end
 		end
 	elseif args.spellId == 143428 then
 		warnTailLash:Show()
