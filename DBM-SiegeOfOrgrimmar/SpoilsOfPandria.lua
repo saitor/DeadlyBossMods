@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(870, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10617 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10619 $"):sub(12, -3))
 mod:SetCreatureID(73720, 71512)
 mod:SetZone()
 
@@ -296,7 +296,7 @@ function mod:UPDATE_WORLD_STATES()
 	local text = select(4, GetWorldStateUIInfo(5))
 	local time = tonumber(string.match(text or "", "%d+"))
 	if time > worldTimer then
-		local newTime = time + (time/100) + 1 -- bliz timer litte slow. wtf? If this correction is not right, need to timer update every 30s or 1m.
+		local newTime = time - (time/100) - 1 -- bliz timer litte fast. wtf?
 		berserkTimer:Cancel()
 		countdownArmageddon:Cancel()
 		berserkTimer:Start(newTime)
