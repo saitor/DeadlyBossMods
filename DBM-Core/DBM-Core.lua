@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10653 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10654 $"):sub(12, -3)),
 	DisplayVersion = "5.4.4 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.3", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10638 -- the revision of the latest stable version that is available
@@ -1153,11 +1153,12 @@ SlashCmdList["DEADLYBOSSMODS"] = function(msg)
 			DBM:AddMsg(DBM_ERROR_NO_PERMISSION)
 			return
 		end
+		DBM:Unschedule(SendChatMessage)
 		local timer = tonumber(cmd:sub(6)) or 5
+		if timer == 0 then return end--Allow /dbm break 0 to cancel it
 		local timer = timer * 60
 		local channel = (IsInRaid() and "RAID_WARNING") or "PARTY"
 		DBM:CreatePizzaTimer(timer, DBM_CORE_TIMER_BREAK, true)
-		DBM:Unschedule(SendChatMessage)
 		if IsInGroup() then
 			SendChatMessage(DBM_CORE_BREAK_START:format(timer/60), channel)
 			if timer/60 > 5 then DBM:Schedule(timer - 5*60, SendChatMessage, DBM_CORE_BREAK_MIN:format(5), channel) end
