@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(865, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10590 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10661 $"):sub(12, -3))
 mod:SetCreatureID(71504)--71591 Automated Shredder
 mod:SetZone()
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3, 2, 1)--Not sure how many mines spawn on 25 man, even more of them on heroic 25, so maybe all 8 used?
@@ -206,11 +206,11 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args.spellId == 144236 and args:IsPlayer() then
 		timerPatternRecognition:Start()
 	elseif args.spellId == 145269 then
-		if self:AntiSpam(10, 3) then
+		if self:AntiSpam(20, 3) then
 			warnCrawlerMine:Show()
 			specWarnCrawlerMine:Show()
 			if self.Options.SetIconOnMines then
-				self:ScanForMobs(71788, 0, 8, nil, 0.2, 12)--Not sure max mines. Long scan period because they spawn slowly over time
+				self:ScanForMobs(71788, 0, 8, nil, 0.2, 20)--Not sure max mines. Long scan period because they spawn slowly over time
 			end
 		end
 		timerBreakinPeriod:Start(args.destName, args.destGUID)
