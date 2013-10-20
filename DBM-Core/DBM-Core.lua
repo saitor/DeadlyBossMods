@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10661 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10662 $"):sub(12, -3)),
 	DisplayVersion = "5.4.4 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.3", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10638 -- the revision of the latest stable version that is available
@@ -2180,7 +2180,7 @@ function DBM:ScenarioCheck()
 	if combatInfo[LastInstanceMapID] then
 		for i, v in ipairs(combatInfo[LastInstanceMapID]) do
 			if (v.type == "scenario") and checkEntry(v.msgs, LastInstanceMapID) then
-				DBM:StartCombat(v.mod, 0, "LOADING_SCREEN_DIASBLED")
+				DBM:StartCombat(v.mod, 0, "LOADING_SCREEN_DISABLED")
 			end
 		end
 	end
