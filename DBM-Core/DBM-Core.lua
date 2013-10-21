@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10666 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10667 $"):sub(12, -3)),
 	DisplayVersion = "5.4.4 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.3", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10638 -- the revision of the latest stable version that is available
@@ -261,6 +261,7 @@ local ipairs, pairs, next = ipairs, pairs, next
 local tinsert, tremove, twipe = table.insert, table.remove, table.wipe
 local type = type
 local select = select
+local GetTime = GetTime
 local floor, mhuge, mmin, mmax = math.floor, math.huge, math.min, math.max
 local GetNumGroupMembers = GetNumGroupMembers
 local GetRaidRosterInfo = GetRaidRosterInfo
