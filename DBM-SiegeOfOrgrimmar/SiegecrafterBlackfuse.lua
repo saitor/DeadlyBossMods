@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(865, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10665 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10672 $"):sub(12, -3))
 mod:SetCreatureID(71504)--71591 Automated Shredder
 mod:SetZone()
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3, 2, 1)--Not sure how many mines spawn on 25 man, even more of them on heroic 25, so maybe all 8 used?
@@ -48,7 +48,7 @@ local specWarnAutomatedShredder			= mod:NewSpecialWarningSpell("ej8199", mod:IsT
 local specWarnDeathFromAbove			= mod:NewSpecialWarningYou(144208)
 local specWarnAutomatedShredderSwitch	= mod:NewSpecialWarningSwitch("ej8199", false)--Strat dependant, you may just ignore them and have tank kill them with laser pools
 --The Assembly Line
-local specWarnCrawlerMine				= mod:NewSpecialWarningSwitch("ej8212")
+local specWarnCrawlerMine				= mod:NewSpecialWarningSwitch("ej8212", not mod:IsHealer(), nil, nil, nil, 2)
 local specWarnAssemblyLine				= mod:NewSpecialWarningSpell("ej8202", mod:IsDps())
 local specWarnShockwaveMissileActive	= mod:NewSpecialWarningSpell("ej8204", nil, nil, nil, 2)
 local specWarnReadyToGo					= mod:NewSpecialWarningTarget(145580)

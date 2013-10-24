@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10671 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10672 $"):sub(12, -3)),
 	DisplayVersion = "5.4.4 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.3", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10638 -- the revision of the latest stable version that is available
@@ -5358,6 +5358,7 @@ do
 			count = count or self.count or 5
 			if timer <= count then count = floor(timer) end
 			if DBM.Options.ShowCountdownText and not (self.textDisabled or self.alternateVoice) then
+				stopCountdown()
 				if timer >= count then 
 					DBM:Schedule(timer-count, showCountdown, count)
 				else
