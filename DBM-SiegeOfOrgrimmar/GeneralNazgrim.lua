@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(850, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10670 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10671 $"):sub(12, -3))
 mod:SetCreatureID(71515)
 mod:SetZone()
 mod:SetUsedIcons(8, 7, 6, 4, 2, 1)
@@ -405,7 +405,11 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 			countdownAdds:Start()
 		end
 		if self.Options.SetIconOnAdds then
-			self:ScanForMobs(addsTable, 2, 7, 4, 0.2, 15)
+			if self:IsDifficulty("heroic10", "heroic25") or addsCount > 6 then--3 Adds
+				self:ScanForMobs(addsTable, 2, 7, 3, 0.2, 15)
+			else
+				self:ScanForMobs(addsTable, 2, 7, 2, 0.2, 15)--2 adds
+			end
 		end
 		if self.Options.InfoFrame then
 			DBM.InfoFrame:Show(5, "function", updateInfoFrame, sortInfoFrame)
