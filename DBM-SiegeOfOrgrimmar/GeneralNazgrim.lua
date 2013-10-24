@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(850, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10633 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10670 $"):sub(12, -3))
 mod:SetCreatureID(71515)
 mod:SetZone()
 mod:SetUsedIcons(8, 7, 6, 4, 2, 1)
@@ -107,7 +107,7 @@ local addsTable = {
 	[71517] = 6,--Arcweaver
 	[71518] = 1,--Assassin
 	[71516] = 2,--Iron Blade
-	[71556] = 4,--Sniper (Heroic)
+	[71656] = 4,--Sniper (Heroic)
 }
 
 local bossPower = 0--Will be moved into updateinfoframe function when test code removed
