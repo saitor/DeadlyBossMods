@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(869, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10672 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10673 $"):sub(12, -3))
 mod:SetCreatureID(71865)
 mod:SetZone()
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3, 2, 1)--I think garrosh will cap at 7 in most cases for minions on 25 man but show all 8 in case some real crap group has 8 shaman up? lol
@@ -275,14 +275,14 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		specWarnHellscreamsWarsong:Show()
 		timerHellscreamsWarsongCD:Start()
 	elseif spellId == 145235 then--Throw Axe At Heart
-		timerPowerIronStar:Cancel()
-		countdownPowerIronStar:Cancel()
 		timerSiegeEngineerCD:Cancel()
 		timerFarseerWolfRiderCD:Cancel()
 		timerDesecrateCD:Cancel()
 		timerHellscreamsWarsongCD:Cancel()
 		timerEnterRealm:Start(25)
 	elseif spellId == 144866 then--Enter Realm of Y'Shaarj
+		timerPowerIronStar:Cancel()
+		countdownPowerIronStar:Cancel()
 		timerDesecrateCD:Cancel()
 		timerTouchOfYShaarjCD:Cancel()
 		countdownTouchOfYShaarj:Cancel()
