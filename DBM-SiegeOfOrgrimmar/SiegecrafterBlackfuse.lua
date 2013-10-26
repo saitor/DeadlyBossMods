@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(865, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10678 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10680 $"):sub(12, -3))
 mod:SetCreatureID(71504)--71591 Automated Shredder
 mod:SetZone()
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3, 2, 1)--Not sure how many mines spawn on 25 man, even more of them on heroic 25, so maybe all 8 used?
@@ -81,6 +81,9 @@ local timerBreakinPeriod				= mod:NewTargetTimer(60, 145269, nil, false)--Many m
 local countdownAssemblyLine				= mod:NewCountdown(40, "ej8202", false)
 local countdownShredder					= mod:NewCountdown(60, "ej8199", mod:IsTank())
 local countdownElectroStatic			= mod:NewCountdown(17, 143385, mod:IsTank(), nil, nil, nil, true)
+
+local soundMineFixate					= mod:NewSound("ej8212", nil, mod:IsMelee())--No strat involves ranged moving for these, they should die before reaching ranged. But melee must run out.
+local soundLaserFixate					= mod:NewSound(143828, nil, false)
 
 mod:AddInfoFrameOption("ej8202")
 mod:AddSetIconOption("SetIconOnMines", "ej8212", false, true)
@@ -279,9 +282,11 @@ function mod:RAID_BOSS_WHISPER(msg)
 	elseif msg:find("Ability_Siege_Engineer_Detonate") then--Doesn't show in combat log at all (what else is new)
 		specWarnCrawlerMineFixate:Show()
 		yellCrawlerMineFixate:Yell()
+		soundMineFixate:Play()
 	elseif msg:find("Ability_Siege_Engineer_Superheated") then
 		specWarnLaserFixate:Show()
 		yellLaserFixate:Yell()
+		soundLaserFixate:Play()
 		self:SendSync("LockedOnTarget", UnitGUID("player"))
 	end
 end
