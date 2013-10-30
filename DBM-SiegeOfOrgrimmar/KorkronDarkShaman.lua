@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(856, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10693 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10694 $"):sub(12, -3))
 mod:SetCreatureID(71859, 71858)--haromm, Kardris
 mod:SetZone()
 mod:SetUsedIcons(5, 4, 3, 2, 1)
@@ -71,7 +71,7 @@ local timerIronPrisonCD				= mod:NewCDTimer(31.5, 144330)--Pretty much a next ti
 local timerIronPrisonSelf			= mod:NewBuffFadesTimer(60, 144330)
 
 local countdownFoulGeyser			= mod:NewCountdown("OptionVersion2", 32.5, 143990, mod:IsTank() or mod:IsRangedDps())
-local countdownFallingAsh			= mod:NewCountdown(15, 143973, nil, nil, nil, nil, true)
+local countdownFallingAsh			= mod:NewCountdown("Alt15", 143973)
 
 local berserkCD						= mod:NewCDTimer(540, 26662)
 
