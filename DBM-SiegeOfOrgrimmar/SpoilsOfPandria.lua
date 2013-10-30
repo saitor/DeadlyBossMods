@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(870, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10694 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10695 $"):sub(12, -3))
 mod:SetCreatureID(73720, 71512)
 mod:SetZone()
 
@@ -26,7 +26,7 @@ mod:RegisterEvents(
 	"CHAT_MSG_MONSTER_YELL"
 )
 
-local warnSuperNova				= mod:NewCastAnnounce("OptionVersion2", 146815, 4, nil, false)--Heroic
+local warnSuperNova				= mod:NewCastAnnounce("OptionVersion3", 146815, 4, nil, nil, false)--Heroic
 --Massive Crate of Goods
 ----Mogu
 local warnReturnToStone			= mod:NewSpellAnnounce(145489, 2)
