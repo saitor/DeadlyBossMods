@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(868, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10695 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10696 $"):sub(12, -3))
 mod:SetCreatureID(72311, 72560, 72249, 73910, 72302, 72561, 73909)--Boss needs to engage off friendly NCPS, not the boss. I include the boss too so we don't detect a win off losing varian. :)
 mod:SetReCombatTime(180, 15)--fix combat re-starts after killed. Same issue as tsulong. Fires TONS of IEEU for like 1-2 minutes after fight ends.
 mod:SetMainBossID(72249)
@@ -66,7 +66,7 @@ local specWarnPoisonCloud			= mod:NewSpecialWarningMove(147705)
 local specWarnFlamesofGalakrond		= mod:NewSpecialWarningCount(147029, false, nil, nil, 2)--Cast often, so lets make this optional since it's spammy
 local specWarnFlamesofGalakrondYou	= mod:NewSpecialWarningYou(147068)
 local yellFlamesofGalakrond			= mod:NewYell(147068)
-local specWarnFlamesofGalakrondStack= mod:NewSpecialWarningStack("OptionVersion4", 147029, nil, 3)
+local specWarnFlamesofGalakrondStack= mod:NewSpecialWarningStack("OptionVersion4", 147029, nil, 6)
 local specWarnFlamesofGalakrondOther= mod:NewSpecialWarningTarget(147029, mod:IsTank())
 
 --Stage 2: Bring Her Down!
@@ -164,7 +164,7 @@ end
 function mod:SPELL_AURA_APPLIED_DOSE(args)
 	if args.spellId == 147029 then
 		local amount = args.amount or 1
-		if amount >= 3 and args:IsPlayer() then
+		if amount >= 6 and args:IsPlayer() then
 			specWarnFlamesofGalakrondStack:Show(amount)
 		end
 		local uId = DBM:GetRaidUnitId(args.destName)
@@ -174,7 +174,7 @@ function mod:SPELL_AURA_APPLIED_DOSE(args)
 				if self:IsTanking(uId, bossUnitID) then
 					warnFlamesofGalakrond:Show(args.destName, amount)
 					timerFlamesofGalakrond:Start(args.destName)
-					if amount >= 3 then
+					if amount >= 6 then
 						specWarnFlamesofGalakrondOther:Show(args.destName)
 					end
 				end
