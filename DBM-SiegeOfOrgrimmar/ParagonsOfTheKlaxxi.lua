@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(853, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10715 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10716 $"):sub(12, -3))
 mod:SetCreatureID(71152, 71153, 71154, 71155, 71156, 71157, 71158, 71160, 71161)
 mod:SetZone()
 mod:SetUsedIcons(1)
@@ -514,7 +514,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		specWarnHurlAmber:Show()
 		timerHurlAmberCD:Start()
 	elseif args.spellId == 143337 then
-		warnMutate:CombinedShow(0.5, targetName)
+		warnMutate:CombinedShow(0.5, args.destName)
 		timerMutateCD:start()
 		if args.IsPlayer() then
 			specWarnMutate:Show()
