@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10755 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10756 $"):sub(12, -3)),
 	DisplayVersion = "5.4.6 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.5", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10737 -- the revision of the latest stable version that is available
@@ -3290,7 +3290,9 @@ function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
 		mod.blockSyncs = nil
 		mod.combatInfo.pull = GetTime() - (delay or 0)
 		combatStartedByIEEU = (event or "") == "IEEU"
-		self:Schedule(mod.minCombatTime or 3, checkWipe, combatStartedByIEEU)
+		if not mod.combatInfo.type == "ES" then
+			self:Schedule(mod.minCombatTime or 3, checkWipe, combatStartedByIEEU)
+		end
 		if (DBM.Options.AlwaysShowHealthFrame or mod.Options.HealthFrame) and not mod.inScenario then
 			DBM.BossHealth:Show(mod.localization.general.name)
 			if mod.bossHealthInfo then
@@ -3865,10 +3867,12 @@ do
 					end
 				end
 			end
-			if mod.minCombatTime then
-				self:Schedule(mmax((mod.minCombatTime - time - lag), 3), checkWipe, isIEEU == "true")
-			else
-				self:Schedule(3, checkWipe, isIEEU == "true")
+			if not mod.combatInfo.type == "ES" then
+				if mod.minCombatTime then
+					self:Schedule(mmax((mod.minCombatTime - time - lag), 3), checkWipe, isIEEU == "true")
+				else
+					self:Schedule(3, checkWipe, isIEEU == "true")
+				end
 			end
 			if (DBM.Options.AlwaysShowHealthFrame or mod.Options.HealthFrame) and not mod.inSecnario then
 				DBM.BossHealth:Show(mod.localization.general.name)
