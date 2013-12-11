@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10756 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10757 $"):sub(12, -3)),
 	DisplayVersion = "5.4.6 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.5", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10737 -- the revision of the latest stable version that is available
@@ -3107,10 +3107,16 @@ do
 		for i = #inCombat, 1, -1 do
 			local v = inCombat[i]
 			if not v.combatInfo then return end
+			if DBM.Options.DebugMode then
+				print("Encounter Active:", v.encounter, v.name)
+			end
 			if encounterID == v.encounter then
-				local wipe = nil
+				local wipe = false
 				if success == 0 then wipe = true end
 				self:EndCombat(v, wipe)
+				if DBM.Options.DebugMode then
+					print("Called EndCombat for: ", v.encounter, v.name, wipe)
+				end
 				return
 			end
 		end
