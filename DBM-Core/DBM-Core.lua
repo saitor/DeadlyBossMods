@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10767 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10768 $"):sub(12, -3)),
 	DisplayVersion = "5.4.6 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.5", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10737 -- the revision of the latest stable version that is available
@@ -3085,7 +3085,7 @@ do
 		end
 		if combatInfo[LastInstanceMapID] then
 			for i, v in ipairs(combatInfo[LastInstanceMapID]) do
-				if not v.noES then
+				if not v.noESDetection then
 					if v.multiEncounterPullDetection then
 						for _, eId in ipairs(v.multiEncounterPullDetection) do
 							if encounterID == eId then
@@ -4581,9 +4581,9 @@ function bossModPrototype:SetEncounterID(...)
 end
 
 function bossModPrototype:DisableESCombatDectection()
-	self.noES = true
+	self.noESDetection = true
 	if self.combatInfo then
-		self.combatInfo.noES = true
+		self.combatInfo.noESDetection = true
 	end
 end
 
@@ -6802,6 +6802,9 @@ function bossModPrototype:RegisterCombat(cType, ...)
 	end
 	if self.multiEncounterPullDetection then
 		info.multiEncounterPullDetection = self.multiEncounterPullDetection
+	end
+	if self.noESDetection then
+		info.noESDetection = self.noESDetection
 	end
 	-- use pull-mobs as kill mobs by default, can be overriden by RegisterKill
 	if self.multiMobPullDetection then
