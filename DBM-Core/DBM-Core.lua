@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10774 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10775 $"):sub(12, -3)),
 	DisplayVersion = "5.4.6 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.5", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10737 -- the revision of the latest stable version that is available
@@ -3472,7 +3472,7 @@ function DBM:EndEncounter(encounterID, success, synced)
 				if encounterID == eId then
 					self:EndCombat(v, success == 0)
 					if not synced then
-						sendSync("EE", encounterID.."\t"..success.."\t"..v.."\t"..(v.revision or 0))
+						sendSync("EE", encounterID.."\t"..success.."\t"..v.id.."\t"..(v.revision or 0))
 					end
 					return
 				end
@@ -3480,7 +3480,7 @@ function DBM:EndEncounter(encounterID, success, synced)
 		elseif encounterID == v.combatInfo.eId then
 			self:EndCombat(v, success == 0)
 			if not synced then
-				sendSync("EE", encounterID.."\t"..success.."\t"..v.."\t"..(v.revision or 0))
+				sendSync("EE", encounterID.."\t"..success.."\t"..v.id.."\t"..(v.revision or 0))
 			end
 			return
 		end
