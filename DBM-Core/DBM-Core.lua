@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10772 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10773 $"):sub(12, -3)),
 	DisplayVersion = "5.4.6 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.5", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10737 -- the revision of the latest stable version that is available
@@ -3459,6 +3459,10 @@ function DBM:GetBossHealthByCID(cid)
 end
 
 function DBM:EndEncounter(encounterID, success, synced)
+	if DBM.Options.DebugMode then
+		print("EndEncounter event fired:", IsEncounterInProgress())
+	end
+	if synced and (IsEncounterInProgress() or not IsInRaid()) then return end--Security, prevent people using /script maliciously to trick dbm into EndCombat
 	for i = #inCombat, 1, -1 do
 		local v = inCombat[i]
 		if not v.combatInfo then return end
