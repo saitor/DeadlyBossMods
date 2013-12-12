@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10771 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10772 $"):sub(12, -3)),
 	DisplayVersion = "5.4.6 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.5", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10737 -- the revision of the latest stable version that is available
@@ -2389,11 +2389,13 @@ do
 		if cId then DBM:OnMobKill(cId, true) end
 	end
 
-	syncHandlers["EE"] = function(sender, eId, success)
+	syncHandlers["EE"] = function(sender, eId, success, mod, modRevision)
 		if select(2, IsInInstance()) == "pvp" then return end
 		eId = tonumber(cId or "")
 		success = tonumber(wipe)
-		if eId and success then DBM:EndEncounter(eId, success, true) end
+		mod = DBM:GetModByName(mod or "")
+		modRevision = tonumber(modRevision or 0) or 0
+		if eId and success and (not mod.minSyncRevision or modRevision >= mod.minSyncRevision) then DBM:EndEncounter(eId, success, true) end
 	end
 
 	local dummyMod -- dummy mod for the pull sound effect
@@ -3465,7 +3467,7 @@ function DBM:EndEncounter(encounterID, success, synced)
 				if encounterID == eId then
 					self:EndCombat(v, success == 0)
 					if not synced then
-						sendSync("EE", encounterID.."\t"..success)
+						sendSync("EE", encounterID.."\t"..success.."\t"..v.."\t"..(v.revision or 0))
 					end
 					return
 				end
@@ -3473,7 +3475,7 @@ function DBM:EndEncounter(encounterID, success, synced)
 		elseif encounterID == v.combatInfo.eId then
 			self:EndCombat(v, success == 0)
 			if not synced then
-				sendSync("EE", encounterID.."\t"..success)
+				sendSync("EE", encounterID.."\t"..success.."\t"..v.."\t"..(v.revision or 0))
 			end
 			return
 		end
