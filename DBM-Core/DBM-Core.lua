@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10782 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10783 $"):sub(12, -3)),
 	DisplayVersion = "5.4.6 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.5", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10737 -- the revision of the latest stable version that is available
@@ -905,9 +905,6 @@ do
 
 	function DBM:UnregisterCallback(event)
 		if not event or not callbacks[event] then return end
-		for k,v in pairs(callbacks) do
-			print(k)
-		end
 		callbacks[event] = nil
 	end
 end
