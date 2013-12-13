@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10783 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10784 $"):sub(12, -3)),
 	DisplayVersion = "5.4.6 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.5", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10737 -- the revision of the latest stable version that is available
@@ -6226,7 +6226,7 @@ do
 			end
 			msg = msg:gsub(">.-<", stripName)
 			bar:SetText(msg)
-			fireEvent("DBM_TimerStart", id, msg)
+			fireEvent("DBM_TimerStart", id, msg, timer..DBM_CORE_SEC)
 			tinsert(self.startedTimers, id)
 			self.mod:Unschedule(removeEntry, self.startedTimers, id)
 			self.mod:Schedule(timer, removeEntry, self.startedTimers, id)
