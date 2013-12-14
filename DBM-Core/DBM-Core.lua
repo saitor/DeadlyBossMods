@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10786 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10787 $"):sub(12, -3)),
 	DisplayVersion = "5.4.6 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.5", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10737 -- the revision of the latest stable version that is available
@@ -3281,10 +3281,14 @@ end
 local statVarTable = {
 	["normal5"] = "normal",
 	["normal10"] = "normal",
-	["worldboss"] = "normal",
+	["normal25"] = "normal25",
 	["heroic5"] = "heroic",
 	["heroic10"] = "heroic",
+	["heroic25"] = "heroic25",
 	["challenge5"] = "challenge",
+	["worldboss"] = "normal",
+	["lfr25"] = "lfr25",
+	["flex"] = "flex",
 }
 
 function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
