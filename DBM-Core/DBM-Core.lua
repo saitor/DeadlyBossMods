@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10797 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10798 $"):sub(12, -3)),
 	DisplayVersion = "5.4.6 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.5", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10737 -- the revision of the latest stable version that is available
@@ -91,6 +91,7 @@ DBM.DefaultOptions = {
 	},
 	Enabled = true,
 	ShowWarningsInChat = true,
+	ShowSWarningsInChat = true,
 	ShowFakedRaidWarnings = false,
 	WarningIconLeft = true,
 	WarningIconRight = true,
@@ -5677,7 +5678,7 @@ do
 			msg = msg:gsub(">.-<", stripName)
 			font:SetText(msg)
 			fireEvent("DBM_SpecWarn", msg)
-			if DBM.Options.ShowWarningsInChat then
+			if DBM.Options.ShowSWarningsInChat then
 				local colorCode = ("|cff%.2x%.2x%.2x"):format(DBM.Options.SpecialWarningFontColor[1] * 255, DBM.Options.SpecialWarningFontColor[2] * 255, DBM.Options.SpecialWarningFontColor[3] * 255)
 				self.mod:AddMsg(colorCode.."["..DBM_CORE_MOVE_SPECIAL_WARNING_TEXT.."] "..msg.."|r", nil)
 			end
