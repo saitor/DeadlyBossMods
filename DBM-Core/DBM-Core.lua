@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10803 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10804 $"):sub(12, -3)),
 	DisplayVersion = "5.4.6 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.5", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10737 -- the revision of the latest stable version that is available
@@ -3132,15 +3132,7 @@ do
 		DBM:EndCombat(v, success == 0)
 		sendSync("EE", encounterID.."\t"..success.."\t"..v.id.."\t"..(v.revision or 0))
 	end
-
-	local trustedZones = {
-		[1136] = true,
-		[1009] = true,
-		[1008] = true,
-		[996] = true,
-		[1098] = true,
-	}
-
+	
 	function DBM:ENCOUNTER_END(encounterID, name, difficulty, size, success)
 		if DBM.Options.DebugMode then
 			print("ENCOUNTER_END event fired:", encounterID, name, difficulty, size, success)
@@ -3152,7 +3144,7 @@ do
 			if v.multiEncounterPullDetection then
 				for _, eId in ipairs(v.multiEncounterPullDetection) do
 					if encounterID == eId then
-						if trustedZones[LastInstanceMapID] or success == 1 then
+						if bossuIdFound or success == 1 then
 							self:EndCombat(v, success == 0)
 							sendSync("EE", encounterID.."\t"..success.."\t"..v.id.."\t"..(v.revision or 0))
 						else--hack wotlk instance EE bug. wotlk instances always wipe, so delay 3sec do actual wipe.
@@ -3162,7 +3154,7 @@ do
 					end
 				end
 			elseif encounterID == v.combatInfo.eId then
-				if trustedZones[LastInstanceMapID] or success == 1 then
+				if bossuIdFound or success == 1 then
 					self:EndCombat(v, success == 0)
 					sendSync("EE", encounterID.."\t"..success.."\t"..v.id.."\t"..(v.revision or 0))
 				else--hack wotlk instance EE bug. wotlk instances always wipe, so delay 3sec do actual wipe.
