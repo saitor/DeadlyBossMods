@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10820 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10821 $"):sub(12, -3)),
 	DisplayVersion = "5.4.6 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.5", -- Needed to work around bigwigs sending improper version information
 	ReleaseRevision = 10737 -- the revision of the latest stable version that is available
@@ -3454,7 +3454,7 @@ function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
 			if mod.hotfixNoticeRev then
 				sendSync("HF", mod.id.."\t"..mod.hotfixNoticeRev)
 			end
-		else--show timer recovery message
+		elseif DBM.Options.ShowRecoveryMessage then--show timer recovery message
 			self:AddMsg(DBM_CORE_COMBAT_STATE_RECOVERED:format(difficultyText..mod.combatInfo.name, strFromTime(delay)))
 		end
 	end
