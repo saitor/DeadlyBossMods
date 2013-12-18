@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(869, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10807 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10816 $"):sub(12, -3))
 mod:SetCreatureID(71865)
 mod:SetEncounterID(1623)
 mod:SetZone()
@@ -234,7 +234,13 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(145065, 145171) then
 		warnTouchOfYShaarj:CombinedShow(0.5, args.destName)
 		if self.Options.SetIconOnMC then
-			self:SetSortedIcon(0.5, args.destName, 1)
+			if self:IsDifficulty("normal25", "heroic25", "lfr25") then
+				self:SetSortedIcon(1, args.destName, 1, 4)
+			elseif self:IsDifficulty("normal10", "heroic10") then
+				self:SetSortedIcon(1, args.destName, 1, 2)
+			else
+				self:SetSortedIcon(1, args.destName, 1)
+			end
 		end
 	elseif args.spellId == 145171 then
 		warnEmpTouchOfYShaarj:CombinedShow(0.5, args.destName)
