@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(846, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10843 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10845 $"):sub(12, -3))
 mod:SetCreatureID(71454)
 mod:SetEncounterID(1595)
 mod:SetZone()
@@ -18,6 +18,10 @@ mod:RegisterEventsInCombat(
 	"UNIT_SPELLCAST_SUCCEEDED boss1"
 )
 
+--[[WoL Expression
+spellid = 143913 or spellid =  143805 or spellid = 142851 or (spellid = 143199 or spellid = 142842 or spellid = 142879) and fulltype = SPELL_CAST_START
+http://worldoflogs.com/reports/rt-092xfequ7ks2205b/xe/?s=7029&e=7304&x=spellid+%3D+143913+or+spellid+%3D++143805+or+spellid+%3D+142851+or+%28spellid+%3D+143199+or+spellid+%3D+142842+or+spellid+%3D+142879%29+and+fulltype+%3D+SPELL_CAST_START
+--]]
 --Endless Rage
 local warnBloodRage						= mod:NewSpellAnnounce(142879, 3)
 local warnDisplacedEnergy				= mod:NewTargetAnnounce(142913, 3)
