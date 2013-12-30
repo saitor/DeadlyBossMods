@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(869, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10850 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10851 $"):sub(12, -3))
 mod:SetCreatureID(71865)
 mod:SetEncounterID(1623)
 mod:SetHotfixNoticeRev(10828)
@@ -106,6 +106,7 @@ local soundWhirlingCorrpution		= mod:NewSound("OptionVersion2", 144985, false)--
 local countdownPowerIronStar		= mod:NewCountdown(16.5, 144616)
 local countdownWhirlingCorruption	= mod:NewCountdown(49.5, 144985)
 local countdownTouchOfYShaarj		= mod:NewCountdown("Alt45", 145071, false)--Off by default only because it's a cooldown and it does have a 45-48sec variation
+local countdownRealm				= mod:NewCountdown(61, 144945)
 
 mod:AddBoolOption("yellMaliceFading", false)
 mod:AddSetIconOption("SetIconOnShaman", "ej8294", false, true)
@@ -254,6 +255,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 144945 then
 		warnYShaarjsProtection:Show(args.destName)
 		timerYShaarjsProtection:Start()
+		countdownRealm:Start()
 	elseif args:IsSpellID(145065, 145171) then
 		warnTouchOfYShaarj:CombinedShow(0.5, args.destName)
 		if self.Options.SetIconOnMC then
