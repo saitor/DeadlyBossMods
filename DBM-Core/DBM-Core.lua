@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10851 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10852 $"):sub(12, -3)),
 	DisplayVersion = "5.4.7 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.6", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 10835-- the revision of the latest stable version that is available
@@ -2380,6 +2380,10 @@ do
 			canSetIcons[optionName] = true
 		else--Not from self, it means someone with a higher version than us probably sent it
 			canSetIcons[optionName] = false
+		end
+		if DBM.Options.DebugMode then
+			local name = GetFullPlayerNameByGUID(iconSetPerson[optionName])
+			print(name.." was elected icon setter for "..optionName)
 		end
 	end
 
