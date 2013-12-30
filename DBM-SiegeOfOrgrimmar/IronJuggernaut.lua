@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(864, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10843 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10853 $"):sub(12, -3))
 mod:SetCreatureID(71466)
 mod:SetEncounterID(1600)
 mod:SetZone()
@@ -243,6 +243,6 @@ function mod:OnSync(msg, guid)
 			soundCuttingLaser:Play()
 		end
 	elseif msg == "LaserTargetRemoved" and guid then
-		timerCuttingLaser:Cancel(DBM:GetFullPlayerNameByGUID(guid))
+		timerCutterLaser:Cancel(DBM:GetFullPlayerNameByGUID(guid))
 	end
 end
