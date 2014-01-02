@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(829, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10862 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10863 $"):sub(12, -3))
 mod:SetCreatureID(68905, 68904)--Lu'lin 68905, Suen 68904
 mod:SetEncounterID(1560)
 mod:SetZone()
@@ -80,9 +80,9 @@ local timerIceCometCD					= mod:NewCDTimer(20.5, 137419)--Every 20.5-25 seconds 
 local timerNuclearInferno				= mod:NewBuffActiveTimer(12, 137491)
 local timerNuclearInfernoCD				= mod:NewCDCountTimer(49.5, 137491)
 --Celestials Assist
-local timerTiger						= mod:NewBuffFadesTimer(138855)
-local timerSerpent						= mod:NewBuffFadesTimer(138306)
-local timerOx							= mod:NewBuffFadesTimer(138300)
+local timerTiger						= mod:NewBuffFadesTimer(20, 138855)
+local timerSerpent						= mod:NewBuffFadesTimer(30, 138306)
+local timerOx							= mod:NewBuffFadesTimer(30, 138300)
 --Dusk
 local timerTidalForce					= mod:NewBuffActiveTimer(18 ,137531)
 local timerTidalForceCD					= mod:NewCDTimer(71, 137531)
