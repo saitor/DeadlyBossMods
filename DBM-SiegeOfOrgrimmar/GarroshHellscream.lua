@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(869, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10868 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10870 $"):sub(12, -3))
 mod:SetCreatureID(71865)
 mod:SetEncounterID(1623)
 mod:SetHotfixNoticeRev(10828)
@@ -145,7 +145,7 @@ end
 local function showInfoFrame()
 	if mod.Options.InfoFrame then
 		DBM.InfoFrame:SetHeader(L.NoReduce)
-		DBM.InfoFrame:Show(5, "function", updateInfoFrame)
+		DBM.InfoFrame:Show(10, "function", updateInfoFrame)
 	end
 end
 
