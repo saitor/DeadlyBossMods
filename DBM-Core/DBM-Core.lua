@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10868 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10869 $"):sub(12, -3)),
 	DisplayVersion = "5.4.7 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.6", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 10835-- the revision of the latest stable version that is available
@@ -2367,7 +2367,9 @@ do
 		modRevision = tonumber(modRevision or 0) or 0
 		if mod and (mod.revision < modRevision) then
 			--TODO, maybe require at least 2 senders? this doesn't disable mod or make a popup though, just warn in chat that mod may have invalid timers/warnings do to a blizzard hotfix
-			DBM:AddMsg(DBM_CORE_UPDATEREMINDER_HOTFIX)
+			if mod:AntiSpam(3, 50) then--No mod should be using an ID of 50, so using mods own prototype should not conflict anywhere.
+				DBM:AddMsg(DBM_CORE_UPDATEREMINDER_HOTFIX)
+			end
 		end
 	end
 
