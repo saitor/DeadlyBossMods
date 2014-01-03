@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(869, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10870 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10872 $"):sub(12, -3))
 mod:SetCreatureID(71865)
 mod:SetEncounterID(1623)
 mod:SetHotfixNoticeRev(10828)
@@ -162,7 +162,7 @@ function mod:DesecrateTarget(targetname, uId)
 		yellDesecrate:Yell()
 	else
 		if self:IsDifficulty("heroic10", "heroic25") and phase == 1 then return end--On heroic, All strat stack in weapon in phase 1 and don't want to move. Phase 2-3 all player want to run from weapon
-		local uId = DBM:GetRaidUnitId(args.destName)
+		local uId = DBM:GetRaidUnitId(targetname)
 		if uId then
 			local x, y = GetPlayerMapPosition(targetname)
 			if x == 0 and y == 0 then
