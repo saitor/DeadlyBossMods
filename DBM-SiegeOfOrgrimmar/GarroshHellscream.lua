@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(869, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10876 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10877 $"):sub(12, -3))
 mod:SetCreatureID(71865)
 mod:SetEncounterID(1623)
 mod:SetHotfixNoticeRev(10828)
@@ -405,7 +405,9 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		timerDesecrateCD:Cancel()
 		timerHellscreamsWarsongCD:Cancel()
 		specWarnSiegeEngineer:Cancel()
-		timerEnterRealm:Start(25)
+		if self:Phase() == 1 then
+			timerEnterRealm:Start(25)
+		end
 	elseif spellId == 144866 then--Enter Realm of Y'Shaarj
 		timerPowerIronStar:Cancel()
 		countdownPowerIronStar:Cancel()

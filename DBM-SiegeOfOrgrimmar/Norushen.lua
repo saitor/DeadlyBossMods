@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(866, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10864 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10877 $"):sub(12, -3))
 mod:SetCreatureID(72276)
 mod:SetEncounterID(1624)
 mod:DisableESCombatDetection()
@@ -69,7 +69,7 @@ local specWarnPiercingCorruption		= mod:NewSpecialWarningSpell(144657)
 --Amalgam of Corruption
 local timerCombatStarts					= mod:NewCombatTimer(25)
 local timerUnleashedAngerCD				= mod:NewCDTimer(11, 145216, nil, mod:IsTank())
-local timerBlindHatred					= mod:NewBuffActiveTimer(30, 145226, nil, false, nil, nil, nil, nil, nil, 2)
+local timerBlindHatred					= mod:NewBuffActiveTimer("OptionVersion3", 30, 145226, nil, mod:IsHealer())
 local timerBlindHatredCD				= mod:NewNextTimer(30, 145226)
 --All Tests
 local timerLookWithin					= mod:NewBuffFadesTimer(60, "ej8220")
