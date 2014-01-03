@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(869, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10874 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10875 $"):sub(12, -3))
 mod:SetCreatureID(71865)
 mod:SetEncounterID(1623)
 mod:SetHotfixNoticeRev(10828)
@@ -369,7 +369,7 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(145183, 145195) then
 		timerGrippingDespair:Cancel(args.destName)
-	elseif args.spellId == 144945 then
+	elseif args.spellId == 144945 and self:IsInCombat() then
 		warnYShaarjsProtectionFade:Show()
 		showInfoFrame()
 	elseif args:IsSpellID(145065, 145171) and self.Options.SetIconOnMC then
