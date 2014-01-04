@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(850, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10765 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10884 $"):sub(12, -3))
 mod:SetCreatureID(71515)
 mod:SetEncounterID(1603)
 mod:SetZone()
@@ -221,20 +221,10 @@ function mod:LeapTarget(targetname, uId)
 	if targetname == UnitName("player") then
 		specWarnHeroicShockwave:Show()
 		yellHeroicShockwave:Yell()
+	elseif self:CheckNearby(8, targetname) then
+		specWarnHeroicShockwaveNear:Show(targetname)
 	else
-		if uId then
-			local x, y = GetPlayerMapPosition(uId)
-			if x == 0 and y == 0 then
-				SetMapToCurrentZone()
-				x, y = GetPlayerMapPosition(uId)
-			end
-			local inRange = DBM.RangeCheck:GetDistance("player", x, y)
-			if inRange and inRange < 8 then--Range guesswork
-				specWarnHeroicShockwaveNear:Show(targetname)
-			else
-				specWarnHeroicShockwaveAll:Show()
-			end
-		end
+		specWarnHeroicShockwaveAll:Show()
 	end
 end
 

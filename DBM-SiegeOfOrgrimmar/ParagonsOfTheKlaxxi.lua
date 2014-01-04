@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(853, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10882 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10884 $"):sub(12, -3))
 mod:SetCreatureID(71152, 71153, 71154, 71155, 71156, 71157, 71158, 71160, 71161)
 mod:SetEncounterID(1593)
 mod:DisableESCombatDetection()
@@ -226,16 +226,8 @@ local function DFAScan()
 				if UnitIsUnit(unitID.."target", "player") then
 					specWarnDeathFromAbove:Show()
 					yellDeathFromAbove:Yell()
-				else
-					local x, y = GetPlayerMapPosition(unitID.."target")
-					if x == 0 and y == 0 then
-						SetMapToCurrentZone()
-						x, y = GetPlayerMapPosition(unitID.."target")
-					end
-					local inRange = DBM.RangeCheck:GetDistance("player", x, y)
-					if inRange and inRange < 6 then
-						specWarnDeathFromAboveNear:Show(targetname)
-					end
+				elseif mod:CheckNearby(6, targetname) then
+					specWarnDeathFromAboveNear:Show(targetname)
 				end
 			else
 				mod:Schedule(0.25, DFAScan)
@@ -258,16 +250,8 @@ local function whirlingScan()
 					if UnitIsUnit(unitID.."target", "player") then
 						specWarnWhirling:Show()
 						yellWhirling:Yell()
-					else
-						local x, y = GetPlayerMapPosition(unitID.."target")
-						if x == 0 and y == 0 then
-							SetMapToCurrentZone()
-							x, y = GetPlayerMapPosition(unitID.."target")
-						end
-						local inRange = DBM.RangeCheck:GetDistance("player", x, y)
-						if inRange and inRange < 10 then
-							specWarnWhirlingNear:Show(targetname)
-						end
+					elseif mod:CheckNearby(10, targetname) then
+						specWarnWhirlingNear:Show(targetname)
 					end
 				end
 			end

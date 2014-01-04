@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(849, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10847 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10884 $"):sub(12, -3))
 mod:SetCreatureID(71479, 71475, 71480)--He-Softfoot, Rook Stonetoe, Sun Tenderheart
 mod:SetEncounterID(1598)
 mod:SetZone()
@@ -117,18 +117,8 @@ function mod:BrewTarget(targetname, uId)
 	if targetname == UnitName("player") then
 		specWarnCorruptedBrew:Show()
 		yellCorruptedBrew:Yell()
-	else
-		if uId then
-			local x, y = GetPlayerMapPosition(uId)
-			if x == 0 and y == 0 then
-				SetMapToCurrentZone()
-				x, y = GetPlayerMapPosition(uId)
-			end
-			local inRange = DBM.RangeCheck:GetDistance("player", x, y)
-			if inRange and inRange < 6 then
-				specWarnCorruptedBrewNear:Show(targetname)
-			end
-		end
+	elseif self:CheckNearby(6, targetname) then
+		specWarnCorruptedBrewNear:Show(targetname)
 	end
 end
 

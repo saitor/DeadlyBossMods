@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(867, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10862 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10884 $"):sub(12, -3))
 mod:SetCreatureID(71734)
 mod:SetEncounterID(1604)
 mod:SetZone()
@@ -182,17 +182,9 @@ function mod:SPELL_CAST_SUCCESS(args)
 						specWarnBurstingPride:Show()
 						yellBurstingPride:Yell()
 						timerBurstingPride:Start()
-					else
-						local x, y = GetPlayerMapPosition(uId)
-						if x == 0 and y == 0 then
-							SetMapToCurrentZone()
-							x, y = GetPlayerMapPosition(uId)
-						end
-						local inRange = DBM.RangeCheck:GetDistance("player", x, y)
-						if inRange and inRange < 6 and not bpSpecWarnFired then
-							bpSpecWarnFired = true
-							specWarnBurstingPrideNear:Show(args.destName)
-						end
+					elseif self:CheckNearby(6, args.destName) and not bpSpecWarnFired then
+						bpSpecWarnFired = true
+						specWarnBurstingPrideNear:Show(args.destName)
 					end
 				end
 			end

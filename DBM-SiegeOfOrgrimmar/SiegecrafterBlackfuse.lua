@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(865, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10882 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10884 $"):sub(12, -3))
 mod:SetCreatureID(71504)--71591 Automated Shredder
 mod:SetEncounterID(1601)
 mod:SetZone()
@@ -120,19 +120,8 @@ function mod:DeathFromAboveTarget(sGUID)
 	warnDeathFromAbove:Show(targetname)
 	if targetname == UnitName("player") then
 		specWarnDeathFromAbove:Show()
-	else
-		local uId = DBM:GetRaidUnitId(targetname)
-		if uId then
-			local x, y = GetPlayerMapPosition(targetname)
-			if x == 0 and y == 0 then
-				SetMapToCurrentZone()
-				x, y = GetPlayerMapPosition(targetname)
-			end
-			local inRange = DBM.RangeCheck:GetDistance("player", x, y)
-			if inRange and inRange < 10 then
-				specWarnDeathFromAboveNear:Show(targetname)
-			end
-		end
+	elseif self:CheckNearby(10, targetname) then
+		specWarnDeathFromAboveNear:Show(targetname)
 	end
 end
 

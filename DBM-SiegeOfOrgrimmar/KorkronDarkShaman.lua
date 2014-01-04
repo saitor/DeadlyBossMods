@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(856, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10765 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10884 $"):sub(12, -3))
 mod:SetCreatureID(71859, 71858)--haromm, Kardris
 mod:SetEncounterID(1606)
 mod:SetZone()
@@ -105,18 +105,8 @@ function mod:ToxicStormTarget(targetname, uId)
 	if targetname == UnitName("player") then
 		specWarnToxicStorm:Show()
 		yellToxicStorm:Yell()
-	else
-		if uId then
-			local x, y = GetPlayerMapPosition(uId)
-			if x == 0 and y == 0 then
-				SetMapToCurrentZone()
-				x, y = GetPlayerMapPosition(uId)
-			end
-			local inRange = DBM.RangeCheck:GetDistance("player", x, y)
-			if inRange and inRange < 8 then--Range guesswork
-				specWarnToxicStormNear:Show(targetname)
-			end
-		end
+	elseif self:CheckNearby(8, targetname) then
+		specWarnToxicStormNear:Show(targetname)
 	end
 end
 
