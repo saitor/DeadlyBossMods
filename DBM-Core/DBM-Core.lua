@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10882 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10883 $"):sub(12, -3)),
 	DisplayVersion = "5.4.7 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.6", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 10835-- the revision of the latest stable version that is available
@@ -4859,6 +4859,22 @@ function bossModPrototype:ScanForMobs(creatureID, iconSetMethod, mobIcon, maxIco
 			--Do not wipe adds GUID table here, it's wiped by :Stop() which is called by EndCombat
 		end
 	end
+end
+
+function bossModPrototype:CheckNearby(range, targetname)
+	local uId = DBM:GetRaidUnitId(targetname)
+	if uId then
+		local x, y = GetPlayerMapPosition(targetname)
+		if x == 0 and y == 0 then
+			SetMapToCurrentZone()
+			x, y = GetPlayerMapPosition(targetname)
+		end
+		local inRange = DBM.RangeCheck:GetDistance("player", x, y)
+		if inRange and inRange < range then
+			return true
+		end
+	end
+	return false
 end
 
 --Now this function works perfectly. But have some limitation due to DBM.RangeCheck:GetDistance() function.
