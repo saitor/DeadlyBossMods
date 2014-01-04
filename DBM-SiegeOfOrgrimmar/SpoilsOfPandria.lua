@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(870, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10864 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10887 $"):sub(12, -3))
 mod:SetCreatureID(73720, 71512)
 mod:SetEncounterID(1594)
 mod:DisableESCombatDetection()
@@ -295,6 +295,7 @@ function mod:UNIT_DIED(args)
 	elseif cid == 71409 then--Ka'thik Demolisher
 		timerSetToBlowCD:Cancel(args.destGUID)
 	elseif cid == 71395 then--Modified Anima Golem
+		timerMatterScramble:Cancel()
 		timerMatterScrambleCD:Cancel(args.destGUID)
 		timerCrimsonReconCD:Cancel(args.destGUID)
 	elseif cid == 71397 then--Ka'thik Swarmleader

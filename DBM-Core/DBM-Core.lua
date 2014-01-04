@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10886 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10887 $"):sub(12, -3)),
 	DisplayVersion = "5.4.7 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.6", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 10835-- the revision of the latest stable version that is available
@@ -5572,6 +5572,10 @@ do
 
 	function bossModPrototype:NewEndAnnounce(spellId, color, ...)
 		return newAnnounce(self, "ends", spellId, color or 3, ...)
+	end
+
+	function bossModPrototype:NewEndTargetAnnounce(spellId, color, ...)
+		return newAnnounce(self, "endtarget", spellId, color or 3, ...)
 	end
 
 	function bossModPrototype:NewFadesAnnounce(spellId, color, ...)
