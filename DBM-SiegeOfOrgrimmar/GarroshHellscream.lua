@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(869, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10884 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10891 $"):sub(12, -3))
 mod:SetCreatureID(71865)
 mod:SetEncounterID(1623)
 mod:SetHotfixNoticeRev(10828)
@@ -114,7 +114,7 @@ mod:AddBoolOption("yellMaliceFading", false)
 mod:AddSetIconOption("SetIconOnShaman", "ej8294", false, true)
 mod:AddSetIconOption("SetIconOnMC", 145071, false)
 mod:AddSetIconOption("SetIconOnMalice", 147209, false)
-mod:AddBoolOption("InfoFrame")
+mod:AddBoolOption("InfoFrame", mod:IsHealer())
 mod:AddBoolOption("RangeFrame")
 
 mod:Phase(1)
