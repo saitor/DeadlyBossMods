@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(865, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10881 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10882 $"):sub(12, -3))
 mod:SetCreatureID(71504)--71591 Automated Shredder
 mod:SetEncounterID(1601)
 mod:SetZone()
@@ -116,6 +116,7 @@ function mod:DeathFromAboveTarget(sGUID)
 			break
 		end
 	end
+	if not targetname then return end
 	warnDeathFromAbove:Show(targetname)
 	if targetname == UnitName("player") then
 		specWarnDeathFromAbove:Show()
