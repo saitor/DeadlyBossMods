@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(868, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10894 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10899 $"):sub(12, -3))
 mod:SetCreatureID(72311, 72560, 72249, 73910, 72302, 72561, 73909)--Boss needs to engage off friendly NCPS, not the boss. I include the boss too so we don't detect a win off losing varian. :)
 mod:SetEncounterID(1622)
 mod:DisableESCombatDetection()
@@ -80,10 +80,10 @@ local specWarnPulsingFlames			= mod:NewSpecialWarningSpell(147042, false, nil, n
 --Stage 2: Bring Her Down!
 local timerCombatStarts				= mod:NewCombatTimer(34.5)
 local timerAddsCD					= mod:NewNextCountTimer(55, "ej8553", nil, nil, nil, "Interface\\ICONS\\INV_Misc_Head_Orc_01.blp")
+local timerProtoCD					= mod:NewNextCountTimer(55, "ej8587", nil, nil, nil, 59961)
 local timerTowerCD					= mod:NewTimer(99, "timerTowerCD", 88852)
 local timerTowerGruntCD				= mod:NewTimer(60, "timerTowerGruntCD", 89253)
 local timerDemolisherCD				= mod:NewNextTimer(20, "ej8562", nil, nil, nil, 116040)--EJ is just not complete yet, shouldn't need localizing
-local timerProtoCD					= mod:NewNextTimer(55, "ej8587", nil, nil, nil, 59961)
 ----High Enforcer Thranok (Road)
 local timerShatteringCleaveCD		= mod:NewCDTimer(7.5, 146849, nil, mod:IsTank())
 local timerCrushersCallCD			= mod:NewNextTimer(30, 146769)
@@ -101,6 +101,12 @@ mod:AddSetIconOption("SetIconOnAdds", "ej8556", false, true)
 mod.vb.addsCount = 0
 mod.vb.firstTower = 0--0: first tower not started, 1: first tower started, 2: first tower breached
 mod.vb.pulseCount = 0
+
+local function protos()
+	mod.vb.addsCount = mod.vb.addsCount + 1
+	warnProto:Show(mod.vb.addsCount)
+	timerAddsCD:Start(nil, mod.vb.addsCount + 1)
+end
 
 local function TowerGrunt()
 	warnTowerGrunt:Show()
@@ -306,12 +312,10 @@ end
 function mod:OnSync(msg)
 	if msg == "Adds" and self:AntiSpam(10, 4) then
 		self.vb.addsCount = self.vb.addsCount + 1
-		if self.vb.addsCount % 4 == 0 then
-			warnProto:Show(self.vb.addsCount)
-			timerAddsCD:Start(self.vb.addsCount + 1)
-		elseif self.vb.addsCount % 4 == 3 then
+		if self.vb.addsCount % 5 == 3 then
 			warnAdd:Show(self.vb.addsCount)
-			timerProtoCD:Start(self.vb.addsCount + 1)
+			timerProtoCD:Start(nil, self.vb.addsCount + 1)
+			self:Schedule(55, protos)
 		elseif self.vb.addsCount == 1 then
 			warnAdd:Show(self.vb.addsCount)
 			timerAddsCD:Start(48, 2)
