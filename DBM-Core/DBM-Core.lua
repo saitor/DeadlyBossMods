@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10901 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10902 $"):sub(12, -3)),
 	DisplayVersion = "5.4.7 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.6", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 10835-- the revision of the latest stable version that is available
@@ -3749,7 +3749,7 @@ function DBM:OnMobKill(cId, synced)
 			if v.numBoss then
 				v.vb.bossLeft = (v.vb.bossLeft or v.numBoss) - 1
 				if DBM.Options.DebugMode then
-					print("DBM Debug: Boss left - "..v.vb.BossLeft.."/"..v.numBoss)
+					print("DBM Debug: Boss left - "..v.vb.bossLeft.."/"..v.numBoss)
 				end
 			end
 			local allMobsDown = true
@@ -5375,7 +5375,7 @@ function bossModPrototype:SetMainBossID(cid)
 end
 
 function bossModPrototype:SetBossHPInfoToHighest(numBoss)
-	self.numBoss = numBoss or select("#", self.creatureId)
+	self.numBoss = numBoss or (self.multiMobPullDetection and #self.multiMobPullDetection)
 	self.highesthealth = true
 end
 

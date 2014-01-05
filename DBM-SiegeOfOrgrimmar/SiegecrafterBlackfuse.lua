@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(865, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10900 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10902 $"):sub(12, -3))
 mod:SetCreatureID(71504)--71591 Automated Shredder
 mod:SetEncounterID(1601)
 mod:SetZone()
@@ -215,9 +215,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnProtectiveFrenzy:Show(args.destName)
 		specWarnProtectiveFrenzy:Show(args.destName)
 		timerProtectiveFrenzy:Start()
-		for i= 1, 5 do
+		for i = 1, 5 do
 			if UnitExists("boss"..i) and UnitIsDead("boss"..i) then
-				local cId = self:GetUnitCreatureId(UnitGUID("boss"..i))
+				local cId = self:GetUnitCreatureId("boss"..i)
 				if assemblyName[cId] then
 					warnInactive:Show(assemblyName[cId])
 				end
