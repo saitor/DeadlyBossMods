@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10894 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10895 $"):sub(12, -3)),
 	DisplayVersion = "5.4.7 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.6", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 10835-- the revision of the latest stable version that is available
@@ -4799,7 +4799,7 @@ do
 		local cidOrGuid = cidOrGuid or self.creatureId
 		local scanInterval = scanInterval or 0.1
 		local targetname, targetuid, bossuid = self:GetBossTarget(cidOrGuid, scanOnlyBoss)
-		if targetname and (includeTank or not IsTanking(targetuid, bossuid)) then
+		if targetname and (includeTank or not self:IsTanking(targetuid, bossuid)) then
 			self[returnFunc](self, targetname, targetuid, bossuid)
 		end
 		self:ScheduleMethod(scanInterval, "StartRepeatedScan", cidOrGuid, returnFunc, scanInterval, scanOnlyBoss, includeTank)
