@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10906 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10907 $"):sub(12, -3)),
 	DisplayVersion = "5.4.7 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.6", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 10835-- the revision of the latest stable version that is available
@@ -2522,9 +2522,9 @@ do
 				if not checkEntry(newerVersionPerson, sender) then
 					newerVersionPerson[#newerVersionPerson + 1] = sender
 				end
-				if #newerVersionPerson < 3 then
+				if #newerVersionPerson < 4 then
 					for i, v in pairs(raid) do
-						if v.version >= version and v ~= raid[sender] then
+						if (v.version or 0) >= version and v ~= raid[sender] then
 							if not checkEntry(newerVersionPerson, sender) then
 								newerVersionPerson[#newerVersionPerson + 1] = sender
 							end
@@ -2553,7 +2553,7 @@ do
 			end
 			if DBM.DisplayVersion:find("alpha") and #newerVersionPerson < 2 and (revision - DBM.Revision) > 30 then--Revision 20 can be increased in 1 day, so raised it to 30.
 				for i, v in pairs(raid) do
-					if v.revision >= revision and v ~= raid[sender] then
+					if (v.revision or 0) >= revision and v ~= raid[sender] then
 						found = true
 						break
 					end
