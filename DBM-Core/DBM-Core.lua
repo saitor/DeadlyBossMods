@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10925 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10926 $"):sub(12, -3)),
 	DisplayVersion = "5.4.7 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.6", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 10835-- the revision of the latest stable version that is available
@@ -5253,6 +5253,9 @@ do
 
 	function bossModPrototype:ShowDamagedHealthBar(guid, name, damage)
 		self:RemoveDamagedHealthBar(guid, name)
+		if #activeShields == 0 then
+			frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+		end
 		local obj = {
 			mod = self.id,
 			name = name,
@@ -5277,6 +5280,9 @@ do
 
 	function bossModPrototype:ShowAbsorbedHealHealthBar(guid, name, heal)
 		self:RemoveAbsorbedHealHealthBar(guid, name)
+		if #activeShields == 0 then
+			frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+		end
 		local obj = {
 			mod = self.id,
 			name = name,
