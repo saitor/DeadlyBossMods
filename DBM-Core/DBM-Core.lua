@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10927 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10928 $"):sub(12, -3)),
 	DisplayVersion = "5.4.7 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.6", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 10835-- the revision of the latest stable version that is available
@@ -5234,7 +5234,7 @@ do
 			for i = #activeShields, 1, -1 do
 				if activeShields[i].guid == guid and activeShields[i].mod == self.id and (not name or activeShields[i].name == name) then
 					if DBM.BossHealth:IsShown() then
-						DBM.BossHealth.RemoveBoss(activeShields[i].func)
+						DBM.BossHealth:RemoveBoss(activeShields[i].func)
 					end
 					tremove(activeShields, i)
 				end
@@ -5305,7 +5305,7 @@ do
 		for i = #activeShields, 1, -1 do
 			if activeShields[i].mod == self.id then
 				if DBM.BossHealth:IsShown() then
-					DBM.BossHealth.RemoveBoss(activeShields[i].func)
+					DBM.BossHealth:RemoveBoss(activeShields[i].func)
 				end
 				shieldsByGuid[activeShields[i].guid] = nil
 				tremove(activeShields, i)
