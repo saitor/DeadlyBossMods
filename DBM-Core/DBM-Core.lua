@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10914 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10915 $"):sub(12, -3)),
 	DisplayVersion = "5.4.7 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.6", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 10835-- the revision of the latest stable version that is available
@@ -6117,8 +6117,7 @@ do
 	function specialWarningPrototype:Show(...)
 		if DBM.Options.ShowSpecialWarnings and (not self.option or self.mod.Options[self.option]) and not moving and frame then
 			local msg = pformat(self.text, ...)
-			msg = msg:gsub(">.-<", stripServerName)
-			font:SetText(msg)
+			font:SetText(msg:gsub(">.-<", stripServerName))
 			if DBM.Options.ShowSWarningsInChat then
 				local colorCode = ("|cff%.2x%.2x%.2x"):format(DBM.Options.SpecialWarningFontColor[1] * 255, DBM.Options.SpecialWarningFontColor[2] * 255, DBM.Options.SpecialWarningFontColor[3] * 255)
 				self.mod:AddMsg(colorCode.."["..DBM_CORE_MOVE_SPECIAL_WARNING_TEXT.."] "..msg.."|r", nil)
