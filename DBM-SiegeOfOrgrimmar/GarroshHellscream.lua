@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(869, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10918 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10929 $"):sub(12, -3))
 mod:SetCreatureID(71865)
 mod:SetEncounterID(1623)
 mod:SetHotfixNoticeRev(10828)
@@ -108,7 +108,7 @@ local soundWhirlingCorrpution		= mod:NewSound("OptionVersion2", 144985, false)--
 local countdownPowerIronStar		= mod:NewCountdown(16.5, 144616)
 local countdownWhirlingCorruption	= mod:NewCountdown(49.5, 144985)
 local countdownTouchOfYShaarj		= mod:NewCountdown("Alt45", 145071, false)--Off by default only because it's a cooldown and it does have a 45-48sec variation
-local countdownRealm				= mod:NewCountdown(60.5, 144945, nil, nil, 10)
+local countdownRealm				= mod:NewCountdownFades(60.5, "ej8305", nil, nil, 10)
 
 mod:AddBoolOption("yellMaliceFading", false)
 mod:AddSetIconOption("SetIconOnShaman", "ej8294", false, true)
