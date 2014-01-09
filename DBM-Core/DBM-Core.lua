@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10954 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10955 $"):sub(12, -3)),
 	DisplayVersion = "5.4.7 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.6", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 10835-- the revision of the latest stable version that is available
@@ -7219,7 +7219,7 @@ do
 end
 
 function bossModPrototype:GetIcon(uId)
-	return GetRaidTargetIndex(uId)
+	return UnitExists(uId) and GetRaidTargetIndex(uId)
 end
 
 function bossModPrototype:RemoveIcon(target)
