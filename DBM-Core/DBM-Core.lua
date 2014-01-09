@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10940 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10941 $"):sub(12, -3)),
 	DisplayVersion = "5.4.7 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.6", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 10835-- the revision of the latest stable version that is available
@@ -7333,6 +7333,10 @@ do
 		end
 		if not foundDuplicate then
 			iconSet = iconSet + 1
+			local oldIcon = self:GetIcon(uId)
+			if oldIcon and not self.iconRestoreScheduled[uId] then
+				self.iconRestoreScheduled[uId] = oldIcon
+			end
 			table.insert(iconSortTable, uId)
 		end
 		self:UnscheduleMethod("SetIconBySortedTable")
