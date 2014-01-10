@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(853, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10959 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10960 $"):sub(12, -3))
 mod:SetCreatureID(71152, 71153, 71154, 71155, 71156, 71157, 71158, 71160, 71161)
 mod:SetEncounterID(1593)
 mod:DisableESCombatDetection()
@@ -523,7 +523,7 @@ function mod:WhirlingScan(targetname)
 			specWarnWhirlingNear:Show(targetname)
 		end
 	end
-	if (self.vb.whirlCast > 4) or ((GetTime() - self.vb.whirlTime) > 10) then
+	if (self.vb.whirlCast > 4) and self:IsDifficulty("herioc10", "heroic25") or (self.vb.whirlCast > 2) or ((GetTime() - self.vb.whirlTime) > 20) then
 		self:StopRepeatedScan("WhirlingScan")
 	end
 end
