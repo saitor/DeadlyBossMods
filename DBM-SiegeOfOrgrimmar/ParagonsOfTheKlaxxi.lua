@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(853, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10969 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10970 $"):sub(12, -3))
 mod:SetCreatureID(71152, 71153, 71154, 71155, 71156, 71157, 71158, 71160, 71161)
 mod:SetEncounterID(1593)
 mod:DisableESCombatDetection()
@@ -130,7 +130,7 @@ local yellAim						= mod:NewYell(142948)
 local specWarnAimOther				= mod:NewSpecialWarningTarget(142948)
 local specWarnRapidFire				= mod:NewSpecialWarningSpell(143243, nil, nil, nil, 2)
 
-local timerJumpToCenter				= mod:NewCastTimer(5, 143545)
+local timerJumpToCenter				= mod:NewCastTimer(6.5, 143545)
 --Kil'ruk the Wind-Reaver
 local timerGouge					= mod:NewTargetTimer(10, 143939, nil, mod:IsTank())
 local timerReaveCD					= mod:NewCDTimer(33, 148676)
