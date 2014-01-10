@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10958 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10959 $"):sub(12, -3)),
 	DisplayVersion = "5.4.7 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.6", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 10835-- the revision of the latest stable version that is available
@@ -3609,6 +3609,10 @@ function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
 					local speedTimer = mod:NewTimer(bestTime, DBM_SPEED_KILL_TIMER_TEXT, "Interface\\Icons\\Spell_Holy_BorrowedTime")
 					speedTimer:Start()
 				end
+			end
+			--update boss left
+			if mod.numBoss then
+				mod.vb.bossLeft = mod.numBoss
 			end
 			--elect icon person
 			if mod.findFastestComputer and not DBM.Options.DontSetIcons then

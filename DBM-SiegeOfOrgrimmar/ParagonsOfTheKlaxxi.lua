@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(853, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10951 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10959 $"):sub(12, -3))
 mod:SetCreatureID(71152, 71153, 71154, 71155, 71156, 71157, 71158, 71160, 71161)
 mod:SetEncounterID(1593)
 mod:DisableESCombatDetection()
@@ -523,7 +523,7 @@ function mod:WhirlingScan(targetname)
 			specWarnWhirlingNear:Show(targetname)
 		end
 	end
-	if (self.vb.whirlCast > 2) or ((GetTime() - self.vb.whirlTime) > 10) then
+	if (self.vb.whirlCast > 4) or ((GetTime() - self.vb.whirlTime) > 10) then
 		self:StopRepeatedScan("WhirlingScan")
 	end
 end
@@ -650,7 +650,7 @@ function mod:SPELL_CAST_START(args)
 		self.vb.whirlCast = 0
 		self.vb.whirlTime = GetTime()
 		lastWhirl = nil
-		self:StartRepeatedScan(args.sourceGUID, "WhirlingScan", 0.08, true)
+		self:StartRepeatedScan(args.sourceGUID, "WhirlingScan", 0.05, true)
 		if self.Options.RangeFrame then
 			DBM.RangeCheck:Show(6)--Range assumed, spell tooltips not informative enough
 			self:Schedule(5, hideRangeFrame)
