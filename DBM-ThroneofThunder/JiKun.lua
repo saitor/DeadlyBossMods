@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(828, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10976 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10977 $"):sub(12, -3))
 mod:SetCreatureID(69712)
 mod:SetEncounterID(1573)
 mod:SetZone()
@@ -88,7 +88,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 134366 then
 		local amount = args.amount or 1
 		warnTalonRake:Show(args.destName, amount)
@@ -115,7 +115,7 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 134366 then
 		timerTalonRake:Cancel(args.destName)
 	elseif spellId == 133755 and args:IsPlayer() then

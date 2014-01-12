@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(867, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10974 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10977 $"):sub(12, -3))
 mod:SetCreatureID(71734)
 mod:SetEncounterID(1604)
 mod:SetZone()
@@ -127,7 +127,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_START(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 144400 then
 		self.vb.swellingCount = self.vb.swellingCount + 1
 		warnSwellingPride:Show(self.vb.swellingCount)
@@ -156,7 +156,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 144400 then--Swelling Pride Cast END
 		self.vb.woundCount = 0
 		bpSpecWarnFired = false
@@ -210,7 +210,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if args:IsSpellID(144359, 146594) then
 		warnGiftOfTitans:CombinedShow(0.5, args.destName)
 		timerGiftOfTitansCD:DelayedStart(0.5)
@@ -280,7 +280,7 @@ end
 --mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED--In case i decide to do something with fact healer debuff stacks if you suck at dispels
 
 function mod:SPELL_AURA_REMOVED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 144351 and self.Options.SetIconOnMark then
 		self:SetIcon(args.destName, 0)
 	elseif spellId == 147207 and args:IsPlayer() then

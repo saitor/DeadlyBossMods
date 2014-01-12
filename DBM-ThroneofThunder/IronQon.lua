@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(817, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10976 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10977 $"):sub(12, -3))
 mod:SetCreatureID(68078, 68079, 68080, 68081)--Ro'shak 68079, Quet'zal 68080, Dam'ren 68081, Iron Qon 68078
 mod:SetEncounterID(1559)
 mod:SetMainBossID(68078)
@@ -223,7 +223,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 134691 then
 		local amount = args.amount or 1
 		warnImpale:Show(args.destName, amount)
@@ -278,7 +278,7 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 134647 and args:IsPlayer() then
 		timerScorched:Cancel()
 	elseif spellId == 136192 and self.Options.SetIconOnLightningStorm and not self:IsDifficulty("lfr25") then
@@ -287,7 +287,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 134664 then
 		warnMoltenInferno:Show()
 	--Dead zone IDs, each dead zone has two shields and two openings. Each spellid identifies those openings.
@@ -319,7 +319,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_SUMMON(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 134926 and self.vb.phase < 4 then
 		if self:AntiSpam(15, 6) and not spearSpecWarnFired then--Basically, if the target scanning failed, we do an aoe warning on the actual summon.
 			specWarnThrowSpear:Show()

@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(832, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10976 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10977 $"):sub(12, -3))
 mod:SetCreatureID(68397)--Diffusion Chain Conduit 68696, Static Shock Conduit 68398, Bouncing Bolt conduit 68698, Overcharge conduit 68697
 mod:SetEncounterID(1579)
 mod:SetZone()
@@ -195,7 +195,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_START(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 135095 then
 		self.vb.thunderCount = self.vb.thunderCount + 1
 		warnThunderstruck:Show(self.vb.thunderCount)
@@ -228,7 +228,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if args:IsSpellID(135000, 134912) then--Is 135000 still used on 10 man?
 		warnDecapitate:Show(args.destName)
 		timerDecapitateCD:Start()
@@ -340,7 +340,7 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_CAST_SUCCESS(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 135991 then
 		self.vb.diffusionCastTarget = args.destName
 		warnDiffusionChain:Show(self.vb.diffusionCastTarget)
@@ -375,7 +375,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	--Conduit deactivations
 	if spellId == 135680 and args:GetDestCreatureID() == 68397 and not self.vb.intermissionActive then--North (Static Shock)
 		timerStaticShockCD:Cancel()

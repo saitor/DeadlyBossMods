@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(816, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10976 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10977 $"):sub(12, -3))
 mod:SetCreatureID(69078, 69132, 69134, 69131)--69078 Sul the Sandcrawler, 69132 High Prestess Mar'li, 69131 Frost King Malakk, 69134 Kazra'jin --Adds: 69548 Shadowed Loa Spirit,
 mod:SetEncounterID(1570)
 mod:SetZone()
@@ -136,7 +136,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_START(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 136189 then
 		if boltCasts == 3 then boltCasts = 0 end
 		boltCasts = boltCasts + 1
@@ -167,7 +167,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 136442 then--Possessed
 		local cid = args:GetDestCreatureID()
 		local uid
@@ -287,7 +287,7 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 136442 then--Possessed
 		darkPowerWarned = false
 		timerDarkPowerCD:Cancel()

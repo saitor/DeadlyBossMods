@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(821, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10976 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10977 $"):sub(12, -3))
 mod:SetCreatureID(68065, 70235, 70247)--Frozen 70235, Venomous 70247 (only 2 heads that ever start in front, so no need to look for combat with arcane or fire for combat detection)
 mod:SetEncounterID(1578)
 mod:SetMainBossID(68065)
@@ -224,7 +224,7 @@ end
 
 
 function mod:SPELL_CAST_SUCCESS(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 140138 then
 		warnNetherTear:Show()
 		specWarnNetherTear:Show()
@@ -236,7 +236,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 139843 then
 		local uId = DBM:GetRaidUnitId(args.destName)
 		if self:IsTanking(uId) then
@@ -310,7 +310,7 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 139822 and self.Options.SetIconOnCinders then
 		self:SetIcon(args.destName, 0)
 	end

@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(818, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10976 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10977 $"):sub(12, -3))
 mod:SetCreatureID(68036)--Crimson Fog 69050
 mod:SetEncounterID(1572)
 mod:SetZone()
@@ -215,7 +215,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_START(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 133765 then
 		warnHardStare:Show()
 		timerHardStareCD:Start()
@@ -234,7 +234,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 136932 then--Force of Will Precast
 		warnForceOfWill:Show(args.destName)
 		if timerLightSpectrumCD:GetTime() > 22 or timerDisintegrationBeamCD:GetTime() > 110 then--Don't start timer if either beam or spectrum will come first (cause both disable force ability)
@@ -315,7 +315,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 133767 then
 		local amount = args.amount or 1
 		timerSeriousWound:Start(args.destName)
@@ -361,7 +361,7 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 133767 then
 		timerSeriousWound:Cancel(args.destName)
 	elseif spellId == 137727 and self.Options.SetIconLifeDrain then -- Life Drain current target.

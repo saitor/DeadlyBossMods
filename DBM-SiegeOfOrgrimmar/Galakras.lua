@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(868, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10974 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10977 $"):sub(12, -3))
 mod:SetCreatureID(72311, 72560, 72249, 73910, 72302, 72561, 73909)--Boss needs to engage off friendly NCPS, not the boss. I include the boss too so we don't detect a win off losing varian. :)
 mod:SetEncounterID(1622)
 mod:DisableESCombatDetection()
@@ -138,7 +138,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_START(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 147688 and UnitPower("player", 10) > 0 then--Tower Spell
 		warnArcingSmash:Show()
 		specWarnArcingSmash:Show()
@@ -152,7 +152,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 147824 and UnitPower("player", 10) > 0 and self:AntiSpam(3, 2) then--Tower Spell
 		warnMuzzleSpray:Show()
 		specWarnMuzzleSpray:Show()
@@ -167,7 +167,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 147068 then
 		warnFlamesofGalakrondTarget:Show(args.destName)
 		timerFlamesofGalakrondCD:Start()
@@ -196,7 +196,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_APPLIED_DOSE(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 147029 then
 		local amount = args.amount or 1
 		if amount >= 6 and args:IsPlayer() then
@@ -220,7 +220,7 @@ function mod:SPELL_AURA_APPLIED_DOSE(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 147068 then
 		if self.Options.FixateIcon then
 			self:SetIcon(args.destName, 0)

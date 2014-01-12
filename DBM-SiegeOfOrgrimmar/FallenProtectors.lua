@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(849, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10974 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10977 $"):sub(12, -3))
 mod:SetCreatureID(71479, 71475, 71480)--He-Softfoot, Rook Stonetoe, Sun Tenderheart
 mod:SetEncounterID(1598)
 mod:SetZone()
@@ -167,7 +167,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_START(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 143958 then
 		local source = args.sourceName
 		warnCorruptionShock:Show()
@@ -210,7 +210,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 143027 then
 		warnClash:Show()
 		timerClashCD:Start()
@@ -227,7 +227,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 143959 and args:IsPlayer() and self:AntiSpam(1.5, 2) then
 		specWarnDefiledGround:Show()
 	elseif spellId == 143301 then--Stun debuff spellid
@@ -280,7 +280,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 143546 then--Dark Meditation
 		timerBaneCD:Start(10)
 		timerCalamityCD:Start(23)--Now back to not cast right away again.

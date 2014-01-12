@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(852, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10974 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10977 $"):sub(12, -3))
 mod:SetCreatureID(71543)
 mod:SetEncounterID(1602)
 mod:SetReCombatTime(45)--Lets just assume he has same bug as tsulong in advance and avoid problems
@@ -58,7 +58,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_START(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 143436 then
 		warnBreath:Show()
 		specWarnBreath:Show()
@@ -72,7 +72,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 143459 and args:IsPlayer() then
 		timerShaResidue:Start()
 	elseif spellId == 143524 and args:IsPlayer() then
@@ -86,7 +86,7 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 143459 and args:IsPlayer() then
 		timerShaResidue:Cancel()
 	elseif spellId == 143524 and args:IsPlayer() then

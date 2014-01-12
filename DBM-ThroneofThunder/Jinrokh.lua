@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(827, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10976 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10977 $"):sub(12, -3))
 mod:SetCreatureID(69465)
 mod:SetEncounterID(1577)
 mod:SetZone()
@@ -102,7 +102,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_START(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 137399 then
 		self:BossTargetScanner(69465, "FocusedLightningTarget", 0.025, 12)
 		timerFocusedLightningCD:Start()
@@ -131,14 +131,14 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 137162 then
 		timerStaticBurstCD:Start()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 137162 then
 		warnStaticBurst:Show(args.destName)
 		if args:IsPlayer() then
@@ -159,7 +159,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 138732 and args:IsPlayer() then
 		timerIonization:Cancel()
 		self:Unschedule(checkWaterIonization)

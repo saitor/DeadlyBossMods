@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("ToTTrash", "DBM-ThroneofThunder")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10976 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10977 $"):sub(12, -3))
 mod:SetModelID(47785)
 mod:SetZone()
 
@@ -69,7 +69,7 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if not self.Options.Enabled then return end
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 139895 then
 		self:Schedule(0.2, SpiritFireTarget, args.sourceGUID)
 		timerSpiritfireCD:Start()
@@ -87,7 +87,7 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if not self.Options.Enabled then return end
-	local spellId = args.spellid
+	local spellId = args.spellId
 	if spellId == 139322 then--Or 139559, not sure which
 		stormEnergyTargets[#stormEnergyTargets + 1] = args.destName
 		if args:IsPlayer() then
