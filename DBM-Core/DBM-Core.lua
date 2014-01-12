@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 10974 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 10975 $"):sub(12, -3)),
 	DisplayVersion = "5.4.7 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.6", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 10835-- the revision of the latest stable version that is available
@@ -2299,9 +2299,6 @@ do
 			if not targetEventsRegistered then
 				DBM:RegisterShortTermEvents("UPDATE_MOUSEOVER_UNIT", "UNIT_TARGET_UNFILTERED")
 				targetEventsRegistered = true
-				if DBM.Options.DebugMode then
-					print("DBM Debug: targetEventsRegistered true")
-				end
 			end
 			if not forceloadmapIds[mapID] then return end
 		-- You entered instance duing worldboss combat. Force end worldboss mod.
@@ -2309,9 +2306,6 @@ do
 			if targetEventsRegistered then
 				DBM:UnregisterShortTermEvents()
 				targetEventsRegistered = false
-				if DBM.Options.DebugMode then
-					print("DBM Debug: targetEventsRegistered false")
-				end
 			end
 			if savedDifficulty == "worldboss" then
 				for i = #inCombat, 1, -1 do
