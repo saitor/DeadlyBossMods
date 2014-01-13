@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(853, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10979 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 10981 $"):sub(12, -3))
 mod:SetCreatureID(71152, 71153, 71154, 71155, 71156, 71157, 71158, 71160, 71161)
 mod:SetEncounterID(1593)
 mod:DisableESCombatDetection()
@@ -146,7 +146,7 @@ local timerShieldBashCD				= mod:NewCDTimer(17, 143974, nil, mod:IsTank())
 local timerEncaseInAmber			= mod:NewTargetTimer(10, 142564)
 local timerEncaseInAmberCD			= mod:NewCDTimer(30, 142564)--Technically a next timer but we use cd cause it's only cast if someone is low when it comes off 30 second internal cd. VERY important timer for heroic
 --Iyyokuk the Lucid
-local timerInsaneCalculation		= mod:NewBuffActiveTimer(12, 142808)
+local timerInsaneCalculation		= mod:NewBuffActiveTimer(15, 142808)
 local timerInsaneCalculationCD		= mod:NewCDTimer(25, 142416)--25 is minimum but variation is wild (25-50 second variation)
 --Ka'roz the Locust
 local timerFlashCD					= mod:NewCDTimer(62, 143701)
