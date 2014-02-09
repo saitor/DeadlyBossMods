@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11036 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11037 $"):sub(12, -3)),
 	DisplayVersion = "5.4.8 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.7", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11011 -- the revision of the latest stable version that is available
@@ -2313,7 +2313,7 @@ do
 	end
 	--Faster and more accurate loading for instances, but useless outside of them
 	function DBM:LOADING_SCREEN_DISABLED()
-		self:Schedule(1, FixForShittyComputers, DBM)
+		self:Schedule(1.5, FixForShittyComputers, DBM)
 	end
 
 	function DBM:LoadModsOnDemand(checkTable, checkValue)
