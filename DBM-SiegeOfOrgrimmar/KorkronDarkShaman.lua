@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(856, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11040 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11041 $"):sub(12, -3))
 mod:SetCreatureID(71859, 71858)--haromm, Kardris
 mod:SetEncounterID(1606)
 mod:SetZone()
@@ -110,7 +110,7 @@ function mod:FoulStreamTarget(targetname, uId)
 			specWarnFoulStream:Show()
 		end
 		if self.Options.SetIconOnFoulStream then
-			self:SetIcon(args.destName, 8, 3)
+			self:SetIcon(targetname, 8, 3)
 		end
 	end
 end
