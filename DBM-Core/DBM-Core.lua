@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11061 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11063 $"):sub(12, -3)),
 	DisplayVersion = "5.4.10 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.9", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11056 -- the revision of the latest stable version that is available
@@ -3162,9 +3162,9 @@ do
 			sender = Ambiguate(sender, "none")
 			handleSync(channel, sender, strsplit("\t", msg))
 		elseif prefix == "BigWigs" and msg and (channel == "PARTY" or channel == "RAID" or channel == "INSTANCE_CHAT" or channel == "WHISPER" and self:GetRaidUnitId(sender)) then
-			sender = Ambiguate(sender, "none")
 			local bwPrefix, bwMsg = msg:match("^(%u-):(.+)")
 			if bwPrefix and (bwPrefix == "VR" or bwPrefix == "VRA") then--We only care about version prefixes so only pass those prefixes on
+				sender = Ambiguate(sender, "none")
 				handleSync(channel, sender, bwPrefix, bwMsg)
 			end
 		end
