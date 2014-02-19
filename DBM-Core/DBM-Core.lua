@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11052 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11053 $"):sub(12, -3)),
 	DisplayVersion = "5.4.9 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.8", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11048 -- the revision of the latest stable version that is available
@@ -1334,9 +1334,11 @@ SlashCmdList["DEADLYBOSSMODS"] = function(msg)
 		end
 	elseif cmd:sub(1, 4) == "pull" then
 		if DBM:GetRaidRank(playerName) == 0 or IsEncounterInProgress() then
+			print("no permission for PT")
 			return DBM:AddMsg(DBM_ERROR_NO_PERMISSION)
 		end
 		local timer = tonumber(cmd:sub(5)) or 10
+		print("sending PT sync")
 		sendSync("PT", timer.."\t"..LastInstanceMapID)
 	elseif cmd:sub(1, 3) == "lag" then
 		sendSync("L")
@@ -2604,7 +2606,9 @@ do
 
 	local dummyMod -- dummy mod for the pull sound effect
 	syncHandlers["PT"] = function(sender, timer, lastMapID)
+		print("DBM DEBUG: "..sender.." "..timer.." "..lastMapID)
 		if select(2, IsInInstance()) == "pvp" or DBM:GetRaidRank(sender) == 0 or IsEncounterInProgress() then
+			print(DBM:GetRaidRank(sender))
 			return
 		end
 		if (lastMapID and tonumber(lastMapID) ~= LastInstanceMapID) or (not lastMapID and DBM.Options.DontShowPTNoID) then return end
@@ -3156,6 +3160,7 @@ do
 	end
 
 	function DBM:CHAT_MSG_ADDON(prefix, msg, channel, sender)
+		sender = Ambiguate(sender, "none")
 		if prefix == "D4" and msg and (channel == "PARTY" or channel == "RAID" or channel == "INSTANCE_CHAT" or channel == "WHISPER" or channel == "GUILD") then
 			handleSync(channel, sender, strsplit("\t", msg))
 		elseif prefix == "BigWigs" and msg and (channel == "PARTY" or channel == "RAID" or channel == "INSTANCE_CHAT" or channel == "WHISPER" and self:GetRaidUnitId(sender)) then
