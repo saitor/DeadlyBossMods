@@ -49,7 +49,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11070 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11071 $"):sub(12, -3)),
 	DisplayVersion = "5.4.11 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.10", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11061 -- the revision of the latest stable version that is available
@@ -526,7 +526,7 @@ do
 		end
 
 		function registerSpellId(event, spellId)
-			if not GetSpellInfo(spellId) then
+			if spellId and not GetSpellInfo(spellId) then
 				print("RegisterEvents : "..spellId.." spell id not exists!")
 				return
 			end
