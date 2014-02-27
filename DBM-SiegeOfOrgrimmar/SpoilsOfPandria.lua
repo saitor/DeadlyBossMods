@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(870, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10977 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11073 $"):sub(12, -3))
 mod:SetCreatureID(73720, 71512)
 mod:SetEncounterID(1594)
 mod:DisableESCombatDetection()
@@ -350,17 +350,17 @@ function mod:UPDATE_WORLD_STATES()
 	end
 	if time % 10 == 0 then
 		berserkTimer:Update(maxTimer-time-1, maxTimer)
-		if time == 300 and self.Options["timer_berserk"] then
+		if time == 300 and self.Options["timer_berserk"] and self:AntiSpam(2, 5) then
 			berserkWarning1:Show(5, DBM_CORE_MIN)
-		elseif time == 180 and self.Options["timer_berserk"] then
+		elseif time == 180 and self.Options["timer_berserk"] and self:AntiSpam(2, 5) then
 			berserkWarning1:Show(3, DBM_CORE_MIN)
-		elseif time == 60 and self.Options["timer_berserk"] then
+		elseif time == 60 and self.Options["timer_berserk"] and self:AntiSpam(2, 5) then
 			berserkWarning2:Show(1, DBM_CORE_MIN)
-		elseif time == 30 and self.Options["timer_berserk"] then
+		elseif time == 30 and self.Options["timer_berserk"] and self:AntiSpam(2, 5) then
 			berserkWarning2:Show(30, DBM_CORE_SEC)
-		elseif time == 20 then
+		elseif time == 20 and self:AntiSpam(2, 5) then
 			countdownBerserk:Start()
-		elseif time == 10 and self.Options["timer_berserk"] then
+		elseif time == 10 and self.Options["timer_berserk"] and self:AntiSpam(2, 5) then
 			berserkWarning2:Show(10, DBM_CORE_SEC)
 		end
 	end
