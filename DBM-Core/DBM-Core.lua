@@ -49,7 +49,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11078 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11079 $"):sub(12, -3)),
 	DisplayVersion = "5.4.11 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.10", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11061 -- the revision of the latest stable version that is available
@@ -4343,7 +4343,6 @@ do
 		if msg and msg:sub(1, 3) == "OQ," then
 			return
 		end
-		sender = Ambiguate(sender, "none")
 		if msg == "status" and #inCombat > 0 and DBM.Options.StatusEnabled then
 			if not difficultyText then -- prevent error when timer recovery function worked and etc (StartCombat not called)
 				difficultyText = select(2, DBM:GetCurrentInstanceDifficulty())
@@ -4388,6 +4387,7 @@ do
 
 	function DBM:CHAT_MSG_WHISPER(msg, name, _, _, _, status)
 		if status ~= "GM" then
+			name = Ambiguate(name, "none")
 			return onWhisper(msg, name, false)
 		end
 	end
