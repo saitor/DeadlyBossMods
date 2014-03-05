@@ -49,7 +49,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11084 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11085 $"):sub(12, -3)),
 	DisplayVersion = "5.4.11 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.10", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11061 -- the revision of the latest stable version that is available
@@ -4025,7 +4025,7 @@ function DBM:EndCombat(mod, wipe)
 				sendWhisper(k, msg)
 			end
 			fireEvent("kill", mod)
-			if savedDifficulty == "worldboss" and LastInstanceMapID ~= 1 and LastInstanceMapID ~= 0 then--Any outdoor boss except Omen and Greench (last thing we want is to sync those 2)
+			if savedDifficulty == "worldboss" and LastInstanceMapID ~= 1 and LastInstanceMapID ~= 0 and LastInstanceMapID ~= 974 then--Any outdoor boss except Omen and Greench (last thing we want is to sync those 2)
 				if lastBossDefeat[name..playerRealm] and GetTime() - lastBossDefeat[name..playerRealm] < 10 then return end--Someone else synced in last 10 seconds so don't send out another sync to avoid needless sync spam.
 				lastBossDefeat[name..playerRealm] = GetTime()--Update last defeat time before we send it, so we don't handle our own sync
 				if IsInGuild() then
