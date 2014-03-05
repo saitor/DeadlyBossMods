@@ -49,7 +49,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11081 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11082 $"):sub(12, -3)),
 	DisplayVersion = "5.4.11 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.10", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11061 -- the revision of the latest stable version that is available
@@ -2896,7 +2896,7 @@ do
 				end
 			end
 			if sameRealm and DBM.Options.WorldBossAlert then
-				DBM:AddMsg(DBM_CORE_WORLDBOSS_ENGAGED:format(name, health))
+				DBM:AddMsg(DBM_CORE_WORLDBOSS_ENGAGED:format(name, floor(health)))
 			end
 		end
 		
@@ -2958,7 +2958,7 @@ do
 				end
 			end
 			if sameRealm and DBM.Options.WorldBossAlert then
-				DBM:AddMsg(DBM_CORE_WORLDBOSS_ENGAGED:format(name, health))
+				DBM:AddMsg(DBM_CORE_WORLDBOSS_ENGAGED:format(name, floor(health)))
 			end
 		end
 		
