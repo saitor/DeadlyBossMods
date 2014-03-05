@@ -49,7 +49,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11088 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11089 $"):sub(12, -3)),
 	DisplayVersion = "5.4.11 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.10", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11061 -- the revision of the latest stable version that is available
@@ -273,8 +273,7 @@ local DBM = DBM
 -- so caching them is worth the effort
 local ipairs, pairs, next = ipairs, pairs, next
 local tinsert, tremove, twipe = table.insert, table.remove, table.wipe
-local type = type
-local select = select
+local type, select = type, select
 local GetTime = GetTime
 local floor, mhuge, mmin, mmax = math.floor, math.huge, math.min, math.max
 local GetNumGroupMembers, GetRaidRosterInfo = GetNumGroupMembers, GetRaidRosterInfo
@@ -285,7 +284,7 @@ local UnitExists, UnitIsDead, UnitIsFriend = UnitExists, UnitIsDead, UnitIsFrien
 local GetSpellInfo, EJ_GetSectionInfo = GetSpellInfo, EJ_GetSectionInfo
 local EJ_GetEncounterInfo, EJ_GetCreatureInfo, GetDungeonInfo = EJ_GetEncounterInfo, EJ_GetCreatureInfo, GetDungeonInfo
 local GetInstanceInfo = GetInstanceInfo
-local GetCurrentMapDungeonLevel, GetMapInfo, GetCurrentMapZone, SetMapToCurrentZone = GetCurrentMapDungeonLevel, GetMapInfo, GetCurrentMapZone, SetMapToCurrentZone
+local GetPlayerMapPosition, GetCurrentMapDungeonLevel, GetMapInfo, GetCurrentMapZone, SetMapToCurrentZone = GetPlayerMapPosition, GetCurrentMapDungeonLevel, GetMapInfo, GetCurrentMapZone, SetMapToCurrentZone
 local GetSpecialization = GetSpecialization
 local UnitDetailedThreatSituation = UnitDetailedThreatSituation
 local GetPartyAssignment, UnitGroupRolesAssigned = GetPartyAssignment, UnitGroupRolesAssigned
