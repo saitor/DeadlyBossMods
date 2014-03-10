@@ -49,7 +49,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11094 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11095 $"):sub(12, -3)),
 	DisplayVersion = "5.4.11 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.10", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11061 -- the revision of the latest stable version that is available
@@ -2960,7 +2960,7 @@ do
 			else--connectedServers is nil, so no connected realms, just check against our own realm
 				if realm == playerRealm then sameRealm = true end
 			end
-			--Begin sync pass on
+			--Begin sync pass on, passing on syncs not from same realm is intentional because guildies will then pass it on to battle.net and may get message to more users on that realm
 			if (lastBossEngage[name..realm.."PASSED"] and GetTime() - lastBossEngage[name..realm.."PASSED"] < 10) or not lastBossEngage[name..realm.."PASSED"] then
 				lastBossEngage[name..realm.."PASSED"] = GetTime()
 				if IsInGuild() then--Sync from realid, send to GUILD
@@ -2994,7 +2994,7 @@ do
 			else--connectedServers is nil, so no connected realms, just check against our own realm
 				if realm == playerRealm then sameRealm = true end
 			end
-			--Begin sync pass on
+			--Begin sync pass on, passing on syncs not from same realm is intentional because guildies will then pass it on to battle.net and may get message to more users on that realm
 			if (lastBossDefeat[name..realm.."PASSED"] and GetTime() - lastBossDefeat[name..realm.."PASSED"] < 10) or not lastBossDefeat[name..realm.."PASSED"] then
 				lastBossDefeat[name..realm.."PASSED"] = GetTime()
 				if IsInGuild() then--Sync from realid, send to GUILD
