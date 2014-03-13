@@ -49,7 +49,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11105 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11106 $"):sub(12, -3)),
 	DisplayVersion = "5.4.11 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.10", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11061 -- the revision of the latest stable version that is available
@@ -2911,10 +2911,7 @@ do
 				end
 			end
 			if sameRealm and DBM.Options.WorldBossAlert and not IsEncounterInProgress() then
-				DBM:AddMsg(DBM_CORE_WORLDBOSS_ENGAGED:format(name, floor(health)))
-				if DBM.Options.DebugMode then
-					print("DBM Debug: World Boss Engage sync recieved from "..sender)
-				end
+				DBM:AddMsg(DBM_CORE_WORLDBOSS_ENGAGED:format(name, floor(health), sender))
 			end
 		end
 		
@@ -2953,10 +2950,7 @@ do
 				end
 			end
 			if sameRealm and DBM.Options.WorldBossAlert and not IsEncounterInProgress() then
-				DBM:AddMsg(DBM_CORE_WORLDBOSS_DEFEATED:format(name))
-				if DBM.Options.DebugMode then
-					print("DBM Debug: World Boss Defeat sync recieved from "..sender)
-				end
+				DBM:AddMsg(DBM_CORE_WORLDBOSS_DEFEATED:format(name, sender))
 			end
 		end
 
@@ -2991,11 +2985,8 @@ do
 				end
 			end
 			if sameRealm and DBM.Options.WorldBossAlert and not IsEncounterInProgress() then
-				DBM:AddMsg(DBM_CORE_WORLDBOSS_ENGAGED:format(name, floor(health)))
-				if DBM.Options.DebugMode then
-					local _, toonName = BNGetToonInfo(sender)
-					print("DBM Debug: World Boss Engage sync recieved from "..toonName)
-				end
+				local _, toonName = BNGetToonInfo(sender)
+				DBM:AddMsg(DBM_CORE_WORLDBOSS_ENGAGED:format(name, floor(health), toonName))
 			end
 		end
 		
@@ -3030,11 +3021,8 @@ do
 				end
 			end
 			if sameRealm and DBM.Options.WorldBossAlert and not IsEncounterInProgress() then
-				DBM:AddMsg(DBM_CORE_WORLDBOSS_DEFEATED:format(name))
-				if DBM.Options.DebugMode then
-					local _, toonName = BNGetToonInfo(sender)
-					print("DBM Debug: World Boss Defeat sync recieved from "..toonName)
-				end
+				local _, toonName = BNGetToonInfo(sender)
+				DBM:AddMsg(DBM_CORE_WORLDBOSS_DEFEATED:format(name, toonName))
 			end
 		end
 
