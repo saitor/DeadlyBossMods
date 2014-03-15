@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(846, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10977 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11110 $"):sub(12, -3))
 mod:SetCreatureID(71454)
 mod:SetEncounterID(1595)
 mod:SetZone()
@@ -41,7 +41,7 @@ local specWarnArcingSmash				= mod:NewSpecialWarningCount(142815, nil, nil, nil,
 local specWarnImplodingEnergySoon		= mod:NewSpecialWarningPreWarn(142986, nil, 4)
 local specWarnBreathofYShaarj			= mod:NewSpecialWarningCount(142842, nil, nil, nil, 3)
 local specWarnFatalStrike				= mod:NewSpecialWarningStack(142990, mod:IsTank(), 12)--stack guessed, based on CD
-local specWarnFatalStrikeOther			= mod:NewSpecialWarningTarget(142990, mod:IsTank())
+local specWarnFatalStrikeOther			= mod:NewSpecialWarningTaunt(142990, mod:IsTank())
 
 local timerBloodRage					= mod:NewBuffActiveTimer(22.5, 142879)--2.5sec cast plus 20 second duration
 local timerDisplacedEnergyCD			= mod:NewNextTimer(11, 142913)
