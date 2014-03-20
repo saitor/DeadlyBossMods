@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(866, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11110 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11121 $"):sub(12, -3))
 mod:SetCreatureID(72276)
 mod:SetEncounterID(1624)
 mod:DisableESCombatDetection()
@@ -207,7 +207,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		specWarnBottomlessPitMove:Show()
 	elseif spellId == 146124 then
 		local amount = args.amount or 1
-		warnSelfDoubt:Show(amount)
+		warnSelfDoubt:Show(args.destName, amount)
 		if not args:IsPlayer() and amount >= 3 then
 			specWarnSelfDoubtOther:Show(args.destName)
 		end
