@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(865, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11109 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11124 $"):sub(12, -3))
 mod:SetCreatureID(71504)--71591 Automated Shredder
 mod:SetEncounterID(1601)
 mod:SetZone()
@@ -353,7 +353,7 @@ function mod:OnSync(msg, guid)
 		local targetName = DBM:GetFullPlayerNameByGUID(guid)
 		warnLaserFixate:Show(targetName)
 		if self.Options.SetIconOnlaserFixate then
-			self:SetIcon(targetname, 7, 6)--Maybe adjust timing or add smart code to remove right away if that target dies.
+			self:SetIcon(targetName, 7, 6)--Maybe adjust timing or add smart code to remove right away if that target dies.
 		end
 	end
 end
