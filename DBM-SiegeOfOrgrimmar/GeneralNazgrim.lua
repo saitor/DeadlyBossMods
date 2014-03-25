@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(850, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11110 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11132 $"):sub(12, -3))
 mod:SetCreatureID(71515)
 mod:SetEncounterID(1603)
 mod:SetZone()
@@ -431,6 +431,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 end
 
 function mod:OnSync(msg)
+	if not self:IsInCombat() then return end
 	if msg == "Adds" and self:AntiSpam(10, 3) then
 		self.vb.addsCount = self.vb.addsCount + 1
 		warnAdds:Show(self.vb.addsCount)
