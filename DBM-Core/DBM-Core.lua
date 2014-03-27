@@ -49,7 +49,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11133 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11134 $"):sub(12, -3)),
 	DisplayVersion = "5.4.12 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.11", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11129 -- the revision of the latest stable version that is available
@@ -3776,13 +3776,6 @@ function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
 			if IsInGuild() then
 				SendAddonMessage("D4", "WBE\t"..modId.."\t"..playerRealm.."\t"..startHp, "GUILD")--Even guild syncs send realm so we can keep antispam the same across realid as well.
 			end
-			local _, numBNetOnline = BNGetNumFriends()
-			for i = 1, numBNetOnline do
-				local presenceID, _, _, _, _, _, client, isOnline = BNGetFriendInfo(i)
-				if isOnline and client == BNET_CLIENT_WOW then
-					BNSendGameData(presenceID, "D4", "WBE\t"..modId.."\t"..playerRealm.."\t"..startHp)
-				end
-			end
 		end
 	end
 end
@@ -3990,13 +3983,6 @@ function DBM:EndCombat(mod, wipe)
 				lastBossDefeat[modId..playerRealm] = GetTime()--Update last defeat time before we send it, so we don't handle our own sync
 				if IsInGuild() then
 					SendAddonMessage("D4", "WBD\t"..modId.."\t"..playerRealm, "GUILD")--Even guild syncs send realm so we can keep antispam the same across realid as well.
-				end
-				local _, numBNetOnline = BNGetNumFriends()
-				for i = 1, numBNetOnline do
-					local presenceID, _, _, _, _, _, client, isOnline = BNGetFriendInfo(i)
-					if isOnline and client == BNET_CLIENT_WOW then
-						BNSendGameData(presenceID, "D4", "WBD\t"..modId.."\t"..playerRealm)
-					end
 				end
 			end
 		end
