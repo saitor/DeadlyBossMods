@@ -49,7 +49,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11143 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11144 $"):sub(12, -3)),
 	DisplayVersion = "5.4.13 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.12", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11134 -- the revision of the latest stable version that is available
@@ -2934,7 +2934,7 @@ do
 						local presenceID, _, _, _, _, _, client, isOnline = BNGetFriendInfo(i)
 						if isOnline and client == BNET_CLIENT_WOW then
 							local _, _, _, userRealm = BNGetToonInfo(presenceID)
-							if userRealm == playerRealm then
+							if userRealm and (userRealm == playerRealm) then
 								BNSendGameData(presenceID, "D4", "WBE\t"..modId.."\t"..realm.."\t"..health.."\t3")
 							end
 						end
@@ -2972,7 +2972,7 @@ do
 						local presenceID, _, _, _, _, _, client, isOnline = BNGetFriendInfo(i)
 						if isOnline and client == BNET_CLIENT_WOW then
 							local _, _, _, userRealm = BNGetToonInfo(presenceID)
-							if userRealm == playerRealm then
+							if userRealm and (userRealm == playerRealm) then
 								BNSendGameData(presenceID, "D4", "WBD\t"..modId.."\t"..realm.."\t3")
 							end
 						end
@@ -3884,7 +3884,7 @@ function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
 				local presenceID, _, _, _, _, _, client, isOnline = BNGetFriendInfo(i)
 				if isOnline and client == BNET_CLIENT_WOW then
 					local _, _, _, userRealm = BNGetToonInfo(presenceID)
-					if userRealm == playerRealm then
+					if userRealm and (userRealm == playerRealm) then
 						BNSendGameData(presenceID, "D4", "WBE\t"..modId.."\t"..playerRealm.."\t"..startHp.."\t3")
 					end
 				end
@@ -4102,7 +4102,7 @@ function DBM:EndCombat(mod, wipe)
 					local presenceID, _, _, _, _, _, client, isOnline = BNGetFriendInfo(i)
 					if isOnline and client == BNET_CLIENT_WOW then
 						local _, _, _, userRealm = BNGetToonInfo(presenceID)
-						if userRealm == playerRealm then
+						if userRealm and (userRealm == playerRealm) then
 							BNSendGameData(presenceID, "D4", "WBD\t"..modId.."\t"..playerRealm.."\t3")
 						end
 					end
