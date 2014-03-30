@@ -49,7 +49,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11148 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11149 $"):sub(12, -3)),
 	DisplayVersion = "5.4.13 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.12", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11134 -- the revision of the latest stable version that is available
@@ -1582,8 +1582,6 @@ do
 			DBM:ShowUpdateReminder(arg2, arg3) -- displayVersion, revision
 		elseif arg1 == "forums" then
 			DBM:ShowUpdateReminder(nil, nil, DBM_FORUMS_COPY_URL_DIALOG)
-		elseif arg1 == "generic" then
-			DBM:ShowUpdateReminder(nil, nil, "")
 		elseif arg1 == "showRaidIdResults" then
 			DBM:ShowRaidIDRequestResults()
 		end
