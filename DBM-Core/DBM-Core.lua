@@ -49,7 +49,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11156 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11157 $"):sub(12, -3)),
 	DisplayVersion = "5.4.13 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.12", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11134 -- the revision of the latest stable version that is available
@@ -4285,8 +4285,12 @@ function DBM:GetCurrentInstanceDifficulty()
 end
 
 function DBM:UNIT_DIED(args)
-	if bit.band(args.destGUID:sub(1, 5), 0x00F) == 3 or bit.band(args.destGUID:sub(1, 5), 0x00F) == 5 then
-		self:OnMobKill(DBM:GetCIDFromGUID(args.destGUID))
+	local GUID = args.destGUID
+	if bit.band(GUID:sub(1, 5), 0x00F) == 3 or bit.band(GUID:sub(1, 5), 0x00F) == 5 then
+		self:OnMobKill(DBM:GetCIDFromGUID(GUID))
+	end
+	if DBM.Options.AFKHealthWarning and GUID == UnitGUID("player") and not IsEncounterInProgress() and UnitIsAFK("player") and self:AntiSpam(5, "AFK") then--You are afk and losing health, some griever is trying to kill you while you are afk/tabbed out.
+		PlaySoundFile("Sound\\Creature\\CThun\\CThunYouWillDIe.ogg", "master")--So fire an alert sound to save yourself from this person's behavior.
 	end
 end
 DBM.UNIT_DESTROYED = DBM.UNIT_DIED
