@@ -49,7 +49,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11163 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11164 $"):sub(12, -3)),
 	DisplayVersion = "5.4.13 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.12", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11134 -- the revision of the latest stable version that is available
@@ -2490,6 +2490,8 @@ function DBM:LoadMod(mod)
 				DBM:Schedule(4, DBM.RequestTimers, DBM)
 				DBM:Schedule(6, DBM.RequestTimers, DBM)
 				DBM:Schedule(6.5, function() timerRequestInProgress = false end)
+			else
+				DBM:Schedule(2, DBM.RequestTimers, DBM)--Do once for break timer out of combat
 			end
 		end
 		if not InCombatLockdown() then--We loaded in combat because a raid boss was in process, but lets at least delay the garbage collect so at least load mod is half as bad, to do our best to avoid "script ran too long"
