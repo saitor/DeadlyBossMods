@@ -49,7 +49,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11185 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11186 $"):sub(12, -3)),
 	DisplayVersion = "5.4.13 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.12", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11134 -- the revision of the latest stable version that is available
@@ -3755,6 +3755,7 @@ local statVarTable = {
 	["heroic5"] = "heroic",
 	["heroic10"] = "heroic",
 	["heroic25"] = "heroic25",
+	["heroic"] = "heroic",
 	["mythic"] = "heroic",
 	["challenge5"] = "challenge",
 	["worldboss"] = "normal",
