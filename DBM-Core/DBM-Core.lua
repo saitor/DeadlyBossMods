@@ -49,7 +49,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11188 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11189 $"):sub(12, -3)),
 	DisplayVersion = "5.4.13 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.12", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11134 -- the revision of the latest stable version that is available
@@ -3748,20 +3748,22 @@ function checkBossHealth()
 end
 
 local statVarTable = {
+	--6.0
 	["normal5"] = "normal",
-	["normal10"] = "normal",
-	["normal25"] = "normal25",
 	["normal"] = "normal",
 	["heroic5"] = "heroic",
-	["heroic10"] = "heroic",
-	["heroic25"] = "heroic25",
-	["heroic"] = "normal",
-	["mythic"] = "heroic",
+	["heroic"] = "heroic",
+	["mythic"] = "heroic25",--Just save em in heroic25. No need to increase loading of stats
 	["challenge5"] = "challenge",
 	["worldboss"] = "normal",
-	["lfr25"] = "lfr25",
 	["lfr"] = "lfr25",
+	--Legacy
+	["lfr25"] = "lfr25",
 	["flex"] = "flex",
+	["normal10"] = "normal",
+	["normal25"] = "normal25",
+	["heroic10"] = "heroic",
+	["heroic25"] = "heroic25",
 }
 
 function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
@@ -4343,7 +4345,7 @@ function DBM:GetCurrentInstanceDifficulty()
 		return "heroic5", difficultyName.." - ", difficulty, instanceGroupSize
 	elseif difficulty == 12 then--5.3 normal scenario
 		return "normal5", difficultyName.." - ", difficulty, instanceGroupSize
-	elseif difficulty == 14 then--NOTE: Change "flex" to normal in 6.0
+	elseif difficulty == 14 then--NOTE: Change "flex" to "normal" in 6.0
 		return "flex", difficultyName.." - ", difficulty, instanceGroupSize
 	elseif difficulty == 15 then
 		return "heroic", difficultyName.." - ", difficulty, instanceGroupSize
