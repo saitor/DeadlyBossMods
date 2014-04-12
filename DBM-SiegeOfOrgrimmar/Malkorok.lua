@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(846, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11122 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11192 $"):sub(12, -3))
 mod:SetCreatureID(71454)
 mod:SetEncounterID(1595)
 mod:SetZone()
@@ -166,7 +166,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		if self.vb.seismicSlamCount < 3 then
 			timerSeismicSlamCD:Start(nil, self.vb.seismicSlamCount+1)
 		end
-		if self.Options.SetIconOnAdds and self:IsDifficulty("heroic10", "heroic25") then
+		if self.Options.SetIconOnAdds and self:IsHeroic() then
 			self:ScanForMobs(71644, 0, 8, nil, 0.2, 6)
 		end
 	end

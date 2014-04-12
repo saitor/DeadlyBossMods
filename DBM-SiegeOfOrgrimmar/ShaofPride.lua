@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(867, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11110 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11192 $"):sub(12, -3))
 mod:SetCreatureID(71734)
 mod:SetEncounterID(1604)
 mod:SetZone()
@@ -116,7 +116,7 @@ function mod:OnCombatStart(delay)
 		DBM.InfoFrame:SetHeader(prideLevel)
 		DBM.InfoFrame:Show(5, "playerpower", 5, ALTERNATE_POWER_INDEX)
 	end
-	if self:IsDifficulty("heroic10", "heroic25") then
+	if self:IsHeroic() then
 		timerBanishmentCD:Start(-delay)
 	end
 end
@@ -150,7 +150,7 @@ function mod:SPELL_CAST_START(args)
 		timerSelfReflectionCD:Start()
 		countdownReflection:Start()
 		timerCorruptedPrisonCD:Start()
-		if self:IsDifficulty("heroic10", "heroic25") then
+		if self:IsHeroic() then
 			timerBanishmentCD:Start()
 		end
 	end
@@ -172,7 +172,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		if not self:IsDifficulty("lfr25") then
 			timerWoundedPrideCD:Start(11)
 		end
-		if self:IsDifficulty("heroic10", "heroic25") then
+		if self:IsHeroic() then
 			timerBanishmentCD:Start()
 		end
 		--This is done here because a lot can change during a cast, and we need to know players energy when cast ends, i.e. this event

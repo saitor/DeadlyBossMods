@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(868, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11154 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11192 $"):sub(12, -3))
 mod:SetCreatureID(72311, 72560, 72249, 73910, 72302, 72561, 73909)--Boss needs to engage off friendly NCPS, not the boss. I include the boss too so we don't detect a win off losing varian. :)
 mod:SetEncounterID(1622)
 mod:DisableESCombatDetection()
@@ -123,7 +123,7 @@ function mod:OnCombatStart(delay)
 	self.vb.addsCount = 0
 	self.vb.firstTower = 0
 	self.vb.pulseCount = 0
-	if not self:IsDifficulty("heroic10", "heroic25") then
+	if not self:IsHeroic() then
 		timerTowerCD:Start(116.5-delay)
 	else
 		timerTowerGruntCD:Start(6)
@@ -294,7 +294,7 @@ end
 function mod:UPDATE_WORLD_STATES()
 	local text = select(4, GetWorldStateUIInfo(4))
 	local percent = tonumber(string.match(text or "", "%d+"))
-	if percent == 1 and (self.vb.firstTower == 0) and not self:IsDifficulty("heroic10", "heroic25") then
+	if percent == 1 and (self.vb.firstTower == 0) and not self:IsHeroic() then
 		self.vb.firstTower = 1
 		timerTowerCD:Start()
 	end
@@ -304,7 +304,7 @@ end
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
 	if msg:find("cFFFF0404") then--They fixed epiccenter bug (figured they would). Color code should be usuable though. It's only emote on encounter that uses it.
 		warnDemolisher:Show()
-		if self:IsDifficulty("heroic10", "heroic25") and self.vb.firstTower == 0 then
+		if self:IsHeroic() and self.vb.firstTower == 0 then
 			timerTowerGruntCD:Start(15)
 			self:Schedule(15, TowerGrunt)
 			self.vb.firstTower = 2
@@ -312,7 +312,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
 	elseif msg:find(L.tower) then
 		warnTowerOpen:Show()
 		timerDemolisherCD:Start()
-		if self:IsDifficulty("heroic10", "heroic25") then
+		if self:IsHeroic() then
 			timerTowerGruntCD:Cancel()
 			self:Unschedule(TowerGrunt)
 		end
