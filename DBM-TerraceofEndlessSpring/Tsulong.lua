@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(742, "DBM-TerraceofEndlessSpring", nil, 320)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10980 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11193 $"):sub(12, -3))
 mod:SetCreatureID(62442)--62919 Unstable Sha, 62969 Embodied Terror
 mod:SetEncounterID(1505)
 mod:SetReCombatTime(60)--fix lfr combat re-starts after killed.
@@ -95,7 +95,7 @@ function mod:OnCombatStart(delay)
 	if not self:IsDifficulty("lfr25") then
 		berserkTimer:Start(-delay)
 	end
-	if self:IsDifficulty("heroic10", "heroic25") then
+	if self:IsHeroic() then
 		timerDarkOfNightCD:Start(10-delay)
 		darkOfNightCount = 0
 		lightOfDayCount = 0
@@ -200,7 +200,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		timerNightmaresCD:Start()
 		countdownNightmares:Start(15.5)
 		timerDayCD:Start()
-		if self:IsDifficulty("heroic10", "heroic25") then
+		if self:IsHeroic() then
 			timerDarkOfNightCD:Start(10)
 			darkOfNightCount = 0
 		end

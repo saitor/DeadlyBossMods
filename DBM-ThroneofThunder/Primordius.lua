@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(820, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10977 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11193 $"):sub(12, -3))
 mod:SetCreatureID(69017)--69070 Viscous Horror, 69069 good ooze, 70579 bad ooze (patched out of game, :\)
 mod:SetEncounterID(1574)
 mod:SetZone()
@@ -117,7 +117,7 @@ function mod:OnCombatStart(delay)
 	bigOozeAlive = 0
 	table.wipe(bigOozeGUIDS)
 	berserkTimer:Start(-delay)
-	if self:IsDifficulty("heroic10", "heroic25") then
+	if self:IsHeroic() then
 		timerViscousHorrorCD:Start(11.5-delay, 1)
 		self:Schedule(11.5, BigOoze)
 	end
@@ -164,7 +164,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 136246 then
 		postulesActive = true
 		warnEruptingPustules:Show(args.destName)
-		if self:IsDifficulty("heroic10", "heroic25") then
+		if self:IsHeroic() then
 			specWarnEruptingPustules:Show(args.destName)
 		end
 		if self.Options.RangeFrame and not acidSpinesActive then--Check if acidSpinesActive is active, if they are, we should already have range 5 up

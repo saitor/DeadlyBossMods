@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(743, "DBM-HeartofFear", nil, 330)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10980 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11193 $"):sub(12, -3))
 mod:SetCreatureID(62837)--62847 Dissonance Field, 63591 Kor'thik Reaver, 63589 Set'thik Windblade
 mod:SetEncounterID(1501)
 mod:SetZone()
@@ -250,7 +250,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		if fieldCount < 2 then
 			timerDissonanceFieldCD:Start(nil, fieldCount+1)
 		end
-		if self:IsDifficulty("heroic10", "heroic25") then
+		if self:IsHeroic() then
 			if fieldCount == 1 then
 				timerCorruptedDissonance:Start(10)
 			else

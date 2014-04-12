@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(819, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10977 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11193 $"):sub(12, -3))
 mod:SetCreatureID(68476)
 mod:SetEncounterID(1575)
 mod:SetZone()
@@ -111,7 +111,7 @@ function mod:OnCombatStart(delay)
 	timerDoor:Start(16.5-delay)
 	timerChargeCD:Start(31-delay)--31-35sec variation
 	berserkTimer:Start(-delay)
-	if self:IsDifficulty("heroic10", "heroic25") then
+	if self:IsHeroic() then
 		timerDireCallCD:Start(-delay, 1)
 	end
 	self:RegisterShortTermEvents(

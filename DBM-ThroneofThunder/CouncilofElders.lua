@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(816, "DBM-ThroneofThunder", nil, 362)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 10977 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11193 $"):sub(12, -3))
 mod:SetCreatureID(69078, 69132, 69134, 69131)--69078 Sul the Sandcrawler, 69132 High Prestess Mar'li, 69131 Frost King Malakk, 69134 Kazra'jin --Adds: 69548 Shadowed Loa Spirit,
 mod:SetEncounterID(1570)
 mod:SetZone()
@@ -182,7 +182,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		specWarnPossessed:Show(args.spellName, args.destName)
 		if uid and UnitBuff(uid, lingeringPresence) then
 			local _, _, _, stack = UnitBuff(uid, lingeringPresence)
-			if self:IsDifficulty("heroic10", "heroic25") then
+			if self:IsHeroic() then
 				timerDarkPowerCD:Start(math.floor(68/(0.15*stack+1.0)+0.5))--(68, 59, 52, 47)
 			elseif self:IsDifficulty("normal25") then
 				timerDarkPowerCD:Start(math.floor(68/(0.10*stack+1.0)+0.5))--(68, 62, 57, 52)
@@ -207,7 +207,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			local elapsed, total = timerBlessedLoaSpiritCD:GetTime()
 			timerBlessedLoaSpiritCD:Cancel()
 			if elapsed and total then--If for some reason it was nil, like it JUST came off cd, do nothing, she should cast loa spirit right away.
-				if self:IsDifficulty("heroic10", "heroic25") then
+				if self:IsHeroic() then
 					timerTwistedFateCD:Update(elapsed, total)
 				else
 					timerShadowedLoaSpiritCD:Update(elapsed, total)
@@ -296,7 +296,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		elseif args:GetDestCreatureID() == 69132 then--High Prestess Mar'li
 			--Swap timer back
 			local elapsed, total
-			if self:IsDifficulty("heroic10", "heroic25") then
+			if self:IsHeroic() then
 				elapsed, total = timerTwistedFateCD:GetTime()
 			else
 				elapsed, total = timerShadowedLoaSpiritCD:GetTime()
