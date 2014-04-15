@@ -49,8 +49,8 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11193 $"):sub(12, -3)),
-	DisplayVersion = "5.4.13", -- the string that is shown as version
+	Revision = tonumber(("$Revision: 11195 $"):sub(12, -3)),
+	DisplayVersion = "5.4.14 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.13", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11193 -- the revision of the latest stable version that is available
 }
