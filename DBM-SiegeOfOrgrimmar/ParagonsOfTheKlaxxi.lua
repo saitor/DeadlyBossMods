@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(853, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11192 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11198 $"):sub(12, -3))
 mod:SetCreatureID(71152, 71153, 71154, 71155, 71156, 71157, 71158, 71160, 71161)
 mod:SetEncounterID(1593)
 mod:DisableESCombatDetection()
@@ -100,7 +100,7 @@ local yellCatalystGreen				= mod:NewYell(142730, nil, nil, false)
 --Kaz'tik the Manipulator
 local specWarnMesmerize				= mod:NewSpecialWarningYou(142671)
 local specWarnMesmerizeOther		= mod:NewSpecialWarningTarget(142671, false)--Person who grabs korven's amber wants this
-local yellMesmerize					= mod:NewYell(142671, nil, false)
+local yellMesmerize					= mod:NewYell("OptionVersion2", 142671)
 local specWarnKunchongs				= mod:NewSpecialWarningSwitch("ej8043", mod:IsDps())
 --Korven the Prime
 local specWarnShieldBash			= mod:NewSpecialWarningSpell("OptionVersion2", 143974, mod:IsTank())

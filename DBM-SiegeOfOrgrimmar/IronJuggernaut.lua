@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(864, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11192 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11198 $"):sub(12, -3))
 mod:SetCreatureID(71466)
 mod:SetEncounterID(1600)
 mod:SetZone()
@@ -41,7 +41,7 @@ local specWarnIgniteArmor		= mod:NewSpecialWarningStack(144467, mod:IsTank(), 3)
 local specWarnIgniteArmorOther	= mod:NewSpecialWarningTaunt(144467, mod:IsTank())
 local specWarnBorerDrill		= mod:NewSpecialWarningSpell(144218, false, nil, nil, 2)
 local specWarnBorerDrillMove	= mod:NewSpecialWarningMove(144218)
-local specWarnRicochet				= mod:NewSpecialWarningSpell(144356, false, nil, nil, 3)
+local specWarnRicochet			= mod:NewSpecialWarningSpell(144356, false, nil, nil, 3)
 --Siege Mode
 local specWarnSeismicActivity	= mod:NewSpecialWarningSpell(144483, nil, nil, nil, 2)
 local specWarnShockPulse		= mod:NewSpecialWarningCount(144485, nil, nil, nil, 2)
