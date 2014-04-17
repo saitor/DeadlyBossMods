@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11198 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11199 $"):sub(12, -3)),
 	DisplayVersion = "5.4.14 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.13", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11193 -- the revision of the latest stable version that is available
@@ -3853,7 +3853,8 @@ function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
 		--process global options
 		self:ToggleRaidBossEmoteFrame(1)
 		self:StartLogging(0, nil)
-		if DBM.Options.HideWatchFrame and WatchFrame:IsVisible() and not (mod.type == "SCENARIO") then
+		--WatchFrame is renamed in 6.0, just a reminder comment to rename it for this function post patch.
+		if DBM.Options.HideWatchFrame and WatchFrame and WatchFrame:IsVisible() and not (mod.type == "SCENARIO") then
 			WatchFrame:Hide()
 			watchFrameRestore = true
 		end
