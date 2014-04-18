@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(853, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11198 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11202 $"):sub(12, -3))
 mod:SetCreatureID(71152, 71153, 71154, 71155, 71156, 71157, 71158, 71160, 71161)
 mod:SetEncounterID(1593)
 mod:DisableESCombatDetection()
@@ -495,7 +495,7 @@ function mod:OnCombatStart(delay)
 	)
 	timerJumpToCenter:Start(-delay)
 	berserkTimer:Start(-delay)
-	if self:IsHeroic() then--Increaased number of people, decrease likelyhood of chat yell so it levels out
+	if self:IsDifficulty("normal10", "heroic10") then--Increaased number of people, decrease likelyhood of chat yell so it levels out
 		mathNumber = 100
 	else
 		mathNumber = 250--0.4% chance per person in 25 man, LFR, Flex
@@ -809,7 +809,7 @@ function mod:SPELL_AURA_REMOVED(args)
 			self:SetIcon(args.destName, 0)
 		end
 	elseif spellId == 143339 then
-		if self:IsHeroic() then
+		if self:IsDifficulty("normal10", "heroic10") then
 			self.vb.parasitesActive = self.vb.parasitesActive + 5
 		else
 			self.vb.parasitesActive = self.vb.parasitesActive + 8
