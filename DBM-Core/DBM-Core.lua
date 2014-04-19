@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11205 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11206 $"):sub(12, -3)),
 	DisplayVersion = "5.4.14 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.13", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11193 -- the revision of the latest stable version that is available
@@ -188,6 +188,7 @@ DBM.DefaultOptions = {
 	SettingsMessageShown = false,
 	ForumsMessageShown = false,
 	AlwaysShowSpeedKillTimer = true,
+	CRT_Enabled = false,
 	HelpMessageShown = false,
 	MoviesSeen = {},
 	MovieFilter = "Never",
@@ -3964,6 +3965,11 @@ function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
 					local speedTimer = mod:NewTimer(bestTime, DBM_SPEED_KILL_TIMER_TEXT, "Interface\\Icons\\Spell_Holy_BorrowedTime")
 					speedTimer:Start()
 				end
+			end
+			if DBM.Options.CRT_Enabled and difficultyIndex >= 14 then--14-17 difficulties, all of the dynamic difficulty sizes of WoD.
+				local time = 90/LastGroupSize
+				local crTimer = mod:NewTimer(time, DBM_COMBAT_RES_TIMER_TEXT, "Interface\\Icons\\Spell_Nature_Reincarnation")
+				crTimer:Start()
 			end
 			--update boss left
 			if mod.numBoss then
