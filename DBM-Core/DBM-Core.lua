@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11214 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11215 $"):sub(12, -3)),
 	DisplayVersion = "5.4.14 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.13", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11193 -- the revision of the latest stable version that is available
@@ -1623,6 +1623,10 @@ do
 		if sender and ignore[sender] then return end
 		text = text:sub(1, 16)
 		text = text:gsub("%%t", UnitName("target") or "<no target>")
+		if time < 2 then
+			DBM:AddMsg(DBM_PIZZA_ERROR_USAGE)
+			return
+		end
 		self.Bars:CreateBar(time, text, "Interface\\Icons\\Spell_Holy_BorrowedTime")
 		if broadcast then
 			if count then
