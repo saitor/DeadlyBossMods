@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11217 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11218 $"):sub(12, -3)),
 	DisplayVersion = "5.4.14 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.13", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11193 -- the revision of the latest stable version that is available
@@ -2385,7 +2385,7 @@ local function AcceptPartyInvite()
 end
 function DBM:PARTY_INVITE_REQUEST(sender)
 	--First off, if you are in queue for something, lets not allow guildies or friends boot you from it.
- 	if GetLFGMode(1) or GetLFGMode(2) or GetLFGMode(3) or GetLFGMode(4) or GetLFGMode(5) then return end
+ 	if IsInInstance() or GetLFGMode(1) or GetLFGMode(2) or GetLFGMode(3) or GetLFGMode(4) or GetLFGMode(5) then return end
  	--First check realID
  	if DBM.Options.AutoAcceptFriendInvite then
 		local _, numBNetOnline = BNGetNumFriends()
