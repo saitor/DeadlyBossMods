@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11224 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11225 $"):sub(12, -3)),
 	DisplayVersion = "5.4.14 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.13", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11193 -- the revision of the latest stable version that is available
@@ -3158,6 +3158,7 @@ do
 				if realm == playerRealm then sameRealm = true end
 			end
 			if sameRealm then
+			--[[
 				--Begin sync pass on to realid since this was a guild sync.
 				if (lastBossEngage[modId..realm.."PASSED"] and (GetTime() - lastBossEngage[modId..realm.."PASSED"]) > 60) or not lastBossEngage[modId..realm.."PASSED"] then
 					lastBossEngage[modId..realm.."PASSED"] = GetTime()
@@ -3171,7 +3172,7 @@ do
 							end
 						end
 					end
-				end
+				end--]]
 				if DBM.Options.WorldBossAlert and not IsEncounterInProgress() then
 					local bossName = worldBossNames[modId] or name or UNKNOWN
 					DBM:AddMsg(DBM_CORE_WORLDBOSS_ENGAGED:format(bossName, floor(health), sender))
@@ -3197,6 +3198,7 @@ do
 				if realm == playerRealm then sameRealm = true end
 			end
 			if sameRealm then
+				--[[
 				--Begin sync pass on to realid since this was a guild sync.
 				if (lastBossDefeat[modId..realm.."PASSED"] and (GetTime() - lastBossDefeat[modId..realm.."PASSED"]) > 60) or not lastBossDefeat[modId..realm.."PASSED"] then
 					lastBossDefeat[modId..realm.."PASSED"] = GetTime()
@@ -3210,7 +3212,7 @@ do
 							end
 						end
 					end
-				end
+				end--]]
 				if DBM.Options.WorldBossAlert and not IsEncounterInProgress() then
 					local bossName = worldBossNames[modId] or name or UNKNOWN--Pull name from world boss globals first, else, use name sent by sender so we still alert for bosses we don't have globals for (like darkmoon rabbit, cata/BC world bosses)
 					DBM:AddMsg(DBM_CORE_WORLDBOSS_DEFEATED:format(bossName, sender))
@@ -3237,12 +3239,13 @@ do
 			end
 			if sameRealm then
 				--Begin sync pass on
+				--[[
 				if (lastBossEngage[modId..realm.."PASSED"] and (GetTime() - lastBossEngage[modId..realm.."PASSED"]) > 60) or not lastBossEngage[modId..realm.."PASSED"] then
 					lastBossEngage[modId..realm.."PASSED"] = GetTime()
 					if IsInGuild() then--Sync from realid, send to GUILD
 						SendAddonMessage("D4", "WBE\t"..modId.."\t"..realm.."\t"..health.."\t4\t"..name, "GUILD")
 					end
-				end
+				end--]]
 				if DBM.Options.WorldBossAlert and not IsEncounterInProgress() then
 					local _, toonName = BNGetToonInfo(sender)
 					local bossName = worldBossNames[modId] or name or UNKNOWN
@@ -3270,12 +3273,13 @@ do
 			end
 			if sameRealm then
 				--Begin sync pass on
+				--[[
 				if (lastBossDefeat[modId..realm.."PASSED"] and (GetTime() - lastBossDefeat[modId..realm.."PASSED"]) > 60) or not lastBossDefeat[modId..realm.."PASSED"] then
 					lastBossDefeat[modId..realm.."PASSED"] = GetTime()
 					if IsInGuild() then--Sync from realid, send to GUILD
 						SendAddonMessage("D4", "WBD\t"..modId.."\t"..realm.."\t4\t"..name, "GUILD")
 					end
-				end
+				end--]]
 				if DBM.Options.WorldBossAlert and not IsEncounterInProgress() then
 					local _, toonName = BNGetToonInfo(sender)
 					local bossName = worldBossNames[modId] or name or UNKNOWN
