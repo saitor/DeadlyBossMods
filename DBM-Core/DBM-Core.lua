@@ -50,7 +50,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11237 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11238 $"):sub(12, -3)),
 	DisplayVersion = "5.4.14 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.13", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11193 -- the revision of the latest stable version that is available
@@ -2524,7 +2524,7 @@ do
 		local _, instanceType, difficulty, _, _, _, _, mapID, instanceGroupSize = GetInstanceInfo()
 		LastInstanceMapID = mapID
 		LastGroupSize = instanceGroupSize
-		difficultyIndex = difficulty
+		difficultyIndex = difficulty or 0
 		if instanceType == "none" then
 			if not targetEventsRegistered then
 				DBM:RegisterShortTermEvents("UPDATE_MOUSEOVER_UNIT", "UNIT_TARGET_UNFILTERED")
