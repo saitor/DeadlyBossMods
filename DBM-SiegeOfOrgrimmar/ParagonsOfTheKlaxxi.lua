@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(853, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11240 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11243 $"):sub(12, -3))
 mod:SetCreatureID(71152, 71153, 71154, 71155, 71156, 71157, 71158, 71160, 71161)
 mod:SetEncounterID(1593)
 mod:DisableESCombatDetection()
@@ -296,7 +296,7 @@ local function CheckBosses(ignoreRTF)
 		--Only 3 bosses activate on pull, however now the inactive or (next boss to activate) also fires IEEU. As such, we have to filter that boss by scaning for readytofight. Works well though.
 		if UnitExists(unitID) and not activeBossGUIDS[unitGUID] and not UnitBuff(unitID, readyToFight) then
 			if DBM.Options.DebugMode then
-				print("DBM Debug: "..args.sourcename.." is Ready To Fight (IEEU 1sec delay Check) "..GetTime())
+				print("DBM Debug: "..UnitName(unitID).." is Ready To Fight (IEEU 1sec delay Check) "..GetTime())
 			end
 			activeBossGUIDS[unitGUID] = true
 			activatedTargets[#activatedTargets + 1] = UnitName(unitID)
@@ -827,7 +827,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		self:SetIcon(args.destName, 0)
 	elseif spellId == 143542 then--Ready to Fight
 		if DBM.Options.DebugMode then
-			print("DBM Debug: "..args.sourcename.." is Ready To Fight (Buff Check) "..GetTime())
+			print("DBM Debug: "..args.sourceName.." is Ready To Fight (Buff Check) "..GetTime())
 		end
 --[[		local cid = self:GetCIDFromGUID(args.destGUID)
 		if cid == 71152 then--Skeer the Bloodseeker
