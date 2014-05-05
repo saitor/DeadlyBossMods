@@ -12,10 +12,11 @@
 --    * enGB/enUS: Omegal				http://www.deadlybossmods.com
 --    * deDE: Ebmor						http://forums.elitistjerks.com/user/616736-ebmor/
 --    * ruRU: Swix						stalker.kgv@gmail.com
---    * ruRU: TOM_RUS
+--    * ruRU: TOM_RUS					http://www.curseforge.com/profiles/TOM_RUS/
 --    * zhTW: Whyv						ultrashining@gmail.com
 --    * koKR: nBlueWiz					everfinale@gmail.com
 --    * frFR: leiyla					http://forums.elitistjerks.com/user/616557-leiyla/
+--    * zhCN: oliver1452				http://forums.elitistjerks.com/user/623698-oliver1452/
 --
 -- The former/inactive-translators:
 --    * deDE: Tandanu					http://www.deadlybossmods.com
@@ -50,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11247 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11248 $"):sub(12, -3)),
 	DisplayVersion = "5.4.14 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.13", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11193 -- the revision of the latest stable version that is available
