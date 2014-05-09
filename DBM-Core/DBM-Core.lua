@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11256 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11257 $"):sub(12, -3)),
 	DisplayVersion = "5.4.14 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.13", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11193 -- the revision of the latest stable version that is available
@@ -2846,7 +2846,6 @@ do
 	local dummyMod -- dummy mod for the pull sound effect
 	syncHandlers["PT"] = function(sender, timer, lastMapID)
 		if select(2, IsInInstance()) == "pvp" or DBM:GetRaidRank(sender) == 0 or IsEncounterInProgress() then
-			print(DBM:GetRaidRank(sender))
 			return
 		end
 		if (lastMapID and tonumber(lastMapID) ~= LastInstanceMapID) or (not lastMapID and DBM.Options.DontShowPTNoID) then return end
@@ -7645,9 +7644,6 @@ do
 	local function clearSortTable()
 		table.wipe(iconSortTable)
 		iconSet = 0
-		if DBM.Options.DebugMode then
-			print("DBM Debug: iconSortTable cleared")
-		end
 	end
 
 	function bossModPrototype:SetIconBySortedTable(startIcon, reverseIcon, returnFunc)
