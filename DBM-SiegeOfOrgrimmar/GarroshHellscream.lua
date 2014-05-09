@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(869, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11246 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11254 $"):sub(12, -3))
 mod:SetCreatureID(71865)
 mod:SetEncounterID(1623)
 mod:SetHotfixNoticeRev(10828)
@@ -87,7 +87,7 @@ local specWarnIronStarSpawn			= mod:NewSpecialWarningSpell(147047, false)
 local specWarnManifestRage			= mod:NewSpecialWarningInterrupt(147011, nil, nil, nil, 3)
 local specWarnMaliciousBlast		= mod:NewSpecialWarningStack(147235, nil, 1)
 
-local timerRoleplay					= mod:NewTimer(110, "timerRoleplay", "Interface\\Icons\\Spell_Holy_BorrowedTime")
+local timerRoleplay					= mod:NewTimer(115, "timerRoleplay", "Interface\\Icons\\Spell_Holy_BorrowedTime")
 --Stage 1: A Cry in the Darkness
 local timerDesecrateCD				= mod:NewCDCountTimer(35, 144748)
 local timerHellscreamsWarsongCD		= mod:NewNextTimer(42.2, 144821, nil, mod:IsTank() or mod:IsHealer())
