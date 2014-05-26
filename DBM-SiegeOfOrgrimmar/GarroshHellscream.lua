@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(869, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11265 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11269 $"):sub(12, -3))
 mod:SetCreatureID(71865)
 mod:SetEncounterID(1623)
 mod:SetHotfixNoticeRev(10828)
@@ -532,6 +532,10 @@ function mod:OnSync(msg, guid)
 				DBM:Schedule(13, SendChatMessage, L.MaliceFadeYell:format(playerName, 1), "SAY")
 				DBM:Schedule(12, SendChatMessage, L.MaliceFadeYell:format(playerName, 2), "SAY")
 				DBM:Schedule(11, SendChatMessage, L.MaliceFadeYell:format(playerName, 3), "SAY")
+				DBM:Schedule(10, SendChatMessage, L.MaliceFadeYell:format(playerName, 4), "SAY")
+				DBM:Schedule(8, SendChatMessage, L.MaliceFadeYell:format(playerName, 6), "SAY")
+				DBM:Schedule(6, SendChatMessage, L.MaliceFadeYell:format(playerName, 8), "SAY")
+				DBM:Schedule(4, SendChatMessage, L.MaliceFadeYell:format(playerName, 10), "SAY")
 			end
 		end
 		if self.Options.SetIconOnMalice then
