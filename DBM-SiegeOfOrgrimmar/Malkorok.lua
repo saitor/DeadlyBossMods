@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(846, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11268 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11270 $"):sub(12, -3))
 mod:SetCreatureID(71454)
 mod:SetEncounterID(1595)
 mod:SetZone()
@@ -54,7 +54,7 @@ local timerFatalStrike					= mod:NewTargetTimer(30, 142990, nil, mod:IsTank())
 
 local berserkTimer						= mod:NewBerserkTimer(360)
 
-local countdownImplodingEnergy			= mod:NewCountdown(10, 142986, nil, nil, 8)
+local countdownImplodingEnergy			= mod:NewCountdown(10, 142986, nil, nil, 5)
 
 local countdownBreathofYShaarj			= mod:NewCountdown(10, 142842, nil, nil, 5, nil, true)
 
