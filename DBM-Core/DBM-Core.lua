@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11275 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11276 $"):sub(12, -3)),
 	DisplayVersion = "5.4.16 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.15", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11270 -- the revision of the latest stable version that is available
@@ -5030,7 +5030,7 @@ end
 -------------------
 MovieFrame:HookScript("OnEvent", function(self, event, id)
 	if event == "PLAY_MOVIE" and id then
-		if DBM.Options.MovieFilter == "Never" then return end
+		if IsInInstance() or DBM.Options.MovieFilter == "Never" then return end
 		if DBM.Options.MovieFilter == "Block" or DBM.Options.MovieFilter == "AfterFirst" and DBM.Options.MoviesSeen[id] then
 			MovieFrame_OnMovieFinished(self)
 		else
