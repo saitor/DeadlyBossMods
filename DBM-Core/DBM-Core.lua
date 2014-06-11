@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11278 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11279 $"):sub(12, -3)),
 	DisplayVersion = "5.4.16 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.15", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11270 -- the revision of the latest stable version that is available
@@ -4463,6 +4463,10 @@ function DBM:GetCurrentInstanceDifficulty()
 		return "mythic", difficultyName.." - ", difficulty, instanceGroupSize
 	elseif difficulty == 17 then
 		return "lfr", difficultyName.." - ", difficulty, instanceGroupSize
+	elseif difficulty == 18 then
+		return "event40", difficultyName.." - ", difficulty, instanceGroupSize
+	elseif difficulty == 19 then
+		return "event5", difficultyName.." - ", difficulty, instanceGroupSize
 	else--failsafe
 		return "normal5", "", difficulty, instanceGroupSize
 	end
