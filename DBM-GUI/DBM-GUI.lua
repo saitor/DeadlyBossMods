@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 11280 $"):sub(12, -3)
+local revision =("$Revision: 11281 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -266,6 +266,7 @@ local function MixinSharedMedia3(mediatype, mediatable)
 		end
 		if DBM.Options.CustomSounds >= 9 then
 			LSM:Register("sound", "DBM: Custom 9", [[Interface\AddOns\DBM-CustomSounds\Custom9.ogg]])
+			if DBM.Options.CustomSounds > 9 then DBM.Options.CustomSounds = 9 end
 		end
 	end
 	-- sort LibSharedMedia keys alphabetically (case-insensitive)
