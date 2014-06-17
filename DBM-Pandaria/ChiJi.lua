@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(857, "DBM-Pandaria", nil, 322, 1)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11284 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11285 $"):sub(12, -3))
 mod:SetCreatureID(71952)
 mod:SetReCombatTime(20)
 mod:SetZone()
@@ -64,7 +64,7 @@ function mod:SPELL_CAST_START(args)
 	elseif spellId == 144473 then
 		warnBeaconOfHope:Show()
 		specWarnBeaconOfHope:Show()
-		self:BossTargetScanner(71952, "BeaconTarget", 0.02, 16)
+		self:BossTargetScanner(71952, "BeaconTarget", 0.1, 16)
 	elseif spellId == 144461 then
 		warnFirestorm:Show()
 	end
