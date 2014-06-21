@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11287 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11288 $"):sub(12, -3)),
 	DisplayVersion = "5.4.16 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.15", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11270 -- the revision of the latest stable version that is available
@@ -3706,9 +3706,6 @@ do
 						scanForCombat(v.mod, v.mob, 0)
 						if (DBM.Options.WorldBossNearAlert or v.mod.Options.ReadyCheck) and not IsQuestFlaggedCompleted(v.mod.readyCheckQuestId) then
 							PlaySoundFile("Sound\\interface\\levelup2.ogg", "Master")
-							if DBM.Options.DebugMode then
-								print("Alert sound should be firing for WorldBossNearAlert/ReadyCheck")
-							end
 						end
 					end
 				end
