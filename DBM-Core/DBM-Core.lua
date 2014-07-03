@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11311 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11315 $"):sub(12, -3)),
 	DisplayVersion = "5.4.16 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.15", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11270 -- the revision of the latest stable version that is available
@@ -2205,6 +2205,13 @@ end
 
 function DBM:GetCIDFromGUID(guid)
 	return (guid and (tonumber(guid:sub(6, 10), 16))) or 0
+end
+
+function DBM:IsCreatureGUID(guid)
+	if bband(guid:sub(1, 5), 0x00F) == 3 or bband(guid:sub(1, 5), 0x00F) == 5 then
+		return true
+	end
+	return false
 end
 
 function DBM:GetBossUnitId(name)
@@ -5288,6 +5295,7 @@ end
 bossModPrototype.AntiSpam = DBM.AntiSpam
 bossModPrototype.GetUnitCreatureId = DBM.GetUnitCreatureId
 bossModPrototype.GetCIDFromGUID = DBM.GetCIDFromGUID
+bossModPrototype.IsCreatureGUID = DBM.IsCreatureGUID
 
 do
 	local bossTargetuIds = {
