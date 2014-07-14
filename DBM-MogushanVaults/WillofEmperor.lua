@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(677, "DBM-MogushanVaults", nil, 317)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11344 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11345 $"):sub(12, -3))
 mod:SetCreatureID(60399, 60400)--60396 (Rage), 60397 (Strength), 60398 (Courage), 60480 (Titan Spark), 60399 (Qin-xi), 60400 (Jan-xi)
 mod:SetEncounterID(1407)
 mod:SetZone()
@@ -290,9 +290,7 @@ function mod:UNIT_POWER_FREQUENT(uId)
 		local powerLevel = UnitPower(uId)
 		if powerLevel >= 18 then--Give more than 1 second to find comboMob
 			self.vb.comboMob = UnitGUID(uId)
-			if powerLevel == 18 then
-				specWarnCombo:Show()
-			end
+			specWarnCombo:Show()
 		end
 	--split because we want to prefer target over focus. IE I focus other boss while targeting one i'm tanking. previous method bugged out and gave me combo warnings for my focus and NOT my target
 	--Now target should come first and focus should be af allback IF not targeting a boss.
@@ -300,9 +298,7 @@ function mod:UNIT_POWER_FREQUENT(uId)
 		local powerLevel = UnitPower(uId)
 		if powerLevel >= 18 then
 			self.vb.comboMob = UnitGUID(uId)
-			if powerLevel == 18 then
-				specWarnCombo:Show()
-			end
+			specWarnCombo:Show()
 		end
 	end
 end
