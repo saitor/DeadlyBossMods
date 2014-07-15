@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11348 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11349 $"):sub(12, -3)),
 	DisplayVersion = "5.4.17 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.16", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11339 -- the revision of the latest stable version that is available
@@ -6518,7 +6518,7 @@ do
 
 	function specialWarningPrototype:Show(...)
 		if DBM.Options.ShowSpecialWarnings and (not self.option or self.mod.Options[self.option]) and not moving and frame then
-			if not self.mod:Istank() and self.announceType == "taunt" then return end--Don't tell non tanks to taunt, ever.
+			if not self.mod:IsTank() and self.announceType == "taunt" then return end--Don't tell non tanks to taunt, ever.
 			local msg = pformat(self.text, ...)
 			local text = msg:gsub(">.-<", stripServerName)
 			font:SetText(text)
