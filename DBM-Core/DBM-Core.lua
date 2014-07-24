@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11400 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11403 $"):sub(12, -3)),
 	DisplayVersion = "5.4.17 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.16", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11339 -- the revision of the latest stable version that is available
@@ -2547,7 +2547,7 @@ end
 --------------------------------
 do
 	local targetEventsRegistered = false
-	local function FixForShittyComputers(firstRun)
+	local function FixForShittyComputers()
 		timerRequestInProgress = false
 		local _, instanceType, difficulty, _, _, _, _, mapID, instanceGroupSize = GetInstanceInfo()
 		if LastInstanceMapID == mapID then return end--ID hasn't changed, don't waste cpu doing anything else (example situation, porting into garrosh phase 4 is a loading screen)
@@ -2574,13 +2574,11 @@ do
 		end
 		-- LoadMod
 		DBM:LoadModsOnDemand("mapId", mapID)
-		if firstRun then--Two pass check for slow computers or people with high latency who didn't get accurate return from GetInstanceInfo yet
-			DBM:Schedule(3, FixForShittyComputers, false, DBM)
-		end
 	end
 	--Faster and more accurate loading for instances, but useless outside of them
 	function DBM:LOADING_SCREEN_DISABLED()
-		FixForShittyComputers(true)
+		FixForShittyComputers()
+		DBM:Schedule(3, FixForShittyComputers, DBM)
 	end
 
 	function DBM:LoadModsOnDemand(checkTable, checkValue)
