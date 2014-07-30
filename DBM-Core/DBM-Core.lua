@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11419 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11421 $"):sub(12, -3)),
 	DisplayVersion = "5.4.17 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.16", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11339 -- the revision of the latest stable version that is available
@@ -5371,7 +5371,7 @@ do
 		local scanTimes = scanTimes or 16
 		local targetname, targetuid, bossuid = self:GetBossTarget(cidOrGuid, scanOnlyBoss)
 		--Do scan
-		if targetname then
+		if targetname and targetname ~= DBM_CORE_UNKNOWN then
 			if (isEnemyScan and UnitIsFriend("player", targetuid) or self:IsTanking(targetuid, bossuid)) and not isFinalScan and not includeTank then--On player scan, ignore tanks. On enemy scan, ignore friendly player.
 				if targetScanCount[cidOrGuid] < scanTimes then--Make sure no infinite loop.
 					self:ScheduleMethod(scanInterval, "BossTargetScanner", cidOrGuid, returnFunc, scanInterval, scanTimes, scanOnlyBoss, isEnemyScan, includeTank)--Scan multiple times to be sure it's not on something other then tank (or friend on enemy scan).
