@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Zandalari", "DBM-Pandaria")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11407 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11428 $"):sub(12, -3))
 mod:SetCreatureID(69768, 69769, 69841, 69842)
 mod:SetZone()
 
@@ -51,7 +51,7 @@ end
 --Instead, when any zandalari dies, we wait 3 seconds, check for combat, if no combat it's a victory.
 local function checkforWin(firstCheck)
 	if not InCombatLockdown() then
-		DBM:EndCombat(self)
+		DBM:EndCombat(mod)
 		if firstCheck then
 			mod:Schedule(3, checkforWin)--Check again in case a spirit was lingering around keeping in combat
 		end
