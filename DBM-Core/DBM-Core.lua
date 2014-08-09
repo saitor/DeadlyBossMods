@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11453 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11470 $"):sub(12, -3)),
 	DisplayVersion = "5.4.17 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.16", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11339 -- the revision of the latest stable version that is available
@@ -1460,7 +1460,7 @@ SlashCmdList["DEADLYBOSSMODS"] = function(msg)
 			DBM:Schedule(timer, SendChatMessage, DBM_CORE_ANNOUNCE_BREAK_OVER, channel)
 		end
 	elseif cmd:sub(1, 4) == "pull" then
-		if DBM:GetRaidRank(playerName) == 0 or IsEncounterInProgress() then
+		if IsInGroup() and (DBM:GetRaidRank(playerName) == 0 or IsEncounterInProgress()) then
 			return DBM:AddMsg(DBM_ERROR_NO_PERMISSION)
 		end
 		local timer = tonumber(cmd:sub(5)) or 10
@@ -2856,7 +2856,7 @@ do
 
 	local dummyMod -- dummy mod for the pull sound effect
 	syncHandlers["PT"] = function(sender, timer, lastMapID)
-		if select(2, IsInInstance()) == "pvp" or DBM:GetRaidRank(sender) == 0 or IsEncounterInProgress() then
+		if IsInGroup() and (select(2, IsInInstance()) == "pvp" or DBM:GetRaidRank(sender) == 0 or IsEncounterInProgress()) then
 			return
 		end
 		if (lastMapID and tonumber(lastMapID) ~= LastInstanceMapID) or (not lastMapID and DBM.Options.DontShowPTNoID) then return end
