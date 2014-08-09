@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(826, "DBM-Pandaria", nil, 322)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11365 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11472 $"):sub(12, -3))
 mod:SetCreatureID(69161)
 mod:SetReCombatTime(20)
 mod:SetZone()
@@ -67,7 +67,7 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(137508, 137511) then
-		warnSpiritfireBeam:Show(args.destName)
+		warnSpiritfireBeam:CombinedShow(0.5, args.destName)
 	end
 end
 
