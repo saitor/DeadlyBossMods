@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11572 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11573 $"):sub(12, -3)),
 	DisplayVersion = "5.4.19 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.18", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11523 -- the revision of the latest stable version that is available
@@ -2707,7 +2707,7 @@ local function loadModByUnit(uId)
 			if cId and bosscId and cId == bosscId and not IsAddOnLoaded(addon) and enabled then
 				for i, v in ipairs(DBM.AddOns) do
 					if v.modId == addon then
-						DBM:LoadMod(v, force)
+						DBM:LoadMod(v, true)
 						break
 					end
 				end
