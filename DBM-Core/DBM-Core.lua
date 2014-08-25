@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11569 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11570 $"):sub(12, -3)),
 	DisplayVersion = "5.4.19 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.18", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11523 -- the revision of the latest stable version that is available
@@ -2604,7 +2604,7 @@ end
 	--Outdoor bosses will try to ignore check, if they fail, well, then we need to try and find ways to make the mods that can't load in combat smaller or load faster.
 function DBM:LoadMod(mod, force)
 	if type(mod) ~= "table" then return false end
-	if mod.isWorldBoss and IsInInstance() and not force then return end--Don't load world boss mod this way.
+	if mod.isWorldBoss and not force then return end--Don't load world boss mod this way.
 	if InCombatLockdown() and not IsEncounterInProgress() and IsInInstance() then
 		if not loadDelay then--Prevent duplicate DBM_CORE_LOAD_MOD_COMBAT message.
 			self:AddMsg(DBM_CORE_LOAD_MOD_COMBAT:format(tostring(mod.name)))
