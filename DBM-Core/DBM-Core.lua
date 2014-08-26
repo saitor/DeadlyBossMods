@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11579 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11581 $"):sub(12, -3)),
 	DisplayVersion = "5.4.19 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.18", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11523 -- the revision of the latest stable version that is available
@@ -283,8 +283,6 @@ local bannedMods = { -- a list of "banned" (meaning they are replaced by another
 --  Cache frequently used global variables in locals  --
 --------------------------------------------------------
 local DBM = DBM
--- these global functions are accessed all the time by the event handler
--- so caching them is worth the effort
 local ipairs, pairs, next = ipairs, pairs, next
 local tinsert, tremove, twipe = table.insert, table.remove, table.wipe
 local type, select = type, select
