@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(856, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11192 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11607 $"):sub(12, -3))
 mod:SetCreatureID(71859, 71858)--haromm, Kardris
 mod:SetEncounterID(1606)
 mod:SetZone()
@@ -266,7 +266,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:OnSync(msg)
-	if msg == "FallingAsh" then
+	if msg == "FallingAsh" and self:IsInCombat() then
 		self.vb.ashCount = self.vb.ashCount + 1
 		timerFallingAsh:Start()
 		if self:IsHeroic() then--On heroic, base spell 1 second cast, not 2.

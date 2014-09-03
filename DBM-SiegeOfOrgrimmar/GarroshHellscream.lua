@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(869, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11588 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11607 $"):sub(12, -3))
 mod:SetCreatureID(71865)
 mod:SetEncounterID(1623)
 mod:SetHotfixNoticeRev(10828)
@@ -527,7 +527,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 end
 
 function mod:OnSync(msg, guid)
-	if msg == "MaliceTarget" and guid then
+	if msg == "MaliceTarget" and guid and self:IsInCombat() then
 		local targetName = DBM:GetFullPlayerNameByGUID(guid)
 		warnMalice:Show(targetName)
 		timerMaliceCD:Start()
@@ -548,12 +548,12 @@ function mod:OnSync(msg, guid)
 		if self.Options.SetIconOnMalice then
 			self:SetIcon(targetName, 7)
 		end
-	elseif msg == "MaliceTargetRemoved" and guid and self.Options.SetIconOnMalice then
+	elseif msg == "MaliceTargetRemoved" and guid and self.Options.SetIconOnMalice and self:IsInCombat() then
 		local targetName = DBM:GetFullPlayerNameByGUID(guid)
 		self:SetIcon(targetName, 0)
 	elseif msg == "prepull" then
 		timerRoleplay:Start()
-	elseif msg == "phase3End" then
+	elseif msg == "phase3End" and self:IsInCombat() then
 		timerDesecrateCD:Cancel()
 		timerTouchOfYShaarjCD:Cancel()
 		countdownTouchOfYShaarj:Cancel()
