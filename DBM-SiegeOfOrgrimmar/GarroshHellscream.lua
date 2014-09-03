@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(869, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11607 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11609 $"):sub(12, -3))
 mod:SetCreatureID(71865)
 mod:SetEncounterID(1623)
 mod:SetHotfixNoticeRev(10828)
@@ -521,7 +521,7 @@ end
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.wasteOfTime then
 		self:SendSync("prepull")
-	elseif msg == L.phase3End or msg:find(L.phase3End) then
+	elseif (msg == L.phase3End or msg:find(L.phase3End)) and self:IsInCombat() then
 		self:SendSync("phase3End")
 	end
 end
