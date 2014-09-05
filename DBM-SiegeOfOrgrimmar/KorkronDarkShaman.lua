@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(856, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11607 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11617 $"):sub(12, -3))
 mod:SetCreatureID(71859, 71858)--haromm, Kardris
 mod:SetEncounterID(1606)
 mod:SetZone()
@@ -81,7 +81,6 @@ mod:AddSetIconOption("SetIconOnToxicMists", 144089, false)
 mod:AddSetIconOption("SetIconOnFoulStream", 144090, false)
 
 --Upvales, don't need variables
-local UnitExists, UnitGUID, UnitDetailedThreatSituation = UnitExists, UnitGUID, UnitDetailedThreatSituation
 local playerName = UnitName("player")
 --Important, needs recover
 mod.vb.ashCount = 0
