@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11617 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11624 $"):sub(12, -3)),
 	DisplayVersion = "5.4.20 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.19", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11593 -- the revision of the latest stable version that is available
@@ -1028,6 +1028,7 @@ do
 				"PARTY_INVITE_REQUEST",
 				"LOADING_SCREEN_DISABLED"
 			)
+			RolePollPopup:UnregisterEvent("ROLE_POLL_BEGIN")
 			self:GROUP_ROSTER_UPDATE()
 			--self:LOADING_SCREEN_DISABLED()--Initial testing shows it isn't needed here and wastes cpu running funcion twice, because actual event always fires at login, AFTER addonloadded. Will remove this line if it works out ok
 			self:Schedule(1.5, function()
@@ -4901,7 +4902,6 @@ function DBM:Capitalize(str)
 end
 
 --copied from big wigs with permission from funkydude. Modified by MysticalOS
-local roleEventUnregistered = false
 function DBM:RoleCheck()
 	local spec = GetSpecialization()
 	if not spec then return end
@@ -4911,15 +4911,6 @@ function DBM:RoleCheck()
 	if not InCombatLockdown() and IsInGroup() and ((IsPartyLFG() and difficultyIndex == 14) or not IsPartyLFG()) then
 		if UnitGroupRolesAssigned("player") ~= role then
 			UnitSetRole("player", role)
-		end
-		if not roleEventUnregistered then
-			roleEventUnregistered = true
-			RolePollPopup:UnregisterEvent("ROLE_POLL_BEGIN")
-		end
-	else
-		if roleEventUnregistered then
-			roleEventUnregistered = false
-			RolePollPopup:RegisterEvent("ROLE_POLL_BEGIN")
 		end
 	end
 	--Loot reminder even if spec isn't known or we are in LFR where we have a valid for role without us being ones that set us.
