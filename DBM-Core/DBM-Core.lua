@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11635 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11638 $"):sub(12, -3)),
 	DisplayVersion = "5.4.20 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.19", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11593 -- the revision of the latest stable version that is available
@@ -4657,10 +4657,6 @@ do
 
 	-- sender is a presenceId for real id messages, a character name otherwise
 	local function onWhisper(msg, sender, isRealIdMessage)
-		-- ignore oQueue messages
-		if msg and msg:sub(1, 3) == "OQ," then
-			return
-		end
 		if msg == "status" and #inCombat > 0 and DBM.Options.StatusEnabled then
 			if not difficultyText then -- prevent error when timer recovery function worked and etc (StartCombat not called)
 				difficultyText = select(2, DBM:GetCurrentInstanceDifficulty())
