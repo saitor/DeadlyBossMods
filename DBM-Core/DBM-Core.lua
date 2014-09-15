@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11638 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11656 $"):sub(12, -3)),
 	DisplayVersion = "5.4.20 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.19", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11593 -- the revision of the latest stable version that is available
@@ -1463,10 +1463,6 @@ SlashCmdList["DEADLYBOSSMODS"] = function(msg)
 		DBM:AddMsg(DBM_CORE_LAG_CHECKING)
 		DBM:Schedule(5, function() DBM:ShowLag() end)
 	elseif cmd:sub(1, 5) == "arrow" then
-		if not IsInRaid() then
-			DBM:AddMsg(DBM_ARROW_NO_RAIDGROUP)
-			return false
-		end
 		local x, y = string.split(" ", cmd:sub(6):trim())
 		local xNum, yNum = tonumber(x or ""), tonumber(y or "")
 		local success
@@ -1487,8 +1483,8 @@ SlashCmdList["DEADLYBOSSMODS"] = function(msg)
 			elseif subCmd:upper() == "FOCUS" then
 				DBM.Arrow:ShowRunTo("focus")
 				success = true
-			elseif DBM:GetRaidUnitId(DBM:Capitalize(subCmd)) then
-				DBM.Arrow:ShowRunTo(DBM:Capitalize(subCmd))
+			elseif DBM:GetRaidUnitId(subCmd) then
+				DBM.Arrow:ShowRunTo(subCmd)
 				success = true
 			end
 		end
