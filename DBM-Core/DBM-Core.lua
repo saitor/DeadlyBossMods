@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11660 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11666 $"):sub(12, -3)),
 	DisplayVersion = "5.4.20 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.19", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11593 -- the revision of the latest stable version that is available
@@ -2508,6 +2508,7 @@ function DBM:WORLD_STATE_TIMER_START()
 			elseif realmBest and DBM.Options.ChallengeBest == "Realm" then
 				DBM.Bars:CreateBar(ceil(realmBest / 1000), DBM_SPEED_CLEAR_TIMER_TEXT, "Interface\\Icons\\Spell_Holy_BorrowedTime")
 			end
+			break
 		end
 	end
 end
