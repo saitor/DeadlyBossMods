@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 11635 $"):sub(12, -3)
+local revision =("$Revision: 11671 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -2979,7 +2979,7 @@ do
 	end
 
 	local function LoadAddOn_Button(self)
-		if DBM:LoadMod(self.modid) then
+		if DBM:LoadMod(self.modid, true) then
 			self:Hide()
 			self.headline:Hide()
 			CreateBossModTab(self.modid, self.modid.panel)
