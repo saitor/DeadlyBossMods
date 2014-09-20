@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 11680 $"):sub(12, -3)
+local revision =("$Revision: 11682 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -1535,6 +1535,8 @@ local function CreateOptionsMenu()
 			{	text	= "Moshne (Male)",	value 	= "Mosh"},
 			{	text	= "Corsica (Female)",value 	= "Corsica"},
 			{	text	= "Koltrane (Male)",value 	= "Kolt"},
+			{	text	= "Pewsey (Male)",value 	= "Pewsey"},
+			{	text	= "Bear (Male Child)",value = "Bear"},
 			{	text	= "None",value 	= "None"},
 		}
 		local CountSoundDropDown = raidwarnoptions:CreateDropdown(L.CountdownVoice, countSounds,
@@ -1549,6 +1551,8 @@ local function CreateOptionsMenu()
 			{	text	= "Moshne (Male)",	value 	= "Mosh"},
 			{	text	= "Corsica (Female)",value 	= "Corsica"},
 			{	text	= "Koltrane (Male)",value 	= "Kolt"},
+			{	text	= "Pewsey (Male)",value 	= "Pewsey"},
+			{	text	= "Bear (Male Child)",value = "Bear"},
 		}
 		local CountSoundDropDown2 = raidwarnoptions:CreateDropdown(L.CountdownVoice2, countSounds,
 		DBM.Options.CountdownVoice2, function(value)
