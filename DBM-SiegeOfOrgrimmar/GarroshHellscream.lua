@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(869, "DBM-SiegeOfOrgrimmar", nil, 369)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11609 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11704 $"):sub(12, -3))
 mod:SetCreatureID(71865)
 mod:SetEncounterID(1623)
 mod:SetHotfixNoticeRev(10828)
@@ -484,6 +484,9 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		warnPhase4:Show()
 		timerMaliceCD:Start()
 		timerBombardmentCD:Start(70)
+	elseif spellId == 147187 then--Phase 4 timer fixer (Call Gunship) (needed in case anyone in raid watched cinematic)
+		timerMaliceCD:Update(18.5, 29.5)
+		timerBombardmentCD:Update(20, 70)
 	elseif spellId == 147126 then--Clump Check
 		timerClumpCheck:Start()
 	end
