@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11719 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11723 $"):sub(12, -3)),
 	DisplayVersion = "5.4.20 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.19", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11593 -- the revision of the latest stable version that is available
@@ -3921,7 +3921,7 @@ function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
 				watchFrameRestore = true
 			end
 		end
-		if DBM.Options.HideTooltips then
+		if DBM.Options.HideTooltips and not mod.inScenario then
 			--Better or cleaner way?
 			GameTooltip.Temphide = function() GameTooltip:Hide() end; GameTooltip:SetScript("OnShow", GameTooltip.Temphide)
 		end
@@ -4286,7 +4286,7 @@ function DBM:EndCombat(mod, wipe)
 				WatchFrame:Show()
 				watchFrameRestore = false
 			end
-			if DBM.Options.HideTooltips then
+			if DBM.Options.HideTooltips and not mod.inScenario then
 				--Better or cleaner way?
 				GameTooltip:SetScript("OnShow", GameTooltip.Show)
 			end
