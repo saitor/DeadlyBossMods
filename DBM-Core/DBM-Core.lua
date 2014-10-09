@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11739 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11745 $"):sub(12, -3)),
 	DisplayVersion = "5.4.20 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.19", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11593 -- the revision of the latest stable version that is available
@@ -3650,6 +3650,9 @@ do
 					end
 				end
 			end
+		end
+		if DBM.Options.AFKHealthWarning and not IsEncounterInProgress() and UnitIsAFK("player") and self:AntiSpam(5, "AFK") then--You are afk and losing health, some griever is trying to kill you while you are afk/tabbed out.
+			PlaySoundFile("Sound\\Creature\\CThun\\CThunYouWillDIe.ogg", "master")--So fire an alert sound to save yourself from this person's behavior.
 		end
 	end
 
