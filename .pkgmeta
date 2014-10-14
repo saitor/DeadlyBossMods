@@ -3,18 +3,14 @@ externals:
     DBM-Core/Libs/LibChatAnims:
         url: svn://svn.wowace.com/wow/libchatanims/mainline/trunk/LibChatAnims/
 move-folders:
+    DBM-Core/DBM-BlackrockFoundry: DBM-BlackrockFoundry
+    DBM-Core/DBM-Brawlers: DBM-Brawlers
     DBM-Core/DBM-DefaultSkin: DBM-DefaultSkin
     DBM-Core/DBM-DMF: DBM-DMF
-    DBM-Core/DBM-HeartofFear: DBM-HeartofFear
-    DBM-Core/DBM-MogushanVaults: DBM-MogushanVaults
-    DBM-Core/DBM-Pandaria: DBM-Pandaria
-    DBM-Core/DBM-TerraceofEndlessSpring: DBM-TerraceofEndlessSpring
+    DBM-Core/DBM-Draenor: DBM-Draenor
     DBM-Core/DBM-GUI: DBM-GUI
-    DBM-Core/DBM-Party-MoP: DBM-Party-MoP
-    DBM-Core/DBM-WorldEvents: DBM-WorldEvents
-    DBM-Core/DBM-Scenario-MoP: DBM-Scenario-MoP
-    DBM-Core/DBM-Brawlers: DBM-Brawlers
-    DBM-Core/DBM-ThroneofThunder: DBM-ThroneofThunder
-    DBM-Core/DBM-SiegeOfOrgrimmar: DBM-SiegeOfOrgrimmar
+    DBM-Core/DBM-Highmaul: DBM-Highmaul
+    DBM-Core/DBM-Party-WoD: DBM-Party-WoD
     DBM-Core/DBM-StatusBarTimers: DBM-StatusBarTimers
+    DBM-Core/DBM-WorldEvents: DBM-WorldEvents
     DBM-Core/DBM-Core: DBM-Core
