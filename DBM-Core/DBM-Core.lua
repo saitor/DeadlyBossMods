@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11760 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11763 $"):sub(12, -3)),
 	DisplayVersion = "5.4.20 alpha", -- the string that is shown as version
 	DisplayReleaseVersion = "5.4.19", -- Needed to work around old versions of BW sending improper version information
 	ReleaseRevision = 11593 -- the revision of the latest stable version that is available
@@ -1450,7 +1450,7 @@ SlashCmdList["DEADLYBOSSMODS"] = function(msg)
 		DBM:AddMsg(DBM_CORE_LAG_CHECKING)
 		DBM:Schedule(5, function() DBM:ShowLag() end)
 	elseif cmd:sub(1, 5) == "arrow" then
-		local x, y = string.split(" ", cmd:sub(6):trim())
+		local x, y = string.split(" ", msg:sub(6):trim())
 		local xNum, yNum = tonumber(x or ""), tonumber(y or "")
 		local success
 		if xNum and yNum then
