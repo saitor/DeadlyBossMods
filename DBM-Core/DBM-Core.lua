@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11771 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11772 $"):sub(12, -3)),
 	DisplayVersion = "6.0.1 alpha", -- the string that is shown as version
 	ReleaseRevision = 11766 -- the revision of the latest stable version that is available
 }
@@ -2199,7 +2199,7 @@ function DBM:GetCIDFromGUID(guid)
 end
 
 function DBM:IsCreatureGUID(guid)
-	local type = strsplit(":", guid or "")
+	local type = strsplit("-", guid or "")
 	if type and (type == "Creature" or type == "Vehicle") then--To determine, add pet or not?
 		return true
 	end
