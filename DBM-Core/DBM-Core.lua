@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11774 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11775 $"):sub(12, -3)),
 	DisplayVersion = "6.0.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 11772 -- the revision of the latest stable version that is available
 }
@@ -3981,6 +3981,8 @@ end
 
 local statVarTable = {
 	--6.0
+	["event5"] = "normal",
+	["event40"] = "lfr25",
 	["normal5"] = "normal",
 	["heroic5"] = "heroic",
 	["challenge5"] = "challenge",
