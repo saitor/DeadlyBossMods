@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11805 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11806 $"):sub(12, -3)),
 	DisplayVersion = "6.0.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 11799 -- the revision of the latest stable version that is available
 }
@@ -4801,7 +4801,7 @@ do
 --		self:Schedule(10, function() if not DBM.Options.HelpMessageShown then DBM.Options.HelpMessageShown = true DBM:AddMsg(DBM_CORE_NEED_SUPPORT) end end)
 		self:Schedule(20, function() if not DBM.Options.ForumsMessageShown then DBM.Options.ForumsMessageShown = DBM.ReleaseRevision self:AddMsg(DBM_FORUMS_MESSAGE) end end)
 		self:Schedule(30, function() if not DBM.Options.SettingsMessageShown then DBM.Options.SettingsMessageShown = true self:AddMsg(DBM_HOW_TO_USE_MOD) end end)
-		self:Schedule(40, function() if BugMessageShown < 1 then DBM.Options.BugMessageShown = 1 self:AddMsg(DBM_CORE_BLIZZ_BUGS) end end)
+		self:Schedule(40, function() if DBM.Options.BugMessageShown < 1 then DBM.Options.BugMessageShown = 1 self:AddMsg(DBM_CORE_BLIZZ_BUGS) end end)
 		if type(RegisterAddonMessagePrefix) == "function" then
 			if not RegisterAddonMessagePrefix("D4") then -- main prefix for DBM4
 				self:AddMsg("Error: unable to register DBM addon message prefix (reached client side addon message filter limit), synchronization will be unavailable") -- TODO: confirm that this actually means that the syncs won't show up
