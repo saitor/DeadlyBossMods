@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11803 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11804 $"):sub(12, -3)),
 	DisplayVersion = "6.0.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 11799 -- the revision of the latest stable version that is available
 }
@@ -195,6 +195,7 @@ DBM.DefaultOptions = {
 	AlwaysShowSpeedKillTimer = true,
 	CRT_Enabled = false,
 --	HelpMessageShown = false,
+	BugMessageShown = 0,
 	MoviesSeen = {},
 	MovieFilter = "Never",
 	LastRevision = 0,
@@ -905,7 +906,7 @@ do
 				DBM:AddMsg(DBM_CORE_VEM)
 				return
 			end
-			self:Schedule(40, function() self:AddMsg(DBM_CORE_BLIZZ_BUGS) end)
+			self:Schedule(40, function() if BugMessageShown < 1 then DBM.Options.BugMessageShown = 1 self:AddMsg(DBM_CORE_BLIZZ_BUGS) end end)
 			DBM.Bars:LoadOptions("DBM")
 			DBM.Arrow:LoadPosition()
 			if not DBM.Options.ShowMinimapButton then self:HideMinimapButton() end
