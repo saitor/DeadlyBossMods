@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11817 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11818 $"):sub(12, -3)),
 	DisplayVersion = "6.0.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 11799 -- the revision of the latest stable version that is available
 }
@@ -3993,6 +3993,7 @@ end
 local statVarTable = {
 	--6.0
 	["event5"] = "normal",
+	["event20"] = "lfr25",
 	["event40"] = "lfr25",
 	["normal5"] = "normal",
 	["heroic5"] = "heroic",
@@ -4652,6 +4653,8 @@ function DBM:GetCurrentInstanceDifficulty()
 		return "event40", difficultyName.." - ", difficulty, instanceGroupSize
 	elseif difficulty == 19 then
 		return "event5", difficultyName.." - ", difficulty, instanceGroupSize
+	elseif difficulty == 20 then
+		return "event20", difficultyName.." - ", difficulty, instanceGroupSize
 	else--failsafe
 		return "normal5", "", difficulty, instanceGroupSize
 	end
