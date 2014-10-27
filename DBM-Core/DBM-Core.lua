@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11823 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11824 $"):sub(12, -3)),
 	DisplayVersion = "6.0.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 11799 -- the revision of the latest stable version that is available
 }
@@ -4248,7 +4248,7 @@ function DBM:UNIT_HEALTH(uId)
 	end
 	if not health or health < 5 then return end -- no worthy of combat start if health is below 5%
 	if InCombatLockdown() then
-		if not cId == 0 and not bossHealth[cId] and bossIds[cId] and UnitAffectingCombat(uId) and healthCombatInitialized then -- StartCombat by UNIT_HEALTH.
+		if cId ~= 0 and not bossHealth[cId] and bossIds[cId] and UnitAffectingCombat(uId) and healthCombatInitialized then -- StartCombat by UNIT_HEALTH.
 			if combatInfo[LastInstanceMapID] then
 				for i, v in ipairs(combatInfo[LastInstanceMapID]) do
 					if v.mod.Options.Enabled and not v.mod.disableHealthCombat and (v.type == "combat" or v.type == "combat_yell" or v.type == "combat_emote" or v.type == "combat_say") and (v.multiMobPullDetection and checkEntry(v.multiMobPullDetection, cId) or v.mob == cId) then
