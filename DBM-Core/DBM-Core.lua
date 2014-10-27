@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11826 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11827 $"):sub(12, -3)),
 	DisplayVersion = "6.0.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 11799 -- the revision of the latest stable version that is available
 }
@@ -2467,7 +2467,7 @@ end
 function DBM:CINEMATIC_START()
 	DBM:Debug("CINEMATIC_START fired")
 	if not IsInInstance() or C_Garrison:IsOnGarrisonMap() or DBM.Options.MovieFilter == "Never" then return end
-	DBM:Debug("CINEMATIC_START is enabled and passed first check")
+	DBM:Debug("CINEMATIC_START: in valid zone, checking settings")
 	SetMapToCurrentZone()
 	local currentFloor = GetCurrentMapDungeonLevel() or 0
 	if DBM.Options.MovieFilter == "Block" or DBM.Options.MovieFilter == "AfterFirst" and DBM.Options.MoviesSeen[LastInstanceMapID..currentFloor] then
@@ -5187,9 +5187,12 @@ end
 -------------------
 MovieFrame:HookScript("OnEvent", function(self, event, id)
 	if event == "PLAY_MOVIE" and id then
+		DBM:Debug("PLAY_MOVIE fired")
 		if not IsInInstance() or C_Garrison:IsOnGarrisonMap() or DBM.Options.MovieFilter == "Never" then return end
+		DBM:Debug("PLAY_MOVIE: In valid zone, checking settings")
 		if DBM.Options.MovieFilter == "Block" or DBM.Options.MovieFilter == "AfterFirst" and DBM.Options.MoviesSeen[id] then
 			MovieFrame_OnMovieFinished(self)
+			DBM:Debug("PLAY_MOVIE: Canceling movie")
 		else
 			DBM.Options.MoviesSeen[id] = true
 		end
