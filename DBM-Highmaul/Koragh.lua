@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1153, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11811 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11834 $"):sub(12, -3))
 mod:SetCreatureID(79015)
 mod:SetEncounterID(1723)
 mod:SetZone()
@@ -137,10 +137,9 @@ function mod:SPELL_AURA_REMOVED(args)
 	local spellId = args.spellId
 	if spellId == 162186 and args:IsPlayer() and self.Options.RangeFrame then
 		DBM.RangeCheck:Hide()
-	elseif spellId == 162185 and args:IsPlayer() and self.Options.RangeFrame then
-		if UnitDebuff("player", GetSpellInfo(162186)) then
-			DBM.RangeCheck:Show(5)
-		else
+	elseif spellId == 162185 and args:IsPlayer() then
+		specWarnExpelMagicFire:Cancel()
+		if self.Options.RangeFrame then
 			DBM.RangeCheck:Hide()
 		end
 	elseif spellId == 163472 and self.Options.SetIconOnMC then
