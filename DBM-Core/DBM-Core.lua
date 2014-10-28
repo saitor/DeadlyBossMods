@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11827 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11828 $"):sub(12, -3)),
 	DisplayVersion = "6.0.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 11799 -- the revision of the latest stable version that is available
 }
@@ -908,6 +908,10 @@ do
 			DBM.Bars:LoadOptions("DBM")
 			DBM.Arrow:LoadPosition()
 			if not DBM.Options.ShowMinimapButton then self:HideMinimapButton() end
+			local soundChannels = tonumber(GetCVar("Sound_NumChannels")) or 24--if set to 24, may return nil, Defaults usually do
+			if soundChannels < 64 then
+				SetCVar("Sound_NumChannels", 64)
+			end
 			self.AddOns = {}
 			for i = 1, GetNumAddOns() do
 				local addonName = GetAddOnInfo(i)
