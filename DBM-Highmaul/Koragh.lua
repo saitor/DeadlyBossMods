@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1153, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11834 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11837 $"):sub(12, -3))
 mod:SetCreatureID(79015)
 mod:SetEncounterID(1723)
 mod:SetZone()
@@ -120,7 +120,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.RangeFrame then
 			DBM.RangeCheck:Show(7)
 		end
-	elseif spellId == 161242 then
+	elseif spellId == 161242 and self:AntiSpam(3, args.destName) then--Players may wabble in and out of it and we don't want to spam add them to table.
 		warnCausticEnergy:CombinedShow(1, args.destName)--Two targets on mythic, which is why combinedshow.
 	elseif spellId == 163472 then
 		warnMC:CombinedShow(0.5, args.destName)
