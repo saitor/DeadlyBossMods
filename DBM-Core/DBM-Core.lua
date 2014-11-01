@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11843 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11844 $"):sub(12, -3)),
 	DisplayVersion = "6.0.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 11829 -- the revision of the latest stable version that is available
 }
@@ -3786,7 +3786,7 @@ do
 	end
 	
 	function DBM:UNIT_TARGETABLE_CHANGED()
-		if DBM.Options.DebugLevel > 2 then
+		if DBM.Options.DebugLevel > 2 or (Transcriptor and Transcriptor:IsLogging()) then
 			self:Debug("UNIT_TARGETABLE_CHANGED event fired")
 		end
 	end
