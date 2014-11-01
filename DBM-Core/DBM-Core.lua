@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11845 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11846 $"):sub(12, -3)),
 	DisplayVersion = "6.0.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 11829 -- the revision of the latest stable version that is available
 }
@@ -1475,9 +1475,6 @@ SlashCmdList["DEADLYBOSSMODS"] = function(msg)
 			return DBM:AddMsg(DBM_ERROR_NO_RAID)
 		end
 		DBM:RequestInstanceInfo()
-	elseif cmd:sub(1, 5) == "debug" then
-		DBM.Options.DebugMode = DBM.Options.DebugMode == false and true or false
-		DBM:AddMsg("Debug Message is " .. (DBM.Options.DebugMode and "ON" or "OFF"))
 	elseif cmd:sub(1, 10) == "debuglevel" then
 		local level = tonumber(cmd:sub(11)) or 1
 		if level < 1 or level > 3 then
@@ -1486,6 +1483,9 @@ SlashCmdList["DEADLYBOSSMODS"] = function(msg)
 		end
 		DBM.Options.DebugLevel = level
 		DBM:AddMsg("Debug Level is " .. level)
+	elseif cmd:sub(1, 5) == "debug" then
+		DBM.Options.DebugMode = DBM.Options.DebugMode == false and true or false
+		DBM:AddMsg("Debug Message is " .. (DBM.Options.DebugMode and "ON" or "OFF"))
 	elseif cmd:sub(1, 8) == "whereiam" or cmd:sub(1, 8) == "whereami" then
 		local x, y, _, map = UnitPosition("player")
 		SetMapToCurrentZone()
