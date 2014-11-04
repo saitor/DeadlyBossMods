@@ -47,11 +47,12 @@
 --    * Share Alike. If you alter, transform, or build upon this work, you may distribute the resulting work only under the same or similar license to this one.
 --
 
+
 -------------------------------
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11848 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11849 $"):sub(12, -3)),
 	DisplayVersion = "6.0.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 11829 -- the revision of the latest stable version that is available
 }
