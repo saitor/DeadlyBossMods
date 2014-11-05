@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Rings", "DBM-DMF")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11854 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11855 $"):sub(12, -3))
 mod:SetZone()
 
 mod:RegisterCombat("combat")
@@ -21,17 +21,16 @@ local countdownGame	= mod:NewCountdownFades(10, 170820)
 
 mod:RemoveOption("HealthFrame")
 mod:RemoveOption("SpeedKillTimer")
-mod:AddBoolOption("SetBubbles", true)--Because the NPC is an annoying and keeps doing chat says while you're shooting which cover up the targets if bubbles are on.
 
 local wingsName = GetSpellInfo(170820)
-local UnitDebuff = UnitDebuff
+local UnitBuff = UnitBuff
 
 function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
 	if spellId == 170823 and args:IsPlayer() then
 		warnRings:Show(args.amount or 1)
 		countdownGame:Cancel()
-		local _, _, _, _, _, duration, expires = UnitDebuff("player", wingsName)
+		local _, _, _, _, _, duration, expires = UnitBuff("player", wingsName)
 		--Maybe use expires instead?
 		timerGame:Start(duration-1)
 		countdownGame:Start(duration-1)
