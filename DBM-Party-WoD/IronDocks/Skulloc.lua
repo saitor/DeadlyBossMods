@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1238, "DBM-Party-WoD", 4, 558)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11689 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11861 $"):sub(12, -3))
 mod:SetCreatureID(83612)
 mod:SetEncounterID(1754)
 mod:SetZone()
@@ -38,7 +38,7 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 168398 then
-		warnRapidFire:Show(args.destname)
+		warnRapidFire:Show(args.destName)
 		timerRapidFireCD:Start()
 		if args:IsPlayer() then
 			specWarnRapidFire:Show()
