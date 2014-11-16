@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1236, "DBM-Party-WoD", 4, 558)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11861 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11865 $"):sub(12, -3))
 mod:SetCreatureID(80805, 80816, 80808)
 mod:SetEncounterID(1748)
 mod:SetZone()
@@ -32,8 +32,8 @@ local timerOgreTrapsCD      	= mod:NewCDTimer(25, 163390)--25-30 variation.
 local countdownFlamingSlash		= mod:NewCountdown(29, 163665)
 
 function mod:OnCombatStart(delay)
-	timerFlamingSlashCD:Start(8-delay)
-	countdownFlamingSlash:Start(8-delay)
+	timerFlamingSlashCD:Start(5-delay)
+	countdownFlamingSlash:Start(5-delay)
 	timerOgreTrapsCD:Start(19.5-delay)
 	timerSanguineSphereCD:Start(47-delay)--Cast is technically 45 but 47 is how long you have to kill before first shield which is what matters for high ranking CMs
 end
