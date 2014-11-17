@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(967, "DBM-Party-WoD", 7, 476)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11861 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11868 $"):sub(12, -3))
 mod:SetCreatureID(76143)
 mod:SetEncounterID(1700)
 mod:SetZone()
@@ -24,7 +24,7 @@ local timerSolarFlareCD			= mod:NewCDTimer(18, 153810)
 local timerQuillsCD				= mod:NewCDTimer(64, 159382)--Needs review
 
 function mod:OnCombatStart(delay)
-	timerSolarFlare:Start(11-delay)
+	timerSolarFlareCD:Start(11-delay)
 	if self:IsHeroic() then
 		timerQuillsCD:Start(33-delay)--Needs review
 	end
