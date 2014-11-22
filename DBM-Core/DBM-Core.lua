@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11869 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11870 $"):sub(12, -3)),
 	DisplayVersion = "6.0.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 11829 -- the revision of the latest stable version that is available
 }
@@ -4136,7 +4136,7 @@ function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
 					speedTimer:Start()
 				end
 			end
-			if DBM.Options.CRT_Enabled and difficultyIndex >= 14 then--14-17 difficulties, all of the difficulty sizes of WoD.
+			if DBM.Options.CRT_Enabled and difficultyIndex >= 14 and difficultyIndex < 18 then--14-17 difficulties, all of the difficulty sizes of WoD.
 				local time = 90/LastGroupSize
 				time = time * 60
 				loopCRTimer(time, mod)
