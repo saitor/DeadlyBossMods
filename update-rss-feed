@@ -1,0 +1,5 @@
+#!/bin/bash
+REV="$1"
+STARTREV=`expr "$REV" - 100`
+/usr/bin/java -jar /home/svn/rss/SvnFeed.jar --revisions "$STARTREV"-"$REV"  /home/svn/rss/DBM4Main.cfg
+mv /var/www/deadlybossmods.com/rss/DBM_Alpha_Changes.tmp.xml /var/www/deadlybossmods.com/rss/DBM_Alpha_Changes.xml

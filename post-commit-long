@@ -1,0 +1,37 @@
+#!/bin/sh
+
+REPOS="$1"
+REV="$2"
+
+/var/repositories/dbm4/hooks/commit-email.pl "$REPOS" "$REV" --from tandanu@deadlybossmods.com svncommits@deadlybossmods.com &
+/var/repositories/dbm4/hooks/commit-email.pl "$REPOS" "$REV" --from tandanu@deadlybossmods.com mysticalosx@gmail.com &
+/var/repositories/dbm4/hooks/update-rss-feed "$REV" &
+
+/usr/bin/svnlook dirs-changed --revision $REV $REPOS | grep branches/WoD/ > /dev/null && ./post-commit-WoD.sh "$1" "$2"
+/usr/bin/svnlook dirs-changed --revision $REV $REPOS | grep trunk/ > /dev/null || exit 0
+
+svn export svn://localhost/dbm4/trunk/ --username Tandanu --password asa123asa --non-interactive --ignore-externals
+lua /home/svn/asdf.lua $REV
+cd trunk
+rm -rf DBM-BossModStudio
+rm .pkgmeta
+rm DBM-Core/@Translators\ \ README!!!.txt
+#../luadoc.sh
+rm DBM-Core/*.luadoc
+rm "DBM-Core/!Important announcement for all SVN users.txt"
+rm DBM-GUI/*.luadoc
+zip -r trunk .
+chmod 777 trunk.zip
+mv -f ./trunk.zip /var/www/deadlybossmods.com/DBM-svn.zip
+cd ..
+rm ./trunk -f -r
+chmod 777 /var/www/deadlybossmods.com/DBM-svn.zip
+
+#/bin/echo "put /var/www/deadlybossmods.com/DBM-svn.zip 6.zip" | /usr/bin/sftp -o IdentityFile=/home/svn/foobarkey paul@cron.ninjapull.de
+#/bin/echo "put /var/www/deadlybossmods.com/versions.txt" | /usr/bin/sftp -o IdentityFile=/home/svn/foobarkey paul@cron.ninjapull.de
+
+/home/svn/dbm-build/upload-to-curse.sh $REV $REPOS >> /home/svn/log 2>&1
+
+cd /var/www/deadlybossmods.com
+./images.sh
+
