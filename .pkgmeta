@@ -1,7 +1,5 @@
 package-as: DBM-Core
-externals:
-    DBM-Core/Libs/LibChatAnims:
-        url: svn://svn.wowace.com/wow/libchatanims/mainline/trunk/LibChatAnims/
+
 move-folders:
     DBM-Core/DBM-BlackrockFoundry: DBM-BlackrockFoundry
     DBM-Core/DBM-Brawlers: DBM-Brawlers
