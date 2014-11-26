@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11883 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11884 $"):sub(12, -3)),
 	DisplayVersion = "6.0.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 11873 -- the revision of the latest stable version that is available
 }
@@ -2640,8 +2640,8 @@ do
 		for i, v in ipairs(DBM.AddOns) do
 			local modTable = v[checkTable]
 			local enabled = GetAddOnEnableState(playerName, v.modId)
-			DBM:Debug("LoadModsOnDemand fired")
 			if not IsAddOnLoaded(v.modId) and modTable and checkEntry(modTable, checkValue) then
+				DBM:Debug("LoadModsOnDemand fired")
 				if enabled ~= 0 then
 					self:LoadMod(v)
 				else
