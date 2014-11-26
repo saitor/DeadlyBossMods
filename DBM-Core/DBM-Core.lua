@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11890 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11891 $"):sub(12, -3)),
 	DisplayVersion = "6.0.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 11873 -- the revision of the latest stable version that is available
 }
@@ -4117,7 +4117,7 @@ function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
 		--process global options
 		self:ToggleRaidBossEmoteFrame(1)
 		self:StartLogging(0, nil)
-		if DBM.Options.HideObjectivesFrame and not (mod.type == "SCENARIO") and not GetTrackedAchievements() then
+		if DBM.Options.HideObjectivesFrame and not (mod.type == "SCENARIO") and GetNumTrackedAchievements() == 0 then
 			if ObjectiveTrackerFrame:IsVisible() then
 				ObjectiveTrackerFrame:Hide()
 				watchFrameRestore = true
