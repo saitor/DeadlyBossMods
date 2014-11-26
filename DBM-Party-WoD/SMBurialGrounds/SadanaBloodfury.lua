@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1139, "DBM-Party-WoD", 6, 537)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11370 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11889 $"):sub(12, -3))
 mod:SetCreatureID(75509)
 mod:SetEncounterID(1677)
 
@@ -39,7 +39,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerDarkCommunionCD:Start()
 		countdownDarkCommunion:Start()
 	elseif spellId == 164974 then
-		specWarnDarkEclipse:Show()
 		specWarnDarkEclipse:Show()
 		timerDarkEclipseCD:Start()
 	end
