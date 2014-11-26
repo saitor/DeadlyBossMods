@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1227, "DBM-Party-WoD", 8, 559)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11879 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11886 $"):sub(12, -3))
 mod:SetCreatureID(76021)
 mod:SetEncounterID(1758)
 mod:SetZone()
@@ -64,7 +64,7 @@ function mod:SPELL_CAST_START(args)
 		countdownDebilitating:Start()
 	elseif spellId == 161203 then
 		warnRejuvSerumCast:Show()
-	elseif spellId == 155037 then
+	elseif spellId == 155037 and self:IsInCombat() then
 		warnEruption:Show()
 		specWarnEruption:Show()
 		timerEruptionCD:Start(nil, args.sourceGUID)

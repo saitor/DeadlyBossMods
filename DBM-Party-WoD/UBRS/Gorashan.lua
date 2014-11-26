@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1226, "DBM-Party-WoD", 8, 559)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11879 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11886 $"):sub(12, -3))
 mod:SetCreatureID(76413)
 mod:SetEncounterID(1761)
 mod:SetZone()
@@ -43,8 +43,11 @@ end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 166168 and self:IsInCombat() then
-		warnPowerConduitLeft:Show(args.amount or 0)
-		specWarnPowerConduitEnded:Show()
+		local amount = args.amount or 0
+		warnPowerConduitLeft:Show(amount)
+		if amount == 0 then
+			specWarnPowerConduitEnded:Show()
+		end
 	end
 end
 mod.SPELL_AURA_REMOVED_DOSE = mod.SPELL_AURA_REMOVED
