@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(965, "DBM-Party-WoD", 7, 476)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11878 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11896 $"):sub(12, -3))
 mod:SetCreatureID(75964)
 mod:SetEncounterID(1698)
 mod:SetZone()
@@ -25,7 +25,7 @@ local timerFourWinds		= mod:NewBuffActiveTimer(18, 156793)
 local timerFourWindsCD		= mod:NewCDTimer(30, 156793)
 
 function mod:OnCombatStart(delay)
-	timerFourWinds:Start(-delay)
+	timerFourWindsCD:Start(-delay)
 end
 
 function mod:SPELL_CAST_START(args)

@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1133, "DBM-Party-WoD", 3, 536)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11887 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11896 $"):sub(12, -3))
 mod:SetCreatureID(80005)
 mod:SetEncounterID(1736)
 mod:SetZone()
@@ -55,6 +55,12 @@ function mod:FreezingSnareTarget(targetname, uId)
 end
   
 function mod:OnCombatStart(delay)
+end
+
+function mod:OnCombatEnd()
+	if self.Options.RangeFrame then
+		DBM.RangeCheck:Hide()
+	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
