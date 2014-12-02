@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 11902 $"):sub(12, -3)
+local revision =("$Revision: 11907 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -1576,6 +1576,9 @@ local function CreateOptionsMenu()
 		)
 		CountSoundDropDown3:SetPoint("TOPLEFT", CountSoundDropDown, "TOPLEFT", 0, -40)
 		
+		if not DBM.Voices then
+			DBM:Debug("Error: DBM.Voices table is nil")
+		end
 		local VoiceDropDown = raidwarnoptions:CreateDropdown(L.VoicePackChoice, DBM.Voices,
 		DBM.Options.ChosenVoicePack, function(value)
 			DBM.Options.ChosenVoicePack = value
