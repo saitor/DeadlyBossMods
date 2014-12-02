@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1163, "DBM-Party-WoD", 3, 536)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11900 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11901 $"):sub(12, -3))
 mod:SetCreatureID(79545)
 mod:SetEncounterID(1732)
 mod:SetZone()
@@ -55,9 +55,10 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 163550 then
+	local spellId = args.spellId
+	if spellId == 163550 then
 		warnMortar:Show()
-	elseif args.spellId == 160680 then
+	elseif spellId == 160680 then
 		self:BossTargetScanner(79548, "SupressiveFireTarget", 0.2, 15)
 	elseif spellId == 160943 and self:AntiSpam(2, 1) then
 		warnShrapnelBlast:Show()

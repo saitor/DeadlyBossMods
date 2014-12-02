@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1186, "DBM-Party-WoD", 1, 547)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11888 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11901 $"):sub(12, -3))
 mod:SetCreatureID(76177)
 mod:SetEncounterID(1685)
 mod:SetZone()
@@ -14,6 +14,7 @@ mod:RegisterEventsInCombat(
 )
 
 --TODO, soul vessel is probably wrong now.
+--Even on CM, fights too short to get a good soulvessel timer. Still need better logs
 local warnSWP					= mod:NewTargetAnnounce(154477, 2, nil, mod:IsHealer())
 local warnSoulVessel			= mod:NewSpellAnnounce(155327, 4)
 local warnTornSpirits			= mod:NewSpellAnnounce(153991, 3)
