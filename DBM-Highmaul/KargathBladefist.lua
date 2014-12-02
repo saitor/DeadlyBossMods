@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1128, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11811 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11905 $"):sub(12, -3))
 mod:SetCreatureID(78714)
 mod:SetEncounterID(1721)
 mod:SetZone()
@@ -106,6 +106,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnBerserkerRush:Show(firePillar)
 			yellBerserkerRush:Yell()
+			self:PlayVoice(self, spellId, "now")--Example usage (subject to change)
 		else
 			specWarnBerserkerRushOther:Show(args.destName)
 		end
