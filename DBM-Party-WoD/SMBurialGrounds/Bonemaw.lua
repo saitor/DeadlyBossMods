@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1140, "DBM-Party-WoD", 6, 537)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11861 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11918 $"):sub(12, -3))
 mod:SetCreatureID(75452)
 mod:SetEncounterID(1679)
 
@@ -29,7 +29,7 @@ local timerCorpseBreathCD		= mod:NewCDTimer(28, 165578, nil, false)--32-37 Varia
 local soundInhale				= mod:NewSound(153804)
 
 function mod:OnCombatStart(delay)
-	timerBodySlamCD:Start(15-delay)
+	timerBodySlamCD:Start(15-delay, UnitName("boss1"), UnitGUID("boss1"))
 end
 
 function mod:SPELL_CAST_START(args)

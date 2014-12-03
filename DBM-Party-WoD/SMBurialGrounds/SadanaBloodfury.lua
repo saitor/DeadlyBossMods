@@ -1,17 +1,19 @@
 local mod	= DBM:NewMod(1139, "DBM-Party-WoD", 6, 537)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11897 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11918 $"):sub(12, -3))
 mod:SetCreatureID(75509)
 mod:SetEncounterID(1677)
 
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS 153240 153153 164974"
+	"SPELL_CAST_SUCCESS 153240 153153 164974",
+	"UNIT_SPELLCAST_SUCCEEDED boss1"
 )
 
 local warnDaggerFall			= mod:NewSpellAnnounce(153240, 3)
+local warnWhispers				= mod:NewSpellAnnounce(153094, 2)
 local warnDarkCommunion			= mod:NewSpellAnnounce(153153, 4)
 local warnDarkEclipse			= mod:NewSpellAnnounce(164974, 4)
 
@@ -41,5 +43,11 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif spellId == 164974 then
 		specWarnDarkEclipse:Show()
 		timerDarkEclipseCD:Start()
+	end
+end
+
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
+	if spellId == 153094 then
+		warnWhispers:Show()
 	end
 end
