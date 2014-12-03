@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1195, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11912 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11919 $"):sub(12, -3))
 mod:SetCreatureID(78948, 99999)--78948 Tectus, 80557 Mote of Tectus, 80551 Shard of Tectus
 mod:SetEncounterID(1722)--Hopefully win will work fine off this because otherwise tracking shard deaths is crappy
 mod:SetZone()
@@ -13,6 +13,8 @@ mod:SetMinSyncTime(4)--Rise Mountain can occur pretty often.
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 162475 162968 162894 163312",
 	"SPELL_AURA_APPLIED 162346 162674",
+	"SPELL_PERIODIC_DAMAGE 162370",
+	"SPELL_PERIODIC_MISSED 162370",
 	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_SPELLCAST_SUCCEEDED boss1",
 	"UNIT_DIED"
@@ -34,7 +36,8 @@ local warnRavingAssault				= mod:NewSpellAnnounce(163312, 3)--Target scanning? E
 local specWarnEarthwarper			= mod:NewSpecialWarningSwitch("ej10061")
 local specWarnTectonicUpheaval		= mod:NewSpecialWarningSpell(162475, nil, nil, nil, 2)
 local specWarnEarthenPillar			= mod:NewSpecialWarningSpell(162518, nil, nil, nil, 3)
-local specWarnCrystallineBarrage	= mod:NewSpecialWarningYou(162346)
+local specWarnCrystallineBarrageYou	= mod:NewSpecialWarningYou(162346)
+local specWarnCrystallineBarrage	= mod:NewSpecialWarningMove(162370)
 --Night-Twisted NPCs
 local specWarnEarthenFlechettes		= mod:NewSpecialWarningSpell(162968, mod:IsMelee())--Change to "move" warning if it's avoidable
 local specWarnGiftOfEarth			= mod:NewSpecialWarningCount(162894, mod:IsTank())
@@ -93,13 +96,20 @@ function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
 	if spellId == 162346 then
 		warnCrystallineBarrage:CombinedShow(1, args.destName)
-		if args:IsPlayer() then
-			specWarnCrystallineBarrage:Show()
+		if args:IsPlayer() and self:AntiSpam(2, 2) then
+			specWarnCrystallineBarrageYou:Show()
 		end
 	elseif spellId == 162674 and self.Options.SetIconOnMote and not self:IsLFR() then--Don't mark kill/pickup marks in LFR, it'll be an aoe fest.
 		self:ScanForMobs(args.destGUID, 0, 8, 4, 0.05, 15)
 	end
 end
+
+function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId)
+	if spellId == 162370 and destGUID == UnitGUID("player") and self:AntiSpam(2, 2) then
+		specWarnCrystallineBarrage:Show()
+	end
+end
+mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
