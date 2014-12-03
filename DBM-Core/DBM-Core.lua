@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11913 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11914 $"):sub(12, -3)),
 	DisplayVersion = "6.0.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 11873 -- the revision of the latest stable version that is available
 }
@@ -6494,15 +6494,21 @@ do
 		return obj
 	end
 
-	--Example "Interface\\AddOns\\DBM-VPHenry\\1228\\1128\\158986now.ogg" --This would be Kargath playvoice for berserker rush from highmaul
-	--Example "Interface\\AddOns\\DBM-VPHenry\\1228\\1128\\ej9394now.ogg" --This would be Kargath playvoice for pillar from highmaul
 	--types: "now", "soon", "in5", "movein", "moveout" --Other types as needed, mainly so we can use multiple voies for same spellid if needed (to say, have both a soon and now warning)
 	--If no file at path, it should silenty fail. However, I want to try to only add NewVoice to mods for files that already exist.
-	function soundPrototype2:Play(type)
+	function soundPrototype2:Play(type, globalSound)
 		if DBM.Options.ChosenVoicePack == "None" then return end
 		if not self.option or self.mod.Options[self.option] then
 			local type = type or "now"--This way omiting "type" is valid for most common "now" warning.
-			local path = "Interface\\AddOns\\DBM-VP"..DBM.Options.ChosenVoicePack.."\\"..self.mod.instanceId.."\\"..self.mod.id.."\\"..self.spellId..type..".ogg"
+			local path
+			if globalSound then--Common (global) sounds.
+				--Example "Interface\\AddOns\\DBM-VPHenry\\Global\\dispelnow.ogg"
+				path = "Interface\\AddOns\\DBM-VP"..DBM.Options.ChosenVoicePack.."\\Global\\"..type..".ogg"
+			else--Instance Specific sounds
+				--Example "Interface\\AddOns\\DBM-VPHenry\\1228\\1128\\158986now.ogg" --This would be Kargath playvoice for berserker rush from highmaul
+				--Example "Interface\\AddOns\\DBM-VPHenry\\1228\\1128\\ej9394now.ogg" --This would be Kargath playvoice for pillar from highmaul
+				path = "Interface\\AddOns\\DBM-VP"..DBM.Options.ChosenVoicePack.."\\"..self.mod.instanceId.."\\"..self.mod.id.."\\"..self.spellId..type..".ogg"
+			end
 			if DBM.Options.UseMasterVolume then
 				PlaySoundFile(path, "Master")
 			else
