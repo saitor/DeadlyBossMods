@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11920 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11921 $"):sub(12, -3)),
 	DisplayVersion = "6.0.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 11873 -- the revision of the latest stable version that is available
 }
@@ -3783,14 +3783,13 @@ do
 		local i = 1
 		repeat
 			local bossUnitId = "boss"..i
-			local bossExists = UnitExists(bossUnitId)
-			local bossGUID = bossExists and not UnitIsDead(bossUnitId) and UnitGUID(bossUnitId) -- check for UnitIsVisible maybe?
+			local bossGUID = not UnitIsDead(bossUnitId) and UnitGUID(bossUnitId) -- check for UnitIsVisible maybe?
 			local bossCId = bossGUID and DBM:GetCIDFromGUID(bossGUID)
 			if bossCId and (type(cId) == "number" and cId == bossCId or type(cId) == "table" and checkEntry(cId, bossCId)) then
 				return true
 			end
 			i = i + 1
-		until not bossExists
+		until not bossGUID
 	end
 
 	function DBM:INSTANCE_ENCOUNTER_ENGAGE_UNIT()
