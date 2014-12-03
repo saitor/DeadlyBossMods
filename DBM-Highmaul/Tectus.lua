@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1195, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11811 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11912 $"):sub(12, -3))
 mod:SetCreatureID(78948, 99999)--78948 Tectus, 80557 Mote of Tectus, 80551 Shard of Tectus
 mod:SetEncounterID(1722)--Hopefully win will work fine off this because otherwise tracking shard deaths is crappy
 mod:SetZone()
@@ -34,7 +34,7 @@ local warnRavingAssault				= mod:NewSpellAnnounce(163312, 3)--Target scanning? E
 local specWarnEarthwarper			= mod:NewSpecialWarningSwitch("ej10061")
 local specWarnTectonicUpheaval		= mod:NewSpecialWarningSpell(162475, nil, nil, nil, 2)
 local specWarnEarthenPillar			= mod:NewSpecialWarningSpell(162518, nil, nil, nil, 3)
-local specWarnCrystallineBarrage	= mod:NewSpecialWarningYou(162894)
+local specWarnCrystallineBarrage	= mod:NewSpecialWarningYou(162346)
 --Night-Twisted NPCs
 local specWarnEarthenFlechettes		= mod:NewSpecialWarningSpell(162968, mod:IsMelee())--Change to "move" warning if it's avoidable
 local specWarnGiftOfEarth			= mod:NewSpecialWarningCount(162894, mod:IsTank())

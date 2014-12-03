@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("AuchTrash", "DBM-Party-WoD", 1)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11901 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11912 $"):sub(12, -3))
 --mod:SetModelID(47785)
 mod:SetZone()
 
@@ -28,7 +28,7 @@ mod:RemoveOption("HealthFrame")
 mod:RemoveOption("SpeedKillTimer")
 
 function mod:SPELL_CAST_START(args)
-	if not self.Options.Enabled then return end
+	if not self.Options.Enabled or self:IsDifficulty("normal5") then return end
 	local spellId = args.spellId
 	if spellId == 157173 then
 		warnFelStomp:Show()

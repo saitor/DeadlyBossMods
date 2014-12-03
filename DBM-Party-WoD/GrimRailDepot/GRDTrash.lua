@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("GRDTrash", "DBM-Party-WoD", 3)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11900 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11912 $"):sub(12, -3))
 --mod:SetModelID(47785)
 mod:SetZone()
 
@@ -39,7 +39,7 @@ function mod:FlametongueTarget(targetname, uId)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if not self.Options.Enabled then return end
+	if not self.Options.Enabled or self:IsDifficulty("normal5") then return end
 	local spellId = args.spellId
 	if spellId == 176025 then
 		warnLavaWreath:Show(args.destName)
@@ -50,7 +50,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_CAST_START(args)
-	if not self.Options.Enabled then return end
+	if not self.Options.Enabled or self:IsDifficulty("normal5") then return end
 	local spellId = args.spellId
 	if spellId == 166675 and self:AntiSpam(2, 1) then
 		warnShrapnelBlast:Show()
