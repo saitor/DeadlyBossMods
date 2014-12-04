@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1195, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11930 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11934 $"):sub(12, -3))
 mod:SetCreatureID(78948, 99999)--78948 Tectus, 80557 Mote of Tectus, 80551 Shard of Tectus
 mod:SetEncounterID(1722)--Hopefully win will work fine off this because otherwise tracking shard deaths is crappy
 mod:SetZone()
@@ -109,7 +109,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnCrystallineBarrageYou:Show()
 		end
 	elseif spellId == 162674 and self.Options.SetIconOnMote and not self:IsLFR() then--Don't mark kill/pickup marks in LFR, it'll be an aoe fest.
-		self:ScanForMobs(args.destGUID, 0, 8, 4, 0.05, 15)
+		self:ScanForMobs(args.destGUID, 0, 8, 4, 0.05, 15)--Find out why this still doesn't work.
 	end
 end
 
