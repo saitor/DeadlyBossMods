@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1211, "DBM-Draenor", nil, 557)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11910 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11927 $"):sub(12, -3))
 mod:SetCreatureID(81535)
 mod:SetReCombatTime(20)
 mod:SetZone()
@@ -20,11 +20,11 @@ mod:RegisterEventsInCombat(
 --TODO, add Noxious Spit warnings
 local warnColossalBlow				= mod:NewSpellAnnounce(175973, 3)
 local warnGenesis					= mod:NewSpellAnnounce(175979, 4)
-local warnSavageVines				= mod:NewTargetAnnounce(175979, 3)
+local warnSavageVines				= mod:NewTargetAnnounce(176004, 2)
 local warnGrowUntamedMandragora		= mod:NewSpellAnnounce(176013, 3)
 
 local specWarnColossalBlow			= mod:NewSpecialWarningSpell(175973, nil, nil, nil, 2)
-local specWarnGenesis				= mod:NewSpecialWarningSwitch(175979)--Everyone. "Switch" is closest generic to "run around stomping flowers". Might need custom message
+local specWarnGenesis				= mod:NewSpecialWarningSpell(175979)--Everyone. "Switch" is closest generic to "run around stomping flowers". Might need custom message
 local specWarnSavageVines			= mod:NewSpecialWarningYou(176004)
 local yellSavageVines				= mod:NewYell(176004)
 local specWarnSavageVinesNear		= mod:NewSpecialWarningClose(176004)
