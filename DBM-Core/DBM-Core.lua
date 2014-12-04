@@ -51,7 +51,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11927 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11928 $"):sub(12, -3)),
 	DisplayVersion = "6.0.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 11873 -- the revision of the latest stable version that is available
 }
@@ -2647,7 +2647,7 @@ do
 	function DBM:LOADING_SCREEN_DISABLED()
 		DBM:Debug("LOADING_SCREEN_DISABLED fired")
 		FixForShittyComputers()
-		DBM:Schedule(3, FixForShittyComputers, DBM)
+		DBM:Schedule(5, FixForShittyComputers, DBM)
 	end
 
 	function DBM:LoadModsOnDemand(checkTable, checkValue)
@@ -4048,9 +4048,9 @@ local statVarTable = {
 function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
 	if not mod.inCombat then
 		if event then
-			self:Debug("StartCombat called by : "..event)
+			self:Debug("StartCombat called by : "..event..". LastInstanceMapID is "..LastInstanceMapID)
 		else
-			self:Debug("StartCombat called by individual mod or unknown reason.")
+			self:Debug("StartCombat called by individual mod or unknown reason. LastInstanceMapID is "..LastInstanceMapID)
 		end
 	end
 	cSyncSender = {}
