@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11941 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11942 $"):sub(12, -3)),
 	DisplayVersion = "6.0.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 11873 -- the revision of the latest stable version that is available
 }
@@ -6095,41 +6095,6 @@ function DBM:GetBossHPByGUID(guid)
 				if bossHealth[guid] and UnitHealth(unitId) == 0 then return bossHealth[guid], unitId end--Return last non 0 value if value is 0, since it's last valid value we had.
 				local hp = UnitHealth(unitId) / UnitHealthMax(unitId) * 100
 				bossHealth[guid] = hp
-				bossHealthuIdCache[guid] = unitId
-				return hp, unitId
-			end
-		end
-	end
-	return nil
-end
-
-function DBM:GetBossHPByGUID(guid)
-	local uId = bossHealthuIdCache[guid] or "target"
-	if UnitGUID(uId) == guid and UnitHealthMax(uId) ~= 0 then
-		local hp = UnitHealth(uId) / UnitHealthMax(uId) * 100
-		bossHealth[guid] = hp > 0 and hp or 100
-		return hp, uId
-	elseif UnitGUID("focus") == guid and UnitHealthMax("focus") ~= 0 then
-		local hp = UnitHealth("focus") / UnitHealthMax("focus") * 100
-		bossHealth[guid] = hp > 0 and hp or 100
-		return hp, "focus"
-	else
-		for i = 1, 5 do
-			local guid2 = UnitGUID("boss"..i)
-			if guid == guid2 and UnitHealthMax("boss"..i) ~= 0 then
-				local hp = UnitHealth("boss"..i) / UnitHealthMax("boss"..i) * 100
-				bossHealth[guid] = hp > 0 and hp or 100
-				bossHealthuIdCache[guid] = "boss"..i
-				return hp, "boss"..i
-			end
-		end
-		local idType = (IsInRaid() and "raid") or "party"
-		for i = 0, GetNumGroupMembers() do
-			local unitId = ((i == 0) and "target") or idType..i.."target"
-			local guid2 = UnitGUID(unitId)
-			if guid == guid2 and UnitHealthMax(unitId) ~= 0 then
-				local hp = UnitHealth(unitId) / UnitHealthMax(unitId) * 100
-				bossHealth[guid] = hp > 0 and hp or 100
 				bossHealthuIdCache[guid] = unitId
 				return hp, unitId
 			end
