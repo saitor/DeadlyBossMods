@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1195, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11934 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11939 $"):sub(12, -3))
 mod:SetCreatureID(78948, 99999)--78948 Tectus, 80557 Mote of Tectus, 80551 Shard of Tectus
 mod:SetEncounterID(1722)--Hopefully win will work fine off this because otherwise tracking shard deaths is crappy
 mod:SetZone()
@@ -47,7 +47,7 @@ local timerBerserkerCD				= mod:NewNextTimer(41, "ej10062", nil, mod:IsTank(), n
 local timerGiftOfEarthCD			= mod:NewCDTimer(10.5, 162894, nil, mod:IsMelee())--10.5 but obviously delayed if stuns were used.
 local timerEarthenFlechettesCD		= mod:NewCDTimer(14, 162968, nil, mod:IsMelee())--14 but obviously delayed if stuns were used. Also tends to be recast immediately if stun interrupted
 
-local berserkTimer					= mod:NewBerserkTimer(300)
+local berserkTimer					= mod:NewBerserkTimer(600)
 
 local countdownEarthwarper			= mod:NewCountdown(41, "ej10061", mod:IsMelee())
 
@@ -109,7 +109,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnCrystallineBarrageYou:Show()
 		end
 	elseif spellId == 162674 and self.Options.SetIconOnMote and not self:IsLFR() then--Don't mark kill/pickup marks in LFR, it'll be an aoe fest.
-		self:ScanForMobs(args.destGUID, 0, 8, 4, 0.05, 15)--Find out why this still doesn't work.
+		self:ScanForMobs(args.destGUID, 0, 8, 4, 0.2, 20)--Find out why this still doesn't work.
 	end
 end
 
@@ -151,7 +151,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, npc)
 		timerEarthwarperCD:Start()
 		countdownEarthwarper:Start()
 		if self.Options.SetIconOnEarthwarper and self.vb.EarthwarperAlive < 9 then--Support for marking up to 8 mobs (you're group is terrible)
-			self:ScanForMobs(80599, 2, 9-self.vb.EarthwarperAlive, 1, 0.1, 15, "SetIconOnEarthwarper")
+			self:ScanForMobs(80599, 2, 9-self.vb.EarthwarperAlive, 1, 0.2, 20, "SetIconOnEarthwarper")
 		end
 	elseif npc == Berserker then
 		warnBerserker:Show()
