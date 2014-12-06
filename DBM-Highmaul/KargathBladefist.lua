@@ -1,11 +1,12 @@
 local mod	= DBM:NewMod(1128, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11928 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11953 $"):sub(12, -3))
 mod:SetCreatureID(78714)
 mod:SetEncounterID(1721)
 mod:SetZone()
 --mod:SetUsedIcons(7)
+mod:SetHotfixNoticeRev(11928)
 
 mod:RegisterCombat("combat")
 
