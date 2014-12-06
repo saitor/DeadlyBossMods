@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1153, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11950 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11951 $"):sub(12, -3))
 mod:SetCreatureID(79015)
 mod:SetEncounterID(1723)
 mod:SetZone()
@@ -83,12 +83,13 @@ function mod:SPELL_CAST_START(args)
 		specWarnForfeitPower:Show(args.sourceName)
 	elseif spellId == 162186 then
 		local targetName, uId = self:GetBossTarget(79015)
-		if UnitIsUnit(uId, "player") then--Player is current target
+		local tanking, status = UnitDetailedThreatSituation("player", "boss1")
+		if tanking or (status == 3) then--Player is current target
 			specWarnExpelMagicArcaneYou:Show()--So show tank warning
 			soundExpelMagicArcane:Play()
 		else
 			if self:AntiSpam(2, targetName) then--Set anti spam with target name
-				specWarnExpelMagicArcane:Show(targetName)
+				specWarnExpelMagicArcane:Show(targetName)--Sometimes targetname is nil, and then it warns for unknown, but with the new status == 3 check, it'll still warn correct tank, so useful anyways
 			end
 		end
 	end
