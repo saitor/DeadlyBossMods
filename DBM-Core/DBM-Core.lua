@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11955 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11956 $"):sub(12, -3)),
 	DisplayVersion = "6.0.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 11873 -- the revision of the latest stable version that is available
 }
@@ -1027,7 +1027,8 @@ do
 				"ACTIVE_TALENT_GROUP_CHANGED",
 				"UPDATE_SHAPESHIFT_FORM",
 				"PARTY_INVITE_REQUEST",
-				"LOADING_SCREEN_DISABLED"
+				"LOADING_SCREEN_DISABLED",
+				"GARRISON_UPDATE"
 			)
 			RolePollPopup:UnregisterEvent("ROLE_POLL_BEGIN")
 			self:GROUP_ROSTER_UPDATE()
@@ -2648,7 +2649,16 @@ do
 	function DBM:LOADING_SCREEN_DISABLED()
 		DBM:Debug("LOADING_SCREEN_DISABLED fired")
 		FixForShittyComputers()
+		DBM:Unschedule(FixForShittyComputers)
 		DBM:Schedule(5, FixForShittyComputers, DBM)
+	end
+	
+	function DBM:GARRISON_UPDATE()
+		--Fires when entering/leaving garrison, needed to ensure propper draenor mapid when leaving garrison
+		--Garrisons have their own mapIds, 1159, 1331, 1158, 1153, 1152, and one other
+		--LOADING_SCREEN_DISABLED won't fire when leaving garrison, so if a player logs in at garrison, they never get draenorId when they leave, thus no world boss mods.
+		DBM:Debug("GARRISON_UPDATE fired")
+		FixForShittyComputers()--Shouldn't need a delay, no loading screen. If they hearth to garrison or come from login, LOADING_SCREEN_DISABLED also fires.
 	end
 
 	function DBM:LoadModsOnDemand(checkTable, checkValue)
