@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1163, "DBM-Party-WoD", 3, 536)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11917 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11966 $"):sub(12, -3))
 mod:SetCreatureID(79545)
 mod:SetEncounterID(1732)
 mod:SetZone()
@@ -51,7 +51,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
 	if spellId == 160681 and args:IsDestTypePlayer() then
 		timerSupressiveFire:Start(args.destName)
-	elseif spellId == 166570 and destGUID == UnitGUID("player") and self:AntiSpam() then
+	elseif spellId == 166570 and args.destGUID == UnitGUID("player") and self:AntiSpam() then
 		specWarnSlagBlast:Show()
 	end
 end
