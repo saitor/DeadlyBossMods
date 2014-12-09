@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 11970 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 11971 $"):sub(12, -3)),
 	DisplayVersion = "6.0.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 11873 -- the revision of the latest stable version that is available
 }
@@ -6514,7 +6514,7 @@ do
 			local path
 			if globalSound then--Common (global) sounds.
 				--Example "Interface\\AddOns\\DBM-VPHenry\\Global\\dispelnow.ogg"
-				--Usage: voiceBerserkerRush:Play("name", true)
+				--Usage: voiceBerserkerRush:Play("dispelnow", true)
 				path = "Interface\\AddOns\\DBM-VP"..DBM.Options.ChosenVoicePack.."\\Global\\"..type..".ogg"
 			else--Instance Specific sounds
 				--Example "Interface\\AddOns\\DBM-VPHenry\\1228\\1128\\158986now.ogg" --This would be Kargath playvoice for berserker rush from highmaul
