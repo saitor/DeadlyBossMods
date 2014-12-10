@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11971 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11986 $"):sub(12, -3))
 mod:SetCreatureID(77428)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -253,14 +253,14 @@ function mod:SPELL_CAST_START(args)
 			if tanking or (status == 3) then
 				specWarnMarkOfChaos:Show()
 			else
-				specWarnMarkOfChaosOther:Show(targetName)
+				specWarnMarkOfChaosOther:Schedule(1, targetName)
 			end
 		elseif spellId == 164176 then
 			warnMarkOfChaosDisplacement:Show(targetName)
 			if tanking or (status == 3) then
 				specWarnMarkOfChaosDisplacement:Show()
 			else
-				specWarnMarkOfChaosDisplacementOther:Show(targetName)
+				specWarnMarkOfChaosDisplacementOther:Schedule(1, targetName)
 			end
 		elseif spellId == 164178 then
 			warnMarkOfChaosFortification:Show(targetName)
@@ -268,7 +268,7 @@ function mod:SPELL_CAST_START(args)
 				specWarnMarkOfChaosFortification:Show()
 				yellMarkOfChaosFortification:Yell()
 			else
-				specWarnMarkOfChaosFortificationOther:Show()
+				specWarnMarkOfChaosFortificationOther:Schedule(1, targetName)
 				if self:CheckNearby(35, targetName) then
 					specWarnMarkOfChaosFortificationNear:Show(targetName)
 				end
@@ -279,7 +279,7 @@ function mod:SPELL_CAST_START(args)
 				specWarnMarkOfChaosReplication:Show()
 				yellMarkOfChaosReplication:Yell()
 			else
-				specWarnMarkOfChaosReplicationOther:Show(targetName)
+				specWarnMarkOfChaosReplicationOther:Schedule(1, targetName)
 			end
 		end
 		if tanking or (status == 3) then
