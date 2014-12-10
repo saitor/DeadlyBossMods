@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1128, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11975 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11984 $"):sub(12, -3))
 mod:SetCreatureID(78714)
 mod:SetEncounterID(1721)
 mod:SetZone()
@@ -51,7 +51,7 @@ local timerTigerCD					= mod:NewNextTimer(110, "ej9396", nil, not mod:IsTank(), 
 local countdownChainHurl			= mod:NewCountdown(106, 159947)
 local countdownSweeper				= mod:NewCountdown(39, 177776)
 local countdownTiger				= mod:NewCountdown("Alt110", "ej9396", not mod:IsTank())--Tigers never bother tanks so not tanks probelm
-local countdownImpale				= mod:NewCountdown("Alt35", 159113, mod:IsTank())--Dead on unless delayed by a fixate
+local countdownImpale				= mod:NewCountdown("Alt45", 159113, mod:IsTank())--Dead on unless delayed by a fixate
 
 --local voiceBerserkerRush			= mod:NewVoice(158986)
 
@@ -62,7 +62,7 @@ local firePillar = EJ_GetSectionInfo(9394)
 function mod:OnCombatStart(delay)
 	timerPillarCD:Start(24-delay)
 	timerImpaleCD:Start(-delay)
-	countdownImpale:Start(35-delay)
+	countdownImpale:Start(-delay)
 	timerBerserkerRushCD:Start(48-delay)
 	timerChainHurlCD:Start(91-delay)
 	countdownChainHurl:Start(91-delay)
