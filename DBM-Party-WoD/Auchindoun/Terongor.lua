@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1225, "DBM-Party-WoD", 1, 547)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11968 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11990 $"):sub(12, -3))
 mod:SetCreatureID(77734)
 mod:SetEncounterID(1714)
 mod:SetZone()
@@ -21,9 +21,7 @@ mod:RegisterEventsInCombat(
 local warnDrainLife				= mod:NewTargetAnnounce(156854, 4)
 local warnCorruption			= mod:NewTargetAnnounce(156842, 3, nil, mod:IsHealer())--Seems 1 phase only spell.
 local warnRainOfFire			= mod:NewSpellAnnounce(156857, 3)
---Unknown Abilities
---local warnInferno // no trigger, impossible now. Affliction only?
-local warnFixate				= mod:NewTargetAnnounce(157168, 2, nil, false)--Seems spammy if kite it.
+local warnFixate				= mod:NewTargetAnnounce("OptionVersion2", 157168, 2)
 --Affliction Abilities
 local warnSeedOfMalevolence		= mod:NewTargetAnnounce(156921, 3)
 local warnExhaustion			= mod:NewTargetAnnounce(164841, 3, nil, mod:CanRemoveCurse())
