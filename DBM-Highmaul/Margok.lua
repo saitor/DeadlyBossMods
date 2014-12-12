@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11992 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11993 $"):sub(12, -3))
 mod:SetCreatureID(77428)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -335,7 +335,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			if args:IsPlayer() then
 				self.vb.playerHasBranded = true
 				if not self:IsLFR() then
-					yellBranded:Yell(currentStack, playerName)
+					yellBranded:Yell(currentStack.."-"..self.vb.jumpDistance, playerName)
 				end
 			end
 			if spellId == 156225 then
