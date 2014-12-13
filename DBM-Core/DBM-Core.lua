@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12007 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12008 $"):sub(12, -3)),
 	DisplayVersion = "6.0.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 11978 -- the revision of the latest stable version that is available
 }
@@ -6533,6 +6533,7 @@ do
 			},
 			mt
 		)
+		if #DBM.Voices < 2 then optionName = false end--Hide options if no voice packs are installed
 		if optionName then
 			obj.option = optionName
 			self:AddBoolOption(obj.option, optionDefault, "sound")
