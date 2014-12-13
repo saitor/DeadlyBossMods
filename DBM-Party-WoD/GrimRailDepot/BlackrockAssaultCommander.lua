@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1163, "DBM-Party-WoD", 3, 536)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11966 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12001 $"):sub(12, -3))
 mod:SetCreatureID(79545)
 mod:SetEncounterID(1732)
 mod:SetZone()
@@ -73,7 +73,13 @@ function mod:UNIT_TARGETABLE_CHANGED()
 	self.vb.phase = self.vb.phase + 1
 	if self.vb.phase == 2 then
 		warnPhase2:Show()
+		if DBM.BossHealth:IsShown() then
+			DBM.BossHealth:AddBoss(79548)
+		end
 	elseif self.vb.phase == 3 then
 		warnPhase3:Show()
+		if DBM.BossHealth:IsShown() then
+			DBM.BossHealth:RemoveBoss(79548)
+		end
 	end
 end
