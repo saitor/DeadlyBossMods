@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1235, "DBM-Party-WoD", 4, 558)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12001 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12003 $"):sub(12, -3))
 mod:SetCreatureID(81297, 81305)
 mod:SetEncounterID(1749)
 mod:SetZone()
@@ -30,7 +30,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 164426 then
 		warnRecklessProvocation:Show(args.destName)
 		specWarnRecklessProvocation:Show(args.destName)
-		timerRecklessProvocation:Show()
+		timerRecklessProvocation:Start()
 	elseif args.spellId == 164835 and args:GetSrcCreatureID() == 81297 then
 		warnEnrage:Show()
 		specWarnEnrage:Show(args.destName)

@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1148, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11998 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12003 $"):sub(12, -3))
 mod:SetCreatureID(78238, 78237)--Pol 78238, Phemos 78237
 mod:SetEncounterID(1719)
 mod:SetZone()
@@ -77,7 +77,7 @@ local PhemosEnergyRate = 33
 local polEnergyRate = 28
 local arcaneDebuff = GetSpellInfo(163372)
 local UnitDebuff = UnitDebuff
-
+local debuffFilter
 do
 	debuffFilter = function(uId)
 		if UnitDebuff(uId, arcaneDebuff) then

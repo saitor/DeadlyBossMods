@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1168, "DBM-Party-WoD", 6, 537)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12001 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12003 $"):sub(12, -3))
 mod:SetCreatureID(75829)
 mod:SetEncounterID(1688)
 
@@ -53,7 +53,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if spellId == 152979 and args:IsPlayer() then
+	if args.spellId == 152979 and args:IsPlayer() then
 		timerSoulShred:Cancel()
 	end
 end

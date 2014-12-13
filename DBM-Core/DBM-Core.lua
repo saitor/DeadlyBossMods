@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12002 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12003 $"):sub(12, -3)),
 	DisplayVersion = "6.0.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 11978 -- the revision of the latest stable version that is available
 }
@@ -4130,9 +4130,9 @@ function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
 						DBM.BossHealth:AddBoss(mod.bossHealthInfo[i])
 					end
 				else
-				for i = 1, #mod.bossHealthInfo, 2 do
-					DBM.BossHealth:AddBoss(mod.bossHealthInfo[i], mod.bossHealthInfo[i + 1])
-				end
+					for i = 1, #mod.bossHealthInfo, 2 do
+						DBM.BossHealth:AddBoss(mod.bossHealthInfo[i], mod.bossHealthInfo[i + 1])
+					end
 				end
 			else
 				DBM.BossHealth:AddBoss(mod.combatInfo.mob, mod.localization.general.name)
