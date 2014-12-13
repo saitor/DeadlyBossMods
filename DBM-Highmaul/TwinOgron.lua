@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1148, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12005 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12006 $"):sub(12, -3))
 mod:SetCreatureID(78238, 78237)--Pol 78238, Phemos 78237
 mod:SetEncounterID(1719)
 mod:SetZone()
@@ -62,8 +62,8 @@ local countdownPhemos				= mod:NewCountdown(33, nil, nil, "PhemosSpecial")
 local countdownPol					= mod:NewCountdown("Alt28", nil, nil, "PolSpecial")
 local countdownArcaneVolatility		= mod:NewCountdown("AltTwo60", 163372, not mod:IsTank())
 
-local voicePhemos					= mod:NewVoice(nil, nil, "PhemosSpecial")
-local voicePol						= mod:NewVoice(nil, nil, "PolSpecial")
+local voicePhemos					= mod:NewVoice(nil, nil, "PhemosSpecialVoice")
+local voicePol						= mod:NewVoice(nil, nil, "PolSpecialVoice")
 local voiceBlaze					= mod:NewVoice(158241, false)
 local voiceArcaneVolatility			= mod:NewVoice(163372)
 

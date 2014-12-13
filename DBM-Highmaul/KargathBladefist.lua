@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1128, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12005 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12006 $"):sub(12, -3))
 mod:SetCreatureID(78714)
 mod:SetEncounterID(1721)
 mod:SetZone()
@@ -56,7 +56,7 @@ local voiceImpale					= mod:NewVoice(159113)
 local voiceBerserkerRush			= mod:NewVoice(158986)
 local voiceChainHurl				= mod:NewVoice(159947)
 local voiceOnTheHunt				= mod:NewVoice(162497)
-local voicePillar					= mod:NewVoice(159202, mod:IsRanged())
+local voicePillar					= mod:NewVoice("ej9394", mod:IsRanged())
 
 mod:AddRangeFrameOption(4, 159386)
 

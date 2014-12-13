@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1196, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12005 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12006 $"):sub(12, -3))
 mod:SetCreatureID(78491)
 mod:SetEncounterID(1720)
 mod:SetZone()
@@ -68,7 +68,7 @@ local voiceNecroticBreath			= mod:NewVoice(159219, mod:IsTank() or mod:IsHealer(
 local voiceLivingMushroom			= mod:NewVoice(160022)
 local voiceRejuvMushroom			= mod:NewVoice(160021, mod:IsHealer())
 local voiceMindFungus				= mod:NewVoice(163141, mod:IsDps())
-local voiceFungalFlesheater			= mod:NewVoice(163142, not mod:IsHealer())
+local voiceFungalFlesheater			= mod:NewVoice("ej9995", not mod:IsHealer())
 local voiceSporeShooter				= mod:NewVoice(163594, mod:IsRangedDps())
 local voiceDecay					= mod:NewVoice(160013, not mod:IsHealer())
 
