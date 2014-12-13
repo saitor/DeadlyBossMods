@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12008 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12009 $"):sub(12, -3)),
 	DisplayVersion = "6.0.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 11978 -- the revision of the latest stable version that is available
 }
@@ -177,6 +177,7 @@ DBM.DefaultOptions = {
 	-- global boss mod settings (overrides mod-specific settings for some options)
 	DontShowBossAnnounces = false,
 	DontShowFarWarnings = true,
+	DontPlayRunAway = false,
 	DontSendBossWhispers = false,
 	DontSetIcons = false,
 	DontShowRangeFrame = false,
@@ -6495,6 +6496,7 @@ do
 	bossModPrototype.NewRunAwaySound = bossModPrototype.NewSound
 
 	function soundPrototype:Play(file)
+		if DBM.Options.DontPlayRunAway then return end
 		if not self.option or self.mod.Options[self.option] then
 			if DBM.Options.UseMasterVolume then
 				PlaySoundFile(file or "Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.ogg", "Master")
