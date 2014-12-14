@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1196, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12014 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12019 $"):sub(12, -3))
 mod:SetCreatureID(78491)
 mod:SetEncounterID(1720)
 mod:SetZone()
@@ -229,15 +229,15 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		specWarnFungalFlesheater:Show()
 		timerFungalFleshEaterCD:Start()
 		countdownFungalFleshEater:Start()
-		voiceFungalFleshEater:Play("163142k")
+		voiceFungalFlesheater:Play("163142k")
 	elseif spellId == 160022 then
 		warnLivingMushroom:Show()
 		timerLivingMushroomCD:Start()
-		voiceLivingMushroom("160022s") --green one
+		voiceLivingMushroom:Play("160022s") --green one
 	elseif spellId == 160021 or spellId == 177820 then--Seems diff ID in mythic vs non mythic?
 		warnRejuvMushroom:Show()
 		timerRejuvMushroomCD:Start()
-		voiceRejuvMushroom("160021s") --blue one
+		voiceRejuvMushroom:Play("160021s") --blue one
 	elseif spellId == 163794 then
 		warnExplodingFungus:Show()
 		specWarnExplodingFungus:Show()
