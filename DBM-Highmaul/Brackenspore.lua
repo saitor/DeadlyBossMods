@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1196, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12006 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12014 $"):sub(12, -3))
 mod:SetCreatureID(78491)
 mod:SetEncounterID(1720)
 mod:SetZone()
@@ -186,6 +186,7 @@ function mod:UNIT_DIED(args)
 		end
 		DBM:Debug("Blizzard fixed UNIT_DIED for Spore Shooter, remove high cpu waste")
 	elseif cid == 79092 then--Fungal Flesh Eater
+		self.vb.decayCounter = 0
 		timerDecayCD:Cancel(args.destGUID)
 	end
 end
