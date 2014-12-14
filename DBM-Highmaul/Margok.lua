@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12019 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12022 $"):sub(12, -3))
 mod:SetCreatureID(77428)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -499,7 +499,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 			voicePhaseChange:Play("pthree")
 		end
 		if spellId == 157964 then
-			voicePhaseChange:Play("four")
+			voicePhaseChange:Play("pfour")
 		end
 	elseif spellId == 164336 then--Teleport to Displacement (first phase change that has no transition)
 		voicePhaseChange:Play("ptwo")
