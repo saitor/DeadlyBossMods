@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1211, "DBM-Draenor", nil, 557)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11982 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12015 $"):sub(12, -3))
 mod:SetCreatureID(81535)
 mod:SetReCombatTime(20)
 mod:SetZone()
@@ -34,6 +34,10 @@ local specWarnGrowUntamedMandragora	= mod:NewSpecialWarningSwitch(176013, not mo
 --local timerColossalBlowCD			= mod:NewNextTimer(60, 175973)
 local timerGenesisCD				= mod:NewCDTimer(45, 169613)--45-60 variation
 local timerGrowUntamedMandragoraCD	= mod:NewCDTimer(30, 176013)
+
+local voiceColossalBlow				= mod:NewVoice(175973)
+local voiceMandragora				= mod:NewVoice(176013, mod:IsDps())
+local voiceGenesis					= mod:NewVoice(169613)
 
 --mod:AddReadyCheckOption(37462, false)
 mod:AddRangeFrameOption(8, 175979)
@@ -72,10 +76,12 @@ function mod:SPELL_CAST_START(args)
 		warnColossalBlow:Show()
 		specWarnColossalBlow:Show()
 		--timerColossalBlow:Start()
+		voiceColossalBlow:Play("shockwave")
 	elseif spellId == 175979 then
 		warnGenesis:Show()
 		specWarnGenesis:Show()
 		timerGenesisCD:Start()
+		voiceGenesis:Play("169613")
 	end
 end
 
@@ -85,6 +91,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnGrowUntamedMandragora:Show()
 		specWarnGrowUntamedMandragora:Show()
 		timerGrowUntamedMandragoraCD:Start()
+		voiceMandragora:Play("killmob")
 	end
 end
 

@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1291, "DBM-Draenor", nil, 557)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11992 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12015 $"):sub(12, -3))
 mod:SetCreatureID(81252)
 mod:SetReCombatTime(20)
 mod:SetZone()
@@ -24,6 +24,8 @@ local specWarnCallofEarth		= mod:NewSpecialWarningSpell(175827)
 local timerColossalSlamCD		= mod:NewCDTimer(16, 175791)--16-35 second variation? Then again was a bad pull with no tank, boss running loose so may have affected timer
 local timerCallofEarthCD		= mod:NewCDTimer(90, 175827)
 
+local voiceColossalSlam			= mod:NewVoice(175791)
+
 --mod:AddReadyCheckOption(37460, false)
 
 function mod:OnCombatStart(delay, yellTriggered)
@@ -41,6 +43,7 @@ function mod:SPELL_CAST_START(args)
 		warnColossalSlam:Show()
 		specWarnColossalSlam:Show()
 		timerColossalSlamCD:Start()
+		voiceColossalSlam:Play("shockwave")
 	end
 end
 
