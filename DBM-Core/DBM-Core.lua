@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12026 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12027 $"):sub(12, -3)),
 	DisplayVersion = "6.0.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 11978 -- the revision of the latest stable version that is available
 }
@@ -4566,13 +4566,15 @@ function DBM:EndCombat(mod, wipe)
 			if mod.bossHealthInfo then
 				if mod.bossHealthInfo[2] and type(mod.bossHealthInfo[2]) == "number" then
 					for i = 1, #mod.bossHealthInfo do
-					DBM.BossHealth:RemoveBoss(mod.bossHealthInfo[i])
-				end
-			else
+						DBM.BossHealth:RemoveBoss(mod.bossHealthInfo[i])
+					end
+				else
 					for i = 1, #mod.bossHealthInfo, 2 do
 						DBM.BossHealth:RemoveBoss(mod.bossHealthInfo[i])
 					end
 				end
+			else
+				DBM.BossHealth:RemoveBoss(mod.combatInfo.mob)
 			end
 		end
 	end
