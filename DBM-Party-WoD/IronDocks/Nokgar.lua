@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1235, "DBM-Party-WoD", 4, 558)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12032 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12033 $"):sub(12, -3))
 mod:SetCreatureID(81297, 81305)
 mod:SetEncounterID(1749)
 mod:SetZone()
@@ -9,7 +9,7 @@ mod:SetZone()
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 164426 164835",
+	"SPELL_AURA_APPLIED 164426 164835 164632",
 	"SPELL_AURA_REMOVED 164426",
 	"UNIT_SPELLCAST_SUCCEEDED boss1",
 	"UNIT_TARGETABLE_CHANGED"
@@ -21,6 +21,7 @@ local warnRecklessProvocation			= mod:NewTargetAnnounce(164426, 3)
 local warnEnrage						= mod:NewSpellAnnounce(164835, 3, nil, mod:CanRemoveEnrage() or mod:IsTank())
 
 local specWarnBurningArrows				= mod:NewSpecialWarningSpell(164635, nil, nil, nil, true)
+local specWarnBurningArrowsMove			= mod:NewSpecialWarningMove(164635)
 local specWarnRecklessProvocation		= mod:NewSpecialWarningReflect(164426)
 local specWarnRecklessProvocationEnd	= mod:NewSpecialWarningEnd(164426)
 local specWarnEnrage					= mod:NewSpecialWarningDispel(164835, mod:CanRemoveEnrage())
@@ -36,6 +37,8 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args.spellId == 164835 and args:GetSrcCreatureID() == 81297 then
 		warnEnrage:Show()
 		specWarnEnrage:Show(args.destName)
+	elseif args.spellId == 164632 and args:IsPlayer() and self:AntiSpam(2) then
+		specWarnBurningArrowsMove:Show()
 	end
 end
 
