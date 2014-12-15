@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1235, "DBM-Party-WoD", 4, 558)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12003 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12032 $"):sub(12, -3))
 mod:SetCreatureID(81297, 81305)
 mod:SetEncounterID(1749)
 mod:SetZone()
@@ -11,9 +11,11 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 164426 164835",
 	"SPELL_AURA_REMOVED 164426",
-	"UNIT_SPELLCAST_SUCCEEDED boss1"
+	"UNIT_SPELLCAST_SUCCEEDED boss1",
+	"UNIT_TARGETABLE_CHANGED"
 )
 
+local warnNokgar						= mod:NewSpellAnnounce("ej10433", 3, "Interface\\ICONS\\INV_Misc_Head_Orc_01.blp")
 local warnBurningArrows					= mod:NewSpellAnnounce(164635, 3)
 local warnRecklessProvocation			= mod:NewTargetAnnounce(164426, 3)
 local warnEnrage						= mod:NewSpellAnnounce(164835, 3, nil, mod:CanRemoveEnrage() or mod:IsTank())
@@ -49,5 +51,12 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		warnBurningArrows:Show()
 		specWarnBurningArrows:Show()
 		--timerBurningArrowsCD:Start()
+	end
+end
+
+function mod:UNIT_TARGETABLE_CHANGED()
+	warnNokgar:Show()
+	if DBM.BossHealth:IsShown() then
+		DBM.BossHealth:AddBoss(81305)
 	end
 end
