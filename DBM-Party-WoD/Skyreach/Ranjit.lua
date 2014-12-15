@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(965, "DBM-Party-WoD", 7, 476)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11896 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12037 $"):sub(12, -3))
 mod:SetCreatureID(75964)
 mod:SetEncounterID(1698)
 mod:SetZone()
@@ -24,6 +24,8 @@ local specWarnFourWinds		= mod:NewSpecialWarningSpell(156793, nil, nil, nil, 2)
 local timerFourWinds		= mod:NewBuffActiveTimer(18, 156793)
 local timerFourWindsCD		= mod:NewCDTimer(30, 156793)
 
+local voiceFourWinds		= mod:NewVoice(156793)
+
 function mod:OnCombatStart(delay)
 	timerFourWindsCD:Start(-delay)
 end
@@ -38,6 +40,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnFourWinds:Show()
 		timerFourWinds:Start()
 		timerFourWindsCD:Start()
+		voiceFourWinds:Play("wwsoon")
 	elseif spellId == 153315 then
 		warnWindFall:Show()
 	end

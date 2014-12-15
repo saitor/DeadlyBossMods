@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1138, "DBM-Party-WoD", 3, 536)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12001 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12037 $"):sub(12, -3))
 mod:SetCreatureID(77803, 77816)
 mod:SetEncounterID(1715)
 mod:SetZone()
@@ -38,6 +38,8 @@ local timerX2101AMissileCD		= mod:NewCDTimer(42, 162407)
 local timerMadDashCD			= mod:NewCDTimer(42, 161090)
 local timerSlamCD				= mod:NewCDTimer(15, 162617, nil, mod:IsSpellCaster())
 local timerRecovering			= mod:NewBuffActiveTimer(6, 163947)
+
+local voiceSlam					=	mod:NewVoice(162617, mod:IsSpellCaster())
 
 local rocketsName = EJ_GetSectionInfo(9430)
 local borkaID = nil
@@ -92,6 +94,7 @@ function mod:SPELL_CAST_START(args)
 		self.vb.SlamCast = self.vb.SlamCast + 1
 		warnSlam:Show()
 		specWarnSlam:Show()
+		voiceSlam:Play("stopcast")
 		if self.vb.SlamCast == 2 then
 			timerSlamCD:Start(30)
 		else
