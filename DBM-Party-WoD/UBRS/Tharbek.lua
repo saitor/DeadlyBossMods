@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1228, "DBM-Party-WoD", 8, 559)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11380 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12034 $"):sub(12, -3))
 mod:SetCreatureID(79912, 80098)--80098 is mount(Ironbarb Skyreaver), 79912 is boss
 mod:SetEncounterID(1759)
 mod:SetZone()
@@ -28,7 +28,6 @@ local timerIronReaverCD		= mod:NewCDTimer(20.5, 161989)--Not enough data to real
 local timerImbuedIronAxeCD	= mod:NewCDTimer(29, 162090)--29-37sec variation
 
 function mod:OnCombatStart(delay)
-	DBM:AddMsg("Notice, this boss mod may have very unreliable combat detection until missing IEEU or ES event is fixed by blizzard")
 --	timerIronReaverCD:Start(-delay)
 end
 
