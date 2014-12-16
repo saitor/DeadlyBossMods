@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1128, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12018 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12045 $"):sub(12, -3))
 mod:SetCreatureID(78714)
 mod:SetEncounterID(1721)
 mod:SetZone()
@@ -147,7 +147,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnOnTheHunt:Show(args.destName)
 		if args:IsPlayer() then
 			specWarnOnTheHunt:Show(firePillar)
-			voiceOnTheHunt("159202f") --find the pillar
+			voiceOnTheHunt:Play("159202f") --find the pillar
 		end
 	end
 end
