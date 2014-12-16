@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1195, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12043 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12047 $"):sub(12, -3))
 mod:SetCreatureID(78948, 80557, 80551, 99999)--78948 Tectus, 80557 Mote of Tectus, 80551 Shard of Tectus
 mod:SetEncounterID(1722)--Hopefully win will work fine off this because otherwise tracking shard deaths is crappy
 mod:SetZone()
@@ -13,7 +13,7 @@ mod:SetMinSyncTime(4)--Rise Mountain can occur pretty often.
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 162475 162968 162894 163312",
-	"SPELL_AURA_APPLIED 162346 162674",
+	"SPELL_AURA_APPLIED 162346 162658",
 	"SPELL_PERIODIC_DAMAGE 162370",
 	"SPELL_PERIODIC_MISSED 162370",
 	"CHAT_MSG_MONSTER_YELL",
@@ -130,7 +130,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				voiceCrystallineBarrage:Play("runout")
 			end
 		end
-	elseif spellId == 162674 and self.Options.SetIconOnMote and not self:IsLFR() then--Don't mark kill/pickup marks in LFR, it'll be an aoe fest.
+	elseif spellId == 162658 and self.Options.SetIconOnMote and not self:IsLFR() then--Don't mark kill/pickup marks in LFR, it'll be an aoe fest.
 		self:ScanForMobs(args.destGUID, 0, 8, 8, 0.4, 50)--Find out why this still doesn't work.
 	end
 end
