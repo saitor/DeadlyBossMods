@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1195, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12005 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12043 $"):sub(12, -3))
 mod:SetCreatureID(78948, 80557, 80551, 99999)--78948 Tectus, 80557 Mote of Tectus, 80551 Shard of Tectus
 mod:SetEncounterID(1722)--Hopefully win will work fine off this because otherwise tracking shard deaths is crappy
 mod:SetZone()
@@ -156,6 +156,7 @@ end
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	if spellId == 140562 then--Break Player Targetting (cast when tectus splits)
+		--TODO< need mythic logs to see if they restart. the adds don't stop spawning on mythic. but no idea if split resets the timer.
 		timerEarthwarperCD:Cancel()
 		countdownEarthwarper:Cancel()
 		timerBerserkerCD:Cancel()
