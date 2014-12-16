@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1140, "DBM-Party-WoD", 6, 537)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12037 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12053 $"):sub(12, -3))
 mod:SetCreatureID(75452)
 mod:SetEncounterID(1679)
 
@@ -40,7 +40,7 @@ function mod:SPELL_CAST_START(args)
 		warnBodySlam:Show(args.sourceName)
 		if self:AntiSpam(3) then--Throttle special warning when more than 1 slam at once happens.
 			specWarnBodySlam:Show()
-			voiceBodySlam("watchstep")
+			voiceBodySlam:Play("watchstep")
 		end
 		if args:GetSrcCreatureID() == 75452 then--Source is Bonemaw, not one of his adds
 			timerBodySlamCD:Start(30, args.sourceName, args.sourceGUID)
