@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1148, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12050 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12051 $"):sub(12, -3))
 mod:SetCreatureID(78238, 78237)--Pol 78238, Phemos 78237
 mod:SetEncounterID(1719)
 mod:SetZone()
@@ -98,14 +98,14 @@ do
 end
 
 local lines = {}
---[[
+
 local function sortInfoFrame(a, b)--is this even needed? no idea. 
 	local a = lines[a]
 	local b = lines[b]
 	if not tonumber(a) then a = -1 end
 	if not tonumber(b) then b = -1 end
 	if a > b then return true else return false end
-end--]]
+end
 
 --Layout
 --Boss 1 name - Power
@@ -212,7 +212,7 @@ function mod:OnCombatStart(delay)
 	countdownPol:Start(polEnergyRate+10-delay)
 	voicePol:Schedule(polEnergyRate+10-delay, "158134") --shield
 	if self.Options.InfoFrame then
-		DBM.InfoFrame:Show(4, "function", updateInfoFrame)
+		DBM.InfoFrame:Show(4, "function", updateInfoFrame, sortInfoFrame)
 	end
 end
 
