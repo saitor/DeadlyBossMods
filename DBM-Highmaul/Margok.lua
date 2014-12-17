@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12049 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12056 $"):sub(12, -3))
 mod:SetCreatureID(77428)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -465,7 +465,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 			if self.Options.SetIconOnBrandedDebuff then
 				if spellId == 164005 then
-					self:SetSortedIcon(0.2, args.destName, 1, 2)
+					self:SetSortedIcon(1, args.destName, 1, 2)
 				else
 					self:SetIcon(args.destName, 1)
 				end

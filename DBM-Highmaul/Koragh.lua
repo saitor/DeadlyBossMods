@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1153, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12054 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12056 $"):sub(12, -3))
 mod:SetCreatureID(79015)
 mod:SetEncounterID(1723)
 mod:SetZone()
@@ -93,6 +93,7 @@ end
 
 local function ballsWarning()
 	warnBallsSoon:Show()
+	DBM:Debug("Balls should be falling in 1 second")
 	if UnitPower("player", 10) > 0 then--Player is soaker
 		specWarnBallsSoon:Show()
 		voiceBalls:Play("161612")
@@ -143,10 +144,11 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	local spellId = args.spellId
-	if spellId == 161612 then--This won't show balls that hit, only ones caught. Balls that hit require high cpu spell_damage event
+	if spellId == 161612 and self:AntiSpam(5, 4) then--This won't show balls that hit, only ones caught. Balls that hit require high cpu spell_damage event
 		timerBallsCD:Start()
 		countdownBalls:Start()
 		self:Schedule(23.5, ballsWarning)
+		DBM:Debug("timerBallsCD started because a successful soak happened")
 	end
 end
 
