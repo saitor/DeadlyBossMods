@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1195, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12056 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12065 $"):sub(12, -3))
 mod:SetCreatureID(78948, 80557, 80551, 99999)--78948 Tectus, 80557 Mote of Tectus, 80551 Shard of Tectus
 mod:SetEncounterID(1722)--Hopefully win will work fine off this because otherwise tracking shard deaths is crappy
 mod:SetZone()
@@ -48,6 +48,7 @@ local timerEarthwarperCD			= mod:NewNextTimer(41, "ej10061", nil, nil, nil, 1628
 local timerBerserkerCD				= mod:NewNextTimer(41, "ej10062", nil, mod:IsTank(), nil, 163312)--Both of these get delayed by upheavel
 local timerGiftOfEarthCD			= mod:NewCDTimer(10.5, 162894, nil, mod:IsMelee())--10.5 but obviously delayed if stuns were used.
 local timerEarthenFlechettesCD		= mod:NewCDTimer(14, 162968, nil, mod:IsMelee())--14 but obviously delayed if stuns were used. Also tends to be recast immediately if stun interrupted
+local timerCrystalBarrageCD			= mod:NewNextSourceTimer(30, 162346, nil, false)--Very accurate but spammy mess with 4+ adds up.
 
 local berserkTimer					= mod:NewBerserkTimer(600)
 
@@ -123,6 +124,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
 	if spellId == 162346 then
 		warnCrystallineBarrage:CombinedShow(1, args.destName)
+		timerCrystalBarrageCD:Start(30, args.sourceName, args.sourceGUID)
 		if args:IsPlayer() then
 			specWarnCrystallineBarrageYou:Show()
 			if not self:IsLFR() then
