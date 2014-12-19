@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1238, "DBM-Party-WoD", 4, 558)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12037 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12070 $"):sub(12, -3))
 mod:SetCreatureID(83612)
 mod:SetEncounterID(1754)
 mod:SetZone()
@@ -11,7 +11,8 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 168398",
 	"SPELL_CAST_START 168929 168227 169129",
-	"UNIT_SPELLCAST_INTERRUPTED boss1"
+	"UNIT_SPELLCAST_INTERRUPTED boss1",
+	"UNIT_DIED"
 )
 
 --TODO, verify gron smash numbers and see if it is time based or damage based.
@@ -37,6 +38,9 @@ mod.vb.flameCast = false
 function mod:OnCombatStart(delay)
 	self.vb.flameCast = false
 	timerGronSmashCD:Start(30-delay)
+	if DBM.BossHealth:IsShown() then
+		DBM.BossHealth:AddBoss(83613)
+	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -73,5 +77,13 @@ end
 function mod:UNIT_SPELLCAST_INTERRUPTED(uId, _, _, _, spellId)
 	if spellId == 168929 then
 		specWarnCannonBarrageE:Show()
+	end
+end
+
+function mod:UNIT_DIED(args)
+	if not DBM.BossHealth:IsShown() then return end
+	local cid = self:GetCIDFromGUID(args.destGUID)
+	if cid == 83613 then
+		DBM.BossHealth:AddBoss(83616)
 	end
 end

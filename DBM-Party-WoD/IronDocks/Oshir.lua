@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1237, "DBM-Party-WoD", 4, 558)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12037 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12070 $"):sub(12, -3))
 mod:SetCreatureID(79852)
 mod:SetEncounterID(1750)
 mod:SetZone()
@@ -53,7 +53,7 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	local spellId = args.spellId
-	if spellId == 161256 and self:AntiSpam(5) then
+	if spellId == 161256 and self:AntiSpam(5) then--sometimes not fires?
 		warnPrimalAssault:Show()
 		specWarnPrimalAssault:Show()
 		--timerPrimalAssaultCD:Start()
