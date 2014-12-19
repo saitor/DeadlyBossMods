@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(971, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12069 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12076 $"):sub(12, -3))
 mod:SetCreatureID(77404)
 mod:SetEncounterID(1706)
 mod:SetZone()
@@ -124,7 +124,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		--Update bounding cleave timer
 		local bossPower = UnitPower("boss1")
 		local bossProgress = bossPower * 3.33--Under frenzy he gains energy twice as fast. So about 3.33 energy per seocnd, 30 seconds to full power.
-		timerBoundingCleave:Update(bossProgress, 30, self.vb.boundingCleave+1)--Will bar update work correctly on a count bar? Looking at code I don't think it will, it doesn't accept/pass on extra args in Update call.
+		timerBoundingCleaveCD:Update(bossProgress, 30, self.vb.boundingCleave+1)--Will bar update work correctly on a count bar? Looking at code I don't think it will, it doesn't accept/pass on extra args in Update call.
 		countdownBoundingCleave:Cancel()
 		countdownBoundingCleave:Start(30-bossProgress)
 		voiceBoundingCleaveSoon:Cancel()
