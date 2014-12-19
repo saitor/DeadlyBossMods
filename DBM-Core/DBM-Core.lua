@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12072 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12073 $"):sub(12, -3)),
 	DisplayVersion = "6.0.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 11978 -- the revision of the latest stable version that is available
 }
@@ -1047,6 +1047,9 @@ do
 			self:Schedule(20, function()--Delay UNIT_HEALTH combat start for 20 sec. (not to break Timer Recovery stuff)
 				healthCombatInitialized = true
 			end)
+			if IsInGroup() then
+				DBM:Schedule(6, DBM.RequestTimers, DBM)--Break timer recovery doesn't work if outside the zone when reloadui or relogging (no loadmod). Need request timer here.
+			end
 		end
 	end
 end
