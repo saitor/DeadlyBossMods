@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(971, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12067 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12069 $"):sub(12, -3))
 mod:SetCreatureID(77404)
 mod:SetEncounterID(1706)
 mod:SetZone()
@@ -89,7 +89,7 @@ function mod:SPELL_CAST_START(args)
 		warnCleave:Show(self.vb.cleaveCount)
 		timerCleaveCD:Start()
 		if not self:IsLFR() then --never play this in LFR
-			voiceCleave:Play(156157)
+			voiceCleave:Play("156157")
 		end
 	end
 end
