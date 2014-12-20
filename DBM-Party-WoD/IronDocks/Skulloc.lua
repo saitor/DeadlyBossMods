@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1238, "DBM-Party-WoD", 4, 558)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12070 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12087 $"):sub(12, -3))
 mod:SetCreatureID(83612)
 mod:SetEncounterID(1754)
 mod:SetZone()
@@ -84,6 +84,9 @@ function mod:UNIT_DIED(args)
 	if not DBM.BossHealth:IsShown() then return end
 	local cid = self:GetCIDFromGUID(args.destGUID)
 	if cid == 83613 then
+		DBM.BossHealth:RemoveBoss(83613)
 		DBM.BossHealth:AddBoss(83616)
+	elseif cid == 83616 then
+		DBM.BossHealth:RemoveBoss(83616)
 	end
 end

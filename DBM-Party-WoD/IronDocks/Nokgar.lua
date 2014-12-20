@@ -1,12 +1,14 @@
 local mod	= DBM:NewMod(1235, "DBM-Party-WoD", 4, 558)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12037 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12087 $"):sub(12, -3))
 mod:SetCreatureID(81297, 81305)
 mod:SetEncounterID(1749)
 mod:SetZone()
 
 mod:RegisterCombat("combat")
+
+mod:SetBossHealthInfo(81297)
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 164426 164835 164632",

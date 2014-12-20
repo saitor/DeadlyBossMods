@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1207, "DBM-Party-WoD", 5, 556)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12037 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12087 $"):sub(12, -3))
 mod:SetCreatureID(83894, 83892, 83893)--Dulhu 83894, Gola 83892, Telu
 mod:SetEncounterID(1757)
 mod:SetBossHPInfoToHighest()
@@ -17,15 +17,7 @@ mod:RegisterEventsInCombat(
 	"UNIT_DIED"
 )
 
-local Dulhu = EJ_GetSectionInfo(10417)
-local Gola = EJ_GetSectionInfo(10409)
-local Telu = EJ_GetSectionInfo(10413)
-
-mod:SetBossHealthInfo(
-	83894, Dulhu,
-	83892, Gola,
-	83893, Telu
-)
+mod:SetBossHealthInfo(83894, 83892, 83893)
 
 --Timers are too difficult to do, rapidTides messes up any chance of ever having decent timers.
 local warnRevitalizingWaters		= mod:NewSpellAnnounce(168082, 4)
