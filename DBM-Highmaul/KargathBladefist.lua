@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1128, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12062 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12082 $"):sub(12, -3))
 mod:SetCreatureID(78714)
 mod:SetEncounterID(1721)
 mod:SetZone()
@@ -11,7 +11,7 @@ mod:SetHotfixNoticeRev(11928)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 159113 159947",
+	"SPELL_CAST_START 159113 159947 158986",
 	"SPELL_CAST_SUCCESS",
 	"SPELL_AURA_APPLIED 159947 158986 159178 159202 162497",
 	"SPELL_AURA_APPLIED_DOSE 159178",
@@ -92,7 +92,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnImpale:Show()
 		timerImpaleCD:Start()
 		countdownImpale:Start()
-		if mod:IsHealer() then
+		if self:IsHealer() then
 			voiceImpale:Play("tankheal")
 		end
 	elseif spellId == 159947 then
@@ -100,6 +100,8 @@ function mod:SPELL_CAST_START(args)
 		timerChainHurlCD:Start()
 		countdownChainHurl:Start()
 		voiceChainHurl:Schedule(99.5, "159947r") --ready for hurl
+	elseif spellId == 158986 and self:IsMelee() then
+		voiceBerserkerRush:Play("chargemove")
 	end
 end
 
@@ -112,7 +114,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			countdownSweeper:Start()--TODO,scan for punted or whatever knockdown is and cancel.
 			voiceChainHurl:Play("159947y") --you are the target
 		else
-			if self:AntiSpam() then			
+			if self:AntiSpam(2, 2) then			
 				voiceChainHurl:Play("otherout")
 			end
 		end
