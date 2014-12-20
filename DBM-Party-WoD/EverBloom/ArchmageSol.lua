@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1208, "DBM-Party-WoD", 5, 556)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12058 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12091 $"):sub(12, -3))
 mod:SetCreatureID(82682)
 mod:SetEncounterID(1751)--TODO: Verify, Label was "Boss 3"
 
@@ -71,8 +71,8 @@ end
 
 function mod:SPELL_INTERRUPT(args)
 	if type(args.extraSpellId) == "number" and args.extraSpellId == 168885 then
-		self.vb.ParasiteCount = 0
 		timerParasiticGrowthCD:Cancel(self.vb.ParasiteCount+1)
+		self.vb.ParasiteCount = 0
 		timerParasiticGrowthCD:Start(30, 1)
 	end
 end
