@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(968, "DBM-Party-WoD", 7, 476)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12037 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12088 $"):sub(12, -3))
 mod:SetCreatureID(76266)
 mod:SetEncounterID(1701)
 mod:SetZone()
@@ -39,11 +39,16 @@ local voiceShielding		= mod:NewVoice(154055, mod:IsDps())
 mod:AddSetIconOption("SetIconOnCastDown", 153954)
 
 mod.vb.lastGrab = nil
+local skyTrashMod = DBM:GetModByName("SkyreachTrash")
 
 function mod:OnCombatStart(delay)
 	self.vb.lastGrab = nil
 	timerLenseFlareCD:Start(-delay)
 	timerCastDownCD:Start(15-delay)
+	if skyTrashMod.Options.RangeFrame and skyTrashMod.vb.debuffCount ~= 0 then--In case of bug where range frame gets stuck open from trash pulls before this boss.
+		skyTrashMod.vb.debuffCount = 0--Fix variable
+		DBM.RangeCheck:Hide()--Close range frame.
+	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
