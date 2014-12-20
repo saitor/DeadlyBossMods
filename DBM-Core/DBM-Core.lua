@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12091 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12092 $"):sub(12, -3)),
 	DisplayVersion = "6.0.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 11978 -- the revision of the latest stable version that is available
 }
@@ -131,7 +131,7 @@ DBM.DefaultOptions = {
 	WorldBossNearAlert = false,
 	AFKHealthWarning = true,
 	HideObjectivesFrame = true,
-	HideGarrisonUpdates = false,
+	HideGarrisonUpdates = true,
 	HideApplicantAlerts = 0,
 	HideTooltips = false,
 	EnableModels = true,
