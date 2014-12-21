@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1138, "DBM-Party-WoD", 3, 536)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12087 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12097 $"):sub(12, -3))
 mod:SetCreatureID(77803, 77816)
 mod:SetEncounterID(1715)
 mod:SetZone()
@@ -28,8 +28,8 @@ local specWarnMadDashInterrupt	= mod:NewSpecialWarningInterrupt(161090, true, fa
 local specWarnSlam				= mod:NewSpecialWarningCast(162617, mod:IsSpellCaster())
 
 local timerVX18BCD				= mod:NewCDTimer(33, 162500)
-local timerX2101AMissileCD		= mod:NewCDTimer(42, 162407)
-local timerMadDashCD			= mod:NewCDTimer(42, 161090)
+local timerX2101AMissileCD		= mod:NewCDTimer(40, 162407)
+local timerMadDashCD			= mod:NewCDTimer(40, 161090)
 local timerSlamCD				= mod:NewCDTimer(15, 162617, nil, mod:IsSpellCaster())
 local timerRecovering			= mod:NewBuffActiveTimer(6, 163947)
 

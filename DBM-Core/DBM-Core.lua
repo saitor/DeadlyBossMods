@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12096 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12097 $"):sub(12, -3)),
 	DisplayVersion = "6.0.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 11978 -- the revision of the latest stable version that is available
 }
@@ -825,6 +825,7 @@ do
 		SPELL_DAMAGE = true,
 		SPELL_BUILDING_DAMAGE = true,
 		SPELL_MISSED = true,
+		SPELL_ABSORBED = true,
 		SPELL_HEAL = true,
 		SPELL_ENERGIZE = true,
 		SPELL_PERIODIC_MISSED = true,

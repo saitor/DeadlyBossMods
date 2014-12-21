@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1228, "DBM-Party-WoD", 8, 559)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12090 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12097 $"):sub(12, -3))
 mod:SetCreatureID(79912, 80098)--80098 is mount(Ironbarb Skyreaver), 79912 is boss
 mod:SetEncounterID(1759)
 mod:SetZone()
@@ -84,9 +84,11 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 end
 
 function mod:UNIT_TARGETABLE_CHANGED()
-	warnTharbek:Show()
-	if DBM.BossHealth:IsShown() then
-		DBM.BossHealth:AddBoss(79912)
+	if UnitExists("boss1") then
+		warnTharbek:Show()
+		if DBM.BossHealth:IsShown() then
+			DBM.BossHealth:AddBoss(79912)
+		end
 	end
 end
 
