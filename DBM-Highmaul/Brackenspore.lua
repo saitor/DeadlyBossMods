@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1196, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12094 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12096 $"):sub(12, -3))
 mod:SetCreatureID(78491)
 mod:SetEncounterID(1720)
 mod:SetZone()
@@ -74,7 +74,7 @@ local voiceExplodingFungus			= mod:NewVoice(163794)
 local voiceWaves					= mod:NewVoice(160425)
 
 mod:AddRangeFrameOption(8, 160254, false)
-mod:AddDropdownOption("InterruptCounter", {"Two", "Three", "Four"}, "Two", "announce")
+mod:AddDropdownOption("InterruptCounter", {"Two", "Three", "Four"}, "Two", "misc")
 
 mod.vb.sporesAlive = 0
 mod.vb.decayCounter = 0
