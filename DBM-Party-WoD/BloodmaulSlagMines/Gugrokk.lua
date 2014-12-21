@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(889, "DBM-Party-WoD", 2, 385)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12058 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12093 $"):sub(12, -3))
 mod:SetCreatureID(74790)
 mod:SetEncounterID(1654)
 mod:SetZone()
@@ -10,6 +10,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 150677 150784 150755",
+	"SPELL_AURA_APPLIED 150678",
 	"SPELL_PERIODIC_DAMAGE 150784",
 	"SPELL_PERIODIC_MISSED 150784"
 )
