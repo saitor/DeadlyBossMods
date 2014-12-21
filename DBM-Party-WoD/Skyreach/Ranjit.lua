@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(965, "DBM-Party-WoD", 7, 476)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12102 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12105 $"):sub(12, -3))
 mod:SetCreatureID(75964)
 mod:SetEncounterID(1698)
 mod:SetZone()
@@ -59,8 +59,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
-function mod:RAID_BOSS_EMOTE(args)
-	warnLensFlare:Show(args.destName)
+function mod:RAID_BOSS_EMOTE(msg)
+	warnLensFlare:Show()
 	specWarnLensFlareCast:Show()
 end
 

@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1228, "DBM-Party-WoD", 8, 559)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12097 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12105 $"):sub(12, -3))
 mod:SetCreatureID(79912, 80098)--80098 is mount(Ironbarb Skyreaver), 79912 is boss
 mod:SetEncounterID(1759)
 mod:SetZone()
@@ -41,7 +41,7 @@ function mod:IronReaverTarget(targetname, uId)
 	if not targetname then return end
 	warnIronReaver:Show(targetname)
 	if targetname == UnitName("player") then
-		specWarnIronReaverYou:Show()
+		specWarnIronReaver:Show()
 		yellIronReaver:Yell()
 	end
 end
