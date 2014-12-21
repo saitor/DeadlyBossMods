@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1153, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12097 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12098 $"):sub(12, -3))
 mod:SetCreatureID(79015)
 mod:SetEncounterID(1723)
 mod:SetZone()
@@ -250,7 +250,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 			timerBallsCD:Start(remaining+21)
 			countdownBalls:Cancel()
 			specWarnBallsSoon:Cancel()
-			countdownBalls:Start(remaining+21)--But for scheduling purposes, remaining+20
+			countdownBalls:Start(remaining+21)
 			self:Unschedule(ballsWarning)
 			self:Schedule(remaining+14.5, ballsWarning)
 			DBM:Debug("timerBallsCD is extending by 21 seconds do to shield phase")
