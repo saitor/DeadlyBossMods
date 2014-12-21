@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(889, "DBM-Party-WoD", 2, 385)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12093 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12099 $"):sub(12, -3))
 mod:SetCreatureID(74790)
 mod:SetEncounterID(1654)
 mod:SetZone()
@@ -21,7 +21,7 @@ local warnUnstableSlag			= mod:NewSpellAnnounce(150677, 3)
 local warnMagmaEruption			= mod:NewSpellAnnounce(150784, 3)
 local warnMoltenCore			= mod:NewTargetAnnounce(150678, 2)
 
-local specWarnMoltenBlast		= mod:NewSpecialWarningInterrupt(150677)
+local specWarnMoltenBlast		= mod:NewSpecialWarningInterrupt("OptionVersion2", 150677, not mod:IsHealer())
 local specWarnUnstableSlag		= mod:NewSpecialWarningSwitch("OptionVersion2", 150755, mod:IsDps())
 local specWarnMagmaEruptionCast	= mod:NewSpecialWarningSpell(150784, nil, nil, nil, 2)
 local specWarnMagmaEruption		= mod:NewSpecialWarningMove(150784)
