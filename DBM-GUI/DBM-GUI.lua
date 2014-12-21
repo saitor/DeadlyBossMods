@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 12086 $"):sub(12, -3)
+local revision =("$Revision: 12106 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -2432,7 +2432,7 @@ local function CreateOptionsMenu()
 		)
 		blockMovieDropDown:SetPoint("TOPLEFT", filterYell, "TOPLEFT", 0, -40)
 
-		local pingFilterOptions = {
+--[[		local pingFilterOptions = {
 			{	text	= L.Disable,					value 	= 0},
 			{	text	= L.HideApplicantAlertsFull,	value 	= 1},
 			{	text	= L.HideApplicantAlertsNotL,	value 	= 2},
@@ -2442,8 +2442,9 @@ local function CreateOptionsMenu()
 			DBM.Options.HideApplicantAlerts = value
 		end
 		)
-		blockApplicantsDropDown:SetPoint("TOPLEFT", blockMovieDropDown, "TOPLEFT", 0, -40)
-
+		blockApplicantsDropDown:SetPoint("TOPLEFT", blockMovieDropDown, "TOPLEFT", 0, -40)--]]
+		
+		hideBlizzArea:AutoSetDimension()
 		hideBlizzPanel:SetMyOwnHeight()
 	end
 	
