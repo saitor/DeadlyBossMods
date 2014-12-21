@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12107 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12108 $"):sub(12, -3)),
 	DisplayVersion = "6.0.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 11978 -- the revision of the latest stable version that is available
 }
@@ -2430,7 +2430,7 @@ end
 ----[string "*:OnEvent"]:8: in function <[string "*:OnEvent"]:1>
 function DBM:LFG_LIST_APPLICANT_LIST_UPDATED(hasNewPending, hasNewPendingWithData)
 --	if not LFGPingHijacked then return end
-	if (DBM.Options.HideApplicantAlerts == 2 and not UnitIsGroupLeader("player", LE_PARTY_CATEGORY_HOME)) or (DBM.Options.HideApplicantAlerts >= 1 and GetNumGroupMembers() == 40) then
+	if QueueStatusMinimapButton:IsShown() and (DBM.Options.HideApplicantAlerts == 2 and not UnitIsGroupLeader("player", LE_PARTY_CATEGORY_HOME)) or (DBM.Options.HideApplicantAlerts >= 1 and GetNumGroupMembers() == 40) then
 		DBM:Debug("LFG_LIST_APPLICANT_LIST_UPDATED fired, but filter conditions met, supressing ping animation/sound", 2)
 		QueueStatusMinimapButton.EyeHighlightAnim:Stop()--Force stop the animation loop
 	end
