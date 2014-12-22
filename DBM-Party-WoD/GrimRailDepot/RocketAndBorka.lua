@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1138, "DBM-Party-WoD", 3, 536)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12101 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12111 $"):sub(12, -3))
 mod:SetCreatureID(77803, 77816)
 mod:SetEncounterID(1715)
 mod:SetZone()
@@ -99,7 +99,6 @@ function mod:SPELL_CAST_START(args)
 	end
 end
 
-
 function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
 	if spellId == 163947 then
@@ -110,7 +109,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 		if unitid then
-			local _, _, _, _, _, duration, expires, _, _ = UnitDebuff(args.destName, args.spellName)
+			local _, _, _, _, _, duration, expires, _, _ = UnitDebuff(unitid, args.spellName)
 			if expires then
 				timerRecovering:Start(expires-GetTime())
 			end
