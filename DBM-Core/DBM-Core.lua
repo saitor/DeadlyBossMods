@@ -52,9 +52,9 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12137 $"):sub(12, -3)),
-	DisplayVersion = "6.0.9 alpha", -- the string that is shown as version
-	ReleaseRevision = 11978 -- the revision of the latest stable version that is available
+	Revision = tonumber(("$Revision: 12138 $"):sub(12, -3)),
+	DisplayVersion = "6.0.10 alpha", -- the string that is shown as version
+	ReleaseRevision = 12134 -- the revision of the latest stable version that is available
 }
 
 -- Legacy crap; that stupid "Version" field was never a good idea.
@@ -2426,7 +2426,6 @@ local function stopQueueButtonDelay()
 	QueueStatusMinimapButton.EyeHighlightAnim:Stop()
 end
 function DBM:LFG_LIST_APPLICANT_LIST_UPDATED(hasNewPending, hasNewPendingWithData)
---	if not LFGPingHijacked then return end
 	if QueueStatusMinimapButton:IsShown() and (DBM.Options.HideApplicantAlerts == 2 and not UnitIsGroupLeader("player", LE_PARTY_CATEGORY_HOME)) or (DBM.Options.HideApplicantAlerts >= 1 and GetNumGroupMembers() == 40) then
 		DBM:Debug("LFG_LIST_APPLICANT_LIST_UPDATED fired, but filter conditions met, supressing ping animation/sound", 2)
 		QueueStatusMinimapButton.EyeHighlightAnim:Stop()
