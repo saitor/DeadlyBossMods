@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1153, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12142 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12143 $"):sub(12, -3))
 mod:SetCreatureID(79015)
 mod:SetEncounterID(1723)
 mod:SetZone()
@@ -74,6 +74,7 @@ local voiceExpelMagicArcane			= mod:NewVoice(162186)
 local voiceMC						= mod:NewVoice(163472, mod:IsDps())
 local voiceTrample					= mod:NewVoice(163101)
 local voiceBalls					= mod:NewVoice(161612)
+--local voiceExpelMagicArcaneFel	= mod:NewVoice(172895)--Voice requested, not yet generated. so not enabled yet.
 
 mod:AddRangeFrameOption("5")
 mod:AddSetIconOption("SetIconOnMC", 163472, false)
@@ -231,6 +232,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			timerExpelMagicFel:Start()
 			countdownFel:Start()
 			yellExpelMagicFel:Yell()
+--			voiceExpelMagicArcaneFel:Schedule(7, "172895")
 		end
 		if self.Options.SetIconOnFel then
 			self:SetSortedIcon(1, args.destName, 1, 3)
