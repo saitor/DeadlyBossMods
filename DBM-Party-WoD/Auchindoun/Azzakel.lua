@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1216, "DBM-Party-WoD", 1, 547)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12037 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12150 $"):sub(12, -3))
 mod:SetCreatureID(75927)
 mod:SetEncounterID(1678)
 mod:SetZone()
@@ -70,7 +70,7 @@ function mod:OnCombatStart(delay)
 	countdownCurtainOfFlame:Start(16-delay)
 	timerClawsOfArgusCD:Start(34-delay)
 	countdownClawsOfArgus:Start(34-delay)
-	voiceClawsOfArgus:Schedule("mobsoon", 27.5-delay)
+	voiceClawsOfArgus:Schedule(27.5-delay, "mobsoon")
 end
 
 function mod:OnCombatEnd()
@@ -134,7 +134,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerCurtainOfFlameCD:Start(7)
 		timerClawsOfArgusCD:Start()
 		countdownClawsOfArgus:Start()
-		voiceClawsOfArgus:Schedule("mobsoon", 63.5)
+		voiceClawsOfArgus:Schedule(63.5, "mobsoon")
 	end
 end
 

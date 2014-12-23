@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12149 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12150 $"):sub(12, -3)),
 	DisplayVersion = "6.0.10 alpha", -- the string that is shown as version
 	ReleaseRevision = 12134 -- the revision of the latest stable version that is available
 }
@@ -6907,7 +6907,7 @@ do
 			fireEvent("DBM_SpecWarn", msg)
 			if self.sound and not (DBM.Options.ChosenVoicePack ~= "None" and DBM.Options.VoiceOverSW and self.hasVoice and not SWFilterDisabed) then
 				local soundId = self.option and self.mod.Options[self.option .. "SpecialWarningSound"] or self.flash
-				if self.option and self.mod.Options[self.option.."SpecialWarningSound"] ~= "None" then return end
+				if self.option and self.mod.Options[self.option.."SpecialWarningSound"] == "None" then return end
 				DBM:PlaySpecialWarningSound(soundId or 1)
 			end
 			--This callback sucks, it needs useful information for external mods to listen to it better, such as mod and spellid

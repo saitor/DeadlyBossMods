@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1229, "DBM-Party-WoD", 8, 559)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12090 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12150 $"):sub(12, -3))
 mod:SetCreatureID(76585)
 mod:SetEncounterID(1760)
 mod:SetZone()
@@ -65,6 +65,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 167203 then
 		warnSwirlingWinds:Show()
 		timerSwirlingWinds:Start()
+		voiceEngulfingFire:Cancel()
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
