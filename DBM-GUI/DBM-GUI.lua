@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 12127 $"):sub(12, -3)
+local revision =("$Revision: 12148 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -1583,6 +1583,7 @@ local function CreateOptionsMenu()
 		DBM.Options.ChosenVoicePack, function(value)
 			DBM.Options.ChosenVoicePack = value
 			DBM:Debug("DBM.Options.ChosenVoicePack is set to "..DBM.Options.ChosenVoicePack)
+			DBM:CheckVoicePackVersion(value)
 		end
 		)
 		VoiceDropDown:SetPoint("TOPLEFT", CountSoundDropDown2, "TOPLEFT", 0, -40)
