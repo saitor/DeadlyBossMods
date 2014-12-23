@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1196, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12123 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12124 $"):sub(12, -3))
 mod:SetCreatureID(78491)
 mod:SetEncounterID(1720)
 mod:SetZone()
@@ -34,7 +34,7 @@ local warnWaves						= mod:NewSpellAnnounce(160425, 4)--Mythic Waves
 
 local specWarnCreepingMoss			= mod:NewSpecialWarningMove(163590, mod:IsTank())
 local specWarnInfestingSpores		= mod:NewSpecialWarningCount(159996, nil, nil, nil, 2, true)
-local specWarnDecay					= mod:NewSpecialWarningInterrupt(160013, not mod:IsHealer(), nil, nil, true)
+local specWarnDecay					= mod:NewSpecialWarningInterrupt(160013, not mod:IsHealer(), nil, nil, nil, true)
 local specWarnNecroticBreath		= mod:NewSpecialWarningSpell(159219, mod:IsTank(), nil, nil, 3)
 local specWarnRot					= mod:NewSpecialWarningStack(163241, nil, 3)
 local specWarnRotOther				= mod:NewSpecialWarningTaunt(163241, nil, nil, nil, nil, true)
