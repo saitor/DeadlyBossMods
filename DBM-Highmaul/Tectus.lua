@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1195, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12125 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12126 $"):sub(12, -3))
 mod:SetCreatureID(78948, 80557, 80551, 99999)--78948 Tectus, 80557 Mote of Tectus, 80551 Shard of Tectus
 mod:SetEncounterID(1722)--Hopefully win will work fine off this because otherwise tracking shard deaths is crappy
 mod:SetZone()
@@ -220,11 +220,13 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif spellId == 162658 then
 		local cid = self:GetCIDFromGUID(args.destGUID)
-		if not moteH[args.destGUID] and cid == 80557 then
-			moteH[args.destGUID] = 0
-		end
-		if self.Options.SetIconOnMote and not self:IsLFR() then--Don't mark kill/pickup marks in LFR, it'll be an aoe fest.
-			self:ScanForMobs(args.destGUID, 0, 8, 8, 0.05, 12)
+		if cid == 80557 then
+			if not moteH[args.destGUID] then
+				moteH[args.destGUID] = 0
+			end
+			if self.Options.SetIconOnMote and not self:IsLFR() then--Don't mark kill/pickup marks in LFR, it'll be an aoe fest.
+				self:ScanForMobs(args.destGUID, 0, 8, 8, 0.05, 12)
+			end
 		end
 	end
 end
