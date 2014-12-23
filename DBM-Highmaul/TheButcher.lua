@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(971, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12122 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12123 $"):sub(12, -3))
 mod:SetCreatureID(77404)
 mod:SetEncounterID(1706)
 mod:SetZone()
@@ -25,11 +25,11 @@ local warnCleaver					= mod:NewSpellAnnounce(156143, 3, nil, mod:IsTank())--Sabe
 local warnFrenzy					= mod:NewTargetAnnounce(156598, 4)
 
 local specWarnTenderizer			= mod:NewSpecialWarningStack(156151, nil, 2)
-local specWarnTenderizerOther		= mod:NewSpecialWarningTaunt(156151, nil, nil, nil, nil, nil, true)
-local specWarnGushingWounds			= mod:NewSpecialWarningStack(156152, nil, 2, nil, nil, nil, nil, true)
-local specWarnBoundingCleave		= mod:NewSpecialWarningCount(156160, nil, nil, nil, 2, nil, true)
+local specWarnTenderizerOther		= mod:NewSpecialWarningTaunt(156151, nil, nil, nil, nil, true)
+local specWarnGushingWounds			= mod:NewSpecialWarningStack(156152, nil, 2, nil, nil, nil, true)
+local specWarnBoundingCleave		= mod:NewSpecialWarningCount(156160, nil, nil, nil, 2, true)
 local specWarnBoundingCleaveEnded	= mod:NewSpecialWarningEnd(156160)
-local specWarnPaleVitriol			= mod:NewSpecialWarningMove(163046, nil, nil, nil, nil, nil, true)--Mythic
+local specWarnPaleVitriol			= mod:NewSpecialWarningMove(163046, nil, nil, nil, nil, true)--Mythic
 
 local timerCleaveCD					= mod:NewCDTimer(6, 156157, nil, false)
 local timerTenderizerCD				= mod:NewCDTimer(17, 156151, nil, mod:IsTank())

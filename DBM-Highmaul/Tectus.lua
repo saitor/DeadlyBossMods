@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1195, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12122 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12123 $"):sub(12, -3))
 mod:SetCreatureID(78948, 80557, 80551, 99999)--78948 Tectus, 80557 Mote of Tectus, 80551 Shard of Tectus
 mod:SetEncounterID(1722)--Hopefully win will work fine off this because otherwise tracking shard deaths is crappy
 mod:SetZone()
@@ -34,15 +34,15 @@ local warnEarthenFlechettes			= mod:NewSpellAnnounce(162968, 3, nil, mod:IsMelee
 local warnGiftOfEarth				= mod:NewCountAnnounce(162894, 4, nil, mod:IsMelee())
 local warnRavingAssault				= mod:NewSpellAnnounce(163312, 3)--Target scanning? Emote?
 
-local specWarnEarthwarper			= mod:NewSpecialWarningSwitch("ej10061", nil, nil, nil, nil, nil, true)
-local specWarnTectonicUpheaval		= mod:NewSpecialWarningSpell(162475, nil, nil, nil, 2, nil, true)
-local specWarnEarthenPillar			= mod:NewSpecialWarningSpell(162518, nil, nil, nil, 3, nil, true)
-local specWarnCrystallineBarrageYou	= mod:NewSpecialWarningYou(162346, nil, nil, nil, nil, nil, true)
+local specWarnEarthwarper			= mod:NewSpecialWarningSwitch("ej10061", nil, nil, nil, nil, true)
+local specWarnTectonicUpheaval		= mod:NewSpecialWarningSpell(162475, nil, nil, nil, 2, true)
+local specWarnEarthenPillar			= mod:NewSpecialWarningSpell(162518, nil, nil, nil, 3, true)
+local specWarnCrystallineBarrageYou	= mod:NewSpecialWarningYou(162346, nil, nil, nil, nil, true)
 local yellCrystalineBarrage			= mod:NewYell(162346)
-local specWarnCrystallineBarrage	= mod:NewSpecialWarningMove(162370, nil, nil, nil, nil, nil, true)
+local specWarnCrystallineBarrage	= mod:NewSpecialWarningMove(162370, nil, nil, nil, nil, true)
 --Night-Twisted NPCs
-local specWarnEarthenFlechettes		= mod:NewSpecialWarningSpell(162968, mod:IsMelee(), nil, nil, nil, nil, true)
-local specWarnGiftOfEarth			= mod:NewSpecialWarningCount(162894, mod:IsTank(), nil, nil, nil, nil, true)
+local specWarnEarthenFlechettes		= mod:NewSpecialWarningSpell(162968, mod:IsMelee(), nil, nil, nil, true)
+local specWarnGiftOfEarth			= mod:NewSpecialWarningCount(162894, mod:IsTank(), nil, nil, nil, true)
 
 local timerEarthwarperCD			= mod:NewNextTimer(41, "ej10061", nil, nil, nil, 162894)--Both of these get delayed by upheavel
 local timerBerserkerCD				= mod:NewNextTimer(41, "ej10062", nil, mod:IsTank(), nil, 163312)--Both of these get delayed by upheavel
