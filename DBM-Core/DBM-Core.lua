@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12128 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12129 $"):sub(12, -3)),
 	DisplayVersion = "6.0.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 11978 -- the revision of the latest stable version that is available
 }
@@ -86,7 +86,7 @@ DBM.DefaultOptions = {
 	CountdownVoice2 = "Kolt",
 	CountdownVoice3 = "Pewsey",
 	ChosenVoicePack = "None",
-	VoiceOverSW = false,
+	VoiceOverSW = true,
 	ShowCountdownText = false,
 	RaidWarningPosition = {
 		Point = "TOP",
