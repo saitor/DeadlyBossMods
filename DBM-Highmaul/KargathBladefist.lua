@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1128, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12125 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12160 $"):sub(12, -3))
 mod:SetCreatureID(78714)
 mod:SetEncounterID(1721)
 mod:SetZone()
@@ -127,7 +127,9 @@ function mod:SPELL_AURA_APPLIED(args)
 			voiceBerserkerRush:Play("159202f") --find the pillar
 		else
 			specWarnBerserkerRushOther:Show(args.destName)
-			voiceBerserkerRush:Play("chargemove")
+			if not self:IsMelee() then
+				voiceBerserkerRush:Play("chargemove")
+			end
 		end
 	elseif spellId == 159178 then
 		local amount = args.amount or 1
