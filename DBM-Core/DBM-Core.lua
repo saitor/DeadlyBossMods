@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12154 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12155 $"):sub(12, -3)),
 	DisplayVersion = "6.0.10 alpha", -- the string that is shown as version
 	ReleaseRevision = 12134 -- the revision of the latest stable version that is available
 }
@@ -6907,7 +6907,7 @@ do
 			--This callback sucks, it needs useful information for external mods to listen to it better, such as mod and spellid
 			fireEvent("DBM_SpecWarn", msg)
 			if self.sound then
-				if self.hasVoice and DBM.Options.ChosenVoicePack ~= "None" and not SWFilterDisabed and DBM.Options.VoiceOverSW and self.mod.Options[self.voiceOptionId] ~= false then return end
+				if self.hasVoice and DBM.Options.ChosenVoicePack ~= "None" and not SWFilterDisabed and DBM.Options.VoiceOverSpecW and self.mod.Options[self.voiceOptionId] ~= false then return end
 				if not self.option or self.mod.Options[self.option.."SpecialWarningSound"] ~= "None" then
 					local soundId = self.option and self.mod.Options[self.option .. "SpecialWarningSound"] or self.flash
 					DBM:PlaySpecialWarningSound(soundId or 1)
