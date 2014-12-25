@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12162 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12163 $"):sub(12, -3)),
 	DisplayVersion = "6.0.10 alpha", -- the string that is shown as version
 	ReleaseRevision = 12134 -- the revision of the latest stable version that is available
 }
@@ -3438,7 +3438,7 @@ do
 			end
 
 			-- get localized difficulty text
-			if textDiff then
+			if textDiff ~= "" then
 				results.difftext[diff] = textDiff
 			end
 
