@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12179 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12180 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -125,7 +125,7 @@ local timerKickToFaceCD							= mod:NewNextTimer(20, 158563, nil, mod:IsTank())
 --Mythic
 local timerGaze									= mod:NewBuffFadesTimer(10, 165595)
 local timerGlimpseOfMadnessCD					= mod:NewNextCountTimer(27, 165243)
-local timerInfiniteDarknessCD					= mod:NewNextTimer(63, 165102)
+local timerInfiniteDarknessCD					= mod:NewNextTimer(62, 165102)
 local timerEnvelopingNightCD					= mod:NewNextCountTimer(63, 165876)--60 seconds plus 3 second cast
 
 local countdownArcaneWrath						= mod:NewCountdown(50, 156238, not mod:IsTank())--Probably will add for whatever proves most dangerous on mythic
