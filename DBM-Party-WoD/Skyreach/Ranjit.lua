@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(965, "DBM-Party-WoD", 7, 476)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12105 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12173 $"):sub(12, -3))
 mod:SetCreatureID(75964)
 mod:SetEncounterID(1698)
 mod:SetZone()
@@ -33,8 +33,14 @@ local timerFourWindsCD		= mod:NewCDTimer(30, 156793)
 local voiceFourWinds		= mod:NewVoice(156793)
 local voiceLensFlare		= mod:NewVoice(154043)
 
+local skyTrashMod = DBM:GetModByName("SkyreachTrash")
+
 function mod:OnCombatStart(delay)
 	timerFourWindsCD:Start(-delay)
+	if skyTrashMod.Options.RangeFrame and skyTrashMod.vb.debuffCount ~= 0 then--In case of bug where range frame gets stuck open from trash pulls before this boss.
+		skyTrashMod.vb.debuffCount = 0--Fix variable
+		DBM.RangeCheck:Hide()--Close range frame.
+	end
 end
 
 function mod:SPELL_CAST_START(args)

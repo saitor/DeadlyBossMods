@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(967, "DBM-Party-WoD", 7, 476)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12097 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12173 $"):sub(12, -3))
 mod:SetCreatureID(76143)
 mod:SetEncounterID(1700)
 mod:SetZone()
@@ -30,10 +30,16 @@ local timerSolarFlareCD			= mod:NewCDTimer(18, 153810)
 local voiceSolarFlare			= mod:NewVoice(153810, not mod:IsTank())
 local voiceQuills				= mod:NewVoice(159382)
 
+local skyTrashMod = DBM:GetModByName("SkyreachTrash")
+
 function mod:OnCombatStart(delay)
 	timerSolarFlareCD:Start(11-delay)
 	if self:IsHeroic() then
 		--timerQuillsCD:Start(33-delay)--Needs review
+	end
+	if skyTrashMod.Options.RangeFrame and skyTrashMod.vb.debuffCount ~= 0 then--In case of bug where range frame gets stuck open from trash pulls before this boss.
+		skyTrashMod.vb.debuffCount = 0--Fix variable
+		DBM.RangeCheck:Hide()--Close range frame.
 	end
 end
 
