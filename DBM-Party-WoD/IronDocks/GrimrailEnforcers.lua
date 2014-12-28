@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1236, "DBM-Party-WoD", 4, 558)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12185 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12195 $"):sub(12, -3))
 mod:SetCreatureID(80805, 80816, 80808)
 mod:SetEncounterID(1748)
 mod:SetZone()
@@ -96,8 +96,11 @@ function mod:UNIT_DIED(args)
 	if cid == 80805 then--Makogg Emberblade
 		timerFlamingSlashCD:Cancel()
 		countdownFlamingSlash:Cancel()
+		timerLavaSwipeCD:Cancel()
 	elseif cid == 80808 then--Neesa Nox
 		timerOgreTrapsCD:Cancel()
+	elseif cid == 80816 then
+		timerSanguineSphere:Cancel()
 	end
 end
 

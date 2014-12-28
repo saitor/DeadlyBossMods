@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1160, "DBM-Party-WoD", 6, 537)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12098 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12195 $"):sub(12, -3))
 mod:SetCreatureID(76407)
 mod:SetEncounterID(1682)
 
@@ -40,7 +40,7 @@ function mod:OmenOfDeathTarget(targetname, uId)
 end
 
 function mod:OnCombatStart(delay)
-	timerOmenOfDeathCD:Start(10-delay)
+	timerOmenOfDeathCD:Start(8.5-delay)
 	timerRitualOfBonesCD:Start(20-delay)
 	voiceRitualOfBones:Schedule(18-delay, "specialsoon")
 end
