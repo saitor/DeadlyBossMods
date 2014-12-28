@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1153, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12186 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12188 $"):sub(12, -3))
 mod:SetCreatureID(79015)
 mod:SetEncounterID(1723)
 mod:SetZone()
@@ -219,7 +219,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				voiceExpelMagicArcane:Play("changemt")
 			end
 		end
-	elseif spellId == 161242 and self:AntiSpam(3, args.destName) and not self:IsLFR() then--Players may wabble in and out of it and we don't want to spam add them to table.
+	elseif spellId == 161242 and self:AntiSpam(5, args.destName) and not self:IsLFR() then--Players may wabble in and out of it and we don't want to spam add them to table.
 		warnCausticEnergy:CombinedShow(1, args.destName)--Two targets on mythic, which is why combinedshow. (10 on LFR. too much spam and not important, so disabled in LFR)
 	elseif spellId == 163472 then
 		warnMC:CombinedShow(0.5, args.destName)
