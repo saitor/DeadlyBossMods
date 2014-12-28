@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(965, "DBM-Party-WoD", 7, 476)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12173 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12198 $"):sub(12, -3))
 mod:SetCreatureID(75964)
 mod:SetEncounterID(1698)
 mod:SetZone()
@@ -24,7 +24,7 @@ local warnLensFlare			= mod:NewSpellAnnounce(154043, 3)
 
 local specWarnSpinningBlade	= mod:NewSpecialWarningSpell(153544, false, nil, nil, 2)
 local specWarnFourWinds		= mod:NewSpecialWarningSpell(156793, nil, nil, nil, 2)
-local specWarnLensFlareCast	= mod:NewSpecialWarningSpell(154043)
+local specWarnLensFlareCast	= mod:NewSpecialWarningSpell(154043, nil, nil, nil, 2)
 local specWarnLensFlare		= mod:NewSpecialWarningMove(154043)
 
 local timerFourWinds		= mod:NewBuffActiveTimer(18, 156793)
