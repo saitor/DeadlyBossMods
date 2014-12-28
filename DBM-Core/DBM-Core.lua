@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12202 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12203 $"):sub(12, -3)),
 	DisplayVersion = "6.0.10 alpha", -- the string that is shown as version
 	ReleaseRevision = 12134 -- the revision of the latest stable version that is available
 }
@@ -3073,7 +3073,7 @@ do
 	end
 
 	local function SendVersion()
-		local VPVersion
+		local VPVersion = ""
 		local VoicePack = DBM.Options.ChosenVoicePack
 		if VoicePack ~= "None" then
 			VPVersion = "/ VP"..VoicePack..": v"..DBM.VoiceVersions[VoicePack]
