@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12221 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12222 $"):sub(12, -3)),
 	DisplayVersion = "6.0.10 alpha", -- the string that is shown as version
 	ReleaseRevision = 12134 -- the revision of the latest stable version that is available
 }
@@ -3039,7 +3039,7 @@ do
 		end
 	end
 	
-	whisperSyncHandlers["BTR"] = function(sender, timer)
+	whisperSyncHandlers["BTR2"] = function(sender, timer)
 		if #inCombat >= 1 then return end
 		timer = tonumber(timer or 0)
 		if not dummyMod2 then
@@ -4852,8 +4852,8 @@ do
 			--But only if we are not in combat with a boss
 			if self.Bars:GetBar(DBM_CORE_TIMER_BREAK) then
 				self:Debug("Sending BTR to "..target)
-				local remaining = self.Bars:GetBar(DBM_CORE_TIMER_BREAK).totalTime - self.Bars:GetBar(DBM_CORE_TIMER_BREAK).timer
-				SendAddonMessage("D4", "BTR\t"..remaining, "WHISPER", target)
+				local remaining = self.Bars:GetBar(DBM_CORE_TIMER_BREAK).timer
+				SendAddonMessage("D4", "BTR2\t"..remaining, "WHISPER", target)
 			end
 			return
 		end
