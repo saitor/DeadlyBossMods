@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12213 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12214 $"):sub(12, -3)),
 	DisplayVersion = "6.0.10 alpha", -- the string that is shown as version
 	ReleaseRevision = 12134 -- the revision of the latest stable version that is available
 }
@@ -4215,7 +4215,7 @@ function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
 					speedTimer:Start()
 				end
 			end
-			if self.Options.CRT_Enabled and difficultyIndex >= 14 and difficultyIndex < 17 then--14-16 difficulties. Normal, Heroic, Mythic
+			if self.Options.CRT_Enabled and difficultyIndex >= 14 and difficultyIndex < 18 then--14-17 difficulties. Normal, Heroic, Mythic, LFR
 				local time = 90/LastGroupSize
 				time = time * 60
 				loopCRTimer(time, mod)
