@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12225 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12226 $"):sub(12, -3)),
 	DisplayVersion = "6.0.10 alpha", -- the string that is shown as version
 	ReleaseRevision = 12134 -- the revision of the latest stable version that is available
 }
@@ -2433,7 +2433,6 @@ local function stopQueueButtonDelay()
 end
 function DBM:LFG_LIST_APPLICANT_LIST_UPDATED(hasNewPending, hasNewPendingWithData)
 	if QueueStatusMinimapButton:IsShown() and (self.Options.HideApplicantAlerts == 2 and not UnitIsGroupLeader("player", LE_PARTY_CATEGORY_HOME)) or (self.Options.HideApplicantAlerts >= 1 and GetNumGroupMembers() == 40) then
-		self:Debug("LFG_LIST_APPLICANT_LIST_UPDATED fired, but filter conditions met, supressing ping animation/sound", 2)
 		QueueStatusMinimapButton.EyeHighlightAnim:Stop()
 		self:Unschedule(stopQueueButtonDelay)
 		self:Schedule(1, stopQueueButtonDelay, self)
@@ -4851,7 +4850,6 @@ do
 			--Break timer is up, so send that
 			--But only if we are not in combat with a boss
 			if self.Bars:GetBar(DBM_CORE_TIMER_BREAK) then
-				self:Debug("Sending BTR to "..target)
 				local remaining = self.Bars:GetBar(DBM_CORE_TIMER_BREAK).timer
 				SendAddonMessage("D4", "BTR2\t"..remaining, "WHISPER", target)
 			end
