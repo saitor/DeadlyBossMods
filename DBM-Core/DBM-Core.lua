@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12220 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12221 $"):sub(12, -3)),
 	DisplayVersion = "6.0.10 alpha", -- the string that is shown as version
 	ReleaseRevision = 12134 -- the revision of the latest stable version that is available
 }
@@ -3039,8 +3039,7 @@ do
 		end
 	end
 	
-	syncHandlers["BTR"] = function(sender, timer)
-		DBM:Debug("BTR Fired")
+	whisperSyncHandlers["BTR"] = function(sender, timer)
 		if #inCombat >= 1 then return end
 		timer = tonumber(timer or 0)
 		if not dummyMod2 then
