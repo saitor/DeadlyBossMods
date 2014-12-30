@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(971, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12213 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12215 $"):sub(12, -3))
 mod:SetCreatureID(77404)
 mod:SetEncounterID(1706)
 mod:SetZone()
@@ -40,7 +40,7 @@ local timerBoundingCleave			= mod:NewCastTimer(15, 156160)
 
 local berserkTimer					= mod:NewBerserkTimer(300)
 
-local countdownTenderizer			= mod:NewCountdown("Alt17", 156143, mod:IsTank())
+local countdownTenderizer			= mod:NewCountdown("Alt17", 156151, mod:IsTank())
 local countdownBoundingCleave		= mod:NewCountdown(60, 156160)
 
 local voiceCleave					= mod:NewVoice(156157, mod:IsMelee())
