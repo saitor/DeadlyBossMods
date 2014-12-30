@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12231 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12232 $"):sub(12, -3)),
 	DisplayVersion = "6.0.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 12226 -- the revision of the latest stable version that is available
 }
@@ -8060,6 +8060,10 @@ function bossModPrototype:SetIcon(target, icon, timer)
 		return
 	end
 	self:UnscheduleMethod("SetIcon", target)
+	if type(icon) ~= "number" or type(target) ~= "string" then--icon/target probably backwards.
+		DBM:Debug("SetIcon is being used impropperly. Check icon/target order")
+		return--Fail silently instead of spamming icon lua errors if we screw up
+	end
 	icon = icon and icon >= 0 and icon <= 8 and icon or 8
 	local uId = DBM:GetRaidUnitId(target)
 	if uId and UnitIsUnit(uId, "player") and DBM:GetNumRealGroupMembers() < 2 then return end--Solo raid, no reason to put icon on yourself.
