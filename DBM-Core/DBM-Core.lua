@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12228 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12229 $"):sub(12, -3)),
 	DisplayVersion = "6.0.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 12226 -- the revision of the latest stable version that is available
 }
@@ -996,7 +996,7 @@ do
 					local voiceVersion = tonumber(GetAddOnMetadata(i, "X-DBM-Voice-Version") or 0)
 					tinsert(self.Voices, { text = GetAddOnMetadata(i, "X-DBM-Voice-Name"), value = voiceValue })
 					self.VoiceVersions[voiceValue] = voiceVersion
-					self:CheckVoicePackVersion(voiceValue)
+					self:Schedule(10, self.CheckVoicePackVersion, self, voiceValue)
 				end
 			end
 			if self.Options.ChosenVoicePack ~= "None"  and not self.VoiceVersions[DBM.Options.ChosenVoicePack] then--A voice pack is selected but has nil version (not possible unless voice pack disabled
