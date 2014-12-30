@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1168, "DBM-Party-WoD", 6, 537)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12216 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12224 $"):sub(12, -3))
 mod:SetCreatureID(75829)
 mod:SetEncounterID(1688)
 
@@ -24,18 +24,19 @@ local specWarnSoulShred			= mod:NewSpecialWarningSpell(152979)
 local specWarnVoidDevastation	= mod:NewSpecialWarningSpell(153067, nil, nil, nil, 2)
 local specWarnVoidDevastationM	= mod:NewSpecialWarningMove(153070)
 
-local timerVoidVortexCD			= mod:NewNextTimer(72, 152801)
+local timerVoidVortexCD			= mod:NewCDTimer(72, 152801)
 local timerSoulShredCD			= mod:NewNextTimer(71, 152979)
 local timerSoulShred			= mod:NewBuffFadesTimer(20, 152979)
 local timerVoidDevastationCD	= mod:NewNextTimer(71, 153067)
 
+local soundVoidVortex			= mod:NewSound(152801)
 local voiceWarnSoulShred		= mod:NewVoice(152979)
 local voiceVoidVortex			= mod:NewVoice(152801)
 
 function mod:OnCombatStart(delay)
 	timerVoidVortexCD:Start(23-delay)
 	timerSoulShredCD:Start(38-delay)
-	timerVoidDevastationCD:Start(65.5-delay)
+	timerVoidDevastationCD:Start(67.5-delay)
 end
 
 function mod:SPELL_CAST_START(args)
@@ -43,6 +44,7 @@ function mod:SPELL_CAST_START(args)
 		warnVoidVortex:Show()
 		timerVoidVortexCD:Start()
 		specWarnVoidVortex:Show()
+		soundVoidVortex:Play()
 		voiceVoidVortex:Play("runaway")
 	end
 end

@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12223 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12224 $"):sub(12, -3)),
 	DisplayVersion = "6.0.10 alpha", -- the string that is shown as version
 	ReleaseRevision = 12134 -- the revision of the latest stable version that is available
 }
@@ -2750,7 +2750,7 @@ function DBM:LoadMod(mod, force)
 				--Not the new stand alone pvp mods these are old ones and user needs to remove them or install updated package
 				self:AddMsg(DBM_CORE_OUTDATED_PVP_MODS)
 			end
-		elseif instanceType ~="pvp" and #inCombat == 0 and IsInGroup() then--do timer recovery only mod load
+		elseif instanceType ~= "pvp" and #inCombat == 0 and IsInGroup() then--do timer recovery only mod load
 			local doRequest = false
 			if IsEncounterInProgress() then
 				doRequest = true
