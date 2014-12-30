@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(965, "DBM-Party-WoD", 7, 476)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12198 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12216 $"):sub(12, -3))
 mod:SetCreatureID(75964)
 mod:SetEncounterID(1698)
 mod:SetZone()
@@ -12,7 +12,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 153544 156793 153315",
 	"SPELL_CAST_SUCCESS 165731",
 	"SPELL_PERIODIC_DAMAGE 154043",
-	"SPELL_PERIODIC_MISSED 154043",
+	"SPELL_ABSORBED 154043",
 	"RAID_BOSS_EMOTE"
 )
 
@@ -76,4 +76,4 @@ function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, _, _,
 		voiceLensFlare:Play("runaway")
 	end
 end
-mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
+mod.SPELL_ABSORBED = mod.SPELL_PERIODIC_DAMAGE

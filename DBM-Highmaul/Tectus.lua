@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1195, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12209 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12216 $"):sub(12, -3))
 mod:SetCreatureID(78948, 80557, 80551, 99999)--78948 Tectus, 80557 Mote of Tectus, 80551 Shard of Tectus
 mod:SetEncounterID(1722)--Hopefully win will work fine off this because otherwise tracking shard deaths is crappy
 mod:SetZone()
@@ -15,7 +15,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 162346 162658",
 	"SPELL_AURA_REMOVED 162346",
 	"SPELL_PERIODIC_DAMAGE 162370",
-	"SPELL_PERIODIC_MISSED 162370",
+	"SPELL_ABSORBED 162370",
 	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_SPELLCAST_SUCCEEDED boss1",
 	"UNIT_DIED"
@@ -250,7 +250,7 @@ function mod:SPELL_PERIODIC_DAMAGE(sourceGUID, sourceName, _, _, destGUID, destN
 		end
 	end
 end
-mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
+mod.SPELL_ABSORBED = mod.SPELL_PERIODIC_DAMAGE
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)

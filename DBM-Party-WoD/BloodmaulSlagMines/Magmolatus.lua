@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(893, "DBM-Party-WoD", 2, 385)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12172 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12216 $"):sub(12, -3))
 mod:SetCreatureID(74366, 74475)--74366 Forgemaster Gog'duh, 74475 Magmolatus
 mod:SetEncounterID(1655)
 mod:SetMainBossID(74475)
@@ -15,7 +15,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 149997 149975 150032",
 	"SPELL_CAST_START 149941 150038 150023",
 	"SPELL_PERIODIC_DAMAGE 150011",
-	"SPELL_PERIODIC_MISSED 150011",
+	"SPELL_ABSORBED 150011",
 	"UNIT_DIED"
 )
 
@@ -136,7 +136,7 @@ function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 		specWarnMagmaBarrage:Show()
 	end
 end
-mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
+mod.SPELL_ABSORBED = mod.SPELL_PERIODIC_DAMAGE
 
 function mod:UNIT_DIED(args)
 	if not DBM.BossHealth:IsShown() then return end
