@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 12152 $"):sub(12, -3)
+local revision =("$Revision: 12234 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -1487,6 +1487,7 @@ local function CreateOptionsMenu()
 		generalCoreArea:CreateCheckButton(L.ShowPizzaMessage, true, nil, "ShowPizzaMessage")
 		generalCoreArea:CreateCheckButton(L.ShowCombatLogMessage, true, nil, "ShowCombatLogMessage")
 		generalCoreArea:CreateCheckButton(L.ShowTranscriptorMessage, true, nil, "ShowTranscriptorMessage")
+		generalCoreArea:CreateCheckButton(L.ShowAllVersions, true, nil, "ShowAllVersions")
 
 		local generalMessagesArea = generalWarningPanel:CreateArea(L.CombatMessages, nil, 135, true)
 		generalMessagesArea:CreateCheckButton(L.ShowEngageMessage, true, nil, "ShowEngageMessage")
