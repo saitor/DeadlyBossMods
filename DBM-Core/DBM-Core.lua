@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12241 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12242 $"):sub(12, -3)),
 	DisplayVersion = "6.0.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 12226 -- the revision of the latest stable version that is available
 }
@@ -4204,7 +4204,7 @@ function DBM:StartCombat(mod, delay, event, synced, syncedStartHp)
 		self:ToggleRaidBossEmoteFrame(1)
 		self:ToggleGarrisonAlertsFrame(1)
 		self:StartLogging(0, nil)
-		if self.Options.HideObjectivesFrame and not (mod.type == "SCENARIO") and GetNumTrackedAchievements() == 0 then
+		if self.Options.HideObjectivesFrame and savedDifficulty ~= "challenge5" and mod.type ~= "SCENARIO" and GetNumTrackedAchievements() == 0 then
 			if ObjectiveTrackerFrame:IsVisible() then
 				ObjectiveTrackerFrame:Hide()
 				watchFrameRestore = true
