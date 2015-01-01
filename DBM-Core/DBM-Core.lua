@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12259 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12260 $"):sub(12, -3)),
 	DisplayVersion = "6.0.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 12226 -- the revision of the latest stable version that is available
 }
@@ -3545,7 +3545,7 @@ do
 		local function getNumDBMUsers() -- without ourselves
 			local r = 0
 			for i, v in pairs(raid) do
-				if v.revision and v.name ~= playerName and UnitIsConnected(DBM:GetRaidUnitId(v.name)) then
+				if v.revision and v.name ~= playerName and UnitIsConnected(v.id) then
 					r = r + 1
 				end
 			end
