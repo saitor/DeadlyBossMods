@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1211, "DBM-Draenor", nil, 557)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12207 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12253 $"):sub(12, -3))
 mod:SetCreatureID(81535)
 mod:SetReCombatTime(20)
 mod:SetZone()
@@ -32,7 +32,7 @@ local specWarnSavageVinesNear		= mod:NewSpecialWarningClose(176004)
 local specWarnGrowUntamedMandragora	= mod:NewSpecialWarningSwitch(176013, not mod:IsHealer(), nil, nil, nil, nil, true)
 
 --local timerColossalBlowCD			= mod:NewNextTimer(60, 175973)
-local timerGenesis					= mod:NewCastTimer(17, 169613)
+local timerGenesis					= mod:NewCastTimer(14, 169613)
 local timerGenesisCD				= mod:NewCDTimer(45, 169613)--45-60 variation
 local timerGrowUntamedMandragoraCD	= mod:NewCDTimer(30, 176013)
 
