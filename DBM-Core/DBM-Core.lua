@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12268 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12269 $"):sub(12, -3)),
 	DisplayVersion = "6.0.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 12226 -- the revision of the latest stable version that is available
 }
@@ -211,6 +211,7 @@ DBM.DefaultOptions = {
 	DebugMode = false,
 	DebugLevel = 1,
 	RoleSpecAlert = true,
+	CheckGear = true,
 	WorldBossAlert = false,
 	AutoAcceptFriendInvite = false,
 	AutoAcceptGuildInvite = false,
@@ -3005,6 +3006,13 @@ do
 			dummyMod.text:Schedule(timer, DBM_CORE_ANNOUNCE_PULL_NOW)
 		end
 		DBM:StartLogging(timer, checkForActualPull)
+		if DBM.Options.CheckGear then
+			local bagilvl, equippedilvl = GetAverageItemLevel()
+			local difference = bagilvl - equippedilvl
+			if difference > 50 then
+				DBM:AddMsg(DBM_CORE_GEAR_WARNING:format(difference))
+			end
+		end
 	end
 	
 	syncHandlers["BT"] = function(sender, timer)
