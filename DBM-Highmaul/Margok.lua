@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12266 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12268 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -808,6 +808,6 @@ end
 function mod:CHAT_MSG_MONSTER_YELL(msg, npc)
 	if npc == chogallName then--Some creative shit right here. Screw localized text. This will trigger off first yell at start of 35 second RP Sender is 丘加利 (Cho'gall)
 		self:UnregisterShortTermEvents()--Unregister Yell
-		timerTransition:Start(35)--Boss/any arcane adds still active during this, so do not cancel timers here, canceled on margok death
+		timerTransition:Start(34)--Boss/any arcane adds still active during this, so do not cancel timers here, canceled on margok death
 	end
 end
