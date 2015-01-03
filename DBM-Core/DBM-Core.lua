@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12269 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12270 $"):sub(12, -3)),
 	DisplayVersion = "6.0.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 12226 -- the revision of the latest stable version that is available
 }
@@ -3010,7 +3010,7 @@ do
 			local bagilvl, equippedilvl = GetAverageItemLevel()
 			local difference = bagilvl - equippedilvl
 			if difference > 50 then
-				DBM:AddMsg(DBM_CORE_GEAR_WARNING:format(difference))
+				DBM:AddMsg(DBM_CORE_GEAR_WARNING:format(floor(difference)))
 			end
 		end
 	end
