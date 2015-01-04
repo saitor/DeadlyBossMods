@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12286 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12287 $"):sub(12, -3)),
 	DisplayVersion = "6.0.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 12226 -- the revision of the latest stable version that is available
 }
@@ -6616,7 +6616,7 @@ do
 		if not (optionName == false) then--Basically, all mods still using NewSound.
 			-- Because there are going to be users who update core and not old mods, we need to check and alert
 			--I'll try to avoid this as much as possible by removing NewSound from all old mods in advance of dbm core update
-			error("Error, NewSound depricated. Update your old DBM mods to remove this error", 2)
+			print("Error, NewSound depricated. Update your old DBM mods to remove this error")
 			return
 		end
 		self.numSounds = self.numSounds and self.numSounds + 1 or 1
