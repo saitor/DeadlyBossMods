@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12291 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12292 $"):sub(12, -3)),
 	DisplayVersion = "6.0.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 12226 -- the revision of the latest stable version that is available
 }
@@ -286,7 +286,7 @@ local timerRequestInProgress = false
 local updateNotificationDisplayed = 0
 local tooltipsHidden = false
 local SWFilterDisabed = false
-local fakeBWRevision = 12464
+local fakeBWRevision = 12489
 
 local enableIcons = true -- set to false when a raid leader or a promoted player has a newer version of DBM
 local guiRequested = false
