@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12285 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12286 $"):sub(12, -3)),
 	DisplayVersion = "6.0.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 12226 -- the revision of the latest stable version that is available
 }
@@ -6631,7 +6631,7 @@ do
 
 	function soundPrototype:Play(file)
 		if DBM.Options.UseMasterVolume then
-			PlaySoundFile(file)
+			PlaySoundFile(file, "Master")
 		else
 			PlaySoundFile(file)
 		end
