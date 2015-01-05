@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1123, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12290 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12307 $"):sub(12, -3))
 mod:SetCreatureID(76814)--76794 Cinder Wolf, 80590 Aknor Steelbringer
 mod:SetEncounterID(1689)
 mod:SetZone()
@@ -190,7 +190,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			specWarnMoltenTorrentOther:Show(args.destName)
 			if self.Options.TorrentArrow then
-				DBM.Arrow:ShowRunTo(args.destName, 3, 3, 5)
+				DBM.Arrow:ShowRunTo(args.destName, 3, 5)
 			end
 		end
 	elseif spellId == 154950 then
