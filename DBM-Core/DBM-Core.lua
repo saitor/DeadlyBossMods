@@ -53,8 +53,8 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12328 $"):sub(12, -3)),
-	DisplayVersion = "6.0.11", -- the string that is shown as version
+	Revision = tonumber(("$Revision: 12330 $"):sub(12, -3)),
+	DisplayVersion = "6.0.12 alpha", -- the string that is shown as version
 	ReleaseRevision = 12328 -- the revision of the latest stable version that is available
 }
 
