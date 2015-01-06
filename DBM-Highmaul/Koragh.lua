@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1153, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12308 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12311 $"):sub(12, -3))
 mod:SetCreatureID(79015)
 mod:SetEncounterID(1723)
 mod:SetZone()
@@ -60,7 +60,7 @@ local timerExpelMagicFire			= mod:NewBuffFadesTimer(11.5, 162185)
 --local timerExpelMagicFire			= mod:NewCDTimer(60, 162185)--More problematic than rest, because unlike rest which are always 60 seconds except after shields, this one is ALWAYS variable. 60-67
 local timerExpelMagicFrost			= mod:NewBuffActiveTimer(20, 161411, nil, false)
 local timerExpelMagicFrostCD		= mod:NewCDTimer(60, 161411)
-local timerExpelMagicShadowCD		= mod:NewCDTimer(60, 162184, nil, mod:IsHealer())
+local timerExpelMagicShadowCD		= mod:NewCDTimer(60, 162184, nil, mod:IsHealer() or mod:IsTank())
 local timerExpelMagicArcane			= mod:NewTargetTimer(10, 162186, nil, mod:IsTank() or mod:IsHealer())
 local timerExpelMagicArcaneCD		= mod:NewCDTimer(26, 162184, nil, mod:IsTank())--26-32
 local timerBallsCD					= mod:NewNextCountTimer(30, 161612)
