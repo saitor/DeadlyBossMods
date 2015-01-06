@@ -15,8 +15,7 @@
 --    * ruRU: TOM_RUS					http://www.curseforge.com/profiles/TOM_RUS/
 --    * zhTW: Whyv						ultrashining@gmail.com
 --    * koKR: nBlueWiz					everfinale@gmail.com
---    * frFR: leiyla					http://forums.elitistjerks.com/user/616557-leiyla/
---    * zhCN: oliver1452				http://forums.elitistjerks.com/user/623698-oliver1452/
+--    * zhCN: Mini Hè					https://twitter.com/Mini_Dragon_CN/
 --
 -- The former/inactive-translators:
 --    * deDE: Tandanu					http://www.deadlybossmods.com
@@ -26,7 +25,9 @@
 --    * zhTW: Azael/kc10577				paul.poon.kw@gmail.com
 --    * esES: Snamor/1nn7erpLaY      	romanscat@hotmail.com
 --    * zhCN: Diablohu					http://www.dreamgen.cn | diablohudream@gmail.com
+--    * zhCN: oliver1452				http://forums.elitistjerks.com/user/623698-oliver1452/
 --    * esES/esMX: Sueñalobos			alcortesm@gmail.com
+--    * frFR: leiyla					http://forums.elitistjerks.com/user/616557-leiyla/
 --
 -- Special thanks to:
 --    * Arta
@@ -52,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12320 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12321 $"):sub(12, -3)),
 	DisplayVersion = "6.0.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 12226 -- the revision of the latest stable version that is available
 }
