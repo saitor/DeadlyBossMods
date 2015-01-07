@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12332 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12333 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -278,6 +278,13 @@ function mod:OnCombatStart(delay)
 	timerForceNovaCD:Start(-delay, 1)
 	countdownForceNova:Start(-delay)
 	voiceForceNova:Schedule(38.5-delay, "157349")
+	--Fix number of bosses reported by status whispers for normal
+	--Assuming this can be changed after mod load without breaking things.
+	if self:IsMythic() then
+		self:SetBossHPInfoToHighest(2)
+	else
+		self:SetBossHPInfoToHighest(1)
+	end
 end
 
 function mod:OnCombatEnd()
