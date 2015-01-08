@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1153, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12331 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12343 $"):sub(12, -3))
 mod:SetCreatureID(79015)
 mod:SetEncounterID(1723)
 mod:SetZone()
@@ -106,7 +106,7 @@ local function ballsWarning(self)
 		specWarnBallsSoon:Show()
 		voiceBalls:Play("161612")
 	else
-		if self:IsMythic() and self.vb.ballsCount+1 % 2 then
+		if self:IsMythic() and (self.vb.ballsCount+1) % 2 then
 			specWarnMCSoon:Show()
 		end
 	end
