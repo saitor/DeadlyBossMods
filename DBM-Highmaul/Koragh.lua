@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1153, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12349 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12350 $"):sub(12, -3))
 mod:SetCreatureID(79015)
 mod:SetEncounterID(1723)
 mod:SetZone()
@@ -280,7 +280,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnExpelMagicFel:Show()
 			timerExpelMagicFel:Start()
 			countdownFel:Start()
-			yellExpelMagicFel:Schedule(10)--Yell right before expire, not apply
+			yellExpelMagicFel:Schedule(11)--Yell right before expire, not apply
 			lastX, LastY = UnitPosition("player")
 			self:Schedule(7, returnPosition, self)
 		end
