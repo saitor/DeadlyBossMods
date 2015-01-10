@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12363 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12364 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -452,10 +452,9 @@ function mod:SPELL_CAST_START(args)
 				warnMarkOfChaosFortification:Show(targetName)
 			end
 			if tanking or (status == 3) then
-				if self.vb.phase ~= 2 then--Cannot run out on mythic during displacement/fort. Can during fort/replication though.
-					specWarnMarkOfChaosFortification:Show()
-					voiceMarkOfChaos:Play("runout")--Tank can still run out during cast
-				end
+				--2/5 tank classes can still run this out even while rooted. so always warn. Mythic guilds always use at least one of these two classes
+				specWarnMarkOfChaosFortification:Show()
+				voiceMarkOfChaos:Play("runout")--Tank can still run out during cast
 			else
 				specWarnMarkOfChaosFortificationOther:Show(targetName)
 				voiceMarkOfChaos:Play("changemt")
