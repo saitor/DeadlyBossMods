@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12345 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12356 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -382,10 +382,7 @@ function mod:SPELL_CAST_START(args)
 		end
 		timerForceNovaCD:Start(nil, self.vb.forceCount+1)
 		voiceForceNova:Schedule(38.5, "157349")
-		voiceForceNova:Play("scatter")
-		if not self:IsMelee() then
-			voiceForceNova:Play("range5") --keep range 5 years
-		end
+		voiceForceNova:Play("range5") --keep range 5 yards
 	-----
 	elseif spellId == 156471 then
 		self.vb.arcaneAdd = self.vb.arcaneAdd + 1
