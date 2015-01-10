@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12356 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12357 $"):sub(12, -3)),
 	DisplayVersion = "6.0.12 alpha", -- the string that is shown as version
 	ReleaseRevision = 12328 -- the revision of the latest stable version that is available
 }
@@ -6205,6 +6205,10 @@ function bossModPrototype:CanRemoveCurse()
 	return class == "DRUID" or class == "MAGE"
 end
 
+function bossModPrototype:CanRemovePoison()
+	return class == "DRUID" or class == "MONK" or class == "PALADIN"
+end
+
 function bossModPrototype:IsMagicDispeller()
 	return class == "MAGE" or class == "PRIEST" or class == "SHAMAN"
 end
@@ -7167,6 +7171,10 @@ do
 
 	function bossModPrototype:NewSpecialWarningMove(text, optionDefault, ...)
 		return newSpecialWarning(self, "move", text, nil, optionDefault, ...)
+	end
+	
+	function bossModPrototype:NewSpecialWarningDodge(text, optionDefault, ...)
+		return newSpecialWarning(self, "dodge", text, nil, optionDefault, ...)
 	end
 	
 	function bossModPrototype:NewSpecialWarningMoveAway(text, optionDefault, ...)

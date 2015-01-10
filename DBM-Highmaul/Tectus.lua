@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1195, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12342 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12357 $"):sub(12, -3))
 mod:SetCreatureID(78948, 80557, 80551, 99999)--78948 Tectus, 80557 Mote of Tectus, 80551 Shard of Tectus
 mod:SetEncounterID(1722)--Hopefully win will work fine off this because otherwise tracking shard deaths is crappy
 mod:SetZone()
@@ -41,7 +41,7 @@ local specWarnCrystallineBarrageYou	= mod:NewSpecialWarningYou(162346, nil, nil,
 local yellCrystalineBarrage			= mod:NewYell(162346)
 local specWarnCrystallineBarrage	= mod:NewSpecialWarningMove(162370, nil, nil, nil, nil, nil, true)
 --Night-Twisted NPCs
-local specWarnEarthenFlechettes		= mod:NewSpecialWarningSpell(162968, mod:IsMelee(), nil, nil, nil, nil, true)
+local specWarnEarthenFlechettes		= mod:NewSpecialWarningDodge(162968, mod:IsMelee(), nil, nil, nil, nil, true)
 local specWarnGiftOfEarth			= mod:NewSpecialWarningCount(162894, mod:IsTank(), nil, nil, nil, nil, true)
 
 local timerEarthwarperCD			= mod:NewNextTimer(41, "ej10061", nil, nil, nil, 162894)--Both of these get delayed by upheavel
