@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12366 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12367 $"):sub(12, -3)),
 	DisplayVersion = "6.0.12 alpha", -- the string that is shown as version
 	ReleaseRevision = 12328 -- the revision of the latest stable version that is available
 }
@@ -1032,7 +1032,7 @@ do
 				"UNIT_SPELLCAST_SUCCEEDED",
 				"ENCOUNTER_START",
 				"ENCOUNTER_END",
-				"BOSS_KILLED",
+				"BOSS_KILL",
 				"UNIT_DIED",
 				"UNIT_DESTROYED",
 				"UNIT_HEALTH mouseover target focus player",
@@ -3977,8 +3977,8 @@ do
 		end
 	end
 	
-	function DBM:BOSS_KILLED(encounterID, name)
-		self:Debug("BOSS_KILLED event fired: "..encounterID.." "..name)
+	function DBM:BOSS_KILL(encounterID, name)
+		self:Debug("BOSS_KILL event fired: "..encounterID.." "..name)
 	end
 
 	local function checkExpressionList(exp, str)
