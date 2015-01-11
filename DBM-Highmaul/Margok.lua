@@ -1,13 +1,13 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12370 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12373 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
 mod:SetUsedIcons(1, 2, 3, 4, 5, 6, 7, 8)--Unknown total number of icons replication will use.
 mod:SetBossHPInfoToHighest()--For mythic chogal
-mod:SetHotfixNoticeRev(12073)
+mod:SetHotfixNoticeRev(12370)
 mod:SetMinSyncRevision(12073)--Avoid premature combat end on mythic
 
 mod:RegisterCombat("combat")
