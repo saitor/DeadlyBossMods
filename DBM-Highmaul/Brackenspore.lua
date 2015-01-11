@@ -1,10 +1,11 @@
 local mod	= DBM:NewMod(1196, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12318 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12375 $"):sub(12, -3))
 mod:SetCreatureID(78491)
 mod:SetEncounterID(1720)
 mod:SetZone()
+--Has no audio files
 
 mod:RegisterCombat("combat")
 
