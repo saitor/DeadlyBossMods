@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1195, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12375 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12390 $"):sub(12, -3))
 mod:SetCreatureID(78948, 80557, 80551, 99999)--78948 Tectus, 80557 Mote of Tectus, 80551 Shard of Tectus
 mod:SetEncounterID(1722)--Hopefully win will work fine off this because otherwise tracking shard deaths is crappy
 mod:SetZone()
@@ -25,7 +25,7 @@ mod:RegisterEventsInCombat(
 --TODO, find better icons for adds, these are filler icons for spells they use.
 --TODO, figure out what's wrong with DBM-Core stripping most of EJ spellname in specWarnEarthwarper (it's saying "Night - Switch" instead of "Night-Twisted Earthshaper - Switch")
 --Tectus
-local warnEarthenPillar				= mod:NewSpellAnnounce(162518, 3)--No way to detect unless it hits a player :\
+local warnEarthenPillar				= mod:NewSpellAnnounce(162518, 3)
 local warnTectonicUpheaval			= mod:NewSpellAnnounce(162475, 3)
 local warnCrystallineBarrage		= mod:NewTargetAnnounce(162346, 3)
 local warnEarthwarper				= mod:NewSpellAnnounce("ej10061", 3, 162894)

@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(971, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12375 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12390 $"):sub(12, -3))
 mod:SetCreatureID(77404)
 mod:SetEncounterID(1706)
 mod:SetZone()
@@ -22,7 +22,7 @@ mod:RegisterEventsInCombat(
 local warnCleave					= mod:NewCountAnnounce(156157, 2, nil, false)
 local warnBoundingCleave			= mod:NewCountAnnounce(156160, 3)
 local warnTenderizer				= mod:NewStackAnnounce(156151, 2, nil, mod:IsTank())
-local warnCleaver					= mod:NewSpellAnnounce(156143, 3, nil, mod:IsTank())--Saberlash
+local warnCleaver					= mod:NewSpellAnnounce("OptionVersion2", 156143, 3, nil, false)--Saberlash
 local warnFrenzy					= mod:NewTargetAnnounce(156598, 4)
 
 local specWarnTenderizer			= mod:NewSpecialWarningStack(156151, nil, 2)

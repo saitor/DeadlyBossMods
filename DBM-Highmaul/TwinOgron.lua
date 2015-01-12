@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1148, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12389 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12390 $"):sub(12, -3))
 mod:SetCreatureID(78238, 78237)--Pol 78238, Phemos 78237
 mod:SetEncounterID(1719)
 mod:SetZone()
@@ -24,7 +24,7 @@ mod:RegisterEventsInCombat(
 local warnEnfeeblingroar			= mod:NewCountAnnounce(158057, 3)
 local warnWhirlwind					= mod:NewCountAnnounce(157943, 3)
 local warnQuake						= mod:NewCountAnnounce(158200, 3)
-local warnArcaneTwisted				= mod:NewTargetAnnounce(163297, 2)--Mythic, the boss that's going to use empowered abilities
+local warnArcaneTwisted				= mod:NewTargetAnnounce("OptionVersion2", 163297, 2, nil, false)--Mythic, the boss that's going to use empowered abilities
 local warnArcaneVolatility			= mod:NewTargetAnnounce(163372, 4)--Mythic
 local warnArcaneWound				= mod:NewStackAnnounce("OptionVersion2", 167200, 2, nil, false)--Arcane debuff irrelevant. off by default, even for tanks unless blizz changes it.
 --Pol
