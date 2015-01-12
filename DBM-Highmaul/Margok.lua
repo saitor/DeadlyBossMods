@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12385 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12386 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -846,10 +846,10 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		countdownForceNova:Cancel()
 		updateRangeFrame(self)
 		timerInfiniteDarknessCD:Start(10)
-		timerGlimpseOfMadnessCD:Start(20)
+		timerGlimpseOfMadnessCD:Start(20, 1)
 		timerDarkStarCD:Start(29)
 		countdownDarkStar:Start(29)
-		timerEnvelopingNightCD:Start(55)
+		timerEnvelopingNightCD:Start(55, 1)
 		countdownEnvelopingNight:Start(55)
 		self:RegisterShortTermEvents(
 			"SPELL_PERIODIC_DAMAGE 176533",
