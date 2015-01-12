@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12387 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12388 $"):sub(12, -3)),
 	DisplayVersion = "6.0.12 alpha", -- the string that is shown as version
 	ReleaseRevision = 12328 -- the revision of the latest stable version that is available
 }
@@ -3233,7 +3233,7 @@ do
 		end
 	end
 	
-	syncHandlers["RBW2"] = function(sender, spellId, spellName)
+	syncHandlers["RBW3"] = function(sender, spellId, spellName)
 		if sender == playerName then return end
 		if DBM.Options.DebugLevel > 2 or (Transcriptor and Transcriptor:IsLogging()) then
 			if not spellName then spellName = UNKNOWN end
@@ -4038,7 +4038,7 @@ do
 		if msg:find("spell:") and IsInGroup() then
 			local spellId = string.match(msg, "spell:(%d+)") or UNKNOWN
 			local spellName = string.match(msg, "h%[(.-)%]|h") or UNKNOWN
-			sendSync("RBW2", spellId, spellName)
+			sendSync("RBW3", spellId.."\t"..spellName)
 		end
 	end
 
