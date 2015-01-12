@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1153, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12375 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12382 $"):sub(12, -3))
 mod:SetCreatureID(79015)
 mod:SetEncounterID(1723)
 mod:SetZone()
@@ -126,7 +126,7 @@ local function returnPosition(self)
 	specWarnExpelMagicFelFades:Show()
 	voiceExpelMagicArcaneFel:Play("172895")
 	if self.Options.FelArrow and lastX and LastY then
-		DBM.Arrow:ShowRunTo(lastX, LastY, 1, 5)
+		DBM.Arrow:ShowRunTo(lastX, LastY, 0, 5)
 	end
 end
 
