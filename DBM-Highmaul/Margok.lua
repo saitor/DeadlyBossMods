@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12394 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12397 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -407,6 +407,8 @@ function mod:SPELL_CAST_START(args)
 			countdownForceNova:Start(20)
 			specWarnForceNovaRep:Schedule(10)
 			specWarnForceNovaRep:Schedule(20)
+			voiceForceNova:Schedule(10, "range5")
+			voiceForceNova:Schedule(20, "range5")
 		else
 			self:Schedule(9, delayedRangeUpdate, self)
 		end
