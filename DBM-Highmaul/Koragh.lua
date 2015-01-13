@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1153, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12390 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12400 $"):sub(12, -3))
 mod:SetCreatureID(79015)
 mod:SetEncounterID(1723)
 mod:SetZone()
@@ -76,7 +76,7 @@ local countdownBalls				= mod:NewCountdown("Alt30", 161612)
 local countdownFel					= mod:NewCountdownFades("AltTwo11", 172895)
 
 local voiceExpelMagicFire			= mod:NewVoice(162185)
-local voiceExpelMagicShadow			= mod:NewVoice(162184, mod:IsHealer())
+local voiceExpelMagicShadow			= mod:NewVoice("OptionVersion2", 162184, mod:IsHealer())
 local voiceExpelMagicFrost			= mod:NewVoice(161411)
 local voiceExpelMagicArcane			= mod:NewVoice("OptionVersion2", 162186, mod:IsTank())
 local voiceMC						= mod:NewVoice(163472, mod:IsDps())
