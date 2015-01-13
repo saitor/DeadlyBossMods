@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12398 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12399 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -637,7 +637,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		local amount = args.amount or 1
 		warnCrushArmor:Show(args.destName, amount)
 		timerCrushArmorCD:Start()
-	elseif spellId == 178468 and (UnitGUID("target") == args.destGUID) or (UnitGUID("focus") == args.destGUID) then
+	elseif spellId == 178468 and ((UnitGUID("target") == args.destGUID) or (UnitGUID("focus") == args.destGUID)) then
 		local amount = args.amount or 1
 		warnNetherEnergy:Show(args.destName, amount)
 		if amount >= 3 then
