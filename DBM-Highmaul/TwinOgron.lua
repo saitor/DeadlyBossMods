@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1148, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12390 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12401 $"):sub(12, -3))
 mod:SetCreatureID(78238, 78237)--Pol 78238, Phemos 78237
 mod:SetEncounterID(1719)
 mod:SetZone()
@@ -241,14 +241,15 @@ function mod:SPELL_CAST_START(args)
 			timerQuakeCD:Start(PhemosEnergyRate, self.vb.QuakeCount+1)--Next Special
 			countdownPhemos:Start(PhemosEnergyRate)
 			voicePhemos:Schedule(PhemosEnergyRate - 6.5, "158200")
-		end	
+		end
 	elseif spellId == 157943 then
 		self.vb.WWCount = self.vb.WWCount + 1
 		warnWhirlwind:Show(self.vb.WWCount)
 		specWarnWhirlWind:Show(self.vb.WWCount)
 		timerEnfeeblingRoarCD:Start(PhemosEnergyRate, self.vb.EnfeebleCount+1)--Next Special
 		countdownPhemos:Start(PhemosEnergyRate)
-		voicePhemos:Schedule(PhemosEnergyRate - 6.5, "158057") --roar
+		voicePhemos:Schedule(PhemosEnergyRate - 6.8, "158057")
+		voicePhemos:Schedule(PhemosEnergyRate - 5.3, "gather")--Stack
 	elseif spellId == 158134 then
 		warnShieldCharge:Show()
 		specWarnShieldCharge:Show()
