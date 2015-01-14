@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12404 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12405 $"):sub(12, -3)),
 	DisplayVersion = "6.0.12 alpha", -- the string that is shown as version
 	ReleaseRevision = 12328 -- the revision of the latest stable version that is available
 }
@@ -6699,9 +6699,14 @@ do
 
 	--If no file at path, it should silenty fail. However, I want to try to only add NewVoice to mods for files that already exist.
 	function soundPrototype2:Play(name)
-		if DBM.Options.ChosenVoicePack == "None" then return end
-		if not self.option or self.mod.Options[self.option] or DBM.Options.AlwaysPlayVoice then
-			local path = "Interface\\AddOns\\DBM-VP"..DBM.Options.ChosenVoicePack.."\\"..name..".ogg"
+		local voice = DBM.Options.ChosenVoicePack
+		local always = DBM.Options.AlwaysPlayVoice
+		if voice == "None" then return end
+		--Filter tank specific voice alerts for non tanks if tank filter enabled
+		--But still allow AlwaysPlayVoice to play as well.
+		if (name == "changemt" or name == "tauntboss") and DBM.Options.FilterTankSpec and not self.mod:IsTank() and not always then return end
+		if not self.option or self.mod.Options[self.option] or always then
+			local path = "Interface\\AddOns\\DBM-VP"..voice.."\\"..name..".ogg"
 				--Example "Interface\\AddOns\\DBM-VPHenry\\dispelnow.ogg"
 				--Usage: voiceBerserkerRush:Play("dispelnow")
 			if DBM.Options.UseMasterVolume then
