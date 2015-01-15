@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12417 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12418 $"):sub(12, -3)),
 	DisplayVersion = "6.0.12 alpha", -- the string that is shown as version
 	ReleaseRevision = 12328 -- the revision of the latest stable version that is available
 }
@@ -2656,7 +2656,7 @@ do
 			if not targetEventsRegistered then
 				DBM:RegisterShortTermEvents("UPDATE_MOUSEOVER_UNIT", "UNIT_TARGET_UNFILTERED", "SCENARIO_UPDATE")
 				targetEventsRegistered = true
-				self:Debug("RegisterShortTermEvents: UPDATE_MOUSEOVER_UNIT, UNIT_TARGET_UNFILTERED, SCENARIO_UPDATE", 2)
+				DBM:Debug("RegisterShortTermEvents: UPDATE_MOUSEOVER_UNIT, UNIT_TARGET_UNFILTERED, SCENARIO_UPDATE", 2)
 			end
 		else
 			if targetEventsRegistered then
