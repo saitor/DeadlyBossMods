@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12413 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12416 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -155,7 +155,7 @@ local voiceAcceleratedAssault					= mod:NewVoice(159515, mod:IsTank())
 local voiceMarkOfChaos							= mod:NewVoice(158605)
 local voicePhaseChange							= mod:NewVoice(nil, nil, DBM_CORE_AUTO_VOICE2_OPTION_TEXT) --this string should write into language file
 local voiceFixate								= mod:NewVoice(157763)
-local voiceArcaneAberration						= mod:NewVoice(156471, mod:IsDps())
+local voiceArcaneAberration						= mod:NewVoice("OptionVersion2", 156471, not mod:IsHealer())
 local voiceEnvelopingNight 						= mod:NewVoice(165876)
 local voiceGrowingDarkness						= mod:NewVoice(176533)
 local voiceBranded								= mod:NewVoice(156225)
