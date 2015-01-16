@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12425 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12428 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -596,7 +596,10 @@ function mod:SPELL_AURA_APPLIED(args)
 		if (amount == 5 or amount >= 8) and not self.vb.noTaunt and self:AntiSpam(3, 3) then--First warning at 5, then a decent amount of time until 8. then spam every 3 seconds at 8 and above.
 			local elapsed, total = timerMarkOfChaosCD:GetTime()
 			local remaining = total - elapsed
-			if (remaining > 0) and (remaining < 5) then return end--don't warn if mark of chaos very soon
+			if (remaining > 0) and (remaining < 5) then
+				self.vb.noTaunt = true--don't warn if mark of chaos very soon
+				return
+			end
 			warnAcceleratedAssault:Show(args.destName, amount)
 			local tanking, status = UnitDetailedThreatSituation("player", "boss1")
 			if tanking or (status == 3) then
