@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1196, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12439 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12440 $"):sub(12, -3))
 mod:SetCreatureID(78491)
 mod:SetEncounterID(1720)
 mod:SetZone()
@@ -120,7 +120,6 @@ function mod:SPELL_CAST_START(args)
 			self.vb.decayCounter = 0
 		end	
 		self.vb.decayCounter = self.vb.decayCounter + 1
-		warnDecay:Show(self.vb.decayCounter)
 		local guid = args.souceGUID
 		if guid == UnitGUID("target") or guid == UnitGUID("focus") then
 			specWarnDecay:Show(args.sourceName, self.vb.decayCounter)
