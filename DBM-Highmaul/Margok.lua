@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12433 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12436 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -94,7 +94,7 @@ local specWarnFixate							= mod:NewSpecialWarningMoveAway(157763, nil, nil, nil
 local yellFixate								= mod:NewYell(157763)
 local specWarnSlow								= mod:NewSpecialWarningDispel(157801, mod:IsHealer(), nil, nil, nil, nil, true)--Seems CD long enough not too spammy, requested feature.
 local specWarnTransitionEnd						= mod:NewSpecialWarningEnd(157278)
-local specWarnNetherEnergy						= mod:NewSpecialWarningCount(178468, nil, DBM_CORE_AUTO_SPEC_WARN_OPTIONS.stack:format(3, 178468))
+local specWarnNetherEnergy						= mod:NewSpecialWarningCount(178468)
 --Intermission: Lineage of Power
 local specWarnKickToTheFace						= mod:NewSpecialWarningSpell(158563, mod:IsTank())
 local specWarnKickToTheFaceOther				= mod:NewSpecialWarningTaunt(158563)

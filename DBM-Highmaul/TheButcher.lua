@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(971, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12425 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12436 $"):sub(12, -3))
 mod:SetCreatureID(77404)
 mod:SetEncounterID(1706)
 mod:SetZone()
@@ -22,7 +22,7 @@ mod:RegisterEventsInCombat(
 local warnCleave					= mod:NewCountAnnounce(156157, 2, nil, false)
 local warnTenderizer				= mod:NewStackAnnounce(156151, 2, nil, mod:IsTank())
 local warnCleaver					= mod:NewSpellAnnounce("OptionVersion2", 156143, 3, nil, false)--Saberlash
-local warnFrenzy					= mod:NewTargetAnnounce(156598, 4)
+local warnFrenzy					= mod:NewSpellAnnounce(156598, 4)
 
 local specWarnTenderizer			= mod:NewSpecialWarningStack(156151, nil, 2)
 local specWarnTenderizerOther		= mod:NewSpecialWarningTaunt(156151, nil, nil, nil, nil, nil, true)
@@ -124,7 +124,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif spellId == 156598 then
 		self.vb.isFrenzied = true
-		warnFrenzy:Show(args.destName)
+		warnFrenzy:Show()
 		voiceFrenzy:Play("frenzy")
 		--Update bounding cleave timer
 		local bossPower = UnitPower("boss1")
