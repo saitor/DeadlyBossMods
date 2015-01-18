@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12462 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12463 $"):sub(12, -3)),
 	DisplayVersion = "6.0.12 alpha", -- the string that is shown as version
 	ReleaseRevision = 12328 -- the revision of the latest stable version that is available
 }
@@ -2441,7 +2441,7 @@ function DBM:LoadModOptions(modId, inCombat, first)
 			savedOptions[id][profileNum] = oldTable
 		end
 		if not savedOptions[id][profileNum] and not first then--previous profile not found. load defaults
-			self:Debug("LoadModOptions: No saved options, creating defaults for profile "..profileNum)
+			self:Debug("LoadModOptions: No saved options, creating defaults for profile "..profileNum, 2)
 			local defaultOptions = {}
 			for option, optionValue in pairs(mod.DefaultOptions) do
 				if type(optionValue) == "string" then
