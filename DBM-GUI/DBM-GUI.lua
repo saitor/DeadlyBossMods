@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 12460 $"):sub(12, -3)
+local revision =("$Revision: 12464 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -2608,11 +2608,10 @@ local function CreateOptionsMenu()
 		local dualProfile			= dualProfileArea:CreateCheckButton(L.DualProfile, true)
 		dualProfile:SetScript("OnClick", function()
 			DBM_UseDualProfile = not DBM_UseDualProfile
-			DBM:SpecChanged()
+			DBM:SpecChanged(true)
 		end)
 		dualProfile:SetScript("OnShow", function()
 			dualProfile:SetChecked(DBM_UseDualProfile)
-			DBM:SpecChanged()
 		end)
 
 		function dbm_profilePanel_create()

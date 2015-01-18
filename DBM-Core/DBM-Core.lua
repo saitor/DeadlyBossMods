@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12463 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12464 $"):sub(12, -3)),
 	DisplayVersion = "6.0.12 alpha", -- the string that is shown as version
 	ReleaseRevision = 12328 -- the revision of the latest stable version that is available
 }
@@ -2512,10 +2512,13 @@ function DBM:LoadModOptions(modId, inCombat, first)
 		self:Debug("LoadModOptions: Finished loading ".._G[savedVarsName][fullname]["talent"..profileNum], 2)
 	end
 	_G[savedStatsName] = savedStats
+	if not first and DBM_GUI.currentViewing and DBM_GUI_OptionsFrame:IsShown() then
+		DBM_GUI_OptionsFrame:DisplayFrame(DBM_GUI.currentViewing)
+	end
 end
 
-function DBM:SpecChanged()
-	if not DBM_UseDualProfile then return end
+function DBM:SpecChanged(force)
+	if not force and not DBM_UseDualProfile then return end
 	--Load Options again.
 	for modId, idTable in pairs(DBM.ModLists) do
 		self:LoadModOptions(modId)
