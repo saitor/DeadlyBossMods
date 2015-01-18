@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12466 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12467 $"):sub(12, -3)),
 	DisplayVersion = "6.0.12 alpha", -- the string that is shown as version
 	ReleaseRevision = 12328 -- the revision of the latest stable version that is available
 }
@@ -8541,12 +8541,30 @@ function bossModPrototype:AddOptionSpacer(cat)
 	end
 end
 
+function bossModPrototype:AddOptionLine(text, cat)
+	cat = cat or "misc"
+	if not self.optionCategories[cat] then
+		self.optionCategories[cat] = {}
+	end
+	if self.optionCategories[cat] then
+		tinsert(self.optionCategories[cat], {line = true, text = text})
+	end
+end
+
 function bossModPrototype:AddAnnounceSpacer()
 	return self:AddOptionSpacer("announce")
 end
 
 function bossModPrototype:AddTimerSpacer()
 	return self:AddOptionSpacer("timer")
+end
+
+function bossModPrototype:AddAnnounceLine(text)
+	return self:AddOptionLine(text, "announce")
+end
+
+function bossModPrototype:AddTimerLine(text)
+	return self:AddOptionLine(text, "timer")
 end
 
 function bossModPrototype:RemoveOption(name)
