@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("UBRSTrash", "DBM-Party-WoD", 8)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12458 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12459 $"):sub(12, -3))
 --mod:SetModelID(47785)
 mod:SetZone()
 
@@ -58,7 +58,6 @@ function mod:SPELL_CAST_START(args)
 	elseif spellId == 169151 then
 		specWarnSummonBlackIronVet:Show(args.sourceName)
 	elseif spellId == 155586 and self:IsDifficulty("challenge5") then
-		warnVeilofShadow:Show()
 		specWarnVeilofShadow:Show(args.sourceName)
 	elseif spellId == 155588 then
 		specWarnShadowBoltVolley:Show(args.sourceName)
