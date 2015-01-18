@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 12457 $"):sub(12, -3)
+local revision =("$Revision: 12460 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -2717,7 +2717,7 @@ do
 					for bossid, optionTable in pairs(charTable) do
 						for i = 0, 3 do
 							if optionTable[i] then
-								local displayText = (i == 0 and charname) or charname.." ("..i.."-"..(charTable["talent"..i] or "")..")"
+								local displayText = (i == 0 and charname.." ("..ALL..")") or charname.." ("..SPECIALIZATION..i.."-"..(charTable["talent"..i] or "")..")"
 								local dropdown = { text = displayText, value = charname.."|"..tostring(i) }
 								table.insert(modProfileDropdown, dropdown)
 							end
