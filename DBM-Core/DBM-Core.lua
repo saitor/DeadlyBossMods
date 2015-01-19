@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12481 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12482 $"):sub(12, -3)),
 	DisplayVersion = "6.0.12 alpha", -- the string that is shown as version
 	ReleaseRevision = 12328 -- the revision of the latest stable version that is available
 }
@@ -944,6 +944,10 @@ do
 --			end
 			if GetAddOnEnableState(playerName, "VEM-Core") >= 1 then
 				self:AddMsg(DBM_CORE_VEM)
+				return
+			end
+			if GetAddOnEnableState(playerName, "DBM-Profiles") >= 1 then
+				self:AddMsg(DBM_CORE_3RDPROFILES)
 				return
 			end
 			self.Bars:LoadOptions("DBM")
