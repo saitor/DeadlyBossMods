@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12491 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12492 $"):sub(12, -3)),
 	DisplayVersion = "6.0.12 alpha", -- the string that is shown as version
 	ReleaseRevision = 12328 -- the revision of the latest stable version that is available
 }
@@ -6784,6 +6784,17 @@ do
 			DBM:SetCurrentSpecInfo()
 		end
 		if specRoleTable[currentSpecID]["Ranged"] then
+			return true
+		else
+			return false
+		end
+	end
+
+	function bossModPrototype:IsSpellCaster()
+		if not currentSpecID then
+			DBM:SetCurrentSpecInfo()
+		end
+		if specRoleTable[currentSpecID]["SpellCaster"] then
 			return true
 		else
 			return false
