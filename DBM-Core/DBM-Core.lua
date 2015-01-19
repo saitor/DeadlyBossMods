@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12492 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12493 $"):sub(12, -3)),
 	DisplayVersion = "6.0.12 alpha", -- the string that is shown as version
 	ReleaseRevision = 12328 -- the revision of the latest stable version that is available
 }
@@ -6751,6 +6751,7 @@ do
 	--to check flag is correct, remove comment block specFlags table and GetRoleFlagValue function, change this to GetRoleFlagValue2
 	--disable flag check normally because double flag check comsumes more cpu on mod load.
 	function bossModPrototype:GetRoleFlagValue(flag)
+		if not flag then return false end
 		local flags = {strsplit("|", flag)}
 		for i = 1, #flags do
 			local flagText = flags[i]
