@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12486 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12487 $"):sub(12, -3)),
 	DisplayVersion = "6.0.12 alpha", -- the string that is shown as version
 	ReleaseRevision = 12328 -- the revision of the latest stable version that is available
 }
@@ -440,21 +440,19 @@ end
 
 -- sends a whisper to a player by his or her character name or BNet presence id
 -- returns true if the message was sent, nil otherwise
-do
-	local function sendWhisper(target, msg)
-		if type(target) == "number" then
-			if not BNIsSelf(target) then -- never send BNet whispers to ourselves
-				BNSendWhisper(target, msg)
-				return true
-			end
-		elseif type(target) == "string" then
-			-- whispering to ourselves here is okay and somewhat useful for whisper-warnings
-			SendChatMessage(msg, "WHISPER", nil, target)
+local function sendWhisper(target, msg)
+	if type(target) == "number" then
+		if not BNIsSelf(target) then -- never send BNet whispers to ourselves
+			BNSendWhisper(target, msg)
 			return true
 		end
+	elseif type(target) == "string" then
+		-- whispering to ourselves here is okay and somewhat useful for whisper-warnings
+		SendChatMessage(msg, "WHISPER", nil, target)
+		return true
 	end
-	local BNSendWhisper = sendWhisper
 end
+local BNSendWhisper = sendWhisper
 
 local function stripServerName(cap)
 	cap = cap:sub(2, -2)
