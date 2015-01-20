@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12514 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12515 $"):sub(12, -3)),
 	DisplayVersion = "6.0.13 alpha", -- the string that is shown as version
 	ReleaseRevision = 12504 -- the revision of the latest stable version that is available
 }
@@ -1038,6 +1038,12 @@ do
 							tinsert(self.Counts, { text = GetAddOnMetadata(i, "X-DBM-Voice-Name"), value = "VP:"..voiceValue })
 						end
 					end
+				end
+				--Only run once, so not in CheckVoicePackVersion where it gets checked like 6 times if 6 packs installed.
+				local activeVP = self.Options.ChosenVoicePack
+				if (activeVP ~= "None" and not self.VoiceVersions[activeVP]) or (self.VoiceVersions[activeVP] and self.VoiceVersions[activeVP] == 0) then--A voice pack is selected that does not belong
+					self.Options.ChosenVoicePack = "None"--Set ChosenVoicePack back to None
+					self:AddMsg(DBM_CORE_VOICE_MISSING)
 				end
 			end
 			tsort(self.AddOns, function(v1, v2) return v1.sort < v2.sort end)
@@ -7950,12 +7956,9 @@ do
 
 	function DBM:CheckVoicePackVersion(value)
 		--Check if voice pack missing
-		if self.Options.ChosenVoicePack ~= "None" and not self.VoiceVersions[value] then--A voice pack is selected but has nil version (not possible unless voice pack disabled
-			self.Options.ChosenVoicePack = "None"--Set ChosenVoicePack back to None
-			self:AddMsg(DBM_CORE_VOICE_MISSING)
-		end
+		local activeVP = self.Options.ChosenVoicePack
 		--Check if voice pack out of date
-		if self.Options.ChosenVoicePack ~= "None" and self.Options.ChosenVoicePack == value then
+		if activeVP ~= "None" and activeVP == value then
 			if self.VoiceVersions[value] < voiceRevision then--Version will be bumped when new voice packs released that contain new voices.
 				self:AddMsg(DBM_CORE_VOICE_PACK_OUTDATED)
 				SWFilterDisabed = true
