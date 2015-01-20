@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 12506 $"):sub(12, -3)
+local revision =("$Revision: 12509 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -2817,7 +2817,7 @@ do
 		area.onshowcall = {}
 
 		for _, mod in ipairs(DBM.Mods) do
-			if mod.modId == addon.modId and (not subtab or subtab == mod.subTab) and not mod.isTrashMod then
+			if mod.modId == addon.modId and (not subtab or subtab == mod.subTab) and not mod.isTrashMod and not mod.noStatistics then
 				local statsType = 0
 				if not mod.stats then
 					mod.stats = { }
