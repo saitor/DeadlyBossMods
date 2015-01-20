@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12511 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12512 $"):sub(12, -3)),
 	DisplayVersion = "6.0.13 alpha", -- the string that is shown as version
 	ReleaseRevision = 12504 -- the revision of the latest stable version that is available
 }
@@ -2532,7 +2532,7 @@ function DBM:LoadModOptions(modId, inCombat, first)
 		self:Debug("LoadModOptions: Finished loading ".._G[savedVarsName][fullname]["talent"..profileNum], 2)
 	end
 	_G[savedStatsName] = savedStats
-	if not first and DBM_GUI.currentViewing and DBM_GUI_OptionsFrame:IsShown() then
+	if not first and DBM_GUI and DBM_GUI.currentViewing and DBM_GUI_OptionsFrame:IsShown() then
 		DBM_GUI_OptionsFrame:DisplayFrame(DBM_GUI.currentViewing)
 	end
 end
@@ -2584,7 +2584,7 @@ function DBM:LoadAllModDefaultOption(modId)
 	end
 	self:AddMsg(DBM_CORE_ALLMOD_DEFAULT_LOADED)
 	-- update gui if showing
-	if DBM_GUI.currentViewing and DBM_GUI_OptionsFrame:IsShown() then
+	if DBM_GUI and DBM_GUI.currentViewing and DBM_GUI_OptionsFrame:IsShown() then
 		DBM_GUI_OptionsFrame:DisplayFrame(DBM_GUI.currentViewing)
 	end
 end
@@ -2620,7 +2620,7 @@ function DBM:LoadModDefaultOption(mod)
 	_G[savedVarsName][fullname][mod.id][profileNum] = defaultOptions
 	self:AddMsg(DBM_CORE_MOD_DEFAULT_LOADED)
 	-- update gui if showing
-	if DBM_GUI.currentViewing and DBM_GUI_OptionsFrame:IsShown() then
+	if DBM_GUI and DBM_GUI.currentViewing and DBM_GUI_OptionsFrame:IsShown() then
 		DBM_GUI_OptionsFrame:DisplayFrame(DBM_GUI.currentViewing)
 	end
 end
@@ -2680,7 +2680,7 @@ function DBM:CopyAllModOption(modId, sourceName, sourceProfile)
 	end
 	self:AddMsg(DBM_CORE_MPROFILE_COPY_SUCCESS:format(sourceName, sourceProfile))
 	-- update gui if showing
-	if DBM_GUI.currentViewing and DBM_GUI_OptionsFrame:IsShown() then
+	if DBM_GUI and DBM_GUI.currentViewing and DBM_GUI_OptionsFrame:IsShown() then
 		DBM_GUI_OptionsFrame:DisplayFrame(DBM_GUI.currentViewing)
 	end
 end
@@ -2737,7 +2737,7 @@ function DBM:CopyAllModSoundOption(modId, sourceName, sourceProfile)
 	end
 	self:AddMsg(DBM_CORE_MPROFILE_COPYS_SUCCESS:format(sourceName, sourceProfile))
 	-- update gui if showing
-	if DBM_GUI.currentViewing and DBM_GUI_OptionsFrame:IsShown() then
+	if DBM_GUI and DBM_GUI.currentViewing and DBM_GUI_OptionsFrame:IsShown() then
 		DBM_GUI_OptionsFrame:DisplayFrame(DBM_GUI.currentViewing)
 	end
 end
