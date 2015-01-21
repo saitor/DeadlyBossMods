@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12517 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12518 $"):sub(12, -3)),
 	DisplayVersion = "6.0.13 alpha", -- the string that is shown as version
 	ReleaseRevision = 12504 -- the revision of the latest stable version that is available
 }
@@ -6187,7 +6187,7 @@ do
 				end
 			end
 		end
-		if DBM:GetUnitCreatureId(uid) == 24207 then return nil, nil, nil end--filter army of the dead.
+		if uid and DBM:GetUnitCreatureId(uid) == 24207 then return nil, nil, nil end--filter army of the dead.
 		return name, uid, bossuid
 	end
 
