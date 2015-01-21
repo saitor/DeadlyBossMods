@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12523 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12524 $"):sub(12, -3)),
 	DisplayVersion = "6.0.13 alpha", -- the string that is shown as version
 	ReleaseRevision = 12504 -- the revision of the latest stable version that is available
 }
@@ -2878,20 +2878,19 @@ do
 end
 
 function DBM:ACTIVE_TALENT_GROUP_CHANGED()
+	local lastSpecID = currentSpecID
 	self:SetCurrentSpecInfo()
-	self:SpecChanged()
-	if IsInGroup() then
-		self:RoleCheck(false)
+	if currentSpecID ~= lastSpecID then--Don't fire specchanged unless spec actually has changed.
+		self:SpecChanged()
+		if IsInGroup() then
+			self:RoleCheck(false)
+		end
 	end
 end
 
 function DBM:UPDATE_SHAPESHIFT_FORM()
 	if class == "WARRIOR" and self:AntiSpam(0.5, "STANCE") then--check for stance changes for prot warriors that might be specced into Gladiator Stance
-		self:SetCurrentSpecInfo()
-		self:SpecChanged()
-		if IsInGroup() then
-			self:RoleCheck(true)
-		end
+		self:ACTIVE_TALENT_GROUP_CHANGED()
 	end
 end
 
