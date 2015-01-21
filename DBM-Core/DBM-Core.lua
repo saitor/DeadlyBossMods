@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12521 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12522 $"):sub(12, -3)),
 	DisplayVersion = "6.0.13 alpha", -- the string that is shown as version
 	ReleaseRevision = 12504 -- the revision of the latest stable version that is available
 }
@@ -1040,7 +1040,7 @@ do
 						end
 					end
 				end
-				self:Schedule(8, self.CheckVoicePackAvailable)
+				self:Schedule(8, self.CheckVoicePackAvailable, self)
 			end
 			tsort(self.AddOns, function(v1, v2) return v1.sort < v2.sort end)
 			self:RegisterEvents(
