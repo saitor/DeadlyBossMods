@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12531 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12532 $"):sub(12, -3)),
 	DisplayVersion = "6.0.13 alpha", -- the string that is shown as version
 	ReleaseRevision = 12504 -- the revision of the latest stable version that is available
 }
@@ -1951,6 +1951,10 @@ do
 --		end
 		if GetAddOnEnableState(playerName, "VEM-Core") >= 1 then
 			self:AddMsg(DBM_CORE_VEM)
+			return
+		end
+		if GetAddOnEnableState(playerName, "DBM-Profiles") >= 1 then
+			self:AddMsg(DBM_CORE_3RDPROFILES)
 			return
 		end
 		if not IsAddOnLoaded("DBM-GUI") then
@@ -5876,6 +5880,10 @@ do
 	local mt = {__index = bossModPrototype}
 
 	function DBM:NewMod(name, modId, modSubTab, instanceId, nameModifier)
+		if GetAddOnEnableState(playerName, "DBM-Profiles") >= 1 then
+			self:AddMsg(DBM_CORE_3RDPROFILES)
+			return
+		end
 		name = tostring(name) -- the name should never be a number of something as it confuses sync handlers that just receive some string and try to get the mod from it
 		if modsById[name] then error("DBM:NewMod(): Mod names are used as IDs and must therefore be unique.", 2) end
 		local obj = setmetatable(
