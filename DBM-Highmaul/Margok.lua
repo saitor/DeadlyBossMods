@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12496 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12540 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -339,7 +339,7 @@ function mod:SPELL_CAST_START(args)
 			self.vb.RepNovaActive = true
 			self:Schedule(9, delayedRangeUpdate, self)
 			updateRangeFrame(self)
-			--Trhee extra checks to make sure we update 35 to 5 if tank was too close briefly if they came at same time
+			--Three extra checks to make sure we update 35 to 5 if tank was too close briefly if they came at same time
 			self:Schedule(1, updateRangeFrame, self)
 			self:Schedule(2, updateRangeFrame, self)
 			self:Schedule(5, updateRangeFrame, self)
@@ -637,7 +637,6 @@ function mod:SPELL_AURA_APPLIED(args)
 				voiceMarkOfChaos:Play("justrun")
 			end
 		end
-		self:Unschedule(updateRangeFrame)
 		updateRangeFrame(self)
 	elseif spellId == 157801 then
 		specWarnSlow:Show(args.destName)
