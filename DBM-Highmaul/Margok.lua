@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12541 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12542 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -310,15 +310,15 @@ function mod:SPELL_CAST_START(args)
 	elseif spellId == 156467 then
 		specWarnDestructiveResonance:Show()
 		timerDestructiveResonanceCD:Start()
-		voiceDestructiveResonance:Play("runaway")
+		voiceDestructiveResonance:Play("watchstep")
 	elseif spellId == 164075 then
 		specWarnDestructiveResonanceDisplacement:Show()
 		timerDestructiveResonanceCD:Start()
-		voiceDestructiveResonance:Play("runaway")
+		voiceDestructiveResonance:Play("watchstep")
 	elseif spellId == 164076 then
 		specWarnDestructiveResonanceFortification:Show()
 		timerDestructiveResonanceCD:Start()
-		voiceDestructiveResonance:Play("runaway")
+		voiceDestructiveResonance:Play("watchstep")
 	elseif spellId == 164077 then
 		specWarnDestructiveResonanceReplication:Show()
 		timerDestructiveResonanceCD:Start()
