@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 12526 $"):sub(12, -3)
+local revision =("$Revision: 12536 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -1438,17 +1438,6 @@ local function CreateOptionsMenu()
 				DBM.RangeCheck:Hide()
 			else
 				DBM.RangeCheck:Show(nil, nil, true)
-			end
-		end)
-
-		local bmradar  = generaloptions:CreateButton(L.Button_RangeRadar)
-		bmradar:SetPoint('TOPLEFT', bmrange, "TOPRIGHT", 0, 0)
-		bmradar:SetScript("OnClick", function(self)
-			if DBMRangeCheckRadar and DBMRangeCheckRadar:IsShown() then
-				DBMRangeCheckRadar:Hide()
-			else
-				DBM.RangeCheck:Show(nil, nil, true)
-				DBMRangeCheckRadar:Show()
 			end
 		end)
 
