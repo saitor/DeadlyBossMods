@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12540 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12541 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -596,7 +596,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		local amount = args.amount or 1
 		local elapsed, total = timerMarkOfChaosCD:GetTime()
 		local remaining = total - elapsed
-		if (remaining > 0) and (remaining < 5) then
+		if (remaining > 0) and (remaining < 6) then
 			self.vb.noTaunt = true--don't warn if mark of chaos very soon
 			return
 		end
