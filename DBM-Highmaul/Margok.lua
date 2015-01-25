@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12542 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12551 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -552,7 +552,7 @@ function mod:SPELL_AURA_APPLIED(args)
 					if args:IsPlayer() then
 						specWarnBrandedDisplacement:Show(currentStack)
 					elseif self:CheckNearby(self.vb.jumpDistance, args.destName) then
-						specWarnBrandedDisplacementNear:Show(args.destName)
+						specWarnBrandedDisplacementNear:CombinedShow(0.5, args.destName)
 					end
 				end
 			elseif spellId == 164005 then
