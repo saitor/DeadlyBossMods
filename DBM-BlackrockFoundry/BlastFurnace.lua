@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12458 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12561 $"):sub(12, -3))
 mod:SetCreatureID(76809, 99999)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -26,9 +26,7 @@ local warnBomb					= mod:NewTargetAnnounce(155192, 4)
 local warnDeafeningRoar			= mod:NewSpellAnnounce(177756, 3, nil, "Tank")
 local warnDropBombs				= mod:NewSpellAnnounce(174726, 1)
 local warnRupture				= mod:NewTargetAnnounce(156932, 3)--Uses SPELL_CAST_SUCCESS because blizzard is dumb and debuff apply and standing in fire apply same spellid, only way to report ONLY debuff is use SUCCESS
-local warnCauterizeWounds		= mod:NewCastAnnounce(155186, 4, nil, nil, "-Healer")
 local warnFixate				= mod:NewTargetAnnounce(155196, 4)
-local warnPryclasm				= mod:NewCastAnnounce(156937, 3, nil, nil, false)
 local warnVolatileFire			= mod:NewTargetAnnounce(176121, 4)
 local warnHeartoftheMountain	= mod:NewSpellAnnounce("ej9641", 3, 2894)
 local warnHeat					= mod:NewStackAnnounce(155242, 2, nil, "Tank")
@@ -106,10 +104,8 @@ end
 function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
 	if spellId == 155186 then
-		warnCauterizeWounds:Show()
 		specWarnCauterizeWounds:Show(args.sourceName)
 	elseif spellId == 156937 then
-		warnPryclasm:Show()
 		specWarnPyroclasm:Show(args.sourceName)
 	elseif spellId == 177756 and self:CheckTankDistance(args.sourceGUID, 30) then
 		if self.Options.SpecWarn177756dodge then

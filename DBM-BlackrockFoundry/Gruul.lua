@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1161, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12557 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12561 $"):sub(12, -3))
 mod:SetCreatureID(76877)
 mod:SetEncounterID(1691)
 mod:SetZone()
@@ -145,7 +145,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
 	if spellId == 155323 then
-		if not self:IsMythic() then--Applied to 8 targets in non mythic, in mythic, applied to EVERYONE so no need target warning.
+		if not self:IsMythic() then--Applied to 8 or less targets in non mythic, in mythic, applied to EVERYONE so no need target warning.
 			warnPetrifyingSlam:CombinedShow(0.5, args.destName)
 		end
 		if args:IsPlayer() then
