@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("BrawlRank3", "DBM-Brawlers")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12553 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12554 $"):sub(12, -3))
 mod:SetModelID(28649)
 mod:SetZone()
 mod:SetUsedIcons(8)
@@ -53,7 +53,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:PLAYER_TARGET_CHANGED()
-	if self.Options.SetIconOnBlat and not DBM.Options.DontSetIcons and UnitGUID("target") == blatGUID and not GetRaidTargetIndex("target") == 8 then
+	if self.Options.SetIconOnBlat and not DBM.Options.DontSetIcons and UnitGUID("target") == blatGUID and GetRaidTargetIndex("target") ~= 8 then
 		SetRaidTarget("target", 8)
 	end
 end
