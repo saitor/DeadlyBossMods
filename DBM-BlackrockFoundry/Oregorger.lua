@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1202, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12556 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12565 $"):sub(12, -3))
 mod:SetCreatureID(77182)
 mod:SetEncounterID(1696)
 mod:SetZone()
@@ -33,9 +33,9 @@ local specWarnHungerDrive			= mod:NewSpecialWarningSpell(165127, nil, nil, nil, 
 local specWarnHungerDriveEnded		= mod:NewSpecialWarningFades(165127)
 
 local timerBlackrockSpinesCD		= mod:NewCDTimer(20, 156834)--20-23 (cd for barrages themselves too inconsistent and useless. but CD for when he recharges his spines, quite consistent)
-local timerAcidTorrentCD			= mod:NewCDTimer(23, 156240)--Every 23 seconds
-local timerExplosiveShardCD			= mod:NewCDTimer(12, 156390)--Every 12-20 seconds
-local timerRetchedBlackrockCD		= mod:NewCDTimer(17, 156179)--Every 17-23 seconds
+local timerAcidTorrentCD			= mod:NewCDTimer("OptionVersion2", 23, 156240, nil, "Tank|Healer")--Every 23 seconds
+local timerExplosiveShardCD			= mod:NewCDTimer("OptionVersion2", 12, 156390, nil, "Melee")--Every 12-20 seconds
+local timerRetchedBlackrockCD		= mod:NewCDTimer("OptionVersion2", 17, 156179, nil, "Ranged")--Every 17-23 seconds
 
 local countdownAcidTorrent			= mod:NewCountdown(23, 156240, "Tank")
 
