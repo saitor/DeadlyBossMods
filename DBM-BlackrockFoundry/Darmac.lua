@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12563 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12578 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -134,10 +134,13 @@ local function updateBeastTimers(self, all, spellId)
 	if self.vb.FaultlineAbilites and (all or self:IsMythic() and spellId == 155462) then--Faultline
 		--Mythic Stuff
 	end
-	if self.vb.RylakAbilities then--Rylak also delays call of the pack too.
+	if self.vb.RylakAbilities then--Rylak delays call of the pack and pin down as well.
 		timerCallthePackCD:Start(17)
+		timerPinDownCD:Start(24)
 	else
-		timerCallthePackCD:Start(11)--Data supports that this timer resets to 11 at this time (although can still be delayed by boss casting other things like rend and tear or superheated shrap
+		--Timers are reset any time boss gains new abilites
+		timerCallthePackCD:Start(11)
+		timerPinDownCD:Start(12)
 	end
 end
 
