@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1196, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12472 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12575 $"):sub(12, -3))
 mod:SetCreatureID(78491)
 mod:SetEncounterID(1720)
 mod:SetZone()
@@ -135,7 +135,6 @@ function mod:SPELL_CAST_START(args)
 			end
 		end
 	elseif spellId == 159219 then
-		warnNecroticBreath:Show()
 		if self.Options.SpecWarn159219spell then--Special warning is enabled
 			specWarnNecroticBreath:Show()
 		else--Special warning isn't on, show regular one.
