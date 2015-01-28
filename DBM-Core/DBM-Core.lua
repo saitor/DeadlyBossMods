@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12585 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12586 $"):sub(12, -3)),
 	DisplayVersion = "6.0.14 alpha", -- the string that is shown as version
 	ReleaseRevision = 12542 -- the revision of the latest stable version that is available
 }
@@ -1373,6 +1373,23 @@ function DBM:ApplyProfile(name)
 	self.Bars:ApplyProfile("DBM")
 	self:RepositionFrames()
 	self:AddMsg(DBM_CORE_PROFILE_APPLIED:format(name))
+end
+
+function DBM:CopyProfile(name)
+	if not name or not DBM_AllSavedOptions[name] then 
+		self:AddMsg(DBM_CORE_PROFILE_COPY_ERROR:format(name or DBM_CORE_UNKNOWN))
+		return
+	elseif name == usedProfile then
+		self:AddMsg(DBM_CORE_PROFILE_COPY_ERROR_SELF)
+		return
+	end
+	DBM_AllSavedOptions[usedProfile] = DBM_AllSavedOptions[name]
+	self:AddDefaultOptions(DBM_AllSavedOptions[usedProfile], self.DefaultOptions)
+	self.Options = DBM_AllSavedOptions[usedProfile]
+	-- rearrange position
+	self.Bars:CopyProfile(name, "DBM")
+	self:RepositionFrames()
+	self:AddMsg(DBM_CORE_PROFILE_COPIED:format(name))
 end
 
 function DBM:DeleteProfile(name)
