@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12591 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12592 $"):sub(12, -3)),
 	DisplayVersion = "6.0.14 alpha", -- the string that is shown as version
 	ReleaseRevision = 12542 -- the revision of the latest stable version that is available
 }
@@ -1368,6 +1368,7 @@ function DBM:ApplyProfile(name)
 	end
 	usedProfile = name
 	DBM_UsedProfile = usedProfile
+	self:AddDefaultOptions(DBM_AllSavedOptions[usedProfile], self.DefaultOptions)
 	self.Options = DBM_AllSavedOptions[usedProfile]
 	-- rearrange position
 	self.Bars:ApplyProfile("DBM")
