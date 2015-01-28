@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1202, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12565 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12597 $"):sub(12, -3))
 mod:SetCreatureID(77182)
 mod:SetEncounterID(1696)
 mod:SetZone()
@@ -92,7 +92,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerRetchedBlackrockCD:Start(5)
 		timerExplosiveShardCD:Start(7)--7-9
 		timerAcidTorrentCD:Start(11)--11-12
-		countdownAcidTorrent:start(11)
+		countdownAcidTorrent:Start(11)
 		timerBlackrockSpinesCD:Start(15)
 	elseif spellId == 156834 then
 		local amount = args.amount or 0--amount reported for all (SPELL_AURA_APPLIED_DOSE) but 0 (SPELL_AURA_REMOVED)
