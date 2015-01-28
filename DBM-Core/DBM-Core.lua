@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12592 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12593 $"):sub(12, -3)),
 	DisplayVersion = "6.0.14 alpha", -- the string that is shown as version
 	ReleaseRevision = 12542 -- the revision of the latest stable version that is available
 }
@@ -2526,6 +2526,8 @@ function DBM:LoadModOptions(modId, inCombat, first)
 				for option, optionValue in pairs(savedOptions[id][profileNum]) do
 					if mod.DefaultOptions[option] == nil then
 						savedOptions[id][profileNum][option] = nil
+					elseif mod.DefaultOptions[option] and (type(mod.DefaultOptions[option]) == "table") then--recover broken dropdown option
+						savedOptions[id][profileNum][option] = mod.DefaultOptions[option].value
 					end
 				end
 			end
