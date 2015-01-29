@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12600 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12601 $"):sub(12, -3)),
 	DisplayVersion = "6.0.14 alpha", -- the string that is shown as version
 	ReleaseRevision = 12542 -- the revision of the latest stable version that is available
 }
@@ -88,7 +88,7 @@ DBM.DefaultOptions = {
 	CountdownVoice2 = "Kolt",
 	CountdownVoice3 = "Pewsey",
 	ChosenVoicePack = "None",
-	VoiceOverSpecW = false,
+	VoiceOverSpecW2 = "None",
 	AlwaysPlayVoice = false,
 	ShowCountdownText = false,
 	RaidWarningPosition = {
@@ -7751,9 +7751,9 @@ do
 			--This callback sucks, it needs useful information for external mods to listen to it better, such as mod and spellid
 			fireEvent("DBM_Announce", msg)
 			if self.sound then
-				if self.hasVoice and DBM.Options.ChosenVoicePack ~= "None" and not SWFilterDisabed and DBM.Options.VoiceOverSpecW and self.mod.Options[self.voiceOptionId] ~= false then return end
+				local soundId = self.option and self.mod.Options[self.option .. "SpecialWarningSound"] or self.flash
+				if self.hasVoice and DBM.Options.ChosenVoicePack ~= "None" and not SWFilterDisabed and (type(soundId) == "number" and DBM.Options.VoiceOverSpecW2 == "DefaultOnly" or DBM.Options.VoiceOverSpecW2 == "All") and self.mod.Options[self.voiceOptionId] ~= false then return end
 				if not self.option or self.mod.Options[self.option.."SpecialWarningSound"] ~= "None" then
-					local soundId = self.option and self.mod.Options[self.option .. "SpecialWarningSound"] or self.flash
 					DBM:PlaySpecialWarningSound(soundId or 1)
 				end
 			end
