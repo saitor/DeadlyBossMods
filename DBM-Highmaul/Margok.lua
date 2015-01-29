@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12580 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12608 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -656,7 +656,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		else
 			self.vb.playerHasMark = false
-			if spellId == 164178 and self:CheckNearby(38, args.destName) then
+			if spellId == 164178 and self:CheckNearby(39, args.destName) then
 				specWarnMarkOfChaosFortificationNear:Show(args.destName)
 				voiceMarkOfChaos:Play("justrun")
 			end
