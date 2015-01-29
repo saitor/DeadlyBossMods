@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 12602 $"):sub(12, -3)
+local revision =("$Revision: 12607 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -2381,7 +2381,7 @@ local function CreateOptionsMenu()
 		local voiceFilterArea		= spokenAlertsPanel:CreateArea(L.Area_VoicePackOptions, nil, 100, true)
 		local VPF1 					= voiceFilterArea:CreateCheckButton(L.SpecWarn_AlwaysVoice, true, nil, "AlwaysPlayVoice")
 		local voiceSWOptions = {
-			{	text	= NEVER,		value 	= "None"},
+			{	text	= L.SWFNever,		value 	= "None"},
 			{	text	= L.SWFDefaultOnly,	value 	= "DefaultOnly"},
 			{	text	= L.SWFAll,			value 	= "All"},
 		}
@@ -2392,7 +2392,6 @@ local function CreateOptionsMenu()
 
 		--spokenGeneralArea:AutoSetDimension()
 		countdownOptionsArea:AutoSetDimension()
-		voiceFilterArea:AutoSetDimension()
 		spokenAlertsPanel:SetMyOwnHeight()
 	end
 
