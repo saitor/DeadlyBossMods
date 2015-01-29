@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12597 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12598 $"):sub(12, -3)),
 	DisplayVersion = "6.0.14 alpha", -- the string that is shown as version
 	ReleaseRevision = 12542 -- the revision of the latest stable version that is available
 }
@@ -4377,9 +4377,10 @@ do
 		end
 	end
 	
-	function DBM:UNIT_TARGETABLE_CHANGED()
+	function DBM:UNIT_TARGETABLE_CHANGED(uId)
 		if DBM.Options.DebugLevel > 2 or (Transcriptor and Transcriptor:IsLogging()) then
-			self:Debug("UNIT_TARGETABLE_CHANGED event fired")
+			local active = UnitExists(uId) and "true" or "false"
+			self:Debug("UNIT_TARGETABLE_CHANGED event fired for "..UnitName(uId)..". Active: "..active)
 		end
 	end
 
