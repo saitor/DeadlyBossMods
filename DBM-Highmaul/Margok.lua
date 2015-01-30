@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12617 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12618 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -257,6 +257,17 @@ local function updateRangeFrame(self, markPreCast)
 		else--We got this far, no mark of chaos, no branded, fixate, no nothing, finally hide the range frame!
 			DBM.RangeCheck:Hide()
 		end
+	end
+end
+
+local function trippleMarkCheck(self, target, first)
+	updateRangeFrame(self)
+	if self:CheckNearby(36, target) then--Second and third check will use smaller range
+		specWarnMarkOfChaosFortificationNear:Show(target)
+		voiceMarkOfChaos:Play("justrun")
+	end
+	if first then
+		self:Schedule(2.5, trippleMarkCheck, target, self)
 	end
 end
 
@@ -683,9 +694,12 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		else
 			self.vb.playerHasMark = false
-			if spellId == 164178 and self:CheckNearby(39, args.destName) then
-				specWarnMarkOfChaosFortificationNear:Show(args.destName)
-				voiceMarkOfChaos:Play("justrun")
+			if spellId == 164178 then
+				if self:CheckNearby(39, args.destName) then
+					specWarnMarkOfChaosFortificationNear:Show(args.destName)
+					voiceMarkOfChaos:Play("justrun")
+				end
+				self:Schedule(3, trippleMarkCheck, self, args.destName, true)
 			end
 		end
 		updateRangeFrame(self)
@@ -750,6 +764,9 @@ function mod:SPELL_AURA_REMOVED(args)
 			self.vb.playerHasMark = false
 		end
 		updateRangeFrame(self)
+		if spellId == 164178 then
+			self:Unschedule(trippleMarkCheck)
+		end
 	elseif spellId == 157763 and args:IsPlayer() and self.Options.RangeFrame then
 		updateRangeFrame(self)
 	elseif args:IsSpellID(156225, 164004, 164005, 164006) then
