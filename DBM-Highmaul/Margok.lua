@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12613 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12614 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -67,7 +67,7 @@ local specWarnMarkOfChaosFortificationNear		= mod:NewSpecialWarningClose(164178,
 local yellMarkOfChaosFortification				= mod:NewYell(164178)
 local yellMarkOfChaosReplication				= mod:NewYell(164191)
 
-local specWarnForceNova							= mod:NewSpecialWarningSpell(157349, nil, nil, nil, 2, nil, true)
+local specWarnForceNova							= mod:NewSpecialWarningSpell(157349, nil, nil, nil, 2)
 local specWarnForceNovaRep						= mod:NewSpecialWarningMoveAway(164240, nil, nil, nil, 3, nil, true)
 
 local specWarnBranded							= mod:NewSpecialWarningStack(156225, nil, 5)--Debuff Name "Branded" for Arcane Wrath
