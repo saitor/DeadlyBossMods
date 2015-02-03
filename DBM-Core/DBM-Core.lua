@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12662 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12663 $"):sub(12, -3)),
 	DisplayVersion = "6.0.15 alpha", -- the string that is shown as version
 	ReleaseRevision = 12656 -- the revision of the latest stable version that is available
 }
@@ -159,7 +159,7 @@ DBM.DefaultOptions = {
 	HPFrameX = -50,
 	HPFrameY = 50,
 	HPFrameMaxEntries = 5,
-	WarningDuration = 5,
+	WarningDuration = 4,
 	WarningPoint = "CENTER",
 	WarningX = 0,
 	WarningY = 260,
