@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12667 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12668 $"):sub(12, -3)),
 	DisplayVersion = "6.0.15 alpha", -- the string that is shown as version
 	ReleaseRevision = 12656 -- the revision of the latest stable version that is available
 }
@@ -2904,6 +2904,7 @@ do
 		DBM.Options = DBM_AllSavedOptions[usedProfile] or {}
 		dbmIsEnabled = DBM.Options.Enabled or true
 		DBM:AddDefaultOptions(DBM.Options, DBM.DefaultOptions)
+		DBM_AllSavedOptions[usedProfile] = DBM.Options
 
 		-- load special warning options
 		DBM:UpdateWarningOptions()
