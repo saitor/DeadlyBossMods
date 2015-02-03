@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12665 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12666 $"):sub(12, -3)),
 	DisplayVersion = "6.0.15 alpha", -- the string that is shown as version
 	ReleaseRevision = 12656 -- the revision of the latest stable version that is available
 }
@@ -2895,6 +2895,11 @@ do
 		--migrate old options
 		if DBM_SavedOptions and not DBM_AllSavedOptions[usedProfile] then
 			DBM_AllSavedOptions[usedProfile] = DBM_SavedOptions
+		end
+		if not DBM_AllSavedOptions["Default"] then--Default doesn't exist, repair.
+			DBM:AddMsg("If you are seeing this error, please report it on deadlybossmods.com forums all info printed below this line")
+			DBM:AddMsg(DBM_UsedProfile..", "..usedProfile)
+			DBM:CreateProfile("Default")
 		end
 		DBM.Options = DBM_AllSavedOptions[usedProfile] or {}
 		dbmIsEnabled = DBM.Options.Enabled or true
