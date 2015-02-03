@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12674 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12675 $"):sub(12, -3)),
 	DisplayVersion = "6.0.15 alpha", -- the string that is shown as version
 	ReleaseRevision = 12656 -- the revision of the latest stable version that is available
 }
@@ -3725,10 +3725,12 @@ do
 	
 	syncHandlers["RBW3"] = function(sender, spellId, spellName)
 		if sender == playerName then return end
+		if not spellName then spellName = UNKNOWN end
+		local message = "RAID_BOSS_WHISPER on "..sender.." with spell of "..spellName.." ("..spellId..")"
 		if DBM.Options.DebugLevel > 2 or (Transcriptor and Transcriptor:IsLogging()) then
-			if not spellName then spellName = UNKNOWN end
-			DBM:Debug("RAID_BOSS_WHISPER on "..sender.." with spell of "..spellName.." ("..spellId..")")
+			DBM:Debug(message)
 		end
+		fireEvent("DBM_Announce", message)
 	end
 
 	-- beware, ugly and missplaced code ahead
