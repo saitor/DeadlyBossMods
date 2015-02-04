@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12691 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12692 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -138,7 +138,7 @@ local otherTrains = {
 	[23] = Reinforcements.." (2) "..ManOArms.." (3)",--+30 after 22
 	[24] = Train,--+15 after 23 (random train, seen 3 and 4 diff pulls)
 	[25] = Train.." (1)",--+20 after 24 (Possibly also random?)
-	[26] = Reinforcements.." (1, 4)",--+20 after 24
+	[26] = Reinforcements.." (1, 4)",--+20 after 25
 }
 
 local function fakeTrainYell(self)
@@ -348,7 +348,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
 			else
 				timerTrainCD:Start(5, count)--Show timer for incoming train for current yell if we have no data for next
 			end
-			if count == 7 or count == 9 or count == 17 then--I'm sure they spawn again sometime later, find that data
+			if count == 7 or count == 17 or count == 23 then--I'm sure they spawn again sometime later, find that data
 				specWarnManOArms:Show()
 			end
 		end
