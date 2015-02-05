@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12697 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12715 $"):sub(12, -3))
 mod:SetCreatureID(76809, 99999)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -166,7 +166,11 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif spellId == 158345 and self:AntiSpam(10, 3) then--Might be SPELL_CAST_SUCCESS instead.
 		specWarnShieldsDown:Show()
-		timerShieldsDown:Start()
+		if self:IsDifficulty("normal", "lfr") then--40 seconds on normal. at least that much on LFR too, probably even longer in LFR.
+			timerShieldsDown:Start(40)
+		else
+			timerShieldsDown:Start()--25 in heroic, unknown on mythic
+		end
 	elseif spellId == 155242 then
 		local amount = args.amount or 1
 		warnHeat:Show(args.destName, amount)
