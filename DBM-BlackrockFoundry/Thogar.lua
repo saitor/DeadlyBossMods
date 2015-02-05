@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12695 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12704 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -320,7 +320,11 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
 		self.vb.trainCount = self.vb.trainCount + 1
 		local count = self.vb.trainCount
 		warnTrain:Show(count)
-		countdownTrain:Start()--All trains are delayed 5 seconds from yell now, so we can just put 5 second countdown here.
+		if msg == "Fake" then
+			countdownTrain:Start(2.5)
+		else
+			countdownTrain:Start()
+		end
 		--self:Schedule(5, laneCheck)--disable for now
 		if self:IsMythic() then
 			if mythicTrains[count] then
