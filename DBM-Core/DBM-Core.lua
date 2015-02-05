@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12724 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12725 $"):sub(12, -3)),
 	DisplayVersion = "6.0.15 alpha", -- the string that is shown as version
 	ReleaseRevision = 12656 -- the revision of the latest stable version that is available
 }
@@ -201,7 +201,9 @@ DBM.DefaultOptions = {
 	DontShowFarWarnings = true,
 	DontSendBossWhispers = false,
 	DontSetIcons = false,
+	DontRestoreIcons = false,
 	DontShowRangeFrame = false,
+	DontRestoreRange = false,
 	DontShowInfoFrame = false,
 	DontShowHealthFrame = false,
 	DontPlayCountdowns = false,
@@ -1699,7 +1701,7 @@ end
 do
 	local function updateRangeFrame(r, reverse)
 		if DBM.RangeCheck:IsShown() then
-			DBM.RangeCheck:Hide()
+			DBM.RangeCheck:Hide(true)
 		else
 			if r and (r < 201) then
 				DBM.RangeCheck:Show(r, nil, true, nil, reverse)
@@ -4974,7 +4976,7 @@ do
 				mod.inCombatOnlyEventsRegistered = nil
 			end
 			mod:Stop()
-			if enableIcons and not self.Options.DontSetIcons then
+			if enableIcons and not self.Options.DontSetIcons and not self.Options.DontRestoreIcons then
 				-- restore saved previous icon
 				for uId, icon in pairs(mod.iconRestore) do
 					SetRaidTarget(uId, icon)
@@ -5560,6 +5562,7 @@ do
 			self.Options.sfxDisabled = nil
 			SetCVar("Sound_EnableSFX", 1)
 		end
+		if self.Options.RestoreRange then self.Options.RestoreRange = nil end--User DCed while this was true, clear it
 	end
 end
 
