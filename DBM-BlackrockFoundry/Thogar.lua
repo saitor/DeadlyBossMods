@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12712 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12713 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -445,9 +445,9 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
 			local expectedTime
 			if count == 2 or count == 4 or count == 6 or count == 18 then
 				expectedTime = 5
-			elseif count == 1 or count == 10 or count == 14 or count == 15 or count == 20 or count == 23 then
+			elseif count == 1 or count == 10 or count == 14 or count == 15 or count == 20  then
 				expectedTime = 10
-			elseif count == 3 or count == 8 or count == 11 or count == 16 then
+			elseif count == 3 or count == 8 or count == 11 or count == 16 or count == 23 then
 				expectedTime = 15
 			elseif count == 13 or count == 17 or count == 24 or count == 25 then
 				expectedTime = 20
