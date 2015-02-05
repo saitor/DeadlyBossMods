@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12711 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12712 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -228,18 +228,18 @@ local function showTrainWarning()
 end
 
 local function laneCheck()
-	local posX, posY = UnitPosition("player")
+	local posX = UnitPosition("player")--room is perfrect square, y coord not needed.
 	local train = self.vb.trainCount
 	local trainTable = mod:IsMythic() and mythicTrains or otherTrains
-	-- need map data
 	local playerLane
-	if posX > 0 and posY > 0 then-- need map data
+	-- map coord from http://mysticalos.com/images/DBM/ThogarData/1.jpeg http://mysticalos.com/images/DBM/ThogarData/2.jpeg http://mysticalos.com/images/DBM/ThogarData/3.jpeg http://mysticalos.com/images/DBM/ThogarData/4.jpeg
+	if posX > 577.8 then
 		playerLane = 1
-	elseif posX > 0 and posY > 0 then-- need map data
+	elseif posX > 553.8 then
 		playerLane = 2
-	elseif posX > 0 and posY > 0 then-- need map data
+	elseif posX > 529.6 then
 		playerLane = 3
-	else-- need map data
+	else
 		playerLane = 4
 	end
 	if trainTable[train][playerLane] then
@@ -386,11 +386,11 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
 		showTrainWarning()
 		if msg == "Fake" then
 			countdownTrain:Start(2.5)
-			--self:Schedule(1.5, laneCheck)--disable for now
+			self:Schedule(1.5, laneCheck)
 			self:Schedule(2.5, showInfoFrame)
 		else
 			countdownTrain:Start()
-			--self:Schedule(4, laneCheck)--disable for now
+			self:Schedule(4, laneCheck)
 			self:Schedule(5, showInfoFrame)
 		end
 		if self:IsMythic() then
