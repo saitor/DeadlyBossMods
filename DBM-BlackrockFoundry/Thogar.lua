@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12710 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12711 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -250,11 +250,18 @@ end
 local lines = {}
 
 local function sortInfoFrame(a, b)
-	local a = tonumber(string.sub(a, 1, 2)) or string.sub(a, 1, 2)
-	local b = tonumber(string.sub(b, 1, 2)) or string.sub(b, 1, 2)
-	if not a then a = 99 end
-	if not b then b = 99 end
-	if a < b then return true else return false end
+	local c = string.match(a, "^%d")
+	local d = string.match(b, "^%d")
+	print(c, d)
+	if c and not d then
+		return true
+	elseif not c and d then
+		return false
+	elseif c and d and c < d then 
+		return true
+	else
+		return false
+	end
 end
 
 local function updateInfoFrame()
