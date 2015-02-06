@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12731 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12740 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -317,8 +317,10 @@ function mod:OnCombatStart(delay)
 	end
 	if self:IsMythic() then
 		timerTrainCD:Start(12-delay, 1)
+		self:Schedule(14.5, fakeTrainYell, self)
 	else
 		timerTrainCD:Start(17-delay, 1)
+		self:Schedule(19.5, fakeTrainYell, self)
 	end
 	showInfoFrame()
 end
