@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12676 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12733 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -22,6 +22,8 @@ mod:RegisterEventsInCombat(
 	"RAID_BOSS_WHISPER",
 	"CHAT_MSG_RAID_BOSS_EMOTE"
 )
+
+mod:SetBossHealthInfo(77557, 77231, 77477)
 
 --TODO, find out how many bombardments there are so timer doesn't start after last one.
 --TODO, timer recovery when leaving boat back to main platform (how do we detect leaving boat? never gotten a log where people return.)
