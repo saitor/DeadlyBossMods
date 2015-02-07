@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12772 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12773 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -41,6 +41,7 @@ local specWarnRuptureOn			= mod:NewSpecialWarningYou(156932)
 local specWarnRupture			= mod:NewSpecialWarningMove(156932, nil, nil, nil, nil, nil, 2)
 local specWarnFixate			= mod:NewSpecialWarningYou(155196)
 local specWarnMeltYou			= mod:NewSpecialWarningYou(155225)
+local specWarnMeltNear			= mod:NewSpecialWarningClose(155225, false)
 local specWarnMelt				= mod:NewSpecialWarningMove(155223, nil, nil, nil, nil, nil, 2)
 local specWarnCauterizeWounds	= mod:NewSpecialWarningInterrupt(155186, "-Healer")--if spammy, will switch to target/focus type only
 local specWarnPyroclasm			= mod:NewSpecialWarningInterrupt(156937, false)
@@ -187,6 +188,8 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnMelt:CombinedShow(0.5, args.destName)
 		if args:IsPlayer() then
 			specWarnMeltYou:Show()
+		elseif self:CheckNearby(8, args.destName) then
+			specWarnMeltNear:Show()
 		end
 	elseif spellId == 156934 then
 		warnRupture:CombinedShow(0.5, args.destName)
