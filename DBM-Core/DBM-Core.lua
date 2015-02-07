@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12754 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12755 $"):sub(12, -3)),
 	DisplayVersion = "6.0.15 alpha", -- the string that is shown as version
 	ReleaseRevision = 12656 -- the revision of the latest stable version that is available
 }
@@ -2552,8 +2552,13 @@ function DBM:LoadModOptions(modId, inCombat, first)
 		else
 			savedOptions[id][profileNum] = savedOptions[id][profileNum] or mod.Options
 			--check new option
-			for option, optionValue in pairs(mod.Options) do
+			for option, optionValue in pairs(mod.DefaultOptions) do
 				if savedOptions[id][profileNum][option] == nil then
+					if type(optionValue) == "table" then
+						optionValue = optionValue.value
+					elseif type(optionValue) == "string" then
+						optionValue = mod:GetRoleFlagValue(optionValue)
+					end
 					savedOptions[id][profileNum][option] = optionValue
 				end
 			end
