@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12759 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12760 $"):sub(12, -3)),
 	DisplayVersion = "6.0.15 alpha", -- the string that is shown as version
 	ReleaseRevision = 12656 -- the revision of the latest stable version that is available
 }
@@ -8303,8 +8303,13 @@ do
 		return newSpecialWarning(self, "count", text, nil, optionDefault, ...)
 	end
 
-	function bossModPrototype:NewSpecialWarningStack(text, optionDefault, stacks, ...)
-		return newSpecialWarning(self, "stack", text, stacks, optionDefault, ...)
+	function bossModPrototype:NewSpecialWarningStack(spellId, stacks, optionDefault, optionName, noSound, runSound, optionVersion, hasVoice)
+		if type(spellId) == "string" and spellId:match("OptionVersion") then
+			local temp = optionVersion
+			optionVersion = string.sub(spellId, 14)
+			spellId, stacks, optionDefault, optionName, noSound, runSound, optionVersion, hasVoice = stacks, optionDefault, optionName, noSound, runSound, temp, optionVersion, hasVoice
+		end
+		return newSpecialWarning(self, "stack", spellId, stacks, optionDefault, optionName, noSound, runSound, optionVersion, hasVoice)
 	end
 
 	function bossModPrototype:NewSpecialWarningSwitch(text, optionDefault, ...)
@@ -8315,8 +8320,13 @@ do
 		return newSpecialWarning(self, "switchcount", text, nil, optionDefault, ...)
 	end
 
-	function bossModPrototype:NewSpecialWarningPreWarn(text, optionDefault, time, ...)
-		return newSpecialWarning(self, "prewarn", text, time, optionDefault, ...)
+	function bossModPrototype:NewSpecialWarningPreWarn(spellId, stacks, optionDefault, optionName, noSound, runSound, optionVersion, hasVoice)
+		if type(spellId) == "string" and spellId:match("OptionVersion") then
+			local temp = optionVersion
+			optionVersion = string.sub(spellId, 14)
+			spellId, stacks, optionDefault, optionName, noSound, runSound, optionVersion, hasVoice = stacks, optionDefault, optionName, noSound, runSound, temp, optionVersion, hasVoice
+		end
+		return newSpecialWarning(self, "prewarn", spellId, stacks, optionDefault, optionName, noSound, runSound, optionVersion, hasVoice)
 	end
 
 	function DBM:PlayCountSound(number, forceVoice)
