@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12746 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12747 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -55,6 +55,7 @@ local voiceTrain					= mod:NewVoice(176312) --see mythicVoice{} otherVoice{} tab
 local voiceProtoGrenade				= mod:NewVoice(165195) --runaway
 
 mod:AddInfoFrameOption(176312)
+mod:AddSetIconOption("SetIconOnAdds", "ej9549", false, true)
 
 mod.vb.trainCount = 0
 local MovingTrain = GetSpellInfo(176312)
@@ -453,6 +454,10 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
 			end
 			if count == 7 or count == 17 or count == 23 then--I'm sure they spawn again sometime later, find that data
 				specWarnManOArms:Show()
+				if self.Options.SetIconOnAdds then
+					self:ScanForMobs(80791, 0, 8, 2, 0.2, 15)--Man At Arms scanner marking 8 down
+					self:ScanForMobs(87841, 1, 1, 2, 0.2, 15)--Fire Mender scanner marking 1 up
+				end
 			end
 		end
 	end
