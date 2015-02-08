@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1161, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12784 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12785 $"):sub(12, -3))
 mod:SetCreatureID(76877)
 mod:SetEncounterID(1691)
 mod:SetZone()
@@ -191,7 +191,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		self:Schedule(3, clearRampage, self)
 		timerPetrifyingSlamCD:Start(26, 1)--VERIFY
 --		timerOverheadSmashCD:Start(47, 1)--VERIFY
-		if self:IsDifficulty("normal", "lfr") then
+		if not self:IsMythic() then
 			timerInfernoSliceCD:Start(17.5, 1)
 			countdownInfernoSlice:Start(17.5)
 		else
