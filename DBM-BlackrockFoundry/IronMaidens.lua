@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12776 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12777 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -91,9 +91,6 @@ mod:AddTimerLine(Ship)
 local timerShipCD						= mod:NewNextTimer(198, "ej10019", nil, nil, nil, 76204)
 local timerBombardmentAlphaCD			= mod:NewNextTimer(18, 157854)
 local timerWarmingUp					= mod:NewCastTimer(90, 158849)--Word is not good.
-----Blackrock Deckhand
-----Shattered Hand Deckhand
-----Bleeding Hollow Deckhand
 --Ground
 ----Admiral Gar'an
 mod:AddTimerLine(Garan)
