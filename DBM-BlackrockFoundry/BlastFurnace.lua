@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12778 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12795 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -22,6 +22,7 @@ mod:RegisterEventsInCombat(
 )
 
 --TODO, figure out how to detect OTHER add spawns besides operator and get timers for them too. It's likely the'll require ugly scheduling and /yell logging. 
+local warnBlastFrequency		= mod:NewAnnounce("warnBlastFrequency", 1, 155209, "Healer")
 local warnBomb					= mod:NewTargetAnnounce(155192, 4)
 local warnDropBombs				= mod:NewSpellAnnounce("OptionVersion2", 174726, 1, nil, "-Tank")
 local warnEngineer				= mod:NewSpellAnnounce("ej9649", 2, 155179)
@@ -243,7 +244,7 @@ function mod:UNIT_DIED(args)
 			timerEngineer:Cancel()
 			countdownEngineer:Cancel()
 			timerBellowsOperator:Cancel()
-			countdownBellowsOperator:Cancel()	
+			countdownBellowsOperator:Cancel()
 			voicePhaseChange:Play("ptwo")
 		end
 	elseif cid == 76809 then
@@ -273,6 +274,7 @@ do
 				powerRate = 5
 			end
 			if self.vb.lastTotal > totalTime then--CD changed
+				warnBlastFrequency:Show(totalTime)
 				local bossPower = UnitPower("boss1") --Get Boss Power
 				local elapsed = bossPower / powerRate
 				timerBlastCD:Update(elapsed, totalTime)
