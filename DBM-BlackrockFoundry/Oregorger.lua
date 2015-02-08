@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1202, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12803 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12804 $"):sub(12, -3))
 mod:SetCreatureID(77182)
 mod:SetEncounterID(1696)
 mod:SetZone()
@@ -29,7 +29,7 @@ local specWarnAcidTorrent			= mod:NewSpecialWarningSpell(156240, "Tank", nil, ni
 local yellRetchedBlackrock			= mod:NewYell(156179)
 local specWarnRetchedBlackrockNear	= mod:NewSpecialWarningClose(156179)
 local specWarnRetchedBlackrock		= mod:NewSpecialWarningMove(156203, nil, nil, nil, nil, nil, 2)
-local specWarnExplosiveShard		= mod:NewSpecialWarningDodge("OptionVersion2", 156390, "-Tank|Melee")--No target scanning available. targets ONLY melee (except tanks)
+local specWarnExplosiveShard		= mod:NewSpecialWarningDodge("OptionVersion3", 156390, "MeleeDps")--No target scanning available. targets ONLY melee (except tanks)
 local specWarnHungerDrive			= mod:NewSpecialWarningSpell(165127, nil, nil, nil, 2)
 local specWarnHungerDriveEnded		= mod:NewSpecialWarningFades(165127)
 
