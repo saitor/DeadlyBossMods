@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12796 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12797 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -257,19 +257,19 @@ do
 	function mod:UNIT_POWER_FREQUENT(uId, type)
 		local totalTime = 30
 		if type == "ALTERNATE" then
-			local altPower = UnitPower(uId, ALTERNATE_POWER_INDEX)
+			local altPower = UnitPower(uId, 10)
 			local powerRate = 5
 			--Each time boss breaks interval of 25%. CD is reduced
-			if altpower == 100 then
+			if altPower == 100 then
 				totalTime = 5.5--5-6
 				powerRate = 18.18
-			elseif altpower > 74 then
+			elseif altPower > 74 then
 				totalTime = 9--9-10
 				powerRate = 11.11
-			elseif altpower > 49 then
+			elseif altPower > 49 then
 				totalTime = 15--15-16
 				powerRate = 6.66
-			elseif altpower > 24 then
+			elseif altPower > 24 then
 				totalTime = 20
 				powerRate = 5
 			end
