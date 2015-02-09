@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1161, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12811 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12821 $"):sub(12, -3))
 mod:SetCreatureID(76877)
 mod:SetEncounterID(1691)
 mod:SetZone()
@@ -92,8 +92,10 @@ function mod:OnCombatStart(delay)
 		self:RegisterShortTermEvents(
 			"UNIT_POWER_FREQUENT boss1"
 			)
-		if self:IsHeroic() then--6 min berserk on heroic. none found for normal, even going 14 min pulls
+		if self:IsHeroic() then
 			berserkTimer:Start(-delay)
+		elseif self:IsNormal() then
+			berserkTimer:Start(480-delay)
 		end
 	end
 	timerSpecialCD:Start(-delay)
