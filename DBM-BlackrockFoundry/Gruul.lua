@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1161, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12785 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12811 $"):sub(12, -3))
 mod:SetCreatureID(76877)
 mod:SetEncounterID(1691)
 mod:SetZone()
@@ -39,6 +39,8 @@ local timerOverheadSmashCD			= mod:NewCDCountTimer(25, 155301)--25-42 variation
 local timerShatter					= mod:NewCastTimer(8, 155529)
 local timerRampage					= mod:NewBuffActiveTimer(30, 155539)
 local timerRampageCD				= mod:NewCDTimer(107, 155539)--Variable, may be even shorter
+
+local berserkTimer					= mod:NewBerserkTimer(360)
 
 local countdownInfernoSlice			= mod:NewCountdown(13, 155080, "Tank")
 
@@ -90,6 +92,9 @@ function mod:OnCombatStart(delay)
 		self:RegisterShortTermEvents(
 			"UNIT_POWER_FREQUENT boss1"
 			)
+		if self:IsHeroic() then--6 min berserk on heroic. none found for normal, even going 14 min pulls
+			berserkTimer:Start(-delay)
+		end
 	end
 	timerSpecialCD:Start(-delay)
 	timerRampageCD:Start(-delay)--Variable. But seen as low as 108 in LFR, normal, mythic
