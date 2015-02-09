@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12813 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12814 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -65,7 +65,7 @@ local timerAttachSlagBombsCD		= mod:NewCDTimer(26, 157000)--26-28. Do to increas
 local timerSlagBomb					= mod:NewCastTimer(5, 157015)
 
 local countdownShatteringSmash		= mod:NewCountdown(45.5, 155992)
-local countdownSlagBombs			= mod:NewCountdown("Alt25", 155992, "Melee")
+local countdownSlagBombs			= mod:NewCountdown("Alt25", 156030, "Melee")
 local countdownMarkedforDeath		= mod:NewCountdown("AltTwo25", 156096, "-Tank")
 
 local voicePhaseChange				= mod:NewVoice(nil, nil, DBM_CORE_AUTO_VOICE2_OPTION_TEXT)
