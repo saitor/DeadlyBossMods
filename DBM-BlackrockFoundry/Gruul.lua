@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1161, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12821 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12830 $"):sub(12, -3))
 mod:SetCreatureID(76877)
 mod:SetEncounterID(1691)
 mod:SetZone()
@@ -48,8 +48,6 @@ local voiceInfernoSlice				= mod:NewVoice(155080) --gathershare. maybe change to
 --local voiceCrumblingRoar			= mod:NewVoice(155730)
 local voiceOverheadSmash			= mod:NewVoice(155301) --shockwave
 local voiceShatter					= mod:NewVoice(155326)--Spread/Scatter
-
---local berserkTimer				= mod:NewBerserkTimer(360)--Said to be 6 minutes. Unconfirmed.
 
 mod:AddRangeFrameOption(8, 155530)
 

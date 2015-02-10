@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12816 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12830 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -69,6 +69,8 @@ local timerBellowsOperator		= mod:NewNextTimer(64, "ej9650", nil, nil, nil, 1551
 --Phase 2
 local timerShieldsDown			= mod:NewBuffActiveTimer(30, 158345, nil, "Dps")--Anyone else need?
 
+local berserkTimer				= mod:NewBerserkTimer(780)
+
 local countdownBlast			= mod:NewCountdown(30, 155209, "Healer")
 local countdownBellowsOperator	= mod:NewCountdown("OptionVersion2", "Alt64", "ej9650", "-Healer")
 local countdownEngineer			= mod:NewCountdown("OptionVersion2", "AltTwo41", "ej9649", "Tank")
@@ -107,6 +109,7 @@ function mod:OnCombatStart(delay)
 	countdownEngineer:Start(55)
 	timerBlastCD:Start(30-delay)
 	countdownBlast:Start(30-delay)
+	berserkTimer:Start(-delay)
 end
 
 function mod:OnCombatEnd()
