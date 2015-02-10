@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12839 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12840 $"):sub(12, -3)),
 	DisplayVersion = "6.0.16 alpha", -- the string that is shown as version
 	ReleaseRevision = 12764 -- the revision of the latest stable version that is available
 }
@@ -204,7 +204,7 @@ DBM.DefaultOptions = {
 	DontShowRangeFrame = false,
 	DontRestoreRange = false,
 	DontShowInfoFrame = false,
-	DontShowHudMap = false,
+	DontShowHudMap2 = false,
 	DontShowHealthFrame = false,
 	DontPlayCountdowns = false,
 	DontShowPT2 = false,
