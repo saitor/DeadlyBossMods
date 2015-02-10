@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12826 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12827 $"):sub(12, -3)),
 	DisplayVersion = "6.0.16 alpha", -- the string that is shown as version
 	ReleaseRevision = 12764 -- the revision of the latest stable version that is available
 }
@@ -4856,6 +4856,9 @@ do
 						end
 					end
 				end
+				if mod.Options.HudMap then--mod has a hudmap option
+					DBMHudMap:OnEnable()
+				end
 				--call OnCombatStart
 				if mod.OnCombatStart and not mod.ignoreBestkill then
 					mod:OnCombatStart(delay or 0, event == "PLAYER_REGEN_DISABLED_AND_MESSAGE")
@@ -5183,6 +5186,9 @@ do
 				end
 			end
 			if mod.OnCombatEnd then mod:OnCombatEnd(wipe) end
+			if mod.Options.HudMap then--mod has a hudmap option
+				DBMHudMap:OnDisable()
+			end
 			if #inCombat == 0 then--prevent error if you pulled multiple boss. (Earth, Wind and Fire)
 				self:Schedule(10, self.StopLogging, self)--small delay to catch kill/died combatlog events
 				self:HideBlizzardEvents(0)
