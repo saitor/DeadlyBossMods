@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12822 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12823 $"):sub(12, -3)),
 	DisplayVersion = "6.0.16 alpha", -- the string that is shown as version
 	ReleaseRevision = 12764 -- the revision of the latest stable version that is available
 }
@@ -204,6 +204,7 @@ DBM.DefaultOptions = {
 	DontShowRangeFrame = false,
 	DontRestoreRange = false,
 	DontShowInfoFrame = false,
+	DontShowHudMap = true,--Lets disable it by default, and let people ease into it. Re-determine based on feedback whether it should be on or off by default
 	DontShowHealthFrame = false,
 	DontPlayCountdowns = false,
 	DontShowPT2 = false,
