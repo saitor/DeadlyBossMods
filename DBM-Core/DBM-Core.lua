@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12821 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12822 $"):sub(12, -3)),
 	DisplayVersion = "6.0.16 alpha", -- the string that is shown as version
 	ReleaseRevision = 12764 -- the revision of the latest stable version that is available
 }
@@ -9068,6 +9068,20 @@ function bossModPrototype:AddRangeFrameOption(range, spellId, default)
 		self.localization.options["RangeFrame"] = DBM_CORE_AUTO_RANGE_OPTION_TEXT:format(range, spellId)
 	else
 		self.localization.options["RangeFrame"] = DBM_CORE_AUTO_RANGE_OPTION_TEXT_SHORT:format(range)
+	end
+end
+
+function bossModPrototype:AddHudMapOption(spellId, default)
+	self.DefaultOptions["HudMap"] = (default == nil) or default
+	if default and type(default) == "string" then
+		default = self:GetRoleFlagValue(default)
+	end
+	self.Options["HudMap"] = (default == nil) or default
+	self:SetOptionCategory("HudMap", "misc")
+	if spellId then
+		self.localization.options["HudMap"] = DBM_CORE_AUTO_HUD_OPTION_TEXT:format(spellId)
+	else
+		self.localization.options["HudMap"] = DBM_CORE_AUTO_HUD_OPTION_TEXT_MULTI
 	end
 end
 
