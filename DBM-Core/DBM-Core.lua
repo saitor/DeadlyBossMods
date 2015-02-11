@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12865 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12866 $"):sub(12, -3)),
 	DisplayVersion = "6.0.16 alpha", -- the string that is shown as version
 	ReleaseRevision = 12764 -- the revision of the latest stable version that is available
 }
@@ -6132,7 +6132,7 @@ function bossModPrototype:RegisterMarker(marker)
 end
 
 function bossModPrototype:FreeMarker(marker, owner, id, noAnimate)
-	return DBMHudMap:free(marker, owner, id, noAnimate)
+	return DBMHudMap.free(marker, owner, id, noAnimate)
 end
 
 function bossModPrototype:FreeMarkers()
