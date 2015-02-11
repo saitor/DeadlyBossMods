@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12849 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12850 $"):sub(12, -3)),
 	DisplayVersion = "6.0.16 alpha", -- the string that is shown as version
 	ReleaseRevision = 12764 -- the revision of the latest stable version that is available
 }
@@ -6126,26 +6126,29 @@ function bossModPrototype:RegisterOnUpdateHandler(func, interval)
 	updateFunctions[self] = func
 end
 
-function bossModPrototype:RegisterMarker(marker)
-	DBMHudMap:RegisterEncounterMarker(marker)
-	return marker
-end
+do
+	local DBMHudMap = DBMHudMap
+	function bossModPrototype:RegisterMarker(marker)
+		DBMHudMap:RegisterEncounterMarker(marker)
+		return marker
+	end
 
-function bossModPrototype:FreeMarker(marker)
-	DBMHudMap:FreeEncounterMarker(marker)
-	return marker
-end
+	function bossModPrototype:FreeMarker(marker)
+		DBMHudMap:FreeEncounterMarker(marker)
+		return marker
+	end
 
-function bossModPrototype:FreeMarkers()
-	DBMHudMap:FreeEncounterMarkers()
-end
+	function bossModPrototype:FreeMarkers()
+		DBMHudMap:FreeEncounterMarkers()
+	end
 
-function bossModPrototype:EnableHudMap()
-	DBMHudMap:Enable()
-end
+	function bossModPrototype:EnableHudMap()
+		DBMHudMap:Enable()
+	end
 
-function bossModPrototype:DisableHudMap()
-	DBMHudMap:Disable()
+	function bossModPrototype:DisableHudMap()
+		DBMHudMap:Disable()
+	end
 end
 
 --------------
