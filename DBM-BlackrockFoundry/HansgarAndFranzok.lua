@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1155, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12863 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12867 $"):sub(12, -3))
 mod:SetCreatureID(76974, 76973)
 mod:SetEncounterID(1693)
 mod:SetZone()
@@ -166,11 +166,11 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	--Ended?
 	--"<95.64 23:57:14> [UNIT_SPELLCAST_SUCCEEDED] Hans'gar [[boss1:Jump Slam::0:157925]]", -- [10473]
 	elseif spellId == 157926 then
-		DBM:Debug("Jump Slam::0:157926 on "..UnitTarget(uId))
+		DBM:Debug("Jump Slam::0:157926 on "..UnitName(uId.."target"))
 	elseif spellId == 157922 then--Likely best canidate for target scan, at least for first jump, unless he looks at target during activation
-		DBM:Debug("Jump Slam::0:157922 on "..UnitTarget(uId))
+		DBM:Debug("Jump Slam::0:157922 on "..UnitName(uId.."target"))
 	elseif spellId == 157923 then--Or possibly this, for 2nd jump and later, if he looks at NEXT target before casting 157922 again
-		DBM:Debug("Jump Slam::0:157923 on "..UnitTarget(uId))
+		DBM:Debug("Jump Slam::0:157923 on "..UnitName(uId.."target"))
 	end
 end
 
