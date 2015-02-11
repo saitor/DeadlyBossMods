@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12861 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12863 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -441,17 +441,23 @@ function mod:OnSync(msg, guid)
 		end
 		timerBombardmentAlphaCD:Start(15)
 		if guid == Marak then
-			timerBloodRitualCD:Cancel()
-			timerHeartSeekerCD:Cancel()
+			self:Schedule(7, function()
+				timerBloodRitualCD:Cancel()
+				timerHeartSeekerCD:Cancel()
+			end)
 			voiceShip:Play("1695ukurogg")
 		elseif guid == Sorka then
-			timerBladeDashCD:Cancel()
-			timerConvulsiveShadowsCD:Cancel()
-			timerDarkHuntCD:Cancel()
+			self:Schedule(7, function()
+				timerBladeDashCD:Cancel()
+				timerConvulsiveShadowsCD:Cancel()
+				timerDarkHuntCD:Cancel()
+			end)
 			voiceShip:Play("1695gorak")
 		elseif guid == Garan then
-			timerRapidFireCD:Cancel()
-			timerPenetratingShotCD:Cancel()
+			self:Schedule(7, function()
+				timerRapidFireCD:Cancel()
+				timerPenetratingShotCD:Cancel()
+			end)
 			voiceShip:Play("1695uktar")
 		end
 	end
@@ -481,6 +487,7 @@ function mod:UNIT_POWER_FREQUENT(_, powerType)
 		timerHeartSeekerCD:Cancel()
 		timerConvulsiveShadowsCD:Cancel()
 		timerPenetratingShotCD:Cancel()
+		timerBombardmentAlphaCD:Cancel()
 	elseif power == 0 and playerOnBoat then -- leave boat
 		playerOnBoat = false
 		recoverTimers()

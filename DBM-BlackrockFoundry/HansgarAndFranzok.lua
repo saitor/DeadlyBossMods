@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1155, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12858 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12863 $"):sub(12, -3))
 mod:SetCreatureID(76974, 76973)
 mod:SetEncounterID(1693)
 mod:SetZone()
@@ -188,8 +188,8 @@ function mod:UNIT_TARGETABLE_CHANGED(uId)
 				voiceEnvironmentalThreats:Play("gather")--Must restack for smart stampers
 			else
 				if self.vb.phase == 2 then
-					specWarnSearingPlatesEnd:Schedule(3)
-					voiceEnvironmentalThreats:Schedule(3, "safenow")
+					specWarnSearingPlatesEnd:Show()
+					voiceEnvironmentalThreats:Play("safenow")
 				else
 					specWarnStampersEnd:Show()
 					voiceEnvironmentalThreats:Play("safenow")
