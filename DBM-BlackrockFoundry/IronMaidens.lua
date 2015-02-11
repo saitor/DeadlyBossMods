@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12855 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12861 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -334,7 +334,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			self:SetIcon(args.destName, 2)
 		end
 		if self.Options.HudMapOnBloodRitual and not BloodritualMarkers[args.destName] then
-			BloodritualMarkers[args.destName] = self:RegisterMarker(DBMHudMap:PlaceRangeMarkerOnPartyMember("highlight", args.destName, 5, 5, 1, 0, 0, 0.5):Pulse(0.5, 0.5))
+			BloodritualMarkers[args.destName] = self:RegisterMarker(DBMHudMap:PlaceRangeMarkerOnPartyMember("highlight", args.destName, 5, 7, 1, 0, 0, 0.5):Pulse(0.5, 0.5))
 		end
 	elseif spellId == 156631 and (noFilter or not isPlayerOnBoat()) then
 		if self:AntiSpam(5, args.destName) then--check antispam so we don't warn if we got a user sync 3 seconds ago.
