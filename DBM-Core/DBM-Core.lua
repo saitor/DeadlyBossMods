@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12871 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12872 $"):sub(12, -3)),
 	DisplayVersion = "6.0.16 alpha", -- the string that is shown as version
 	ReleaseRevision = 12764 -- the revision of the latest stable version that is available
 }
@@ -7465,7 +7465,7 @@ do
 				end
 			end
 			--This callback sucks, it needs useful information for external mods to listen to it better, such as mod and spellid
-			fireEvent("DBM_Announce", message)
+			fireEvent("DBM_Announce", text)
 		else
 			self.combinedcount = 0
 			self.combinedtext = {}
