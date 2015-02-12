@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1155, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12883 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12885 $"):sub(12, -3))
 mod:SetCreatureID(76974, 76973)
 mod:SetEncounterID(1693)
 mod:SetZone()
@@ -31,7 +31,7 @@ local specWarnDisruptingRoar			= mod:NewSpecialWarningCast("OptionVersion2", 160
 local specWarnShatteredVertebrae		= mod:NewSpecialWarningStack(157139, nil, 2, nil, nil, nil, nil, 2)--stack guessed
 local specWarnShatteredVertebraeOther	= mod:NewSpecialWarningTaunt(157139)
 --Move specWarnCripplingSupplex to a health check, warn when near 85, 55, or 25%
-local specWarnCripplingSupplex			= mod:NewSpecialWarningSoon("OptionVersion2", 156938, "Tank|Healer", 9, nil, nil, 3)--pop a cooldown.
+local specWarnCripplingSupplex			= mod:NewSpecialWarningPreWarn("OptionVersion2", 156938, "Tank|Healer", 9, nil, nil, 3)--pop a cooldown.
 local specWarnSearingPlates				= mod:NewSpecialWarningSpell(161570, nil, nil, nil, 2)
 local specWarnStampers					= mod:NewSpecialWarningSpell(174825, nil, nil, nil, 2)
 local specWarnSearingPlatesEnd			= mod:NewSpecialWarningEnd(161570)
