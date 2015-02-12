@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12863 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12879 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -135,8 +135,8 @@ local RapidFireMarkers={}
 local BloodritualMarkers={}
 
 local function isPlayerOnBoat()
-	local _, y = UnitPosition("player")
-	if y < 3196 then
+	local _, x = UnitPosition("player")
+	if x < 3196 then
 		return false
 	else
 		return true
@@ -145,9 +145,9 @@ end
 
 local function checkBoatPlayer(self)
 	for uId in DBM:GetGroupMembers() do 
-		local _, y, _, playerMapId = UnitPosition(uId)
+		local _, x, _, playerMapId = UnitPosition(uId)
 		if playerMapId == 1205 then
-			if y > 3196 then--found player on boat
+			if x > 3196 then--found player on boat
 				self:Schedule(1, checkBoatPlayer, self)
 				return
 			end
