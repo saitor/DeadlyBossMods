@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12811 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12901 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -391,17 +391,17 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	if spellId == 155221 then--IronCrusher Tantrum
 		self.vb.tantrumCount = self.vb.tantrumCount + 1
 		specWarnTantrum:Show(self.vb.tantrumCount)
-		if self.vb.tantrumCount == 3 then
-			self.vb.tantrumCount = 0
-		end
+--		if self.vb.tantrumCount == 3 then
+--			self.vb.tantrumCount = 0
+--		end
 		timerTantrumCD:Start(nil, self.vb.tantrumCount+1)
 		voiceTantrum:Schedule(25, "aesoon")
 	elseif spellId == 155520 then--Beastlord Darmac Tantrum
 		self.vb.tantrumCount = self.vb.tantrumCount + 1
 		specWarnTantrum:Show(self.vb.tantrumCount)
-		if self.vb.tantrumCount == 3 then
-			self.vb.tantrumCount = 0
-		end
+--		if self.vb.tantrumCount == 3 then
+--			self.vb.tantrumCount = 0
+--		end
 		timerTantrumCD:Start(34, self.vb.tantrumCount+1)--This one may also be 30 seconds, but I saw 34 consistently
 		voiceTantrum:Schedule(29, "aesoon")
 	elseif spellId == 162277 then--Assume that like his other abilities, isn't in combat log.
