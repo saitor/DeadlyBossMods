@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1162, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12895 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12897 $"):sub(12, -3))
 mod:SetCreatureID(77692)
 mod:SetEncounterID(1713)
 mod:SetZone()
@@ -41,7 +41,7 @@ local timerTremblingEarthCD			= mod:NewCDTimer(30, 173917)--30-36 CD now :\
 local timerTremblingEarth			= mod:NewBuffActiveTimer(25, 173917)
 local timerCalloftheMountain		= mod:NewCastTimer(5, 158217)
 
-local berserkTimer					= mod:NewBerserkTimer(480)
+local berserkTimer					= mod:NewBerserkTimer(540)
 
 local countdownThunderingBlows		= mod:NewCountdown(12, 157054)
 local countdownTremblingEarth		= mod:NewCountdownFades("Alt25", 173917)
