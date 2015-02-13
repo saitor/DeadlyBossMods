@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12903 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12904 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -428,8 +428,6 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		specWarnTantrum:Show(self.vb.tantrumCount)
 		timerTantrumCD:Start(34, self.vb.tantrumCount+1)--This one may also be 30 seconds, but I saw 34 consistently
 		voiceTantrum:Play("aesoon")
-	elseif spellId == 162277 and self:AntiSpam(3, 1) then--Assume that like his other abilities, isn't in combat log.
-		specWarnEpicenter:Show()
 	elseif spellId == 155497 then--Superheated Shrapnel
 		specWarnSuperheatedShrapnel:Show()
 		timerSuperheatedShrapnelCD:Start()
