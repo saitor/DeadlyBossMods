@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12912 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12914 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -228,9 +228,14 @@ local otherVoice = {
 	[24] = "AX",
 	[25] = "A1",--Possibly also random?
 	[26] = "C1D4",--Don't worry, B14 will be used on mythic i'm sure. sorry about this messup
-	[27] = "A3",
-	[28] = "D23",
-	[29] = "A4",
+	[27] = "A2",
+	[28] = "A3",
+	[29] = "D3",
+	[30] = "A14",
+	[31] = "A4",
+	[32] = "A3",
+	[33] = "A2",
+	[34] = "A1",
 }
 
 local function showTrainWarning(self)
