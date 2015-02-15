@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12928 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12929 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -483,7 +483,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
 				timerTrainCD:Schedule(5, expectedTime, count+1)
 			else
 				print("Train Set: "..count..". DBM has no train data beyond this point. Send us videos if you can.")
-				timerTrainCD:Start(count)
+				timerTrainCD:Start(5, count)
 			end
 			if count == 1 or count == 18 or count == 21 or count == 34 then
 				specWarnManOArms:Show()
