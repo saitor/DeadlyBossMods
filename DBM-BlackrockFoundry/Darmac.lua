@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12912 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12926 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -255,7 +255,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			voicePinDown:Cancel()
 			voicePinDown:Schedule(0.5, "helpme")
 		end
-	elseif spellId == 154981 then
+	elseif spellId == 154981 and self:CheckDispelFilter() then
 		specWarnConflag:CombinedShow(2, args.destName)
 	elseif spellId == 155030 then
 		local amount = args.amount or 1
