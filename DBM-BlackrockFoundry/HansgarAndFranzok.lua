@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1155, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12885 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12915 $"):sub(12, -3))
 mod:SetCreatureID(76974, 76973)
 mod:SetEncounterID(1693)
 mod:SetZone()
@@ -171,16 +171,20 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	elseif spellId == 157926 then--Jump Activation
 		self.vb.firstJump = false--So reset firstjump
 		self.vb.lastJumpTarget = UNKNOWN
+		DBM:Debug("Jump Activation")
 	elseif spellId == 157922 then--First jump must use 157922
 		if not self.vb.firstJump then
+			DBM:Debug("157922: firstJump true")
 			self.vb.firstJump = true
 			self.vb.lastJumpTarget = UnitName(uId.."target")--It'll be highest threat at this point, baseline for our first filter
 		else--Not first jump
-			if self.vb.lastJumpTarget then
+			DBM:Debug("157922: firstJump false")
+			if self.vb.lastJumpTarget ~= UNKNOWN then
+				DBM:Debug("157922: lastJumpTarget exists for "..self.vb.lastJumpTarget)
 				self:BossTargetScanner(UnitGUID(uId), "JumpTarget", 0.05, 30, nil, nil, true, nil, self.vb.lastJumpTarget)--1.5 seconds worth of scans, because i've seen it take as long as 1.2 to get target, and yet, still faster than 157923 by 0.6 seconds. Most often, it finds target in 0.5 or less
 			else
 				--This shouldn't happen, but just in case
-				DBM:Debug("self.vb.lastJumpTarget is nil, target scanning for jump will be slower", 2)
+				DBM:Debug("self.vb.lastJumpTarget is nil, target scanning for jump will be slower")
 			end
 		end
 	elseif spellId == 157923 and not self.vb.lastJumpTarget then--Fallback
