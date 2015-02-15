@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12942 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12943 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -199,8 +199,8 @@ function mod:OnCombatStart(delay)
 		self.vb.below25 = false
 	end
 	playerOnBoat = false
-	timerBloodRitualCD:Start(5-delay)
-	timerBladeDashCD:Start(11-delay)
+	timerBladeDashCD:Start(10-delay)
+	timerBloodRitualCD:Start(13-delay)
 	timerRapidFireCD:Start(16-delay)
 	timerShipCD:Start(60-delay)
 	self:RegisterShortTermEvents(
