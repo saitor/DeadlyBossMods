@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1155, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12938 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12939 $"):sub(12, -3))
 mod:SetCreatureID(76974, 76973)
 mod:SetEncounterID(1693)
 mod:SetZone()
@@ -192,7 +192,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	elseif spellId == 157923 and self.vb.lastJumpTarget == "None" then--Fallback
 		DBM:Debug("Using slower scan fallback: 157923", 2)
 		DBM:Debug("157923: boss target "..UnitName(uId.."target"))
-		self:BossTargetScanner(UnitGUID(uId), "JumpTarget", 0.02, 10, nil, nil, true)
+		self:BossTargetScanner(UnitGUID(uId), "JumpTarget", 0.02, 15, nil, nil, true)
 	end
 end
 
