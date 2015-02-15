@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12912 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12919 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -193,7 +193,11 @@ function mod:OnCombatStart(delay)
 	self.vb.phase = 1
 	self.vb.ship = 0
 	self.vb.alphaOmega = 1
-	below25 = false
+	if self:IsMythic() then
+		below25 = true--On mythic, they continue going onto boat until 20%
+	else
+		below25 = false
+	end
 	playerOnBoat = false
 	timerBloodRitualCD:Start(5-delay)
 	timerBladeDashCD:Start(11-delay)
