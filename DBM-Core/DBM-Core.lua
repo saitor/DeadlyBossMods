@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12929 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12930 $"):sub(12, -3)),
 	DisplayVersion = "6.0.16 alpha", -- the string that is shown as version
 	ReleaseRevision = 12764 -- the revision of the latest stable version that is available
 }
@@ -6236,10 +6236,10 @@ end
 
 function bossModPrototype:CheckDispelFilter()
 	if not DBM.Options.FilterDispel then return true end
-	--Druid: Nature's Cure (88423), Monk: Detox (115450), Priest: Purify (527), Plaadin: Cleanse (4987), Shaman: Purify Spirit (77130)
+	--Druid: Nature's Cure (88423), Remove Corruption (2782), Monk: Detox (115450), Priest: Purify (527), Plaadin: Cleanse (4987), Shaman: Cleanse Spirit (51886), Purify Spirit (77130), Mage: Remove Curse (475)
 	--start, duration, enable = GetSpellCooldown
 	--start & duration == 0 if spell not on cd
-	if (GetSpellCooldown(88423)) == 0 or (GetSpellCooldown(115450)) == 0 or (GetSpellCooldown(527)) == 0 or (GetSpellCooldown(4987)) == 0 or (GetSpellCooldown(77130)) == 0 then
+	if (GetSpellCooldown(88423)) == 0 or (GetSpellCooldown(2782)) == 0 or (GetSpellCooldown(115450)) == 0 or (GetSpellCooldown(527)) == 0 or (GetSpellCooldown(4987)) == 0 or (GetSpellCooldown(51886)) == 0 or (GetSpellCooldown(77130)) == 0 or (GetSpellCooldown(475)) == 0 then
 		return true
 	end
 	return false
