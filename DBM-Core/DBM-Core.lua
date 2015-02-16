@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 12954 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 12955 $"):sub(12, -3)),
 	DisplayVersion = "6.0.16 alpha", -- the string that is shown as version
 	ReleaseRevision = 12764 -- the revision of the latest stable version that is available
 }
@@ -124,6 +124,7 @@ DBM.DefaultOptions = {
 	FilterTankSpec = true,
 	FilterInterrupt = true,
 	FilterDispel = true,
+	FilterSelfHud = true,
 	AutologBosses = false,
 	AdvancedAutologBosses = false,
 	LogOnlyRaidBosses = false,

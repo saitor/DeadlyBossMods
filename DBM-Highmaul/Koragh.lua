@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1153, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12921 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12955 $"):sub(12, -3))
 mod:SetCreatureID(79015)
 mod:SetEncounterID(1723)
 mod:SetZone()
@@ -292,6 +292,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			self:SetSortedIcon(1, args.destName, 8, nil, true)--TODO, find out number of targets and add
 		end
 		if self.Options.HudMapOnMC and not MCMarkers[args.destName] then
+			if DBM.Options.FilterSelfHud and args:IsPlayer() then return end
 			MCMarkers[args.destName] = self:RegisterMarker(DBMHudMap:PlaceRangeMarkerOnPartyMember("highlight", args.destName, 3.5, 0, 1, 0, 0, 0.5):Pulse(0.5, 0.5))
 		end
 	elseif spellId == 172895 then
