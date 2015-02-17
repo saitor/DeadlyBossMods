@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1202, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12912 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12961 $"):sub(12, -3))
 mod:SetCreatureID(77182)
 mod:SetEncounterID(1696)
 mod:SetZone()
@@ -94,7 +94,7 @@ function mod:SPELL_CAST_START(args)
 		countdownAcidTorrent:Start()
 		voiceAcidTorrent:Schedule(3, "changemt")
 	elseif spellId == 156179 then
-		self:BossTargetScanner(77182, "RetchedBlackrockTarget", 0.02, 16)
+		self:BossTargetScanner(77182, "RetchedBlackrockTarget", 0.01, 32)
 		timerRetchedBlackrockCD:Start()
 	end
 end
