@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12979 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12980 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -40,7 +40,7 @@ local warnPhase3				= mod:NewPhaseAnnounce(3)
 local warnMelt					= mod:NewTargetAnnounce("OptionVersion2", 155225, 4, nil, false)--VERY spammy, off by default
 local warnHeat					= mod:NewStackAnnounce(155242, 2, nil, "Tank")
 
-local specWarnBomb				= mod:NewSpecialWarningYou(155192, nil, nil, nil, 3, nil, 2)
+local specWarnBomb				= mod:NewSpecialWarningMoveTo(155192, nil, DBM_CORE_AUTO_SPEC_WARN_OPTIONS.you:format(155192), nil, 3, nil, 2)
 local specWarnBellowsOperator	= mod:NewSpecialWarningSwitch("OptionVersion2", "ej9650", "-Healer", nil, nil, nil, nil, 2)
 local specWarnDeafeningRoar		= mod:NewSpecialWarningDodge("OptionVersion2", 177756, "Tank", nil, nil, 3)
 --local specWarnDefense			= mod:NewSpecialWarningMove("OptionVersion2", 160379, false, nil, nil, nil, nil, true)--Doesn't work until 6.1. The CAST event doesn't exixst in 6.0
@@ -256,7 +256,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			warnBomb:CombinedShow(0.5, args.destName)
 		end
 		if args:IsPlayer() then
-			specWarnBomb:Show()
+			specWarnBomb:Show(L.heatRegulator)
 			timerBomb:Start()
 			voiceBomb:Play("bombrun")
 		end
