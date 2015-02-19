@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12975 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12986 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -180,7 +180,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			countdownMarkedforDeath:Start(timer)
 			if DBM.Options.DebugMode then--Experimental smash timer adjusting for marked for death delays
 				DBM:Debug("Running experimental timerShatteringSmashCD adjust because debugmode is enabled", 2)
-				local elapsed, total = timerShatteringSmashCD:GetTime()
+				local elapsed, total = timerShatteringSmashCD:GetTime(self.vb.smashCount+1)
 				local remaining = total - elapsed
 				DBM:Debug("Smash Elapsed: "..elapsed.." Smash Total: "..total.." Smash Remaining: "..remaining.." MFD Timer: "..timer, 2)
 				if (remaining > timer) and (remaining < timer+5.5) then--Marked for death will come off cd before timerShatteringSmashCD comes off cd and delay the cast

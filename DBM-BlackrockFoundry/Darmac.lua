@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12983 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12986 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -429,7 +429,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
 		specWarnInfernoBreath:Show()
 		timerInfernoBreathCD:Start()
 		voiceInfernoBreath:Play("breathsoon")
-		self:BossTargetScanner(155459, "BreathTarget", 0.05, 25, nil, nil, false)
+		self:BossTargetScanner(155459, "BreathTarget", 0.1, 25, nil, nil, false)
 	end
 end
 
