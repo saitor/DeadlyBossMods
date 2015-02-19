@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1155, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12975 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12987 $"):sub(12, -3))
 mod:SetCreatureID(76974, 76973)
 mod:SetEncounterID(1693)
 mod:SetZone()
@@ -62,7 +62,7 @@ mod.vb.firstJump = false
 function mod:JumpTarget(targetname, uId)
 	if not targetname then return end
 	if DBM.Options.DebugMode then
-		self.vb.lastJumpTarget = targetname
+		self.vb.lastJumpTarget = DBM:GetUnitFullName(targetname)
 	end
 	if targetname == UnitName("player") then
 		specWarnJumpSlam:Show()
@@ -176,13 +176,11 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		self.vb.lastJumpTarget = "None"
 		DBM:Debug("157926: Jump Activation")
 	elseif spellId == 157922 and DBM.Options.DebugMode then--First jump must use 157922
-		DBM:Debug("157922: boss target "..UnitName(uId.."target"))
+		local temptarget = UnitName(uId.."target") or "nil"
+		DBM:Debug("157922: boss target "..temptarget)
 		if not self.vb.firstJump then
 			DBM:Debug("157922: firstJump true")
 			self.vb.firstJump = true
-			if UnitExists(uId.."target") then
-				self.vb.lastJumpTarget = UnitName(uId.."target")--It'll be highest threat at this point, baseline for our first filter
-			end
 			self:BossTargetScanner(UnitGUID(uId), "JumpTarget", 0.1, 13, nil, nil, false)--Don't include tank in first scan should be enough of a filter for first, it'll grab whatever first non tank target he gets and set that as first jump target and it will be valid
 		else--Not first jump
 			DBM:Debug("157922: firstJump false")
