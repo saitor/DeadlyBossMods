@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12990 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12991 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -62,7 +62,7 @@ mod:AddSetIconOption("SetIconOnAdds", "ej9549", false, true)
 
 mod.vb.trainCount = 0
 mod.vb.infoCount = 0
-local GetTime = GetTime
+local GetTime, UnitPosition = GetTime, UnitPosition
 local MovingTrain = GetSpellInfo(176312)
 local Train = GetSpellInfo(174806)
 local Cannon = GetSpellInfo(62357)
