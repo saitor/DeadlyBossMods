@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12984 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12985 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -111,6 +111,8 @@ local mythicTrains = {
 	[33] = { [2] = Train },--+5 after 32.(07:27) (not correctly saw)
 	[34] = { [1] = ManOArms },--+15 after 33.(07:42)
 	[35] = { ["specialw"] = L.threeTrains, ["speciali"] = L.threeRandom, [1] = Train, [2] = Train, [3] = Train, [4] = Train },--+10 after 34.(07:52) (or 1,3 train?)
+	--Verify hard berserk is 36, and no random trans in between 35-36
+	[36] = { [1] = Train, [2] = Train, [3] = Train, [4] = Train },--+? after 35 (???)
 }
 
 --https://www.youtube.com/watch?v=yUgrmvksk7g
