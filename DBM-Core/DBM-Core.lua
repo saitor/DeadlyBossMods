@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13013 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13014 $"):sub(12, -3)),
 	DisplayVersion = "6.0.17 alpha", -- the string that is shown as version
 	ReleaseRevision = 12955 -- the revision of the latest stable version that is available
 }
@@ -1723,11 +1723,11 @@ do
 	SLASH_DBMRRANGE1 = "/rrange"
 	SLASH_DBMRRANGE2 = "/rdistance"
 	SlashCmdList["DBMRANGE"] = function(msg)
-		local r = tonumber(msg)
+		local r = tonumber(msg) or 10
 		updateRangeFrame(r, false)
 	end
 	SlashCmdList["DBMRRANGE"] = function(msg)
-		local r = tonumber(msg)
+		local r = tonumber(msg) or 10
 		updateRangeFrame(r, true)
 	end
 end
