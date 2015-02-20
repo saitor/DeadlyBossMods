@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13002 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13003 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -20,7 +20,6 @@ mod:RegisterEventsInCombat(
 	"SPELL_ABSORBED 159044 162277 156824 155657",
 	"INSTANCE_ENCOUNTER_ENGAGE_UNIT",
 	"UNIT_DIED",
-	"CHAT_MSG_RAID_BOSS_EMOTE",
 	"UNIT_SPELLCAST_SUCCEEDED boss1 boss2 boss3 boss4 boss5"--Because boss numbering tends to get out of wack with things constantly joining/leaving fight. I've only seen boss1 and boss2 but for good measure.
 )
 
@@ -424,12 +423,6 @@ function mod:UNIT_DIED(args)
 	end
 end
 
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
-	if msg:find("spell:154989") then
-		--self:BossTargetScanner(76874, "BreathTarget", 0.1, 25, nil, nil, false)
-	end
-end
-
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	if spellId == 155221 then--IronCrusher Tantrum
 		self.vb.tantrumCount = self.vb.tantrumCount + 1
@@ -457,6 +450,5 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		timerInfernoBreathCD:Start()
 		voiceInfernoBreath:Play("breathsoon")
 		self:BossTargetScanner(76874, "BreathTarget", 0.1, 25, nil, nil, false)
-		DBM:Debug("TESTING THINGS!: "..UnitName(uId.."target"))
 	end
 end
