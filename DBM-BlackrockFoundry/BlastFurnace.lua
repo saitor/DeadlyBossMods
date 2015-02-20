@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13017 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13023 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -350,7 +350,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			if self.Options.RangeFrame then
 				DBM.RangeCheck:Show(8)
 			end
-			voiceVolatileFire:Schedule(4, "runout")
+			voiceVolatileFire:Schedule(debuffTime - 4, "runout")
 		end
 		if self.Options.RangeFrame and not DBM.RangeCheck:IsShown() then
 			DBM.RangeCheck:Show(8, DebuffFilter)
