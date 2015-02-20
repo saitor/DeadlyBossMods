@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1161, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12975 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13018 $"):sub(12, -3))
 mod:SetCreatureID(76877)
 mod:SetEncounterID(1691)
 mod:SetZone()
@@ -139,7 +139,9 @@ function mod:SPELL_CAST_START(args)
 			timerInfernoSliceCD:Start(nil, self.vb.sliceCount+1)
 			countdownInfernoSlice:Start()
 		end
-		voiceInfernoSlice:Play("gathershare")
+		if not UnitDebuff("player", GetSpellInfo(155323)) then
+			voiceInfernoSlice:Play("gathershare")
+		end
 	elseif spellId == 155301 then
 		self.vb.smashCount = self.vb.smashCount + 1
 		specWarnOverheadSmash:Show(self.vb.smashCount)
