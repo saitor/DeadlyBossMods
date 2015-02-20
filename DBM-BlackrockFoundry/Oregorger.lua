@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1202, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12975 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13015 $"):sub(12, -3))
 mod:SetCreatureID(77182)
 mod:SetEncounterID(1696)
 mod:SetZone()
@@ -61,7 +61,7 @@ function mod:RetchedBlackrockTarget(targetname, uId)
 			specWarnRetchedBlackrock:Show()
 		end
 		yellRetchedBlackrock:Yell()
-	elseif self:CheckNearby(6, targetname) then
+	elseif self:CheckNearby(10, targetname) then
 		specWarnRetchedBlackrockNear:Show(targetname)
 	else
 		warnRetchedBlackrock:Show(targetname)
@@ -168,7 +168,7 @@ end
 
 function mod:UNIT_POWER_FREQUENT()
 	local ore = UnitPower("boss1")
-	if self:AntiSpam(10) and lastOre ~= ore then
+	if (self:AntiSpam(10) or ore == 100) and lastOre ~= ore then
 		lastOre = ore
 		warnCollectOre:Show(ore)
 	end

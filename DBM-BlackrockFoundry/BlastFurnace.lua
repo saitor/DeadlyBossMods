@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13012 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13015 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -178,7 +178,11 @@ function mod:CustomHealthUpdate()
 				maxh = UnitHealthMax(uid)
 			end
 		end
-		health = (total / (maxh * 2) * 100)
+		if maxh > 0 then
+			health = (total / (maxh * 2) * 100)
+		else
+			health = 100
+		end
 		return ("%d%%"):format(health)
 	elseif self.vb.phase == 2 then
 		for i = 1, 5 do
@@ -189,7 +193,11 @@ function mod:CustomHealthUpdate()
 				maxh = UnitHealthMax(uid)
 			end
 		end
-		health = (total / (maxh * activePrimal) * 100)
+		if activePrimal > 0 then
+			health = (total / (maxh * activePrimal) * 100)
+		else
+			health = 100
+		end
 		return ("%d%%"):format(health)
 	elseif self.vb.phase == 3 then
 		health = (UnitHealth("boss1") / UnitHealthMax("boss1") * 100)
@@ -329,7 +337,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		voiceBellowsOperator:Play("killmob")
 	elseif spellId == 176121 then
 		warnVolatileFire:CombinedShow(1, args.destName)
-		local uId = DBM:GetRaidUnitId(name)
+		local uId = DBM:GetRaidUnitId(args.destName)
 		local _, _, _, _, _, duration, expires, _, _ = UnitDebuff(uId, args.spellName)
 		local debuffTime = expires - GetTime()
 		if args:IsPlayer() then
