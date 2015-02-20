@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1155, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13008 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13009 $"):sub(12, -3))
 mod:SetCreatureID(76974, 76973)
 mod:SetEncounterID(1693)
 mod:SetZone()
@@ -46,10 +46,10 @@ local timerStamperDodge					= mod:NewTimer(10, "timerStamperDodge", 160582)--Tim
 
 --local berserkTimer						= mod:NewBerserkTimer(360)
 
+local countSmartStampers				= mod:NewCountdown(12, 160582)
 local countCripplingSupplex				= mod:NewCountdown("OptionVersion2", "Alt9.5", 156938, "Tank|Healer")
 
 local voiceEnvironmentalThreats			= mod:NewVoice("ej10089")
-local voiceShatteredVertebrae			= mod:NewVoice(157139)
 
 mod.vb.phase = 1
 mod.vb.stamperDodgeCount = 0
@@ -80,6 +80,7 @@ function mod:OnCombatStart(delay)
 	timerDisruptingRoarCD:Start(-delay)
 	if self:IsMythic() then
 		timerSmartStamperCD:Start(13-delay)
+		countSmartStampers:Start(13-delay)
 --		berserkTimer:Start(-delay)
 	end
 end
@@ -189,6 +190,7 @@ function mod:UNIT_TARGETABLE_CHANGED(uId)
 		else
 			if self:IsMythic() then
 				timerSmartStamperCD:Start()
+				countSmartStampers:Start()
 				voiceEnvironmentalThreats:Play("gather")--Must restack for smart stampers
 			else
 				if self.vb.phase == 2 then
