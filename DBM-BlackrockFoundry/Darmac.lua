@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13000 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13001 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -36,7 +36,7 @@ local warnElekk						= mod:NewTargetAnnounce(155460, 1)--Grants Tantrum
 local warnClefthoof					= mod:NewTargetAnnounce(155462, 1)--Grants Epicenter
 --Beast abilities (living beasts)
 local warnSearingFangs				= mod:NewStackAnnounce(155030, 2, nil, "Tank")
-local warnInfernoBreath				= mod:NewTargetAnnounce(29769, 4)
+local warnInfernoBreath				= mod:NewTargetAnnounce(154989, 4)
 local warnCrushArmor				= mod:NewStackAnnounce(155236, 2, nil, "Tank")
 local warnStampede					= mod:NewSpellAnnounce(155247, 3)
 
