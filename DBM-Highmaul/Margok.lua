@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1197, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12958 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13012 $"):sub(12, -3))
 mod:SetCreatureID(77428, 78623)
 mod:SetEncounterID(1705)
 mod:SetZone()
@@ -691,7 +691,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		self.vb.lastMarkedTank = args.destName
 		local uId = DBM:GetRaidUnitId(args.destName)
 		local _, _, _, _, _, duration, expires, _, _ = UnitDebuff(uId, args.spellName)
-		timerMarkOfChaos:Start(duration, args.destName)
+		timerMarkOfChaos:Start(expires-GetTime(), args.destName)
 		if args:IsPlayer() then
 			self.vb.playerHasMark = true
 			if spellId == 164176 then 
