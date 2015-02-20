@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12986 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 12997 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -426,10 +426,7 @@ end
 
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
 	if msg:find("spell:154989") then
-		specWarnInfernoBreath:Show()
-		timerInfernoBreathCD:Start()
-		voiceInfernoBreath:Play("breathsoon")
-		self:BossTargetScanner(155459, "BreathTarget", 0.1, 25, nil, nil, false)
+		--self:BossTargetScanner(155459, "BreathTarget", 0.1, 25, nil, nil, false)
 	end
 end
 
@@ -455,5 +452,11 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		specWarnPinDown:Show()
 		timerPinDownCD:Start()
 		countdownPinDown:Start()
+	elseif spellId == 155423 then--Face Random Non-Tank
+		specWarnInfernoBreath:Show()
+		timerInfernoBreathCD:Start()
+		voiceInfernoBreath:Play("breathsoon")
+		self:BossTargetScanner(155459, "BreathTarget", 0.1, 25, nil, nil, false)
+		DBM:Debug("TESTING THINGS!: "..UnitName(uId.."target"))
 	end
 end
