@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13036 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13037 $"):sub(12, -3)),
 	DisplayVersion = "6.0.17 alpha", -- the string that is shown as version
 	ReleaseRevision = 12955 -- the revision of the latest stable version that is available
 }
@@ -7098,9 +7098,12 @@ function DBM:GetBossHPByGUID(guid)
 end
 
 function DBM:GetBossHPByUnitID(uId)
-	local hp = UnitHealth(uId) / UnitHealthMax(uId) * 100
-	bossHealth[uId] = hp
-	return hp, uId, UnitName(uId)
+	if UnitHealthMax(uId) ~= 0 then
+		local hp = UnitHealth(uId) / UnitHealthMax(uId) * 100
+		bossHealth[uId] = hp
+		return hp, uId, UnitName(uId)
+	end
+	return nil
 end
 
 function bossModPrototype:SetBossHealthInfo(...)
