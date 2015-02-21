@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1211, "DBM-Draenor", nil, 557)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12676 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13027 $"):sub(12, -3))
 mod:SetCreatureID(81535)
 mod:SetReCombatTime(20)
 mod:SetZone()
@@ -48,10 +48,6 @@ do
 	debuffFilter = function(uId)
 		return UnitDebuff(uId, debuffName)
 	end
-end
-
-local function hideRangeFrame()
-	DBM.RangeCheck:Hide()
 end
 
 function mod:OnCombatStart(delay, yellTriggered)
@@ -109,9 +105,8 @@ function mod:SPELL_AURA_APPLIED(args)
 			if UnitDebuff("player", debuffName) then
 				DBM.RangeCheck:Show(8, nil)
 			else
-				DBM.RangeCheck:Show(8, debuffFilter)
+				DBM.RangeCheck:Show(8, debuffFilter, nil, nil, nil, 8)
 			end
-			self:Schedule(8, hideRangeFrame)
 		end
 	end
 end
