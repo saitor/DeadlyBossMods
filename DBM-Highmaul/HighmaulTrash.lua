@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("HighmaulTrash", "DBM-Highmaul")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13027 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13030 $"):sub(12, -3))
 --mod:SetModelID(47785)
 mod:SetZone()
 
@@ -67,8 +67,12 @@ function mod:SPELL_AURA_APPLIED(args)
 				DBM.RangeCheck:Show(8, nil, nil, nil, nil, 6.5)
 			end
 		end
-		if self.Options.RangeFrame and not DBM.RangeCheck:IsShown() then
-			DBM.RangeCheck:Show(8, DebuffFilter, nil, nil, nil, 6.5)
+		if self.Options.RangeFrame then
+			if not DBM.RangeCheck:IsShown() then
+				DBM.RangeCheck:Show(8, DebuffFilter, nil, nil, nil, 6.5)
+			else
+				DBM.RangeCheck:SetHideTime(6.5)
+			end
 		end
 	elseif spellId == 173827 and args:IsPlayer() then
 		specWarnWildFlames:Show()
