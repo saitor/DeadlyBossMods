@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13030 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13031 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -301,11 +301,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 		if self.Options.RangeFrame then
-			if not DBM.RangeCheck:IsShown() then
-				DBM.RangeCheck:Show(8, BombFilter, nil, nil, nil, debuffTime+0.5)
-			else
-				DBM.RangeCheck:SetHideTime(debuffTime+0.5)
-			end
+			DBM.RangeCheck:Show(8, BombFilter, nil, nil, nil, debuffTime+0.5)
 		end
 	elseif spellId == 155196 then
 		if not activeSlagGUIDS[args.sourceGUID] then
@@ -366,11 +362,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			voiceVolatileFire:Schedule(debuffTime - 4, "runout")
 		end
 		if self.Options.RangeFrame then
-			if not DBM.RangeCheck:IsShown() then
-				DBM.RangeCheck:Show(8, VolatileFilter, nil, nil, nil, debuffTime+0.5)
-			else
-				DBM.RangeCheck:SetHideTime(debuffTime+0.5)
-			end
+			DBM.RangeCheck:Show(8, VolatileFilter, nil, nil, nil, debuffTime+0.5)
 		end
 	elseif spellId == 155225 then
 		warnMelt:CombinedShow(0.5, args.destName)
