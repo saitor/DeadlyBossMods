@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13044 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13052 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -52,7 +52,7 @@ local specWarnEpicenter				= mod:NewSpecialWarningMove(159043)
 --Beast abilities (living)
 local specWarnSavageHowl			= mod:NewSpecialWarningTarget(155198, "Tank|Healer")
 local specWarnSavageHowlDispel		= mod:NewSpecialWarningDispel("OptionVersion2", 155198, "RemoveEnrage", nil, nil, nil, nil, 2)
-local specWarnConflag				= mod:NewSpecialWarningDispel(162277, false)--Just too buggy, cast 3 targets, but can be as high as 5 seconds apart, making warning very spammy. Therefor, MUST stay off by default to reduce DBM spam :\
+local specWarnConflag				= mod:NewSpecialWarningDispel(155399, false)--Just too buggy, cast 3 targets, but can be as high as 5 seconds apart, making warning very spammy. Therefor, MUST stay off by default to reduce DBM spam :\
 local specWarnSearingFangs			= mod:NewSpecialWarningStack(155030, nil, 12)--Stack count assumed, may be 2
 local specWarnSearingFangsOther		= mod:NewSpecialWarningTaunt(155030)--No evidence of this existing ANYWHERE in any logs. removed? Bugged?
 local specWarnInfernoPyre			= mod:NewSpecialWarningMove(156824)
