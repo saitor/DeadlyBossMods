@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13048 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13049 $"):sub(12, -3)),
 	DisplayVersion = "6.0.17 alpha", -- the string that is shown as version
 	ReleaseRevision = 12955 -- the revision of the latest stable version that is available
 }
@@ -3545,7 +3545,7 @@ do
 		if DBM.Options.CheckGear then
 			local bagilvl, equippedilvl = GetAverageItemLevel()
 			local difference = bagilvl - equippedilvl
-			local weapon = GetInventoryItemLink(unit, 16)
+			local weapon = GetInventoryItemLink("player", 16)
 			local fishingPole = false
 			if weapon then
 				local _, _, _, _, _, _, type = GetItemInfo(weapon)
