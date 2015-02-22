@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1202, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13015 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13057 $"):sub(12, -3))
 mod:SetCreatureID(77182)
 mod:SetEncounterID(1696)
 mod:SetZone()
@@ -41,7 +41,7 @@ local timerExplosiveShardCD			= mod:NewCDTimer("OptionVersion3", 12, 156390, nil
 local timerExplosiveShard			= mod:NewCastTimer(3.5, 156390, nil, "MeleeDps")
 local timerRetchedBlackrockCD		= mod:NewCDTimer("OptionVersion2", 17, 156179, nil, "Ranged")--Every 17-23 seconds
 
-local countdownAcidTorrent			= mod:NewCountdown(23, 156240, "Tank")
+local countdownAcidTorrent			= mod:NewCountdown(13, 156240, "Tank")
 
 local voicePhaseChange				= mod:NewVoice(nil, nil, DBM_CORE_AUTO_VOICE2_OPTION_TEXT)
 local voiceRetchedBlackrock			= mod:NewVoice(156203)  --runaway
