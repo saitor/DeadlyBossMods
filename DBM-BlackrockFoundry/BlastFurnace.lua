@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13053 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13069 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -108,6 +108,7 @@ local voiceSecurityGuard		= mod:NewVoice("ej9648", "Tank")
 mod:AddRangeFrameOption(8)
 mod:AddSetIconOption("SetIconOnFixate", 155196, false)
 mod:AddHudMapOption("HudMapOnBomb", 155192, false)
+mod:AddDropdownOption("VFYellType", {"Countdown", "Apply"}, "Countdown", "misc")
 
 mod.vb.machinesDead = 0
 mod.vb.elementalistsRemaining = 4
@@ -120,6 +121,7 @@ local activeSlagGUIDS = {}
 local activePrimalGUIDS = {}
 local activePrimal = 0 -- health report variable. no sync
 local prevHealth = 100
+local yellVolatileFire2
 
 local BombFilter, VolatileFilter
 do
@@ -249,6 +251,13 @@ function mod:OnCombatStart(delay)
 	countdownBlast:Start(30-delay)
 	if not self:IsLFR() then
 		berserkTimer:Start(-delay)
+	end
+	if self:IsMythic() then
+		if self.Options.VFYellType == "Countdown" then
+			yellVolatileFire2 = mod:NewFadesYell(176121, nil, true, false)
+		else
+			yellVolatileFire2 = nil
+		end
 	end
 	if DBM.BossHealth:IsShown() then
 		DBM.BossHealth:Clear()
@@ -384,7 +393,14 @@ function mod:SPELL_AURA_APPLIED(args)
 			timerVolatileFire:Start(debuffTime)
 			specVolatileFire:Show()
 			if not self:IsLFR() then
-				yellVolatileFire:Yell()
+				if self:IsMythic() and self.Options.VFYellType == "Countdown" then
+					yellVolatileFire:Yell()
+					yellVolatileFire2:Schedule(debuffTime - 1, 1)
+					yellVolatileFire2:Schedule(debuffTime - 2, 2)
+					yellVolatileFire2:Schedule(debuffTime - 3, 3)
+				else
+					yellVolatileFire:Yell()
+				end
 			end
 			if self.Options.RangeFrame then
 				DBM.RangeCheck:Show(8, nil, nil, nil, nil, debuffTime + 0.5)
