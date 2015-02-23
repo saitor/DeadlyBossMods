@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1155, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13066 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13068 $"):sub(12, -3))
 mod:SetCreatureID(76974, 76973)
 mod:SetEncounterID(1693)
 mod:SetZone()
@@ -165,7 +165,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		self.vb.lastJumpTarget = "None"
 		DBM:Debug("157926: Jump Activation")
 		cachedGUID = UnitGUID(uId)
-	elseif spellId == 157922 and DBM.Options.DebugMode then--First jump must use 157922
+	elseif spellId == 157922 then--First jump must use 157922
 		local temptarget = UnitName(uId.."target") or "nil"
 		DBM:Debug("157922: boss target "..temptarget)
 		if not self.vb.firstJump then
