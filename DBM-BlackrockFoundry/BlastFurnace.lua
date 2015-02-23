@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13071 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13072 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -59,6 +59,7 @@ local specWarnCauterizeWounds	= mod:NewSpecialWarningInterrupt(155186, "-Healer"
 local specWarnPyroclasm			= mod:NewSpecialWarningInterrupt(156937, false)
 local specVolatileFire			= mod:NewSpecialWarningMoveAway(176121)
 local yellVolatileFire			= mod:NewYell(176121)
+--local specWarnSlagElemental		= mod:NewSpecialWarningSwitch("ej9657", "Dps")-- is really needed in mythic? needs review (Slay Elemental, 176143)
 local specWarnShieldsDown		= mod:NewSpecialWarningSwitch("ej9655", "Dps")
 local specWarnEarthShield		= mod:NewSpecialWarningDispel(155173, "MagicDispeller")
 local specWarnSlagPool			= mod:NewSpecialWarningMove(155743)
@@ -370,12 +371,12 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif spellId == 158345 and self:AntiSpam(10, 3) then--Might be SPELL_CAST_SUCCESS instead.
 		specWarnShieldsDown:Show()
-		if self:IsDifficulty("normal", "lfr") then--40 seconds on normal. at least that much on LFR too, probably even longer in LFR.
+		if self:IsDifficulty("normal") then--40 seconds on normal
 			timerShieldsDown:Start(40)
 		elseif self:IsHeroic() then
 			timerShieldsDown:Start()--30 in heroic
 		else
-			timerShieldsDown:Start(25)--20 on mythic? or 25?
+			timerShieldsDown:Start(20)
 		end
 	elseif spellId == 155242 then
 		local amount = args.amount or 1
