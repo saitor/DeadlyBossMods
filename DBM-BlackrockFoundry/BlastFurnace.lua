@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13078 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13079 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -90,6 +90,7 @@ local countdownEngineer			= mod:NewCountdown("OptionVersion2", "AltTwo41", "ej96
 --Phase 2 countdowns, no conflict with phase 1 countdowns
 local countdownFireCaller		= mod:NewCountdown("AltTwo64", "ej9659", "Tank")
 local countdownSecurityGuard	= mod:NewCountdown("Alt41", "ej9648", "Tank")
+local countdownVolatileFire		= mod:NewCountdownFades(8, 176121)
 
 local voicePhaseChange			= mod:NewVoice(nil, nil, DBM_CORE_AUTO_VOICE2_OPTION_TEXT)
 local voiceRepair				= mod:NewVoice(155179, "-Healer") --int
@@ -413,6 +414,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			if self.Options.RangeFrame then
 				DBM.RangeCheck:Show(8, nil, nil, nil, nil, debuffTime + 0.5)
 			end
+			countdownVolatileFire:Start(debuffTime)
 			voiceVolatileFire:Schedule(debuffTime - 4, "runout")
 		end
 		if self.Options.RangeFrame then
