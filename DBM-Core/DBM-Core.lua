@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13100 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13101 $"):sub(12, -3)),
 	DisplayVersion = "6.0.17 alpha", -- the string that is shown as version
 	ReleaseRevision = 12955 -- the revision of the latest stable version that is available
 }
@@ -4718,7 +4718,7 @@ do
 			end
 			--HACK: makes sure that we don't detect a false pull if the event fires again when the boss dies...
 			if mod.lastKillTime and GetTime() - mod.lastKillTime < (mod.reCombatTime or 120) and event ~= "LOADING_SCREEN_DISABLED" then return end
-			if mod.lastWipeTime and GetTime() - mod.lastWipeTime < (mod.reCombatTime2 or 20) and event ~= "LOADING_SCREEN_DISABLED" then return end
+			if mod.lastWipeTime and GetTime() - mod.lastWipeTime < (event == "ENCOUNTER_START" and 3 or mod.reCombatTime2 or 20) and event ~= "LOADING_SCREEN_DISABLED" then return end
 			--check completed. starting combat
 			tinsert(inCombat, mod)
 			if mod.inCombatOnlyEvents and not mod.inCombatOnlyEventsRegistered then
