@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13042 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13086 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -130,7 +130,7 @@ mod.vb.ship = 0
 mod.vb.alphaOmega = 0
 --mod.vb.below25 = false
 
-local UnitPosition, GetTime =  UnitPosition, GetTime
+local UnitPosition, UnitIsConnected, GetTime =  UnitPosition, UnitIsConnected, GetTime
 local savedAbilityTime = {}
 local playerOnBoat = false
 local DBMHudMap = DBMHudMap
@@ -148,7 +148,7 @@ local function checkBoatPlayer(self)
 	DBM:Debug("checkBoatPlayer running", 3)
 	for uId in DBM:GetGroupMembers() do 
 		local _, y, _, playerMapId = UnitPosition(uId)
-		if playerMapId == 1205 then
+		if UnitIsConnected(uId) and playerMapId == 1205 then
 			if y > 3196 then--found player on boat
 				self:Schedule(1, checkBoatPlayer, self)
 				return
