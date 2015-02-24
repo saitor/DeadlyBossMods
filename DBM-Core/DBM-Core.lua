@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13079 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13080 $"):sub(12, -3)),
 	DisplayVersion = "6.0.17 alpha", -- the string that is shown as version
 	ReleaseRevision = 12955 -- the revision of the latest stable version that is available
 }
@@ -8362,7 +8362,7 @@ do
 			elseif announceType == "you" or announceType == "move" or announceType == "dodge" or announceType == "moveaway" or announceType == "run" or announceType == "stack" or announceType == "moveto" then
 				catType = "announcepersonal"
 			--Things you have to do to fulfil your role
-			elseif announceType == "taunt" or announceType == "dispel" or announceType == "interrupt" then
+			elseif announceType == "taunt" or announceType == "dispel" or announceType == "interrupt" or announceType == "interruptcount" then
 				catType = "announcerole"
 			end
 			obj.voiceOptionId = hasVoice and "Voice"..spellId..(type(hasVoice) == "number" and hasVoice or "") or nil
