@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13081 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13082 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -123,6 +123,7 @@ local activePrimalGUIDS = {}
 local activePrimal = 0 -- health report variable. no sync
 local prevHealth = 100
 local yellVolatileFire2
+local UnitDebuff = UnitDebuff
 
 local BombFilter, VolatileFilter
 do
@@ -338,11 +339,11 @@ function mod:SPELL_AURA_APPLIED(args)
 			timerBomb:Start(debuffTime)
 			voiceBomb:Play("bombrun")
 			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(8, nil, nil, nil, nil, debuffTime+0.5)
+				DBM.RangeCheck:Show(8, nil, nil, nil, nil, debuffTime + 0.5)
 			end
 		end
-		if self.Options.RangeFrame then
-			DBM.RangeCheck:Show(8, BombFilter, nil, nil, nil, debuffTime+0.5)
+		if self.Options.RangeFrame and not UnitDebuff("player", args.spellName) then
+			DBM.RangeCheck:Show(8, BombFilter, nil, nil, nil, debuffTime + 0.5)
 		end
 	elseif spellId == 155196 then
 		if not activeSlagGUIDS[args.sourceGUID] then
@@ -417,8 +418,8 @@ function mod:SPELL_AURA_APPLIED(args)
 			countdownVolatileFire:Start(debuffTime)
 			voiceVolatileFire:Schedule(debuffTime - 4, "runout")
 		end
-		if self.Options.RangeFrame then
-			DBM.RangeCheck:Show(8, VolatileFilter, nil, nil, nil, debuffTime+0.5)
+		if self.Options.RangeFrame and not UnitDebuff("player", args.spellName) then
+			DBM.RangeCheck:Show(8, VolatileFilter, nil, nil, nil, debuffTime + 0.5)
 		end
 	elseif spellId == 155225 then
 		warnMelt:CombinedShow(0.5, args.destName)
@@ -443,10 +444,12 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
 	local spellId = args.spellId
-	if args:IsSpellID(155192, 174716) and args:IsPlayer() then
-		timerBomb:Cancel()
+	if args:IsSpellID(155192, 174716) then
 		if self.Options.HudMapOnBomb then
 			DBMHudMap:FreeEncounterMarkerByTarget(155192, args.destName)
+		end
+		if args:IsPlayer() then
+			timerBomb:Cancel()
 		end
 	elseif spellId == 176121 and args:IsPlayer() and self.Options.RangeFrame then
 		DBM.RangeCheck:Hide()
