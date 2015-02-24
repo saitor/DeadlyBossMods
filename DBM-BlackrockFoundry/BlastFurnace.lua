@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13093 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13094 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -95,7 +95,7 @@ local countdownVolatileFire		= mod:NewCountdownFades(8, 176121)
 local voicePhaseChange			= mod:NewVoice(nil, nil, DBM_CORE_AUTO_VOICE2_OPTION_TEXT)
 local voiceRepair				= mod:NewVoice(155179, "-Healer") --int
 local voiceBomb 				= mod:NewVoice(155192) --bombyou.ogg, bomb on you
---local voiceDefense 				= mod:NewVoice("OptionVersion2", 160379, false) --taunt mobout
+local voiceDefense 				= mod:NewVoice("OptionVersion2", 160379, false) --taunt mobout
 local voiceBellowsOperator 		= mod:NewVoice("ej9650", "-Healer")
 local voiceRupture				= mod:NewVoice(156932) --runaway
 local voiceMelt					= mod:NewVoice(155223) --runaway
