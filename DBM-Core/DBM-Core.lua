@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13109 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13110 $"):sub(12, -3)),
 	DisplayVersion = "6.1.1 alpha", -- the string that is shown as version
 	ReleaseRevision = 13101 -- the revision of the latest stable version that is available
 }
@@ -907,8 +907,12 @@ do
 	function DBM:COMBAT_LOG_EVENT_UNFILTERED(timestamp, event, hideCaster, sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, ...)
 		--Dirty, but has to be here, because we want to see this debug even if SPELL_CAST_SUCCESS isn't in registeredEvents
 		local firstExtraArg = ...
-		if type(firstExtraArg) == "number" and firstExtraArg == 181113 then
-			self:Debug("Encounter Spawn spellid Detected: 181113")
+		if type(firstExtraArg) == "number" then
+			if firstExtraArg == 181113 then
+				self:Debug("Encounter Spawn spellid Detected: 181113")
+			elseif firstExtraArg == 181089 then
+				self:Debug("Encounter Event spellid Detected: 181089")
+			end
 		end
 		if not registeredEvents[event] then return end
 		local eventSub6 = event:sub(0, 6)
