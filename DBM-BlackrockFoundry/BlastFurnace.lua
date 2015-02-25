@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13101 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13111 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -325,7 +325,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnCauterizeWounds:Show(args.sourceName)
 	elseif spellId == 156937 and self:CheckInterruptFilter(args.sourceGUID) then
 		specWarnPyroclasm:Show(args.sourceName)
-	elseif spellId == 177756 and self:CheckTankDistance(args.sourceGUID, 30) then
+	elseif spellId == 177756 and self:CheckTankDistance(args.sourceGUID, 30) and self:AntiSpam(3.5, 7) then
 		specWarnDeafeningRoar:Show()
 	elseif spellId == 160379 and self:CheckTankDistance(args.sourceGUID, 30) then--Requires 6.1. The events on live don't work for this
 		specWarnDefense:Show()
