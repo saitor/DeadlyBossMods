@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1195, "DBM-Highmaul", nil, 477)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13109 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13116 $"):sub(12, -3))
 mod:SetCreatureID(78948, 80557, 80551, 99999)--78948 Tectus, 80557 Mote of Tectus, 80551 Shard of Tectus
 mod:SetEncounterID(1722)--Hopefully win will work fine off this because otherwise tracking shard deaths is crappy
 mod:SetZone()
@@ -261,10 +261,10 @@ function mod:SPELL_CAST_SUCCESS(args)
 			self.vb.EarthwarperAlive = self.vb.EarthwarperAlive + 1
 			specWarnEarthwarper:Show()
 			voiceEarthwarper:Play("killmob")
-			timerGiftOfEarthCD:Start(10)
-			timerEarthenFlechettesCD:Start(15)
-			timerEarthwarperCD:Start()
-			countdownEarthwarper:Start()
+			timerGiftOfEarthCD:Start(10)--TODO, verify timing on new event
+			timerEarthenFlechettesCD:Start(15)--TODO, verify timing on new event
+			timerEarthwarperCD:Start()--TODO, verify timing on new event
+			countdownEarthwarper:Start()--TODO, verify timing on new event
 			if self.Options.SetIconOnEarthwarper and self.vb.EarthwarperAlive < 9 and not (self:IsMythic() and self.Options.SetIconOnMote) then--Support for marking up to 8 mobs (you're group is terrible)
 				self:ScanForMobs(80599, 2, 9-self.vb.EarthwarperAlive, 1, 0.2, 13, "SetIconOnEarthwarper")
 			end
