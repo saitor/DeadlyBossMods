@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1155, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13122 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13135 $"):sub(12, -3))
 mod:SetCreatureID(76974, 76973)
 mod:SetEncounterID(1693)
 mod:SetZone()
@@ -43,7 +43,7 @@ local timerCripplingSupplex				= mod:NewCastTimer(9.5, 156938, nil, "Tank|Healer
 local timerJumpSlamCD					= mod:NewNextTimer(35, "ej9854")
 mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
 local timerSmartStamperCD				= mod:NewNextTimer(12, 162124)--Activation
-local timerStamperDodge					= mod:NewTimer(10, "timerStamperDodge", 160582)--Time until stamper falls (spell name fits well, time you have to stamper dodge)
+--local timerStamperDodge					= mod:NewTimer(10, "timerStamperDodge", 160582)--Time until stamper falls (spell name fits well, time you have to stamper dodge)
 
 --local berserkTimer						= mod:NewBerserkTimer(360)
 
