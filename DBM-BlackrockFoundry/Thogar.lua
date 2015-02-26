@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 12994 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13131 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -345,10 +345,10 @@ local function updateInfoFrame()
 	return lines
 end
 
-local function showInfoFrame()
-	if mod.Options.InfoFrame then
-		mod.vb.infoCount = mod.vb.trainCount + 1
-		DBM.InfoFrame:SetHeader(MovingTrain.." ("..(mod.vb.infoCount)..")")
+local function showInfoFrame(self)
+	if self.Options.InfoFrame then
+		self.vb.infoCount = self.vb.trainCount + 1
+		DBM.InfoFrame:SetHeader(MovingTrain.." ("..(self.vb.infoCount)..")")
 		DBM.InfoFrame:Show(5, "function", updateInfoFrame, sortInfoFrame)
 	end
 end
@@ -358,7 +358,7 @@ function mod:test(num)
 	self.vb.trainCount = num
 	showTrainWarning(self)
 	laneCheck(self)
-	showInfoFrame()
+	showInfoFrame(self)
 end
 
 function mod:BombTarget(targetname, uId)
@@ -388,7 +388,7 @@ function mod:OnCombatStart(delay)
 		self:Schedule(14.5, fakeTrainYell, self)
 		timerTrainCD:Start(17-delay, 1)
 	end
-	showInfoFrame()
+	showInfoFrame(self)
 end
 
 function mod:OnCombatEnd()
@@ -468,9 +468,9 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
 		end
 		self:Unschedule(showInfoFrame)
 		if msg == "Fake" then
-			self:Schedule(3.5, showInfoFrame)
+			self:Schedule(2.5, showInfoFrame, self)
 		else
-			self:Schedule(5, showInfoFrame)
+			self:Schedule(4, showInfoFrame, self)
 		end
 		local count = self.vb.trainCount
 		if self:IsMythic() then
