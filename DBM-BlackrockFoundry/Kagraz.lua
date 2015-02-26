@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1123, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13126 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13127 $"):sub(12, -3))
 mod:SetCreatureID(76814)--76794 Cinder Wolf, 80590 Aknor Steelbringer
 mod:SetEncounterID(1689)
 mod:SetZone()
@@ -178,13 +178,13 @@ function mod:SPELL_AURA_APPLIED(args)
 --			self:Unschedule(findFixate)
 --			self:Schedule(0.3, findFixate, self)
 --		else
-			warnFixate:CombinedShow(1, args.destName)
+			warnFixate:CombinedShow(0.5, args.destName)
 			if args:IsPlayer() then
 				--Schedule, do to dogs changing mind bug
 				timerFixate:Start()
-				specWarnFixate:Schedule(1)
-				voiceFixate:Schedule(1, "justrun")
-				if self:AntiSpam(3, 2) then
+				specWarnFixate:Schedule(0.5)
+				voiceFixate:Schedule(0.5, "justrun")
+				if self:AntiSpam(2, 2) then
 					--Nothing. Just a timestamp
 				end
 			end
@@ -283,7 +283,7 @@ function mod:SPELL_AURA_REMOVED(args)
 				timerFixate:Cancel()
 				specWarnFixate:Cancel()
 				voiceFixate:Cancel()
-				if self:AntiSpam(3, 2) then--And, avoid firing this warning on a dog changed mind bug as well
+				if self:AntiSpam(2, 2) then--And, avoid firing this warning on a dog changed mind bug as well
 					specWarnFixateEnded:Show()
 				end
 			end
