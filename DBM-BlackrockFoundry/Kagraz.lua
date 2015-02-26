@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1123, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13128 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13130 $"):sub(12, -3))
 mod:SetCreatureID(76814)--76794 Cinder Wolf, 80590 Aknor Steelbringer
 mod:SetEncounterID(1689)
 mod:SetZone()
@@ -64,7 +64,7 @@ local timerFireStorm					= mod:NewBuffActiveTimer(12, 155493)
 
 local countdownCinderWolves				= mod:NewCountdown(74, 155776)
 local countdownFireStorm				= mod:NewCountdown(63, 155493)--Same voice as wolves cause never happen at same time, in fact they alternate.
-local countdownEnchantedArmaments		= mod:NewCountdown("Alt45", 156724, "Ranged")
+local countdownEnchantedArmaments		= mod:NewCountdown("OptionVersion2", "Alt45", 156724, false)
 local countdownOverheated				= mod:NewCountdownFades("Alt20", 154950, "Tank")
 
 local voiceMoltenTorrent				= mod:NewVoice(154932) --runin
