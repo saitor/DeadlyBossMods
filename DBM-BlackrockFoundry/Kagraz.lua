@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1123, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13108 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13124 $"):sub(12, -3))
 mod:SetCreatureID(76814)--76794 Cinder Wolf, 80590 Aknor Steelbringer
 mod:SetEncounterID(1689)
 mod:SetZone()
@@ -80,13 +80,13 @@ mod:AddArrowOption("TorrentArrow", 154932, false, true)--Depend strat arrow usef
 mod:AddHudMapOption("HudMapOnFixate", 154952, false)
 
 local fixate = GetSpellInfo(154952)
-local UnitDebuff, UnitName, GetUnitName = UnitDebuff, UnitName, GetUnitName
+local UnitDebuff, UnitName, GetUnitName, GetTime = UnitDebuff, UnitName, GetUnitName, GetTime
 
 local function findFixate(self)
 	local fixateTargets = {}
 	for uId in DBM:GetGroupMembers() do
-		local name, _, _, _, _, _, _, _, _, _, spellId = UnitDebuff(uId, fixate)
-		if name and (spellId or 0) == 154952 then--Fixate with just name very usual debuff, so check spellId also.
+		local name, _, _, _, _, _, expires, _, _, _, spellId = UnitDebuff(uId, fixate)
+		if name and (spellId or 0) == 154952 and (expires - GetTime()) > 9 then--Fixate with just name very usual debuff, so check spellId also.
 			local targetname = GetUnitName(uId, true)
 			fixateTargets[#fixateTargets + 1] = targetname
 			if self.Options.HudMapOnFixate then
