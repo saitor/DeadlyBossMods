@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13141 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13142 $"):sub(12, -3)),
 	DisplayVersion = "6.1.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 13132 -- the revision of the latest stable version that is available
 }
@@ -7519,12 +7519,10 @@ do
 				end
 			end
 			if self.sound then
-				local sound = DBM.Options.RaidWarningSound or ""--temp hack in 6.1
-				sound = sound:gsub(".wav", ".ogg")--temp hack in 6.1
 				if DBM.Options.UseMasterVolume then
-					PlaySoundFile(sound, "Master")
+					PlaySoundFile(DBM.Options.RaidWarningSound, "Master")
 				else
-					PlaySoundFile(sound)
+					PlaySoundFile(DBM.Options.RaidWarningSound)
 				end
 			end
 			--This callback sucks, it needs useful information for external mods to listen to it better, such as mod and spellid
@@ -7753,12 +7751,10 @@ do
 	end
 
 	function soundPrototype:Play(file)
-		local sound = file or ""--temp hack in 6.1
-		sound = sound:gsub(".wav", ".ogg")--temp hack in 6.1
 		if DBM.Options.UseMasterVolume then
-			PlaySoundFile(sound, "Master")
+			PlaySoundFile(file, "Master")
 		else
-			PlaySoundFile(sound)
+			PlaySoundFile(file)
 		end
 	end
 
@@ -8616,8 +8612,7 @@ do
 	end
 
 	function DBM:PlaySpecialWarningSound(soundId)
-		local sound = type(soundId) == "number" and self.Options["SpecialWarningSound" .. (soundId == 1 and "" or soundId)] or soundId or self.Options.SpecialWarningSound or ""
-		sound = sound:gsub(".wav", ".ogg")--temp hack in 6.1
+		local sound = type(soundId) == "number" and self.Options["SpecialWarningSound" .. (soundId == 1 and "" or soundId)] or soundId or self.Options.SpecialWarningSound
 		if self.Options.UseMasterVolume then
 			PlaySoundFile(sound, "Master")
 		else
