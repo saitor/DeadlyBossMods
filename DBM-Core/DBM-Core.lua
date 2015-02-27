@@ -16,7 +16,7 @@
 --    * zhTW: Whyv						ultrashining@gmail.com
 --    * koKR: nBlueWiz					everfinale@gmail.com
 --    * zhCN: Mini Dragon				projecteurs@gmail.com
---
+-- 
 -- The former/inactive-translators:
 --    * deDE: Tandanu					http://www.deadlybossmods.com
 --    * ruRU: BootWin					bootwin@gmail.com
@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13138 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13139 $"):sub(12, -3)),
 	DisplayVersion = "6.1.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 13132 -- the revision of the latest stable version that is available
 }
