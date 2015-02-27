@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13146 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13147 $"):sub(12, -3)),
 	DisplayVersion = "6.1.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 13132 -- the revision of the latest stable version that is available
 }
@@ -7169,7 +7169,7 @@ function bossModPrototype:GetHighestBossHealth()
 	local hp
 	if not self.multiMobPullDetection or self.mainBoss then
 		hp = bossHealth[self.mainBoss or self.combatInfo.mob or -1]
-		if hp and (hp > 100 or hp < 1) then
+		if hp and (hp > 100 or hp <= 0) then
 			hp = nil
 		end
 	else
@@ -7186,7 +7186,7 @@ function bossModPrototype:GetLowestBossHealth()
 	local hp
 	if not self.multiMobPullDetection or self.mainBoss then
 		hp = bossHealth[self.mainBoss or self.combatInfo.mob or -1]
-		if hp and (hp > 100 or hp < 1) then
+		if hp and (hp > 100 or hp <= 0) then
 			hp = nil
 		end
 	else
