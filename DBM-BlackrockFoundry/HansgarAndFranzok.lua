@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1155, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13135 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13140 $"):sub(12, -3))
 mod:SetCreatureID(76974, 76973)
 mod:SetEncounterID(1693)
 mod:SetZone()
@@ -135,7 +135,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		self.vb.phase = self.vb.phase + 1
 		DBM:Debug("Tactical Retreat "..UnitName(uId)..". Phase:"..self.vb.phase)
 		self.vb.stamperDodgeCount = 0
-		timerStamperDodge:Cancel()--Cancel all of them
+--		timerStamperDodge:Cancel()--Cancel all of them
 		self.vb.bossUp = UnitName(uId)
 		local cid = self:GetCIDFromGUID(UnitGUID(uId))
 		if cid == 76974 then--Fran
