@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13150 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13151 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -25,7 +25,7 @@ mod:RegisterEventsInCombat(
 --TODO, figure out how to detect OTHER add spawns besides operator and get timers for them too. It's likely the'll require ugly scheduling and /yell logging. 
 local warnRegulators			= mod:NewAnnounce("warnRegulators", 2, 156918)
 local warnBlastFrequency		= mod:NewAnnounce("warnBlastFrequency", 1, 155209, "Healer")
-local warnBomb					= mod:NewTargetAnnounce("OptionVersion2", 155192, 4, false)
+local warnBomb					= mod:NewTargetAnnounce("OptionVersion2", 155192, 4, nil, false)
 local warnDropBombs				= mod:NewSpellAnnounce("OptionVersion2", 174726, 1, nil, "-Tank")
 local warnEngineer				= mod:NewSpellAnnounce("ej9649", 2, 155179)
 local warnRupture				= mod:NewTargetAnnounce(156932, 3)
