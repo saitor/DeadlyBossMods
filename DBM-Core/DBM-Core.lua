@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13156 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13157 $"):sub(12, -3)),
 	DisplayVersion = "6.1.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 13132 -- the revision of the latest stable version that is available
 }
@@ -8682,7 +8682,9 @@ do
 							local remaining = ("%.1f"):format(bar.timer)
 							local ttext = _G[bar.frame:GetName().."BarName"]:GetText() or ""
 							ttext = ttext.."("..self.id..")"
-							DBM:Debug("Timer "..ttext.. " refreshed before expires. Remaining time is : "..remaining, 2)
+							if bar.timer > 0.2 then
+								DBM:Debug("Timer "..ttext.. " refreshed before expires. Remaining time is : "..remaining, 2)
+							end
 							DBM.Bars:CancelBar(bar)
 						end
 					end
@@ -8698,7 +8700,9 @@ do
 						local remaining = ("%.1f"):format(bar.timer)
 						local ttext = _G[bar.frame:GetName().."BarName"]:GetText() or ""
 						ttext = ttext.."("..self.id..")"
-						DBM:Debug("Timer "..ttext.. " refreshed before expires. Remaining time is : "..remaining, 2)
+						if bar.timer > 0.2 then
+							DBM:Debug("Timer "..ttext.. " refreshed before expires. Remaining time is : "..remaining, 2)
+						end
 					end
 				end
 			end
