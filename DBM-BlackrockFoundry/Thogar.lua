@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13159 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13169 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -413,7 +413,7 @@ function mod:SPELL_CAST_START(args)
 		if self:AntiSpam(3, 1) then
 			specWarnIronbellow:Show()
 		end
-		timerIronbellowCD:Start(12, args.sourceGUID)
+		timerIronbellowCD:Start(9, args.sourceGUID)
 	elseif spellId == 159481 then
 		self:BossTargetScanner(args.sourceGUID, "BombTarget", 0.05, 25)
 	end

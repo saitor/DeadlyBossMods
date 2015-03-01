@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13159 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13169 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -69,7 +69,7 @@ local timerCallthePackCD			= mod:NewCDTimer("OptionVersion2", 31.5, 154975, nil,
 mod:AddTimerLine(SPELL_BUCKET_ABILITIES_UNLOCKED)--Abilities Unlocked
 local timerRendandTearCD			= mod:NewCDTimer(12, 155385)
 local timerSuperheatedShrapnelCD	= mod:NewCDTimer(15, 155499)--15-30sec variation observed.
-local timerTantrumCD				= mod:NewNextCountTimer(30, 162275)--No varation, ever. Always highest priority spell and always a next timer, now that all the update code is working 100%
+local timerTantrumCD				= mod:NewNextCountTimer(29.5, 162275)--No varation, ever. Always highest priority spell and always a next timer, now that all the update code is working 100%
 local timerEpicenterCD				= mod:NewCDCountTimer(20, 159043, nil, "Melee")
 --Beast abilities (living)
 mod:AddTimerLine(BATTLE_PET_DAMAGE_NAME_8)--Beast
