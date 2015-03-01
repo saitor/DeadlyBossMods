@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1155, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13143 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13165 $"):sub(12, -3))
 mod:SetCreatureID(76974, 76973)
 mod:SetEncounterID(1693)
 mod:SetZone()
@@ -37,10 +37,10 @@ local specWarnSearingPlatesEnd			= mod:NewSpecialWarningEnd(161570, nil, nil, ni
 local specWarnStampersEnd				= mod:NewSpecialWarningEnd(174825, nil, nil, nil, nil, nil, 2)
 
 local timerDisruptingRoar				= mod:NewCastTimer(2.5, 160838, nil, "SpellCaster")
-local timerDisruptingRoarCD				= mod:NewCDTimer(46, 160838, nil, "SpellCaster")
+local timerDisruptingRoarCD				= mod:NewCDTimer(45, 160838, nil, "SpellCaster")
 local timerSkullcrackerCD				= mod:NewCDTimer(22, 153470, nil, "Healer")
 local timerCripplingSupplex				= mod:NewCastTimer(9.5, 156938, nil, "Tank|Healer")
-local timerJumpSlamCD					= mod:NewNextTimer(35, "ej9854")
+local timerJumpSlamCD					= mod:NewNextTimer(34.3, "ej9854")
 mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
 local timerSmartStamperCD				= mod:NewNextTimer(12, 162124)--Activation
 --local timerStamperDodge					= mod:NewTimer(10, "timerStamperDodge", 160582)--Time until stamper falls (spell name fits well, time you have to stamper dodge)
