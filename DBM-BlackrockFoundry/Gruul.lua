@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1161, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13174 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13176 $"):sub(12, -3))
 mod:SetCreatureID(76877)
 mod:SetEncounterID(1691)
 mod:SetZone()
@@ -37,7 +37,7 @@ local specWarnPetrifyingSlam		= mod:NewSpecialWarningMoveAway(155326, nil, nil, 
 local timerInfernoSliceCD			= mod:NewCDCountTimer(11, 155080)--Variable do to energy bugs (gruul not gain power consistently)
 local timerSpecialCD				= mod:NewCDSpecialTimer(20.5)
 local timerPetrifyingSlamCD			= mod:NewCDCountTimer(60, 155323)--60-70 variation
-local timerOverheadSmashCD			= mod:NewCDCountTimer(24.5, 155301)--25-42 variation
+local timerOverheadSmashCD			= mod:NewCDCountTimer(20.5, 155301)--20-42 variation
 local timerShatter					= mod:NewCastTimer(8, 155529)
 local timerRampage					= mod:NewBuffActiveTimer(30, 155539)
 local timerRampageCD				= mod:NewCDTimer(107, 155539)--Variable, may be even shorter
