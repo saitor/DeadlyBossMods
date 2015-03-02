@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1161, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13164 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13172 $"):sub(12, -3))
 mod:SetCreatureID(76877)
 mod:SetEncounterID(1691)
 mod:SetZone()
@@ -72,6 +72,18 @@ do
 end
 local DBMHudMap = DBMHudMap
 local hudEnabled = false--Only to avoid calling self.Options.HudMapOnShatter 20x in under a second when shatter goes out (20x SPELL_AURA_APPLIED events)
+local mythicSoakOrder = {
+	[1] = 1,
+	[2] = 2,
+	[3] = 3,
+	[4] = 3,
+	[5] = 1,
+	[6] = 2,
+	[7] = 2,
+	[8] = 3,
+	[9] = 1,
+}
+
 
 local function clearRampage(self)
 	self.vb.rampage = false
@@ -122,7 +134,11 @@ function mod:SPELL_CAST_START(args)
 	if spellId == 155080 then--Inferno Slice Cast Start
 		self.vb.sliceCount = self.vb.sliceCount + 1
 		if self.Options.SpecWarn155080count then--if special warning is enabled, do not show regular warning.
-			specWarnInfernoSlice:Show(self.vb.sliceCount)
+			if self:IsMythic() then
+				specWarnInfernoSlice:Show(self.vb.sliceCount.."-"..mythicSoakOrder[self.vb.sliceCount])
+			else
+				specWarnInfernoSlice:Show(self.vb.sliceCount)
+			end
 		else
 			warnInfernoSlice:Show(self.vb.sliceCount)
 		end
