@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13193 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13194 $"):sub(12, -3)),
 	DisplayVersion = "6.1.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 13132 -- the revision of the latest stable version that is available
 }
@@ -88,7 +88,7 @@ DBM.DefaultOptions = {
 	ChallengeBest = "Realm",
 	CountdownVoice = "Corsica",
 	CountdownVoice2 = "Kolt",
-	CountdownVoice3v2 = "HoTS_N",
+	CountdownVoice3v2 = "HoTS_R",
 	ChosenVoicePack = "None",
 	VoiceOverSpecW2 = "DefaultOnly",
 	AlwaysPlayVoice = false,
