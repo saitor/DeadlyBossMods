@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 13177 $"):sub(12, -3)
+local revision =("$Revision: 13193 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -2435,9 +2435,9 @@ local function CreateOptionsMenu()
 		end)
 		CountSoundDropDown2:SetPoint("LEFT", CountSoundDropDown, "RIGHT", 50, 0)
 
-		local CountSoundDropDown3 = spokenGeneralArea:CreateDropdown(L.CountdownVoice3, DBM.Counts, "DBM", "CountdownVoice3", function(value)
-			DBM.Options.CountdownVoice3 = value
-			DBM:PlayCountSound(1, DBM.Options.CountdownVoice3)
+		local CountSoundDropDown3 = spokenGeneralArea:CreateDropdown(L.CountdownVoice3, DBM.Counts, "DBM", "CountdownVoice3v2", function(value)
+			DBM.Options.CountdownVoice3v2 = value
+			DBM:PlayCountSound(1, DBM.Options.CountdownVoice3v2)
 		end)
 		CountSoundDropDown3:SetPoint("TOPLEFT", CountSoundDropDown, "TOPLEFT", 0, -45)
 
