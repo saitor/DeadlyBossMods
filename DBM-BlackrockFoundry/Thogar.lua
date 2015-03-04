@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13169 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13197 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -61,6 +61,7 @@ local voiceProtoGrenade				= mod:NewVoice(165195) --runaway
 
 mod:AddInfoFrameOption(176312)
 mod:AddSetIconOption("SetIconOnAdds", "ej9549", false, true)
+mod:AddDropdownOption("InfoFrameSpeed", {"Immediately", "Delayed"}, "Delayed", "misc")
 
 mod.vb.trainCount = 0
 mod.vb.infoCount = 0
@@ -554,12 +555,16 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
 				end
 			end
 		end
-		local adjust = 0
-		if msg == "Fake" then
-			if expectedTime and expectedTime == 4 then adjust = 1 end
-			self:Schedule(2.5-adjust, showInfoFrame, self)
+		if self.Options.InfoFrameSpeed == "Delayed" then
+			local adjust = 0
+			if msg == "Fake" then
+				if expectedTime and expectedTime == 4 then adjust = 1 end
+				self:Schedule(2.5-adjust, showInfoFrame, self)
+			else
+				self:Schedule(4-adjust, showInfoFrame, self)
+			end
 		else
-			self:Schedule(4-adjust, showInfoFrame, self)
+			showInfoFrame(self)
 		end
 	end
 end
