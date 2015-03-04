@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1161, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13186 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13199 $"):sub(12, -3))
 mod:SetCreatureID(76877)
 mod:SetEncounterID(1691)
 mod:SetZone()
@@ -143,8 +143,8 @@ function mod:SPELL_CAST_START(args)
 			warnInfernoSlice:Show(self.vb.sliceCount)
 		end
 		if not self:IsMythic() then
-			timerInfernoSliceCD:Start(17, self.vb.sliceCount+1)--Maybe 17 in all now? 17 normal and LFR. maybe heroic and mythic still 13?
-			countdownInfernoSlice:Start(17)
+			timerInfernoSliceCD:Start(18, self.vb.sliceCount+1)
+			countdownInfernoSlice:Start(18)
 		else
 			timerInfernoSliceCD:Start(nil, self.vb.sliceCount+1)
 			countdownInfernoSlice:Start()
