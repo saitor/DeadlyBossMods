@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1161, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13199 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13206 $"):sub(12, -3))
 mod:SetCreatureID(76877)
 mod:SetEncounterID(1691)
 mod:SetZone()
@@ -237,7 +237,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		--Delay Rampage clear. Removed event can fire before last rampage smash cast finishes
 		--so we don't want that smash falsely detected as non rampage smash
 		self:Schedule(3, clearRampage, self)
-		timerPetrifyingSlamCD:Start(23, 1)--VERIFY
+		timerPetrifyingSlamCD:Start(21, 1)--VERIFY
 --		timerOverheadSmashCD:Start(47, 1)--VERIFY
 		if not self:IsMythic() then
 			timerInfernoSliceCD:Start(17.5, 1)
