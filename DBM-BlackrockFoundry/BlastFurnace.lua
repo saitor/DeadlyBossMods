@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13212 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13225 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -278,8 +278,9 @@ function mod:OnCombatStart(delay)
 			timerBellowsOperator:Start(55)--55-60 variation for first ones from pull
 		end
 	end
-	timerBlastCD:Start(30-delay)
-	countdownBlast:Start(30-delay)
+	local blastTimer = self:IsMythic() and 24 or 29
+	timerBlastCD:Start(blastTimer)
+	countdownBlast:Start(blastTimer)
 	if not self:IsLFR() then
 		berserkTimer:Start(-delay)
 	end
@@ -589,7 +590,7 @@ function mod:INSTANCE_ENCOUNTER_ENGAGE_UNIT()
 end
 
 do
-	local totalTime = mod:IsMythic() and 25 or 30
+	local totalTime = mod:IsMythic() and 24 or 29
 	local UnitPower = UnitPower
 	function mod:UNIT_POWER_FREQUENT(uId, type)
 		if type == "ALTERNATE" then

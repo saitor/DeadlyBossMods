@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13206 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13225 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -322,7 +322,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		if self:IsMythic() then
 			timerDemolitionCD:Start(30)
 		else
-		timerDemolitionCD:Start()
+			timerDemolitionCD:Start()
 		end
 		voiceDemolition:Play("aesoon")
 	elseif spellId == 161347 then--Phase 2 Trigger
