@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1161, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13215 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13217 $"):sub(12, -3))
 mod:SetCreatureID(76877)
 mod:SetEncounterID(1691)
 mod:SetZone()
@@ -158,7 +158,7 @@ function mod:SPELL_CAST_START(args)
 		self.vb.sliceCount = self.vb.sliceCount + 1
 		if self.Options.SpecWarn155080count then--if special warning is enabled, do not show regular warning.
 			if self:IsMythic() then
-				if self.Options.InfoFrameSpeed == "ThreeGroup" then
+				if self.Options.MythicSoakBehavior == "ThreeGroup" then
 					specWarnInfernoSlice:Show(self.vb.sliceCount.."-"..mythicSoakOrder3Group[self.vb.sliceCount])
 				else
 					specWarnInfernoSlice:Show(self.vb.sliceCount.."-"..mythicSoakOrder2Group[self.vb.sliceCount])
