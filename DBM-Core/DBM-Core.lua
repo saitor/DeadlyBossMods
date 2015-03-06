@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13221 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13222 $"):sub(12, -3)),
 	DisplayVersion = "6.1.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 13132 -- the revision of the latest stable version that is available
 }
@@ -140,7 +140,7 @@ DBM.DefaultOptions = {
 	RLReadyCheckSound = true,
 	AFKHealthWarning = false,
 	HideObjectivesFrame = true,
-	HideGarrisonUpdates = true,
+	HideGarrisonToasts = true,
 	HideGuildChallengeUpdates = true,
 	HideApplicantAlerts = 0,
 	HideTooltips = false,
@@ -5801,7 +5801,7 @@ do
 				RaidBossEmoteFrame:UnregisterEvent("RAID_BOSS_WHISPER")
 				RaidBossEmoteFrame:UnregisterEvent("CLEAR_BOSS_EMOTES")
 			end
-			if self.Options.HideGarrisonUpdates or custom then
+			if self.Options.HideGarrisonToasts or custom then
 				AlertFrame:UnregisterEvent("GARRISON_MISSION_FINISHED")
 				AlertFrame:UnregisterEvent("GARRISON_BUILDING_ACTIVATABLE")
 			end
@@ -5815,7 +5815,7 @@ do
 				RaidBossEmoteFrame:RegisterEvent("RAID_BOSS_WHISPER")
 				RaidBossEmoteFrame:RegisterEvent("CLEAR_BOSS_EMOTES")
 			end
-			if self.Options.HideGarrisonUpdates then
+			if self.Options.HideGarrisonToasts then
 				AlertFrame:RegisterEvent("GARRISON_MISSION_FINISHED")
 				AlertFrame:RegisterEvent("GARRISON_BUILDING_ACTIVATABLE")
 			end
