@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13213 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13228 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -50,7 +50,7 @@ local timerEnkindleCD				= mod:NewCDTimer(12, 155921, nil, "Tank")
 local timerTrainCD					= mod:NewNextCountTimer("d15", 176312)
 --Adds
 --local timerCauterizingBoltCD		= mod:NewNextTimer(30, 160140)
-local timerIronbellowCD				= mod:NewCDTimer(7, 163753)
+local timerIronbellowCD				= mod:NewCDTimer(8.5, 163753)
 
 local berserkTimer					= mod:NewBerserkTimer(492)
 
@@ -412,7 +412,7 @@ function mod:SPELL_CAST_START(args)
 		if self:AntiSpam(3, 1) then
 			specWarnIronbellow:Show()
 		end
-		timerIronbellowCD:Start(9, args.sourceGUID)
+		timerIronbellowCD:Start(nil, args.sourceGUID)
 	elseif spellId == 159481 then
 		self:BossTargetScanner(args.sourceGUID, "BombTarget", 0.05, 25)
 	end
