@@ -1,8 +1,11 @@
 local mod	= DBM:NewMod("Annihilon", "DBM-WorldEvents", 3)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13238 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13242 $"):sub(12, -3))
+mod:SetCreatureID(90802)
 mod:SetZone(DBM_DISABLE_ZONE_DETECTION)
+
+mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 180939 180932",
