@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1162, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13212 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13227 $"):sub(12, -3))
 mod:SetCreatureID(77692)
 mod:SetEncounterID(1713)
 mod:SetZone()
@@ -74,17 +74,17 @@ function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
 	if spellId == 157060 then
 		specWarnGraspingEarth:Show(RUNES)
+		timerStoneBreathCD:Cancel()
 		if self:IsLFR() then
 			timerThunderingBlowsCD:Start(20.5)
 			countdownThunderingBlows:Start(20.5)
-			timerStoneBreathCD:Start(28, 1)
+			timerStoneBreathCD:Start(28, self.vb.stoneBreath+1)
 		else
 			timerThunderingBlowsCD:Start()
 			countdownThunderingBlows:Start()
-			timerStoneBreathCD:Start(31, 1)--Verified it happens on mythic, if rune of trembling earth doesn't come first
+			timerStoneBreathCD:Start(31, self.vb.stoneBreath+1)--Verified it happens on mythic, if rune of trembling earth doesn't come first
 		end
 		timerSlamCD:Cancel()
-		timerStoneBreathCD:Cancel()
 		timerRipplingSmashCD:Cancel()
 		timerWarpedArmorCD:Cancel()
 		voiceGraspingEarth:Play("157060")
