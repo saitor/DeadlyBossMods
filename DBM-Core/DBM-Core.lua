@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13228 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13229 $"):sub(12, -3)),
 	DisplayVersion = "6.1.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 13132 -- the revision of the latest stable version that is available
 }
@@ -8698,11 +8698,11 @@ do
 							if bar.timer > 0.2 then
 								DBM:Debug("Timer "..ttext.. " refreshed before expires. Remaining time is : "..remaining, 2)
 							end
-							DBM.Bars:CancelBar(bar)
 						end
 					end
 					self.startedTimers[i] = nil
 				end
+				DBM.Bars:CancelBar(self.startedTimers[i])
 			end
 			local timer = timer and ((timer > 0 and timer) or self.timer + timer) or self.timer
 			local id = self.id..pformat((("\t%s"):rep(select("#", ...))), ...)
