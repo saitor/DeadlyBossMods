@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13228 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13241 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -118,8 +118,8 @@ function mod:OnCombatStart(delay)
 	self.vb.demolitionCount = 0
 	self.vb.SlagEruption = 0
 	self.vb.smashCount = 0
-	timerThrowSlagBombsCD:Start(6-delay)
-	countdownSlagBombs:Start(6-delay)
+	timerThrowSlagBombsCD:Start(5.5-delay)
+	countdownSlagBombs:Start(5.5-delay)
 	timerDemolitionCD:Start(15-delay, 1)
 	timerShatteringSmashCD:Start(21-delay, 1)
 	if self:IsTank() then--Ability only concerns tank in phase 1
