@@ -1,9 +1,9 @@
 local mod	= DBM:NewMod("Annihilon", "DBM-WorldEvents", 3)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13242 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13243 $"):sub(12, -3))
 mod:SetCreatureID(90802)
-mod:SetZone(DBM_DISABLE_ZONE_DETECTION)
+mod:SetZone(1159, 1331, 1158, 1153, 1152, 1330)--4 of these not needed, but don't know what's what ATM
 
 mod:RegisterCombat("combat")
 
