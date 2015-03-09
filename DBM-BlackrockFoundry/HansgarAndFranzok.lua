@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1155, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13246 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13247 $"):sub(12, -3))
 mod:SetCreatureID(76974, 76973)
 mod:SetEncounterID(1693)
 mod:SetZone()
@@ -58,6 +58,11 @@ mod.vb.bossUp = "NoBody"
 mod.vb.firstJump = false
 local cachedGUID = nil
 
+--Local delay, because using dbm scheduler, would still cause unschedule to happen
+local function scanDelay(self, targetname)
+	self:BossTargetScanner(76973, "JumpTarget", 0.1, 80, true, nil, true, nil, targetname)
+end
+
 function mod:JumpTarget(targetname, uId)
 	if not targetname then return end
 	if targetname == UnitName("player") then
@@ -69,7 +74,7 @@ function mod:JumpTarget(targetname, uId)
 		warnJumpSlam:Show(targetname)--No reason to show this if you got a special warning. so reduce spam and display this only to let you know jump is far away and you're safe
 	end
 --	self:BossTargetScanner(76973, "JumpTarget", 0.1, 80, true, nil, true, nil, targetname)
-	self:ScheduleMethod(0.1, "BossTargetScanner", 76973, "JumpTarget", 0.1, 80, true, nil, true, nil, targetname)
+	self:Schedule(0.1, scanDelay, targetname)
 end
 
 function mod:OnCombatStart(delay)
