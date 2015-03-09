@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1161, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13217 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13249 $"):sub(12, -3))
 mod:SetCreatureID(76877)
 mod:SetEncounterID(1691)
 mod:SetZone()
@@ -137,7 +137,6 @@ function mod:OnCombatStart(delay)
 	timerRampageCD:Start(-delay)--Variable. But seen as low as 108 in LFR, normal, mythic
 	if self.Options.HudMapOnShatter then
 		hudEnabled = true
-		DBMHudMap:Enable()
 	end
 end
 

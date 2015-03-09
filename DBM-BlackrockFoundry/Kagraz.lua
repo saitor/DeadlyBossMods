@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1123, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13148 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13249 $"):sub(12, -3))
 mod:SetCreatureID(76814)--76794 Cinder Wolf, 80590 Aknor Steelbringer
 mod:SetEncounterID(1689)
 mod:SetZone()
@@ -101,9 +101,6 @@ function mod:OnCombatStart(delay)
 	countdownCinderWolves:Start(60-delay)
 	if self.Options.RangeFrame and self:IsRanged() then
 		DBM.RangeCheck:Show(6)
-	end
-	if self.Options.HudMapOnFixate then
-		DBMHudMap:Enable()
 	end
 end
 

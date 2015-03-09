@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Annihilon", "DBM-WorldEvents", 3)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13243 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13249 $"):sub(12, -3))
 mod:SetCreatureID(90802)
 mod:SetZone(1159, 1331, 1158, 1153, 1152, 1330)--4 of these not needed, but don't know what's what ATM
 
@@ -77,9 +77,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self:AntiSpam(2, 1) then
 			specWarnTwistMind:Show()
 			timerTwistMindCD:Start()
-			if self.Options.HudMapOnMC then
-				DBMHudMap:Enable()
-			end
 		end
 		if self.Options.HudMapOnMC then
 			DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "highlight", args.destName, 5, 30, 1, 1, 0, 0.5, nil, true):Pulse(0.5, 0.5)
@@ -98,7 +95,6 @@ function mod:SPELL_AURA_REMOVED(args)
 		if self.vb.MCCount == 0 then
 			specWarnTwistMind:Show()
 			timerTwistMindCD:Start()
-			DBMHudMap:Disable()
 		end
 	end
 end

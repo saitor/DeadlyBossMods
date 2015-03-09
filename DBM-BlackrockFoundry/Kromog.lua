@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1162, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13246 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13249 $"):sub(12, -3))
 mod:SetCreatureID(77692)
 mod:SetEncounterID(1713)
 mod:SetZone()
@@ -71,7 +71,6 @@ function mod:RuneStart()
 			DBM.Arrow:ShowRunTo(playerX, playerY, 0)
 		end
 		if self.Options.HudMapForRune then
-			DBMHudMap:Enable()
 			DBMHudMap:RegisterPositionMarker(157060, "HudMapForRune", "highlight", playerX, playerY, 3, 20, 0, 1, 0, 0.5):Pulse(0.5, 0.5)
 		end
 	end

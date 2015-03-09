@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13241 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13249 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -127,9 +127,6 @@ function mod:OnCombatStart(delay)
 	end
 	timerMarkedforDeathCD:Start(36-delay)
 	countdownMarkedforDeath:Start(36-delay)
-	if self.Options.HudMapOnMFD then
-		DBMHudMap:Enable()
-	end
 end
 
 function mod:OnCombatEnd()

@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13228 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13249 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -220,9 +220,6 @@ function mod:OnCombatStart(delay)
 		"UNIT_HEALTH_FREQUENT boss1 boss2 boss3",
 		"UNIT_POWER_FREQUENT player"
 	)
-	if self.Options.HudMapOnRapidFire or self.Options.HudMapOnBloodRitual then
-		DBMHudMap:Enable()
-	end
 end
 
 function mod:OnCombatEnd()
