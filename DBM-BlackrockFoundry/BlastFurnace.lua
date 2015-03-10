@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13255 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13261 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -114,7 +114,7 @@ mod.vb.machinesDead = 0
 mod.vb.elementalistsRemaining = 4
 mod.vb.blastWarned = false
 mod.vb.shieldDown = 0
-mod.vb.lastTotal = 30
+mod.vb.lastTotal = 29
 mod.vb.phase = 1
 mod.vb.slagCount = 0
 mod.vb.lastSlagIcon = 0
@@ -234,23 +234,23 @@ function mod:OnCombatStart(delay)
 	self.vb.elementalistsRemaining = 4
 	self.vb.blastWarned = false
 	self.vb.shieldDown = 0
-	self.vb.lastTotal = 30
 	self.vb.phase = 1
 	self.vb.slagCount = 0
 	self.vb.lastSlagIcon = 0
-	local firstTimer = self:IsMythic() and 40 or self:IsHeroic() and 55.5 or 60
-	self:Schedule(firstTimer, SecurityGuard, self)
-	self:Schedule(firstTimer, Engineers, self)
-	timerSecurityGuard:Start(firstTimer)
-	timerEngineer:Start(firstTimer)
-	countdownEngineer:Start(firstTimer)
 	if self:AntiSpam(10, 0) then--Need to ignore loading on the pull
 		timerBellowsOperator:Start(firstTimer)
 	end
 	local blastTimer = self:IsMythic() and 24 or 29
+	self.vb.lastTotal = blastTimer
 	timerBlastCD:Start(blastTimer)
 	countdownBlast:Start(blastTimer)
 	if not self:IsLFR() then
+		local firstTimer = self:IsMythic() and 40 or self:IsHeroic() and 55.5 or 60
+		self:Schedule(firstTimer, SecurityGuard, self)
+		self:Schedule(firstTimer, Engineers, self)
+		timerSecurityGuard:Start(firstTimer)
+		timerEngineer:Start(firstTimer)
+		countdownEngineer:Start(firstTimer)
 		berserkTimer:Start(-delay)
 	end
 	if self:IsMythic() then
