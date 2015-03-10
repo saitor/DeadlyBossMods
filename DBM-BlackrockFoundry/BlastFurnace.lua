@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13261 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13263 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -237,6 +237,7 @@ function mod:OnCombatStart(delay)
 	self.vb.phase = 1
 	self.vb.slagCount = 0
 	self.vb.lastSlagIcon = 0
+	local firstTimer = self:IsMythic() and 40 or self:IsHeroic() and 55.5 or 60
 	if self:AntiSpam(10, 0) then--Need to ignore loading on the pull
 		timerBellowsOperator:Start(firstTimer)
 	end
@@ -245,7 +246,6 @@ function mod:OnCombatStart(delay)
 	timerBlastCD:Start(blastTimer)
 	countdownBlast:Start(blastTimer)
 	if not self:IsLFR() then
-		local firstTimer = self:IsMythic() and 40 or self:IsHeroic() and 55.5 or 60
 		self:Schedule(firstTimer, SecurityGuard, self)
 		self:Schedule(firstTimer, Engineers, self)
 		timerSecurityGuard:Start(firstTimer)
