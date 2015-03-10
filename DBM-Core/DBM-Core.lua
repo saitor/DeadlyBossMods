@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13252 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13253 $"):sub(12, -3)),
 	DisplayVersion = "6.1.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 13132 -- the revision of the latest stable version that is available
 }
@@ -6454,7 +6454,7 @@ do
 		local targetname, targetuid, bossuid = self:GetBossTarget(cidOrGuid, scanOnlyBoss)
 		DBM:Debug("Boss target scan "..targetScanCount[cidOrGuid].." of "..scanTimes..", found target "..(targetname or "nil").." using "..(bossuid or "nil"), 3)--Doesn't hurt to keep this, as level 3
 		--Do scan
-		if targetname and (not targetFilter and targetname ~= DBM_CORE_UNKNOWN) or (targetFilter and targetFilter ~= targetname) then
+		if targetname and targetname ~= DBM_CORE_UNKNOWN and ((not targetFilter) or (targetFilter and targetFilter ~= targetname)) then
 			if not IsInGroup() then scanTimes = 1 end--Solo, no reason to keep scanning, give faster warning. But only if first scan is actually a valid target, which is why i have this check HERE
 			if (isEnemyScan and UnitIsFriend("player", targetuid) or self:IsTanking(targetuid, bossuid)) and not isFinalScan and not includeTank then--On player scan, ignore tanks. On enemy scan, ignore friendly player.
 				if targetScanCount[cidOrGuid] < scanTimes then--Make sure no infinite loop.
