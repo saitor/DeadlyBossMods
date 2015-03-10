@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1202, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13204 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13260 $"):sub(12, -3))
 mod:SetCreatureID(77182)
 mod:SetEncounterID(1696)
 mod:SetZone()
@@ -39,7 +39,7 @@ local timerBlackrockSpinesCD		= mod:NewCDTimer(18.5, 156834)--20-23 (cd for barr
 local timerAcidTorrentCD			= mod:NewCDCountTimer("OptionVersion2", 13, 156240, nil, "Tank|Healer")
 local timerExplosiveShardCD			= mod:NewCDTimer("OptionVersion3", 12, 156390, nil, "MeleeDps")--Every 12-20 seconds
 local timerExplosiveShard			= mod:NewCastTimer(3.5, 156390, nil, "MeleeDps")
-local timerRetchedBlackrockCD		= mod:NewCDTimer("OptionVersion2", 16, 156179, nil, "Ranged")--Every 17-23 seconds
+local timerRetchedBlackrockCD		= mod:NewCDTimer("OptionVersion2", 15.5, 156179, nil, "Ranged")
 
 local countdownAcidTorrent			= mod:NewCountdown(13, 156240, "Tank")
 
@@ -72,7 +72,7 @@ function mod:OnCombatStart(delay)
 	self.vb.torrentCount = 0
 	timerRetchedBlackrockCD:Start(5-delay)--5-7
 	timerExplosiveShardCD:Start(9.5-delay)
-	timerAcidTorrentCD:Start(12-delay, 1)--12-13
+	timerAcidTorrentCD:Start(11-delay, 1)
 	countdownAcidTorrent:Start(12-delay)
 	timerBlackrockSpinesCD:Start(13-delay)--13-16
 --	berserkTimer:Start(-delay)
