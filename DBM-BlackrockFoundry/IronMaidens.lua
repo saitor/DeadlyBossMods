@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13264 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13265 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -468,6 +468,7 @@ function mod:OnSync(msg, guid)
 			end
 		end
 	elseif msg == "Ship" and guid then--technically not guid but it's fine.
+		boatMissionDone = false
 		self.vb.ship = self.vb.ship + 1
 		self.vb.alphaOmega = 1
 		warnShip:Show()
