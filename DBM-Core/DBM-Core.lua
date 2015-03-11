@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13267 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13268 $"):sub(12, -3)),
 	DisplayVersion = "6.1.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 13132 -- the revision of the latest stable version that is available
 }
@@ -2938,7 +2938,7 @@ do
 	local lastLFGAlert = 0
 	function DBM:LFG_ROLE_CHECK_SHOW()
 		if not UnitIsGroupLeader("player") and self.Options.LFDEnhance and GetTime() - lastLFGAlert > 5 then
-			self:PlaySoundFile("Sound\\interface\\levelup2.ogg")--Because regular sound uses SFX channel which is too low of volume most of time
+			self:PlaySoundFile("Sound\\interface\\levelup2.ogg", true)--Because regular sound uses SFX channel which is too low of volume most of time
 			lastLFGAlert = GetTime()
 		end
 	end
@@ -2947,7 +2947,7 @@ end
 function DBM:LFG_PROPOSAL_SHOW()
 	self.Bars:CreateBar(40, DBM_LFG_INVITE, "Interface\\Icons\\Spell_Holy_BorrowedTime")
 	if self.Options.LFDEnhance then
-		self:PlaySoundFile("Sound\\interface\\levelup2.ogg")--Because regular sound uses SFX channel which is too low of volume most of time
+		self:PlaySoundFile("Sound\\interface\\levelup2.ogg", true)--Because regular sound uses SFX channel which is too low of volume most of time
 	end
 end
 
@@ -2961,7 +2961,7 @@ end
 
 function DBM:READY_CHECK()
 	if self.Options.RLReadyCheckSound and not BINDING_HEADER_oRA3 then--readycheck sound, if ora3 not installed (bad to have 2 mods do it)
-		self:PlaySoundFile("Sound\\interface\\levelup2.ogg")--Because regular sound uses SFX channel which is too low of volume most of time
+		self:PlaySoundFile("Sound\\interface\\levelup2.ogg", true)--Because regular sound uses SFX channel which is too low of volume most of time
 	end
 end
 
@@ -3070,7 +3070,7 @@ function DBM:UPDATE_BATTLEFIELD_STATUS()
 			queuedBattlefield[i] = select(2, GetBattlefieldStatus(i))
 			self.Bars:CreateBar(85, queuedBattlefield[i], "Interface\\Icons\\Spell_Holy_BorrowedTime")	-- need to confirm the timer
 			if self.Options.LFDEnhance then
-				self:PlaySoundFile("Sound\\interface\\levelup2.ogg")--Because regular sound uses SFX channel which is too low of volume most of time
+				self:PlaySoundFile("Sound\\interface\\levelup2.ogg", true)--Because regular sound uses SFX channel which is too low of volume most of time
 			end
 		elseif queuedBattlefield[i] then
 			self.Bars:CancelBar(queuedBattlefield[i])
@@ -4528,7 +4528,7 @@ do
 					else--World Boss
 						scanForCombat(v.mod, v.mob, 0)
 						if (DBM.Options.WorldBossNearAlert or v.mod.Options.ReadyCheck) and not IsQuestFlaggedCompleted(v.mod.readyCheckQuestId) then
-							DBM:PlaySoundFile("Sound\\interface\\levelup2.ogg")
+							DBM:PlaySoundFile("Sound\\interface\\levelup2.ogg", true)
 						end
 					end
 				end
@@ -5411,11 +5411,11 @@ function DBM:GetGroupSize()
 	return LastGroupSize
 end
 
-function DBM:PlaySoundFile(path)
-	if self.Options.UseSoundChannel == "Master" then
-		PlaySoundFile(path, "Master")
-	elseif self.Options.UseSoundChannel == "Dialog" then
+function DBM:PlaySoundFile(path, ignoreSFX)
+	if self.Options.UseSoundChannel == "Dialog" then
 		PlaySoundFile(path, "Dialog")
+	elseif ignoreSFX or self.Options.UseSoundChannel == "Master" then
+		PlaySoundFile(path, "Master")
 	else
 		PlaySoundFile(path)
 	end
