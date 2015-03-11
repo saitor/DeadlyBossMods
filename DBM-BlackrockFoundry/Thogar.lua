@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13262 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13271 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -15,6 +15,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 155864",
 	"SPELL_AURA_APPLIED 155921 165195",
 	"SPELL_AURA_APPLIED_DOSE 155921",
+	"SPELL_AURA_REFRESH 155921",
 	"UNIT_DIED",
 	"CHAT_MSG_MONSTER_YELL"
 )
@@ -482,6 +483,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
+mod.SPELL_AURA_REFRESH = mod.SPELL_AURA_APPLIED
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
