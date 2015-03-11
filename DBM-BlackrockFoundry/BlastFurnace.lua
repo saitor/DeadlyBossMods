@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13263 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13278 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -431,9 +431,13 @@ function mod:SPELL_AURA_APPLIED(args)
 		elseif self:CheckNearby(8, args.destName) then
 			specWarnMeltNear:Show()
 		end
-	elseif spellId == 156934 and self:CheckTankDistance(args.sourceGUID, 40) then
-		warnRupture:CombinedShow(0.5, args.destName)
-		timerRuptureCD:Start()
+	elseif spellId == 156934 then
+		--Increase to 50 should fix any rare issues not get timer if on same area as boss.
+		if self:CheckTankDistance(args.sourceGUID, 50) then
+			warnRupture:CombinedShow(0.5, args.destName)
+			timerRuptureCD:Start()
+		end
+		--Always warn player, always.
 		if args:IsPlayer() then
 			specWarnRuptureOn:Show()
 			yellRupture:Schedule(4)--yell after 4 sec to warn nearby player (aoe actually after 5 sec).  like expel magic: fel
