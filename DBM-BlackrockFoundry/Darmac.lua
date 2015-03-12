@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13294 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13295 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -207,8 +207,8 @@ function mod:OnCombatStart(delay)
 	self.vb.FaultlineAbilites = false
 	self.vb.tantrumCount = 0
 	table.wipe(activeBossGUIDS)
-	timerPinDownCD:Start(11-delay)
-	countdownPinDown:Start(11-delay)
+	timerPinDownCD:Start(9.5-delay)
+	countdownPinDown:Start(9.5-delay)
 	if self:IsLFR() then
 		--Now confirmed.
 		timerCallthePackCD:Start(20-delay)--Time for cast finish, not cast start, because only cast finish is sure thing. cast start can be interrupted
