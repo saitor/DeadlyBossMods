@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13293 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13294 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -40,7 +40,7 @@ local warnStampede					= mod:NewSpellAnnounce(155247, 3)
 
 --Boss basic attacks
 local specWarnCallthePack			= mod:NewSpecialWarningSwitch("OptionVersion2", 154975, "Tank", nil, nil, nil, nil, 2)
-local specWarnPinDown				= mod:NewSpecialWarningSpell("OptionVersion2", 154960, "Ranged", nil, nil, 2, nil, 2)
+local specWarnPinDown				= mod:NewSpecialWarningSpell("OptionVersion3", 154960, "Ranged", nil, nil, 2, nil, 2)
 local yellPinDown					= mod:NewYell(154960)
 --Boss gained abilities (beast deaths grant boss new abilities)
 local specWarnRendandTear			= mod:NewSpecialWarningMove(155385, "Melee", nil, nil, nil, nil, 2)--Always returns to melee (tank)
@@ -490,6 +490,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		specWarnPinDown:Show()
 		timerPinDownCD:Start()
 		countdownPinDown:Start()
+		voicePinDown:Play("spear")
 	elseif spellId == 155423 then--Face Random Non-Tank (beast version)
 		specWarnInfernoBreath:Show()
 		timerInfernoBreathCD:Start()
