@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13281 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13289 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -123,6 +123,7 @@ local function updateBeastTimers(self, all, spellId, adjust)
 	local dismountAdjust = 0--default of 0, so -0 doesn't affect timers unless mythic and UNIT_TARGETABLE is trigger
 	if adjust then dismountAdjust = 2 end--Dismount event is a little slow, fires 2 seconds after true dismount, so must adjust all timers for dismounts
 	if self.vb.WolfAbilities and (self:IsMythic() and spellId == 155458 or all) then--Cruelfang
+			timerRendandTearCD:Cancel()
 		if self.vb.RylakAbilities then--If he also has rylak abilities, first rend and tear is 12 seconds, not 6
 			timerRendandTearCD:Start(12-dismountAdjust)
 		else
@@ -130,12 +131,15 @@ local function updateBeastTimers(self, all, spellId, adjust)
 		end
 	end
 	if self.vb.RylakAbilities and (self:IsMythic() and spellId == 155459 or all) then--Dreadwing
+		timerSuperheatedShrapnelCD:Cancel()
 		timerSuperheatedShrapnelCD:Start(9-dismountAdjust)
 	end
 	if self.vb.ElekkAbilities and (self:IsMythic() and spellId == 163247 or all) then--Ironcrusher
+		timerTantrumCD:Cancel()
 		timerTantrumCD:Start(17-dismountAdjust, self.vb.tantrumCount+1)
 	end
 	if self.vb.FaultlineAbilites and (self:IsMythic() and spellId == 155462 or all) then--Faultline
+		timerEpicenterCD:Cancel()
 		timerEpicenterCD:Start(24, self.vb.epicenterCount+1)
 		countdownEpicenter:Start(24)
 	end
