@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1155, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13269 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13287 $"):sub(12, -3))
 mod:SetCreatureID(76974, 76973)
 mod:SetEncounterID(1693)
 mod:SetZone()
@@ -167,8 +167,6 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		else--Not first jump
 			DBM:Debug("157922: firstJump false")
 		end
-	elseif spellId == 157923 then--Fallback
-		DBM:Debug("157923: mid air")
 	elseif spellId == 157925 then--Jump Slam (this id seems to fire when ended)
 		DBM:Debug("157925: jumps ended")
 		self:BossTargetScannerAbort(76973, "JumpTarget")
@@ -177,7 +175,6 @@ end
 
 --Currently functional on 6.0.3. But yell method may still be needed in 6.1
 function mod:UNIT_TARGETABLE_CHANGED(uId)
-	DBM:Debug("UNIT_TARGETABLE_CHANGED event fired")
 	if UnitExists(uId) then--Return, not retreat
 		local cid = self:GetCIDFromGUID(UnitGUID(uId))
 		if cid == 76973 then--Hansgar
