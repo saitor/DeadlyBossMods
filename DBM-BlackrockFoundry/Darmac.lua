@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13291 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13293 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -39,8 +39,8 @@ local warnCrushArmor				= mod:NewStackAnnounce(155236, 2, nil, "Tank")
 local warnStampede					= mod:NewSpellAnnounce(155247, 3)
 
 --Boss basic attacks
-local specWarnCallthePack			= mod:NewSpecialWarningSwitch("OptionVersion2", 154975, "Tank", nil, nil, nil, nil, nil, 2)
-local specWarnPinDown				= mod:NewSpecialWarningSpell("OptionVersion2", 154960, "Ranged", nil, nil, nil, 2, nil, 2)
+local specWarnCallthePack			= mod:NewSpecialWarningSwitch("OptionVersion2", 154975, "Tank", nil, nil, nil, nil, 2)
+local specWarnPinDown				= mod:NewSpecialWarningSpell("OptionVersion2", 154960, "Ranged", nil, nil, 2, nil, 2)
 local yellPinDown					= mod:NewYell(154960)
 --Boss gained abilities (beast deaths grant boss new abilities)
 local specWarnRendandTear			= mod:NewSpecialWarningMove(155385, "Melee", nil, nil, nil, nil, 2)--Always returns to melee (tank)
