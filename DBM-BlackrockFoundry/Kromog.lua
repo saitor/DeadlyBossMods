@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1162, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13292 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13298 $"):sub(12, -3))
 mod:SetCreatureID(77692)
 mod:SetEncounterID(1713)
 mod:SetZone()
@@ -315,7 +315,7 @@ do
 			end
 		end
 		if positionUpdate then
-			DBM:AddMsg(L.ExRTNotice:format((lastPosition or NONE)))
+			DBM:AddMsg(L.ExRTNotice:format(sender, (lastPosition or NONE)))
 		end
 	end
 end
