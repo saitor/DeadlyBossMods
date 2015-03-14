@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13306 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13307 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -525,7 +525,7 @@ end
 
 function mod:UNIT_HEALTH_FREQUENT(uId)
 	local hp = UnitHealth(uId) / UnitHealthMax(uId)
-	if hp < 0.20 and not self.vb.phase == 2 then
+	if hp < 0.20 and self.vb.phase ~= 2 then
 		timerShipCD:Cancel()
 		self.vb.phase = 2
 		warnPhase2:Show()
