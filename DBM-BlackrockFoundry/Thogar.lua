@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13314 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13315 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -447,7 +447,8 @@ function mod:BombTarget(targetname, uId)
 	warnDelayedSiegeBomb:CombinedShow(0.5, targetname)
 	if targetname == UnitName("player") then
 		specWarnDelayedSiegeBomb:Show()
-		timerDelayedSiegeBomb:Start(6, 1)
+		specWarnDelayedSiegeBombMove:Schedule(5, 1)
+		timerDelayedSiegeBomb:Start(5.5, 1)
 		voiceDelayedSiegeBomb:Play("bombrun")
 	end
 end
@@ -462,7 +463,7 @@ function mod:GrenadeTarget(targetname, uId)
 			voiceProtoGrenade:Play("runaway")
 		end
 	elseif self:CheckNearby(5, targetname) then
-		specWarnProtoGrenadeNear:Show()
+		specWarnProtoGrenadeNear:Show(targetname)
 	end
 end
 
@@ -505,10 +506,10 @@ function mod:SPELL_CAST_SUCCESS(args)
 		specWarnDelayedSiegeBombMove:Show()
 		timerDelayedSiegeBomb:Start(3, 2)
 		yellDelayedSiegeBomb:Schedule(3, 2)
-		specWarnDelayedSiegeBombMove:Schedule(3)
+		specWarnDelayedSiegeBombMove:Schedule(2.5)
 		timerDelayedSiegeBomb:Schedule(3, 3, 3)
 		yellDelayedSiegeBomb:Schedule(6, 3)
-		specWarnDelayedSiegeBombMove:Schedule(6)
+		specWarnDelayedSiegeBombMove:Schedule(5.5)
 	end
 end
 
@@ -549,8 +550,6 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 165195 and args:IsPlayer() and self:AntiSpam(1.5, 5) then
 		specWarnProtoGrenade:Show()
 		voiceProtoGrenade:Play("runaway")
---[[	elseif spellId == 156494 and args:IsPlayer() and self:AntiSpam(3, 2) then
-		specWarnObliteration:Show()--]]
 	--Applied debuffs, not damage. Damage occurs for 15 seconds even when player moves out of it, but player gains stack of debuff every second standing in fire.
 	elseif spellId == 164380 and args:IsPlayer() and self:AntiSpam(2, 3) then
 		local amount = args.amount or 1
