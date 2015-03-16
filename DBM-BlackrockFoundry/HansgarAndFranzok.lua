@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1155, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13287 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13322 $"):sub(12, -3))
 mod:SetCreatureID(76974, 76973)
 mod:SetEncounterID(1693)
 mod:SetZone()
@@ -163,7 +163,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		if not self.vb.firstJump then
 			DBM:Debug("157922: firstJump true")
 			self.vb.firstJump = true
-			self:BossTargetScanner(76973, "JumpTarget", 0.1, 80, true, nil, false)--Don't include tank in first scan should be enough of a filter for first, it'll grab whatever first non tank target he gets and set that as first jump target and it will be valid
+			self:BossTargetScanner(76973, "JumpTarget", 0.1, 80, true, nil, true)--Don't include tank in first scan should be enough of a filter for first, it'll grab whatever first non tank target he gets and set that as first jump target and it will be valid
 		else--Not first jump
 			DBM:Debug("157922: firstJump false")
 		end
