@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13320 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13321 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -454,7 +454,10 @@ function mod:BombTarget(targetname, uId)
 end
 
 function mod:GrenadeTarget(targetname, uId)
-	if not targetname then return end
+	if not targetname then
+		warnProtoGrenade:Show(DBM_CORE_UNKNOWN)
+		return
+	end
 	if targetname == UnitName("player") then
 		yellProtoGrenade:Yell()
 		if self:AntiSpam(1.5, 5) then
@@ -498,7 +501,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	local spellId = args.spellId
 	if spellId == 155864 and self:AntiSpam(2, 4) then
-		self:BossTargetScanner(76906, "GrenadeTarget", 0.05, 10, true, nil, false)
+		self:BossTargetScanner(76906, "GrenadeTarget", 0.05, 16, true, nil, false)
 		timerProtoGrenadeCD:Start()
 	elseif spellId == 159481 and args:IsPlayer() then
 		bombFrom = args.sourceGUID
