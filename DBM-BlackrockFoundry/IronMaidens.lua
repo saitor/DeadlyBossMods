@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13317 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13331 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -169,6 +169,12 @@ local function recoverTimers()
 	end
 end
 
+local function boatReturnWarning()
+	if boatMissionDone and isPlayerOnBoat() then
+		specWarnReturnBase:Show()
+	end
+end
+
 local function checkBoatPlayer(self)
 	DBM:Debug("checkBoatPlayer running", 3)
 	for uId in DBM:GetGroupMembers() do 
@@ -189,12 +195,6 @@ local function checkBoatPlayer(self)
 		playerOnBoat = false
 		recoverTimers()
 		DBM:Debug("Player Leaving Boat")
-	end
-end
-
-local function boatReturnWarning()
-	if boatMissionDone and isPlayerOnBoat() then
-		specWarnReturnBase:Show()
 	end
 end
 
