@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13331 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13339 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -472,7 +472,7 @@ end
 
 function mod:OnSync(msg, guid)
 	if not self:IsInCombat() then return end
-	if (not DBM.Options.DontShowFarWarnings or isPlayerOnBoat()) then return end--Anything below this line doesn't concern people on boat
+	if DBM.Options.DontShowFarWarnings and isPlayerOnBoat() then return end--Anything below this line doesn't concern people on boat
 	if msg == "RapidFireTarget" and guid then
 		local targetName = DBM:GetFullPlayerNameByGUID(guid)
 		if self:AntiSpam(5, targetName) then--Set antispam if we got a sync, to block 3 second late SPELL_AURA_APPLIED if we got the early warning
