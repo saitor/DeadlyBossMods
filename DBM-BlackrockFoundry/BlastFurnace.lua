@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13310 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13341 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -123,7 +123,7 @@ local activeSlagGUIDS = {}
 local activePrimalGUIDS = {}
 local activePrimal = 0 -- health report variable. no sync
 local prevHealth = 100
-local yellVolatileFire2
+local yellVolatileFire2 = mod:NewFadesYell(176121, nil, true, false)
 local UnitDebuff = UnitDebuff
 
 local BombFilter, VolatileFilter
