@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1162, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13353 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13354 $"):sub(12, -3))
 mod:SetCreatureID(77692)
 mod:SetEncounterID(1713)
 mod:SetZone()
@@ -167,7 +167,7 @@ function mod:SPELL_CAST_START(args)
 		voiceCallofMountain:Play("findshelter")
 		if self.vb.mountainCast == 3 then--Start timers for resume normal phase
 			timerStoneBreathCD:Start(8.7, self.vb.stoneBreath+1)--Or 12
-			timerWarpedArmorCD:Start(12.5)--12.5-17
+			timerWarpedArmorCD:Start(12.2)--12.2-17
 			--First slam and first rippling still too variable to start here.
 			--after that they get back into their consistency
 			--Rippling smash is WILDLY variable on mythic, to point that any timer for it is completely useless
