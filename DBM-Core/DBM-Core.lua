@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13349 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13350 $"):sub(12, -3)),
 	DisplayVersion = "6.1.3 alpha", -- the string that is shown as version
 	ReleaseRevision = 13295 -- the revision of the latest stable version that is available
 }
@@ -1735,6 +1735,8 @@ SlashCmdList["DEADLYBOSSMODS"] = function(msg)
 					DBMHudMap:RegisterRangeMarkerOnPartyMember(12345, "star", UnitName(uId), 5, hudDuration, 1, 1, 1, 0.5, nil, false):Pulse(0.5, 0.5)
 				end
 				success = true
+			else
+				DBM:AddMsg(DBM_CORE_HUD_INVALID_TYPE)
 			end
 		end
 		if success then
