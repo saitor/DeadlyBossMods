@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13358 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13359 $"):sub(12, -3)),
 	DisplayVersion = "6.1.3 alpha", -- the string that is shown as version
 	ReleaseRevision = 13295 -- the revision of the latest stable version that is available
 }
@@ -8522,7 +8522,7 @@ do
 		if obj.option then
 			local catType = "announce"--Default to General announce
 			--Directly affects another target (boss or player) that you need to know about
-			if announceType == "target" or announceType == "close" or announceType == "reflect" or announceType == "switch" or announceType == "switchcount" then
+			if announceType == "target" or announceType == "targetcount" or announceType == "close" or announceType == "reflect" or announceType == "switch" or announceType == "switchcount" then
 				catType = "announceother"
 			--Directly affects you
 			elseif announceType == "you" or announceType == "move" or announceType == "dodge" or announceType == "moveaway" or announceType == "run" or announceType == "stack" or announceType == "moveto" then
@@ -8572,6 +8572,10 @@ do
 
 	function bossModPrototype:NewSpecialWarningTarget(text, optionDefault, ...)
 		return newSpecialWarning(self, "target", text, nil, optionDefault, ...)
+	end
+	
+	function bossModPrototype:NewSpecialWarningTargetCount(text, optionDefault, ...)
+		return newSpecialWarning(self, "targetcount", text, nil, optionDefault, ...)
 	end
 	
 	function bossModPrototype:NewSpecialWarningTaunt(text, optionDefault, ...)
