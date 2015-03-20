@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13370 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13372 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -395,7 +395,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.SpecWarn158078targetcount then
 			specWarnBloodRitualOther:Show(self.vb.bloodRitual, args.destName)
 		else
-			warnBloodRitual:Show(args.destName, self.vb.bloodRitual)
+			warnBloodRitual:Show(self.vb.bloodRitual, args.destName)
 		end
 		if self.Options.SetIconOnBloodRitual and not self:IsLFR() then
 			self:SetIcon(args.destName, 2)
