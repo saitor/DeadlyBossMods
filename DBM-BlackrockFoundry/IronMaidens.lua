@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13363 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13364 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -215,6 +215,7 @@ local function checkBoatOn(self, count)
 		timerBloodRitualCD:Cancel()
 		timerRapidFireCD:Cancel()
 		timerBladeDashCD:Cancel()
+		countdownBladeDash:Cancel()
 		timerHeartSeekerCD:Cancel()
 		timerConvulsiveShadowsCD:Cancel()
 		timerPenetratingShotCD:Cancel()
@@ -527,6 +528,12 @@ function mod:OnSync(msg, guid)
 			timerShipCD:Start()
 			countdownShip:Start()
 		end
+		--Timers that always cancel, regardless of boss going up
+		self:Schedule(3, function()
+			timerBladeDashCD:Cancel()
+			countdownBladeDash:Cancel()
+		end)
+		--Timers that always cancel, regardless of boss going up
 		timerBombardmentAlphaCD:Start(14.5)
 		if guid == Marak then
 			self:Schedule(3, function()
@@ -536,7 +543,6 @@ function mod:OnSync(msg, guid)
 			voiceShip:Play("1695ukurogg")
 		elseif guid == Sorka then
 			self:Schedule(3, function()
-				timerBladeDashCD:Cancel()
 				timerConvulsiveShadowsCD:Cancel()
 				timerDarkHuntCD:Cancel()
 			end)
