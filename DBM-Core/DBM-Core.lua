@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13370 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13371 $"):sub(12, -3)),
 	DisplayVersion = "6.1.3 alpha", -- the string that is shown as version
 	ReleaseRevision = 13295 -- the revision of the latest stable version that is available
 }
@@ -1290,7 +1290,7 @@ do
 				if (not f or v.func == f) and (not mod or v.mod == mod) then
 					match = true
 					for i = 1, select("#", ...) do
-						if select(i, ...) ~= v[i] then
+						if select(i, ...) ~= nil and select(i, ...) ~= v[i] then
 							match = false
 							break
 						end
