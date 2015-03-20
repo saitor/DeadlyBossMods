@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13374 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13375 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -328,13 +328,6 @@ function mod:SPELL_AURA_APPLIED(args)
 				timerShatteringSmashCD:Update(elapsed, total+extend, self.vb.smashCount+1)
 				countdownShatteringSmash:Cancel()
 				countdownShatteringSmash:Start(remaining+extend)
-			end
-			if self.vb.phase == 2 then
-				if self.vb.markCount2 < 3 then
-					self.vb.markCount2 = self.vb.markCount2 + 1
-				else
-					self.vb.markCount2 = 1
-				end
 			end
 		end
 		local countFormat = self.vb.markCount
