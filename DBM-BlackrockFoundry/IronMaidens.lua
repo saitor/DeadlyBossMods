@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13365 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13370 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -242,7 +242,7 @@ function mod:BladeDashTarget(targetname, uId)
 		elseif self:CheckNearby(8, targetname) then
 			specWarnBladeDashOther:Show(targetname)
 		else
-			warnBladeDash:Show(targetname, self.vb.bladeDash)
+			warnBladeDash:Show(self.vb.bladeDash, targetname)
 		end
 	end
 end
@@ -393,7 +393,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif spellId == 159724 and (noFilter or not isPlayerOnBoat()) then
 		if self.Options.SpecWarn158078targetcount then
-			specWarnBloodRitualOther:Show(args.destName, self.vb.bloodRitual)
+			specWarnBloodRitualOther:Show(self.vb.bloodRitual, args.destName)
 		else
 			warnBloodRitual:Show(args.destName, self.vb.bloodRitual)
 		end
