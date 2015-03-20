@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13361 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13363 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -113,7 +113,7 @@ local timerHeartSeekerCD				= mod:NewCDTimer("OptionVersion2", 70, 158010, nil, 
 local countdownShip						= mod:NewCountdown(198, "ej10019")
 local countdownWarmingUp				= mod:NewCountdown(90, 158849)
 local countdownBloodRitual				= mod:NewCountdownFades("Alt5", 158078, "Tank")
-local countdownBladeDash				= mod:NewCountdown("AltTwo8", 155794, "Tank")
+local countdownBladeDash				= mod:NewCountdown("AltTwo20", 155794, "Tank")
 local countdownDarkHunt					= mod:NewCountdownFades("AltTwo8", 158315)
 
 local voiceRapidFire					= mod:NewVoice(156631) --runout
