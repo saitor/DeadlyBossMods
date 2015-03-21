@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13387 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13389 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -639,12 +639,12 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
 			end
 			if count == 1 or count == 2 or count == 11 or count == 12 or count == 13 or count == 25 or count == 26 or count == 31 then
 				expectedTime = 5
-				if count == 1 or count == 11 or count == 26 or count == 34 then
+				if count == 1 or count == 11 or count == 26 then
 					showHud(self, count)
 				elseif count == 2 then
 					self:Schedule(14-fakeAdjust, showHud, self, count)
 				end
-			elseif count == 6 or count == 14 or count == 22 or count == 30 or count == 32 then
+			elseif count == 6 or count == 14 or count == 22 or count == 30 or count == 32 or count == 34 then
 				expectedTime = 10
 				if count == 14 then
 					self:Schedule(10-fakeAdjust, showHud, self, count)
