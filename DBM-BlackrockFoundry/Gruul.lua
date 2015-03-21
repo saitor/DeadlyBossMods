@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1161, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13380 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13381 $"):sub(12, -3))
 mod:SetCreatureID(76877)
 mod:SetEncounterID(1691)
 mod:SetZone()
@@ -98,8 +98,8 @@ local mythicSoakOrder2Group = {
 	[7] = 2,
 	[8] = 2,
 	[9] = 1,
-	[10] = 2,
-	[11] = 1,
+	[10] = 1,
+	[11] = 2,
 	[12] = 2,
 }
 --Normal/heroic always best strat is 2 groups 1 stack each, repeating.
