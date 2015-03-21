@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13378 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13392 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -517,7 +517,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		timerThrowSlagBombsCD:Cancel()
 		countdownSlagBombs:Cancel()
 		if self:IsMythic() then
-			timerFallingDebrisCD:Start(10, 1)
+			timerFallingDebrisCD:Start(11, 1)
 		end
 		timerAttachSlagBombsCD:Start(11)
 		countdownSlagBombs:Start(11)
