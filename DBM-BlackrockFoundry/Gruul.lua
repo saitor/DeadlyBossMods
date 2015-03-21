@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1161, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13381 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13382 $"):sub(12, -3))
 mod:SetCreatureID(76877)
 mod:SetEncounterID(1691)
 mod:SetZone()
@@ -172,17 +172,24 @@ function mod:SPELL_CAST_START(args)
 		else
 			timerInfernoSliceCD:Start(nil, self.vb.sliceCount+1)
 			countdownInfernoSlice:Start()
+			local countFormat = self.vb.sliceCount
 			if self.Options.MythicSoakBehavior == "ThreeGroup" then
+				if mythicSoakOrder3Group[self.vb.sliceCount] then
+					countFormat = self.vb.sliceCount.."-"..mythicSoakOrder3Group[self.vb.sliceCount]
+				end
 				if self.Options.SpecWarn155080count then
-					specWarnInfernoSlice:Show(self.vb.sliceCount.."-"..mythicSoakOrder3Group[self.vb.sliceCount])
+					specWarnInfernoSlice:Show(countFormat)
 				else
-					warnInfernoSlice:Show(self.vb.sliceCount.."-"..mythicSoakOrder3Group[self.vb.sliceCount])
+					warnInfernoSlice:Show(countFormat)
 				end
 			else
+				if mythicSoakOrder2Group[self.vb.sliceCount] then
+					countFormat = self.vb.sliceCount.."-"..mythicSoakOrder2Group[self.vb.sliceCount]
+				end
 				if self.Options.SpecWarn155080count then
-					specWarnInfernoSlice:Show(self.vb.sliceCount.."-"..mythicSoakOrder2Group[self.vb.sliceCount])
+					specWarnInfernoSlice:Show(countFormat)
 				else
-					warnInfernoSlice:Show(self.vb.sliceCount.."-"..mythicSoakOrder2Group[self.vb.sliceCount])
+					warnInfernoSlice:Show(countFormat)
 				end
 			end
 		end
