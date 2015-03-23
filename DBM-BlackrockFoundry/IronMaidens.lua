@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13406 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13407 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -160,6 +160,7 @@ local function boatReturnWarning()
 	end
 end
 
+--(ability.id = 158078 or ability.id = 156626 or ability.id = 155794 or ability.id = 158008 or ability.id = 156109) and type = "begincast" or ability.id = 164271 and type = "cast" or ability.name = "Sabotage"
 local function checkBoatPlayer(self, npc)
 	DBM:Debug("checkBoatPlayer running", 3)
 	for uId in DBM:GetGroupMembers() do 
