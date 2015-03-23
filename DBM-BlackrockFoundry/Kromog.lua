@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1162, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13355 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13398 $"):sub(12, -3))
 mod:SetCreatureID(77692)
 mod:SetEncounterID(1713)
 mod:SetZone()
@@ -282,6 +282,8 @@ do
 		if prefix ~= "EXRTADD" then return end
 		local subPrefix,pos1,name1,pos2,name2,pos3,name3 = strsplit("\t", message)
 		if subPrefix ~= "kromog" then return end
+		sender = Ambiguate(sender, "none")
+		if DBM:GetRaidRank(sender) == 0 and IsInGroup() then return end
 		DBM:Debug("Sender: "..sender.."Pos1: "..pos1..", Name1: "..(name1 or "nil")..", Pos2: "..pos2..", Name2: "..(name2 or "nil")..", Pos3: "..pos3..", Name3: "..(name3 or "nil"), 3)
 		--Check if player removed from a cached assignment
 		local positionUpdate = false
