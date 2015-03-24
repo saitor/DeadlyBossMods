@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13409 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13417 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -231,6 +231,10 @@ end
 function mod:ConvulsiveTarget(targetname, uId)
 	if not targetname then return end
 	self.vb.shadowsWarned = true
+	local noFilter = false
+	if not DBM.Options.DontShowFarWarnings then
+		noFilter = true
+	end
 	if (noFilter or not isPlayerOnBoat()) then
 		if self.Options.SpecWarn156214target then
 			specWarnConvulsiveShadowsOther:Show(targetname)
