@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13412 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13413 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -402,7 +402,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 		if args:IsPlayer() then
 			specWarnAttachSlagBombs:Show()
-			if self:IsTank() or self:IsLFR() then
+			if self:IsTank() or not self:IsMythic() then
 				yellAttachSlagBombs:Yell()
 			else
 				self:Schedule(0.5, checkSlag, self)
