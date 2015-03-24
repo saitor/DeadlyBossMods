@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13413 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13415 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -565,7 +565,11 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		timerShatteringSmashCD:Cancel()
 		timerShatteringSmashCD:Start(26, 1)--26-28 variation. Boss power is set to 33/100 automatically by transition (after short delay)
 		timerMarkedforDeathCD:Cancel()
-		timerMarkedforDeathCD:Start(17, 1)
+		if self:IsMythic() then
+			timerMarkedforDeathCD:Start(22.5, 1)
+		else
+			timerMarkedforDeathCD:Start(17, 1)
+		end
 		countdownMarkedforDeath:Cancel()
 		countdownMarkedforDeath:Start(17)
 		timerSlagEruptionCD:Start(31.5, 1)
