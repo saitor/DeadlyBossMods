@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13415 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13416 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -471,6 +471,7 @@ function mod:SPELL_ENERGIZE(_, _, _, _, destGUID, _, _, _, spellId, _, _, amount
 		local remaining = 25-bossPower
 		countdownShatteringSmash:Cancel()
 		countdownShatteringSmash:Start(remaining)
+		timerShatteringSmashCD:Cancel()--Prevent timer debug when updating timer
 		timerShatteringSmashCD:Start(remaining, self.vb.smashCount+1)
 	end
 end
