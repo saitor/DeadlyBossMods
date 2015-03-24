@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1155, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13376 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13414 $"):sub(12, -3))
 mod:SetCreatureID(76974, 76973)
 mod:SetEncounterID(1693)
 mod:SetZone()
@@ -104,6 +104,7 @@ function mod:SPELL_CAST_START(args)
 		end
 	elseif spellId == 153470 then
 		warnSkullcracker:Show()
+		timerSkullcrackerCD:Cancel()--avoid false timer debug if boss cancels cast to dodge stamper then starts cast again
 		timerSkullcrackerCD:Start()
 	end
 end
