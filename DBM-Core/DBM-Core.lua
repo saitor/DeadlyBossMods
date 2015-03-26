@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13425 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13426 $"):sub(12, -3)),
 	DisplayVersion = "6.1.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 13418 -- the revision of the latest stable version that is available
 }
@@ -3392,6 +3392,7 @@ function DBM:LoadMod(mod, force)
 		if instanceType ~= "pvp" and #inCombat == 0 and IsInGroup() then--do timer recovery only mod load
 			timerRequestInProgress = true
 			-- Request timer to 3 person to prevent failure.
+			self.Unschedule(self.RequestTimers)--Unschedule the 3 requests done on dbm first load, so 6 requests aren't sent when reloading inside an instance
 			self:Schedule(8, self.RequestTimers, self, 3)
 			self:Schedule(10, self.RequestTimers, self, 2)
 			self:Schedule(12, self.RequestTimers, self, 1)
