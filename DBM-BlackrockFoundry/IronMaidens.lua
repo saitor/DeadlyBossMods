@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13429 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13430 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -386,7 +386,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		self.vb.penetratingShot = self.vb.penetratingShot + 1
 		if noFilter or not isPlayerOnBoat() then
 			if self.Options.SpecWarn164271target then
-				specWarnPenetratingShotOther:Show(self.vb.penetratingShot, targetname)
+				specWarnPenetratingShotOther:Show(self.vb.penetratingShot, args.destName)
 			else
 				warnPenetratingShot:Show(self.vb.penetratingShot, args.destName)
 			end
