@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13422 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13427 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -452,9 +452,6 @@ function mod:UNIT_DIED(args)
 		elseif cid == 76874 then
 			timerConflagCD:Cancel()
 			timerInfernoBreathCD:Cancel()
-			if self.Options.HudMapOnBreath then
-				DBMHudMap:Disable()
-			end
 			self:BossTargetScannerAbort(76874, "BreathTarget")
 		elseif cid == 76945 then
 			timerStampedeCD:Cancel()
