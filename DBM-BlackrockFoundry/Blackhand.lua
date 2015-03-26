@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13433 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13435 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -557,7 +557,6 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		countdownSlagBombs:Cancel()
 		if self:IsMythic() then
 			timerFallingDebrisCD:Start(11, 1)
-			yellMarkedforDeath	= self:NewYell(156096, L.customMFDSay)
 		end
 		timerAttachSlagBombsCD:Start(11)
 		countdownSlagBombs:Start(11)
@@ -578,6 +577,9 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		voicePhaseChange:Play("pthree")
 		if self.Options.RangeFrame then
 			DBM.RangeCheck:Hide()
+		end
+		if not self:IsLFR() then
+			yellMarkedforDeath	= self:NewYell(156096, L.customMFDSay)
 		end
 	end
 end
