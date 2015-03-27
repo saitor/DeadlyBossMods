@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13440 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13441 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -312,14 +312,14 @@ local function checkSlag(self)
 			if self.Options.SpecWarn157000you then
 				specWarnSlagPosition:Show(L.middle)
 				if self.Options.Yell1570002 then
-					yellAttachSlagBombs:Yell(L.middle, playerName)
+					yellSlag2:Yell(L.middle, playerName)
 				end
 			end
 		elseif not playerIsMelee and ((tempTable[1] == playerName) or (tempTable[2] == playerName)) then
 			if self.Options.SpecWarn157000you then
 				specWarnSlagPosition:Show(BACK)
 				if self.Options.Yell1570002 then
-					yellAttachSlagBombs:Yell(BACK, playerName)
+					yellSlag2:Yell(BACK, playerName)
 				end
 			end
 		end	
@@ -327,12 +327,12 @@ local function checkSlag(self)
 		if tempTable[1] == playerName then
 			if self.Options.SpecWarn157000you then
 				specWarnSlagPosition:Show(L.middle)
-				yellAttachSlagBombs:Yell(L.middle, playerName)
+				yellSlag2:Yell(L.middle, playerName)
 			end
 		elseif tempTable[2] == playerName then
 			if self.Options.SpecWarn157000you then
 				specWarnSlagPosition:Show(BACK)
-				yellAttachSlagBombs:Yell(BACK, playerName)
+				yellSlag2:Yell(BACK, playerName)
 			end
 		end	
 	end
