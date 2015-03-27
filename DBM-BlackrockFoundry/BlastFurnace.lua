@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13422 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13440 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -255,13 +255,6 @@ function mod:OnCombatStart(delay)
 		countdownEngineer:Start(firstTimer)
 		berserkTimer:Start(-delay)
 	end
-	if self:IsMythic() then
-		if self.Options.VFYellType == "Countdown" then
-			yellVolatileFire2 = mod:NewFadesYell(176121, nil, true, false)
-		else
-			yellVolatileFire2 = nil
-		end
-	end
 	if DBM.BossHealth:IsShown() then
 		DBM.BossHealth:Clear()
 		self:Schedule(1, function()
@@ -416,7 +409,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			if args:IsPlayer() then
 				timerVolatileFire:Start(debuffTime)
 				specVolatileFire:Show()
-				if not self:IsLFR() then
+				if not self:IsLFR() and self.Options.Yell176121 then
 					if self:IsMythic() and self.Options.VFYellType == "Countdown" then
 						yellVolatileFire2:Schedule(debuffTime - 1, 1)
 						yellVolatileFire2:Schedule(debuffTime - 2, 2)
