@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13452 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13453 $"):sub(12, -3)),
 	DisplayVersion = "6.1.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 13435 -- the revision of the latest stable version that is available
 }
@@ -4896,6 +4896,9 @@ do
 				end
 			else--Reset ignoreBestkill after wipe
 				mod.ignoreBestkill = false
+				--It was a clean pull, so cancel timer recoveries which often fire for no reason on world bosses, after boss was pulled by us.
+				--Only want timer recovery on in progress world bosses.
+				self.Unschedule(self.RequestTimers)
 			end
 			--show health frame
 			if not mod.inScenario then
@@ -4977,7 +4980,7 @@ do
 						speedTimer:Start()
 					end
 				end
-				if self.Options.CRT_Enabled then
+				if self.Options.CRT_Enabled and savedDifficulty ~= "worldboss" then
 					if difficultyIndex == 14 or difficultyIndex == 15 or difficultyIndex == 17 then--Flexible difficulties
 						local time = 90/LastGroupSize
 						time = time * 60
