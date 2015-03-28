@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13447 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13448 $"):sub(12, -3)),
 	DisplayVersion = "6.1.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 13435 -- the revision of the latest stable version that is available
 }
@@ -5195,9 +5195,12 @@ do
 					end
 				end
 				if showConstantReminder and IsInGroup() and savedDifficulty ~= "lfr" and savedDifficulty ~= "lfr25" then
-					--Show message every time you wipe while in a group that isn't LFR if you chose to disable update notification popup. I've seen far too many wipes caused by out of date mod versions
+					--Show message about 33% of time, when you wipe, while in a group that isn't LFR if you chose to disable update notification popup. I've seen far too many wipes caused by out of date mod versions
 					--These people need to know the wipe could very well be their fault.
-					self:AddMsg(DBM_CORE_OUT_OF_DATE_NAG)
+					local RNG = math.random(1, 3)
+					if RNG == 3 then
+						self:AddMsg(DBM_CORE_OUT_OF_DATE_NAG)
+					end
 				end
 				local msg
 				for k, v in pairs(autoRespondSpam) do
