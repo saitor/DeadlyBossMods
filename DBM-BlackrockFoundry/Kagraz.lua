@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1123, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13450 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13458 $"):sub(12, -3))
 mod:SetCreatureID(76814)--76794 Cinder Wolf, 80590 Aknor Steelbringer
 mod:SetEncounterID(1689)
 mod:SetZone()
@@ -290,7 +290,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		specWarnFireStorm:Show(self.vb.firestorm)
 		timerBlazingRadianceCD:Cancel()
 		timerFireStorm:Start()
-		timerMoltenTorrentCD:Start(46)
+		timerMoltenTorrentCD:Start(42.5)
 		timerSummonCinderWolvesCD:Start()
 		countdownCinderWolves:Start()
 		voiceFireStorm:Play("gather")
