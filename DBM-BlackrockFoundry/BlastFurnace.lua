@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13440 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13459 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -102,6 +102,7 @@ local voiceVolatileFire			= mod:NewVoice(176121) --runout
 local voiceSlagElemental		= mod:NewVoice("ej9657", "-Tank")
 local voiceFireCaller			= mod:NewVoice("ej9659", "Tank")
 local voiceSecurityGuard		= mod:NewVoice("ej9648", "Tank")
+local voiceEngineer				= mod:NewVoice("ej9649", "Tank")
 
 mod:AddRangeFrameOption(8)
 mod:AddBoolOption("InfoFrame")
@@ -142,6 +143,7 @@ local UnitHealth, UnitHealthMax, GetTime = UnitHealth, UnitHealthMax, GetTime
 --Note: only thing that's still different in each mode
 local function Engineers(self)
 	warnEngineer:Show()
+	voiceEngineer:Play("ej9649")
 	if self:IsDifficulty("mythic", "normal") then
 		timerEngineer:Start(35)
 		self:Schedule(35, Engineers, self)
