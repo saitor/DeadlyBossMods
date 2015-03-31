@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13474 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13475 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -199,7 +199,7 @@ local function checkBoatPlayer(self, npc)
 	countdownBladeDash:Cancel()
 	countdownBladeDash:Start(5)
 	timerBloodRitualCD:Cancel()
-	timerBloodRitualCD:Start(8.5, 1)
+	timerBloodRitualCD:Start(8.5, 1)--Variation on this may be same as penetrating shot variation. when it's marak returning from boat may be when it's 9.7
 	--These are altered by boar ending, even though boss continues casting it during boat phases.
 	timerRapidFireCD:Cancel()
 	timerRapidFireCD:Start(13, self.vb.rapidfire+1)
