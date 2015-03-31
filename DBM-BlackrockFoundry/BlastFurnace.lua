@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13478 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13480 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -373,12 +373,13 @@ function mod:SPELL_AURA_APPLIED(args)
 				self:Schedule(40, checkSecondSlag, self)
 			elseif count == 2 then
 				self.vb.secondSlagSpawned = true
+				timerSlagElemental:Start(nil, count+1)
 			else
 				timerSlagElemental:Start(nil, count+1)
 			end
 			voiceSlagElemental:Play("ej9657")
 			if count < 12 then
-				timerSlagElemental:Schedule(2, nil, "Interface\\AddOns\\DBM-VP"..DBM.Options.ChosenVoicePack.."\\count\\"..count..".ogg")
+				voiceSlagElemental:Schedule(2, nil, "Interface\\AddOns\\DBM-VP"..DBM.Options.ChosenVoicePack.."\\count\\"..count..".ogg")
 			end
 		end
 		if self.vb.phase == 2 then

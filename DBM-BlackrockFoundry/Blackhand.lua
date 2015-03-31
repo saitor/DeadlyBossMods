@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13479 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13480 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -566,7 +566,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		countdownSlagBombs:Start(11)
 		timerThrowSlagBombsCD:Cancel()
 		timerThrowSlagBombsCD:Start(11)--11-12.5
-		timerSiegemakerCD:Start(16, 1)
+		timerSiegemakerCD:Start(15, 1)
 		countdownShatteringSmash:Cancel()
 		timerShatteringSmashCD:Cancel()
 		if self:IsMythic() then--Boss gain power faster on mythic phase 2
