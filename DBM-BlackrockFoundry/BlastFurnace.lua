@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13467 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13478 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -185,7 +185,7 @@ local function FireCaller(self)
 	local count = self.vb.fireCaller
 	warnFireCaller:Show(count)
 	voiceFireCaller:Play("ej9659")
-	if fireCaller < 12 then
+	if count < 12 then
 		voiceFireCaller:Schedule(2, nil, "Interface\\AddOns\\DBM-VP"..DBM.Options.ChosenVoicePack.."\\count\\"..count..".ogg")
 	end
 	timerFireCaller:Start(45, count+1)
