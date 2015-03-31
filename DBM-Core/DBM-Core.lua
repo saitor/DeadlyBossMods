@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13482 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13483 $"):sub(12, -3)),
 	DisplayVersion = "6.1.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 13435, -- the revision of the latest stable version that is available
 	HighestRelease = 13435--Updated if newer version is detected, used by update nags to reflect critical fixes user is missing on boss pulls
@@ -3809,10 +3809,12 @@ do
 						if DBM.NewerVersion:find("alpha") then
 							local temp1, temp2 = string.split(" ", DBM.NewerVersion)--Strip down to just version, no alpha
 							local temp3, temp4, temp5 = string.split(".", temp1)--Strip version down to 3 numbers
-							temp5 = tonumber(temp5)
-							temp5 = temp5 - 1
-							temp5 = tostring(temp5)
-							DBM.NewerVersion = temp3.."."..temp4.."."..temp5
+							if temp5 then
+								temp5 = tonumber(temp5)
+								temp5 = temp5 - 1
+								temp5 = tostring(temp5)
+								DBM.NewerVersion = temp3.."."..temp4.."."..temp5
+							end
 						end
 						--Find min revision.
 						updateNotificationDisplayed = 2
