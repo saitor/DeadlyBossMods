@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13471 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13479 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -223,7 +223,7 @@ local function checkSlag(self)
 			if meleeCheck(unitID) then
 				totalMelee = totalMelee + 1
 			end
-			table.insert(tempTable[slagFound], UnitName(unitID))
+			tempTable[slagFound] = UnitName(unitID)
 			if slagFound == 2 then break end
 		end
 	end
@@ -425,7 +425,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			self:Schedule(2, warnSlag, self)
 		end
-		if slagPlayerCount == 2 then--Counter 2, do checkSlag immediately, this of course means function has to run for everyone instead of just player, but that's harmless
+		if self:IsMythic() and slagPlayerCount == 2 then--Counter 2, do checkSlag immediately, this of course means function has to run for everyone instead of just player, but that's harmless
 			checkSlag(self)
 		end
 		if args:IsPlayer() then
