@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 13469 $"):sub(12, -3)
+local revision =("$Revision: 13489 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -2775,7 +2775,7 @@ local function CreateOptionsMenu()
 
 	-- Set Revision // please don't translate this!
 	if DBM.NewerVersion then
-		DBM_GUI_OptionsFrameRevision:SetText("Deadly Boss Mods "..DBM.DisplayVersion.." (r"..DBM.Revision.."). |cffff0000Version "..DBM.NewerVersion.." is available.|r")
+		DBM_GUI_OptionsFrameRevision:SetText("Deadly Boss Mods "..DBM.DisplayVersion.." (r"..DBM.Revision.."). |cffff0000Version "..DBM.HighestRelease.." is available.|r")
 	else	
 		DBM_GUI_OptionsFrameRevision:SetText("Deadly Boss Mods "..DBM.DisplayVersion.." (r"..DBM.Revision..")")
 	end
