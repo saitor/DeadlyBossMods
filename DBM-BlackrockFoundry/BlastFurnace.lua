@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13508 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13509 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -633,7 +633,7 @@ do
 		if type == "ALTERNATE" then
 			totalTime = self:IsMythic() and 24 or 29
 			local altPower = UnitPower(uId, 10)
-			--Each time boss breaks interval of 25%. CD is reduced
+			--Each time boss breaks energy increments of 25. CD is reduced
 			if altPower == 100 then
 				totalTime = self:IsMythic() and 5 or 5.5--5-6
 			elseif altPower > 74 then
