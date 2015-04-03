@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13477 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13516 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -329,8 +329,10 @@ function mod:SPELL_CAST_START(args)
 		self.vb.bladeDash = self.vb.bladeDash + 1
 		if noFilter or not isPlayerOnBoat() then
 			self:ScheduleMethod(0.1, "BossTargetScanner", 77231, "BladeDashTarget", 0.1, 16)
+			timerBladeDashCD:Cancel()
 			timerBladeDashCD:Start(nil, self.vb.bladeDash+1)
 			if self:IsMythic() then
+				countdownBladeDash:Cancel()
 				countdownBladeDash:Start()
 			end
 		end
