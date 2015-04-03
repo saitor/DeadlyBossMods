@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13512 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13513 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -158,11 +158,11 @@ local function updateInfoFrame()
 	table.wipe(lines)
 	local boss3bombsNeeded, boss4bombsNeeded
 	if UnitExists("boss3") then
-		boss3bombsNeeded = UnitHealth("boss3")/100000
+		boss3bombsNeeded = math.ceil(UnitHealth("boss3")/100000)
 		lines[L.Regulator.." 1"] = L.bombNeeded:format(boss3bombsNeeded)
 	end
 	if UnitExists("boss4") then
-		boss4bombsNeeded = UnitHealth("boss4")/100000
+		boss4bombsNeeded = math.ceil(UnitHealth("boss4")/100000)
 		lines[L.Regulator.." 2"] = L.bombNeeded:format(boss4bombsNeeded)
 	end
 	return lines
