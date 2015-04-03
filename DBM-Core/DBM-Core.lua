@@ -53,11 +53,10 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13509 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13510 $"):sub(12, -3)),
 	DisplayVersion = "6.1.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 13486 -- the revision of the latest stable version that is available
 }
-
 DBM.HighestRelease = DBM.ReleaseRevision --Updated if newer version is detected, used by update nags to reflect critical fixes user is missing on boss pulls
 
 -- support for git svn which doesn't support svn keyword expansion
