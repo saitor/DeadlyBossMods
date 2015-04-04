@@ -48,12 +48,11 @@
 --    * Share Alike. If you alter, transform, or build upon this work, you may distribute the resulting work only under the same or similar license to this one.
 --
 
-
 -------------------------------
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13527 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13528 $"):sub(12, -3)),
 	DisplayVersion = "6.1.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 13486 -- the revision of the latest stable version that is available
 }
@@ -307,6 +306,7 @@ local healthCombatInitialized = false
 local pformat
 local schedule
 local unschedule
+local unscheduleAll
 local loadOptions
 local checkWipe
 local checkBossHealth
