@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13524 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13525 $"):sub(12, -3)),
 	DisplayVersion = "6.1.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 13486 -- the revision of the latest stable version that is available
 }
@@ -4806,7 +4806,7 @@ function checkWipe(confirm)
 				DBM:EndCombat(inCombat[i], true)
 			end
 		else
-			local maxDelayTime = (savedDifficulty == "worldboss" and 30) or 5 --wait 25s more on worldboss do actual wipe.
+			local maxDelayTime = (savedDifficulty == "worldboss" and 15) or 5 --wait 10s more on worldboss do actual wipe.
 			for i, v in ipairs(inCombat) do
 				maxDelayTime = v.combatInfo and v.combatInfo.wipeTimer and v.combatInfo.wipeTimer > maxDelayTime and v.combatInfo.wipeTimer or maxDelayTime
 			end
