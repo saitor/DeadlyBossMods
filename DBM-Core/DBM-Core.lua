@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13526 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13527 $"):sub(12, -3)),
 	DisplayVersion = "6.1.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 13486 -- the revision of the latest stable version that is available
 }
@@ -3721,7 +3721,7 @@ do
 	end
 	
 	whisperSyncHandlers["BTR2"] = function(sender, timer)
-		DBM.Unschedule(DBM.RequestTimers)--IF we got BTR2 sync, then we know immediately RequestTimers was successful, so abort others
+		DBM:Unschedule(DBM.RequestTimers)--IF we got BTR2 sync, then we know immediately RequestTimers was successful, so abort others
 		if #inCombat >= 1 then return end
 		if DBM.Bars:GetBar(DBM_CORE_TIMER_BREAK) then return end--Already recovered. Prevent duplicate recovery
 		timer = tonumber(timer or 0)
