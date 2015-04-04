@@ -53,7 +53,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13522 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13523 $"):sub(12, -3)),
 	DisplayVersion = "6.1.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 13486 -- the revision of the latest stable version that is available
 }
@@ -1402,7 +1402,15 @@ do
 	end
 
 	function unschedule(f, mod, ...)
+		if not f and not mod then
+			-- you really want to kill the complete scheduler? call unscheduleAll
+			error("cannot unschedule everything, pass a function and/or a mod")
+		end
 		return removeAllMatching(f, mod, ...)
+	end
+
+	function unscheduleAll()
+		return removeAllMatching()
 	end
 end
 
@@ -6021,7 +6029,7 @@ end
 --  Enable/Disable DBM  --
 --------------------------
 function DBM:Disable(forced)
-	unschedule()
+	unscheduleAll()
 	dbmIsEnabled = false
 	self.Options.Enabled = false
 	if forced then
