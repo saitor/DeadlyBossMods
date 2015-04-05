@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13542 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13543 $"):sub(12, -3)),
 	DisplayVersion = "6.1.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 13486 -- the revision of the latest stable version that is available
 }
@@ -6651,6 +6651,7 @@ do
 	
 	function bossModPrototype:BossUnitTargetScannerAbort()
 		targetMonitor = nil
+		DBM:Debug("Boss unit target scan should be aborting.", 3)
 	end
 	
 	function bossModPrototype:BossUnitTargetScanner(unitId, returnFunc, scanTime)
