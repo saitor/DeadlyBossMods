@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1123, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13533 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13534 $"):sub(12, -3))
 mod:SetCreatureID(76814)--76794 Cinder Wolf, 80590 Aknor Steelbringer
 mod:SetEncounterID(1689)
 mod:SetZone()
@@ -148,7 +148,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		countdownFireStorm:Start()
 		voiceCinderWolves:Play("killmob")
 		wolfIcon = 2
-		if self.Options.SetIconOnAdds then
+		if self.Options.SetIconOnAdds and not self:IsLFR() then
 			self:RegisterShortTermEvents(
 				"INSTANCE_ENCOUNTER_ENGAGE_UNIT"--We register here to make sure we wipe vb.on pull
 			)
