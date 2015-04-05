@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13438 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13536 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -88,6 +88,7 @@ local voiceCallthePack				= mod:NewVoice("OptionVersion2", 154975, "Tank") --kil
 local voiceSavageHowl				= mod:NewVoice(155198, "RemoveEnrage") --trannow
 local voicePinDown					= mod:NewVoice(154960, "Ranged") --helpme
 local voiceInfernoBreath			= mod:NewVoice(154989) --breathsoon
+local voiceSuperheatedShrapnel		= mod:NewVoice(155499) --breathsoon
 local voiceRendandTear				= mod:NewVoice(155385, "Melee")  --runaway
 local voiceCrushArmor				= mod:NewVoice(155236) --changemt
 local voiceTantrum					= mod:NewVoice(162275) --aesoon
@@ -489,6 +490,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		voiceTantrum:Play("aesoon")
 	elseif spellId == 155603 then--Face Random Non-Tank (boss version)
 		specWarnSuperheatedShrapnel:Show()
+		voiceSuperheatedShrapnel:Play("breathsoon")
 		timerSuperheatedShrapnelCD:Start()
 	elseif spellId == 155385 or spellId == 155515 then--Both versions of spell(boss and beast), they seem to have same cooldown so combining is fine
 		specWarnRendandTear:Show()

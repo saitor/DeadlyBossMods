@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1202, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13457 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13536 $"):sub(12, -3))
 mod:SetCreatureID(77182)
 mod:SetEncounterID(1696)
 mod:SetZone()
@@ -86,7 +86,7 @@ function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
 	if spellId == 156240 then
 		self.vb.torrentCount = self.vb.torrentCount + 1
-		if self.Options.SpecWarn156240spell then
+		if self.Options.SpecWarn156240count then
 			specWarnAcidTorrent:Show(self.vb.torrentCount)
 		else
 			warnAcidTorrent:Show(self.vb.torrentCount)
