@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13536 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13537 $"):sub(12, -3)),
 	DisplayVersion = "6.1.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 13486 -- the revision of the latest stable version that is available
 }
@@ -3479,6 +3479,10 @@ do
 
 	function DBM:UNIT_TARGET_UNFILTERED(uId)
 		loadModByUnit(uId)
+		if (DBM.Options.DebugLevel > 2 or (Transcriptor and Transcriptor:IsLogging())) and uId:find("boss") then
+			local targetName = uId == "boss1" and "boss1target" or uId == "boss2" and "boss2target" or uId == "boss3" and "boss3target" or uId == "boss4" and "boss4target" or uId == "boss5" and "boss5target"
+			DBM:Debug(uId.." changed targets to "..targetName)
+		end
 	end
 end
 
