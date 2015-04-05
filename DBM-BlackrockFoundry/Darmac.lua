@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13538 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13541 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -507,6 +507,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		voiceSuperheatedShrapnel:Play("breathsoon")
 		timerSuperheatedShrapnelCD:Start()
 		self:BossTargetScanner(76865, "SuperheatedTarget", 0.05, 40)--Apparently scanning this does work in LFR, but I've never seen him look at a target on mythic
+		--self:BossUnitTargetScanner(uId, "SuperheatedTarget")
 	elseif spellId == 155385 or spellId == 155515 then--Both versions of spell(boss and beast), they seem to have same cooldown so combining is fine
 		specWarnRendandTear:Show()
 		timerRendandTearCD:Start()
@@ -521,5 +522,6 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		timerInfernoBreathCD:Start()
 		voiceInfernoBreath:Play("breathsoon")
 		self:BossTargetScanner(76874, "BreathTarget", 0.05, 40)
+		--self:BossUnitTargetScanner(uId, "BreathTarget")
 	end
 end
