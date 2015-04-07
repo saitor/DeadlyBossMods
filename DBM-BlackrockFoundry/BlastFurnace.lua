@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13547 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13548 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -278,7 +278,6 @@ function mod:OnCombatStart(delay)
 	self.vb.machinesDead = 0
 	self.vb.elementalistsRemaining = 4
 	self.vb.blastWarned = false
-	self.vb.shieldDown = 0
 	self.vb.phase = 1
 	self.vb.slagCount = 0
 	self.vb.fireCaller = 0
@@ -426,7 +425,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 	elseif spellId == 158345 and self:AntiSpam(10, 3) then--Might be SPELL_CAST_SUCCESS instead.
-		self.vb.shieldDown = self.vb.shieldDown + 1
 		specWarnShieldsDown:Show()
 		if self:IsDifficulty("normal") then--40 seconds on normal
 			timerShieldsDown:Start(40, args.destGUID)
@@ -503,7 +501,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			yellRupture:Schedule(4)--yell after 4 sec to warn nearby player (aoe actually after 5 sec).  like expel magic: fel
 			voiceRupture:Play("runout")
 		end
-	elseif spellId == 155173 and args:IsDestTypeHostile() and self.vb.shieldDown > 0 then
+	elseif spellId == 155173 and args:IsDestTypeHostile() then
 		specWarnEarthShield:Show(args.destName)
 	end
 end
@@ -524,7 +522,6 @@ function mod:SPELL_AURA_REMOVED(args)
 	elseif spellId == 155196 and self.Options.SetIconOnFixate then
 		self:SetIcon(args.destName, 0)
 	elseif spellId == 158345 then
-		self.vb.shieldDown = self.vb.shieldDown - 1
 		timerShieldsDown:Cancel(args.destGUID)
 	end
 end
