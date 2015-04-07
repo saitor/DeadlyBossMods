@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13550 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13551 $"):sub(12, -3)),
 	DisplayVersion = "6.1.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 13486 -- the revision of the latest stable version that is available
 }
@@ -4644,7 +4644,7 @@ do
 	end
 	
 	function DBM:ENCOUNTER_END(encounterID, name, difficulty, size, success)
-		if success == 0 then
+		if success == 0 then--TODO, disable in wrath and cata raids? (except dragon soul) but enable in all mop and later, where ENCOUNTER_END won't fire 0 for kills
 			self.Bars:CreateBar(10, DBM_CORE_TIMER_RESPAWN, "Interface\\Icons\\Spell_Holy_BorrowedTime")
 		end
 		self:Debug("ENCOUNTER_END event fired: "..encounterID.." "..name.." "..difficulty.." "..size.." "..success)
