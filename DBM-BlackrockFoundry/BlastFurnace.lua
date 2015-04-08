@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13551 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13553 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -529,7 +529,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		if args:IsPlayer() then
 			timerBomb:Cancel()
 		end
-	elseif spellId == 176121 and args:IsPlayer() and self.Options.RangeFrame then
+	elseif spellId == 176121 and args:IsPlayer() and self.Options.RangeFrame and not UnitDebuff("player", volatileFireDebuff) then
 		if playerFixated then
 			DBM.RangeCheck:Show(5)
 		else
