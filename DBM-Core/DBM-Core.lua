@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13555 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13556 $"):sub(12, -3)),
 	DisplayVersion = "6.1.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 13486 -- the revision of the latest stable version that is available
 }
@@ -4644,9 +4644,6 @@ do
 	end
 	
 	function DBM:ENCOUNTER_END(encounterID, name, difficulty, size, success)
-		if success == 0 then--TODO, disable in wrath and cata raids? (except dragon soul) but enable in all mop and later, where ENCOUNTER_END won't fire 0 for kills
-			self.Bars:CreateBar(10, DBM_CORE_TIMER_RESPAWN, "Interface\\Icons\\Spell_Holy_BorrowedTime")
-		end
 		self:Debug("ENCOUNTER_END event fired: "..encounterID.." "..name.." "..difficulty.." "..size.." "..success)
 		for i = #inCombat, 1, -1 do
 			local v = inCombat[i]
@@ -4659,6 +4656,9 @@ do
 							self:EndCombat(v, success == 0)
 							sendSync("EE", encounterID.."\t"..success.."\t"..v.id.."\t"..(v.revision or 0))
 						else--hack wotlk instance EE bug. wotlk instances always wipe, so delay 3sec do actual wipe.
+							if v.respawnTime then
+								self.Bars:CreateBar(v.respawnTime, DBM_CORE_TIMER_RESPAWN, "Interface\\Icons\\Spell_Holy_BorrowedTime")
+							end
 							self:Schedule(3, endCombat, v, success, encounterID)
 						end
 						return
@@ -9798,6 +9798,10 @@ end
 
 function bossModPrototype:SetHotfixNoticeRev(revision)
 	self.hotfixNoticeRev = revision
+end
+
+function bossModPrototype:SetRespawnTime(time)
+	self.respawnTime = time
 end
 
 -----------------

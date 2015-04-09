@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1123, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13534 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13556 $"):sub(12, -3))
 mod:SetCreatureID(76814)--76794 Cinder Wolf, 80590 Aknor Steelbringer
 mod:SetEncounterID(1689)
 mod:SetZone()
@@ -286,6 +286,7 @@ end
 mod.SPELL_ABSORBED = mod.SPELL_PERIODIC_DAMAGE
 
 function mod:INSTANCE_ENCOUNTER_ENGAGE_UNIT()
+	local expectedTotal = self:IsMythic() and 6 or 4
 	for i = 1, 5 do
 		local unitID = "boss"..i
 		local unitGUID = UnitGUID(unitID)
@@ -295,7 +296,7 @@ function mod:INSTANCE_ENCOUNTER_ENGAGE_UNIT()
 				wolfIcon = wolfIcon + 1
 				activeBossGUIDS[unitGUID] = true
 				SetRaidTarget(unitID, wolfIcon)
-				if wolfIcon == self:IsMythic() and 6 or 4 then--All wolves marked
+				if wolfIcon == expectedTotal then--All wolves marked
 					self:UnregisterShortTermEvents()
 				end
 			end
