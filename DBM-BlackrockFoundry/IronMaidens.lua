@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13517 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13557 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -594,7 +594,6 @@ end
 --Rapid fire is still 3 seconds faster to use emote instead of debuff.
 --Bigwigs doesn't sync Rapid Fire like DBM does, but they do sync ALL RAID_BOSS_WHISPER events.
 --So we can this for rapidfire targets sent by bigwigs
-RegisterAddonMessagePrefix("Transcriptor")
 function mod:CHAT_MSG_ADDON(prefix, msg, channel, targetName)
 	if prefix ~= "Transcriptor" then return end
 	if msg:find("spell:156626") then--Rapid fire
