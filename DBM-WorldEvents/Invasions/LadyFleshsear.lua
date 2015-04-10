@@ -1,11 +1,12 @@
 local mod	= DBM:NewMod("LadyFleshsear", "DBM-WorldEvents", 3)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13565 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13573 $"):sub(12, -3))
 mod:SetCreatureID(91012)
 mod:SetZone(1159, 1331, 1158, 1153, 1152, 1330)--4 of these not needed, but don't know what's what ATM
 
 mod:RegisterCombat("combat")
+mod:SetMinCombatTime(15)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 180779",
@@ -26,10 +27,12 @@ local timerOverwhelmingFlamesCD	= mod:NewCDTimer(21, 180776)--21-32 Delays cause
 local timerRainofFireCD			= mod:NewCDTimer(23, 180774)--23-29 Delays caused by Call of Flame/Overwhelming Flames
 local timerCallofFlameCD		= mod:NewCDTimer(37, 180774)--37-38 Priority spell
 
-function mod:OnCombatStart(delay)
-	timerRainofFireCD:Start(11.5)
-	timerOverwhelmingFlamesCD:Start(18)
-	timerCallofFlameCD:Start(27)
+function mod:OnCombatStart(delay, summonTriggered)
+	if summonTriggered then
+		timerRainofFireCD:Start(11.5)
+		timerOverwhelmingFlamesCD:Start(18)
+		timerCallofFlameCD:Start(27)
+	end
 end
 
 function mod:SPELL_CAST_START(args)
