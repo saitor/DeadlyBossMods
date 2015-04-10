@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13556 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13567 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -74,7 +74,7 @@ local specWarnBlast				= mod:NewSpecialWarningSoon(155209, nil, nil, nil, 2)
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
 local timerBomb					= mod:NewBuffFadesTimer(15, 155192)
 local timerBlastCD				= mod:NewCDTimer(25, 155209)--25 seconds base. shorter when loading is being channeled by operators.
-local timerRuptureCD			= mod:NewCDTimer(20, 156934)
+local timerRuptureCD			= mod:NewCDTimer("OptionVersion2", 20, 156934, nil, "-Tank")
 local timerEngineer				= mod:NewNextCountTimer(41, "ej9649", nil, nil, nil, 155179)
 local timerBellowsOperator		= mod:NewCDCountTimer(59, "ej9650", nil, nil, nil, 155181)--60-65second variation for sure
 mod:AddTimerLine(SCENARIO_STAGE:format(2))
