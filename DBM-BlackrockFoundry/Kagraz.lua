@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1123, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13556 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13577 $"):sub(12, -3))
 mod:SetCreatureID(76814)--76794 Cinder Wolf, 80590 Aknor Steelbringer
 mod:SetEncounterID(1689)
 mod:SetZone()
@@ -91,7 +91,7 @@ local function showFixate(self)
 	for name, time in pairs(fixateTagets) do
 		text[#text + 1] = name
 		if self.Options.HudMapOnFixate then
-			DBMHudMap:RegisterRangeMarkerOnPartyMember(154952, "highlight", name, 3.5, 10, 1, 1, 0, 0.5, nil, true):Pulse(0.5, 0.5)
+			DBMHudMap:RegisterRangeMarkerOnPartyMember(154952, "highlight", name, 3, 10, 1, 1, 0, 0.5, nil, true):Pulse(0.5, 0.5)
 		end
 	end
 	warnFixate:Show(table.concat(text, "<, >"))
