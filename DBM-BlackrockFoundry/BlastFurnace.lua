@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1154, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13579 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13580 $"):sub(12, -3))
 mod:SetCreatureID(76809, 76806)--76809 foreman feldspar, 76806 heart of the mountain, 76809 Security Guard, 76810 Furnace Engineer, 76811 Bellows Operator, 76815 Primal Elementalist, 78463 Slag Elemental, 76821 Firecaller
 mod:SetEncounterID(1690)
 mod:SetZone()
@@ -14,7 +14,7 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 155186 156937 177756",
 	"SPELL_CAST_SUCCESS 155179 174726 176121",
-	"SPELL_AURA_APPLIED 155192 174716 155196 158345 155242 155181 176121 155225 156934 155173 159558",
+	"SPELL_AURA_APPLIED 155192 174716 155196 158345 155242 155181 176121 155225 156934 155173 159558 155170",
 	"SPELL_AURA_REFRESH 155192 174716 159558",
 	"SPELL_AURA_APPLIED_DOSE 155242",
 	"SPELL_AURA_REMOVED 155192 174716 176121 155196 158345 159558",
@@ -30,6 +30,7 @@ local warnBomb					= mod:NewTargetAnnounce("OptionVersion2", 155192, 4, nil, fal
 local warnDropBombs				= mod:NewSpellAnnounce("OptionVersion2", 174726, 1, nil, "-Tank")
 local warnEngineer				= mod:NewCountAnnounce("ej9649", 2, 155179)
 local warnRupture				= mod:NewTargetAnnounce(156932, 3)
+local warnInfuriated			= mod:NewTargetAnnounce(155170, 3, nil, "Tank")
 --Phase 2
 local warnPhase2				= mod:NewPhaseAnnounce(2)
 local warnElementalists			= mod:NewAddsLeftAnnounce("ej9655", 2, 91751)
@@ -562,6 +563,8 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif spellId == 155173 and args:IsDestTypeHostile() then
 		specWarnEarthShield:Show(args.destName)
+	elseif spellId == 155170 then
+		warnInfuriated:Show(args.destName)
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
