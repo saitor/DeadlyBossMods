@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1123, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13587 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13589 $"):sub(12, -3))
 mod:SetCreatureID(76814)--76794 Cinder Wolf, 80590 Aknor Steelbringer
 mod:SetEncounterID(1689)
 mod:SetZone()
@@ -21,7 +21,6 @@ mod:RegisterEventsInCombat(
 	"UNIT_SPELLCAST_SUCCEEDED boss1"
 )
 
---Pointless add fight starts with (need to keep alive for follower achievement
 local warnDevastatingSlam				= mod:NewSpellAnnounce("OptionVersion2", 156018, 4, nil, false)
 local warnDropHammer					= mod:NewSpellAnnounce("OptionVersion2", 156040, 3, nil, false)
 

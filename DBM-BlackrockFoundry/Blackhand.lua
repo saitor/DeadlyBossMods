@@ -1,13 +1,13 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13583 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13589 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
 mod:SetUsedIcons(3, 2, 1)
 mod:SetHotfixNoticeRev(13480)
-mod:SetRespawnTime(30)--3rd party told, they say 33 second from visual despawn, which SHOULD be 30 seconds from ENCOUNTER_END event dbm uses
+mod:SetRespawnTime(30)
 
 mod:RegisterCombat("combat")
 
