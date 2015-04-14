@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13586 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13587 $"):sub(12, -3)),
 	DisplayVersion = "6.1.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 13486 -- the revision of the latest stable version that is available
 }
@@ -9959,6 +9959,13 @@ do
 				end
 			end
 		end
+	end
+
+	function bossModPrototype:CanSetIcon(optionName)
+		if canSetIcons[optionName] then
+			return true
+		end
+		return false
 	end
 
 	local mobUids = {"mouseover", "boss1", "boss2", "boss3", "boss4", "boss5"}
