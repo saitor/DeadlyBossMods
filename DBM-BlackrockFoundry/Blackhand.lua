@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13578 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13582 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -27,7 +27,7 @@ mod:RegisterEventsInCombat(
 local warnPhase						= mod:NewPhaseChangeAnnounce()
 --Stage One: The Blackrock Forge
 local warnMarkedforDeath			= mod:NewTargetCountAnnounce(156096, 4)--If not in combat log, find a RAID_BOSS_WHISPER event.
-local warnMassiveDemolition			= mod:NewCountAnnounce(156479, 3, "Ranged")--As a regular warning, not too spammy and perfectly reasonable for ranged to be on by default.
+local warnMassiveDemolition			= mod:NewCountAnnounce(156479, 3, nil, "Ranged")--As a regular warning, not too spammy and perfectly reasonable for ranged to be on by default.
 --Stage Two: Storage Warehouse
 local warnSiegemaker				= mod:NewCountAnnounce("ej9571", 3, 156667)
 local warnFixate					= mod:NewTargetAnnounce(156653, 4)
