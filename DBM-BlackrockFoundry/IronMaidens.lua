@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13563 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13605 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -9,7 +9,7 @@ mod:SetBossHPInfoToHighest()
 mod:SetUsedIcons(5, 4, 3, 2, 1)
 mod:SetModelSound("sound\\creature\\marak\\vo_60_ironmaidens_marak_08.ogg", "sound\\creature\\marak\\vo_60_ironmaidens_marak_08.ogg")
 mod:SetHotfixNoticeRev(13439)
---mod:SetRespawnTime(20)--Need to verify. def a lot higher than 10. Not sure if 20 or 30
+mod:SetRespawnTime(30)
 
 mod:RegisterCombat("combat")
 
