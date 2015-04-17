@@ -11,5 +11,5 @@ move-folders:
     DBM-Core/DBM-Party-WoD: DBM-Party-WoD
     DBM-Core/DBM-StatusBarTimers: DBM-StatusBarTimers
     DBM-Core/DBM-WorldEvents: DBM-WorldEvents
-    DBM-Core/DBM-GarrisonInvasions: DBM-Core/DBM-GarrisonInvasions
+    DBM-Core/DBM-GarrisonInvasions: DBM-GarrisonInvasions
     DBM-Core/DBM-Core: DBM-Core
