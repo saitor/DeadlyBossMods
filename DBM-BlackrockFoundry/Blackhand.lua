@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13589 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13621 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -405,7 +405,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if (self:IsMythic() and #markTargets == 3) or #markTargets == 2 then--Have all targets, warn immediately
 			warnMarked(self)
 		else
-			self:Schedule(0.5, warnMarked, self)
+			self:Schedule(1, warnMarked, self)
 		end
 		if args:IsPlayer() then
 			specWarnMarkedforDeath:Show()
