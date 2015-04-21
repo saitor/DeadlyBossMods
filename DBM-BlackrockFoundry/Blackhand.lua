@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13622 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13623 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -402,10 +402,10 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 		markTargets[#markTargets + 1] = args.destName
 		self:Unschedule(warnMarked)
-		if (self:IsMythic() and #markTargets == 3) or #markTargets == 2 then--Have all targets, warn immediately
+		if (not self:IsMythic() and #markTargets == 2) or #markTargets == 3 then--Have all targets, warn immediately
 			warnMarked(self)
 		else
-			self:Schedule(3, warnMarked, self)
+			self:Schedule(1, warnMarked, self)
 		end
 		if args:IsPlayer() then
 			specWarnMarkedforDeath:Show()
@@ -417,9 +417,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 		if self.Options.SetIconOnMarked then
 			if self:IsMythic() then
-				self:SetSortedIcon(3, args.destName, 1, 3)
+				self:SetSortedIcon(1, args.destName, 1, 3)
 			else
-				self:SetSortedIcon(3, args.destName, 1, 2)
+				self:SetSortedIcon(1, args.destName, 1, 2)
 			end
 		end
 		if self.Options.HudMapOnMFD then
