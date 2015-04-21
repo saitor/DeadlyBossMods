@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13623 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13624 $"):sub(12, -3)),
 	DisplayVersion = "6.1.7 alpha", -- the string that is shown as version
 	ReleaseRevision = 13591 -- the revision of the latest stable version that is available
 }
@@ -5220,6 +5220,7 @@ do
 				local totalKills = mod.stats[statVarTable[savedDifficulty].."Kills"]
 				if thisTime < 30 then -- Normally, one attempt will last at least 30 sec.
 					totalPulls = totalPulls - 1
+					mod.stats[statVarTable[savedDifficulty].."Pulls"] = totalPulls
 					if self.Options.ShowWipeMessage then
 						if scenario then
 							self:AddMsg(DBM_CORE_SCENARIO_ENDED_AT:format(difficultyText..name, strFromTime(thisTime)))
