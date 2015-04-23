@@ -1,11 +1,12 @@
 local mod	= DBM:NewMod(1162, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13423 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13647 $"):sub(12, -3))
 mod:SetCreatureID(77692)
 mod:SetEncounterID(1713)
 mod:SetZone()
 mod:SetHotfixNoticeRev(13105)
+mod:SetRespawnTime(30)
 
 mod:RegisterCombat("combat")
 
