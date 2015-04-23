@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13633 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13645 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -413,7 +413,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnMarkedforDeath:Show()
 			voiceMarkedforDeath:Play("findshelter")
 			countdownMarkedforDeathFades:Start()
-			if self:IsLFR() or (self.Options.PositionsAllPhases and self.vb.phase < 3) then
+			if self:IsLFR() or (not self.Options.PositionsAllPhases and self.vb.phase < 3) then
 				yellMarkedforDeath:Yell()
 			end
 		end
