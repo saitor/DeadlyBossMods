@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13654 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13655 $"):sub(12, -3)),
 	DisplayVersion = "6.1.8 alpha", -- the string that is shown as version
 	ReleaseRevision = 13634 -- the revision of the latest stable version that is available
 }
@@ -3083,7 +3083,6 @@ do
 		DBM:Schedule(5, DBM.SetRaidWarningPositon, DBM)
 		DBM:Schedule(20, DBM.SetRaidWarningPositon, DBM)--A second attempt after we are sure all other mods are loaded, so we can work around issues with movemanything or other mods.
 		--Fix old options that use .wav instead of .ogg, to prevent no sounds bug as of 6.1+
-		--Check file paths for .wav, but make sure file path does not contain Interface\\AddOns, because wav there is still valid. Only blizzard .wav is gone.
 		if DBM.Options.RaidWarningSound:find(".wav") then DBM.Options.RaidWarningSound = DBM.DefaultOptions.RaidWarningSound end
 		if DBM.Options.SpecialWarningSound:find(".wav") then DBM.Options.SpecialWarningSound = DBM.DefaultOptions.SpecialWarningSound end
 		if DBM.Options.SpecialWarningSound2:find(".wav") then DBM.Options.SpecialWarningSound2 = DBM.DefaultOptions.SpecialWarningSound2 end
