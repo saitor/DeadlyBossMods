@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13659 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13661 $"):sub(12, -3)),
 	DisplayVersion = "6.1.8 alpha", -- the string that is shown as version
 	ReleaseRevision = 13634 -- the revision of the latest stable version that is available
 }
@@ -201,6 +201,15 @@ DBM.DefaultOptions = {
 	SpecialWarningFlashRepeat4 = false,
 	SpecialWarningFlashRepeatAmount = 2,--Repeat 2 times, mean 3 flashes (first plus 2 repeat)
 	SWarnClassColor = true,
+	HUDColorOverride = false,
+	HUDSizeOption1 = 0,
+	HUDSizeOption2 = 0,
+	HUDSizeOption3 = 0,
+	HUDSizeOption4 = 0,
+	HUDColor1 = {1.0, 1.0, 0.0},--Yellow
+	HUDColor2 = {1.0, 0.0, 0.0},--Red
+	HUDColor3 = {1.0, 0.5, 0.0},--Orange
+	HUDColor4 = {0.0, 1.0, 0.0},--Green
 	HealthFrameGrowUp = false,
 	HealthFrameLocked = false,
 	HealthFrameWidth = 200,

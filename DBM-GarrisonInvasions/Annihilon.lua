@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Annihilon", "DBM-GarrisonInvasions")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13603 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13661 $"):sub(12, -3))
 mod:SetCreatureID(90802)
 mod:SetZone()
 
@@ -77,7 +77,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			timerTwistMindCD:Start()
 		end
 		if self.Options.HudMapOnMC then
-			DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "highlight", args.destName, 5, 30, 1, 1, 0, 0.5, nil, true):Pulse(0.5, 0.5)
+			DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "highlight", args.destName, 5, 30, 1, 1, 0, 0.5, nil, true, 1):Pulse(0.5, 0.5)
 		end
 	end
 end
