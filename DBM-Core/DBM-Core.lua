@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13663 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13664 $"):sub(12, -3)),
 	DisplayVersion = "6.1.8 alpha", -- the string that is shown as version
 	ReleaseRevision = 13634 -- the revision of the latest stable version that is available
 }
@@ -203,10 +203,16 @@ DBM.DefaultOptions = {
 	SWarnClassColor = true,
 	HUDColorOverride = false,
 	HUDSizeOverride = false,
+	HUDAlphaOverride = false,
+	HUDTextureOverride = false,
 	HUDSize1 = 5,
 	HUDSize2 = 5,
 	HUDSize3 = 5,
 	HUDSize4 = 5,
+	HUDAlpha1 = 0.5,
+	HUDAlpha2 = 0.5,
+	HUDAlpha3 = 0.5,
+	HUDAlpha4 = 0.5,
 	HUDColor1 = {1.0, 1.0, 0.0},--Yellow
 	HUDColor2 = {1.0, 0.0, 0.0},--Red
 	HUDColor3 = {1.0, 0.5, 0.0},--Orange
