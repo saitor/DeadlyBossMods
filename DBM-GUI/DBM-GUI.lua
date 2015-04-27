@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 13665 $"):sub(12, -3)
+local revision =("$Revision: 13671 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -2956,6 +2956,8 @@ local function CreateOptionsMenu()
 
 		local advancedArea			= extraFeaturesPanel:CreateArea(L.Area_Advanced, nil, 100, true)
 		local FakeBW				= advancedArea:CreateCheckButton(L.FakeBW, true, nil, "FakeBWVersion")
+		local AITimers				= advancedArea:CreateCheckButton(L.AITimer, true, nil, "AITimer")
+		local ACTimers				= advancedArea:CreateCheckButton(L.AutoCorrectTimer, true, nil, "AutoCorrectTimer")
 
 		-- Pizza Timer (create your own timer menu)
 		local pizzaarea = extraFeaturesPanel:CreateArea(L.PizzaTimer_Headline, nil, 85, true)
