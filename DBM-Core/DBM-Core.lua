@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13668 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13669 $"):sub(12, -3)),
 	DisplayVersion = "6.1.8 alpha", -- the string that is shown as version
 	ReleaseRevision = 13634 -- the revision of the latest stable version that is available
 }
@@ -8993,7 +8993,7 @@ do
 			local timer = timer and ((timer > 0 and timer) or self.timer + timer) or self.timer
 			if not DBM.Options.FilterAITimer and self.type == "ai" then--A learning timer
 				if timer > 1 then--Normal behavior.
-					if type(self.firstCastTimer) == "string" then--This is first cast of spell, we need to generate self.firstPullTimer
+					if self.firstCastTimer and type(self.firstCastTimer) == "string" then--This is first cast of spell, we need to generate self.firstPullTimer
 						self.firstCastTimer = tonumber(self.firstCastTimer)
 						self.firstCastTimer = GetTime() - self.firstCastTimer--We have generated a self.firstCastTimer! Next pull, DBM should know timer for first cast next pull. FANCY!
 						DBM:Debug("AI timer learned a first timer of "..self.firstCastTimer, 2)
