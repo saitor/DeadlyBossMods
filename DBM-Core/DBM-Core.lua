@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13681 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13682 $"):sub(12, -3)),
 	DisplayVersion = "6.1.8 alpha", -- the string that is shown as version
 	ReleaseRevision = 13634 -- the revision of the latest stable version that is available
 }
@@ -9019,7 +9019,7 @@ do
 						return--Don't start the bogus timer shoved into timer field in the mod
 					end
 				else--1 was sent, trigger a first Cast timer
-					if self.firstCastTimer then
+					if self.firstCastTimer and type(self.firstCastTimer) == "number" then
 						timer = self.firstCastTimer
 					else--No first pull timer generated yet, set it to GetTime, as a string
 						self.firstCastTimer = tostring(GetTime())
