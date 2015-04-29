@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13676 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13678 $"):sub(12, -3)),
 	DisplayVersion = "6.1.8 alpha", -- the string that is shown as version
 	ReleaseRevision = 13634 -- the revision of the latest stable version that is available
 }
@@ -6523,8 +6523,8 @@ function bossModPrototype:IsTrivial(level)
 	return false
 end
 
-function bossModPrototype:CheckInterruptFilter(sourceGUID)
-	if not DBM.Options.FilterInterrupt then return true end
+function bossModPrototype:CheckInterruptFilter(sourceGUID, skip)
+	if not DBM.Options.FilterInterrupt and not skip then return true end
 	if UnitGUID("target") == sourceGUID or UnitGUID("focus") == sourceGUID then
 		return true
 	end
