@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 13671 $"):sub(12, -3)
+local revision =("$Revision: 13704 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -2868,7 +2868,8 @@ local function CreateOptionsMenu()
 		spamSpecArea:CreateCheckButton(L.FilterDispels, true, nil, "FilterDispel")
 		spamSpecArea:CreateCheckButton(L.FilterSelfHud, true, nil, "FilterSelfHud")
 
-		local spamPTArea = spamPanel:CreateArea(L.Area_PullTimer, nil, 160, true)
+		local spamPTArea = spamPanel:CreateArea(L.Area_PullTimer, nil, 180, true)
+		spamPTArea:CreateCheckButton(L.DontShowRespawn, true, nil, "DontShowRespawn")
 		spamPTArea:CreateCheckButton(L.DontShowPTNoID, true, nil, "DontShowPTNoID")
 		spamPTArea:CreateCheckButton(L.DontShowPT, true, nil, "DontShowPT2")
 		spamPTArea:CreateCheckButton(L.DontShowPTText, true, nil, "DontShowPTText")
