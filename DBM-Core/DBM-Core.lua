@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13707 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13710 $"):sub(12, -3)),
 	DisplayVersion = "6.1.8 alpha", -- the string that is shown as version
 	ReleaseRevision = 13634 -- the revision of the latest stable version that is available
 }
@@ -2605,7 +2605,7 @@ end
 
 --For returning the number of players actually in zone with us for status functions
 --This is very touchy though and will fail if everyone isn't in same SUB zone (ie same room/area)
---It should work for pretty much any case we'd use it though except maybe a fight like heroic LK? TODO: check this
+--It should work for pretty much any case but outdoor
 function DBM:GetNumRealGroupMembers()
 	if not IsInInstance() then--Not accurate outside of instances (such as world bosses)
 		return IsInGroup() and GetNumGroupMembers() or 1--So just return regular group members.
