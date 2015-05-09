@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13711 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13718 $"):sub(12, -3)),
 	DisplayVersion = "6.1.8 alpha", -- the string that is shown as version
 	ReleaseRevision = 13634 -- the revision of the latest stable version that is available
 }
@@ -229,6 +229,7 @@ DBM.DefaultOptions = {
 	ArrowPoint = "TOP",
 	-- global boss mod settings (overrides mod-specific settings for some options)
 	DontShowBossAnnounces = false,
+	DontShowBossTimers = false,
 	DontShowFarWarnings = true,
 	DontSendBossWhispers = false,
 	DontSetIcons = false,
@@ -9024,6 +9025,7 @@ do
 	local mt = {__index = timerPrototype}
 
 	function timerPrototype:Start(timer, ...)
+		if DBM.Options.DontShowBossTimers then return end
 		if timer and type(timer) ~= "number" then
 			return self:Start(nil, timer, ...) -- first argument is optional!
 		end
@@ -9202,6 +9204,7 @@ do
 	end
 
 	function timerPrototype:Update(elapsed, totalTime, ...)
+		if DBM.Options.DontShowBossTimers then return end
 		if self:GetTime(...) == 0 then
 			self:Start(totalTime, ...)
 		end
