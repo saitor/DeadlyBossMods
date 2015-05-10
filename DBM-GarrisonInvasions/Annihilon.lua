@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Annihilon", "DBM-GarrisonInvasions")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13724 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13725 $"):sub(12, -3))
 mod:SetCreatureID(90802)
 mod:SetZone()
 
@@ -88,9 +88,9 @@ function mod:UNIT_SPELLCAST_START(uId, _, _, _, spellId)
 end
 
 function mod:OnSync(msg, GUID)
-	if msg == "VoidBomb" then
+	if GUID and msg == "VoidBomb" then
 		self:BossTargetScanner(GUID, "BombTarget", 0.05, 16)
-	elseif msg == "WhirlingVoid" then
+	elseif GUID and msg == "WhirlingVoid" then
 		self:BossTargetScanner(GUID, "VoidTarget", 0.04, 16)
 	end
 end
