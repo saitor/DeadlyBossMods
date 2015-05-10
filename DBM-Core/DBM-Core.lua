@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13719 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13720 $"):sub(12, -3)),
 	DisplayVersion = "6.1.8 alpha", -- the string that is shown as version
 	ReleaseRevision = 13634 -- the revision of the latest stable version that is available
 }
@@ -231,7 +231,6 @@ DBM.DefaultOptions = {
 	DontShowBossAnnounces = false,
 	DontShowBossTimers = false,
 	DontShowFarWarnings = true,
-	DontSendBossWhispers = false,
 	DontSetIcons = false,
 	DontRestoreIcons = false,
 	DontShowRangeFrame = false,
@@ -6556,10 +6555,6 @@ function bossModPrototype:IsCriteriaCompleted(criteriaIDToCheck)
 		end
 	end
 	return false
-end
-
-function bossModPrototype:SendWhisper(msg, target)
-	return not DBM.Options.DontSendBossWhispers and sendWhisper(target, chatPrefixShort..msg)
 end
 
 function bossModPrototype:LatencyCheck()
