@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13751 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13753 $"):sub(12, -3)),
 	DisplayVersion = "6.1.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 13725 -- the revision of the latest stable version that is available
 }
@@ -9605,7 +9605,7 @@ function bossModPrototype:AddSpecialWarningOption(name, default, defaultSound, n
 	self.Options[name] = (default == nil) or default
 	self.Options[name.."SWSound"] = defaultSound or 1
 	if noteLines then
-		for i = 1, noteLines do
+		for i = 1, noteLines do--Possibly store it all in one option split by : or something instead of multiple options?
 			self.DefaultOptions[name.."SWNote"..i] = ""--For some reason this is writing "false". Whatver, I coded around this
 			self.Options[name.."SWNote"..i] = ""
 		end
