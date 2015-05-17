@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13748 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13749 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -50,11 +50,11 @@ local specWarnSiegemakerPlatingFades= mod:NewSpecialWarningFades(156667, "Ranged
 local specWarnFixate				= mod:NewSpecialWarningRun(156653, nil, nil, nil, 4)
 local yellFixate					= mod:NewYell(156653)
 local specWarnMortarSoon			= mod:NewSpecialWarningSoon(156530, "Ranged")--Mortar prefers the furthest targets from siege engine. It's ranged job to bait it to a wall
-local specWarnMassiveExplosion		= mod:NewSpecialWarningSpell(163008, nil, nil, nil, 2, nil, 2)--Mythic
+local specWarnMassiveExplosion		= mod:NewSpecialWarningSpell(163008, nil, nil, nil, 2, 2)--Mythic
 --Stage Three: Iron Crucible
 local specWarnSlagEruption			= mod:NewSpecialWarningCount(156928, nil, nil, nil, 2)
-local specWarnAttachSlagBombs		= mod:NewSpecialWarningYou(157000, nil, nil, nil, nil, nil, 2)--May change to sound 3, but I don't want it confused with the even more threatening marked for death, so for now will try 1
-local specWarnAttachSlagBombsOther	= mod:NewSpecialWarningTaunt(157000, nil, nil, nil, nil, nil, 2)
+local specWarnAttachSlagBombs		= mod:NewSpecialWarningYou(157000, nil, nil, nil, nil, 2)--May change to sound 3, but I don't want it confused with the even more threatening marked for death, so for now will try 1
+local specWarnAttachSlagBombsOther	= mod:NewSpecialWarningTaunt(157000, nil, nil, nil, nil, 2)
 local specWarnSlagPosition			= mod:NewSpecialWarning("specWarnSlagPosition", nil, false, nil, 1)
 local yellAttachSlagBombs			= mod:NewYell("OptionVersion2", 157000)
 local specWarnMassiveShatteringSmash= mod:NewSpecialWarningCount(158054, nil, nil, 2, 3, 2)
