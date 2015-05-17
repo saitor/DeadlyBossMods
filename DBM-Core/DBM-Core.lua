@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13753 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13754 $"):sub(12, -3)),
 	DisplayVersion = "6.1.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 13725 -- the revision of the latest stable version that is available
 }
@@ -4754,7 +4754,11 @@ do
 		end
 	end
 
-	function DBM:CHAT_MSG_MONSTER_YELL(msg)
+	function DBM:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
+		if IsEncounterInProgress() then
+			local targetName = target or "nil"
+			self:Debug("CHAT_MSG_MONSTER_YELL from "..npc.." while looking at"..targetName, 2)
+		end
 		return onMonsterMessage("yell", msg)
 	end
 
