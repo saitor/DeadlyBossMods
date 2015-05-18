@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13756 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13757 $"):sub(12, -3)),
 	DisplayVersion = "6.1.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 13725 -- the revision of the latest stable version that is available
 }
@@ -8587,7 +8587,7 @@ do
 					end
 				end
 			end
-			local msg = pformat(self.text, unpack(argTable))
+			local text = pformat(self.text, unpack(argTable))
 			if self.hasNote then--Inject note into message
 				--Counts support different note for EACH count
 				if self.announceType == "count" or self.announceType == "switchcount" or self.announceType == "targetcount" then
@@ -8616,7 +8616,7 @@ do
 					end
 				end
 			end
-			local text = msg:gsub(">.-<", classColoringFunction)
+			text = text:gsub(">.-<", classColoringFunction)
 			DBM:AddSpecialWarning(text)
 			self.combinedcount = 0
 			self.combinedtext = {}
