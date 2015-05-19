@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13771 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13772 $"):sub(12, -3)),
 	DisplayVersion = "6.1.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 13725 -- the revision of the latest stable version that is available
 }
@@ -8640,7 +8640,7 @@ do
 				end
 			end
 			--This callback sucks, it needs useful information for external mods to listen to it better, such as mod and spellid
-			fireEvent("DBM_Announce", msg)
+			fireEvent("DBM_Announce", text)
 			if self.sound then
 				local soundId = self.option and self.mod.Options[self.option .. "SWSound"] or self.flash
 				if self.hasVoice and DBM.Options.ChosenVoicePack ~= "None" and self.hasVoice <= SWFilterDisabed and (type(soundId) == "number" and DBM.Options.VoiceOverSpecW2 == "DefaultOnly" or DBM.Options.VoiceOverSpecW2 == "All") and (DBM.Options.AlwaysPlayVoice or (self.mod.Options[self.voiceOptionId] or self.mod.Options[self.voiceOptionId.."2"] or self.mod.Options[self.voiceOptionId.."3"])) then return end
