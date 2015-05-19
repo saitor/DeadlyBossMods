@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 13763 $"):sub(12, -3)
+local revision =("$Revision: 13764 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -473,7 +473,7 @@ do
 			if noteButton then
 				noteButton:SetPoint('LEFT', dropdown, "RIGHT", 35, 0)
 				textbeside = noteButton
-				textpad = 3
+				textpad = 2
 				widthAdjust = widthAdjust + dropdown:GetWidth() + noteButton:GetWidth()
 			else
 				textbeside = dropdown
