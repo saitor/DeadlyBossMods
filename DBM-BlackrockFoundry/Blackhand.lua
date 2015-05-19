@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13760 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13769 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -651,7 +651,7 @@ end
 function mod:UNIT_POWER_FREQUENT(uId)
 	local power = UnitPower(uId)
 	local guid = UnitGUID(uId)
-	if power > 80 and not mortarsWarned[guid] then
+	if power > 70 and not mortarsWarned[guid] then
 		specWarnMortarSoon:Show()
 		mortarsWarned[guid] = true
 	end
