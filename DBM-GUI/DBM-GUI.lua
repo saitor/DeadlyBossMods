@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 13765 $"):sub(12, -3)
+local revision =("$Revision: 13766 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -426,7 +426,7 @@ do
 		if type(name) == "number" then
 			return DBM:AddMsg("CreateCheckButton: error: expected string, received number. You probably called mod:NewTimer(optionId) with a spell id."..name)
 		end
-		local button = CreateFrame('CheckButton', FrameTitle..self:GetNewID(), self.frame, 'OptionsCheckButtonTemplate')
+		local button = CreateFrame('CheckButton', FrameTitle..self:GetNewID(), self.frame, 'DBMOptionsCheckButtonTemplate')
 		local buttonName = button:GetName()
 		button.myheight = 25
 		button.mytype = "checkbutton"
