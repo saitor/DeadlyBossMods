@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13775 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13776 $"):sub(12, -3)),
 	DisplayVersion = "6.1.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 13725 -- the revision of the latest stable version that is available
 }
@@ -3581,7 +3581,7 @@ do
 			local playerZone, senderZone = select(4, UnitPosition("player")), select(4, UnitPosition(senderuId))
 			if playerZone ~= senderZone then return end--not same zone
 			local range = DBM.RangeCheck:GetDistance("player", senderuId)--Same zone, so check range
-			if not range or range > 60 then return end
+			if not range or range > 120 then return end
 		end
 		if not cSyncSender[sender] then
 			cSyncSender[sender] = true
