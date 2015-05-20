@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13777 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13778 $"):sub(12, -3)),
 	DisplayVersion = "6.1.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 13725 -- the revision of the latest stable version that is available
 }
@@ -8362,7 +8362,7 @@ do
 	end
 
 	function yellPrototype:Yell(...)
-		if DBM.Options.SpamBlockNoYells then return end
+		if DBM.Options.DontSendYells then return end
 		if not self.option or self.mod.Options[self.option] then
 			SendChatMessage(pformat(self.text, ...), self.chatType or "SAY")
 		end
