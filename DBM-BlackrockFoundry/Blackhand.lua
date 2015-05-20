@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(959, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13769 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13779 $"):sub(12, -3))
 mod:SetCreatureID(77325)--68168
 mod:SetEncounterID(1704)
 mod:SetZone()
@@ -262,6 +262,11 @@ end
 local function warnSlag(self)
 	warnAttachSlagBombs:Show(self.vb.slagCastCount, table.concat(slagTargets, "<, >"))
 	table.wipe(slagTargets)
+end
+
+--/run DBM:GetModByName("959"):NoteTestFunction(1)
+function mod:NoteTestFunction(count)
+	specWarnShatteringSmash:Show(count)
 end
 
 function mod:OnCombatStart(delay)
