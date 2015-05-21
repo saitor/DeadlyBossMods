@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1122, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13780 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13785 $"):sub(12, -3))
 mod:SetCreatureID(76865)--No need to add beasts to this. It's always main boss that's engaged first and dies last.
 mod:SetEncounterID(1694)
 mod:SetZone()
@@ -48,7 +48,7 @@ local yellPinDown					= mod:NewYell(154960)
 local specWarnRendandTear			= mod:NewSpecialWarningMove(155385, "Melee", nil, nil, nil, 2)--Always returns to melee (tank)
 local specWarnSuperheatedShrapnel	= mod:NewSpecialWarningDodge(155499, nil, nil, nil, 2)
 local specWarnFlameInfusion			= mod:NewSpecialWarningMove(155657)
-local specWarnTantrum				= mod:NewSpecialWarningCount(162275, nil, nil, nil, 2, 2, 2)
+local specWarnTantrum				= mod:NewSpecialWarningCount(162275, nil, nil, nil, 2, 2)
 local specWarnEpicenter				= mod:NewSpecialWarningMove(159043)
 local specWarnSuperheatedScrap		= mod:NewSpecialWarningMove(156823)
 local yellSuperheated				= mod:NewYell(156823)

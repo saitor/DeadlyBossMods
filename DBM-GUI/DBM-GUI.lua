@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 13780 $"):sub(12, -3)
+local revision =("$Revision: 13785 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -545,6 +545,7 @@ do
 				noteButton = CreateFrame('Button', FrameTitle..self:GetNewID(), self.frame, 'DBM_GUI_OptionsFramePanelButtonTemplate')
 				noteButton:SetWidth(25)
 				noteButton:SetHeight(25)
+				noteButton.myheight = 0--Tells SetAutoDims that this button needs no additional space
 				noteButton:SetText("N")
 				noteButton.mytype = "button"
 				noteButton:SetScript("OnClick", function(self)
