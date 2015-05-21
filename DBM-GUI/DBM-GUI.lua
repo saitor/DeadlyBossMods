@@ -44,7 +44,7 @@
 
 
 
-local revision =("$Revision: 13787 $"):sub(12, -3)
+local revision =("$Revision: 13788 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -2069,8 +2069,8 @@ local function CreateOptionsMenu()
 		local specPanel = DBM_GUI_Frame:CreateNewPanel(L.Panel_SpecWarnFrame, "option")
 		local specArea = specPanel:CreateArea(L.Area_SpecWarn, nil, 750, true)
 		local check1 = specArea:CreateCheckButton(L.SpecWarn_ClassColor, true, nil, "SWarnClassColor")
-		local check2 = specArea:CreateCheckButton(L.ShowSWarningsInChat, true, nil, "ShowSWarningsInChat")
-		local check3 = specArea:CreateCheckButton(L.SWarnNameInNote, true, nil, "SWarnNameInNote")
+		local check2 = specArea:CreateCheckButton(L.SWarnNameInNote, true, nil, "SWarnNameInNote")
+		local check3 = specArea:CreateCheckButton(L.ShowSWarningsInChat, true, nil, "ShowSWarningsInChat")
 		local check4 = specArea:CreateCheckButton(L.SpecWarn_FlashFrame, true, nil, "ShowFlashFrame")
 
 		local flashSlider = specArea:CreateSlider(L.SpecWarn_FlashFrameRepeat, 1, 3, 1, 100)
