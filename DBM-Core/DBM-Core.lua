@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13794 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13795 $"):sub(12, -3)),
 	DisplayVersion = "6.1.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 13725 -- the revision of the latest stable version that is available
 }
@@ -8596,8 +8596,8 @@ do
 				end
 			end
 			local text = pformat(self.text, unpack(argTable))
+			local noteHasName = false
 			if self.option then
-				local noteHasName = false
 				local noteText = self.mod.Options[self.option .. "SWNote"]
 				if noteText and type(noteText) == "string" and noteText ~= "" then--Filter false bool and empty strings
 					local count1 = self.announceType == "count" or self.announceType == "switchcount" or self.announceType == "targetcount"
