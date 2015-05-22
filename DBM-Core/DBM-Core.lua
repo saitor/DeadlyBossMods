@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13791 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13792 $"):sub(12, -3)),
 	DisplayVersion = "6.1.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 13725 -- the revision of the latest stable version that is available
 }
@@ -8608,6 +8608,11 @@ do
 						noteCount = argTable[1]--Count should be first arg in table
 					elseif count2 then
 						noteCount = argTable[2]--Count should be second arg in table
+					end
+					if type(noteCount) == "string" then
+						--Probably a hypehnated double count like inferno slice or marked for death
+						local mainCount = string.split("-", noteCount)
+						noteCount = tonumber(mainCount)
 					end
 					noteText = notesTable[noteCount]
 					if noteText and type(noteText) == "string" and noteText ~= "" then--Refilter after string split to make sure a note for this count exists
