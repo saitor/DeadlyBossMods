@@ -43,8 +43,7 @@
 --
 
 
-
-local revision =("$Revision: 13789 $"):sub(12, -3)
+local revision =("$Revision: 13802 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
