@@ -12,4 +12,5 @@ move-folders:
     DBM-Core/DBM-StatusBarTimers: DBM-StatusBarTimers
     DBM-Core/DBM-WorldEvents: DBM-WorldEvents
     DBM-Core/DBM-GarrisonInvasions: DBM-GarrisonInvasions
+    DBM-Core/DBM-HellfireCitadel: DBM-HellfireCitadel
     DBM-Core/DBM-Core: DBM-Core
