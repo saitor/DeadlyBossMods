@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13804 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13805 $"):sub(12, -3)),
 	DisplayVersion = "6.1.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 13725 -- the revision of the latest stable version that is available
 }
@@ -7381,6 +7381,17 @@ do
 			DBM:SetCurrentSpecInfo()
 		end
 		if specRoleTable[currentSpecID]["SpellCaster"] then
+			return true
+		else
+			return false
+		end
+	end
+	
+	function bossModPrototype:IsMagicDispeller()
+		if not currentSpecID then
+			DBM:SetCurrentSpecInfo()
+		end
+		if specRoleTable[currentSpecID]["MagicDispeller"] then
 			return true
 		else
 			return false
