@@ -43,7 +43,7 @@
 --
 
 
-local revision =("$Revision: 13802 $"):sub(12, -3)
+local revision =("$Revision: 13803 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -545,7 +545,7 @@ do
 				noteButton:SetWidth(25)
 				noteButton:SetHeight(25)
 				noteButton.myheight = 0--Tells SetAutoDims that this button needs no additional space
-				noteButton:SetText("N")
+				noteButton:SetText("|TInterface/FriendsFrame/UI-FriendsFrame-Note.blp:14:0:3:-1|t")
 				noteButton.mytype = "button"
 				noteButton:SetScript("OnClick", function(self)
 					local noteText = mod.Options[modvar.."SWNote"]
