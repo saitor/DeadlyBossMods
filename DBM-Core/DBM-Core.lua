@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13815 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13817 $"):sub(12, -3)),
 	DisplayVersion = "6.1.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 13725 -- the revision of the latest stable version that is available
 }
@@ -2952,9 +2952,9 @@ function DBM:CopyAllModOption(modId, sourceName, sourceProfile)
 	end
 end
 
-function DBM:CopyAllModSoundOption(modId, sourceName, sourceProfile)
+function DBM:CopyAllModTypeOption(modId, sourceName, sourceProfile, Type)
 	-- modId is string like "DBM-Highmaul"
-	if not modId or not sourceName or not sourceProfile or not DBM.ModLists[modId] then return end
+	if not modId or not sourceName or not sourceProfile or not DBM.ModLists[modId] or not Type then return end
 	-- prevent error
 	if not currentSpecID then
 		self:SetCurrentSpecInfo()
@@ -2990,7 +2990,7 @@ function DBM:CopyAllModSoundOption(modId, sourceName, sourceProfile)
 		if not _G[savedVarsName][targetName][id] then _G[savedVarsName][targetName][id] = {} end
 		-- copy table
 		for option, optionValue in pairs(_G[savedVarsName][sourceName][id][sourceProfile]) do
-			if option:find("SWSound") then
+			if option:find(Type) then
 				_G[savedVarsName][targetName][id][targetProfile][option] = optionValue
 			end
 		end
