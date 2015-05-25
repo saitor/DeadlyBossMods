@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1391, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13806 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13809 $"):sub(12, -3))
 mod:SetCreatureID(89890)
 mod:SetEncounterID(1777)
 mod:SetZone()
@@ -140,7 +140,9 @@ local function warnSeeds(self)
 	for i = 1, numGroupMembers do
 		if UnitDebuff("raid"..i, seedsName) then
 			seedsFound = seedsFound + 1
-			if UnitName("raid"..i) == playerName then
+			local targetName = UnitName("raid"..i)
+			DBM:Debug(targetName.." is seeds "..seedsFound.."They are assigned "..currentType[seedsFound], 2)
+			if targetName == playerName then
 				if self.Options.SpecWarn181508you then
 					specWarnSeedPosition:Show(currentType[seedsFound])
 				end
