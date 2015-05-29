@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1447, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13811 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13830 $"):sub(12, -3))
 mod:SetCreatureID(93068)
 mod:SetEncounterID(1800)
 mod:SetZone()
@@ -135,8 +135,10 @@ end
 
 function mod:FelChains(targetname, uId)
 	if targetname == UnitName("player") then
-		specWarnFelChains:Show()
-		yellFelChains:Yell()
+		if self:AntiSpam(5, 3) then
+			specWarnFelChains:Show()
+			yellFelChains:Yell()
+		end
 	else
 		warnFelChains:Show(targetname)
 	end
@@ -268,7 +270,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif spellId == 186500 and self.Options.ChainsBehavior ~= "Cast" then--Chains! (show warning if type is applied or both)
 		warnFelChains:CombinedShow(0.3, args.destName)
-		if args:IsPlayer() then
+		if args:IsPlayer() and self:AntiSpam(5, 3) then
 			specWarnFelChains:Show()
 			yellFelChains:Yell()
 		end
