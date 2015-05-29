@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13824 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13828 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetZone()
@@ -463,7 +463,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 		updateRangeFrame(self)
-	elseif spellid == 190703 then
+	elseif spellId == 190703 then
 		timerSourceofChaosCD:Start()
 		if args:IsPlayer() then
 			specWarnSourceofChaos:Show()
