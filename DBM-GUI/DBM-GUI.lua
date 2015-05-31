@@ -43,7 +43,7 @@
 --
 
 
-local revision =("$Revision: 13832 $"):sub(12, -3)
+local revision =("$Revision: 13834 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -186,7 +186,7 @@ do
 			elseif IsInGroup(LE_PARTY_CATEGORY_INSTANCE) and IsInInstance() and not C_Garrison:IsOnGarrisonMap() then--For BGs, LFR and LFG (we also check IsInInstance() so if you're in queue but fighting something outside like a world boss, it'll sync in "RAID" instead)
 				DBM:AddMsg(L.NoteShareErrorGroupFinder)
 			else
-				local msg = mod.id.."\t"..modvar.."\t"..syncText
+				local msg = modid.."\t"..modvar.."\t"..syncText
 				if IsInRaid() then
 					SendAddonMessage("D4", "NS\t" .. msg, "RAID")
 					DBM:AddMsg(L.NoteShared)
