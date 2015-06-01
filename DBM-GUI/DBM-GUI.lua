@@ -43,7 +43,7 @@
 --
 
 
-local revision =("$Revision: 13835 $"):sub(12, -3)
+local revision =("$Revision: 13836 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -207,6 +207,12 @@ do
 		if not frame then
 			createFrame()
 			DBM_GUI.Noteframe = frame
+		end
+		if frame:IsShown() and syncText then
+			--Prevent someone interrupting you editing a note and causing you to lose your work.
+			--If frame is already open, perform no action
+			DBM:AddMsg(L.NoteShareErrorAlreadyOpen:format(sender, abilityName))
+			return
 		end
 		frame:Show()
 		fontstringFooter:SetText(L.NoteFooter)
