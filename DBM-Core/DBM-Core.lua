@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13837 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13838 $"):sub(12, -3)),
 	DisplayVersion = "6.1.10 alpha", -- the string that is shown as version
 	ReleaseRevision = 13817 -- the revision of the latest stable version that is available
 }
@@ -3592,8 +3592,12 @@ do
 		local mod = DBM:GetModByName(modid or "")
 		if mod and modvar and text and text ~= "" then
 			if DBM:AntiSpam(5, modvar) then--Don't allow calling same note more than once per 5 seconds
-				local ability = abilityName or DBM_CORE_UNKNOWN
-				DBM_GUI:ShowNoteEditor(mod, modvar, ability, text, sender)
+				if DBM_GUI then
+					local ability = abilityName or DBM_CORE_UNKNOWN
+					DBM_GUI:ShowNoteEditor(mod, modvar, ability, text, sender)
+				else
+					DBM:AddMsg(sender.." sent a note but DBM GUI isn't loaded yet, gui must be loaded")
+				end
 			else
 				DBM:Debug(sender.." is attempting to send too many notes so notes are being throttled")
 			end
