@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Goggnathog", "DBM-GarrisonInvasions")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13847 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13849 $"):sub(12, -3))
 mod:SetCreatureID(90995)
 mod:SetZone()
 
@@ -25,6 +25,7 @@ local specWarnArcaneOrb			= mod:NewSpecialWarningSpell(180819, nil, nil, nil, 2)
 local specWarnArcaneSurge		= mod:NewSpecialWarningInterrupt(180816, false)
 local specWarnArcaneSurgeDispel	= mod:NewSpecialWarningDispel(180816, "MagicDispeller")
 
+mod:AddRangeFrameOption(10, 180908)
 mod:AddHudMapOption("HudMapOnUnleashed", 180908)
 
 mod.vb.debuffCount = 0
