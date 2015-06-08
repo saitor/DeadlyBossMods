@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13857 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13858 $"):sub(12, -3)),
 	DisplayVersion = "6.1.10 alpha", -- the string that is shown as version
 	ReleaseRevision = 13817 -- the revision of the latest stable version that is available
 }
@@ -131,6 +131,7 @@ DBM.DefaultOptions = {
 	ShowBigBrotherOnCombatStart = false,
 	FilterTankSpec = true,
 	FilterInterrupt = true,
+	FilterInterruptNoteName = false,
 	FilterDispel = true,
 	FilterSelfHud = true,
 	AutologBosses = false,
@@ -8882,9 +8883,12 @@ do
 						end
 						noteText = notesTable[noteCount]
 						if noteText and type(noteText) == "string" and noteText ~= "" then--Refilter after string split to make sure a note for this count exists
-							if DBM.Options.SWarnNameInNote and noteText:find(playerName) then
+							local hasPlayerName = noteText:find(playerName)
+							if DBM.Options.SWarnNameInNote and hasPlayerName then
 								noteHasName = 5
 							end
+							--Terminate special warning, it's an interrupt count warning without player name and filter enabled
+							if count2 and DBM.Options.FilterInterruptNoteName and not hasPlayerName then return end
 							noteText = " ("..noteText..")"
 							text = text..noteText
 						end
