@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13861 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13862 $"):sub(12, -3)),
 	DisplayVersion = "6.1.10 alpha", -- the string that is shown as version
 	ReleaseRevision = 13817 -- the revision of the latest stable version that is available
 }
@@ -1031,7 +1031,7 @@ do
 
 	function DBM:ADDON_LOADED(modname)
 		if modname == "DBM-Core" and not isLoaded then
-			dbmToc = tonumber(GetAddOnMetadata("DBM-Core", "Interface"))
+			dbmToc = tonumber(GetAddOnMetadata("DBM-Core", "X-Min-Interface"))
 			isLoaded = true
 			for i, v in ipairs(onLoadCallbacks) do
 				xpcall(v, geterrorhandler())
