@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1391, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13812 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13860 $"):sub(12, -3))
 mod:SetCreatureID(89890)
 mod:SetEncounterID(1777)
 mod:SetZone()
@@ -120,7 +120,7 @@ local DirectionVoiceAssignments = {"left", "centerleft", "center", "centerright"
 local function warnSeeds(self)
 	table.wipe(seedTargets)
 	--Sort by raidid since combat log order may diff person to person
-	if self:IsLFR() and not IsTestBuild() then return end
+	if self:IsLFR() then return end
 	local seedsFound = 0
 	local numGroupMembers = DBM:GetNumGroupMembers()
 	local expectedTotal = self:IsMythic() and 5 or 4--TODO, verify it's always 4, flexible shit sucks for this
