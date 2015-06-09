@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13860 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13861 $"):sub(12, -3)),
 	DisplayVersion = "6.1.10 alpha", -- the string that is shown as version
 	ReleaseRevision = 13817 -- the revision of the latest stable version that is available
 }
@@ -1040,15 +1040,12 @@ do
 			loadOptions()
 			if GetAddOnEnableState(playerName, "VEM-Core") >= 1 then
 				self:Schedule(10, function() self:AddMsg(DBM_CORE_VEM) end)
-				dbmIsEnabled = false
-				blockEnable = true
+				self:Disable(true)
 				return
 			end
 			if GetAddOnEnableState(playerName, "DBM-Profiles") >= 1 then
 				self:Schedule(10, function() self:AddMsg(DBM_CORE_3RDPROFILES) end)
-				dbmIsEnabled = false
-				blockEnable = true
-				DBM:Disable(true)
+				self:Disable(true)
 				return
 			end
 			--DBM is disabled and DBM is not forced disabled because of major patch
