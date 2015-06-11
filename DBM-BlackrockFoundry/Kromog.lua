@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1162, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13785 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13876 $"):sub(12, -3))
 mod:SetCreatureID(77692)
 mod:SetEncounterID(1713)
 mod:SetZone()
@@ -132,7 +132,7 @@ function mod:SPELL_CAST_START(args)
 		voiceGraspingEarth:Play("157060")
 		self:RuneStart()
 		if self:IsMythic() then
-			timerGraspingEarthCD:Start(122)
+			timerGraspingEarthCD:Start(66)
 			local remaining = timerTremblingEarthCD:GetRemaining()
 			if remaining < 32 then
 				DBM:Debug("Trembling earth CD extended by Grasping Earth")
