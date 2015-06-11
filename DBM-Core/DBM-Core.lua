@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13874 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13875 $"):sub(12, -3)),
 	DisplayVersion = "6.1.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 13867 -- the revision of the latest stable version that is available
 }
@@ -4884,7 +4884,7 @@ do
 				playersDead = playersDead + 1
 			end
 			local range = DBM.RangeCheck:GetDistance("player", unitId)
-			if range > 200 then--Very far away, released players probably
+			if range > 250 then--Very far away, released players probably
 				playersOutofRange = playersOutofRange + 1
 			end
 		end
