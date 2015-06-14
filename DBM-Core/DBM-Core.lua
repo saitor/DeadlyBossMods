@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13879 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13880 $"):sub(12, -3)),
 	DisplayVersion = "6.1.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 13867 -- the revision of the latest stable version that is available
 }
@@ -4697,10 +4697,11 @@ do
 		if not frame then
 			createFrame()
 			DBM.Noteframe = frame
-		end
-		if frame:IsShown() and syncText then
-			DBM:AddMsg(DBM_CORE_NOTESHAREERRORALREADYOPEN)
-			return
+		else
+			if frame:IsShown() and syncText then
+				DBM:AddMsg(DBM_CORE_NOTESHAREERRORALREADYOPEN)
+				return
+			end
 		end
 		frame:Show()
 		fontstringFooter:SetText(DBM_CORE_NOTEFOOTER)
