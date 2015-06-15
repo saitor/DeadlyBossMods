@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1427, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13881 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13885 $"):sub(12, -3))
 mod:SetCreatureID(92330)
 mod:SetEncounterID(1794)
 mod:SetZone()
@@ -273,7 +273,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		local uId = DBM:GetRaidUnitId(args.destName)
 		if self:IsTanking(uId, "boss1") then
 			local amount = args.amount or 1
-			warnShatteredDefenses:Show(amount)
+			warnShatteredDefenses:Show(args.destName, amount)
 			--if amount % 2 == 0 or amount >= 5 then
 
 			--end
