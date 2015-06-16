@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1433, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13887 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13888 $"):sub(12, -3))
 mod:SetCreatureID(90316)
 mod:SetEncounterID(1788)
 mod:DisableESCombatDetection()--Remove if blizz fixes trash firing ENCOUNTER_START
@@ -252,8 +252,13 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif spellId == 181824 or spellId == 187990 then
 		warnPhantasmalCorruption:Show(args.destName)
-		timerPhantasmalCorruptionCD:Start(args.sourceGUID)
-		countdownCorruption:Start()
+		if self:IsNormal() then
+			timerPhantasmalCorruptionCD:Start(21, args.sourceGUID)
+			countdownCorruption:Start(21)
+		else
+			timerPhantasmalCorruptionCD:Start(args.sourceGUID)
+			countdownCorruption:Start()
+		end
 		if args:IsPlayer() then
 			updateRangeFrame(self)
 			specWarnPhantasmalCorruption:Show()
