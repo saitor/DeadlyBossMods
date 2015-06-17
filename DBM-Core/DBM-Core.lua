@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13890 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13891 $"):sub(12, -3)),
 	DisplayVersion = "6.1.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 13867 -- the revision of the latest stable version that is available
 }
@@ -388,7 +388,7 @@ local statusWhisperDisabled = false
 local wowTOC = select(4, GetBuildInfo())
 local dbmToc = 0
 
-local fakeBWRevision = 13190
+local fakeBWRevision = 13200
 
 local enableIcons = true -- set to false when a raid leader or a promoted player has a newer version of DBM
 local guiRequested = false
