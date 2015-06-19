@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1395, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13810 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13896 $"):sub(12, -3))
 mod:SetCreatureID(91349)--91305 Fel Iron Summoner
 mod:SetEncounterID(1795)
 mod:SetZone()
@@ -201,7 +201,7 @@ function mod:SPELL_SUMMON(args)
 		self.vb.impCount = self.vb.impCount + 1
 		warnFelImplosion:Show(self.vb.impCount)
 		local nextCount = self.vb.impCount + 1
-		if self.sb.phase == 1 then
+		if self.vb.phase == 1 then
 			if phase1ImpTimers[nextCount] then
 				timerFelImplosionCD:Start(phase1ImpTimers[nextCount], nextCount)
 			end
@@ -214,11 +214,11 @@ function mod:SPELL_SUMMON(args)
 		self.vb.infernalCount = self.vb.infernalCount + 1
 		warnInferno:Show(self.vb.infernalCount)
 		local nextCount = self.vb.infernalCount + 1
-		if self.sb.phase == 1 then
+		if self.vb.phase == 1 then
 			if phase1InfernalTimers[nextCount] then
 				timerInfernoCD:Start(phase1InfernalTimers[nextCount], nextCount)
 			end
-		elseif self.sb.phase == 2 then
+		elseif self.vb.phase == 2 then
 			if phase2InfernalTimers[nextCount] then
 				timerInfernoCD:Start(phase2InfernalTimers[nextCount], nextCount)
 			end
