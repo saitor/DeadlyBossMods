@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("HellfireCitadelTrash", "DBM-HellfireCitadel")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13899 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13900 $"):sub(12, -3))
 --mod:SetModelID(47785)
 mod:SetZone()
 mod.isTrashMod = true
@@ -60,7 +60,6 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 186961 then
 		warnDarkFate:Show(args.destName)
 		if args:IsPlayer() then
-			specWarnNetherBanish:Show()
 			yellDarkFate:Schedule(14, 1)
 			yellDarkFate:Schedule(13, 2)
 			yellDarkFate:Schedule(12, 3)
