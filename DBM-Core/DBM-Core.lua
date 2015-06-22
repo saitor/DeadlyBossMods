@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13901 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13902 $"):sub(12, -3)),
 	DisplayVersion = "6.1.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 13867 -- the revision of the latest stable version that is available
 }
@@ -9278,7 +9278,7 @@ do
 		local activeVP = self.Options.ChosenVoicePack
 		--Check if voice pack out of date
 		if activeVP ~= "None" and activeVP == value then
-			if self.VoiceVersions[value] < 4 then--Version will be bumped when new voice packs released that contain new voices.
+			if self.VoiceVersions[value] < 5 then--Version will be bumped when new voice packs released that contain new voices.
 				self:AddMsg(DBM_CORE_VOICE_PACK_OUTDATED)
 				SWFilterDisabed = self.VoiceVersions[value]--Set disable to version on current voice pack
 			else
