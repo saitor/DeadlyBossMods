@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1433, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13911 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13912 $"):sub(12, -3))
 mod:SetCreatureID(90316)
 mod:SetEncounterID(1788)
 mod:DisableESCombatDetection()--Remove if blizz fixes trash firing ENCOUNTER_START
@@ -270,8 +270,8 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnPhantasmalFelBomb:CombinedShow(0.3, args.destName)
 		if args:IsPlayer() then
 			updateRangeFrame(self)
-			specWarnPhantasmalFelBomb:Show()
-			yellPhantasmalFelBomb:Yell()
+			specWarnPhantasmalFelBomb:Schedule(0.3)
+			yellPhantasmalFelBomb:Schedule(0.3)
 			if self.Options.RangeFrame then
 				DBM.RangeCheck:Show(15)
 			end
@@ -287,6 +287,8 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 		if args:IsPlayer() then
 			updateRangeFrame(self)
+			specWarnPhantasmalFelBomb:Cancel()
+			yellPhantasmalFelBomb:Cancel()
 			specWarnFelBomb:Show()
 			yellFelBomb:Yell()
 			if self.Options.RangeFrame then
