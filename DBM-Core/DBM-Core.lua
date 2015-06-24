@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13909 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13910 $"):sub(12, -3)),
 	DisplayVersion = "6.2.1 alpha", -- the string that is shown as version
 	ReleaseRevision = 13904 -- the revision of the latest stable version that is available
 }
@@ -8398,6 +8398,7 @@ do
 			return
 		end
 		if type(spellId) == "string" and spellId:match("OptionVersion") then
+			DBM:Debug("Voice for "..spellId.." is using OptionVersion hack. this is not needed, this only has 4 args, do this properly", 2)
 			local temp = optionVersion
 			optionVersion = string.sub(spellId, 14)
 			spellId, optionDefault, optionName = optionDefault, optionName, temp

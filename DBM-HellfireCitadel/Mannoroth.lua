@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1395, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13899 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13910 $"):sub(12, -3))
 mod:SetCreatureID(91349)--91305 Fel Iron Summoner
 mod:SetEncounterID(1795)
 mod:SetZone()
@@ -197,9 +197,10 @@ function mod:SPELL_CAST_START(args)
 	elseif spellId == 181738 or spellId == 182040 then--Ranged (35)
 		warnFelseeker:Show(35)
 	elseif spellId == 181799 or spellId == 182084 then
-		specWarnShadowForce:Show()
 		timerShadowForceCD:Start()
 		countdownShadowForce:Start(52.5)
+		if self:IsTank() and self.vb.phase == 3 then return end--Doesn't target tanks in phase 3, ever.
+		specWarnShadowForce:Show()
 	elseif spellId == 186348 then
 		specWarnWrathofGuldan:Show()
 		timerWrathofGuldanCD:Start()
