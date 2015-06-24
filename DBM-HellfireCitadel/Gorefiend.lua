@@ -1,11 +1,12 @@
 local mod	= DBM:NewMod(1372, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13911 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13915 $"):sub(12, -3))
 mod:SetCreatureID(90199)
 mod:SetEncounterID(1783)
 mod:SetZone()
 mod:SetUsedIcons(2, 1)
+mod:SetHotfixNoticeRev(13911)
 mod:SetRespawnTime(30)
 
 mod:RegisterCombat("combat")
