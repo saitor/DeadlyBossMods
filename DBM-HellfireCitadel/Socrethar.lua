@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1427, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13913 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13926 $"):sub(12, -3))
 mod:SetCreatureID(92330)
 mod:SetEncounterID(1794)
 mod:SetZone()
@@ -234,10 +234,10 @@ function mod:SPELL_CAST_START(args)
 			timerApocalypseCD:Start()
 		end
 	elseif spellId == 184239 and self:CheckInterruptFilter(args.sourceGUID) then
-		specWarnShadowWordAgony:Show()
+		specWarnShadowWordAgony:Show(args.sourceName)
 		voiceShadowWordAgony:Play("kickcast")
 	elseif spellId == 182392 and self:CheckInterruptFilter(args.sourceGUID) then
-		specWarnShadowBoltVolley:Show()
+		specWarnShadowBoltVolley:Show(args.sourceName)
 		voiceShadowBoltVolley:Play("kickcast")
 	elseif spellId == 188693 then
 		self.vb.felBurstCount = self.vb.felBurstCount + 1
