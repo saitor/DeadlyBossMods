@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1394, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13927 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13928 $"):sub(12, -3))
 mod:SetCreatureID(90269)
 mod:SetEncounterID(1784)
 mod:SetZone()
@@ -55,6 +55,7 @@ local specWarnAncientEnforcer				= mod:NewSpecialWarningSwitch("ej11155", "-Heal
 local specWarnEnforcersOnslaught			= mod:NewSpecialWarningDodge(180004, nil, nil, nil, 1, 5)
 --Stage Two: Contempt
 local specWarnFontofCorruption				= mod:NewSpecialWarningYou(180526)
+local yellFontofCorruption					= mod:NewYell(180526)
 ----Ancient Harbinger
 local specWarnAncientHarbinger				= mod:NewSpecialWarningSwitch("ej11163", "-Healer")
 local specWarnHarbingersMending				= mod:NewSpecialWarningInterrupt(180025, "-Healer", nil, nil, 1, 2)
@@ -268,6 +269,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnFontofCorruption:CombinedShow(0.3, args.destName)
 		if args:IsPlayer() then
 			specWarnFontofCorruption:Show()
+			yellFontofCorruption:Yell()
 		end
 	elseif spellId == 180025 then
 		specWarnHarbingersMendingDispel:Show(args.destName)
