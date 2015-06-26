@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1426, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13926 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13927 $"):sub(12, -3))
 mod:SetCreatureID(90019)--Main ID is door, door death= win. 94515 Siegemaster Mar'tak
 mod:SetEncounterID(1778)
 mod:SetZone()
@@ -375,7 +375,7 @@ local berserker = EJ_GetSectionInfo(11425)
 function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
 	if msg == L.BossLeaving and self:AntiSpam(20, 2) then
 		self:SendSync("BossLeaving")
-	elseif npc == felCaster or npc == dragoon or npc == berserker then
+	elseif npc == felCaster or npc == berserker then
 		if self:AntiSpam(5, 6) then
 			specWarnReinforcements:Show()
 		end
