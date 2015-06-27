@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13938 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13939 $"):sub(12, -3)),
 	DisplayVersion = "6.2.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 13933 -- the revision of the latest stable version that is available
 }
@@ -6828,6 +6828,16 @@ end
 
 function bossModPrototype:LatencyCheck()
 	return select(4, GetNetStats()) < DBM.Options.LatencyThreshold
+end
+
+function bossModPrototype:CheckBigWigs(name)
+	if raid[name].bwrevision then
+		return raid[name].bwrevision
+	elseif raid[name].bwarevision then
+		return raid[name].bwarevision
+	else
+		return false
+	end
 end
 
 bossModPrototype.AntiSpam = DBM.AntiSpam
