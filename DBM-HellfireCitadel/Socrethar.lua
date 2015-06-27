@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1427, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13927 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13938 $"):sub(12, -3))
 mod:SetCreatureID(92330)
 mod:SetEncounterID(1794)
 mod:SetZone()
@@ -72,7 +72,7 @@ local timerVolatileFelOrbCD			= mod:NewCDTimer(23, 180221)
 local timerFelChargeCD				= mod:NewCDTimer(23, 182051)
 local timerApocalypticFelburstCD	= mod:NewCDCountTimer(30, 188693)
 --Socrethar
-local timerExertDominanceCD			= mod:NewCDTimer(6, 183331, nil, "-Healer")
+local timerExertDominanceCD			= mod:NewCDTimer(5, 183331, nil, "-Healer")
 local timerApocalypseCD				= mod:NewCDTimer(46, 183329)
 --Adds
 local timerSargereiDominatorCD		= mod:NewCDTimer(60, "ej11456", nil, nil, nil, 184053)--CD needs verifying, no log saw 2 of them in a phase. phase always ended or boss died before 2nd add, i know it's at least longer than 60 sec tho
