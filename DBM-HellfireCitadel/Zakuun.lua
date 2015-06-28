@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1391, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13942 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13944 $"):sub(12, -3))
 mod:SetCreatureID(89890)
 mod:SetEncounterID(1777)
 mod:SetZone()
@@ -144,6 +144,9 @@ local function warnSeeds(self)
 				voiceSeedsofDestruction:Play(currentVoice[i])
 			end
 		end
+		if self.Options.SetIconOnSeeds and not self:IsLFR() then
+			self:SetIcon(args.destName, 9-i)
+		end
 	end
 end
 
@@ -261,9 +264,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self:AntiSpam(5, 2) then
 			self:Schedule(3.5, warnWake, self)
 			countdownSeedsofDestruction:Start()--Everyone, because waves occur.
-		end
-		if self.Options.SetIconOnSeeds and not self:IsLFR() then
-			self:SetSortedIcon(0.7, args.destName, 8, 5, true)
 		end
 		if self.Options.HudMapOnSeeds then
 			DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "highlight", args.destName, 5, 13, 1, 1, 0, 0.5, nil, true, 1):Pulse(0.5, 0.5)
