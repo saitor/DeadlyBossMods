@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13953 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13954 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetZone()
@@ -333,7 +333,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnFelBurst:Show()
 			yellFelBurst:Yell()
 		else
-			if self:CheckNearby(30, args.destName) then--Range subject to adjustment
+			if self:CheckNearby(30, args.destName) and not UnitDebuff("player", args.spellName) then--Range subject to adjustment
 				specWarnFelBurstNear:CombinedShow(0.3, args.destName)--Combined show to prevent spam in a spread, if a spread happens targets are all together and requires even MORE people to soak.
 				voiceFelBurst:Cancel()--Avoid spam
 				voiceFelBurst:Schedule(0.3, "gathershare")
