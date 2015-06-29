@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1391, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13948 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13964 $"):sub(12, -3))
 mod:SetCreatureID(89890)
 mod:SetEncounterID(1777)
 mod:SetZone()
@@ -145,7 +145,7 @@ local function warnSeeds(self)
 			end
 		end
 		if self.Options.SetIconOnSeeds and not self:IsLFR() then
-			self:SetIcon(args.destName, i)
+			self:SetIcon(targetName, i)
 		end
 	end
 	warnSeedofDestruction:Show(self.vb.SeedsCount, table.concat(seedsTargets, "<, >"))
