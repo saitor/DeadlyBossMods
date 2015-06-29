@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13965 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13966 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -320,6 +320,7 @@ function mod:SPELL_CAST_START(args)
 			countdownDeathBrand:Start(29)
 			warnAllureofFlamesSoon:Schedule(29.5)
 			timerAllureofFlamesCD:Start(34.5)
+			updateRangeFrame(self)
 		end
 	elseif spellId == 183864 then
 		timerShadowBlastCD:Start(args.sourceGUID)
@@ -600,6 +601,7 @@ function mod:OnSync(msg)
 		warnAllureofFlamesSoon:Schedule(30.5)
 		timerAllureofFlamesCD:Start(35.5)
 		timerShackledTormentCD:Start(12)
+		updateRangeFrame(self)
 	elseif msg == "phase25" and self.vb.phase < 2.5 then
 		DBM:Debug("Phase 2.5 begin yell")
 		self.vb.phase = 2.5
