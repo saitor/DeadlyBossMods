@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 13971 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 13972 $"):sub(12, -3)),
 	DisplayVersion = "6.2.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 13933 -- the revision of the latest stable version that is available
 }
@@ -8681,6 +8681,10 @@ do
 
 	function bossModPrototype:NewFadesYell(...)
 		return newYell(self, "fade", ...)
+	end
+	
+	function bossModPrototype:NewPosYell(...)
+		return newYell(self, "position", ...)
 	end
 end
 
