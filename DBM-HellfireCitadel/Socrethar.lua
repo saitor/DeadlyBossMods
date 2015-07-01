@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1427, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13982 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13983 $"):sub(12, -3))
 mod:SetCreatureID(92330)
 mod:SetEncounterID(1794)
 mod:SetZone()
@@ -346,7 +346,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self:IsNormal() then
 			timerGiftofManariCD:Start(14, args.sourceGUID)
 		else
-			timerGiftofManariCD:Start(12, args.sourceGUID)
+			timerGiftofManariCD:Start(11, args.sourceGUID)
 		end
 	elseif spellId == 189627 then
 		if self:IsNormal() then
