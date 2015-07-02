@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1372, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13990 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14002 $"):sub(12, -3))
 mod:SetCreatureID(90199)
 mod:SetEncounterID(1783)
 mod:SetZone()
@@ -53,7 +53,7 @@ local timerShadowofDeathCDTank			= mod:NewTimer(30, "SoDTank", 179864, "Tank")
 local timerShadowofDeathCDHealer		= mod:NewTimer(30, "SoDHealer", 179864, "Healer")
 local timerTouchofDoomCD				= mod:NewCDTimer(18, 179977)--25 seconds in LFR, tested after heroic. changed? VERIFY
 local timerSharedFateCD					= mod:NewNextCountTimer(29, 179909)--29-31
-local timerCrushingDarknessCD			= mod:NewNextTimer("OptionVersion2", 10, 180017, nil, false)--Actually 16, but i delay start by 6 seconds for reduced spam
+local timerCrushingDarknessCD			= mod:NewNextTimer(10, 180017, nil, false, 2)--Actually 16, but i delay start by 6 seconds for reduced spam
 local timerFeastofSouls					= mod:NewNextTimer(123.5, 181973)--Probably next timer too, or close to it, depends how consistent energy gains are, may have small variation, like gruul
 
 local timerDigest						= mod:NewCastTimer(40, 181295)

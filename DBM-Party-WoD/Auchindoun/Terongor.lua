@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1225, "DBM-Party-WoD", 1, 547)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13746 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14002 $"):sub(12, -3))
 mod:SetCreatureID(77734)
 mod:SetEncounterID(1714)
 mod:SetZone()
@@ -54,7 +54,7 @@ local specWarnDoom				= mod:NewSpecialWarningTarget(156965, false)
 
 --Basic Abilities
 local timerDrainLifeCD			= mod:NewCDTimer(15, 156854)--15~18 variation
-local timerFixate				= mod:NewTargetTimer("OptionVersion3", 12, 157168, nil, "-Tank")
+local timerFixate				= mod:NewTargetTimer(12, 157168, nil, "-Tank", 3)
 local timerRainOfFireCD			= mod:NewCDTimer(12, 156857)--12-22sec variation phase 2. Unknown Phase 1 repeat timer
 --Destruction Abilities
 local timerChaosBoltCD			= mod:NewCDTimer(20.5, 156975)--20-25 variation.

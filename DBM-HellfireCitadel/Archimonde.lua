@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13984 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14002 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -99,7 +99,7 @@ mod:AddTimerLine(SCENARIO_STAGE:format(2))
 local timerShackledTormentCD		= mod:NewCDTimer(31.5, 184931)
 local timerWroughtChaosCD			= mod:NewCDTimer(51.7, 184265)
 --Phase 2.5
-local timerFelborneOverfiendCD		= mod:NewNextTimer(44.3, "ej11603", nil, nil, nil, 186662)
+local timerFelborneOverfiendCD		= mod:NewNextTimer(44.3, "ej11603", nil, nil, nil, nil, 186662)
 --Phase 3: The Twisting Nether
 mod:AddTimerLine(SCENARIO_STAGE:format(3))
 local timerDemonicFeedbackCD		= mod:NewCDTimer(35, 187180)

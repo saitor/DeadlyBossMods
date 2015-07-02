@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1426, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13968 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14002 $"):sub(12, -3))
 mod:SetCreatureID(90019)--Main ID is door, door death= win. 94515 Siegemaster Mar'tak
 mod:SetEncounterID(1778)
 mod:SetZone()
@@ -74,8 +74,8 @@ local specWarnDemolisher			= mod:NewSpecialWarningSwitch("ej11429", "Dps", nil, 
 local timerHowlingAxeCD				= mod:NewCDTimer(8.47, 184369)
 local timerShockwaveCD				= mod:NewCDTimer(8.5, 184394)
 --Hellfire Reinforcements
-local timerFelCastersCD				= mod:NewCDCountTimer(40, "ej11411", nil, nil, nil, 181155)
-local timerBerserkersCD				= mod:NewCDCountTimer(40, "ej11425", nil, nil, nil, 184243)
+local timerFelCastersCD				= mod:NewCDCountTimer(40, "ej11411", nil, nil, nil, nil, 181155)
+local timerBerserkersCD				= mod:NewCDCountTimer(40, "ej11425", nil, nil, nil, nil, 184243)
 ----Gorebound Berserker (tank add probably)
 --local timerCowerCD				= mod:NewCDTimer(107, 184238)
 --local timerSlamCD					= mod:NewCDTimer(107, 184243)

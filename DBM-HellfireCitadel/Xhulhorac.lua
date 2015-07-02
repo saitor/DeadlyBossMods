@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1447, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 13991 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14002 $"):sub(12, -3))
 mod:SetCreatureID(93068)
 mod:SetEncounterID(1800)
 mod:SetZone()
@@ -76,7 +76,7 @@ local specWarnEmpBlackHole			= mod:NewSpecialWarningSpell(189779, nil, nil, nil,
 ----Boss
 local timerFelStrikeCD				= mod:NewCDTimer(15.8, 186271, nil, "Tank")--15.8-17
 local timerFelSurgeCD				= mod:NewCDTimer(30, 186407)
-local timerImpCD					= mod:NewNextTimer(25, "ej11694", nil, nil, nil, 112866)
+local timerImpCD					= mod:NewNextTimer(25, "ej11694", nil, nil, nil, nil, 112866)
 ----Big Add
 local timerFelBlazeFlurryCD			= mod:NewCDTimer(15.9, 186453, nil, "Tank")
 local timerFelChainsCD				= mod:NewCDTimer(15.9, 186490, nil, "-Tank" )
