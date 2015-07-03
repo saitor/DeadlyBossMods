@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1123, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14002 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14004 $"):sub(12, -3))
 mod:SetCreatureID(76814)--76794 Cinder Wolf, 80590 Aknor Steelbringer
 mod:SetEncounterID(1689)
 mod:SetZone()
@@ -54,12 +54,12 @@ local specWarnCharringBreathOther		= mod:NewSpecialWarningTaunt(155074)
 local timerLavaSlashCD					= mod:NewCDTimer(14.5, 155318, nil, false)
 local timerMoltenTorrentCD				= mod:NewCDTimer(14, 154932, nil, "Ranged", 2)
 local timerSummonEnchantedArmamentsCD	= mod:NewCDTimer(45, 156724, nil, "Ranged", 2)--45-47sec variation
-local timerSummonCinderWolvesCD			= mod:NewNextTimer(76, 155776)
+local timerSummonCinderWolvesCD			= mod:NewNextTimer(76, 155776, nil, nil, nil, 1)
 local timerOverheated					= mod:NewTargetTimer(14, 154950, nil, "Tank")
 local timerCharringBreathCD				= mod:NewNextTimer(5, 155074, nil, "Tank")
 local timerFixate						= mod:NewBuffFadesTimer(9.6, 154952)
-local timerBlazingRadianceCD			= mod:NewCDTimer(12, 155277, nil, false)--somewhat important but not important enough. there is just too much going on to be distracted by this timer
-local timerFireStormCD					= mod:NewNextCountTimer(61, 155493)
+local timerBlazingRadianceCD			= mod:NewCDTimer(12, 155277, nil, false, nil, 3)--somewhat important but not important enough. there is just too much going on to be distracted by this timer
+local timerFireStormCD					= mod:NewNextCountTimer(61, 155493, nil, nil, nil, 2)
 local timerFireStorm					= mod:NewBuffActiveTimer(14, 155493)
 
 local berserkTimer						= mod:NewBerserkTimer(420)
