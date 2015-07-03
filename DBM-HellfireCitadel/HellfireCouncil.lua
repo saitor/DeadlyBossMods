@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1432, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14004 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14006 $"):sub(12, -3))
 mod:SetCreatureID(92142, 92144, 92146)--Blademaster Jubei'thos (92142). Dia Darkwhisper (92144). Gurthogg Bloodboil (92146) 
 mod:SetEncounterID(1778)
 mod:SetZone()
@@ -60,7 +60,7 @@ local timerMirrorImageCD			= mod:NewCDTimer(75, 183885, nil, nil, nil, 1)
 mod:AddTimerLine(Dia)
 --Dia Darkwhisper
 local timerMarkofNecroCD			= mod:NewCDTimer(60.5, 184449, nil, "Healer", nil, 3)
-local timerReapCD					= mod:NewCDTimer(61.6, 184476, nil, nil, nil, 3)--66-71
+local timerReapCD					= mod:NewCDTimer(61.6, 184476, nil, nil, nil, 3)--61-71
 local timerNightmareVisageCD		= mod:NewCDTimer(30, 184657, nil, "Tank")
 local timerDarknessCD				= mod:NewCDTimer(75, 184681, nil, nil, nil, 2)
 mod:AddTimerLine(Gurtogg)
