@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1262, "DBM-Draenor", nil, 557)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14002 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14008 $"):sub(12, -3))
 mod:SetCreatureID(83746)
 mod:SetEncounterID(1755)
 mod:SetReCombatTime(20)
@@ -29,8 +29,8 @@ local specWarnExplode			= mod:NewSpecialWarningYou(167630)
 
 --local timerLooseQuillsCD		= mod:NewCDTimer(30, 167647)--seems health based. 80%, 40%
 local timerLooseQuills			= mod:NewBuffActiveTimer(30, 167647)
-local timerSolarBreathCD		= mod:NewCDTimer(29, 167679, nil, "Tank")
-local timerSharpBeakCD			= mod:NewCDTimer(11.5, 167614, nil, "Tank|Healer", 2)
+local timerSolarBreathCD		= mod:NewCDTimer(29, 167679, nil, "Tank", nil, 5)
+local timerSharpBeakCD			= mod:NewCDTimer(11.5, 167614, nil, "Tank|Healer", 2, 5)
 
 --mod:AddReadyCheckOption(37474, false)
 --mod:AddRangeFrameOption(8, 167647)
