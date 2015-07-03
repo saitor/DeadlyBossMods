@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14009 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14010 $"):sub(12, -3)),
 	DisplayVersion = "6.2.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 13998 -- the revision of the latest stable version that is available
 }
@@ -6385,11 +6385,8 @@ do
 	local testMod
 	local testWarning1, testWarning2, testWarning3
 	local testTimer1, testTimer2, testTimer3, testTimer4, testTimer5, testTimer6, testTimer7
-	local testCount1
-	local testCount2
-	local testSpecialWarning1
-	local testSpecialWarning2
-	local testSpecialWarning3
+	local testCount1, testCount2
+	local testSpecialWarning1, testSpecialWarning2, testSpecialWarning3
 	function DBM:DemoMode()
 		if not testMod then
 			testMod = self:NewMod("TestMod")
