@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14014 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14015 $"):sub(12, -3)),
 	DisplayVersion = "6.2.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 13998 -- the revision of the latest stable version that is available
 }
@@ -2057,7 +2057,10 @@ do
 		if sender and ignore[sender] then return end
 		text = text:sub(1, 16)
 		text = text:gsub("%%t", UnitName("target") or "<no target>")
-		if time < 2 then
+		if time == 0 then--Allow canceling by 0
+			self.Bars:CancelBar(text)
+		end
+		if time < 3 then
 			self:AddMsg(DBM_PIZZA_ERROR_USAGE)
 			return
 		end
