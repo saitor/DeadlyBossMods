@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1391, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14008 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14018 $"):sub(12, -3))
 mod:SetCreatureID(89890)
 mod:SetEncounterID(1777)
 mod:SetZone()
@@ -58,7 +58,7 @@ local timerSeedsofDestructionCD			= mod:NewCDCountTimer(14.5, 181508, nil, nil, 
 --local berserkTimer					= mod:NewBerserkTimer(360)
 
 local countdownDisarm					= mod:NewCountdown(85.8, 179667)
-local countdownDisembodied				= mod:NewCountdownFades("AltTwo10", 179407, false)--Depends on whether or not you are going down.
+local countdownDisembodied				= mod:NewCountdownFades("AltTwo15", 179407, false)--Depends on whether or not you are going down.
 local countdownSeedsofDestructionCD		= mod:NewCountdown(14.5, 181508)--Seeds cannot be cast while disarm countdown is running, so this is fine.
 local countdownSeedsofDestruction		= mod:NewCountdownFades("Alt5", 181508)--Alt voice for expiring is good.
 
