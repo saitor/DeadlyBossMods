@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14030 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14031 $"):sub(12, -3)),
 	DisplayVersion = "6.2.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 13998 -- the revision of the latest stable version that is available
 }
@@ -9490,7 +9490,10 @@ do
 				DBM:Debug("Timer autocorrected by "..debugtemp, 2)
 				timer = self.correctedCast
 			end
-			local colorId = self.mod.Options[self.option .. "TColor"]
+			local colorId = 0
+			if self.option then
+				colorId = self.mod.Options[self.option .. "TColor"]
+			end
 			local bar = DBM.Bars:CreateBar(timer, id, self.icon, nil, nil, nil, nil, colorId)
 			if not bar then
 				return false, "error" -- creating the timer failed somehow, maybe hit the hard-coded timer limit of 15
