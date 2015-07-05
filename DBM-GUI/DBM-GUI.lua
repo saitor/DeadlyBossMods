@@ -43,7 +43,7 @@
 --
 
 
-local revision =("$Revision: 14028 $"):sub(12, -3)
+local revision =("$Revision: 14029 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -419,13 +419,13 @@ do
 	})
 	
 	local tcolors = {
-		{ text = "Generic", value = 0 },
-		{ text = "Add", value = 1 },
-		{ text = "AOE", value = 2 },
-		{ text = "Targeted", value = 3 },
-		{ text = "Interrupt", value = 4 },
-		{ text = "Role", value = 5 },
-		{ text = "Phase", value = 6 },
+		{ text = "Generic Color", value = 0 },
+		{ text = "Add Color", value = 1 },
+		{ text = "AOE Color", value = 2 },
+		{ text = "Targeted Color", value = 3 },
+		{ text = "Interrupt Color", value = 4 },
+		{ text = "Role Color", value = 5 },
+		{ text = "Phase Color", value = 6 },
 	}
 
 	function PanelPrototype:CreateCheckButton(name, autoplace, textleft, dbmvar, dbtvar, mod, modvar, globalvar, isTimer)
