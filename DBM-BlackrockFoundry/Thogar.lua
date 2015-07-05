@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1147, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14008 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14024 $"):sub(12, -3))
 mod:SetCreatureID(76906)--81315 Crack-Shot, 81197 Raider, 77487 Grom'kar Firemender, 80791 Grom'kar Man-at-Arms, 81318 Iron Gunnery Sergeant, 77560 Obliterator Cannon, 81612 Deforester
 mod:SetEncounterID(1692)
 mod:SetZone()
@@ -47,7 +47,7 @@ local specWarnManOArms				= mod:NewSpecialWarningSwitch("ej9549", "-Healer")
 local specWarnBurning				= mod:NewSpecialWarningStack(164380, nil, 2)--Mythic
 
 --Operator Thogar
-local timerProtoGrenadeCD			= mod:NewCDTimer(11, 155864)
+local timerProtoGrenadeCD			= mod:NewCDTimer(11, 155864, nil, nil, nil, 3)
 local timerEnkindleCD				= mod:NewCDTimer(11.5, 155921, nil, "Tank", nil, 5)
 local timerTrainCD					= mod:NewNextCountTimer("d15", 176312, nil, nil, nil, 1)
 --Adds
