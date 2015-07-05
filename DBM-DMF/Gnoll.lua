@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Gnoll", "DBM-DMF")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14036 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14037 $"):sub(12, -3))
 mod:SetZone()
 
 mod:RegisterEvents(
@@ -67,7 +67,7 @@ function mod:UNIT_POWER_FREQUENT(uId, type)
 	if type == "ALTERNATE" then
 		local playerPower = UnitPower("player", 10)
 		if playerPower > gameEarnedPoints then
-			gameEarnedPoints = UnitPower("player", 10)
+			gameEarnedPoints = playerPower
 		end
 	end
 end
