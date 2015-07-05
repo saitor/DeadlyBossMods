@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14024 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14025 $"):sub(12, -3)),
 	DisplayVersion = "6.2.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 13998 -- the revision of the latest stable version that is available
 }
@@ -8921,12 +8921,18 @@ do
 						if DBM.Options.SWarnNameInNote and noteText:find(playerName) then
 							noteHasName = 5
 						end
+						if self.announceType:find("switch") then
+							noteText = noteText:gsub(">.-<", classColoringFunction)--Class color note text before combining with warning text.
+						end
 						noteText = " ("..noteText..")"
 						text = text..noteText
 					end
 				end
 			end
-			text = text:gsub(">.-<", classColoringFunction)
+			--No stripping on switch warnings, ever. They will NEVER have player name, but often have adds with "-" in name
+			if not self.announceType:find("switch") then
+				text = text:gsub(">.-<", classColoringFunction)
+			end
 			DBM:AddSpecialWarning(text)
 			self.combinedcount = 0
 			self.combinedtext = {}
