@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1427, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14024 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14032 $"):sub(12, -3))
 mod:SetCreatureID(92330)
 mod:SetEncounterID(1794)
 mod:SetZone()
@@ -193,7 +193,7 @@ function mod:OnCombatStart(delay)
 	timerFelPrisonCD:Start(51-delay)--Seems drastically changed. 51 in all newer logs
 	if self:IsMythic() then
 		timerVoraciousSoulstalkerCD:Start(20-delay, 1)
-		timerApocalypticFelburstCD:Start(-delay)
+		timerApocalypticFelburstCD:Start(33.7-delay)
 	end
 end
 
@@ -349,16 +349,16 @@ function mod:SPELL_AURA_APPLIED(args)
 		self.vb.barrierUp = true
 		self.vb.dominatorCount = self.vb.dominatorCount + 1
 		specWarnSargereiDominator:Show(self.vb.dominatorCount)
-		if self.vb.dominatorCount == 2 then--For some reason 3rd one is 10 seconds later than rest
-			timerSargereiDominatorCD:Start(70, self.vb.dominatorCount+1)
+		if self:IsMythic() then
+			timerSargereiDominatorCD:Start(130, self.vb.dominatorCount+1)
 		else
-			timerSargereiDominatorCD:Start(nil, self.vb.dominatorCount+1)
+			if self.vb.dominatorCount % 2 == 0 then--Every portal swap adds 10 seconds to next spawn, so 3, 5, 7 etc
+				timerSargereiDominatorCD:Start(70, self.vb.dominatorCount+1)
+			else
+				timerSargereiDominatorCD:Start(nil, self.vb.dominatorCount+1)
+			end
 		end
-		if self:IsNormal() then
-			timerGiftofManariCD:Start(14, args.sourceGUID)
-		else
-			timerGiftofManariCD:Start(11, args.sourceGUID)
-		end
+		timerGiftofManariCD:Start(5, args.sourceGUID)
 	elseif spellId == 189627 then
 		if self:IsNormal() then
 			timerVolatileFelOrbCD:Start(30)
