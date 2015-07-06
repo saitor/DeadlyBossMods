@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14045 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14046 $"):sub(12, -3)),
 	DisplayVersion = "6.2.4 alpha", -- the string that is shown as version
 	ReleaseRevision = 13998 -- the revision of the latest stable version that is available
 }
@@ -6427,7 +6427,7 @@ do
 		testTimer3:Start(43, "Evil Debuff")
 		testTimer4:Start(20, "Important Interrupt")
 		testTimer5:Start(60, "Boom!")
-		testTimer6:Start(35, "Handle your Roll")
+		testTimer6:Start(35, "Handle your Role")
 		testTimer7:Start(50, "Next Phase")
 		testCount1:Cancel()
 		testCount1:Start(43)
