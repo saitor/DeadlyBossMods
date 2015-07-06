@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14038 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14053 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -344,9 +344,9 @@ function mod:SPELL_CAST_START(args)
 		end
 		if self.Options.SetIconOnInfernals then
 			if self.vb.InfernalsActive > 0 then--Last set isn't dead yet, use alternate icons
-				self:ScanForMobs(94412, 2, 5, 3, 0.4, 25, "SetIconOnInfernals")
+				self:ScanForMobs(94412, 0, 5, 3, 0.4, 25, "SetIconOnInfernals")
 			else
-				self:ScanForMobs(94412, 2, 8, 3, 0.4, 25, "SetIconOnInfernals")
+				self:ScanForMobs(94412, 0, 8, 3, 0.4, 25, "SetIconOnInfernals")
 			end
 		end
 	elseif spellId == 190050 then

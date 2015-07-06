@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1426, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14024 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14053 $"):sub(12, -3))
 mod:SetCreatureID(90019)--Main ID is door, door death= win. 94515 Siegemaster Mar'tak
 mod:SetEncounterID(1778)
 mod:SetZone()
@@ -384,7 +384,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
 			warnFelCaster:Show(self.vb.felcasterCount)
 			if self.Options.SetIconOnAdds then
 				--Set icons starting at 6, not using skull and x, those will probably be used to auto mark terrors in a later feature
-				self:ScanForMobs(93931, 0, 6-self.vb.felCastersAlive, nil, 0.2, 10)
+				self:ScanForMobs(93931, 0, 6-self.vb.felCastersAlive, nil, 0.2, 15)
 			end
 			if self:IsMythic() then
 			
