@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1432, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14019 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14038 $"):sub(12, -3))
 mod:SetCreatureID(92142, 92144, 92146)--Blademaster Jubei'thos (92142). Dia Darkwhisper (92144). Gurthogg Bloodboil (92146) 
 mod:SetEncounterID(1778)
 mod:SetZone()
@@ -11,7 +11,6 @@ mod:SetBossHPInfoToHighest()
 --mod.respawnTime = 20
 
 mod:RegisterCombat("combat")
-
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 184657 184476",
@@ -230,8 +229,10 @@ function mod:SPELL_AURA_REMOVED(args)
 end--]]
 
 function mod:UNIT_DIED(args)
+	DBM:Debug("UNIT_DIED fired", 2)
 	local cid = self:GetCIDFromGUID(args.destGUID)
 	if cid == 92144 then--Dia Darkwhisper
+		DBM:Debug("Dia died", 2)
 		self.vb.diaDead = true
 		timerMarkofNecroCD:Cancel()
 		timerNightmareVisageCD:Cancel()
@@ -247,6 +248,7 @@ function mod:UNIT_DIED(args)
 			end
 		end
 	elseif cid == 92142 then--Blademaster Jubei'thosr
+		DBM:Debug("Jubei died", 2)
 		self.vb.jubeiDead = true
 		--timerFelstormCD:Cancel()
 		local elapsed, total = timerMirrorImageCD:GetTime()
@@ -261,6 +263,7 @@ function mod:UNIT_DIED(args)
 			end
 		end
 	elseif cid == 92146 then--Gurthogg Bloodboil
+		DBM:Debug("Gurthogg died", 2)
 		self.vb.bloodboilDead = true
 		timerRelRageCD:Cancel()
 		timerTaintedBloodCD:Cancel()
