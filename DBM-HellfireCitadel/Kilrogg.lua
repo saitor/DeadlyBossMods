@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1396, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14021 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14044 $"):sub(12, -3))
 mod:SetCreatureID(90378)
 mod:SetEncounterID(1786)
 mod:SetZone()
@@ -163,6 +163,8 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnHeartSeeker:Show()
 			yellHeartSeeker:Yell()
 			voiceHeartSeeker:Play("runout")
+		elseif self:IsMelee() then
+			voiceHeartSeeker:Play("158078")--farawayfromline
 		end
 	elseif spellId == 181488 then
 		warnVisionofDeath:CombinedShow(0.5, args.destName)
