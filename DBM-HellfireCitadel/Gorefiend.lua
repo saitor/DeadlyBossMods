@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1372, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14031 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14056 $"):sub(12, -3))
 mod:SetCreatureID(90199)
 mod:SetEncounterID(1783)
 mod:SetZone()
@@ -184,7 +184,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		self.vb.sharedFateCount = self.vb.sharedFateCount + 1
 		local cooldown = sharedFateTimers[self.vb.sharedFateCount+1]
 		if cooldown then
-			timerSharedFateCD:Start(cooldown, self.vb.shadowOfDeathCount+1)
+			timerSharedFateCD:Start(cooldown, self.vb.sharedFateCount+1)
 		end
 	end
 end
