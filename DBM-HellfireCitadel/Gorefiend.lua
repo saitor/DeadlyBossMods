@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1372, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14056 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14058 $"):sub(12, -3))
 mod:SetCreatureID(90199)
 mod:SetEncounterID(1783)
 mod:SetZone()
@@ -231,7 +231,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 		warnShadowofDeath:CombinedShow(0.5, self.vb.shadowOfDeathCount, args.destName)
 		if args:IsPlayer() then
-			specWarnShadowofDeath:Show()
+			specWarnShadowofDeath:Show(self.vb.shadowOfDeathCount)
 			countdownShadowofDeath:Start()
 			voiceShadowofDeath:Play("teleyou")
 		end
