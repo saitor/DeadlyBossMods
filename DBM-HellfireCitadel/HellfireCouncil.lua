@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1432, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14041 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14066 $"):sub(12, -3))
 mod:SetCreatureID(92142, 92144, 92146)--Blademaster Jubei'thos (92142). Dia Darkwhisper (92144). Gurthogg Bloodboil (92146) 
 mod:SetEncounterID(1778)
 mod:SetZone()
@@ -262,9 +262,9 @@ function mod:UNIT_DIED(args)
 			DBM:Debug("updating specials timer", 2)
 			--So now we update next based on remaining bosses
 			if not self.vb.bloodboilDead then--Leap is next if bloodboil not dead
-				timerDemoLeapCD:Start(elapsed, total)
+				timerDemoLeapCD:Update(elapsed, total)
 			else--Only dia left left, darkness will be next
-				timerDarknessCD:Start(elapsed, total)
+				timerDarknessCD:Update(elapsed, total)
 			end
 		end
 	elseif cid == 92146 then--Gurthogg Bloodboil
@@ -278,9 +278,9 @@ function mod:UNIT_DIED(args)
 			DBM:Debug("updating specials timer", 2)
 			--So now we update next based on remaining bosses
 			if not self.vb.diaDead then--Dia lives, darkness next
-				timerDarknessCD:Start(elapsed, total)
+				timerDarknessCD:Update(elapsed, total)
 			else--Only jubei left, images.
-				timerMirrorImageCD:Start(elapsed, total)
+				timerMirrorImageCD:Update(elapsed, total)
 			end
 		end
 	end
@@ -312,9 +312,9 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 			DBM:Debug("updating specials timer", 2)
 			--So now we update next based on remaining bosses
 			if not self.vb.bloodboilDead then--Leap is next if bloodboil not dead
-				timerDemoLeapCD:Start(elapsed, total)
+				timerDemoLeapCD:Update(elapsed, total)
 			else--Only dia left left, darkness will be next
-				timerDarknessCD:Start(elapsed, total)
+				timerDarknessCD:Update(elapsed, total)
 			end
 		end
 	end
