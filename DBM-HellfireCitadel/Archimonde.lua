@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14062 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14073 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -641,7 +641,7 @@ function mod:OnSync(msg)
 		timerAllureofFlamesCD:Cancel()--Done for rest of fight
 		timerDeathbrandCD:Cancel()--Done for rest of fight
 		countdownDeathBrand:Cancel()
-		timerNetherBanishCD:Start(11)
+		timerNetherBanishCD:Start(11, 1)
 		countdownNetherBanish:Start(11)
 		timerDemonicFeedbackCD:Start(29)--29-33
 		self:Schedule(23.5, setDemonicFeedback, self)
