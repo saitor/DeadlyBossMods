@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1432, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14068 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14078 $"):sub(12, -3))
 mod:SetCreatureID(92142, 92144, 92146)--Blademaster Jubei'thos (92142). Dia Darkwhisper (92144). Gurthogg Bloodboil (92146) 
 mod:SetEncounterID(1778)
 mod:SetZone()
@@ -30,7 +30,7 @@ local Dia		= EJ_GetSectionInfo(11489)
 local Jubei		= EJ_GetSectionInfo(11488)
 local Gurtogg	= EJ_GetSectionInfo(11490)
 
---(ability.id = 184657 or ability.id = 184476 or ability.id = 184355) and type = "begincast" or (ability.id = 184449 or ability.id = 183480 or ability.id = 184357) and type = "cast" or (ability.id = 183701 or ability.id = 184360 or ability.id = 184365) and type = "applydebuff" or (target.id = 92142 or target.id = 92144 or target.id = 92146) and type = "death" or ability.id = 184674
+--(target.id = 92142 or target.id = 92144 or target.id = 92146) and type = "death" or (ability.id = 184657 or ability.id = 184476 or ability.id = 184355) and type = "begincast" or (ability.id = 184449 or ability.id = 183480 or ability.id = 184357) and type = "cast" or (ability.id = 183701 or ability.id = 184360 or ability.id = 184365) and type = "applydebuff" or ability.id = 184674
 --TODO, add bloodboil. mythic only?
 --Blademaster Jubei'thos
 local warnMirrorImage				= mod:NewSpellAnnounce(183885, 2)
