@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14082 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14083 $"):sub(12, -3)),
 	DisplayVersion = "6.2.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 14050 -- the revision of the latest stable version that is available
 }
@@ -10339,10 +10339,6 @@ end
 
 function bossModPrototype:SetMinSyncRevision(revision)
 	self.minSyncRevision = revision
-end
-
-function bossModPrototype:SetMinSyncTime(time)
-	self.syncThreshold = time
 end
 
 function bossModPrototype:SetHotfixNoticeRev(revision)
