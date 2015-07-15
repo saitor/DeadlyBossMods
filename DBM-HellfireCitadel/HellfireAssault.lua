@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1426, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14083 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14086 $"):sub(12, -3))
 mod:SetCreatureID(90019)--Main ID is door, door death= win. 94515 Siegemaster Mar'tak
 mod:SetEncounterID(1778)
 mod:SetZone()
@@ -88,6 +88,7 @@ local timerSiegeVehicleCD			= mod:NewTimer(60, "timerSiegeVehicleCD", 160240, ni
 --local berserkTimer				= mod:NewBerserkTimer(360)
 
 local countdownHowlingAxe			= mod:NewCountdownFades("Alt7", 184369)
+local countdownSlam					= mod:NewCountdownFades("Alt12", 184243, "Tank")
 
 local voiceHowlingAxe				= mod:NewVoice(184369)--runout
 local voiceShockwave				= mod:NewVoice(184394)--shockwave
@@ -195,6 +196,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self:IsTanking(uId) then
 			local amount = args.amount or 1
 			warnSlam:Show(args.destName, amount)
+		end
+		if args:IsPlayer() then
+			countdownSlam:Start()
 		end
 	elseif spellId == 180927 then--Vehicle Spawns
 		self.vb.vehicleCount = self.vb.vehicleCount + 1
