@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1447, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14078 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14090 $"):sub(12, -3))
 mod:SetCreatureID(93068)
 mod:SetEncounterID(1800)
 mod:SetZone()
@@ -397,9 +397,9 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	elseif spellId == 187003 then--Activate Fel Portal
 		warnFelPortal:Show()
 		if not self:IsLFR() then
-			timerImpCD:Start(11.5)
-			countdownImps:Start(11.5)
-			self:Schedule(11.5, ImpRepeater, self)
+			timerImpCD:Start(11)
+			countdownImps:Start(11)
+			self:Schedule(11, ImpRepeater, self)
 		end
 	elseif spellId == 187225 then--Phase 2 (Purple Mode)
 		self.vb.phase = 2

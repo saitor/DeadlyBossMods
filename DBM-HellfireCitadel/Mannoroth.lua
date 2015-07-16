@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1395, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14079 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14090 $"):sub(12, -3))
 mod:SetCreatureID(91349)--91305 Fel Iron Summoner
 mod:SetEncounterID(1795)
 mod:SetZone()
@@ -360,7 +360,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		local amount = args.amount or 1
 		if amount % 3 == 0 or amount > 6 then
 			warnDoomSpike:Show(args.destName, amount)
-			if not UnitDebuff("player", args.spellName) and not UnitIsDeadOrGhost("player") then
+			if not UnitDebuff("player", args.spellName) and not UnitIsDeadOrGhost("player") and self:AntiSpam(3, 6) then
 				specWarnDoomSpikeOther:Show(args.destName)
 			end
 		end
