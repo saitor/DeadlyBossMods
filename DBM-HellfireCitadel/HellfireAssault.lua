@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1426, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14099 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14102 $"):sub(12, -3))
 mod:SetCreatureID(90019)--Main ID is door, door death= win. 94515 Siegemaster Mar'tak
 mod:SetEncounterID(1778)
 mod:SetZone()
@@ -33,7 +33,7 @@ local warnFelfireMunitions			= mod:NewTargetAnnounce(180079, 1)
 local warnFelCaster					= mod:NewCountAnnounce("ej11411", 3, 181155)
 local warnBerserker					= mod:NewCountAnnounce("ej11425", 3, 184243)
 ----Gorebound Berserker (tank add probably)
-local warnSlam						= mod:NewStackAnnounce(184243, 3, nil, false)--Useful, but optional, only useful if dps is too low
+local warnSlam						= mod:NewStackAnnounce("OptionVersion2", 184243, 3, nil, false)--Useful, but optional, only useful if dps is too low
 ----Grand Corruptor U'rogg
 local warnSiphon					= mod:NewTargetAnnounce(180076, 3, nil, "Healer")--Maybe needs to be special warning, who knows
 
