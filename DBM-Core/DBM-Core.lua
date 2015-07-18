@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14104 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14105 $"):sub(12, -3)),
 	DisplayVersion = "6.2.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 14050 -- the revision of the latest stable version that is available
 }
@@ -6799,6 +6799,7 @@ function bossModPrototype:IsEvent()
 end
 
 function bossModPrototype:IsTrivial(level)
+	if difficultyIndex == 24 then return false end--Timewalker dungeon, ignore level and return false for trivial
 	if playerLevel >= level then
 		return true
 	end
