@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1372, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14111 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14115 $"):sub(12, -3))
 mod:SetCreatureID(90199)
 mod:SetEncounterID(1783)
 mod:SetZone()
@@ -362,7 +362,7 @@ function mod:SPELL_AURA_REMOVED(args)
 			timerDigest:Cancel()
 			countdownDigest:Cancel()
 			playerDown = false
-			if self.Options.RangeFrame then
+			if self.Options.RangeFrame and self:IsInCombat() then
 				DBM.RangeCheck:Show(5, digestFilter)
 			end
 		end
