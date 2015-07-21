@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1425, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14124 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14126 $"):sub(12, -3))
 mod:SetCreatureID(90284)
 mod:SetEncounterID(1785)
 mod:SetZone()
@@ -122,13 +122,21 @@ local function updateInfoFrame()
 		DBM.InfoFrame:Hide()
 	end
 	if mod.vb.reactiveCount > 0 then
-		lines[reactiveName] = mod.vb.reactiveCount
+		if mod:IsTank() then
+			lines["|cff00ffff"..reactiveName.."|r"] = mod.vb.reactiveCount
+		else
+			lines[reactiveName] = mod.vb.reactiveCount
+		end
 	end
 	if mod.vb.burningCount > 0 then
 		lines[burningName] = mod.vb.burningCount
 	end
 	if mod.vb.quickfuseCount > 0 then
-		lines[quickfuseName] = mod.vb.quickfuseCount
+		if mod:IsDps() then
+			lines["|cff00ffff"..quickfuseName.."|r"] = mod.vb.quickfuseCount
+		else
+			lines[quickfuseName] = mod.vb.quickfuseCount
+		end
 	end
 	if mod.vb.reinforcedCount > 0 then
 		lines[reinforcedName] = mod.vb.reinforcedCount
