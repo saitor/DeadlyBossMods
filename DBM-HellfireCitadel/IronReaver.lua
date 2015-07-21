@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1425, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14116 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14120 $"):sub(12, -3))
 mod:SetCreatureID(90284)
 mod:SetEncounterID(1785)
 mod:SetZone()
@@ -155,6 +155,11 @@ end
 
 function mod:OnCombatStart(delay)
 	self.vb.artilleryActive = 0--Only one that should reset on pull
+	self.vb.volatileCount = 0
+	self.vb.quickfuseCount = 0
+	self.vb.reactiveCount = 0
+	self.vb.burningCount = 0
+	self.vb.reinforcedCount = 0
 	updateRangeFrame(self)
 	--berserkTimer:Start(-delay)
 	--Boss uses "Ground Phase" trigger after pull. Do not start timers here
