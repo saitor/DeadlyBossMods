@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1425, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14121 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14122 $"):sub(12, -3))
 mod:SetCreatureID(90284)
 mod:SetEncounterID(1785)
 mod:SetZone()
@@ -114,6 +114,7 @@ local function sortInfoFrame(a, b)
 	if a > b then return true else return false end
 end
 
+local reactiveName, burningName, quickfuseName, reinforcedName, volatileName = GetSpellInfo(186676), GetSpellInfo(186667), GetSpellInfo(186660), GetSpellInfo(188294), GetSpellInfo(182523)
 local function updateInfoFrame()
 	table.wipe(lines)
 	local total = mod.vb.burningCount + mod.vb.reactiveCount + mod.vb.quickfuseCount + mod.vb.volatileCount + mod.vb.reinforcedCount
