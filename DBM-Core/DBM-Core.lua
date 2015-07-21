@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14118 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14119 $"):sub(12, -3)),
 	DisplayVersion = "6.2.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 14116 -- the revision of the latest stable version that is available
 }
@@ -4938,7 +4938,7 @@ do
 	
 	function DBM:ENCOUNTER_END(encounterID, name, difficulty, size, success)
 		self:Debug("ENCOUNTER_END event fired: "..encounterID.." "..name.." "..difficulty.." "..size.." "..success)
-		if IsInRaid() then
+		if IsInRaid() and success == 0 then
 			self:Schedule(3, wipeRecoveryDelay, self)
 		end
 		for i = #inCombat, 1, -1 do
