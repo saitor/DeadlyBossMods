@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14126 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14127 $"):sub(12, -3)),
 	DisplayVersion = "6.2.6 alpha", -- the string that is shown as version
 	ReleaseRevision = 14116 -- the revision of the latest stable version that is available
 }
@@ -3949,7 +3949,7 @@ do
 							DBM:AddMsg(DBM_CORE_UPDATEREMINDER_MAJORPATCH)
 							DBM:Disable(true)
 						--Disable if revision grossly out of date even if not major patch.
-						elseif revDifference > 200 then
+						elseif revDifference > 150 then
 							if updateNotificationDisplayed < 3 then
 								updateNotificationDisplayed = 3
 								DBM:Disable(true)
