@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1447, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14127 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14129 $"):sub(12, -3))
 mod:SetCreatureID(93068)
 mod:SetEncounterID(1800)
 mod:SetZone()
@@ -400,9 +400,9 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		voicePhaseChange:Play("phasechange")
 		warnFelPortal:Show()
 		if not self:IsLFR() then
-			timerImpCD:Start(10.5)
-			countdownImps:Start(10.5)
-			self:Schedule(10.5, ImpRepeater, self)
+			timerImpCD:Start(10)
+			countdownImps:Start(10)
+			self:Schedule(10, ImpRepeater, self)
 		end
 	elseif spellId == 187225 then--Phase 2 (Purple Mode)
 		self.vb.phase = 2
