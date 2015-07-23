@@ -43,7 +43,7 @@
 --
 
 
-local revision =("$Revision: 14075 $"):sub(12, -3)
+local revision =("$Revision: 14130 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -1566,13 +1566,14 @@ local function CreateOptionsMenu()
 		--            Raid Warning Colors            --
 		-----------------------------------------------
 		local RaidWarningPanel = DBM_GUI_Frame:CreateNewPanel(L.Tab_RaidWarning, "option")
-		local raidwarnoptions = RaidWarningPanel:CreateArea(L.RaidWarning_Header, nil, 355, true)
+		local raidwarnoptions = RaidWarningPanel:CreateArea(L.RaidWarning_Header, nil, 375, true)
 
 		local ShowWarningsInChat 	= raidwarnoptions:CreateCheckButton(L.ShowWarningsInChat, true, nil, "ShowWarningsInChat")
 		local ShowFakedRaidWarnings = raidwarnoptions:CreateCheckButton(L.ShowFakedRaidWarnings,  true, nil, "ShowFakedRaidWarnings")
 		local WarningIconLeft		= raidwarnoptions:CreateCheckButton(L.WarningIconLeft,  true, nil, "WarningIconLeft")
 		local WarningIconRight 		= raidwarnoptions:CreateCheckButton(L.WarningIconRight,  true, nil, "WarningIconRight")
 		local WarningIconChat 		= raidwarnoptions:CreateCheckButton(L.WarningIconChat,  true, nil, "WarningIconChat")
+		local WarningAlphabetical	= raidwarnoptions:CreateCheckButton(L.WarningAlphabetical,  true, nil, "WarningAlphabetical")
 
 		-- RaidWarn Font
 		local Fonts = MixinSharedMedia3("font", {
@@ -1587,7 +1588,7 @@ local function CreateOptionsMenu()
 			DBM:UpdateWarningOptions()
 			DBM:AddWarning(DBM_CORE_MOVE_WARNING_MESSAGE)
 		end)
-		FontDropDown:SetPoint("TOPLEFT", WarningIconChat, "BOTTOMLEFT", 0, -10)
+		FontDropDown:SetPoint("TOPLEFT", WarningAlphabetical, "BOTTOMLEFT", 0, -10)
 
 		-- RaidWarn Font Style
 		local FontStyles = {
