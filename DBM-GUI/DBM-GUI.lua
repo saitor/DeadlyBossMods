@@ -43,7 +43,7 @@
 --
 
 
-local revision =("$Revision: 14131 $"):sub(12, -3)
+local revision =("$Revision: 14132 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -2480,7 +2480,7 @@ local function CreateOptionsMenu()
 			DBM:UpdateSpecialWarningOptions()
 			DBM:ShowTestSpecialWarning(nil, 1)
 		end)
-		FontDropDown:SetPoint("TOPLEFT", specArea.frame, "TOPLEFT", 100, -165)
+		FontDropDown:SetPoint("TOPLEFT", specArea.frame, "TOPLEFT", 100, -148)
 
 		local FontStyles = {
 			{	text	= L.None,					value 	= "None"						},
