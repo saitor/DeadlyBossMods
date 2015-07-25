@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14141 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14143 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -64,7 +64,7 @@ local yellShackledTorment			= mod:NewPosYell(184964)
 local specWarnWroughtChaos			= mod:NewSpecialWarningMoveAway(186123, nil, nil, nil, 3, 5)
 local yellWroughtChaos				= mod:NewYell(186123)
 local specWarnFocusedChaos			= mod:NewSpecialWarningMoveAway(185014, nil, nil, nil, 3, 5)
-local yellFocusedChaos				= mod:NewYell(185014)
+local yellFocusedChaos				= mod:NewFadesYell(185014)
 local specWarnDreadFixate			= mod:NewSpecialWarningYou(186574, false)--In case it matters on mythic, it was spammy on heroic and unimportant
 --Phase 3: The Twisting Nether
 local specWarnDemonicFeedbackSoon	= mod:NewSpecialWarningSoon(187180, nil, nil, nil, 1)
@@ -449,6 +449,11 @@ function mod:SPELL_AURA_APPLIED(args)
 			yellFocusedChaos:Yell()
 			countdownWroughtChaos:Start()
 			voiceFocusedChaos:Play("185014")
+			yellFocusedChaos:Yell(5)
+			yellFocusedChaos:Schedule(4, 1)
+			yellFocusedChaos:Schedule(3, 2)
+			yellFocusedChaos:Schedule(2, 3)
+			yellFocusedChaos:Schedule(1, 4)
 		end
 		if self.Options.HudMapOnWrought then
 			DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "highlight", args.destName, 5, 5, 1, 0, 0, 0.5, nil, true, 2):Pulse(0.5, 0.5)--Red
