@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1425, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14150 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14151 $"):sub(12, -3))
 mod:SetCreatureID(90284)
 mod:SetEncounterID(1785)
 mod:SetZone()
@@ -316,7 +316,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			yellArtillery:Schedule(9.5, 3)
 			yellArtillery:Schedule(8.5, 4)
 			yellArtillery:Schedule(7.5, 5)
-			voiceArtillery:Play("runout")
+			voiceArtillery:Schedule(5, "runout")
 			countdownArtilleryFade:Start()
 		end
 		if self.Options.SetIconOnArtillery then
