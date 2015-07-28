@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14155 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14157 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -439,7 +439,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			voiceWroughtChaos:Play("186123") --new voice
 		end
 		if not playerBanished or not self.Options.FilterOtherPhase then
-			if not IsMythic() then
+			if not self:IsMythic() then
 				self.vb.wroughtWarned = self.vb.wroughtWarned + 1
 				warnWroughtChaos:CombinedShow(0.3, self.vb.wroughtWarned, args.destName)
 			else
@@ -469,7 +469,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			yellFocusedChaos:Schedule(1, 4)
 		end
 		if not playerBanished or not self.Options.FilterOtherPhase then
-			if not IsMythic() then
+			if not self:IsMythic() then
 				warnWroughtChaos:CombinedShow(0.3, self.vb.wroughtWarned, args.destName)
 			end
 			if self.Options.HudMapOnWrought then
