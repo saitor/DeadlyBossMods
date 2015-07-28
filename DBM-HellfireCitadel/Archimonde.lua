@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14157 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14159 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -257,12 +257,6 @@ local function breakShackles(self)
 			elseif i == 3 then
 				specWarnBreakShackle:Show(L.Third)
 				voiceShackledTorment:Play("184964c")
-			elseif i == 4 then
-				specWarnBreakShackle:Show(L.Fourth)
-				voiceShackledTorment:Play("184964d")
-			elseif i == 5 then
-				specWarnBreakShackle:Show(L.Fifth)
-				voiceShackledTorment:Play("184964e")
 			end
 		end
 		if self.Options.SetIconOnShackledTorment2 then
@@ -430,7 +424,11 @@ function mod:SPELL_AURA_APPLIED(args)
 		shacklesTargets[#shacklesTargets+1] = args.destName
 		self.vb.unleashedCountRemaining = self.vb.unleashedCountRemaining + 1
 		self:Unschedule(breakShackles)
-		self:Schedule(0.3, breakShackles, self)
+		if #shacklesTargets == 3 then
+			breakShackles(self)
+		else
+			self:Schedule(0.5, breakShackles, self)
+		end
 	elseif spellId == 186123 then--Wrought Chaos
 		if args:IsPlayer() then
 			specWarnWroughtChaos:Show()
