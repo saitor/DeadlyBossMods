@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14169 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14170 $"):sub(12, -3)),
 	DisplayVersion = "6.2.7 alpha", -- the string that is shown as version
 	ReleaseRevision = 14159 -- the revision of the latest stable version that is available
 }
@@ -1791,7 +1791,7 @@ SlashCmdList["DEADLYBOSSMODS"] = function(msg)
 			if hudType:upper() == "ARROW" then
 				local _, targetClass = UnitClass(uId)
 				local color2 = RAID_CLASS_COLORS[targetClass]
-				local m1 = DBMHudMap:RegisterRangeMarkerOnPartyMember(12345, "highlight", playerName, 0, hudDuration, 0, 1, 0, 1, nil, false):Appear()
+				local m1 = DBMHudMap:RegisterRangeMarkerOnPartyMember(12345, "highlight", playerName, 0.1, hudDuration, 0, 1, 0, 1, nil, false):Appear()
 				local m2 = DBMHudMap:RegisterRangeMarkerOnPartyMember(12345, "highlight", UnitName(uId), 1.5, hudDuration, color2.r, color2.g, color2.b, 1, nil, false):Appear()
 				m2:EdgeTo(m1, nil, hudDuration, 0, 1, 0, 1)
 				success = true
