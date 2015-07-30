@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1433, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14177 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14181 $"):sub(12, -3))
 mod:SetCreatureID(90316)
 mod:SetEncounterID(1788)
 mod:DisableESCombatDetection()--Remove if blizz fixes trash firing ENCOUNTER_START
@@ -16,7 +16,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 181912 181827 187998 181873 185345",
-	"SPELL_CAST_SUCCESS 182178 181956 185510",
+	"SPELL_CAST_SUCCESS 182178 181956 185510 181912",
 	"SPELL_AURA_APPLIED 179202 181957 182325 187990 181824 179219 185510 181753 182178 182200",
 	"SPELL_AURA_REMOVED 179202 181957 182325 187990 181824 179219 185510 181753 182178 182200",
 --	"SPELL_PERIODIC_DAMAGE",
