@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1394, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14176 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14179 $"):sub(12, -3))
 mod:SetCreatureID(90269)
 mod:SetEncounterID(1784)
 mod:SetZone()
@@ -141,7 +141,7 @@ function mod:OnCombatStart(delay)
 	timerTouchofHarmCD:Start(16.8-delay, 1)
 	timerEdictofCondemnationCD:Start(57-delay, 1)
 	if self.Options.RangeFrame then
-		DBM.RangeCheck:Show(5)
+		DBM.RangeCheck:Show(4)
 	end
 end
 
