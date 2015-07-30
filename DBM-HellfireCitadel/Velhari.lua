@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1394, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14175 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14176 $"):sub(12, -3))
 mod:SetCreatureID(90269)
 mod:SetEncounterID(1784)
 mod:SetZone()
@@ -340,7 +340,7 @@ end
 
 function mod:UNIT_SPELLCAST_START(uId, _, _, _, spellId)
 	if spellId == 180025 then
-		specWarnHarbingersMending:Show(args.sourceName)
+		specWarnHarbingersMending:Show(AncientHarbinger)
 		timerHarbingersMendingCD:Start()
 		if not self:IsHealer() then
 			voiceHarbingersMending:Play("kickcast")
