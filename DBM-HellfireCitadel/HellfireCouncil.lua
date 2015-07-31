@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1432, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14186 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14194 $"):sub(12, -3))
 mod:SetCreatureID(92142, 92144, 92146)--Blademaster Jubei'thos (92142). Dia Darkwhisper (92144). Gurthogg Bloodboil (92146) 
 mod:SetEncounterID(1778)
 mod:SetZone()
@@ -234,8 +234,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif spellId == 184449 then--Confirmed correct CAST spellid (new targets from boss)
 		warnMarkoftheNecromancer:CombinedShow(0.3, args.destName)
-	elseif (spellId == 184450 or spellId == 185065 or spellId == 185066) and self.vb.reapActive and args:IsPlayer() then--Dispel IDs.
-		--Your idiot healer dipselled mark in middle of reap cast, warn you to run out and hope you have less than 0.5 seconds to do it.
+	elseif (spellId == 184450 or spellId == 185065 or spellId == 185066) and self.vb.reapActive and args:IsPlayer() and self:AntiSpam(5, 5) then--Dispel IDs.
 		specWarnReap:Show()
 		yellReap:Yell()
 		voiceReap:Play("runout")
