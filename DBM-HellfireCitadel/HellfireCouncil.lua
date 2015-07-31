@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1432, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14185 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14186 $"):sub(12, -3))
 mod:SetCreatureID(92142, 92144, 92146)--Blademaster Jubei'thos (92142). Dia Darkwhisper (92144). Gurthogg Bloodboil (92146) 
 mod:SetEncounterID(1778)
 mod:SetZone()
@@ -21,7 +21,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_DAMAGE 186993",
 	"SPELL_MISSED 186993",
 	"SPELL_PERIODIC_DAMAGE 184652",
-	"SPELL_ABSORB 184652",
+	"SPELL_PERIODIC_MISSED 184652",
 	"UNIT_DIED",
 	"CHAT_MSG_MONSTER_YELL",
 	"RAID_BOSS_EMOTE",
@@ -373,4 +373,4 @@ function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 		voiceReap:Play("runaway")
 	end
 end
-mod.SPELL_ABSORB = mod.SPELL_PERIODIC_DAMAGE
+mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
