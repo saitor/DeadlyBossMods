@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14194 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14195 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -555,7 +555,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			self:Schedule(0.5, breakShackles, self)
 		end
 		if self.Options.HudMapOnShackledTorment2 and self:IsMythic() then
-			DBMHudMap:RegisterStaticMarkerOnPartyMember(spellId, "timer", args.destName, 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts():Rotate(360, 9.5)
+			DBMHudMap:RegisterStaticMarkerOnPartyMember(spellId, "timer", args.destName, 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts("all"):Rotate(360, 9.5)
 		end
 	elseif spellId == 186123 then--Wrought Chaos
 		if self:AntiSpam(3, 3) then
