@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14190 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14193 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -599,13 +599,13 @@ function mod:SPELL_AURA_APPLIED(args)
 						DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "party", args.destName, 0.75, 5, destColor.r, destColor.g, destColor.b, 1, nil, false):Pulse(0.5, 0.5)--Players own dot bigger
 					end
 					--create line
-					DBMHudMap:AddEdge(0, 1, 0, 0.5, 5, args.sourceName, args.destName, nil, nil, nil, nil)
+					DBMHudMap:AddEdge(0, 1, 0, 0.5, 5, args.sourceName, args.destName, nil, nil, nil, nil, 150)
 				else--red lines for non player lines
 					--Create Points
 					DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "party", args.sourceName, 0.5, 5, sourceColor.r, sourceColor.g, sourceColor.b, 0.5, nil, false):Pulse(0.5, 0.5)--Players own dot bigger
 					DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "party", args.destName, 0.5, 5, destColor.r, destColor.g, destColor.b, 0.5, nil, false):Pulse(0.5, 0.5)
 					--Create Line
-					DBMHudMap:AddEdge(1, 0, 0, 0.5, 5, args.sourceName, args.destName, nil, nil, nil, nil)
+					DBMHudMap:AddEdge(1, 0, 0, 0.5, 5, args.sourceName, args.destName, nil, nil, nil, nil, 150)
 				end
 			end
 		end
