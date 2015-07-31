@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14180 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14187 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -33,6 +33,7 @@ mod:RegisterEventsInCombat(
 local warnDoomfireFixate			= mod:NewTargetAnnounce(182879, 3)
 local warnAllureofFlamesSoon		= mod:NewSoonAnnounce(183254, 2)
 local warnFelBurstSoon				= mod:NewSoonAnnounce(183817, 3)
+local warnFelBurstCast				= mod:NewCastAnnounce(183817, 3)
 local warnFelBurst					= mod:NewTargetAnnounce(183817, 3)
 local warnDemonicHavoc				= mod:NewTargetAnnounce(183865, 3)--Mythic
 --Phase 2: Hand of the Legion
@@ -402,6 +403,7 @@ function mod:SPELL_CAST_START(args)
 		voiceDoomfire:Play("189897")
 	elseif spellId == 183817 then
 		table.wipe(felburstTargets)
+		warnFelBurstCast:Show()
 		warnFelBurstSoon:Schedule(47)
 		timerFelBurstCD:Start()
 	elseif spellId == 183828 then
@@ -546,7 +548,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			self:Schedule(0.5, breakShackles, self)
 		end
 		if self.Options.HudMapOnShackledTorment and self:IsMythic() then
-			DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "timer", args.destName, 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts():Rotate(360, 9.5)
+			DBMHudMap:RegisterStaticMarkerOnPartyMember(spellId, "timer", args.destName, 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts():Rotate(360, 9.5)
 		end
 	elseif spellId == 186123 then--Wrought Chaos
 		if self:AntiSpam(3, 3) then
