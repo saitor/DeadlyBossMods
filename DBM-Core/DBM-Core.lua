@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14207 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14208 $"):sub(12, -3)),
 	DisplayVersion = "6.2.7 alpha", -- the string that is shown as version
 	ReleaseRevision = 14159 -- the revision of the latest stable version that is available
 }
@@ -1240,7 +1240,7 @@ do
 	function DBM:UnregisterCallback(event, f)
 		if not event or not callbacks[event] then return end
 		if f then
-			callbacks[event][f] = nil
+			tremove(callbacks[event], f)
 		else
 			callbacks[event] = nil
 		end
