@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14206 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14207 $"):sub(12, -3)),
 	DisplayVersion = "6.2.7 alpha", -- the string that is shown as version
 	ReleaseRevision = 14159 -- the revision of the latest stable version that is available
 }
@@ -1216,6 +1216,18 @@ do
 		end
 	end
 
+	function DBM:IsCallbackRegistered(event, f)
+		if not event then
+			error("Usage: DBM:IsCallbackRegistered(event, callbackFunc(optional))", 2)
+		end
+		if f then
+			return callbacks[event][f] and true or false
+		else
+			return callbacks[event] and true or false
+		end
+		return false
+	end
+
 	function DBM:RegisterCallback(event, f)
 		if not event or type(f) ~= "function" then
 			error("Usage: DBM:RegisterCallback(event, callbackFunc)", 2)
@@ -1225,9 +1237,13 @@ do
 		return #callbacks[event]
 	end
 
-	function DBM:UnregisterCallback(event)
+	function DBM:UnregisterCallback(event, f)
 		if not event or not callbacks[event] then return end
-		callbacks[event] = nil
+		if f then
+			callbacks[event][f] = nil
+		else
+			callbacks[event] = nil
+		end
 	end
 end
 
