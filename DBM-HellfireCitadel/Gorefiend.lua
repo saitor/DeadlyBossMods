@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1372, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14201 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14202 $"):sub(12, -3))
 mod:SetCreatureID(90199)
 mod:SetEncounterID(1783)
 mod:SetZone()
@@ -114,6 +114,18 @@ Mythic
 84s: 2 DPS
 --]]
 
+local function sharedFateDelay(self)
+	if self.vb.rootedFate2 then--Check this first, assume you are linked to most recent
+		specWarnSharedFate:Show(self.vb.rootedFate2)
+		voiceSharedFate:Play("linegather")
+		DBMHudMap:AddEdge(0, 1, 0, 0.5, 600, UnitName("player"), self.vb.rootedFate2)
+	elseif self.vb.rootedFate then
+		specWarnSharedFate:Show(self.vb.rootedFate)
+		voiceSharedFate:Play("linegather")
+		DBMHudMap:AddEdge(0, 1, 0, 0.5, 600, UnitName("player"), self.vb.rootedFate)
+	end
+end
+
 function mod:OnCombatStart(delay)
 	self.vb.rootedFate = nil
 	self.vb.rootedFate2 = nil
@@ -162,18 +174,6 @@ function mod:OnCombatEnd()
 		DBM.InfoFrame:Hide()
 	end
 end 
-
-local function sharedFateDelay(self)
-	if self.vb.rootedFate2 then--Check this first, assume you are linked to most recent
-		specWarnSharedFate:Show(self.vb.rootedFate2)
-		voiceSharedFate:Play("linegather")
-		DBMHudMap:AddEdge(0, 1, 0, 0.5, 600, UnitName("player"), self.vb.rootedFate2)
-	elseif self.vb.rootedFate then
-		specWarnSharedFate:Show(self.vb.rootedFate)
-		voiceSharedFate:Play("linegather")
-		DBMHudMap:AddEdge(0, 1, 0, 0.5, 600, UnitName("player"), self.vb.rootedFate)
-	end
-end
 
 function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
