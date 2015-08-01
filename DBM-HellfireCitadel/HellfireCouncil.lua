@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1432, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14194 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14198 $"):sub(12, -3))
 mod:SetCreatureID(92142, 92144, 92146)--Blademaster Jubei'thos (92142). Dia Darkwhisper (92144). Gurthogg Bloodboil (92146) 
 mod:SetEncounterID(1778)
 mod:SetZone()
@@ -27,6 +27,8 @@ mod:RegisterEventsInCombat(
 	"RAID_BOSS_EMOTE",
 	"UNIT_SPELLCAST_SUCCEEDED boss1 boss2 boss3"
 )
+
+mod:SetBossHealthInfo(92142, 92144, 92146)
 
 local Dia		= EJ_GetSectionInfo(11489)
 local Jubei		= EJ_GetSectionInfo(11488)
@@ -343,6 +345,9 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	elseif spellId == 190618 and not self.vb.jubeiDead then--Jubei Dying
 		DBM:Debug("Jubei died (UNIT_SPELLCAST_SUCCEEDED)", 2)
 		self.vb.jubeiDead = true
+		if DBM.BossHealth:IsShown() then
+			DBM.BossHealth:RemoveBoss(92142)
+		end
 		--timerFelstormCD:Cancel()
 		local elapsed, total = timerMirrorImageCD:GetTime()
 		timerMirrorImageCD:Cancel()
