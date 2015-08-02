@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1392, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14214 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14215 $"):sub(12, -3))
 mod:SetCreatureID(90435)
 mod:SetEncounterID(1787)
 mod:SetZone()
@@ -231,7 +231,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 			timerFoulCrushCD:Start(isMoreFaster and 23 or isFaster and 32 or 38, 3)
 		end
 	elseif spellId == 181299 or spellId == 181300 then
-		updateRangeCheck(self, true)
+		updateRangeCheck(self)
 	end
 end
 
