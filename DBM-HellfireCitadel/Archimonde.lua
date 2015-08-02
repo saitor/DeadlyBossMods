@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14213 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14217 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -610,11 +610,11 @@ function mod:SPELL_AURA_APPLIED(args)
 					warnWroughtChaos:CombinedShow(0.1, self.vb.wroughtWarned, args.sourceName)
 					warnWroughtChaos:CombinedShow(0.1, self.vb.wroughtWarned, args.destName)
 					if UnitIsUnit("player", sourceUId) then
-						DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "party", args.sourceName, 0.75, 5, sourceColor.r, sourceColor.g, sourceColor.b, 1, nil, false):Pulse(0.5, 0.5)--Players own dot bigger
+						DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "party", args.sourceName, 0.9, 5, sourceColor.r, sourceColor.g, sourceColor.b, 1, nil, false):Pulse(0.5, 0.5)--Players own dot bigger
 						DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "party", args.destName, 0.5, 5, destColor.r, destColor.g, destColor.b, 0.5, nil, false):Pulse(0.5, 0.5)
 					else
 						DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "party", args.sourceName, 0.5, 5, sourceColor.r, sourceColor.g, sourceColor.b, 0.5, nil, false):Pulse(0.5, 0.5)
-						DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "party", args.destName, 0.75, 5, destColor.r, destColor.g, destColor.b, 1, nil, false):Pulse(0.5, 0.5)--Players own dot bigger
+						DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "party", args.destName, 0.9, 5, destColor.r, destColor.g, destColor.b, 1, nil, false):Pulse(0.5, 0.5)--Players own dot bigger
 					end
 					--create line
 					if self.Options.ExtendWroughtHud then
