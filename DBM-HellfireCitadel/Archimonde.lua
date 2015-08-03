@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14219 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14221 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -351,13 +351,13 @@ local function breakShackles(self, spellName)
 	end
 	if self.Options.HudMapOnShackledTorment2 and self:IsMythic() then
 		if playerHasShackle then
-			DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "timer", shacklesTargets[1], 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(spellName, spellName):Rotate(360, 9.5)
-			DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "timer", shacklesTargets[2], 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(spellName, spellName):Rotate(360, 9.5)
-			DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "timer", shacklesTargets[3], 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(spellName, spellName):Rotate(360, 9.5)
+			DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "highlight", shacklesTargets[1], 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(spellName, shacklesTargets[1])
+			DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "highlight", shacklesTargets[2], 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(spellName, shacklesTargets[2])
+			DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "highlight", shacklesTargets[3], 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(spellName, shacklesTargets[3])
 		else
-			DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "timer", shacklesTargets[1], 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(nil, spellName):Rotate(360, 9.5)
-			DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "timer", shacklesTargets[2], 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(nil, spellName):Rotate(360, 9.5)
-			DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "timer", shacklesTargets[3], 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(nil, spellName):Rotate(360, 9.5)
+			DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "highlight", shacklesTargets[1], 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(nil, shacklesTargets[1])
+			DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "highlight", shacklesTargets[2], 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(nil, shacklesTargets[2])
+			DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "highlight", shacklesTargets[3], 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(nil, shacklesTargets[3])
 		end
 	end
 end
