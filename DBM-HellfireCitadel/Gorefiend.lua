@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1372, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14223 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14224 $"):sub(12, -3))
 mod:SetCreatureID(90199)
 mod:SetEncounterID(1783)
 mod:SetZone()
@@ -119,13 +119,13 @@ local function sharedFateDelay(self)
 		specWarnSharedFate:Show(self.vb.rootedFate2)
 		voiceSharedFate:Play("linegather")
 		if self.Options.HudMapOnSharedFate then
-			DBMHudMap:AddEdge(0, 1, 0, 0.5, 600, UnitName("player"), self.vb.rootedFate2)
+			DBMHudMap:AddEdge(1, 1, 0, 0.5, 600, UnitName("player"), self.vb.rootedFate2)
 		end
 	elseif self.vb.rootedFate then
 		specWarnSharedFate:Show(self.vb.rootedFate)
 		voiceSharedFate:Play("linegather")
 		if self.Options.HudMapOnSharedFate then
-			DBMHudMap:AddEdge(0, 1, 0, 0.5, 600, UnitName("player"), self.vb.rootedFate)
+			DBMHudMap:AddEdge(1, 1, 0, 0.5, 600, UnitName("player"), self.vb.rootedFate)
 		end
 	end
 end
