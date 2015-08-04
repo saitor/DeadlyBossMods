@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1396, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14085 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14237 $"):sub(12, -3))
 mod:SetCreatureID(90378)
 mod:SetEncounterID(1786)
 mod:SetZone()
@@ -145,10 +145,10 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	local spellId = args.spellId
-	if spellId == 180410 then--Blood Globule
+	if spellId == 180410 and self:AntiSpam(2, 2) then--Blood Globule
 		specWarnBloodGlob:Show()
 		voiceBloodGlob:Play("180459")
-	elseif spellId == 180413 then--Fel Blood Globule
+	elseif spellId == 180413 and self:AntiSpam(2, 3) then--Fel Blood Globule
 		specWarnFelBloodGlob:Show()
 		voiceFelBloodGlob:Play("180199")
 	end
