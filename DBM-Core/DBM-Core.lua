@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14235 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14236 $"):sub(12, -3)),
 	DisplayVersion = "6.2.7 alpha", -- the string that is shown as version
 	ReleaseRevision = 14159 -- the revision of the latest stable version that is available
 }
@@ -1237,13 +1237,17 @@ do
 	end
 
 	function DBM:UnregisterCallback(event, f)
-		if not event or type(f) ~= "function" then
-			error("Usage: UnregisterCallback(event, callbackFunc)", 2)
-		end
-		if not callbacks[event] then return end
-		--> checking from the end to start and not stoping after found one result in case of a func being twice registered.
-		for i = #callbacks[event], 1, -1 do
-			if callbacks[event][i] == f then tremove (callbacks[event], i) end
+		if not event or not callbacks[event] then return end
+		if f then
+			if type(f) ~= "function" then
+				error("Usage: UnregisterCallback(event, callbackFunc)", 2)
+			end
+			--> checking from the end to start and not stoping after found one result in case of a func being twice registered.
+			for i = #callbacks[event], 1, -1 do
+				if callbacks[event][i] == f then tremove (callbacks[event], i) end
+			end
+		else
+			callbacks[event] = nil
 		end
 	end
 end
