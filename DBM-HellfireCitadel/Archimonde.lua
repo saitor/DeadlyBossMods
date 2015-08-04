@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14240 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14241 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -508,7 +508,7 @@ function mod:SPELL_CAST_START(args)
 		if cooldown then
 			timerMarkOfLegionCD:Start(cooldown, self.vb.markOfLegionCast+1)
 		end
-	elseif spellId == 190394 then
+	elseif spellId == 190394 and self:AntiSpam(15, 4) then
 		self.vb.darkConduitCast = self.vb.darkConduitCast + 1
 		specWarnDarkConduit:Show(self.vb.darkConduitCast)
 		local cooldown = darkConduitTimers[self.vb.darkConduitCast+1]
