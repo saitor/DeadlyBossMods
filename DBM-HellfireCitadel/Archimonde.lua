@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14267 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14268 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -829,7 +829,7 @@ end
 function mod:SPELL_SUMMON(args)
 	if args.spellId == 187108 then--Infernal Doombringer Spawn
 		self.vb.InfernalsActive = self.vb.InfernalsActive + 1
-		if self:AntiSpam(15, 5) then
+		if self:AntiSpam(15, 5) and self:IsMythic() then
 			self.vb.InfernalsCast = self.vb.InfernalsCast + 1
 			specWarnInfernals:Show(self.vb.InfernalsCast)
 			local cooldown = infernalTimers[self.vb.InfernalsCast+1]
