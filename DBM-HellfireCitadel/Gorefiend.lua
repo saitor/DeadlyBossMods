@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1372, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14237 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14259 $"):sub(12, -3))
 mod:SetCreatureID(90199)
 mod:SetEncounterID(1783)
 mod:SetZone()
@@ -177,6 +177,9 @@ function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
 	if spellId == 181973 then
 		specWarnFeastofSouls:Show()
+		if self.Options.RangeFrame then
+			DBM.RangeCheck:Hide()
+		end
 	elseif spellId == 181582 and self:CheckInterruptFilter(args.sourceGUID) then
 		specWarnBellowingShout:Show(args.sourceName)
 		voiceBellowingShout:Play("kickcast")
@@ -395,6 +398,9 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerTouchofDoomCD:Start(9)
 		timerSharedFateCD:Start(19, 1)
 		timerFeastofSouls:Start()
+		if self.Options.RangeFrame then
+			DBM.RangeCheck:Show(5, digestFilter)
+		end
 	elseif spellId == 185982 and not playerDown then
 		--When it fades, it means it's casting Expel Soul and returning to surface as a Gorebound Spirit
 		--This is cleaner than IEEU and fires at same time

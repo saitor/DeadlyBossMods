@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1395, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14255 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14259 $"):sub(12, -3))
 mod:SetCreatureID(91349)--91305 Fel Iron Summoner
 mod:SetEncounterID(1795)
 mod:SetZone()
@@ -179,7 +179,7 @@ local function updateInfoFrame()
 		local uId = DBM:GetRaidUnitId(name)
 		if UnitDebuff(uId, gaze1) or UnitDebuff(uId, gaze2) then
 			total = total + 1
-			lines[name] = gaze1.."("..i..")"
+			lines["|cFF9932CD"..name.."|r"] = i
 		end
 	end
 	--Mythic, show guldan targets and number of charges left

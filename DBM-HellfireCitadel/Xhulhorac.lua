@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1447, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14247 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14259 $"):sub(12, -3))
 mod:SetCreatureID(93068)
 mod:SetEncounterID(1800)
 mod:SetZone()
@@ -155,9 +155,9 @@ local function ImpRepeater(self)
 	self:Schedule(25, ImpRepeater, self)
 	if self.Options.SetIconOnImps then
 		if self.vb.impActive > 0 then--Last set isn't dead yet, use alternate icons
-			self:ScanForMobs(94231, 0, 5, 3, 0.3, 10, "SetIconOnImps")
+			self:ScanForMobs(94231, 0, 5, 3, 0.2, 10, "SetIconOnImps")
 		else
-			self:ScanForMobs(94231, 0, 8, 3, 0.3, 10, "SetIconOnImps")
+			self:ScanForMobs(94231, 0, 8, 3, 0.2, 10, "SetIconOnImps")
 		end
 	end
 end
