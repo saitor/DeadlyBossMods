@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1433, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14222 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14258 $"):sub(12, -3))
 mod:SetCreatureID(90316)
 mod:SetEncounterID(1788)
 mod:DisableESCombatDetection()--Remove if blizz fixes trash firing ENCOUNTER_START
@@ -445,9 +445,9 @@ function mod:SPELL_AURA_REMOVED(args)
 			self:SetIcon(args.destName, 0)
 		end
 	elseif spellId == 182178 or spellId == 182200 then
-		if self.Options.HudMapOnChakram then
-			DBMHudMap:FreeEncounterMarkerByTarget(182178, args.destName)
-		end
+--		if self.Options.HudMapOnChakram then
+--			DBMHudMap:FreeEncounterMarkerByTarget(182178, args.destName)
+--		end
 	end
 end
 
