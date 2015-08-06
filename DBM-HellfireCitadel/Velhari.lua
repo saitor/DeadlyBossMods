@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1394, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14226 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14260 $"):sub(12, -3))
 mod:SetCreatureID(90269)
 mod:SetEncounterID(1784)
 mod:SetZone()
@@ -176,7 +176,6 @@ function mod:SPELL_CAST_START(args)
 		else
 			timerEnforcersOnslaughtCD:Start()
 		end
-		timerEnforcersOnslaughtCD:Start()
 	elseif spellId == 180608 then
 		self.vb.gavelCount = self.vb.gavelCount+1
 		specWarnGaveloftheTyrant:Show(self.vb.gavelCount)
