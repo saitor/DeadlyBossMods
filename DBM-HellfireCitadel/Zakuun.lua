@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1391, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14266 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14280 $"):sub(12, -3))
 mod:SetCreatureID(89890)
 mod:SetEncounterID(1777)
 mod:SetZone()
@@ -138,7 +138,7 @@ local function warnSeeds(self)
 				specWarnSeedPosition:Show(currentType[i])
 			end
 			if self.Options.Yell181508 then
-				yellSeeds2:Yell(currentType[i])
+				yellSeeds2:Yell(i, currentType[i], i)
 			end
 			if currentVoice and currentVoice[i] then
 				voiceSeedsofDestruction:Play(currentVoice[i])
