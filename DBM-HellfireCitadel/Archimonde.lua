@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14276 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14277 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -674,13 +674,13 @@ function mod:SPELL_AURA_APPLIED(args)
 					--create line
 					if self.Options.ExtendWroughtHud2 then
 						if self.Options.AlternateHudLine then
-							DBMHudMap:AddEdge(0, 1, 0, 0.5, 5.5, args.sourceName, args.destName, nil, nil, nil, nil, 15, "beam1", true)
+							DBMHudMap:AddEdge(0, 1, 0, 0.5, 5.5, args.sourceName, args.destName, nil, nil, nil, nil, 50, "beam1", true)
 						else
 							DBMHudMap:AddEdge(0, 1, 0, 0.5, 5.5, args.sourceName, args.destName, nil, nil, nil, nil, 150, nil, true)
 						end
 					else
 						if self.Options.AlternateHudLine then
-							DBMHudMap:AddEdge(0, 1, 0, 0.5, 5.5, args.sourceName, args.destName, nil, nil, nil, nil, 15, "beam1")
+							DBMHudMap:AddEdge(0, 1, 0, 0.5, 5.5, args.sourceName, args.destName, nil, nil, nil, nil, 50, "beam1")
 						else
 							DBMHudMap:AddEdge(0, 1, 0, 0.5, 5.5, args.sourceName, args.destName, nil, nil, nil, nil, 150)
 						end
