@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14272 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14273 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -158,6 +158,7 @@ mod:AddHudMapOption("HudMapOnShackledTorment2", 184964, true)
 mod:AddHudMapOption("HudMapOnWrought", 184265)--Yellow on caster (wrought chaos), red on target (focused chaos)
 mod:AddHudMapOption("HudMapMarkofLegion", 187050, false)
 mod:AddBoolOption("ExtendWroughtHud2", false)
+mod:AddBoolOption("AlternateHudLine", false)
 mod:AddBoolOption("NamesWroughtHud", true)
 mod:AddBoolOption("FilterOtherPhase", true)
 mod:AddInfoFrameOption(184964)
@@ -292,8 +293,8 @@ local function showMarkOfLegion(self, spellName)
 		local uId = DBM:GetRaidUnitId(name)
 		local _, _, _, _, _, _, expires = UnitDebuff(uId, spellName)
 		if expires then
-			roundedTime = math.floor(debuffTime+0.5)
 			local debuffTime = expires - GetTime()
+			local roundedTime = math.floor(debuffTime+0.5)
 			if name == playerName then
 				yellMarkOfLegionPoS:Yell(roundedTime)
 			end
@@ -669,7 +670,11 @@ function mod:SPELL_AURA_APPLIED(args)
 					end
 					--create line
 					if self.Options.ExtendWroughtHud2 then
-						DBMHudMap:AddEdge(0, 1, 0, 0.5, 5.5, args.sourceName, args.destName, nil, nil, nil, nil, 150, nil, true)
+						if self.Options.AlternateHudLine then
+							DBMHudMap:AddEdge(0, 1, 0, 0.5, 5.5, args.sourceName, args.destName, nil, nil, nil, nil, 150, "beam1", true)
+						else
+							DBMHudMap:AddEdge(0, 1, 0, 0.5, 5.5, args.sourceName, args.destName, nil, nil, nil, nil, 150, nil, true)
+						end
 					else
 						DBMHudMap:AddEdge(0, 1, 0, 0.5, 5.5, args.sourceName, args.destName, nil, nil, nil, nil, 150)
 					end
@@ -684,7 +689,11 @@ function mod:SPELL_AURA_APPLIED(args)
 					end
 					--Create Line
 					if self.Options.ExtendWroughtHud2 then
-						DBMHudMap:AddEdge(1, 0, 0, 0.5, 5.5, args.sourceName, args.destName, nil, nil, nil, nil, 150, nil, true)
+						if self.Options.AlternateHudLine then
+							DBMHudMap:AddEdge(1, 0, 0, 0.5, 5.5, args.sourceName, args.destName, nil, nil, nil, nil, 150, "beam1", true)
+						else
+							DBMHudMap:AddEdge(1, 0, 0, 0.5, 5.5, args.sourceName, args.destName, nil, nil, nil, nil, 150, nil, true)
+						end
 					else
 						DBMHudMap:AddEdge(1, 0, 0, 0.5, 5.5, args.sourceName, args.destName, nil, nil, nil, nil, 150)
 					end
