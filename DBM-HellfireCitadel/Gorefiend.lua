@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1372, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14264 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14270 $"):sub(12, -3))
 mod:SetCreatureID(90199)
 mod:SetEncounterID(1783)
 mod:SetZone()
@@ -399,7 +399,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerTouchofDoomCD:Start(9)
 		timerSharedFateCD:Start(19, 1)
 		timerFeastofSouls:Start()
-		if self.Options.RangeFrame then
+		if self.Options.RangeFrame and self:IsInCombat() then
 			DBM.RangeCheck:Show(5, digestFilter)
 		end
 	elseif spellId == 185982 and not playerDown then
