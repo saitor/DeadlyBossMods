@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14273 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14274 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -296,6 +296,9 @@ local function showMarkOfLegion(self, spellName)
 			local debuffTime = expires - GetTime()
 			local roundedTime = math.floor(debuffTime+0.5)
 			if name == playerName then
+				--TODO< enhance yell more
+				--5, 7 on melee, 9, 11 on ranged.
+				--Possibly auto assign like http://puu.sh/jsyr5/7014c50cb3.jpg
 				yellMarkOfLegionPoS:Yell(roundedTime)
 			end
 			if self.Options.SetIconOnMarkOfLegion then
