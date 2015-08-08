@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14290 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14291 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -675,11 +675,9 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 185014 then--Focused Chaos
 		if args:IsPlayer() then
 			specWarnFocusedChaos:Show()
-			yellFocusedChaos:Yell()
 			countdownWroughtChaos:Start()
 			voiceFocusedChaos:Play("185014")
 			yellFocusedChaos:Yell(5)
-			yellFocusedChaos:Schedule(4, 1)
 			yellFocusedChaos:Schedule(3, 2)
 			yellFocusedChaos:Schedule(2, 3)
 			yellFocusedChaos:Schedule(1, 4)
