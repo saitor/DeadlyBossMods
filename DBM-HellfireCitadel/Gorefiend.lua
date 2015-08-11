@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1372, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14315 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14317 $"):sub(12, -3))
 mod:SetCreatureID(90199)
 mod:SetEncounterID(1783)
 mod:SetZone()
@@ -73,7 +73,7 @@ local voiceBurning						= mod:NewVoice(185189) --changemt
 
 mod:AddSetIconOption("SetIconOnFate", 179909)
 mod:AddHudMapOption("HudMapOnSharedFate", 179909)--Smart hud, distinquishes rooted from non rooted by larger dot/font and lines/arrows
-mod:AddBoolOption("ShowOnlyPlayer", false)
+mod:AddBoolOption("ShowOnlyPlayer", true)
 mod:AddRangeFrameOption(5, 182049)
 mod:AddInfoFrameOption(181295)
 
