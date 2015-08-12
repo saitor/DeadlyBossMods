@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1395, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14319 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14328 $"):sub(12, -3))
 mod:SetCreatureID(91349)--91305 Fel Iron Summoner
 mod:SetEncounterID(1795)
 mod:SetZone()
@@ -499,7 +499,7 @@ function mod:SPELL_AURA_REMOVED(args)
 			yellCurseofLegion:Cancel()
 		end
 	elseif spellId == 186362 then--Only cast once per phase transition (twice whole fight)
-		table.remove(guldanTargets, args.destName)
+		tDeleteItem(guldanTargets, args.destName)
 		updateRangeFrame(self)
 	end
 end
