@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14324 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14330 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -541,6 +541,7 @@ function mod:SPELL_CAST_START(args)
 		--Timer extender. Encounter failsafe. If < 7 seconds remaining on torment when wrought is cast, it's extended to 7 seconds
 		local elapsed, total = timerShackledTormentCD:GetTime(self.vb.tormentCast+1)
 		local remaining = total - elapsed
+		timerShackledTormentCD:Cancel()
 		if total > 0 and remaining < 7 then
 			DBM:Debug("timerShackledTormentCD extender activated. Time remaining less than 7 when wrought chaos started")
 			local extend = 7 - remaining
