@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1432, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14336 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14338 $"):sub(12, -3))
 mod:SetCreatureID(92142, 92144, 92146)--Blademaster Jubei'thos (92142). Dia Darkwhisper (92144). Gurthogg Bloodboil (92146) 
 mod:SetEncounterID(1778)
 mod:SetZone()
@@ -160,18 +160,20 @@ function mod:SPELL_CAST_START(args)
 				break
 			end
 		end
-		local elapsed, total = timerReapCD:GetTime()
-		local remaining = total - elapsed
-		timerReapCD:Cancel()
-		if remaining < 17.5 then--delayed by visage
-			warnReapDelayed:Schedule(11.5)
-			if total == 0 then--Pull reap delayed by visage
-				DBM:Debug("experimental timer extend firing for reap. Extend amount: "..17.5)
-				timerReapCD:Start(17.5)
-			else
-				local extend = 17.5 - remaining
-				DBM:Debug("experimental timer extend firing for reap. Extend amount: "..extend)
-				timerReapCD:Update(elapsed, total+extend)
+		if not self.vb.DiaPushed then
+			local elapsed, total = timerReapCD:GetTime()
+			local remaining = total - elapsed
+			if remaining < 17.5 then--delayed by visage
+				timerReapCD:Cancel()
+				warnReapDelayed:Schedule(11.5)
+				if total == 0 then--Pull reap delayed by visage
+					DBM:Debug("experimental timer extend firing for reap. Extend amount: "..17.5)
+					timerReapCD:Start(17.5)
+				else
+					local extend = 17.5 - remaining
+					DBM:Debug("experimental timer extend firing for reap. Extend amount: "..extend)
+					timerReapCD:Update(elapsed, total+extend)
+				end
 			end
 		end
 	elseif spellId == 184476 then
