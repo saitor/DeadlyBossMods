@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1372, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14339 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14350 $"):sub(12, -3))
 mod:SetCreatureID(90199)
 mod:SetEncounterID(1783)
 mod:SetZone()
@@ -119,8 +119,9 @@ Mythic
 
 local function sharedFateDelay(self)
 	if self.vb.rootedFate then
+		local marker1
 		if self.Options.HudMapOnSharedFate and not playerDown and (playerHasFate or not self.Options.ShowOnlyPlayer) then
-			local marker1 = DBMHudMap:RegisterRangeMarkerOnPartyMember(179909, "party", self.vb.rootedFate, 0.6, 10, nil, nil, nil, 0.5):Appear():SetLabel(self.vb.rootedFate, nil, nil, nil, nil, nil, 0.8, nil, -17, 11, nil)
+			marker1 = DBMHudMap:RegisterRangeMarkerOnPartyMember(179909, "party", self.vb.rootedFate, 0.6, 10, nil, nil, nil, 0.5):Appear():SetLabel(self.vb.rootedFate, nil, nil, nil, nil, nil, 0.8, nil, -17, 11, nil)
 		end
 		for i = 1, #sharedFateTargets do
 			local name = sharedFateTargets[i]
