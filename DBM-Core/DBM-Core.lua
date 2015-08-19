@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14361 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14362 $"):sub(12, -3)),
 	DisplayVersion = "6.2.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 14339 -- the revision of the latest stable version that is available
 }
@@ -8713,6 +8713,11 @@ do
 			else
 				displayText = DBM_CORE_AUTO_YELL_ANNOUNCE_TEXT[yellType]:format(GetSpellInfo(spellId) or DBM_CORE_UNKNOWN)
 			end
+		end
+		--Passed spellid as yellText.
+		--Auto localize spelltext using yellText instead
+		if type(yellText) == "number" then
+			displayText = DBM_CORE_AUTO_YELL_ANNOUNCE_TEXT[yellType]:format(GetSpellInfo(yellText) or DBM_CORE_UNKNOWN)
 		end
 		local obj = setmetatable(
 			{
