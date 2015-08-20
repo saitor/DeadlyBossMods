@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1391, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14357 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14366 $"):sub(12, -3))
 mod:SetCreatureID(89890)
 mod:SetEncounterID(1777)
 mod:SetZone()
@@ -295,6 +295,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerSeedsofDestructionCD:Cancel()
 		countdownSeedsofDestructionCD:Cancel()
 		timerRumblingFissureCD:Cancel()
+		timerSoulCleaveCD:Cancel()
 		self.vb.Enraged = true
 		self.vb.CavitationCount = 0
 		self.vb.SeedsCount = 0
