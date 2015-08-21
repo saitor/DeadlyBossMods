@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1372, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14369 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14370 $"):sub(12, -3))
 mod:SetCreatureID(90199)
 mod:SetEncounterID(1783)
 mod:SetZone()
@@ -168,8 +168,9 @@ function mod:OnCombatStart(delay)
 	end
 	timerFeastofSouls:Start(-delay)
 	if self.Options.InfoFrame then
-		DBM.InfoFrame:SetHeader(args.spellName)
-		DBM.InfoFrame:Show(10, "playerdebuffremaining", args.spellName)
+		local spellName = GetSpellInfo(181295)
+		DBM.InfoFrame:SetHeader(spellName)
+		DBM.InfoFrame:Show(10, "playerdebuffremaining", spellName)
 	end
 end
 

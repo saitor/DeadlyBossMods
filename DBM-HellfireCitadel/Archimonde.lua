@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14363 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14370 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -228,10 +228,10 @@ do
 	end
 end
 
-local updateInfoFrame
+local updateInfoFrame, sortInfoFrame
 do
 	local lines = {}
-	local function sortInfoFrame(a, b) 
+	sortInfoFrame = function(a, b)
 		local a = lines[a]
 		local b = lines[b]
 		if not tonumber(a) then a = -1 end
