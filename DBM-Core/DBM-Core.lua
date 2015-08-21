@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14376 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14377 $"):sub(12, -3)),
 	DisplayVersion = "6.2.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 14339 -- the revision of the latest stable version that is available
 }
@@ -3286,6 +3286,9 @@ do
 		--First check realID
 		if self.Options.AutoAcceptFriendInvite then
 			self:Debug("AutoAcceptFriendInvite is true", 2)
+			--if BNet_GetToonPresenceID(sender) then--6.2.2
+			--	AcceptPartyInvite()
+			--end
 			local _, numBNetOnline = BNGetNumFriends()
 			for i = 1, numBNetOnline do
 				local presenceID, _, _, _, _, _, _, isOnline = BNGetFriendInfo(i)
