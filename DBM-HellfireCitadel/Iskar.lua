@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1433, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14286 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14372 $"):sub(12, -3))
 mod:SetCreatureID(90316)
 mod:SetEncounterID(1788)
 mod:DisableESCombatDetection()--Remove if blizz fixes trash firing ENCOUNTER_START
@@ -197,6 +197,8 @@ function mod:OnCombatStart(delay)
 	end
 	if self:IsNormal() then--Harder berserk on normal vs all other difficulties. Kromog all over again.
 		berserkTimer:Start(480-delay)
+	elseif self:IsMythic() then
+		berserkTimer:Start(510-delay)
 	else
 		berserkTimer:Start(-delay)
 	end
