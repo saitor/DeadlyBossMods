@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1372, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14370 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14373 $"):sub(12, -3))
 mod:SetCreatureID(90199)
 mod:SetEncounterID(1783)
 mod:SetZone()
@@ -374,7 +374,6 @@ function mod:SPELL_AURA_REMOVED(args)
 			DBMHudMap:FreeEncounterMarkerByTarget(179908, args.destName)
 		end
 	elseif spellId == 181295 then
-		self.vb.playersWithDigest = self.vb.playersWithDigest - 1
 		if args:IsPlayer() then
 			timerDigest:Cancel()
 			countdownDigest:Cancel()
