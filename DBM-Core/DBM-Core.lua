@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14375 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14376 $"):sub(12, -3)),
 	DisplayVersion = "6.2.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 14339 -- the revision of the latest stable version that is available
 }
@@ -5579,6 +5579,9 @@ do
 				self:Schedule(2.1, mod.Stop, mod) -- Remove accident started timers.
 				mod.inCombatOnlyEventsRegistered = nil
 			end
+			if mod.updateInterval then
+				mod:UnregisterOnUpdateHandler()
+			end
 			mod:Stop()
 			if enableIcons and not self.Options.DontSetIcons and not self.Options.DontRestoreIcons then
 				-- restore saved previous icon
@@ -6813,11 +6816,10 @@ function bossModPrototype:RegisterOnUpdateHandler(func, interval)
 	updateFunctions[self] = func
 end
 
-function bossModPrototype:UnregisterOnUpdateHandler(func)
-	if type(func) ~= "function" then return end
+function bossModPrototype:UnregisterOnUpdateHandler()
 	self.elapsed = nil
 	self.updateInterval = nil
-	tremove(updateFunctions[self], func)
+	twipe(updateFunctions)
 end
 
 --------------
