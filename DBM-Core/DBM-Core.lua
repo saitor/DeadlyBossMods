@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14386 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14387 $"):sub(12, -3)),
 	DisplayVersion = "6.2.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 14339 -- the revision of the latest stable version that is available
 }
@@ -6985,9 +6985,9 @@ function bossModPrototype:LatencyCheck()
 end
 
 function bossModPrototype:CheckBigWigs(name)
-	if raid[name].bwrevision then
+	if raid[name] and raid[name].bwrevision then
 		return raid[name].bwrevision
-	elseif raid[name].bwarevision then
+	elseif raid[name] and raid[name].bwarevision then
 		return raid[name].bwarevision
 	else
 		return false

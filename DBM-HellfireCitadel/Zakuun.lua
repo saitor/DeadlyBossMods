@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1391, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14383 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14387 $"):sub(12, -3))
 mod:SetCreatureID(89890)
 mod:SetEncounterID(1777)
 mod:SetZone()
@@ -175,7 +175,7 @@ local function delayModCheck(self)
 		end
 		if leaderHasBW then
 			DBM:AddMsg(L.BWConfigMsg)
-			self.vb.yellType = "Icon"
+			self.vb.yellType = "Numbered"
 		end
 	end
 end
