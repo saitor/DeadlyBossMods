@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14385 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14386 $"):sub(12, -3)),
 	DisplayVersion = "6.2.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 14339 -- the revision of the latest stable version that is available
 }
@@ -5253,7 +5253,7 @@ function checkWipe(self, confirm)
 			for i, v in ipairs(inCombat) do
 				maxDelayTime = v.combatInfo and v.combatInfo.wipeTimer and v.combatInfo.wipeTimer > maxDelayTime and v.combatInfo.wipeTimer or maxDelayTime
 			end
-			self:Schedule(maxDelayTime, self, checkWipe, true)
+			self:Schedule(maxDelayTime, checkWipe, self, true)
 		end
 	end
 end
