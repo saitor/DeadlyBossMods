@@ -52,7 +52,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14390 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14391 $"):sub(12, -3)),
 	DisplayVersion = "6.2.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 14339 -- the revision of the latest stable version that is available
 }
@@ -1517,10 +1517,10 @@ do
 	end
 
 	function schedule(t, f, mod, ...)
-		startScheduler()
 		if type(f) ~= "function" then
 			error("usage: schedule(time, func, [mod, args...])", 2)
 		end
+		startScheduler()
 		local v
 		if numChachedTables > 0 and select("#", ...) <= 4 then -- a cached table is available and all arguments fit into an array with four slots
 			v = popCachedTable()
