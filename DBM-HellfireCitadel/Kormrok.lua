@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1392, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14374 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14388 $"):sub(12, -3))
 mod:SetCreatureID(90435)
 mod:SetEncounterID(1787)
 mod:SetZone()
@@ -464,7 +464,6 @@ end
 
 do
 	RegisterAddonMessagePrefix("EXRTADD")
-	local playerName = UnitName("player")
 	local Ambiguate = Ambiguate
 	local assignedPositionOrange, assignedPositionGreen, assignedPositionPurple
 	local function delayedNotice(self, sender)

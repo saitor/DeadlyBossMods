@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1391, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14387 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14388 $"):sub(12, -3))
 mod:SetCreatureID(89890)
 mod:SetEncounterID(1777)
 mod:SetZone()
@@ -167,7 +167,7 @@ local function delayModCheck(self)
 		for i = 1, GetNumGroupMembers() do
 			local uId = "raid"..i
 			if UnitIsGroupLeader(uId, LE_PARTY_CATEGORY_HOME) then
-				if self:CheckBigWigs(UnitName(uId)) then
+				if self:CheckBigWigs(DBM:GetUnitFullName(uId)) then
 					leaderHasBW = true
 				end
 				break
