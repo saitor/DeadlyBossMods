@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1395, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14395 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14396 $"):sub(12, -3))
 mod:SetCreatureID(91349)--91305 Fel Iron Summoner
 mod:SetEncounterID(1795)
 mod:SetZone()
@@ -284,8 +284,8 @@ function mod:OnCombatStart(delay)
 		timerGazeCD:Start(68)
 		timerInfernoCD:Start(70-delay, 1)
 	else
-		timerCurseofLegionCD:Start(6, 1)
-		timerFelImplosionCD:Start(15-delay, 1)
+		timerCurseofLegionCD:Start(5.2, 1)
+		timerFelImplosionCD:Start(13.5-delay, 1)
 		timerInfernoCD:Start(18.4-delay, 1)--Verify, seems 20 now
 	end
 end
