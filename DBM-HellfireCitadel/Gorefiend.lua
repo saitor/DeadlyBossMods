@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1372, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14373 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14415 $"):sub(12, -3))
 mod:SetCreatureID(90199)
 mod:SetEncounterID(1783)
 mod:SetZone()
@@ -198,7 +198,7 @@ function mod:SPELL_CAST_START(args)
 		if self.Options.InfoFrame and self:IsMythic() then
 			local spellName = GetSpellInfo(179867)
 			DBM.InfoFrame:SetHeader(spellName)
-			DBM.InfoFrame:Show(10, "playerbaddebuff", spellName)
+			DBM.InfoFrame:Show(10, "playerbaddebuff", spellName, nil, true)
 		end
 	elseif spellId == 181582 and self:CheckInterruptFilter(args.sourceGUID) then
 		specWarnBellowingShout:Show(args.sourceName)
