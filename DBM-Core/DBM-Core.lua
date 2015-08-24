@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14407 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14408 $"):sub(12, -3)),
 	DisplayVersion = "6.2.9 alpha", -- the string that is shown as version
 	ReleaseRevision = 14339 -- the revision of the latest stable version that is available
 }
@@ -10767,6 +10767,7 @@ do
 			if timeNow < scanExpires[scanID] then--scan for limited times.
 				self:ScheduleMethod(scanInterval, "ScanForMobs", creatureID, iconSetMethod, mobIcon, maxIcon, scanInterval, scanningTime, optionName)
 			else
+				DBM:Debug("Stopping ScanForMobs for: "..(optionName or "nil"))
 				--clear variables
 				scanExpires[scanID] = nil
 				addsIcon[scanID] = nil
