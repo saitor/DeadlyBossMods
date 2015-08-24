@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14405 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14407 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -581,9 +581,6 @@ function mod:SPELL_CAST_START(args)
 		if self.vb.phase < 3.5 then
 			self.vb.phase = 3.5
 		end
-		if self.Options.SetIconOnInfernals2 then
-			self:ScanForMobs(94412, 1, 1, 3, 0.4, 25, "SetIconOnInfernals2")
-		end
 	elseif spellId == 190050 then
 		--To ensure propper syncing and everyones mod has same count, the count isn't in the filter
 		if self.vb.TouchOfShadows == 2 then self.vb.TouchOfShadows = 0 end
@@ -943,14 +940,14 @@ function mod:SPELL_SUMMON(args)
 			if cooldown then
 				timerInfernalsCD:Start(cooldown, self.vb.InfernalsCast+1)
 			end
-			if self.Options.SetIconOnInfernals2 then
-				if self.vb.InfernalsCast < 3 then--Only 3 infernals expected
-					self:ScanForMobs(94412, 1, 1, 3, 0.2, 20, "SetIconOnInfernals2")
-				elseif self.vb.InfernalsCast < 6 then--4 infernals expected
-					self:ScanForMobs(94412, 1, 1, 4, 0.2, 20, "SetIconOnInfernals2")
-				else--5 expected
-					self:ScanForMobs(94412, 1, 1, 5, 0.2, 20, "SetIconOnInfernals2")
-				end
+		end
+		if self.Options.SetIconOnInfernals2 then
+			if self.vb.InfernalsCast < 3 or not self:IsMythic() then--Only 3 infernals expected
+				self:ScanForMobs(args.destGUID, 1, 1, 3, 0.2, 20, "SetIconOnInfernals2")
+			elseif self.vb.InfernalsCast < 6 then--4 infernals expected
+				self:ScanForMobs(args.destGUID, 1, 1, 4, 0.2, 20, "SetIconOnInfernals2")
+			else--5 expected
+				self:ScanForMobs(args.destGUID, 1, 1, 5, 0.2, 20, "SetIconOnInfernals2")
 			end
 		end
 	end
