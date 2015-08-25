@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1372, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14415 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14416 $"):sub(12, -3))
 mod:SetCreatureID(90199)
 mod:SetEncounterID(1783)
 mod:SetZone()
@@ -390,7 +390,7 @@ function mod:SPELL_AURA_REMOVED(args)
 			timerShadowofDeathCDDps:Start(2, "2x"..DBM_CORE_DAMAGE_ICON)
 			timerShadowofDeathCDTank:Start(9, "1x"..DBM_CORE_TANK_ICON)
 			timerShadowofDeathCDHealer:Start(21, "2x"..DBM_CORE_HEALER_ICON)
-			if self.Options.InfoFrame then
+			if self.Options.InfoFrame and self:IsInCombat() then
 				--Switch back to digest
 				local spellName = GetSpellInfo(181295)
 				DBM.InfoFrame:SetHeader(spellName)
