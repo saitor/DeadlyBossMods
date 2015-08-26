@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14435 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14436 $"):sub(12, -3)),
 	DisplayVersion = "6.2.10 alpha", -- the string that is shown as version
 	ReleaseRevision = 14421 -- the revision of the latest stable version that is available
 }
@@ -2459,7 +2459,7 @@ do
 
 	--	save playerinfo into raid table on load. (for solo raid)
 	DBM:RegisterOnLoadCallback(function()
-		C_TimerAfter(5, function()
+		C_TimerAfter(6, function()
 			if not raid[playerName] then
 				raid[playerName] = {}
 				raid[playerName].name = playerName
