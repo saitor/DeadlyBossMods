@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1391, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14388 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14433 $"):sub(12, -3))
 mod:SetCreatureID(89890)
 mod:SetEncounterID(1777)
 mod:SetZone()
@@ -337,7 +337,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 		updateRangeFrame(self)
 	elseif spellId == 179407 then
-		warnDisembodied:Show(self.vb.SoulCleaveCount, args.destName)
+		warnDisembodied:CombinedShow(0.3, self.vb.SoulCleaveCount, args.destName)
 		countdownDisembodied:Start()
 		if not args:IsPlayer() then
 			specWarnDisembodied:Show(args.destName)
