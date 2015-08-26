@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14428 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14429 $"):sub(12, -3)),
 	DisplayVersion = "6.2.10 alpha", -- the string that is shown as version
 	ReleaseRevision = 14421 -- the revision of the latest stable version that is available
 }
@@ -9614,7 +9614,7 @@ do
 			msg = msg:gsub(">.-<", stripServerName)
 			bar:SetText(msg)
 			--This callback sucks, it needs useful information for external mods to listen to it better, such as mod and spellid
-			fireEvent("DBM_TimerStart", id, msg, timer..DBM_CORE_SEC)
+			fireEvent("DBM_TimerStart", id, msg, self.icon, timer)
 			tinsert(self.startedTimers, id)
 			self.mod:Unschedule(removeEntry, self.startedTimers, id)
 			self.mod:Schedule(timer, removeEntry, self.startedTimers, id)
