@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14438 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14439 $"):sub(12, -3)),
 	DisplayVersion = "6.2.10 alpha", -- the string that is shown as version
 	ReleaseRevision = 14421 -- the revision of the latest stable version that is available
 }
@@ -1820,11 +1820,11 @@ SlashCmdList["DEADLYBOSSMODS"] = function(msg)
 			return
 		end
 		local timer = tonumber(cmd:sub(6)) or 5
-		local timer = timer * 60
 		if timer > 60 then
 			DBM:AddMsg(DBM_CORE_BREAK_USAGE)
 			return
 		end
+		timer = timer * 60
 		sendSync("BT", timer)
 	elseif cmd:sub(1, 4) == "pull" then
 		if (DBM:GetRaidRank(playerName) == 0 and IsInGroup()) or IsEncounterInProgress() then
