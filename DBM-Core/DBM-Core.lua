@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14430 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14431 $"):sub(12, -3)),
 	DisplayVersion = "6.2.10 alpha", -- the string that is shown as version
 	ReleaseRevision = 14421 -- the revision of the latest stable version that is available
 }
@@ -8312,7 +8312,7 @@ do
 				DBM:PlaySoundFile(DBM.Options.RaidWarningSound)
 			end
 			--This callback sucks, it needs useful information for external mods to listen to it better, such as mod and spellid
-			fireEvent("DBM_Announce", message)
+			fireEvent("DBM_Announce", message, self.icon)
 		else
 			self.combinedcount = 0
 			self.combinedtext = {}
