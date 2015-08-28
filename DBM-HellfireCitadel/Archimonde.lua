@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14448 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14449 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -76,7 +76,7 @@ local specWarnFlamesOfArgus			= mod:NewSpecialWarningInterrupt(186663, "-Healer"
 local specWarnDemonicFeedbackSoon	= mod:NewSpecialWarningSoon(187180, nil, nil, nil, 1, 2)
 local specWarnDemonicFeedback		= mod:NewSpecialWarningCount(187180, nil, nil, nil, 3, 2)
 local specWarnNetherBanish			= mod:NewSpecialWarningYou(186961, nil, nil, nil, 1, 5)
-local specWarnNetherBanishOther		= mod:NewSpecialWarningTargetCount(186961)
+local specWarnNetherBanishOther		= mod:NewSpecialWarningTargetCount(186961, nil, nil, nil, 1, 5)
 local yellNetherBanish				= mod:NewFadesYell(186961)
 ----The Nether
 local specWarnTouchofShadows		= mod:NewSpecialWarningInterruptCount(190050, nil, nil, nil, 1, 5)
@@ -957,6 +957,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			yellNetherBanish:Schedule(3, 4)
 			yellNetherBanish:Schedule(2, 5)
 		else
+			voiceNetherBanish:Play("telesoon")
 			specWarnNetherBanishOther:Show(self.vb.netherBanish, args.destName)
 		end
 		updateRangeFrame(self)
