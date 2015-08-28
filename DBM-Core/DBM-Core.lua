@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14447 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14448 $"):sub(12, -3)),
 	DisplayVersion = "6.2.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 14445 -- the revision of the latest stable version that is available
 }
@@ -3620,7 +3620,7 @@ function DBM:LoadMod(mod, force)
 			RequestChallengeModeMapInfo()
 			RequestChallengeModeLeaders(LastInstanceMapID)
 		end
-		if instanceType ~= "pvp" and #inCombat == 0 and IsInGroup() then--do timer recovery only mod load
+		if LastInstanceType ~= "pvp" and #inCombat == 0 and IsInGroup() then--do timer recovery only mod load
 			if not timerRequestInProgress then
 				timerRequestInProgress = true
 				-- Request timer to 3 person to prevent failure.
