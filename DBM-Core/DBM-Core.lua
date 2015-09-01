@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14455 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14456 $"):sub(12, -3)),
 	DisplayVersion = "6.2.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 14445 -- the revision of the latest stable version that is available
 }
@@ -1644,7 +1644,7 @@ function DBM:RepositionFrames()
 		DBMRangeCheck:SetPoint(self.Options.RangeFramePoint, UIParent, self.Options.RangeFramePoint, self.Options.RangeFrameX, self.Options.RangeFrameY)
 	end
 	if DBMRangeCheckRadar then
-		DBMInfoFrame:ClearAllPoints()
+		DBMRangeCheckRadar:ClearAllPoints()
 		DBMRangeCheckRadar:SetPoint(self.Options.RangeFrameRadarPoint, UIParent, self.Options.RangeFrameRadarPoint, self.Options.RangeFrameRadarX, self.Options.RangeFrameRadarY)
 	end
 	if DBMInfoFrame then
