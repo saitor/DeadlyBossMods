@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14464 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14465 $"):sub(12, -3)),
 	DisplayVersion = "6.2.11 alpha", -- the string that is shown as version
 	ReleaseRevision = 14445 -- the revision of the latest stable version that is available
 }
@@ -59,6 +59,20 @@ if class == "MAGE" or class == "WARLOCK" and class == "HUNTER" and class == "ROG
 	DBM_UseDualProfile = false
 end
 DBM_CharSavedRevision = 1
+
+--Hard code STANDARD_TEXT_FONT since skimming mods like to taint it (or worse, set it to nil, wtf?)
+--http://forums.elitistjerks.com/topic/133901-bug-report-hudmap/#entry2282069
+if (LOCALE_koKR) then
+	DBM.STANDARD_TEXT_FONT = "Fonts\\2002.TTF"
+elseif (LOCALE_zhCN) then
+	DBM.STANDARD_TEXT_FONT = "Fonts\\ARKai_T.ttf"
+elseif (LOCALE_zhTW) then
+	DBM.STANDARD_TEXT_FONT = "Fonts\\blei00d.TTF"
+elseif (LOCALE_ruRU) then
+	DBM.STANDARD_TEXT_FONT = "Fonts\\FRIZQT___CYR.TTF"
+else
+	DBM.STANDARD_TEXT_FONT = "Fonts\\FRIZQT__.TTF"
+end
 
 DBM.DefaultOptions = {
 	WarningColors = {
@@ -304,19 +318,6 @@ DBM.Counts = {
 ------------------------
 DBM_DISABLE_ZONE_DETECTION = newproxy(false)
 DBM_OPTION_SPACER = newproxy(false)
---Hard code STANDARD_TEXT_FONT since skimming mods like to taint it (or worse, set it to nil, wtf?)
---http://forums.elitistjerks.com/topic/133901-bug-report-hudmap/#entry2282069
-if (LOCALE_koKR) then
-	DBM.STANDARD_TEXT_FONT = "Fonts\\2002.TTF"
-elseif (LOCALE_zhCN) then
-	DBM.STANDARD_TEXT_FONT = "Fonts\\ARKai_T.ttf"
-elseif (LOCALE_zhTW) then
-	DBM.STANDARD_TEXT_FONT = "Fonts\\blei00d.TTF"
-elseif (LOCALE_ruRU) then
-	DBM.STANDARD_TEXT_FONT = "Fonts\\FRIZQT___CYR.TTF"
-else
-	DBM.STANDARD_TEXT_FONT = "Fonts\\FRIZQT__.TTF"
-end
 
 --------------
 --  Locals  --
