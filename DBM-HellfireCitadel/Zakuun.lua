@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1391, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14470 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14471 $"):sub(12, -3))
 mod:SetCreatureID(89890)
 mod:SetEncounterID(1777)
 mod:SetZone()
@@ -341,6 +341,8 @@ function mod:SPELL_AURA_APPLIED(args)
 		local uId = DBM:GetRaidUnitId(args.destName)
 		if not args:IsPlayer() and self:IsTanking(uId, "boss1") then
 			specWarnDisembodied:Show(args.destName)
+		end
+		if args:IsPlayer() then
 			countdownDisembodied:Start()
 		end
 	end
