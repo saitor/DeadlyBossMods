@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14469 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14478 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -568,7 +568,8 @@ local function updateAllTimers(self, ICD)
 			countdownDemonicFeedback:Cancel()
 			countdownDemonicFeedback:Start(ICD)
 		end
-		if timerNetherBanishCD:GetRemaining(self.vb.netherBanish+1) < ICD then
+		--Don't know what's wrong with this shit.
+--[[		if timerNetherBanishCD:GetRemaining(self.vb.netherBanish+1) < ICD then
 			local elapsed, total = timerNetherBanishCD:GetTime(self.vb.netherBanish+1)
 			local extend = ICD - (total-elapsed)
 			DBM:Debug("timerNetherBanishCD extended by: "..extend, 2)
@@ -576,7 +577,7 @@ local function updateAllTimers(self, ICD)
 			timerNetherBanishCD:Update(elapsed, total+extend, self.vb.netherBanish+1)
 			countdownNetherBanish:Cancel()
 			countdownNetherBanish:Start(ICD)
-		end
+		end--]]
 	end
 end
 
