@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1427, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14484 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14485 $"):sub(12, -3))
 mod:SetCreatureID(92330)
 mod:SetEncounterID(1794)
 mod:SetZone()
@@ -406,7 +406,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			DBMHudMap:RegisterRangeMarkerOnPartyMember(180221, "highlight", args.destName, 5, 20, 1, 1, 0, 0.5, nil, true, 1):Pulse(0.5, 0.5)
 		end
 	elseif spellId == 190466 then
-		if args:IsPlayer() then
+		if args.sourceGUID == UnitGUID("player") then
 			playerInConstruct = true
 		else
 			--At time this starts, don't know who construct will be
@@ -432,7 +432,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		if self.Options.HudMapOnOrb then
 			DBMHudMap:FreeEncounterMarkerByTarget(180221, args.destName)
 		end
-	elseif spellId == 190466 and args:IsPlayer() then
+	elseif spellId == 190466 and args.sourceGUID == UnitGUID("player") then
 		playerInConstruct = false
 	elseif spellId == 184053 then
 		self.vb.barrierUp = false
