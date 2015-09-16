@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1396, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14339 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14495 $"):sub(12, -3))
 mod:SetCreatureID(90378)
 mod:SetEncounterID(1786)
 mod:SetZone()
@@ -153,17 +153,17 @@ function mod:SPELL_CAST_START(args)
 		if self:CheckInterruptFilter(args.sourceGUID) then
 			specWarnRendingHowl:Show(args.sourceName, count)
 			if count == 1 then
-				voiceRendingHowl:Play("kick1r.ogg")
+				voiceRendingHowl:Play("kick1r")
 			elseif count == 2 then
-				voiceRendingHowl:Play("kick2r.ogg")
+				voiceRendingHowl:Play("kick2r")
 			elseif count == 3 then
-				voiceRendingHowl:Play("kick3r.ogg")
+				voiceRendingHowl:Play("kick3r")
 			elseif count == 4 then
-				voiceRendingHowl:Play("kick4r.ogg")
+				voiceRendingHowl:Play("kick4r")
 			elseif count == 5 then
-				voiceRendingHowl:Play("kick5r.ogg")
+				voiceRendingHowl:Play("kick5r")
 			else
-				voiceRendingHowl:Play("kickcast.ogg")
+				voiceRendingHowl:Play("kickcast")
 			end
 		end
 		timerRendingHowlCD:Start(args.sourceGUID)
