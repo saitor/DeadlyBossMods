@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14496 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14497 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -134,11 +134,11 @@ local timerSeethingCorruptionCD		= mod:NewCDCountTimer(107, 190506, nil, nil, ni
 --countdowns kind of blow with this fights timer variations.
 --Everything but overfiend is a CD
 --I don't want to use a countdown on something thats 47-56 like allure or 52-70 like felburst
-local countdownWroughtChaos			= mod:NewCountdownFades("AltTwo5", 184265)
-local countdownNetherBanish			= mod:NewCountdown(61.9, 186961)
-local countdownDemonicFeedback		= mod:NewCountdown("Alt35", 186961)
-local countdownDeathBrand			= mod:NewCountdown("AltTwo42", 183828)
-local countdownShackledTorment		= mod:NewCountdown("AltTwo42", 184931, "-Tank")
+local countdownWroughtChaos			= mod:NewCountdownFades("AltTwo5", 184265, nil, nil, 3)
+local countdownNetherBanish			= mod:NewCountdown(61.9, 186961, nil, nil, 3)
+local countdownDemonicFeedback		= mod:NewCountdown("Alt35", 186961, nil, nil, 3)
+local countdownDeathBrand			= mod:NewCountdown("AltTwo42", 183828, nil, nil, 3)
+local countdownShackledTorment		= mod:NewCountdown("AltTwo42", 184931, "-Tank", nil, 3)
 local countdownSeethingCorruption	= mod:NewCountdown(61.9, 190506)
 local countdownSourceofChaos		= mod:NewCountdown("Alt35", 190703, "Tank")
 
