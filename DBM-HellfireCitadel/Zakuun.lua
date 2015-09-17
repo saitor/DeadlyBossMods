@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1391, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14486 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14504 $"):sub(12, -3))
 mod:SetCreatureID(89890)
 mod:SetEncounterID(1777)
 mod:SetZone()
@@ -53,7 +53,7 @@ local timerSoulCleaveCD					= mod:NewNextTimer(40, 179406, nil, nil, nil, 3)
 local timerCavitationCD					= mod:NewNextTimer(40, 181461, nil, nil, nil, 2)
 --Disarmed
 local timerDisarmCD						= mod:NewNextTimer(85.8, 179667, nil, nil, nil, 6)
-local timerSeedsofDestructionCD			= mod:NewNextCountTimer(14.5, 181508, nil, nil, nil, 3)--14.5-16
+local timerSeedsofDestructionCD			= mod:NewNextCountTimer(14.5, 181508, nil, nil, nil, 3, nil, DBM_CORE_DEADLY_ICON)--14.5-16
 
 --local berserkTimer					= mod:NewBerserkTimer(360)
 

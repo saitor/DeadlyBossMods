@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1394, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14495 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14504 $"):sub(12, -3))
 mod:SetCreatureID(90269)
 mod:SetEncounterID(1784)
 mod:SetZone()
@@ -81,7 +81,7 @@ mod:AddTimerLine(SCENARIO_STAGE:format(2))--Stage Two: Contempt
 local timerTaintedShadowsCD					= mod:NewNextTimer(5, 180533, nil, "Tank", nil, 5)
 local timerFontofCorruptionCD				= mod:NewNextTimer(19.6, 180526, nil, nil, nil, 3)
 ----Ancient Harbinger
-local timerHarbingersMendingCD				= mod:NewCDTimer(11, 180025, nil, nil, nil, 4)
+local timerHarbingersMendingCD				= mod:NewCDTimer(11, 180025, nil, nil, nil, 4, nil, DBM_CORE_INTERRUPT_ICON)
 mod:AddTimerLine(SCENARIO_STAGE:format(3))--Stage Three: Malice
 local timerBulwarkoftheTyrantCD				= mod:NewNextCountTimer(10, 180600)
 local timerGaveloftheTyrantCD				= mod:NewNextCountTimer(10, 180608)
