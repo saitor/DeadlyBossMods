@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14497 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14505 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -101,7 +101,7 @@ local specWarnTwistedDarkness		= mod:NewSpecialWarningSwitchCount(190821, "Range
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
 local timerDoomfireCD				= mod:NewCDTimer(42.1, 182826, nil, nil, nil, 1)--182826 cast, 182879 fixate. Doomfire only fixates ranged, but ALL dps switch to it.
 local timerAllureofFlamesCD			= mod:NewCDTimer(47.5, 183254, nil, nil, nil, 2)
-local timerFelBurstCD				= mod:NewCDTimer(52, 183817, nil, nil, 2, 3)
+local timerFelBurstCD				= mod:NewCDTimer(52, 183817, nil, nil, 2, 3, nil, DBM_CORE_DEADLY_ICON)
 local timerDeathbrandCD				= mod:NewCDCountTimer(42.5, 183828, nil, nil, nil, 1)--Everyone, for tanks/healers to know when debuff/big hit, for dps to know add coming
 local timerDesecrateCD				= mod:NewCDTimer(27, 185590, nil, nil, 2, 2)
 ----Hellfire Deathcaller
