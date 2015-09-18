@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1372, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14504 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14506 $"):sub(12, -3))
 mod:SetCreatureID(90199)
 mod:SetEncounterID(1783)
 mod:SetZone()
@@ -327,8 +327,8 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 181295 then
 		if args:IsPlayer() then
 			if self:IsMythic() then
-				timerDigest:Start(30)
-				countdownDigest:Start(30)
+				timerDigest:Start(35)
+				countdownDigest:Start(35)
 			else
 				timerDigest:Start()
 				countdownDigest:Start()
