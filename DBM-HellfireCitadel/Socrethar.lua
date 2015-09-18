@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1427, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14504 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14511 $"):sub(12, -3))
 mod:SetCreatureID(92330)
 mod:SetEncounterID(1794)
 mod:SetZone()
@@ -67,7 +67,7 @@ local specWarnEternalHunger			= mod:NewSpecialWarningRun(188666, nil, nil, nil, 
 local yellEternalHunger				= mod:NewYell(188666, nil, false)
 
 --Soulbound Construct
-local timerReverberatingBlowCD		= mod:NewCDCountTimer(17, 180008, nil, nil, nil, 5)--Seems changed to 17, formerly 11, review in later tests/live
+local timerReverberatingBlowCD		= mod:NewCDCountTimer(17, 180008, nil, nil, nil, 5, nil, DBM_CORE_TANK_ICON)--Seems changed to 17, formerly 11, review in later tests/live
 local timerFelPrisonCD				= mod:NewCDTimer(29, 182994, nil, nil, nil, 3)--29-33
 local timerVolatileFelOrbCD			= mod:NewCDTimer(23, 180221, nil, nil, nil, 3)
 local timerFelChargeCD				= mod:NewCDTimer(23, 182051, nil, nil, nil, 3)
