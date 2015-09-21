@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Brew", "DBM-WorldEvents", 1)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14530 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14531 $"):sub(12, -3))
 --mod:SetCreatureID(15467)
 --mod:SetModelID(15879)
 mod:SetReCombatTime(10)
@@ -74,6 +74,11 @@ function mod:ZONE_CHANGED_NEW_AREA()
 		if true_Z == 27 or true_Z == 4 then--Dun Morogh, Durotar
 			setDialog(self, true)
 		else
+			setDialog(self)
+		end
+	else
+		--Even if event isn't active. If a sound option was stored, restore it
+		if self.Options.SoundOption then
 			setDialog(self)
 		end
 	end
