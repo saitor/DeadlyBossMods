@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14535 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14536 $"):sub(12, -3)),
 	DisplayVersion = "6.2.12 alpha", -- the string that is shown as version
 	ReleaseRevision = 14486 -- the revision of the latest stable version that is available
 }
@@ -9499,7 +9499,7 @@ do
 				self:AddMsg(DBM_CORE_VOICE_PACK_OUTDATED)
 				SWFilterDisabed = self.VoiceVersions[value]--Set disable to version on current voice pack
 			else
-				SWFilterDisabed = 3
+				SWFilterDisabed = 5
 			end
 		end
 	end
