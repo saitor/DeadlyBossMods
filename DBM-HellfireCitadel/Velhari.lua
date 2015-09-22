@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1394, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14534 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14535 $"):sub(12, -3))
 mod:SetCreatureID(90269)
 mod:SetEncounterID(1784)
 mod:SetZone()
@@ -395,7 +395,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
 		end
 		specWarnAncientEnforcer:Show()
 		if self:IsMythic() then
-			timerEnforcersOnslaughtCD:Start(13.5)
+			timerEnforcersOnslaughtCD:Start(13)
 		else
 			timerEnforcersOnslaughtCD:Start()
 		end
