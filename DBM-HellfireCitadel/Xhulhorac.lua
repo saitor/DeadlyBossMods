@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1447, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14511 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14551 $"):sub(12, -3))
 mod:SetCreatureID(93068)
 mod:SetEncounterID(1800)
 mod:SetZone()
@@ -254,6 +254,18 @@ function mod:SPELL_CAST_START(args)
 			if UnitExists(bossUnitID) and UnitGUID(bossUnitID) == args.sourceGUID and UnitDetailedThreatSituation("player", bossUnitID) then--We are highest threat target
 				specWarnWitheringGaze:Show()--So show tank warning
 				break
+			end
+		end
+		local elapsed, total = timerBlackHoleCD:GetTime(self.vb.blackHoleCount+1)
+		local remaining = total - elapsed
+		if remaining < 10.5 then--Black hole is delayed by Withering Gaze
+			timerBlackHoleCD:Cancel()
+			if total == 0 then--Timer had already experted, start new one for 10 seconds
+				timerBlackHoleCD:Start(10.5, self.vb.blackHoleCount+1)
+			else
+				local extend = 10.5 - remaining
+				DBM:Debug("experimental timer extend firing for Black Hole. Extend amount: "..extend)
+				timerBlackHoleCD:Update(elapsed, total+extend, self.vb.blackHoleCount+1)
 			end
 		end
 	elseif spellId == 186546 then
