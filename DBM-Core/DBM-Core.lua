@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14547 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14548 $"):sub(12, -3)),
 	DisplayVersion = "6.2.12 alpha", -- the string that is shown as version
 	ReleaseRevision = 14486 -- the revision of the latest stable version that is available
 }
@@ -9736,21 +9736,13 @@ do
 
 	function timerPrototype:GetTime(...)
 		local id = self.id..pformat((("\t%s"):rep(select("#", ...))), ...)
-		DBM:Debug(id, 2)
 		local bar = DBM.Bars:GetBar(id)
-		if bar then
-			DBM:Debug("Bar Valid", 2)
-		end
 		return bar and (bar.totalTime - bar.timer) or 0, (bar and bar.totalTime) or 0
 	end
 	
 	function timerPrototype:GetRemaining(...)
 		local id = self.id..pformat((("\t%s"):rep(select("#", ...))), ...)
-		DBM:Debug(id, 2)
 		local bar = DBM.Bars:GetBar(id)
-		if bar then
-			DBM:Debug("Bar Valid", 2)
-		end
 		return bar and bar.timer or 0
 	end
 
@@ -9770,7 +9762,6 @@ do
 			self:Start(totalTime, ...)
 		end
 		local id = self.id..pformat((("\t%s"):rep(select("#", ...))), ...)
-		DBM:Debug(id, 2)
 		return DBM.Bars:UpdateBar(id, elapsed, totalTime)
 	end
 
