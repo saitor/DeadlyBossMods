@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14539 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14570 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -1127,7 +1127,9 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		--Begin phase 2
 		warnPhase2:Show()
 		voicePhaseChange:Play("ptwo")
-		timerWroughtChaosCD:Start(6)
+		if not self:IsFaceroll() then
+			timerWroughtChaosCD:Start(6)
+		end
 		timerDeathbrandCD:Start(35, self.vb.deathBrandCount+1)--35-39
 		countdownDeathBrand:Start(35)
 		timerAllureofFlamesCD:Start(40.5)--40-45

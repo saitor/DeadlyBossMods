@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14569 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14570 $"):sub(12, -3)),
 	DisplayVersion = "6.2.13 alpha", -- the string that is shown as version
 	ReleaseRevision = 14565 -- the revision of the latest stable version that is available
 }
@@ -6945,6 +6945,14 @@ end
 function bossModPrototype:IsLFR()
 	local diff = DBM:GetCurrentInstanceDifficulty()
 	if diff == "lfr" or diff == "lfr25" then
+		return true
+	end
+	return false
+end
+
+function bossModPrototype:IsFaceroll()
+	local diff = DBM:GetCurrentInstanceDifficulty()
+	if diff == "normal" or diff == "lfr" then
 		return true
 	end
 	return false
