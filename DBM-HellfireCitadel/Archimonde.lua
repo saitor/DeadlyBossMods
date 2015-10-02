@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14571 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14575 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -89,7 +89,7 @@ local specWarnRainofChaos			= mod:NewSpecialWarningCount(189953, nil, nil, nil, 
 --Mythic
 local specWarnDarkConduitSoon		= mod:NewSpecialWarningSoon(190394, "Ranged", nil, nil, 1, 2)
 local specWarnSeethingCorruption	= mod:NewSpecialWarningCount(190506, nil, nil, nil, 2, 2)
-local specWarnMarkOfLegion			= mod:NewSpecialWarningYouCount(187050)--Somehow i suspect this replaces fel burst. It's basically same mechanic, but on multiple people and slightly larger
+local specWarnMarkOfLegion			= mod:NewSpecialWarningYouCount(187050)
 local yellMarkOfLegion				= mod:NewFadesYell(187050, 28836)
 local yellMarkOfLegionPoS			= mod:NewPosYell(187050, 28836)
 local specWarnSourceofChaosYou		= mod:NewSpecialWarningYou(190703)
