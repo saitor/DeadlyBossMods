@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1394, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14565 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14572 $"):sub(12, -3))
 mod:SetCreatureID(90269)
 mod:SetEncounterID(1784)
 mod:SetZone()
@@ -404,7 +404,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
 			end
 			specWarnAncientHarbinger:Show()
 			voiceHarbinger:Play("bigmob")
-			timerHarbingersMendingCD:Start(19)--VERIFY
+			timerHarbingersMendingCD:Start(17)--VERIFY
 		elseif npc == AncientSovereign then
 			if DBM.BossHealth:IsShown() then
 				DBM.BossHealth:AddBoss(90272, AncientSovereign)
