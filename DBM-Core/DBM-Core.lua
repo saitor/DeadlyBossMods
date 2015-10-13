@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14592 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14593 $"):sub(12, -3)),
 	DisplayVersion = "6.2.13 alpha", -- the string that is shown as version
 	ReleaseRevision = 14565 -- the revision of the latest stable version that is available
 }
@@ -7903,6 +7903,18 @@ function bossModPrototype:IsTanking(unit, boss)
 		return true
 	end
 	return false
+end
+
+function bossModPrototype:GetNumAliveTanks()
+	if not IsInGroup() then return 1 end--Solo raid, you're the "tank"
+	local count = 0
+	local uId = (IsInRaid() and "raid") or "party"
+	for i = 1, DBM:GetNumRealGroupMembers() do
+		if UnitGroupRolesAssigned(uId..i) == "TANK" and not UnitIsDeadOrGhost(uId..i) then
+			count = count + 1
+		end
+	end
+	return count
 end
 
 ----------------------------
