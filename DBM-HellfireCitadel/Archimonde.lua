@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14602 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14604 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -440,6 +440,7 @@ local function breakShackles(self, spellName)
 		end
 	end
 	if self.Options.HudMapOnShackledTorment2 and self:IsMythic() then
+		DBMHudMap:RegisterRangeMarkerOnPartyMember(1849642, "party", playerName, 0.9, 30, nil, nil, nil, 1, nil, false):Appear()
 		for i = 1, #shacklesTargets do
 			local name = shacklesTargets[i]
 			if not name then break end
@@ -830,10 +831,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			self:Schedule(0.5, breakShackles, self, args.spellName)
 		end
-		if self.Options.HudMapOnShackledTorment2 and self:IsMythic() then
-			--Set a dot on player so they can find their orientation to circles
-			DBMHudMap:RegisterRangeMarkerOnPartyMember(1849642, "party", args.destName, 0.9, 30, nil, nil, nil, 1, nil, false):Appear()
-		end
 	elseif spellId == 186123 then--Wrought Chaos
 		if self:AntiSpam(3, 3) then
 			self.vb.wroughtWarned = self.vb.wroughtWarned + 1
@@ -1046,7 +1043,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		if self.Options.HudMapOnShackledTorment2 and self:IsMythic() then
 			DBMHudMap:FreeEncounterMarkerByTarget(spellId, args.destName)
 			if self.vb.unleashedCountRemaining == 0 then--none remaining, remove players shackle
-				DBMHudMap:FreeEncounterMarkerByTarget(1849642, args.destName)
+				DBMHudMap:FreeEncounterMarkerByTarget(1849642, playerName)
 			end
 		end
 	elseif spellId == 187050 then
