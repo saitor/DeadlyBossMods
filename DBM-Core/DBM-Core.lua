@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14605 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14606 $"):sub(12, -3)),
 	DisplayVersion = "6.2.13 alpha", -- the string that is shown as version
 	ReleaseRevision = 14565 -- the revision of the latest stable version that is available
 }
@@ -5225,7 +5225,7 @@ do
 	end
 
 	function DBM:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
-		if IsInInstance() and InCombatLockdown() then--Too many 5 mans/old raids don't properly return encounterinprogress
+		if IsEncounterInProgress() or (IsInInstance() and InCombatLockdown()) then--Too many 5 mans/old raids don't properly return encounterinprogress
 			local targetName = target or "nil"
 			self:Debug("CHAT_MSG_MONSTER_YELL from "..npc.." while looking at "..targetName, 2)
 		end
