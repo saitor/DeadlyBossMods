@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14613 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14614 $"):sub(12, -3)),
 	DisplayVersion = "6.2.14 alpha", -- the string that is shown as version
 	ReleaseRevision = 14606 -- the revision of the latest stable version that is available
 }
@@ -414,7 +414,10 @@ local bannedMods = { -- a list of "banned" (meaning they are replaced by another
 -----------------
 --  Libraries  --
 -----------------
-local LL = LibStub("LibLatency")
+local LL
+if LibStub("LibLatency", true) then
+	LL = LibStub("LibLatency")
+end
 
 
 --------------------------------------------------------
