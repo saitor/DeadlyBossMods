@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14612 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14613 $"):sub(12, -3)),
 	DisplayVersion = "6.2.14 alpha", -- the string that is shown as version
 	ReleaseRevision = 14606 -- the revision of the latest stable version that is available
 }
@@ -1875,6 +1875,10 @@ do
 			local timer = tonumber(cmd:sub(5)) or 10
 			Pull(timer)
 		elseif cmd:sub(1, 3) == "lag" then
+			if not LL then
+				DBM:AddMsg(DBM_CORE_UPDATE_REQUIRES_RELAUNCH)
+				return
+			end
 			LL:RequestLatency()
 			DBM:AddMsg(DBM_CORE_LAG_CHECKING)
 			C_TimerAfter(5, function() DBM:ShowLag() end)
@@ -2177,13 +2181,16 @@ do
 			sortLag[i] = nil
 		end
 	end
-	
-	LL:Register("DBM", function(homelag, worldlag, sender, channel)
-		if sender and raid[sender] then
-			raid[sender].homelag = homelag
-			raid[sender].worldlag = worldlag
-		end
-	end)
+	if LL then
+		LL:Register("DBM", function(homelag, worldlag, sender, channel)
+			if sender and raid[sender] then
+				raid[sender].homelag = homelag
+				raid[sender].worldlag = worldlag
+			end
+		end)
+	else
+		self:AddMsg(DBM_CORE_UPDATE_REQUIRES_RELAUNCH)
+	end
 
 end
 
