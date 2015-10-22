@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14614 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14615 $"):sub(12, -3)),
 	DisplayVersion = "6.2.14 alpha", -- the string that is shown as version
 	ReleaseRevision = 14606 -- the revision of the latest stable version that is available
 }
@@ -8792,7 +8792,7 @@ do
 				end
 			end
 			if DBM.Options.DontPlayCountdowns then return end
-			if not path1 then
+			if not path1 or not path2 or not path3 then
 				DBM:Debug("Voice cache not built at time of countdownProtoType:Start. On fly caching.")
 				DBM:BuildVoiceCountdownCache()
 			end
@@ -8810,6 +8810,7 @@ do
 				maxCount = voice1max
 				path = path1
 			end
+			if not path then return end--Should not happen but apparently it does somehow
 			if self.type == "Countout" then
 				for i = 1, timer do
 					if i < maxCount then
