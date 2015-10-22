@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14617 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14618 $"):sub(12, -3)),
 	DisplayVersion = "6.2.14 alpha", -- the string that is shown as version
 	ReleaseRevision = 14606 -- the revision of the latest stable version that is available
 }
@@ -8810,7 +8810,10 @@ do
 				maxCount = voice1max
 				path = path1
 			end
-			if not path then return end--Should not happen but apparently it does somehow
+			if not path then--Should not happen but apparently it does somehow
+				DBM:Debug("Voice path failed in countdownProtoType:Start.")
+				return
+			end
 			if self.type == "Countout" then
 				for i = 1, timer do
 					if i < maxCount then
