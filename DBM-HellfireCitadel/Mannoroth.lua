@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1395, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14642 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14643 $"):sub(12, -3))
 mod:SetCreatureID(91349)--91305 Fel Iron Summoner
 mod:SetEncounterID(1795)
 mod:SetZone()
@@ -80,7 +80,7 @@ local timerCurseofLegionCD			= mod:NewNextCountTimer(64.8, 181275, nil, nil, nil
 local timerMarkofDoomCD				= mod:NewCDTimer(31.5, 181099, nil, "-Tank", nil, 3)
 --local timerShadowBoltVolleyCD		= mod:NewCDTimer(12, 181126, nil, "-Healer", nil, 4)
 ----Fel Imps
-local timerFelImplosionCD			= mod:NewNextCountTimer(46, 181255, nil, nil, nil, 1)
+local timerFelImplosionCD			= mod:NewNextCountTimer(46, 181255, nil, nil, nil, 1, nil, DBM_CORE_DAMAGE_ICON)
 ----Infernals
 local timerInfernoCD				= mod:NewNextCountTimer(107, 181180, nil, nil, nil, 1)
 ----Gul'dan
