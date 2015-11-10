@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14647 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14648 $"):sub(12, -3)),
 	DisplayVersion = "6.2.15 alpha", -- the string that is shown as version
 	ReleaseRevision = 14621 -- the revision of the latest stable version that is available
 }
@@ -6727,7 +6727,6 @@ end
 
 function DBM:FlashClientIcon()
 	if self:AntiSpam(5, "FLASH") then
-		self:Debug("FlashClientIcon fired", 2)
 		FlashClientIcon()
 	end
 end
