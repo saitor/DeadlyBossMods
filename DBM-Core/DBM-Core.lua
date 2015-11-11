@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14649 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14650 $"):sub(12, -3)),
 	DisplayVersion = "6.2.15 alpha", -- the string that is shown as version
 	ReleaseRevision = 14621 -- the revision of the latest stable version that is available
 }
@@ -1927,6 +1927,11 @@ do
 					local m1 = DBMHudMap:RegisterRangeMarkerOnPartyMember(12345, "party", playerName, 0.1, hudDuration, 0, 1, 0, 1, nil, false):Appear()
 					local m2 = DBMHudMap:RegisterRangeMarkerOnPartyMember(12345, "party", UnitName(uId), 0.75, hudDuration, color2.r, color2.g, color2.b, 1, nil, false):Appear()
 					m2:EdgeTo(m1, nil, hudDuration, 0, 1, 0, 1)
+					success = true
+				elseif hudType:upper() == "DOT" then
+					local _, targetClass = UnitClass(uId)
+					local color2 = RAID_CLASS_COLORS[targetClass]
+					BMHudMap:RegisterRangeMarkerOnPartyMember(12345, "party", UnitName(uId), 0.75, hudDuration, color2.r, color2.g, color2.b, 1, nil, false):Appear()
 					success = true
 				elseif hudType:upper() == "GREEN" then
 					DBMHudMap:RegisterRangeMarkerOnPartyMember(12345, "highlight", UnitName(uId), 3.5, hudDuration, 0, 1, 0, 0.5, nil, false):Pulse(0.5, 0.5)
