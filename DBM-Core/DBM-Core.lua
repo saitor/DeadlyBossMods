@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14651 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14652 $"):sub(12, -3)),
 	DisplayVersion = "6.2.15 alpha", -- the string that is shown as version
 	ReleaseRevision = 14621 -- the revision of the latest stable version that is available
 }
@@ -9454,9 +9454,9 @@ do
 			elseif announceType == "taunt" or announceType == "dispel" or announceType == "interrupt" or announceType == "interruptcount" then
 				catType = "announcerole"
 			end
-			obj.voiceOptionId = hasVoice and "Voice"..spellId or nil
 			self:AddSpecialWarningOption(obj.option, optionDefault, runSound, catType)
 		end
+		obj.voiceOptionId = hasVoice and "Voice"..spellId or nil
 		tinsert(self.specwarns, obj)
 		return obj
 	end
