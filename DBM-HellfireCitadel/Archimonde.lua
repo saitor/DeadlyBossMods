@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14649 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14659 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -331,7 +331,7 @@ local function showMarkOfLegion(self, spellName)
 		if expires then
 			local debuffTime = expires - GetTime()
 			local roundedTime = math.floor(debuffTime+0.5)
-			if roundedTime == 5 then
+			if i == 1 then
 				if self.Options.SetIconOnMarkOfLegion2 then
 					self:SetIcon(name, 1)
 				end
@@ -343,7 +343,7 @@ local function showMarkOfLegion(self, spellName)
 					yellMarkOfLegionPoS:Yell(roundedTime, 1, 1)
 					voiceMarkOfLegion:Play("mm1")
 				end
-			elseif roundedTime == 7 then
+			elseif i == 2 then
 				if self.Options.SetIconOnMarkOfLegion2 then
 					self:SetIcon(name, 2)
 				end
@@ -355,7 +355,7 @@ local function showMarkOfLegion(self, spellName)
 					yellMarkOfLegionPoS:Yell(roundedTime, 2, 2)
 					voiceMarkOfLegion:Play("mm2")
 				end
-			elseif roundedTime == 9 then
+			elseif i == 3 then
 				if self.Options.SetIconOnMarkOfLegion2 then
 					self:SetIcon(name, 3)
 				end
