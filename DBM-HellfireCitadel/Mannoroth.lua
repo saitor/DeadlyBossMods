@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1395, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14654 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14658 $"):sub(12, -3))
 mod:SetCreatureID(91349)--91305 Fel Iron Summoner
 mod:SetEncounterID(1795)
 mod:SetZone()
@@ -621,13 +621,13 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc)
 				timerWrathofGuldanCD:Start(10)
 			end
 			--Detect when adds timers will reset (by 181301) before they come off cd, and cancel them early
-			if timerFelImplosionCD:GetRemaining(self.vb.impCount+1) > 15 then
+			if timerFelImplosionCD:GetRemaining(self.vb.impCount+1) > 10 then
 				timerFelImplosionCD:Cancel()
 			end
-			if timerInfernoCD:GetRemaining(self.vb.infernalCount+1) > 15 then
+			if timerInfernoCD:GetRemaining(self.vb.infernalCount+1) > 10 then
 				timerInfernoCD:Cancel()
 			end
-			if timerCurseofLegionCD:GetRemaining(self.vb.doomlordCount+1) > 15 then
+			if timerCurseofLegionCD:GetRemaining(self.vb.doomlordCount+1) > 10 then
 				timerCurseofLegionCD:Cancel()
 			end
 		elseif self.vb.phase == 4 then
