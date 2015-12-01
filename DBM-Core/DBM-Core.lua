@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14678 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14679 $"):sub(12, -3)),
 	DisplayVersion = "6.2.16 alpha", -- the string that is shown as version
 	ReleaseRevision = 14672 -- the revision of the latest stable version that is available
 }
@@ -10585,6 +10585,10 @@ end
 
 function bossModPrototype:IsInCombat()
 	return self.inCombat
+end
+
+function bossModPrototype:IsAlive()
+	return not UnitIsDeadOrGhost("player")
 end
 
 function bossModPrototype:SetMinCombatTime(t)

@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14677 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14679 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -839,7 +839,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 186123 then--Wrought Chaos
 		if self:AntiSpam(3, 3) then
 			self.vb.wroughtWarned = self.vb.wroughtWarned + 1
-			if self:IsMythic() then
+			if self:IsMythic() and self:AntiSpam(20, 7) and self:IsAlive() then
 				--Only warn once on mythic instead of spamming it, since you always get all of them
 				specWarnWroughtChaos:Show()
 				voiceWroughtChaos:Play("186123")
