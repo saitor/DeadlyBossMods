@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14680 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14681 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -607,8 +607,8 @@ function mod:OnCombatStart(delay)
 	self.vb.overfiendCount = 0
 	playerBanished = false
 	timerDoomfireCD:Start(5.1-delay)
-	timerDeathbrandCD:Start(15.5-delay, 1)
-	countdownDeathBrand:Start(15.5-delay)
+	timerDeathbrandCD:Start(15-delay, 1)
+	countdownDeathBrand:Start(15-delay)
 	timerAllureofFlamesCD:Start(30-delay)
 	warnFelBurstSoon:Schedule(35-delay)
 	timerFelBurstCD:Start(40-delay)
