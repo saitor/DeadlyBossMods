@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1236, "DBM-Party-WoD", 4, 558)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14683 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14684 $"):sub(12, -3))
 mod:SetCreatureID(80805, 80816, 80808)
 mod:SetEncounterID(1748)
 mod:SetZone()
@@ -54,10 +54,11 @@ function mod:SPELL_CAST_START(args)
 		specWarnFlamingSlash:Show()
 		if self:IsNormal() then
 			timerFlamingSlashCD:Start(41.5)
+			countdownFlamingSlash:Start(41.5)
 		else
 			timerFlamingSlashCD:Start()
+			countdownFlamingSlash:Start()
 		end
-		countdownFlamingSlash:Start()
 	elseif spellId == 163390 then
 		warnOgreTraps:Show()
 		specWarnOgreTraps:Show()
