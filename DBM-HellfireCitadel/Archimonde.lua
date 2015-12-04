@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14682 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14685 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -767,7 +767,7 @@ function mod:SPELL_CAST_START(args)
 		if cooldown then
 			timerTwistedDarknessCD:Start(cooldown, self.vb.twistedDarknessCast+1)
 		end
-	elseif spellId == 186663 then
+	elseif spellId == 186663 and self:AntiSpam(2, 9) then
 		specWarnFlamesOfArgus:Show(args.sourceName)
 		voiceFlamesofArgus:Play("kickcast")
 	elseif spellId == 188514 then
@@ -1187,7 +1187,6 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 			countdownShackledTorment:Start(55)
 		else
 			playerBanished = true
-			--All need work, actual logs would be nice
 			table.wipe(shacklesTargets)--Just to reduce infoframe overhead
 			timerWroughtChaosCD:Cancel()
 			timerDarkConduitCD:Start(8, 1)
