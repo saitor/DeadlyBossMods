@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14686 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14687 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -528,7 +528,7 @@ local function updateAllTimers(self, ICD, AllureSpecial)
 			timerAllureofFlamesCD:Cancel()
 			timerAllureofFlamesCD:Update(elapsed, total+extend)
 		end
-		if timerShackledTormentCD:GetRemaining(self.vb.tormentCast+1) < ICD then
+		if not AllureSpecial and timerShackledTormentCD:GetRemaining(self.vb.tormentCast+1) < ICD then
 			local elapsed, total = timerShackledTormentCD:GetTime(self.vb.tormentCast+1)
 			local extend = ICD - (total-elapsed)
 			DBM:Debug("timerShackledTormentCD extended by: "..extend, 2)
@@ -701,7 +701,7 @@ function mod:SPELL_CAST_START(args)
 			timerShackledTormentCD:Start(31, self.vb.tormentCast+1)
 			countdownShackledTorment:Start(31)
 		end
-		updateAllTimers(self, 7)
+		updateAllTimers(self, 7, true)
 	elseif spellId == 187180 then
 		self.vb.demonicCount = self.vb.demonicCount + 1
 		if not playerBanished or not self.Options.FilterOtherPhase then
