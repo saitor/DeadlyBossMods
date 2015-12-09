@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14691 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14692 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -319,6 +319,7 @@ local function setDemonicFeedback(self)
 	end
 end
 
+local iconedAssignments = {RAID_TARGET_1, RAID_TARGET_2, RAID_TARGET_3, RAID_TARGET_4}
 local function showMarkOfLegion(self, spellName)
 	--5,7,9,11 seconds. Sorted lowest to highest
 	--5, 7 on melee, 9, 11 on ranged (if enough alive anyways)
@@ -346,7 +347,7 @@ local function showMarkOfLegion(self, spellName)
 			end
 			local message = position.."-"..DBM_CORE_LEFT
 			if self.vb.MarkBehavior == "Numbered" then
-				message = number
+				message = iconedAssignments[number]
 			end
 			if self.Options.SetIconOnMarkOfLegion2 then
 				self:SetIcon(name, number)
@@ -370,7 +371,7 @@ local function showMarkOfLegion(self, spellName)
 			end
 			local message = position.."-"..DBM_CORE_RIGHT
 			if self.vb.MarkBehavior == "Numbered" then
-				message = number
+				message = iconedAssignments[number]
 			end
 			if self.Options.SetIconOnMarkOfLegion2 then
 				self:SetIcon(name, number)
@@ -394,7 +395,7 @@ local function showMarkOfLegion(self, spellName)
 			end
 			local message = position.."-"..DBM_CORE_LEFT
 			if self.vb.MarkBehavior == "Numbered" then
-				message = number
+				message = iconedAssignments[number]
 			end
 			if self.Options.SetIconOnMarkOfLegion2 then
 				self:SetIcon(name, number)
@@ -418,7 +419,7 @@ local function showMarkOfLegion(self, spellName)
 			end
 			local message = position.."-"..DBM_CORE_RIGHT
 			if self.vb.MarkBehavior == "Numbered" then
-				message = number
+				message = iconedAssignments[number]
 			end
 			if self.Options.SetIconOnMarkOfLegion2 then
 				self:SetIcon(name, number)
