@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14701 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14702 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -494,9 +494,9 @@ local function breakShackles(self, spellName)
 			if not name then break end
 			if not DBM:GetRaidUnitId(name) then break end
 			if playerHasShackle then
-				DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "highlight", name, 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(spellName, name)
+				DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "highlight", name, 26, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(spellName, name)
 			else
-				DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "highlight", name, 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(nil, name)
+				DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "highlight", name, 26, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(nil, name)
 			end
 		end
 	end
