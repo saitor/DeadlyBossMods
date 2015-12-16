@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14716 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14717 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -206,7 +206,7 @@ mod.vb.MarkBehavior = "Numbered"
 local legionTimers = {20, 63, 60, 60, 48, 46, 47}--All verified by log
 local darkConduitTimers = {8, 123, 95, 56, 52}-- All verified by log
 local infernalTimers = {35, 62.5, 63, 55, 68, 41}--All verified by log
-local sourceofChaosTimers = {49, 58, 76, 78}--All verified by log
+local sourceofChaosTimers = {49, 58, 75.5, 78}--All verified by log
 local twistedDarknessTimers = {75, 78, 42, 40, 72}--All verified by log
 local seethingCorruptionTimers = {61, 58, 52, 70, 30, 41}--All verified by log
 --Range frame/filter shit
