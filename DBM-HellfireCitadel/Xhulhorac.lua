@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1447, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14626 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14723 $"):sub(12, -3))
 mod:SetCreatureID(93068)
 mod:SetEncounterID(1800)
 mod:SetZone()
@@ -241,7 +241,7 @@ function mod:SPELL_CAST_START(args)
 					return
 				else
 					--Not Tanking
-					if playerTanking == 1 and not UnitDebuff("player", GetSpellInfo(186135)) then--Vanguard Tank
+					if self.vb.phase >= 3 and playerTanking == 1 and not UnitDebuff("player", GetSpellInfo(186135)) then--Vanguard Tank
 						--You're the Vanguard tank and do NOT have aggro for this strike or void debuff, taunt NOW
 						local targetName = UnitName(bossUnitID.."target") or DBM_CORE_UNKNOWN
 						specWarnPhasing:Show(targetName)
@@ -260,7 +260,7 @@ function mod:SPELL_CAST_START(args)
 					return
 				else
 					--Not Tanking
-					if playerTanking == 2 and not UnitDebuff("player", GetSpellInfo(186134)) then--VoidWalker Tank
+					if self.vb.phase >= 3 and playerTanking == 2 and not UnitDebuff("player", GetSpellInfo(186134)) then--VoidWalker Tank
 						--You're the void walker tank and do NOT have aggro for this strike or fel debuff, taunt NOW
 						local targetName = UnitName(bossUnitID.."target") or DBM_CORE_UNKNOWN
 						specWarnPhasing:Show(targetName)
