@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1395, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14726 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14727 $"):sub(12, -3))
 mod:SetCreatureID(91349)--91305 Fel Iron Summoner
 mod:SetEncounterID(1795)
 mod:SetZone()
@@ -531,7 +531,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				if #guldanTargets == 5 then
 					setWrathIcons(self)
 				else
-					self:Schedule(0.5, setWrathIcons, self)
+					self:Schedule(1, setWrathIcons, self)
 				end
 			else
 				self:SetIcon(args.destName, icon)
