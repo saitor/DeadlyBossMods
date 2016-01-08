@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14725 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14730 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -173,7 +173,6 @@ mod:AddHudMapOption("HudMapOnShackledTorment2", 184964, true)
 mod:AddHudMapOption("HudMapOnWrought", 184265)
 mod:AddHudMapOption("HudMapMarkofLegion2", 187050, true)
 mod:AddBoolOption("ExtendWroughtHud3", true)
---mod:AddBoolOption("AlternateHudLine", false)
 mod:AddBoolOption("NamesWroughtHud", true)
 mod:AddBoolOption("FilterOtherPhase", true)
 mod:AddInfoFrameOption(184964)
@@ -530,7 +529,11 @@ local function breakShackles(self, spellName)
 			if not name then break end
 			if not DBM:GetRaidUnitId(name) then break end
 			if playerHasShackle then
-				DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "highlight", name, 26, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(spellName, name)
+				if name == playerName then
+					DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "highlight", name, 25, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(spellName, name)
+				else
+					DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "highlight", name, 26, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(spellName, name)
+				end
 			else
 				DBMHudMap:RegisterStaticMarkerOnPartyMember(184964, "highlight", name, 26, nil, 0, 1, 0, 0.3):Appear():RegisterForAlerts(nil, name)
 			end
@@ -1000,17 +1003,9 @@ function mod:SPELL_AURA_APPLIED(args)
 					end
 					--create line
 					if self.Options.ExtendWroughtHud3 then
-					--	if self.Options.AlternateHudLine then
-					--		DBMHudMap:AddEdge(0, 1, 0, 0.5, time, args.sourceName, args.destName, nil, nil, nil, nil, 25, "beam1", true)
-					--	else
-							DBMHudMap:AddEdge(0, 1, 0, 0.5, time, args.sourceName, args.destName, nil, nil, nil, nil, 135, nil, true)
-					--	end
+						DBMHudMap:AddEdge(0, 1, 0, 0.5, time, args.sourceName, args.destName, nil, nil, nil, nil, 135, nil, true)
 					else
-					--	if self.Options.AlternateHudLine then
-					--		DBMHudMap:AddEdge(0, 1, 0, 0.5, time, args.sourceName, args.destName, nil, nil, nil, nil, 25, "beam1")
-					--	else
-							DBMHudMap:AddEdge(0, 1, 0, 0.5, time, args.sourceName, args.destName, nil, nil, nil, nil, 135)
-					--	end
+						DBMHudMap:AddEdge(0, 1, 0, 0.5, time, args.sourceName, args.destName, nil, nil, nil, nil, 135)
 					end
 				else--red lines for non player lines
 					--Create Points
@@ -1023,11 +1018,7 @@ function mod:SPELL_AURA_APPLIED(args)
 					end
 					--Create Line
 					if self.Options.ExtendWroughtHud3 then
-					--	if self.Options.AlternateHudLine then
-					--		DBMHudMap:AddEdge(1, 0, 0, 0.5, time, args.sourceName, args.destName, nil, nil, nil, nil, 25, "beam1", true)
-					--	else
-							DBMHudMap:AddEdge(1, 0, 0, 0.5, time, args.sourceName, args.destName, nil, nil, nil, nil, 135, nil, true)
-					--	end
+						DBMHudMap:AddEdge(1, 0, 0, 0.5, time, args.sourceName, args.destName, nil, nil, nil, nil, 135, nil, true)
 					else
 						DBMHudMap:AddEdge(1, 0, 0, 0.5, time, args.sourceName, args.destName, nil, nil, nil, nil, 135)
 					end
