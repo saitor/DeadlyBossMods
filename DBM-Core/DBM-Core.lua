@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14736 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14737 $"):sub(12, -3)),
 	DisplayVersion = "6.2.18 alpha", -- the string that is shown as version
 	ReleaseRevision = 14720 -- the revision of the latest stable version that is available
 }
@@ -6730,6 +6730,10 @@ function DBM:AntiSpam(time, id)
 	end
 end
 
+function DBM:GetTOC()
+	return wowTOC
+end
+
 function DBM:FlashClientIcon()
 	if self:AntiSpam(5, "FLASH") then
 		FlashClientIcon()
@@ -6738,7 +6742,7 @@ end
 
 --To speed up creating new mods.
 function DBM:FindDungeonIDs()
-	for i=1, 1000 do
+	for i=1, 2000 do
 		local dungeon = GetDungeonInfo(i)
 		if dungeon then
 			self:AddMsg(i..": "..dungeon)
@@ -6747,7 +6751,7 @@ function DBM:FindDungeonIDs()
 end
 
 function DBM:FindInstanceIDs()
-	for i=1, 1000 do
+	for i=1, 2000 do
 		local instance = EJ_GetInstanceInfo(i)
 		if instance then
 			self:AddMsg(i..": "..instance)
