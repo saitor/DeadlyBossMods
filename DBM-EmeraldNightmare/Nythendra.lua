@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1703, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14739 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14741 $"):sub(12, -3))
 mod:SetCreatureID(102672, 103160)--TODO, figure out which one
 mod:SetEncounterID(1853)
 mod:SetZone()
@@ -25,7 +25,6 @@ mod:RegisterEventsInCombat(
 
 --local specWarnTrampleNear			= mod:NewSpecialWarningClose(163101)
 --local yellTrample					= mod:NewYell(163101)
---local specWarnExpelMagicShadow		= mod:NewSpecialWarningSpell(162184, "Healer", nil, nil, nil, 2)
 
 --local timerTrampleCD				= mod:NewCDTimer(16, 163101, nil, nil, nil, 3)
 
@@ -33,9 +32,9 @@ mod:RegisterEventsInCombat(
 
 --local voiceExpelMagicFire			= mod:NewVoice(162185)
 
-mod:AddRangeFrameOption("5")
-mod:AddSetIconOption("SetIconOnMC", 163472, false)
-mod:AddHudMapOption("HudMapOnMC", 163472)
+--mod:AddRangeFrameOption("5")
+--mod:AddSetIconOption("SetIconOnMC", 163472, false)
+--mod:AddHudMapOption("HudMapOnMC", 163472)
 
 function mod:OnCombatStart(delay)
 
@@ -83,8 +82,8 @@ end
 
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 	if spellId == 205611 and destGUID == UnitGUID("player") and self:AntiSpam(2, 1) then
-		specWarnMiasma:Show()
-		voiceMiasma:Play("runaway")
+--		specWarnMiasma:Show()
+--		voiceMiasma:Play("runaway")
 	end
 end
 mod.SPELL_ABSORBED = mod.SPELL_PERIODIC_DAMAGE
