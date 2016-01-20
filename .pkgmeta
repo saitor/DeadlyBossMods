@@ -13,4 +13,8 @@ move-folders:
     DBM-Core/DBM-WorldEvents: DBM-WorldEvents
     DBM-Core/DBM-GarrisonInvasions: DBM-GarrisonInvasions
     DBM-Core/DBM-HellfireCitadel: DBM-HellfireCitadel
+    DBM-Core/DBM-Suramar: DBM-Suramar
+    DBM-Core/DBM-Party-Legion: DBM-Party-Legion
+    DBM-Core/DBM-EmeraldNightmare: DBM-EmeraldNightmare
     DBM-Core/DBM-Core: DBM-Core
+
