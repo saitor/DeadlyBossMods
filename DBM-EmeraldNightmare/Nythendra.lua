@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1703, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14760 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14761 $"):sub(12, -3))
 mod:SetCreatureID(102672)
 mod:SetEncounterID(1853)
 mod:SetZone()
@@ -67,6 +67,12 @@ function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
 	if spellId == 203552 then
 		warnHeartofSwarm:Show()
+		timerBreathCD:Cancel()
+		timerRotCD:Cancel()
+		timerVolatileRotCD:Cancel()
+		timerBreathCD:Start(2)
+		timerRotCD:Start(2)
+		timerVolatileRotCD:Start(2)
 	elseif spellId == 202977 then
 		warnBreath:Show()
 		timerBreathCD:Start()
