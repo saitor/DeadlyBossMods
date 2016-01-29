@@ -2,7 +2,7 @@ if DBM:GetTOC() < 70000 then return end
 local mod	= DBM:NewMod(1706, "DBM-Suramar", nil, 786)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14759 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14762 $"):sub(12, -3))
 mod:SetCreatureID(101417)
 mod:SetEncounterID(1849)
 mod:SetZone()
@@ -78,7 +78,7 @@ end
 
 function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
-	if spellId == 204275 then
+	if spellId == 204275 and self:AntiSpam(5, 1) then
 		specWarnArcanoslash:Show()
 		timerArcanoslashCD:Start()
 	elseif spellId == 204372 then
