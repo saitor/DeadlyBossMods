@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14763 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14764 $"):sub(12, -3)),
 	DisplayVersion = "6.2.18 alpha", -- the string that is shown as version
 	ReleaseRevision = 14720 -- the revision of the latest stable version that is available
 }
@@ -8851,7 +8851,7 @@ do
 		--TODO, maybe make this not use an entire sound object?
 		local sound5 = self:NewSound(5, true, false)
 		timer = timer or 10
-		count = count or 5
+		count = count or 4
 		spellId = spellId or 39505
 		local obj = setmetatable(
 			{
