@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14774 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14775 $"):sub(12, -3)),
 	DisplayVersion = "6.2.19 alpha", -- the string that is shown as version
 	ReleaseRevision = 14770 -- the revision of the latest stable version that is available
 }
@@ -3018,7 +3018,9 @@ end
 
 function DBM:PLAYER_LEVEL_UP()
 	playerLevel = UnitLevel("player")
-	self:SpecChanged()
+	if playerLevel < 15 and playerLevel > 9 then
+		self:SpecChanged()
+	end
 end
 
 function DBM:LoadAllModDefaultOption(modId)
