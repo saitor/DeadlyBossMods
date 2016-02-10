@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14777 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14781 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -326,7 +326,7 @@ local function showMarkOfLegion(self, spellName)
 	--MELEE, RANGED, DBM_CORE_LEFT, DBM_CORE_RIGHT (http://puu.sh/jsyr5/7014c50cb3.jpg)
 	--Melee/ranged left/right is now the default since too many users felt weak aura's were required because running to icons by icon assignments was hard.
 	warnMarkOfLegion:Show(self.vb.markOfLegionCast, table.concat(legionTargets, "<, >"))
-	if self.vb.MarkBehavior == "NoAssignment" then return end
+	if self.vb.MarkBehavior == "NoAssignment" and not self.Options.overrideMarkOfLegion then return end
 	local playerHasMark = UnitDebuff("player", spellName)
 	for i = 1, #legionTargets do
 		local name = legionTargets[i]
