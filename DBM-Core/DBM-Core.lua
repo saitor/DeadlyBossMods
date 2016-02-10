@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14778 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14779 $"):sub(12, -3)),
 	DisplayVersion = "6.2.19 alpha", -- the string that is shown as version
 	ReleaseRevision = 14770 -- the revision of the latest stable version that is available
 }
@@ -9126,7 +9126,7 @@ do
 				end)
 			end
 			if anchorFrame:IsShown() then
-				moveEnd()
+				moveEnd(self)
 			else
 				moving = true
 				anchorFrame:Show()
