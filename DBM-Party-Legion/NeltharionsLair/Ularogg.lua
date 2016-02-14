@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1665, "DBM-Party-Legion", 5, 767)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14792 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14793 $"):sub(12, -3))
 mod:SetCreatureID(91004)
 mod:SetEncounterID(1791)
 mod:SetZone()
@@ -22,8 +22,8 @@ local warnStanceofMountain			= mod:NewSpellAnnounce(198509, 2)
 local specWarnSunder				= mod:NewSpecialWarningSpell(198496, "Tank", nil, nil, 1, 2)
 local yellStrikeofMountain			= mod:NewYell(198443)
 
-local timerSunderCD					= mod:NewCDTimer(8.5, 198496, nil, "Tank", nil, 5)
-local timerStrikeCD					= mod:NewCDTimer(15.5, 198443, nil, "Tank", nil, 5)
+local timerSunderCD					= mod:NewCDTimer(8.5, 198496, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)
+local timerStrikeCD					= mod:NewCDTimer(15.5, 198443, nil, nil, nil, 3)
 
 local voiceSunder					= mod:NewVoice(198496, "Tank")--defensive
 
