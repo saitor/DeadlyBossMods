@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14795 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14796 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -176,9 +176,9 @@ mod:AddHudMapOption("HudMapMarkofLegion2", 187050, true)
 mod:AddBoolOption("ExtendWroughtHud3", true)
 mod:AddBoolOption("NamesWroughtHud", true)
 mod:AddBoolOption("FilterOtherPhase", true)
+mod:AddBoolOption("overrideMarkOfLegion", false)
 mod:AddInfoFrameOption(184964)
 mod:AddDropdownOption("MarkBehavior", {"Numbered", "LocSmallFront", "LocSmallBack", "NoAssignment"}, "Numbered", "misc")
-mod:AddBoolOption("overrideMarkOfLegion", false)
 
 mod.vb.phase = 1
 mod.vb.demonicCount = 0
