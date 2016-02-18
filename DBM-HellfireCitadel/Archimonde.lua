@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14796 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14797 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -1332,15 +1332,19 @@ function mod:OnSync(msg)
 	elseif msg == "Numbered" then
 		self.vb.MarkBehavior = "Numbered"
 		localMarkBehavior = self.Options.overrideMarkOfLegion and self.Options.MarkBehavior or self.vb.MarkBehavior
+		DBM:Debug("Numbered sync sent, using"..localMarkBehavior.." based on settings", 2)
 	elseif msg == "LocSmallFront" then
 		self.vb.MarkBehavior = "LocSmallFront"
 		localMarkBehavior = self.Options.overrideMarkOfLegion and self.Options.MarkBehavior or self.vb.MarkBehavior
+		DBM:Debug("LocSmallFront sync sent, using"..localMarkBehavior.." based on settings", 2)
 	elseif msg == "LocSmallBack" then
 		self.vb.MarkBehavior = "LocSmallBack"
 		localMarkBehavior = self.Options.overrideMarkOfLegion and self.Options.MarkBehavior or self.vb.MarkBehavior
+		DBM:Debug("LocSmallBack sync sent, using"..localMarkBehavior.." based on settings", 2)
 	elseif msg == "NoAssignment" then
 		self.vb.MarkBehavior = "NoAssignment"
 		localMarkBehavior = self.Options.overrideMarkOfLegion and self.Options.MarkBehavior or self.vb.MarkBehavior
+		DBM:Debug("NoAssignment sync sent, using"..localMarkBehavior.." based on settings", 2)
 	end
 end
 
