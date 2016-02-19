@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1395, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14785 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14801 $"):sub(12, -3))
 mod:SetCreatureID(91349)--91305 Fel Iron Summoner
 mod:SetEncounterID(1795)
 mod:SetZone()
@@ -284,12 +284,12 @@ local function setWrathIcons(self)
 			if melee1 then
 				melee2 = name
 				if name == playerName then
-					playerIcon = 4
+					playerIcon = 6
 				end
 			else
 				melee1 = name
 				if name == playerName then
-					playerIcon = 5
+					playerIcon = 7
 				end
 			end
 			DBM:Debug("Melee wrath found: "..name, 2)
@@ -303,12 +303,12 @@ local function setWrathIcons(self)
 			if ranged1 then
 				ranged2 = name
 				if name == playerName then
-					playerIcon = 6
+					playerIcon = 4
 				end
 			else
 				ranged1 = name
 				if name == playerName then
-					playerIcon = 7
+					playerIcon = 5
 				end
 			end
 			DBM:Debug("Ranged wrath found: "..name, 2)
