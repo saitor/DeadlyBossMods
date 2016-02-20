@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14802 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14803 $"):sub(12, -3)),
 	DisplayVersion = "6.2.19 alpha", -- the string that is shown as version
 	ReleaseRevision = 14770 -- the revision of the latest stable version that is available
 }
@@ -3022,6 +3022,7 @@ end
 function DBM:SpecChanged(force)
 	if not force and not DBM_UseDualProfile then return end
 	--Load Options again.
+	self:Debug("SpecChanged fired", 2)
 	for modId, idTable in pairs(self.ModLists) do
 		self:LoadModOptions(modId)
 	end
@@ -3030,7 +3031,7 @@ end
 function DBM:PLAYER_LEVEL_UP()
 	playerLevel = UnitLevel("player")
 	if playerLevel < 15 and playerLevel > 9 then
-		self:SpecChanged()
+		self:ACTIVE_TALENT_GROUP_CHANGED()
 	end
 end
 
