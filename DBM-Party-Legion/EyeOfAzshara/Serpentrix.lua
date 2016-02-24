@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1479, "DBM-Party-Legion", 3, 716)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14807 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14810 $"):sub(12, -3))
 mod:SetCreatureID(91808)
 mod:SetEncounterID(1813)
 mod:SetZone(1456)
@@ -39,6 +39,12 @@ local voiceToxicWound				= mod:NewVoice(191855)--justrun/keepmove
 local voiceToxicPuddle				= mod:NewVoice(191855)--runaway
 local voiceBlazingNova				= mod:NewVoice(192003)--kickcast
 local voiceArcaneBlast				= mod:NewVoice(192005)--kickcast
+
+local wrathMod = DBM:GetModByName(1492)
+
+function mod:UpdateWinds()
+	timerWindsCD:Cancel()
+end
 
 function mod:OnCombatStart(delay)
 	timerToxicWoundCD:Start(6-delay)
@@ -84,6 +90,7 @@ mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	if spellId == 191798 and self:AntiSpam(3, 2) then--Violent Winds
+		if wrathMod.vb.phase == 2 then return end--Phase 2 against Wrath of Azshara, which means this is happening every 10 seconds
 		warnWinds:Show()
 		if self:IsInCombat() then--Boss engaged it's 30
 			timerWindsCD:Start()
