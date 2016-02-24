@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14811 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14812 $"):sub(12, -3)),
 	DisplayVersion = "6.2.19 alpha", -- the string that is shown as version
 	ReleaseRevision = 14770 -- the revision of the latest stable version that is available
 }
@@ -6722,6 +6722,7 @@ end
 
 --/run DBM:FindEncounterIDs(768)--Emerald Nightmare
 --/run DBM:FindEncounterIDs(786)--Suramar Raid
+--/run DBM:FindEncounterIDs(822)--Broken Isles
 function DBM:FindEncounterIDs(instanceID, diff)
 	if not instanceID then
 		self:AddMsg("Error: Function requires instanceID be provided")
