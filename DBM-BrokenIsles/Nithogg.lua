@@ -1,7 +1,8 @@
+if DBM:GetTOC() < 70000 then return end
 local mod	= DBM:NewMod(1749, "DBM-BrokenIsles", nil, 822)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14812 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14813 $"):sub(12, -3))
 mod:SetCreatureID(107023)
 mod:SetEncounterID(1880)
 mod:SetReCombatTime(20)
