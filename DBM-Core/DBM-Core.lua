@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14824 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14825 $"):sub(12, -3)),
 	DisplayVersion = "6.2.19 alpha", -- the string that is shown as version
 	ReleaseRevision = 14770 -- the revision of the latest stable version that is available
 }
@@ -61,7 +61,6 @@ end
 DBM_CharSavedRevision = 1
 
 --Hard code STANDARD_TEXT_FONT since skinning mods like to taint it (or worse, set it to nil, wtf?)
---http://forums.elitistjerks.com/topic/133901-bug-report-hudmap/#entry2282069
 local standardFont = STANDARD_TEXT_FONT
 if (LOCALE_koKR) then
 	standardFont = "Fonts\\2002.TTF"
