@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14817 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14820 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -58,7 +58,7 @@ local yellDoomfireFixate			= mod:NewYell(182826)--Use short name for yell
 local specWarnAllureofFlames		= mod:NewSpecialWarningDodge(183254, nil, nil, nil, 2, 2)
 local specWarnDeathCaller			= mod:NewSpecialWarningSwitchCount("ej11582", "Dps", nil, nil, 1, 2)--Tanks don't need switch, they have death brand special warning 2 seconds earlier
 local specWarnFelBurst				= mod:NewSpecialWarningYou(183817)
-local yellFelBurst					= mod:NewPosYell(183817)--Change yell to countdown mayeb when better understood
+local yellFelBurst					= mod:NewPosYell(183817)
 local specWarnFelBurstNear			= mod:NewSpecialWarningMoveTo(183817, nil, nil, nil, 1, 2)--Anyone near by should run in to help soak, should be mostly ranged but if it's close to melee, melee soaking too doesn't hurt
 local specWarnDesecrate				= mod:NewSpecialWarningDodge(185590, "Melee", nil, nil, 1, 2)
 local specWarnDeathBrand			= mod:NewSpecialWarningCount(183828, "Tank", nil, nil, 1, 2)
