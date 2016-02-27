@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1695, "DBM-Party-Legion", 10, 707)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14814 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14824 $"):sub(12, -3))
 mod:SetCreatureID(96015)
 mod:SetEncounterID(1850)
 mod:SetZone()
@@ -16,12 +16,12 @@ mod:RegisterEventsInCombat(
 
 local warnTeleport				= mod:NewSpellAnnounce(200898, 2)
 
-local specWarnSapSoul			= mod:NewSpecialWarningInterrupt(200905, nil, nil, nil, 1, 2)
+local specWarnSapSoul			= mod:NewSpecialWarningInterrupt(200905, "HasInterrupt", nil, nil, 1, 2)
 local specWarnFear				= mod:NewSpecialWarningSpell(201488, nil, nil, nil, 2)
 
 local timerSapSoulCD			= mod:NewNextTimer(21.5, 200905, nil, nil, nil, 4, nil, DBM_CORE_INTERRUPT_ICON)
 
-local voiceSapSoul				= mod:NewVoice(200905)--Kickcast
+local voiceSapSoul				= mod:NewVoice(200905, "HasInterrupt")--Kickcast
 
 function mod:OnCombatStart(delay)
 	timerSapSoulCD:Start(10-delay)
