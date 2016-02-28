@@ -1,8 +1,7 @@
-if DBM:GetTOC() < 70000 then return end
 local mod	= DBM:NewMod(1756, "DBM-BrokenIsles", nil, 822)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14813 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14826 $"):sub(12, -3))
 mod:SetCreatureID(106981, 106984, 106982)--Captain Hring, Soultrapper Mevra, Reaver Jdorn
 mod:SetEncounterID(1879)
 mod:SetReCombatTime(20)
