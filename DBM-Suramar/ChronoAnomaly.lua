@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1725, "DBM-Suramar", nil, 786)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14832 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14833 $"):sub(12, -3))
 mod:SetCreatureID(104415)--104731 (Depleted Time Particle). 104676 (Waning Time Particle). 104491 (Accelerated Time particle). 104492 (Slow Time Particle)
 mod:SetEncounterID(1865)
 mod:SetZone()
@@ -12,7 +12,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 211927 207228",
---	"SPELL_CAST_SUCCESS 206618 206610  206614",
+--	"SPELL_CAST_SUCCESS 206618 206610 206614",
 	"SPELL_AURA_APPLIED 206617 206609 207052 207051 206607 211927",
 	"SPELL_AURA_APPLIED_DOSE 206607",
 	"SPELL_AURA_REMOVED 206617 206609 207052 207051 211927",
