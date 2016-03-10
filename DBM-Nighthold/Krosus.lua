@@ -1,9 +1,9 @@
 local mod	= DBM:NewMod(1713, "DBM-Nighthold", nil, 786)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14835 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14837 $"):sub(12, -3))
 mod:SetCreatureID(103769)----TODO, verify
---mod:SetEncounterID(1864)--unknown, too many generic names for encounter Ids in this raid
+mod:SetEncounterID(1842)
 mod:SetZone()
 --mod:SetUsedIcons(8, 7, 6, 3, 2, 1)
 --mod:SetHotfixNoticeRev(12324)
