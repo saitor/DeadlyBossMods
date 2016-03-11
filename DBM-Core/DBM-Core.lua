@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14848 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14849 $"):sub(12, -3)),
 	DisplayVersion = "6.2.19 alpha", -- the string that is shown as version
 	ReleaseRevision = 14770 -- the revision of the latest stable version that is available
 }
@@ -9823,7 +9823,11 @@ do
 			if self.type and not self.text then
 				msg = pformat(self.mod:GetLocalizedTimerText(self.type, self.spellId), ...)
 			else
-				msg = pformat(self.text, ...)
+				if type(self.text) == "number" then
+					msg = pformat(self.mod:GetLocalizedTimerText(self.type, self.text), ...)
+				else
+					msg = pformat(self.text, ...)
+				end
 			end
 			msg = msg:gsub(">.-<", stripServerName)
 			bar:SetText(msg, self.inlineIcon)
