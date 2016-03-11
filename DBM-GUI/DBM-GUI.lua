@@ -43,7 +43,7 @@
 --
 
 
-local revision =("$Revision: 14825 $"):sub(12, -3)
+local revision =("$Revision: 14846 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -2480,7 +2480,7 @@ local function CreateOptionsMenu()
 			end)
 		end
 
-		local durationSlider = specArea:CreateSlider(L.Warn_Duration, 3, 20, 1, 150)
+		local durationSlider = specArea:CreateSlider(L.Warn_Duration, 1, 20, 1, 150)
 		durationSlider:SetPoint("LEFT", fontSizeSlider, "RIGHT", 20, 0)
 		do
 			local firstshow = true
