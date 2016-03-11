@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14849 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14850 $"):sub(12, -3)),
 	DisplayVersion = "6.2.19 alpha", -- the string that is shown as version
 	ReleaseRevision = 14770 -- the revision of the latest stable version that is available
 }
@@ -10034,7 +10034,7 @@ do
 		local timerTextValue
 		--If timertext is a number, accept it as a secondary auto translate spellid
 		if timerText and type(timerText) == "number" and DBM.Options.ShortTimerText then
-			timerTextValue = GetSpellInfo(timerText or 0)
+			timerTextValue = timerText
 		else
 			timerTextValue = self.localization.timers[timerText]
 		end
