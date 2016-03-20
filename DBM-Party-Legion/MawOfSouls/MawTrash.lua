@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("MawTrash", "DBM-Party-Legion", 8, 727)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14857 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14860 $"):sub(12, -3))
 --mod:SetEncounterID(1823)
 mod:SetZone()
 
@@ -20,6 +20,7 @@ local voiceScream				= mod:NewVoice(198405, "HasInterrupt")--kickcast
 mod:RemoveOption("HealthFrame")
 
 function mod:SPELL_CAST_START(args)
+	if not self.Options.Enabled then return end
 	local spellId = args.spellId
 	if spellId == 198405 and self:CheckInterruptFilter(args.sourceGUID) then
 		specWarnScream:Show(args.sourceName)
