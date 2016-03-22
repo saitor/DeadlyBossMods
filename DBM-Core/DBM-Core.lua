@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14860 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14861 $"):sub(12, -3)),
 	DisplayVersion = "6.2.20 alpha", -- the string that is shown as version
 	ReleaseRevision = 14852 -- the revision of the latest stable version that is available
 }
@@ -3416,6 +3416,8 @@ end
 --REMOVE IN LEGION
 
 do
+	--TODO: REMOVE COMPAT CODE IN LEGION/6.2.4
+	local BNGetFriendGameAccountInfo = BNGetFriendToonInfo or BNGetFriendGameAccountInfo
 	local function AcceptPartyInvite()
 		AcceptGroup()
 		for i=1, STATICPOPUP_NUMDIALOGS do
@@ -3443,8 +3445,7 @@ do
 				local presenceID, _, _, _, _, _, _, isOnline = BNGetFriendInfo(i)
 				local friendIndex = BNGetFriendIndex(presenceID)--Check if they are on more than one client at once (very likely with new launcher)
 				for i=1, BNGetNumFriendToons(friendIndex) do
-					--TODO: REMOVE COMPAT CODE IN LEGION/6.2.4
-					local _, toonName, client = BNGetFriendGameAccountInfo and BNGetFriendGameAccountInfo(friendIndex, i) or BNGetFriendToonInfo(friendIndex, i)
+					local _, toonName, client = BNGetFriendGameAccountInfo(friendIndex, i)
 					if toonName and client == BNET_CLIENT_WOW then--Check if toon name exists and if client is wow. If yes to both, we found right client
 						self:Debug("Found a wow tooname: "..toonName, 3)
 						if toonName == sender then--Now simply see if this is sender
