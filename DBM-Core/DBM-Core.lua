@@ -6,7 +6,7 @@
 -- This addon is written and copyrighted by:
 --    * Paul Emmerich (Tandanu @ EU-Aegwynn) (DBM-Core)
 --    * Martin Verges (Nitram @ EU-Azshara) (DBM-GUI)
---    * Adam Williams (Omegal @ US-Whisperwind) (Primary boss mod author & DBM maintainer) Contact: Twitter @MysticalOS)
+--    * Adam Williams (Omegal @ US-Whisperwind) (Primary boss mod author & DBM maintainer)
 --
 -- The localizations are written by:
 --    * enGB/enUS: Omegal				Twitter @MysticalOS
@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14867 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14868 $"):sub(12, -3)),
 	DisplayVersion = "6.2.22 alpha", -- the string that is shown as version
 	ReleaseRevision = 14865 -- the revision of the latest stable version that is available
 }
