@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1492, "DBM-Party-Legion", 3, 716)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14810 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14877 $"):sub(12, -3))
 mod:SetCreatureID(96028)
 mod:SetEncounterID(1814)
 mod:SetZone()
@@ -35,6 +35,10 @@ mod:AddRangeFrameOption(10, 192706)
 
 mod.vb.phase = 1
 local serpMod = DBM:GetModByName(1479)
+
+function mod:CheckPhase2()
+	return 
+end
 
 function mod:OnCombatStart(delay)
 	self.vb.phase = 1
@@ -74,6 +78,7 @@ function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
 	if spellId == 192985 then
 		self.vb.phase = 2
+		if not serpMod then serpMod = DBM:GetModByName(1479) end
 		serpMod:UpdateWinds()--At present it may not actually reset here. Just in case though
 	elseif spellId == 192617 then
 		specWarnMassiveDeluge:Show()
