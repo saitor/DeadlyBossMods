@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1438, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14872 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14880 $"):sub(12, -3))
 mod:SetCreatureID(91331)--Doomfire Spirit (92208), Hellfire Deathcaller (92740), Felborne Overfiend (93615), Dreadstalker (93616), Infernal doombringer (94412)
 mod:SetEncounterID(1799)
 mod:SetMinSyncRevision(13964)
@@ -1009,7 +1009,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			else
 				time = 6
 			end
-			if self.Options.HudMapOnWrought then
+			if self.Options.HudMapOnWrought and args.sourceName and args.destName then
 				local sourceUId, destUId = DBM:GetRaidUnitId(args.sourceName), DBM:GetRaidUnitId(args.destName)
 				if not sourceUId or not destUId then return end--They left raid? prevent nil error. this will probably only happen in LFR
 				if UnitIsUnit("player", sourceUId) or UnitIsUnit("player", destUId) then--Player is in connection, green line
