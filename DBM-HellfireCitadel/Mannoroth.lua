@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1395, "DBM-HellfireCitadel", nil, 669)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14881 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14882 $"):sub(12, -3))
 mod:SetCreatureID(91349)--91305 Fel Iron Summoner
 mod:SetEncounterID(1795)
 mod:SetZone()
@@ -492,7 +492,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if count == 3 then
 			breakDoom(self)
 		else
-			self:Schedule(2, breakDoom, self)--3 targets, pretty slowly. I've seen at least 1.2, so make this 1.3, maybe more if needed
+			self:Schedule(2, breakDoom, self)--3 targets, pretty slowly. I've seen at least 1.2, so make this 2
 		end
 		if args:IsPlayer() then
 			specWarnMarkOfDoom:Show(self:IconNumToString(count))

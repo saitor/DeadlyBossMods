@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14858 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14882 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -458,7 +458,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				yellBloodRitual:Yell()
 				if UnitDebuff("player", GetSpellInfo(170405)) and self.Options.filterBloodRitual3 then return end
 				specWarnBloodRitual:Show()
-				--voiceBloodRitual:Play("???")--Player needs a different warning than "far away from lines". player IS the line so they can't be far away from lines
+				voiceBloodRitual:Play("targetyou")
 			else
 				voiceBloodRitual:Play("158078")--Good sound fit for everyone ELSE
 			end
