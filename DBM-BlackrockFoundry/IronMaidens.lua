@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1203, "DBM-BlackrockFoundry", nil, 457)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14882 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14888 $"):sub(12, -3))
 mod:SetCreatureID(77557, 77231, 77477)
 mod:SetEncounterID(1695)
 mod:SetZone()
@@ -119,11 +119,11 @@ local countdownBladeDash				= mod:NewCountdown("AltTwo20", 155794, "Tank")
 local countdownDarkHunt					= mod:NewCountdownFades("AltTwo8", 158315)
 
 local voiceRapidFire					= mod:NewVoice(156631) --runout
-local voiceBloodRitual					= mod:NewVoice(158078, "MeleeDps", nil, 2) --158078.ogg, farawayfromline
+local voiceBloodRitual					= mod:NewVoice(158078, "MeleeDps", nil, 2) --158078, farawayfromline
 local voiceHeartSeeker					= mod:NewVoice(158010) --spread
 local voiceShip							= mod:NewVoice("ej10019") --1695uktar, 1695gorak, 1695ukurogg
 local voiceEarthenbarrier				= mod:NewVoice(158708)  --int
-local voiceDeployTurret					= mod:NewVoice(158599, "RangedDps", nil, 2) --158599.ogg attack turret
+local voiceDeployTurret					= mod:NewVoice(158599, "RangedDps", nil, 2) --158599 attack turret
 local voiceConvulsiveShadows			= mod:NewVoice(156214) --runaway, target
 local voiceDarkHunt						= mod:NewVoice(158315) --defensive, target
 local voicePenetratingShot				= mod:NewVoice(164271) --stack
