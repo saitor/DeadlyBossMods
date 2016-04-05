@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1738, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14897 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14898 $"):sub(12, -3))
 mod:SetCreatureID(105393)
 mod:SetEncounterID(1873)
 mod:SetZone()
@@ -253,7 +253,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif spellId == 215128 then
 		warnCursedBlood:CombinedShow(0.5, args.destName)--Multi target assumed
-		if self:AntiSpam(2, 2) then
+		if self:AntiSpam(2, 3) then
 			timerCursedBloodCD:Start()
 		end
 		if args:IsPlayer() then
