@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1738, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14898 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14902 $"):sub(12, -3))
 mod:SetCreatureID(105393)
 mod:SetEncounterID(1873)
 mod:SetZone()
@@ -49,7 +49,7 @@ local specWarnDeathglareOther		= mod:NewSpecialWarningTaunt(210984, nil, nil, ni
 local specWarnMindFlay				= mod:NewSpecialWarningInterrupt(208697, nil, nil, nil, 1, 2)
 local specWarnSpewCorruption		= mod:NewSpecialWarningRun(208929, nil, nil, nil, 4, 2)
 local yellSpewCorruption			= mod:NewYell(208929)
-local specWarnNightmarishFury		= mod:NewSpecialWarningSpell(215234, "Tank", nil, nil, 3, 2)
+local specWarnNightmarishFury		= mod:NewSpecialWarningDefensive(215234, "Tank", nil, nil, 3, 2)
 local specWarnDominatorTentacle		= mod:NewSpecialWarningSwitch("ej13189", "Tank")
 local specWarnGroundSlam			= mod:NewSpecialWarningYou(208689, nil, nil, nil, 1, 2)
 local yellGroundSlam				= mod:NewYell(208689)
