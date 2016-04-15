@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1703, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14912 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14918 $"):sub(12, -3))
 mod:SetCreatureID(102672)
 mod:SetEncounterID(1853)
 mod:SetZone()
@@ -68,11 +68,14 @@ function mod:OnCombatStart(delay)
 	self.vb.rotCast = 0
 	self.vb.volatileRotCast = 0
 	self.vb.swarmCast = 0
-	timerRotCD:Start(10, 1)
-	timerVolatileRotCD:Start(20, 1)--20-25.8
-	timerBreathCD:Start(35-delay, 1)--35-40 variable
-	countdownBreath:Start(35-delay)
-	timerSwarmCD:Start(86-delay, 1)--86-100
+	--Only start timers if boss isn't starting at 0 energy
+	if UnitExists("boss1") and UnitPower("boss1") > 80 then
+		timerRotCD:Start(10, 1)
+		timerVolatileRotCD:Start(20, 1)--20-25.8
+		timerBreathCD:Start(35-delay, 1)--35-40 variable
+		countdownBreath:Start(35-delay)
+		timerSwarmCD:Start(86-delay, 1)--86-100
+	end
 	if self.Options.InfoFrame and self:IsMythic() then
 		DBM.InfoFrame:SetHeader(GetSpellInfo(204506))
 		DBM.InfoFrame:Show(5, "playerdebuffstacks", 204506)
