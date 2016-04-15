@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1726, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14914 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14916 $"):sub(12, -3))
 mod:SetCreatureID(103769)----TODO, verify
 mod:SetEncounterID(1864)
 mod:SetZone()
@@ -48,7 +48,7 @@ local specWarnCorruptingNova			= mod:NewSpecialWarningInterrupt(207830, "HasInte
 local specWarnDarkeningSoul				= mod:NewSpecialWarningDispel(206651, "Healer", nil, nil, 1, 2)
 local specWarnTormentingFixation		= mod:NewSpecialWarningRun(205771, nil, nil, nil, 4, 2)
 --Stage Two: From the Shadows
-local specWarnCorruptionMeteorAway		= mod:NewSpecialWarninDodge(206308, nil, nil, nil, 2, 2)
+local specWarnCorruptionMeteorAway		= mod:NewSpecialWarningDodge(206308, nil, nil, nil, 2, 2)
 local specWarnCorruptionMeteorTo		= mod:NewSpecialWarningMoveTo(206308, nil, nil, nil, 1, 2)
 local specWarnBlackeningSoul			= mod:NewSpecialWarningDispel(209158, "Healer", nil, nil, 1, 2)
 
