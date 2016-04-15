@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1667, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14912 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14915 $"):sub(12, -3))
 mod:SetCreatureID(100497)
 mod:SetEncounterID(1841)
 mod:SetZone()
@@ -10,7 +10,6 @@ mod:SetUsedIcons(1)
 mod.respawnTime = 30
 
 mod:RegisterCombat("combat")
-
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 197942 197969",
@@ -51,6 +50,7 @@ local voiceBloodFrenzy				= mod:NewVoice(198388)
 
 mod:AddSetIconOption("SetIconOnCharge", 198006, true)
 mod:AddHudMapOption("HudMapOnCharge", 198006)
+mod:AddInfoFrameOption(198108, false)
 
 mod.vb.roarCount = 0
 mod.vb.chargeCount = 0
@@ -62,11 +62,18 @@ function mod:OnCombatStart(delay)
 	timerRendFleshCD:Start(13-delay)
 	timerFocusedGazeCD:Start(19-delay)
 	berserkTimer:Start(-delay)
+	if self.Options.InfoFrame then
+		DBM.InfoFrame:SetHeader(GetSpellInfo(198108))
+		DBM.InfoFrame:Show(5, "reverseplayerbaddebuff", 198108)
+	end
 end
 
 function mod:OnCombatEnd()
 	if self.Options.HudMapOnCharge then
 		DBMHudMap:Disable()
+	end
+	if self.Options.InfoFrame then
+		DBM.InfoFrame:Hide()
 	end
 end
 
