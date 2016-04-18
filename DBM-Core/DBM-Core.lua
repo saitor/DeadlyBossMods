@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14924 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14925 $"):sub(12, -3)),
 	DisplayVersion = "6.2.22 alpha", -- the string that is shown as version
 	ReleaseRevision = 14865 -- the revision of the latest stable version that is available
 }
@@ -50,6 +50,10 @@ DBM.HighestRelease = DBM.ReleaseRevision --Updated if newer version is detected,
 -- just use the latest release revision
 if not DBM.Revision then
 	DBM.Revision = DBM.ReleaseRevision
+end
+
+if IsTestBuild() then
+	DBM.ReleaseRevision = DBM.Revision
 end
 
 -- dual profile setup
