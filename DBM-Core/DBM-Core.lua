@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14926 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14927 $"):sub(12, -3)),
 	DisplayVersion = "6.2.22 alpha", -- the string that is shown as version
 	ReleaseRevision = 14865 -- the revision of the latest stable version that is available
 }
@@ -7106,7 +7106,7 @@ end
 do
 	local iconStrings = {[1] = RAID_TARGET_1, [2] = RAID_TARGET_2, [3] = RAID_TARGET_3, [4] = RAID_TARGET_4, [5] = RAID_TARGET_5, [6] = RAID_TARGET_6, [7] = RAID_TARGET_7, [8] = RAID_TARGET_8,}
 	function bossModPrototype:IconNumToString(number)
-		return iconStrings[number]
+		return iconStrings[number] or number
 	end
 end
 
