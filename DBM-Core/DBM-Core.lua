@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14931 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14932 $"):sub(12, -3)),
 	DisplayVersion = "6.2.22 alpha", -- the string that is shown as version
 	ReleaseRevision = 14865 -- the revision of the latest stable version that is available
 }
@@ -7651,7 +7651,6 @@ do
 			["Tank"] = true,
 			["Melee"] = true,
 			["Physical"] = true,
-			["MagicDispeller"] = true,--REMOVE IN LEGION
 			["HasInterrupt"] = true,
 		},
 		[74] = {	--Gladiator Warrior --REMOVE IN LEGION?
