@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1732, "DBM-Nighthold", nil, 786)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14934 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14936 $"):sub(12, -3))
 mod:SetCreatureID(103758)
 mod:SetEncounterID(1863)
 mod:SetZone()
@@ -385,7 +385,6 @@ function mod:SPELL_AURA_APPLIED(args)
 				yellGravitationalPull:Schedule(remaining-1, 1)
 				yellGravitationalPull:Schedule(remaining-2, 2)
 				yellGravitationalPull:Schedule(remaining-3, 3)
-				yellGravitationalPull:Schedule(remaining-5, 5)
 			end
 		elseif self:IsTank() then
 			specWarnGravitationalPullOther:Show(args.destName)
