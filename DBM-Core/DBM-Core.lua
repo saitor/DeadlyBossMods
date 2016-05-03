@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14946 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14947 $"):sub(12, -3)),
 	DisplayVersion = "6.2.23 alpha", -- the string that is shown as version
 	ReleaseRevision = 14943 -- the revision of the latest stable version that is available
 }
@@ -5092,8 +5092,7 @@ do
 	function DBM:UNIT_SPELLCAST_SUCCEEDED(uId, spellName, _, spellGUID, spellId)
 		local correctSpellId = 0
 		if wowTOC >= 70000 then--in Legion spellId arg is canned as of latest build, it existed until talarn testing.
-			local _, _, _, _, legSpellId = strsplit("-", spellGUID)
-			correctSpellId = legSpellId
+			correctSpellId = tonumber(select(5, strsplit("-", spellGUID)), 10)
 		else
 			correctSpellId = spellId
 		end
