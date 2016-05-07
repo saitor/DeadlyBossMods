@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14950 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14951 $"):sub(12, -3)),
 	DisplayVersion = "6.2.23 alpha", -- the string that is shown as version
 	ReleaseRevision = 14943 -- the revision of the latest stable version that is available
 }
@@ -7349,7 +7349,7 @@ do
 			if uId then--Now we have a valid uId
 				bossCache[cidOrGuid] = GetTime()
 				lastTank = UnitName(uId)
-				return UnitName(lastTank)
+				return UnitName(lastTank), uId
 			end
 			return false
 		end
