@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1795, "DBM-BrokenIsles", nil, 822)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14957 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14959 $"):sub(12, -3))
 mod:SetCreatureID(99929)
 mod:SetEncounterID(1951)
 mod:SetReCombatTime(20)
@@ -16,6 +16,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 175827"
 )
 
+--TODO, does not have a journal entry on wowhead, poke perc later
 local specWarnColossalSlam		= mod:NewSpecialWarningDodge(175791, nil, nil, nil, 2, 2)
 local specWarnCallofEarth		= mod:NewSpecialWarningSpell(175827)
 
