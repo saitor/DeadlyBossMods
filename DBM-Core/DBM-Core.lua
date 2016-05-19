@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14970 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14971 $"):sub(12, -3)),
 	DisplayVersion = "6.2.23 alpha", -- the string that is shown as version
 	ReleaseRevision = 14943 -- the revision of the latest stable version that is available
 }
@@ -1890,6 +1890,8 @@ do
 		elseif cmd:sub(1, 4) == "pull" then
 			local timer = tonumber(cmd:sub(5)) or 10
 			Pull(timer)
+		elseif cmd:sub(1, 5) == "rpull" then
+			Pull(30)
 		elseif cmd:sub(1, 3) == "lag" then
 			if not LL then
 				DBM:AddMsg(DBM_CORE_UPDATE_REQUIRES_RELAUNCH)
