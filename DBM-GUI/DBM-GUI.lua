@@ -43,7 +43,7 @@
 --
 
 
-local revision =("$Revision: 14848 $"):sub(12, -3)
+local revision =("$Revision: 14975 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -2958,6 +2958,11 @@ local function CreateOptionsMenu()
 			{	text	= "Rune 2",						value 	= "rune2" },
 			{	text	= "Rune 3",						value 	= "rune3" },
 			{	text	= "Rune 4",						value 	= "rune4" },
+			{	text	= "Odun Blue (Requires Legion)",value 	= "odunblue" },
+			{	text	= "Odun Green (Requires Legion)",value 	= "odungreen" },
+			{	text	= "Odun Orange (Requires Legion)",value 	= "odunorange" },
+			{	text	= "Odun Purple (Requires Legion)",value 	= "odunpurple" },
+			{	text	= "Odun Yellow (Requires Legion)",value 	= "odunyellow" },
 			{	text	= "Paw",						value 	= "paw" },
 			{	text	= "Cyan Star",					value 	= "cyanstar" },
 			{	text	= "Summon",						value 	= "summon" },
