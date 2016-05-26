@@ -40,7 +40,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 14986 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 14987 $"):sub(12, -3)),
 	DisplayVersion = "6.2.23 alpha", -- the string that is shown as version
 	ReleaseRevision = 14943 -- the revision of the latest stable version that is available
 }
@@ -6367,7 +6367,7 @@ do
 		self:Unschedule(self.AprilFools)
 		SetMapToCurrentZone()
 		local currentMapId = GetCurrentMapAreaID()
-		self:Schedule(180 + math.random(0, 600) , self.AprilFools, self)
+		self:Schedule(120 + math.random(0, 600) , self.AprilFools, self)
 		if currentMapId ~= 1014 then return end--Legion Dalaran
 		playDelay(self, 1)
 		self:Schedule(5, playDelay, self, 2)
