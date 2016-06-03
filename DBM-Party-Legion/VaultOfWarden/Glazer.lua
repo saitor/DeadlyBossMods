@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1469, "DBM-Party-Legion", 10, 707)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14818 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 14993 $"):sub(12, -3))
 mod:SetCreatureID(95887)
 mod:SetEncounterID(1817)
 mod:SetZone()
@@ -18,12 +18,12 @@ mod:RegisterEventsInCombat(
 local warnGaze						= mod:NewSpellAnnounce(194942, 2)
 
 local specWarnFocused				= mod:NewSpecialWarningSpell(194289, nil, nil, nil, 2, 2)
-local specWarnGazeGTFO				= mod:NewSpecialWarningMove(194289, nil, nil, nil, 1, 2)
+local specWarnGazeGTFO				= mod:NewSpecialWarningMove(194945, nil, nil, nil, 1, 2)
 
-local timerGazeCD					= mod:NewCDTimer(19.4, 194289, nil, nil, nil, 3)
+local timerGazeCD					= mod:NewCDTimer(19.4, 194942, nil, nil, nil, 3)
 
 local voiceFocused					= mod:NewVoice(194289)--specialsoon
-local voiceGazeGTFO					= mod:NewVoice(194289)--runaway
+local voiceGazeGTFO					= mod:NewVoice(194945)--runaway
 
 function mod:OnCombatStart(delay)
 	timerGazeCD:Start(11.8-delay)
@@ -31,7 +31,8 @@ end
 
 function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
-	if spellId == 194289 then
+	if spellId == 193443 then--194289 backup if energize stops working.
+		timerGazeCD:Stop()
 		specWarnFocused:Show()
 		voiceFocused:Play("specialsoon")
 	elseif spellId == 194942 then
