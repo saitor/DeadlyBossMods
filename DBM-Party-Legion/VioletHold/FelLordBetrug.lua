@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1711, "DBM-Party-Legion", 9, 777)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14994 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15001 $"):sub(12, -3))
 mod:SetCreatureID(102446)
 mod:SetEncounterID(1856)
 mod:SetZone()
@@ -101,7 +101,7 @@ function mod:SPELL_CAST_START(args)
 	if spellId == 203641 then
 		specWarnFelSlash:Show()
 		voiceFelSlash:Play("shockwave")
-		self:BossUnitTargetScanner("boss1", "SlashTarget")
+		self:BossUnitTargetScanner("boss1", "SlashTarget", 3)
 		--timerFelSlashCD:Start()
 	elseif spellId == 202328 then
 		specWarnMightySmash:Show()
