@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1761, "DBM-Nighthold", nil, 786)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15015 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15018 $"):sub(12, -3))
 mod:SetCreatureID(104528)--109042
 mod:SetEncounterID(1886)
 mod:SetZone()
@@ -342,7 +342,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		if self.Options.SetIconOnCoN then
 			self:SetIcon(args.destName, 0)
 		end
-	elseif spellId == 218304 and self:AntiSpam(5, 2) and not UnitDebuff("player") then
+	elseif spellId == 218304 and self:AntiSpam(5, 2) and not UnitDebuff("player", args.spellName) then
 		specWarnLasher:Show()
 		voiceLasher:Play("killmob")
 	end
