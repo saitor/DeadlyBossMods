@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1667, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14938 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15041 $"):sub(12, -3))
 mod:SetCreatureID(100497)
 mod:SetEncounterID(1841)
 mod:SetZone()
@@ -99,7 +99,7 @@ do
 						voiceFocusedGaze:Play("shareone")
 					end
 				end
-				if #soakers == soakerHalf then break end--Got enough soakers, stop
+				if soakers == soakerHalf then break end--Got enough soakers, stop
 			end
 		end
 		if self.Options.SpecWarn198006moveto then
