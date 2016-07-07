@@ -1,12 +1,13 @@
 local mod	= DBM:NewMod(1743, "DBM-Nighthold", nil, 786)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14977 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15044 $"):sub(12, -3))
 mod:SetCreatureID(106643)
 mod:SetEncounterID(1872)
 mod:SetZone()
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3, 2, 1)--TODO< figure out debuff count cap
 --mod:SetHotfixNoticeRev(12324)
+mod.respawnTime = 30
 
 mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(

@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1667, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15041 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15044 $"):sub(12, -3))
 mod:SetCreatureID(100497)
 mod:SetEncounterID(1841)
 mod:SetZone()
@@ -79,7 +79,7 @@ do
 		local soakerHalf = math.floor(soakerCount/2)--A half a person can't soak so we floor half for odd sized raids
 		DBM:Debug("Raid size: "..raidCount..". Soakers: "..soakerCount..". Soaker Half: "..soakerHalf)
 		for i = 1, raidCount do
-			local unitID = 'raid'..i
+			local unitID = "raid"..i
 			if not UnitDebuff(unitID, unbalancedName) and not UnitDebuff(unitID, focusedGazeName) and not self:IsTanking(unitID) then
 				soakers = soakers + 1
 				soakTable[#soakTable+1] = DBM:GetUnitFullName(unitID)
