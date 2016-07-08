@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1726, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14977 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15047 $"):sub(12, -3))
 mod:SetCreatureID(103769)
 mod:SetEncounterID(1864)
 mod:SetZone()
@@ -266,11 +266,10 @@ function mod:SPELL_AURA_APPLIED(args)
 			updateRangeFrame(self)
 		end
 	elseif spellId == 205771 then
+		warnTormentingFixation:CombinedShow(1, args.destName)
 		if args:IsPlayer() then
 			specWarnTormentingFixation:Show()
 			voiceTormentingFixation:Play("targetyou")
-		else
-			warnTormentingFixation:Show(args.destName)
 		end
 	elseif spellId == 211802 then
 		if self.Options.HudMapOnBlades then
@@ -292,11 +291,12 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnBondsOfTerror:CombinedShow(0.5, args.destName)
 		if spellId == 209031 then
 		 	self.vb.lastBonds = args.destName
+		 	DBM:Debug("last bonds set to "..args.destName, 2)
 		else
 		 	if args:IsPlayer() then
 		 		specWarnBondsOfTerror:Show(self.vb.lastBonds)
 		 		voiceBondsOfTerror:Play("linegather")
-		 		if self.Options.HudMapOnBonds then
+		 		if self.Options.HudMapOnBonds and self.vb.lastBonds then
 		 			DBMHudMap:RegisterRangeMarkerOnPartyMember(209034, "party", self.vb.lastBonds, 0.65, 6, nil, nil, nil, 0.8, nil, false):Appear():SetLabel(self.vb.lastBonds, nil, nil, nil, nil, nil, 0.8, nil, -15, 8, nil)
 		 			DBMHudMap:AddEdge(0, 1, 0, 0.5, 6, playerName, self.vb.lastBonds, nil, nil, nil, nil, 135)
 		 		end
