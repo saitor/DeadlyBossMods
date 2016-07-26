@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15073 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15074 $"):sub(12, -3)),
 	DisplayVersion = "7.0.1 alpha", -- the string that is shown as version
 	ReleaseRevision = 15061 -- the revision of the latest stable version that is available
 }
@@ -3072,7 +3072,7 @@ end
 function DBM:PLAYER_LEVEL_UP()
 	playerLevel = UnitLevel("player")
 	if playerLevel < 15 and playerLevel > 9 then
-		self:ACTIVE_TALENT_GROUP_CHANGED()
+		self:PLAYER_SPECIALIZATION_CHANGED()
 	end
 end
 
