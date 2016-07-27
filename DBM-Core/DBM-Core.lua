@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15076 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15077 $"):sub(12, -3)),
 	DisplayVersion = "7.0.1 alpha", -- the string that is shown as version
 	ReleaseRevision = 15061 -- the revision of the latest stable version that is available
 }
@@ -407,7 +407,7 @@ local updateNotificationDisplayed = 0
 local showConstantReminder = 0
 local tooltipsHidden = false
 local SWFilterDisabed = 3
-local currentSpecGroup = GetActiveSpecGroup()
+local currentSpecGroup = GetSpecialization() or 1
 local currentSpecID, currentSpecName
 local cSyncSender = {}
 local cSyncReceived = 0
@@ -6047,8 +6047,8 @@ do
 end
 
 function DBM:SetCurrentSpecInfo()
-	currentSpecGroup = GetActiveSpecGroup()
-	currentSpecID, currentSpecName = GetSpecializationInfo(GetSpecialization() or 1)--give temp first spec id for non-specialization char. no one should use dbm with no specialization, below level 10, should not need dbm.
+	currentSpecGroup = GetSpecialization() or 1
+	currentSpecID, currentSpecName = GetSpecializationInfo(currentSpecGroup)--give temp first spec id for non-specialization char. no one should use dbm with no specialization, below level 10, should not need dbm.
 	currentSpecID = tonumber(currentSpecID)
 end
 
