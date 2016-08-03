@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15094 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15095 $"):sub(12, -3)),
 	DisplayVersion = "7.0.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 15086 -- the revision of the latest stable version that is available
 }
@@ -1140,16 +1140,19 @@ do
 			if GetAddOnEnableState(playerName, "VEM-Core") >= 1 then
 				self:Disable(true)
 				C_TimerAfter(10, function() self:AddMsg(DBM_CORE_VEM) end)
+				C_TimerAfter(20, function() self:AddMsg(DBM_CORE_VEM) end)
 				return
 			end
 			if GetAddOnEnableState(playerName, "DBM-Profiles") >= 1 then
 				self:Disable(true)
 				C_TimerAfter(10, function() self:AddMsg(DBM_CORE_3RDPROFILES) end)
+				C_TimerAfter(20, function() self:AddMsg(DBM_CORE_3RDPROFILES) end)
 				return
 			end
 			if GetAddOnEnableState(playerName, "DPMCore") >= 1 then
 				self:Disable(true)
 				C_TimerAfter(10, function() self:AddMsg(DBM_CORE_DPMCORE) end)
+				C_TimerAfter(20, function() self:AddMsg(DBM_CORE_DPMCORE) end)
 				return
 			end
 			self.Bars:LoadOptions("DBM")
