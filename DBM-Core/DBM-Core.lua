@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15097 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15098 $"):sub(12, -3)),
 	DisplayVersion = "7.0.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 15086 -- the revision of the latest stable version that is available
 }
@@ -5355,6 +5355,9 @@ do
 		if not mod.inCombat then
 			if event then
 				self:Debug("StartCombat called by : "..event..". LastInstanceMapID is "..LastInstanceMapID)
+				if event == "MONSTER_MESSAGE" then
+					self:Debug("This event is started by yell. Review ENCOUNTER_START event to ensure if yell is still needed", 2)
+				end
 			else
 				self:Debug("StartCombat called by individual mod or unknown reason. LastInstanceMapID is "..LastInstanceMapID)
 			end
