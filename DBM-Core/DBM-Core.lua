@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15100 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15101 $"):sub(12, -3)),
 	DisplayVersion = "7.0.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 15086 -- the revision of the latest stable version that is available
 }
@@ -3535,17 +3535,6 @@ function DBM:UPDATE_BATTLEFIELD_STATUS()
 	end
 end
 
-function DBM:CINEMATIC_START()
-	if not IsInInstance() or C_Garrison:IsOnGarrisonMap() or self.Options.MovieFilter == "Never" then return end
-	SetMapToCurrentZone()
-	local currentFloor = GetCurrentMapDungeonLevel() or 0
-	if self.Options.MovieFilter == "Block" or self.Options.MovieFilter == "AfterFirst" and self.Options.MoviesSeen[LastInstanceMapID..currentFloor] then
-		CinematicFrame_CancelCinematic()
-	else
-		self.Options.MoviesSeen[LastInstanceMapID..currentFloor] = true
-	end
-end
-
 function DBM:SCENARIO_CRITERIA_UPDATE()
 	local _, currentStage, numStages = C_Scenario.GetInfo()
 	if #inCombat > 0 and currentStage > numStages and C_Scenario.IsInScenario() then
@@ -6785,14 +6774,29 @@ end
 -------------------
 MovieFrame:HookScript("OnEvent", function(self, event, id)
 	if event == "PLAY_MOVIE" and id then
+		DBM:Debug("PLAY_MOVIE fired for ID: "..id, 2)
 		if not IsInInstance() or C_Garrison:IsOnGarrisonMap() or DBM.Options.MovieFilter == "Never" then return end
 		if DBM.Options.MovieFilter == "Block" or DBM.Options.MovieFilter == "AfterFirst" and DBM.Options.MoviesSeen[id] then
 			MovieFrame_OnMovieFinished(self)
+			DBM:AddMsg(DBM_CORE_MOVIE_SKIPPED)
 		else
 			DBM.Options.MoviesSeen[id] = true
 		end
 	end
 end)
+
+function DBM:CINEMATIC_START()
+	DBM:Debug("CINEMATIC_START fired", 2)
+	if not IsInInstance() or C_Garrison:IsOnGarrisonMap() or self.Options.MovieFilter == "Never" then return end
+	SetMapToCurrentZone()
+	local currentFloor = GetCurrentMapDungeonLevel() or 0
+	if self.Options.MovieFilter == "Block" or self.Options.MovieFilter == "AfterFirst" and self.Options.MoviesSeen[LastInstanceMapID..currentFloor] then
+		CinematicFrame_CancelCinematic()
+		self:AddMsg(DBM_CORE_MOVIE_SKIPPED)
+	else
+		self.Options.MoviesSeen[LastInstanceMapID..currentFloor] = true
+	end
+end
 
 ----------------------------
 --  Boss Mod Constructor  --
