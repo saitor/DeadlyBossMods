@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15103 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15104 $"):sub(12, -3)),
 	DisplayVersion = "7.0.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 15086 -- the revision of the latest stable version that is available
 }
@@ -6777,6 +6777,8 @@ do
 		[486] = true, -- Tomb of Sarg Intro
 		[487] = true, -- Alliance Broken Shore cut-scene
 		[488] = true, -- Horde Broken Shore cut-scene
+		[489] = true, -- Unknown, currently encrypted
+		[490] = true, -- Unknown, currently encrypted
 	}
 	MovieFrame:HookScript("OnEvent", function(self, event, id)
 		if event == "PLAY_MOVIE" and id and not neverFilter[id] then
