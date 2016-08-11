@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15114 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15115 $"):sub(12, -3)),
 	DisplayVersion = "7.0.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 15086 -- the revision of the latest stable version that is available
 }
@@ -4175,12 +4175,13 @@ do
 						local revDifference = mmin((raid[newerVersionPerson[1]].revision - DBM.Revision), (raid[newerVersionPerson[2]].revision - DBM.Revision), (raid[newerVersionPerson[3]].revision - DBM.Revision))
 						--The following code requires at least THREE people to send that higher revision (I just upped it from 2). That should be more than adaquate.
 						--Disable if out of date and it's a major patch.
-						if not testBuild and dbmToc < wowTOC then
+						--[[if not testBuild and dbmToc < wowTOC then
 							updateNotificationDisplayed = 3
 							DBM:AddMsg(DBM_CORE_UPDATEREMINDER_MAJORPATCH)
-							DBM:Disable(true)
+							DBM:Disable(true)--]]
 						--Disable if revision grossly out of date even if not major patch.
-						elseif revDifference > 180 then
+						if revDifference > 180 then
+						--elseif revDifference > 180 then
 							if updateNotificationDisplayed < 3 then
 								updateNotificationDisplayed = 3
 								DBM:AddMsg(DBM_CORE_UPDATEREMINDER_DISABLE)
