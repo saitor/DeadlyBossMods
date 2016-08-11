@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("DemonInvasions", "DBM-WorldEvents", 2)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15112 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15113 $"):sub(12, -3))
 mod:SetZone(DBM_DISABLE_ZONE_DETECTION)
 
 mod:RegisterEvents(
@@ -35,7 +35,7 @@ local specWarnShadowNova			= mod:NewSpecialWarningRun(219110, nil, nil, nil, 4, 
 local timerDestructiveFlamesCD		= mod:NewCDTimer(45, 218639, nil, nil, nil, 2, nil, DBM_CORE_DEADLY_ICON)
 local timerEyeofDarknessCD			= mod:NewCDTimer(34, 219112, nil, nil, nil, 2, nil, DBM_CORE_DEADLY_ICON)
 local timerShadowNovaCD				= mod:NewCDTimer(34, 219110, nil, nil, nil, 2)
-local timerCharredFlesh				= mod:NewFadesTimer(17, 218657, nil, nil, nil, 3)
+local timerCharredFlesh				= mod:NewBuffFadesTimer(17, 218657, nil, nil, nil, 3)
 
 local countdownCharredFlesh			= mod:NewCountdownFades(17, 218657)
 
