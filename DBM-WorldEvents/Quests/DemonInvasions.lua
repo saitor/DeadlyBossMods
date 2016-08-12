@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("DemonInvasions", "DBM-WorldEvents", 2)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15114 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15122 $"):sub(12, -3))
 mod:SetZone(DBM_DISABLE_ZONE_DETECTION)
 
 mod:RegisterEvents(
@@ -114,7 +114,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if not self.Options.Enabled then return end
 	local spellId = args.spellId
-	if spellId == 218625 and self:AntiSpam(3, 3) then
+	if spellId == 218625 and self:AntiSpam(3, 3) and self:CheckInterruptFilter(args.sourceGUID, true) then
 		warnBlazingHellfire:Show()
 	elseif spellId == 224044 and args:IsPlayer() then
 		specWarnMarkofBlood:Show()
