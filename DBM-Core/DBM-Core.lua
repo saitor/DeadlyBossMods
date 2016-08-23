@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15153 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15154 $"):sub(12, -3)),
 	DisplayVersion = "7.0.3 alpha", -- the string that is shown as version
 	ReleaseRevision = 15117 -- the revision of the latest stable version that is available
 }
@@ -1924,6 +1924,10 @@ do
 			DBM:AddMsg(DBM_CORE_LAG_CHECKING)
 			C_TimerAfter(5, function() DBM:ShowLag() end)
 		elseif cmd:sub(1, 3) == "hud" then
+			if DBM.Options.EnablePatchRestrictions and IsInInstance() then
+				DBM:AddMsg(DBM_CORE_NO_HUD)
+				return
+			end
 			local hudType, target, duration = string.split(" ", msg:sub(4):trim())
 			if hudType == "" then
 				for i, v in ipairs(DBM_CORE_HUD_USAGE) do
@@ -2014,6 +2018,10 @@ do
 				DBM:AddMsg(DBM_CORE_HUD_SUCCESS:format(strFromTime(hudDuration)))
 			end
 		elseif cmd:sub(1, 5) == "arrow" then
+			if DBM.Options.EnablePatchRestrictions and IsInInstance() then
+				DBM:AddMsg(DBM_CORE_NO_ARROW)
+				return
+			end
 			local x, y, z = string.split(" ", msg:sub(6):trim())
 			local xNum, yNum, zNum = tonumber(x or ""), tonumber(y or ""), tonumber(z or "")
 			local success
