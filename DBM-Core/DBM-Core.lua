@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15160 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15161 $"):sub(12, -3)),
 	DisplayVersion = "7.0.3 alpha", -- the string that is shown as version
 	ReleaseRevision = 15117 -- the revision of the latest stable version that is available
 }
@@ -3645,8 +3645,8 @@ do
 	function DBM:LOADING_SCREEN_DISABLED()
 		timerRequestInProgress = false
 		self:Debug("LOADING_SCREEN_DISABLED fired")
-		SecondaryLoadCheck(self)
 		self:Unschedule(SecondaryLoadCheck)
+		self:Schedule(1, SecondaryLoadCheck, self)
 		self:Schedule(5, SecondaryLoadCheck, self)
 	end
 
