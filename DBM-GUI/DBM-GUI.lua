@@ -43,7 +43,7 @@
 --
 
 
-local revision =("$Revision: 15164 $"):sub(12, -3)
+local revision =("$Revision: 15165 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -3429,7 +3429,7 @@ local function CreateOptionsMenu()
 		blockMovieDropDown:SetPoint("TOPLEFT", filterYell, "TOPLEFT", 0, -40)
 
 		local talkingHeadOptions = {
-			{	text	= L.Disable,	value 	= "Never"},
+			{	text	= L.SWFNever,	value 	= "Never"},
 			{	text	= L.CombatOnly,	value 	= "CombatOnly"},
 			{	text	= L.RaidCombat,	value 	= "BossCombatOnly"},
 			{	text	= L.Always,		value 	= "Always"},
