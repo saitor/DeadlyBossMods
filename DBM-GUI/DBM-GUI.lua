@@ -43,7 +43,7 @@
 --
 
 
-local revision =("$Revision: 15163 $"):sub(12, -3)
+local revision =("$Revision: 15164 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -3434,7 +3434,7 @@ local function CreateOptionsMenu()
 			{	text	= L.RaidCombat,	value 	= "BossCombatOnly"},
 			{	text	= L.Always,		value 	= "Always"},
 		}
-		local talkingHeadDropDown = hideBlizzArea:CreateDropdown(L.DisableCinematics, talkingHeadOptions, "DBM", "TalkingHeadFilter", function(value)
+		local talkingHeadDropDown = hideBlizzArea:CreateDropdown(L.DisableTalkingHead, talkingHeadOptions, "DBM", "TalkingHeadFilter", function(value)
 			DBM.Options.TalkingHeadFilter = value
 			local talkingHeadStatus = DBM:TalkingHeadDisabled()
 			if value == "Always" and not talkingHeadStatus then
