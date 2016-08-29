@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15170 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15171 $"):sub(12, -3)),
 	DisplayVersion = "7.0.3 alpha", -- the string that is shown as version
 	ReleaseRevision = 15117 -- the revision of the latest stable version that is available
 }
@@ -1121,7 +1121,7 @@ do
 				self.Options.tempBreak2 = nil
 			end
 		end
-		if self.Options.TalkingHeadFilter == "Always" and not talkingHeadUnregistered and isTalkingHeadLoaded then
+		if isTalkingHeadLoaded and not talkingHeadUnregistered and (self.Options.TalkingHeadFilter == "Always" or self.Options.TalkingHeadFilter == "CombatOnly" and InCombatLockdown() or self.Options.TalkingHeadFilter == "BossCombatOnly" and IsEncounterInProgress()) then
 			TalkingHeadFrame:UnregisterAllEvents()
 			talkingHeadUnregistered = true
 		end
