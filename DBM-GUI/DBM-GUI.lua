@@ -43,7 +43,7 @@
 --
 
 
-local revision =("$Revision: 15176 $"):sub(12, -3)
+local revision =("$Revision: 15177 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -3440,7 +3440,7 @@ local function CreateOptionsMenu()
 			if loaded then
 				if value == "Always" and not disabled then
 					TalkingHeadFrame:UnregisterAllEvents()
-					TalkingHeadFrame_CloseImmediately()
+					--TalkingHeadFrame_CloseImmediately()
 				else
 					if value == "Never" and disabled then
 						TalkingHeadFrame:RegisterEvent("TALKINGHEAD_REQUESTED")
@@ -3450,7 +3450,7 @@ local function CreateOptionsMenu()
 					elseif value == "CombatOnly" then
 						if InCombatLockdown() and not disabled then
 							TalkingHeadFrame:UnregisterAllEvents()
-							TalkingHeadFrame_CloseImmediately()
+							--TalkingHeadFrame_CloseImmediately()
 						else
 							TalkingHeadFrame:RegisterEvent("TALKINGHEAD_REQUESTED")
 							TalkingHeadFrame:RegisterEvent("TALKINGHEAD_CLOSE")
@@ -3460,7 +3460,7 @@ local function CreateOptionsMenu()
 					elseif value == "BossCombatOnly" then
 						if IsEncounterInProgress() and not disabled then
 							TalkingHeadFrame:UnregisterAllEvents()
-							TalkingHeadFrame_CloseImmediately()
+							--TalkingHeadFrame_CloseImmediately()
 						else
 							TalkingHeadFrame:RegisterEvent("TALKINGHEAD_REQUESTED")
 							TalkingHeadFrame:RegisterEvent("TALKINGHEAD_CLOSE")
