@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15169 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15170 $"):sub(12, -3)),
 	DisplayVersion = "7.0.3 alpha", -- the string that is shown as version
 	ReleaseRevision = 15117 -- the revision of the latest stable version that is available
 }
@@ -1301,6 +1301,7 @@ do
 		end
 		if modname == "Blizzard_TalkingHeadUI" and not isTalkingHeadLoaded then
 			isTalkingHeadLoaded = true
+			if not isLoaded then return end--DBM isn't loaded yet, options won't exist yet
 			if self.Options.TalkingHeadFilter == "Always" or self.Options.TalkingHeadFilter == "CombatOnly" and InCombatLockdown() or self.Options.TalkingHeadFilter == "BossCombatOnly" and IsEncounterInProgress() then
 				TalkingHeadFrame:UnregisterAllEvents()
 				talkingHeadUnregistered = true
