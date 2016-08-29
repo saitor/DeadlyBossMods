@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15177 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15178 $"):sub(12, -3)),
 	DisplayVersion = "7.0.3 alpha", -- the string that is shown as version
 	ReleaseRevision = 15117 -- the revision of the latest stable version that is available
 }
@@ -425,7 +425,7 @@ local dbmToc = 0
 local isTalkingHeadLoaded = false
 local talkingHeadUnregistered = false
 
-local fakeBWVersion, fakeBWHash = 7, "7ddc3ac"
+local fakeBWVersion, fakeBWHash = 8, "f6fdc8d"
 local versionQueryString, versionResponseString = "Q:%d-%s", "V:%d-%s"
 
 local enableIcons = true -- set to false when a raid leader or a promoted player has a newer version of DBM
@@ -4724,7 +4724,7 @@ do
 					sender = Ambiguate(sender, "none")
 					handleSync(channel, sender, "BV", version, hash)--Prefix changed, so it's not handled by DBMs "V" handler
 					if version > fakeBWVersion then--Newer revision found, upgrade!
-						fakeBWVersion = verString
+						fakeBWVersion = version
 						fakeBWHash = hash
 					end
 				elseif prefix == "Q" then--Version request prefix
