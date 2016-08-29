@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15171 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15172 $"):sub(12, -3)),
 	DisplayVersion = "7.0.3 alpha", -- the string that is shown as version
 	ReleaseRevision = 15117 -- the revision of the latest stable version that is available
 }
@@ -6760,8 +6760,8 @@ function DBM:GetTOC()
 	return wowTOC
 end
 
-function DBM:TalkingHeadDisabled()
-	return talkingHeadUnregistered
+function DBM:TalkingHeadStatus()
+	return talkingHeadUnregistered, isTalkingHeadLoaded
 end
 
 function DBM:FlashClientIcon()
