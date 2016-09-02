@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1485, "DBM-Party-Legion", 4, 721)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14975 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15185 $"):sub(12, -3))
 mod:SetCreatureID(94960)
 mod:SetEncounterID(1805)
 mod:SetZone()
@@ -57,8 +57,8 @@ function mod:SPELL_CAST_START(args)
 	elseif spellId == 193235 then
 		self:BossTargetScanner(94960, "BladeTarget", 0.1, 20, true, nil, nil, nil, true)
 --		timerDancingBladeCD:Start()
-	elseif spellId == 188404 then
-		voiceBreath:Play("breathsoon")
+	elseif spellId == 188404 and self:AntiSpam(5, 2) then
+		voiceBreath:Play("watchstep")
 	end
 end
 
