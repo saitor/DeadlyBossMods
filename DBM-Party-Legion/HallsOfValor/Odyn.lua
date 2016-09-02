@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1489, "DBM-Party-Legion", 4, 721)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 14975 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15184 $"):sub(12, -3))
 mod:SetCreatureID(95676)
 mod:SetEncounterID(1809)
 mod:SetZone()
@@ -34,7 +34,7 @@ local voiceTempest					= mod:NewVoice(198263)--runout
 local voiceShatterSpears			= mod:NewVoice(198077)--watchorb
 local voiceRunicBrand				= mod:NewVoice(197961)--locations.
 
-mod:AddHudMapOption("HudMapForRunes", 176312, false)
+mod:AddHudMapOption("HudMapForRunes", 197961, true)
 
 function mod:OnCombatStart(delay)
 --	timerSpearCD:Start(-delay)
