@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15195 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15196 $"):sub(12, -3)),
 	DisplayVersion = "7.0.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 15192 -- the revision of the latest stable version that is available
 }
@@ -10899,7 +10899,7 @@ do
 			tsort(iconSortTable)--Sorted alphabetically
 			for i = 1, #iconSortTable do
 				local target = iconSortTable[i]
-				if i > 8 then 
+				if not target or i > 8 then 
 					DBM:Debug("Too many players to set icons, reconsider where using icons", 2)
 					return
 				end
