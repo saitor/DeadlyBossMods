@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15217 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15218 $"):sub(12, -3)),
 	DisplayVersion = "7.0.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 15192 -- the revision of the latest stable version that is available
 }
@@ -1211,7 +1211,7 @@ do
 							for k, v in ipairs(self.AddOns[#self.AddOns].subTabs) do
 								local id = tonumber(self.AddOns[#self.AddOns].subTabs[k])
 								if id then
-									self.AddOns[#self.AddOns].subTabs[k] = GetRealZoneText(id):trim()
+									self.AddOns[#self.AddOns].subTabs[k] = GetRealZoneText(id):trim() or id
 								else
 									self.AddOns[#self.AddOns].subTabs[k] = (self.AddOns[#self.AddOns].subTabs[k]):trim()
 								end
