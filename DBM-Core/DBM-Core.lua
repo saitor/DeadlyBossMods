@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15223 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15224 $"):sub(12, -3)),
 	DisplayVersion = "7.0.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 15192 -- the revision of the latest stable version that is available
 }
@@ -6112,9 +6112,10 @@ function DBM:GetGroupSize()
 end
 
 function DBM:HasMapRestrictions()
-	local isInstance, instanceType = IsInInstance()
+	--Check playerX and playerY. if they are nil restrictions are active
 	--Restrictions active in all party, raid, pvp, arena maps. No restrictions in "none" or "scenario"
-	if (wowVersionString == "7.1.0" or self.Options.EnablePatchRestrictions) and isInstance and instanceType ~= "scenario" then
+	local playerX, playerY = UnitPosition("player")
+	if self.Options.EnablePatchRestrictions or not playerX or not playerY then
 		return true
 	end
 	return false
