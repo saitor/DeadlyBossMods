@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1667, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15144 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15239 $"):sub(12, -3))
 mod:SetCreatureID(100497)
 mod:SetEncounterID(1841)
 mod:SetZone()
@@ -105,7 +105,7 @@ do
 		end
 		if self.Options.SpecWarn198006moveto then
 			--if soaker special warning is disabled, this too is disabled.
-			DBM:AddMsg(L.SoakersText:format(table.concat(soakTable, "<, >")))
+			--DBM:AddMsg(L.SoakersText:format(table.concat(soakTable, "<, >")))
 		end
 	end
 end
