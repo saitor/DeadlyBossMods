@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1703, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15241 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15243 $"):sub(12, -3))
 mod:SetCreatureID(102672)
 mod:SetEncounterID(1853)
 mod:SetZone()
@@ -49,6 +49,8 @@ local timerVolatileRotCD			= mod:NewCDCountTimer(20.5, 204463, nil, "Tank", nil,
 local timerRotCD					= mod:NewCDCountTimer(15, 203096, nil, nil, nil, 3)
 local timerSwarm					= mod:NewBuffActiveTimer(23, 203552, nil, nil, nil, 6)
 local timerSwarmCD					= mod:NewCDCountTimer(98, 203552, nil, nil, nil, 6)--Needs new sample size
+
+local berserkTimer					= mod:NewBerserkTimer(600)
 
 local countdownBreath				= mod:NewCountdown(36, 202977, false)--Can't in good concious have a countdown on by default for something with a 6 second variation
 local countdownVolatileRot			= mod:NewCountdown("Alt20.5", 204463, "Tank")
@@ -98,6 +100,7 @@ function mod:OnCombatStart(delay)
 	else--Boss started at 0 energy and will go right into swarm phase after about 5 seconds
 		timerSwarmCD:Start(5-delay, 1)
 	end
+	berserkTimer:Start(-delay)
 	if self.Options.InfoFrame and self:IsMythic() then
 		DBM.InfoFrame:SetHeader(GetSpellInfo(204506))
 		DBM.InfoFrame:Show(5, "playerdebuffstacks", 204506)
