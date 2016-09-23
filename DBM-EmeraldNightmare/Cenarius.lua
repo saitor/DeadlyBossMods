@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1750, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15254 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15256 $"):sub(12, -3))
 mod:SetCreatureID(104636)
 mod:SetEncounterID(1877)
 mod:SetZone()
@@ -121,8 +121,7 @@ function mod:OnCombatStart(delay)
 		timerNightmareBlastCD:Start(31.2-delay)
 	end
 	if not self.Options.AlertedBramble then
-		DBM:AddMsg("Note: DBM cannot detect who is actually fixated by Bramble (no mod can, Blizzard has assured this). It does, however, detect who the initial target is for the SPAWN. Boss picks player, throws it at that player (dbm does detect correct player for this and notifies them and those near them to move away from spawn point at least). After this, it picks someone that may or may not be the target he threw it at (likely by proximity)")
-		self.Options.AlertedBramble = true
+		DBM:AddMsg(L.BrambleMessage)
 	end
 end
 
@@ -132,6 +131,10 @@ function mod:OnCombatEnd()
 	end
 	if self.Options.HudMapOnBreath then
 		DBMHudMap:Disable()
+	end
+	if not self.Options.AlertedBramble then
+		DBM:AddMsg(L.BrambleMessage)
+		self.Options.AlertedBramble = true
 	end
 end
 
