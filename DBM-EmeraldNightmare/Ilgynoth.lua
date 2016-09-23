@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1738, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15258 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15259 $"):sub(12, -3))
 mod:SetCreatureID(105393)
 mod:SetEncounterID(1873)
 mod:SetZone()
@@ -293,6 +293,8 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerNightmareishFuryCD:Start(7)
 		timerGroundSlamCD:Start(13)
 		--timerDeathBlossomCD:Start(55)
+		timerDeathGlareCD:Start(21.5)
+		timerCorruptorTentacleCD:Start(45)
 		timerNightmareHorrorCD:Start(95)
 		self.vb.phase = self.vb.phase + 1
 		self.vb.DeathglareSpawn = 0
@@ -364,6 +366,8 @@ function mod:SPELL_AURA_REMOVED(args)
 	local spellId = args.spellId
 	if spellId == 209915 then--Stuff of Nightmares
 		specWarnHeartPhaseBegin:Show()
+		timerDeathGlareCD:Stop()
+		timerCorruptorTentacleCD:Stop()
 		timerNightmareHorrorCD:Stop()
 		timerDeathBlossomCD:Stop()
 		timerCursedBloodCD:Start()
