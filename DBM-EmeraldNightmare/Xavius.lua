@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1726, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15273 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15274 $"):sub(12, -3))
 mod:SetCreatureID(103769)
 mod:SetEncounterID(1864)
 mod:SetZone()
@@ -107,6 +107,7 @@ local voiceInconHorror					= mod:NewVoice("ej13162", "-Healer")--killmob
 local voiceNightmareInfusion			= mod:NewVoice(209443, "Tank")--tauntboss
 
 mod:AddInfoFrameOption("ej12970")
+mod:AddBoolOption("InfoFrameFilterDream", true)
 mod:AddRangeFrameOption(6, 208322)
 mod:AddSetIconOption("SetIconOnBlades", 206656)
 mod:AddSetIconOption("SetIconOnMeteor", 206308)
@@ -205,7 +206,11 @@ function mod:OnCombatStart(delay)
 	countdownCorruptionHorror:Start(58.4)
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:SetHeader(corruptionName)
-		DBM.InfoFrame:Show(8, "playerpower", 5, ALTERNATE_POWER_INDEX)
+		if self.Options.InfoFrameFilterDream then
+			DBM.InfoFrame:Show(8, "playerpower", 5, ALTERNATE_POWER_INDEX, dreamDebuff)
+		else
+			DBM.InfoFrame:Show(8, "playerpower", 5, ALTERNATE_POWER_INDEX)
+		end
 	end
 	updateRangeFrame(self)
 end
