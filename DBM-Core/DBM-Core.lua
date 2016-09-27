@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15275 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15276 $"):sub(12, -3)),
 	DisplayVersion = "7.0.8 alpha", -- the string that is shown as version
 	ReleaseRevision = 15263 -- the revision of the latest stable version that is available
 }
@@ -3604,8 +3604,8 @@ function DBM:CHALLENGE_MODE_RESET()
 	self:Debug("CHALLENGE_MODE_RESET fired")
 end
 
-function DBM:CHALLENGE_MODE_COMPLETED(mapID, success, medal, completionTime)
-	self:Debug("CHALLENGE_MODE_COMPLETED fired for mapID "..mapID)
+function DBM:CHALLENGE_MODE_COMPLETED()
+	self:Debug("CHALLENGE_MODE_COMPLETED fired for mapID "..LastInstanceMapID)
 end
 --REFACTOR IN LEGION
 
