@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1738, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15259 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15272 $"):sub(12, -3))
 mod:SetCreatureID(105393)
 mod:SetEncounterID(1873)
 mod:SetZone()
@@ -115,11 +115,11 @@ mod.vb.CorruptorSpawn = 0
 local UnitExists, UnitGUID, UnitDetailedThreatSituation = UnitExists, UnitGUID, UnitDetailedThreatSituation
 local eyeName = EJ_GetSectionInfo(13185)
 local addsTable = {}
-local phase1Deathglares = {26, 69}--Probably 25, 70 but numbers actually detectable by combat log are used.
-local phase1Corruptors = {90}
+local phase1Deathglares = {26, 69, 85, 55}
+local phase1Corruptors = {90, 95, 35}
 
 local phase2Deathglares = {21.5, 95, 130}
-local phase2Corruptors = {45, 95, 35}
+local phase2Corruptors = {45, 95, 35, 85, 40}
 
 local updateInfoFrame, sortInfoFrame
 do
